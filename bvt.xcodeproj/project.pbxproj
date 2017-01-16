@@ -13,8 +13,32 @@
 		643B4DB61E2CB2DD00951303 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 643B4DB21E2CB2DD00951303 /* LaunchScreen.storyboard */; };
 		643B4DB71E2CB2DD00951303 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 643B4DB41E2CB2DD00951303 /* Main.storyboard */; };
 		643B4DC31E2CB2F100951303 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 643B4DB91E2CB2F100951303 /* AppDelegate.m */; };
-		643B4DC41E2CB2F100951303 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643B4DBB1E2CB2F100951303 /* FirstViewController.m */; };
-		643B4DC51E2CB2F100951303 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643B4DBD1E2CB2F100951303 /* SecondViewController.m */; };
+		644111E71E2D33E000C3ED18 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644111E61E2D33E000C3ED18 /* MapKit.framework */; };
+		6441120C1E2D345600C3ED18 /* BVTAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111E91E2D345600C3ED18 /* BVTAboutTableViewController.m */; };
+		6441120D1E2D345600C3ED18 /* BVTCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111EB1E2D345600C3ED18 /* BVTCategoryTableViewController.m */; };
+		6441120E1E2D345600C3ED18 /* BVTDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111ED1E2D345600C3ED18 /* BVTDetailTableViewController.m */; };
+		6441120F1E2D345600C3ED18 /* BVTExploreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111EF1E2D345600C3ED18 /* BVTExploreCollectionViewCell.m */; };
+		644112101E2D345600C3ED18 /* BVTExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111F11E2D345600C3ED18 /* BVTExploreViewController.m */; };
+		644112111E2D345600C3ED18 /* BVTHeaderTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111F31E2D345600C3ED18 /* BVTHeaderTitleView.m */; };
+		644112121E2D345600C3ED18 /* BVTSplitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111F51E2D345600C3ED18 /* BVTSplitTableViewCell.m */; };
+		644112131E2D345600C3ED18 /* BVTStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111F71E2D345600C3ED18 /* BVTStyles.m */; };
+		644112141E2D345600C3ED18 /* BVTSubCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111F91E2D345600C3ED18 /* BVTSubCategoryTableViewController.m */; };
+		644112151E2D345600C3ED18 /* BVTSurpriseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111FB1E2D345600C3ED18 /* BVTSurpriseTableViewController.m */; };
+		644112161E2D345600C3ED18 /* BVTThumbNailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111FD1E2D345600C3ED18 /* BVTThumbNailTableViewCell.m */; };
+		644112171E2D345600C3ED18 /* BVTYelpAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111FF1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.m */; };
+		644112181E2D345600C3ED18 /* BVTYelpContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112011E2D345600C3ED18 /* BVTYelpContactTableViewCell.m */; };
+		644112191E2D345600C3ED18 /* BVTYelpMapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112031E2D345600C3ED18 /* BVTYelpMapTableViewCell.m */; };
+		6441121B1E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112071E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m */; };
+		6441121C1E2D345600C3ED18 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112091E2D345600C3ED18 /* PageContentViewController.m */; };
+		6441121D1E2D345600C3ED18 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6441120B1E2D345600C3ED18 /* RootViewController.m */; };
+		644112271E2D347A00C3ED18 /* BVTExploreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6441121E1E2D347A00C3ED18 /* BVTExploreCollectionViewCell.xib */; };
+		644112281E2D347A00C3ED18 /* BVTHeaderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6441121F1E2D347A00C3ED18 /* BVTHeaderTitleView.xib */; };
+		644112291E2D347A00C3ED18 /* BVTSplitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644112201E2D347A00C3ED18 /* BVTSplitTableViewCell.xib */; };
+		6441122A1E2D347A00C3ED18 /* BVTThumbNailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644112211E2D347A00C3ED18 /* BVTThumbNailTableViewCell.xib */; };
+		6441122B1E2D347A00C3ED18 /* BVTYelpAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644112221E2D347A00C3ED18 /* BVTYelpAddressTableViewCell.xib */; };
+		6441122C1E2D347A00C3ED18 /* BVTYelpContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644112231E2D347A00C3ED18 /* BVTYelpContactTableViewCell.xib */; };
+		6441122D1E2D347A00C3ED18 /* BVTYelpMapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644112241E2D347A00C3ED18 /* BVTYelpMapTableViewCell.xib */; };
+		6441122F1E2D347A00C3ED18 /* BVTYelpRatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644112261E2D347A00C3ED18 /* BVTYelpRatingTableViewCell.xib */; };
 		CF386C2C86B09043D41680B2 /* libPods-bvt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590D4A53A998579B76DD8514 /* libPods-bvt.a */; };
 /* End PBXBuildFile section */
 
@@ -42,10 +66,49 @@
 		643B4DB51E2CB2DD00951303 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Classes/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		643B4DB81E2CB2F100951303 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		643B4DB91E2CB2F100951303 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = SOURCE_ROOT; };
-		643B4DBA1E2CB2F100951303 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstViewController.h; path = Classes/FirstViewController.h; sourceTree = SOURCE_ROOT; };
-		643B4DBB1E2CB2F100951303 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstViewController.m; path = Classes/FirstViewController.m; sourceTree = SOURCE_ROOT; };
-		643B4DBC1E2CB2F100951303 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondViewController.h; path = Classes/SecondViewController.h; sourceTree = SOURCE_ROOT; };
-		643B4DBD1E2CB2F100951303 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondViewController.m; path = Classes/SecondViewController.m; sourceTree = SOURCE_ROOT; };
+		644111E61E2D33E000C3ED18 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		644111E81E2D345600C3ED18 /* BVTAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTAboutTableViewController.h; path = Classes/BVTAboutTableViewController.h; sourceTree = SOURCE_ROOT; };
+		644111E91E2D345600C3ED18 /* BVTAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTAboutTableViewController.m; path = Classes/BVTAboutTableViewController.m; sourceTree = SOURCE_ROOT; };
+		644111EA1E2D345600C3ED18 /* BVTCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTCategoryTableViewController.h; path = Classes/BVTCategoryTableViewController.h; sourceTree = SOURCE_ROOT; };
+		644111EB1E2D345600C3ED18 /* BVTCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTCategoryTableViewController.m; path = Classes/BVTCategoryTableViewController.m; sourceTree = SOURCE_ROOT; };
+		644111EC1E2D345600C3ED18 /* BVTDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTDetailTableViewController.h; path = Classes/BVTDetailTableViewController.h; sourceTree = SOURCE_ROOT; };
+		644111ED1E2D345600C3ED18 /* BVTDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTDetailTableViewController.m; path = Classes/BVTDetailTableViewController.m; sourceTree = SOURCE_ROOT; };
+		644111EE1E2D345600C3ED18 /* BVTExploreCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTExploreCollectionViewCell.h; path = Classes/BVTExploreCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		644111EF1E2D345600C3ED18 /* BVTExploreCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTExploreCollectionViewCell.m; path = Classes/BVTExploreCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		644111F01E2D345600C3ED18 /* BVTExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTExploreViewController.h; path = Classes/BVTExploreViewController.h; sourceTree = SOURCE_ROOT; };
+		644111F11E2D345600C3ED18 /* BVTExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTExploreViewController.m; path = Classes/BVTExploreViewController.m; sourceTree = SOURCE_ROOT; };
+		644111F21E2D345600C3ED18 /* BVTHeaderTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTHeaderTitleView.h; path = Classes/BVTHeaderTitleView.h; sourceTree = SOURCE_ROOT; };
+		644111F31E2D345600C3ED18 /* BVTHeaderTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTHeaderTitleView.m; path = Classes/BVTHeaderTitleView.m; sourceTree = SOURCE_ROOT; };
+		644111F41E2D345600C3ED18 /* BVTSplitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSplitTableViewCell.h; path = Classes/BVTSplitTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		644111F51E2D345600C3ED18 /* BVTSplitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSplitTableViewCell.m; path = Classes/BVTSplitTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		644111F61E2D345600C3ED18 /* BVTStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTStyles.h; path = Classes/BVTStyles.h; sourceTree = SOURCE_ROOT; };
+		644111F71E2D345600C3ED18 /* BVTStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTStyles.m; path = Classes/BVTStyles.m; sourceTree = SOURCE_ROOT; };
+		644111F81E2D345600C3ED18 /* BVTSubCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSubCategoryTableViewController.h; path = Classes/BVTSubCategoryTableViewController.h; sourceTree = SOURCE_ROOT; };
+		644111F91E2D345600C3ED18 /* BVTSubCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSubCategoryTableViewController.m; path = Classes/BVTSubCategoryTableViewController.m; sourceTree = SOURCE_ROOT; };
+		644111FA1E2D345600C3ED18 /* BVTSurpriseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSurpriseTableViewController.h; path = Classes/BVTSurpriseTableViewController.h; sourceTree = SOURCE_ROOT; };
+		644111FB1E2D345600C3ED18 /* BVTSurpriseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSurpriseTableViewController.m; path = Classes/BVTSurpriseTableViewController.m; sourceTree = SOURCE_ROOT; };
+		644111FC1E2D345600C3ED18 /* BVTThumbNailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTThumbNailTableViewCell.h; path = Classes/BVTThumbNailTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		644111FD1E2D345600C3ED18 /* BVTThumbNailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTThumbNailTableViewCell.m; path = Classes/BVTThumbNailTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		644111FE1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTYelpAddressTableViewCell.h; path = Classes/BVTYelpAddressTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		644111FF1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpAddressTableViewCell.m; path = Classes/BVTYelpAddressTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		644112001E2D345600C3ED18 /* BVTYelpContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTYelpContactTableViewCell.h; path = Classes/BVTYelpContactTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		644112011E2D345600C3ED18 /* BVTYelpContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpContactTableViewCell.m; path = Classes/BVTYelpContactTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		644112021E2D345600C3ED18 /* BVTYelpMapTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTYelpMapTableViewCell.h; path = Classes/BVTYelpMapTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		644112031E2D345600C3ED18 /* BVTYelpMapTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpMapTableViewCell.m; path = Classes/BVTYelpMapTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		644112061E2D345600C3ED18 /* BVTYelpRatingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTYelpRatingTableViewCell.h; path = Classes/BVTYelpRatingTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		644112071E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpRatingTableViewCell.m; path = Classes/BVTYelpRatingTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		644112081E2D345600C3ED18 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageContentViewController.h; path = Classes/PageContentViewController.h; sourceTree = SOURCE_ROOT; };
+		644112091E2D345600C3ED18 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageContentViewController.m; path = Classes/PageContentViewController.m; sourceTree = SOURCE_ROOT; };
+		6441120A1E2D345600C3ED18 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Classes/RootViewController.h; sourceTree = SOURCE_ROOT; };
+		6441120B1E2D345600C3ED18 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = Classes/RootViewController.m; sourceTree = SOURCE_ROOT; };
+		6441121E1E2D347A00C3ED18 /* BVTExploreCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTExploreCollectionViewCell.xib; sourceTree = "<group>"; };
+		6441121F1E2D347A00C3ED18 /* BVTHeaderTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTHeaderTitleView.xib; sourceTree = "<group>"; };
+		644112201E2D347A00C3ED18 /* BVTSplitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTSplitTableViewCell.xib; sourceTree = "<group>"; };
+		644112211E2D347A00C3ED18 /* BVTThumbNailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTThumbNailTableViewCell.xib; sourceTree = "<group>"; };
+		644112221E2D347A00C3ED18 /* BVTYelpAddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTYelpAddressTableViewCell.xib; sourceTree = "<group>"; };
+		644112231E2D347A00C3ED18 /* BVTYelpContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTYelpContactTableViewCell.xib; sourceTree = "<group>"; };
+		644112241E2D347A00C3ED18 /* BVTYelpMapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTYelpMapTableViewCell.xib; sourceTree = "<group>"; };
+		644112261E2D347A00C3ED18 /* BVTYelpRatingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTYelpRatingTableViewCell.xib; sourceTree = "<group>"; };
 		64F41D5F1E2C497F0053EBE2 /* bvt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bvt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		812CD2D8F0E4D852D7328DA4 /* Pods-bvt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.debug.xcconfig"; sourceTree = "<group>"; };
 		A13E28BFC52912BF5475C256 /* Pods-bvt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.release.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.release.xcconfig"; sourceTree = "<group>"; };
@@ -56,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				644111E71E2D33E000C3ED18 /* MapKit.framework in Frameworks */,
 				CF386C2C86B09043D41680B2 /* libPods-bvt.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,7 +127,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		643B4DBE1E2CB2F100951303 /* yelp */ = {
+		643B4DBE1E2CB2F100951303 /* Yelp */ = {
 			isa = PBXGroup;
 			children = (
 				643B4DBF1E2CB2F100951303 /* Client */,
@@ -71,7 +135,7 @@
 				643B4DC11E2CB2F100951303 /* Request */,
 				643B4DC21E2CB2F100951303 /* Response */,
 			);
-			name = yelp;
+			name = Yelp;
 			path = Classes/yelp;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -103,12 +167,28 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
+		644111A21E2D32CD00C3ED18 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				643B4DB41E2CB2DD00951303 /* Main.storyboard */,
+				643B4DB21E2CB2DD00951303 /* LaunchScreen.storyboard */,
+				6441121E1E2D347A00C3ED18 /* BVTExploreCollectionViewCell.xib */,
+				6441121F1E2D347A00C3ED18 /* BVTHeaderTitleView.xib */,
+				644112201E2D347A00C3ED18 /* BVTSplitTableViewCell.xib */,
+				644112211E2D347A00C3ED18 /* BVTThumbNailTableViewCell.xib */,
+				644112221E2D347A00C3ED18 /* BVTYelpAddressTableViewCell.xib */,
+				644112231E2D347A00C3ED18 /* BVTYelpContactTableViewCell.xib */,
+				644112241E2D347A00C3ED18 /* BVTYelpMapTableViewCell.xib */,
+				644112261E2D347A00C3ED18 /* BVTYelpRatingTableViewCell.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		64F41D561E2C497F0053EBE2 = {
 			isa = PBXGroup;
 			children = (
+				644111A21E2D32CD00C3ED18 /* Resources */,
 				643B4DB01E2CB2D300951303 /* Assets.xcassets */,
-				643B4DB21E2CB2DD00951303 /* LaunchScreen.storyboard */,
-				643B4DB41E2CB2DD00951303 /* Main.storyboard */,
 				64F41D621E2C497F0053EBE2 /* Supporting Files */,
 				64F41D611E2C497F0053EBE2 /* Classes */,
 				64F41D601E2C497F0053EBE2 /* Products */,
@@ -128,13 +208,41 @@
 		64F41D611E2C497F0053EBE2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				643B4DB81E2CB2F100951303 /* AppDelegate.h */,
-				643B4DB91E2CB2F100951303 /* AppDelegate.m */,
-				643B4DBA1E2CB2F100951303 /* FirstViewController.h */,
-				643B4DBB1E2CB2F100951303 /* FirstViewController.m */,
-				643B4DBC1E2CB2F100951303 /* SecondViewController.h */,
-				643B4DBD1E2CB2F100951303 /* SecondViewController.m */,
-				643B4DBE1E2CB2F100951303 /* yelp */,
+				644111E81E2D345600C3ED18 /* BVTAboutTableViewController.h */,
+				644111E91E2D345600C3ED18 /* BVTAboutTableViewController.m */,
+				644111EA1E2D345600C3ED18 /* BVTCategoryTableViewController.h */,
+				644111EB1E2D345600C3ED18 /* BVTCategoryTableViewController.m */,
+				644111EC1E2D345600C3ED18 /* BVTDetailTableViewController.h */,
+				644111ED1E2D345600C3ED18 /* BVTDetailTableViewController.m */,
+				644111EE1E2D345600C3ED18 /* BVTExploreCollectionViewCell.h */,
+				644111EF1E2D345600C3ED18 /* BVTExploreCollectionViewCell.m */,
+				644111F01E2D345600C3ED18 /* BVTExploreViewController.h */,
+				644111F11E2D345600C3ED18 /* BVTExploreViewController.m */,
+				644111F21E2D345600C3ED18 /* BVTHeaderTitleView.h */,
+				644111F31E2D345600C3ED18 /* BVTHeaderTitleView.m */,
+				644111F41E2D345600C3ED18 /* BVTSplitTableViewCell.h */,
+				644111F51E2D345600C3ED18 /* BVTSplitTableViewCell.m */,
+				644111F61E2D345600C3ED18 /* BVTStyles.h */,
+				644111F71E2D345600C3ED18 /* BVTStyles.m */,
+				644111F81E2D345600C3ED18 /* BVTSubCategoryTableViewController.h */,
+				644111F91E2D345600C3ED18 /* BVTSubCategoryTableViewController.m */,
+				644111FA1E2D345600C3ED18 /* BVTSurpriseTableViewController.h */,
+				644111FB1E2D345600C3ED18 /* BVTSurpriseTableViewController.m */,
+				644111FC1E2D345600C3ED18 /* BVTThumbNailTableViewCell.h */,
+				644111FD1E2D345600C3ED18 /* BVTThumbNailTableViewCell.m */,
+				644111FE1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.h */,
+				644111FF1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.m */,
+				644112001E2D345600C3ED18 /* BVTYelpContactTableViewCell.h */,
+				644112011E2D345600C3ED18 /* BVTYelpContactTableViewCell.m */,
+				644112021E2D345600C3ED18 /* BVTYelpMapTableViewCell.h */,
+				644112031E2D345600C3ED18 /* BVTYelpMapTableViewCell.m */,
+				644112061E2D345600C3ED18 /* BVTYelpRatingTableViewCell.h */,
+				644112071E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m */,
+				644112081E2D345600C3ED18 /* PageContentViewController.h */,
+				644112091E2D345600C3ED18 /* PageContentViewController.m */,
+				6441120A1E2D345600C3ED18 /* RootViewController.h */,
+				6441120B1E2D345600C3ED18 /* RootViewController.m */,
+				643B4DBE1E2CB2F100951303 /* Yelp */,
 			);
 			name = Classes;
 			path = bvt;
@@ -145,6 +253,8 @@
 			children = (
 				643B4DAC1E2CB2C300951303 /* Info.plist */,
 				643B4DAD1E2CB2C300951303 /* main.m */,
+				643B4DB81E2CB2F100951303 /* AppDelegate.h */,
+				643B4DB91E2CB2F100951303 /* AppDelegate.m */,
 			);
 			name = "Supporting Files";
 			path = bvt;
@@ -153,6 +263,7 @@
 		81DC3A0A017F6247E73F74F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				644111E61E2D33E000C3ED18 /* MapKit.framework */,
 				640179011E2C4BB900BBA8D2 /* YelpAPI.framework */,
 				640178FF1E2C4BAF00BBA8D2 /* libYelpAPI.a */,
 				590D4A53A998579B76DD8514 /* libPods-bvt.a */,
@@ -232,9 +343,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6441122F1E2D347A00C3ED18 /* BVTYelpRatingTableViewCell.xib in Resources */,
 				643B4DB61E2CB2DD00951303 /* LaunchScreen.storyboard in Resources */,
+				6441122A1E2D347A00C3ED18 /* BVTThumbNailTableViewCell.xib in Resources */,
+				644112281E2D347A00C3ED18 /* BVTHeaderTitleView.xib in Resources */,
+				644112291E2D347A00C3ED18 /* BVTSplitTableViewCell.xib in Resources */,
 				643B4DB11E2CB2D300951303 /* Assets.xcassets in Resources */,
+				6441122C1E2D347A00C3ED18 /* BVTYelpContactTableViewCell.xib in Resources */,
 				643B4DAE1E2CB2C300951303 /* Info.plist in Resources */,
+				6441122D1E2D347A00C3ED18 /* BVTYelpMapTableViewCell.xib in Resources */,
+				6441122B1E2D347A00C3ED18 /* BVTYelpAddressTableViewCell.xib in Resources */,
+				644112271E2D347A00C3ED18 /* BVTExploreCollectionViewCell.xib in Resources */,
 				643B4DB71E2CB2DD00951303 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,10 +413,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				643B4DC51E2CB2F100951303 /* SecondViewController.m in Sources */,
+				6441120D1E2D345600C3ED18 /* BVTCategoryTableViewController.m in Sources */,
+				6441121C1E2D345600C3ED18 /* PageContentViewController.m in Sources */,
+				644112111E2D345600C3ED18 /* BVTHeaderTitleView.m in Sources */,
+				644112181E2D345600C3ED18 /* BVTYelpContactTableViewCell.m in Sources */,
+				644112131E2D345600C3ED18 /* BVTStyles.m in Sources */,
+				644112101E2D345600C3ED18 /* BVTExploreViewController.m in Sources */,
+				6441120E1E2D345600C3ED18 /* BVTDetailTableViewController.m in Sources */,
+				644112161E2D345600C3ED18 /* BVTThumbNailTableViewCell.m in Sources */,
 				643B4DC31E2CB2F100951303 /* AppDelegate.m in Sources */,
-				643B4DC41E2CB2F100951303 /* FirstViewController.m in Sources */,
+				644112171E2D345600C3ED18 /* BVTYelpAddressTableViewCell.m in Sources */,
+				644112141E2D345600C3ED18 /* BVTSubCategoryTableViewController.m in Sources */,
+				6441120F1E2D345600C3ED18 /* BVTExploreCollectionViewCell.m in Sources */,
+				644112191E2D345600C3ED18 /* BVTYelpMapTableViewCell.m in Sources */,
+				6441121D1E2D345600C3ED18 /* RootViewController.m in Sources */,
+				6441120C1E2D345600C3ED18 /* BVTAboutTableViewController.m in Sources */,
 				643B4DAF1E2CB2C300951303 /* main.m in Sources */,
+				644112151E2D345600C3ED18 /* BVTSurpriseTableViewController.m in Sources */,
+				644112121E2D345600C3ED18 /* BVTSplitTableViewCell.m in Sources */,
+				6441121B1E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
