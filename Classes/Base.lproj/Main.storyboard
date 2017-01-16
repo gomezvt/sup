@@ -40,7 +40,7 @@
         <!--Root View Controller-->
         <scene sceneID="Zfl-L9-yCF">
             <objects>
-                <viewController title="Root View Controller" id="wjE-zW-AhW" customClass="RootViewController" sceneMemberID="viewController">
+                <viewController title="Root View Controller" id="wjE-zW-AhW" customClass="BVTPageRootViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yd0-Y7-pow"/>
                         <viewControllerLayoutGuide type="bottom" id="oWp-dM-boV"/>
@@ -75,7 +75,7 @@
         <!--Page Content View Controller-->
         <scene sceneID="wX0-ps-Brz">
             <objects>
-                <viewController storyboardIdentifier="PageContentViewController" title="Page Content View Controller" id="If7-aq-Nls" customClass="PageContentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageContentViewController" title="Page Content View Controller" id="If7-aq-Nls" customClass="BVTPageContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QIy-WZ-ZgE"/>
                         <viewControllerLayoutGuide type="bottom" id="d92-MH-Pbr"/>

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		643B4DAE1E2CB2C300951303 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 643B4DAC1E2CB2C300951303 /* Info.plist */; };
 		643B4DAF1E2CB2C300951303 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 643B4DAD1E2CB2C300951303 /* main.m */; };
 		643B4DB11E2CB2D300951303 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 643B4DB01E2CB2D300951303 /* Assets.xcassets */; };
 		643B4DB61E2CB2DD00951303 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 643B4DB21E2CB2DD00951303 /* LaunchScreen.storyboard */; };
@@ -29,8 +28,8 @@
 		644112181E2D345600C3ED18 /* BVTYelpContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112011E2D345600C3ED18 /* BVTYelpContactTableViewCell.m */; };
 		644112191E2D345600C3ED18 /* BVTYelpMapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112031E2D345600C3ED18 /* BVTYelpMapTableViewCell.m */; };
 		6441121B1E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112071E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m */; };
-		6441121C1E2D345600C3ED18 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112091E2D345600C3ED18 /* PageContentViewController.m */; };
-		6441121D1E2D345600C3ED18 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6441120B1E2D345600C3ED18 /* RootViewController.m */; };
+		6441121C1E2D345600C3ED18 /* BVTPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112091E2D345600C3ED18 /* BVTPageContentViewController.m */; };
+		6441121D1E2D345600C3ED18 /* BVTPageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6441120B1E2D345600C3ED18 /* BVTPageRootViewController.m */; };
 		644112271E2D347A00C3ED18 /* BVTExploreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6441121E1E2D347A00C3ED18 /* BVTExploreCollectionViewCell.xib */; };
 		644112281E2D347A00C3ED18 /* BVTHeaderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6441121F1E2D347A00C3ED18 /* BVTHeaderTitleView.xib */; };
 		644112291E2D347A00C3ED18 /* BVTSplitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644112201E2D347A00C3ED18 /* BVTSplitTableViewCell.xib */; };
@@ -97,10 +96,10 @@
 		644112031E2D345600C3ED18 /* BVTYelpMapTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpMapTableViewCell.m; path = Classes/BVTYelpMapTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		644112061E2D345600C3ED18 /* BVTYelpRatingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTYelpRatingTableViewCell.h; path = Classes/BVTYelpRatingTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		644112071E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpRatingTableViewCell.m; path = Classes/BVTYelpRatingTableViewCell.m; sourceTree = SOURCE_ROOT; };
-		644112081E2D345600C3ED18 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageContentViewController.h; path = Classes/PageContentViewController.h; sourceTree = SOURCE_ROOT; };
-		644112091E2D345600C3ED18 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageContentViewController.m; path = Classes/PageContentViewController.m; sourceTree = SOURCE_ROOT; };
-		6441120A1E2D345600C3ED18 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Classes/RootViewController.h; sourceTree = SOURCE_ROOT; };
-		6441120B1E2D345600C3ED18 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = Classes/RootViewController.m; sourceTree = SOURCE_ROOT; };
+		644112081E2D345600C3ED18 /* BVTPageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTPageContentViewController.h; path = Classes/BVTPageContentViewController.h; sourceTree = SOURCE_ROOT; };
+		644112091E2D345600C3ED18 /* BVTPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTPageContentViewController.m; path = Classes/BVTPageContentViewController.m; sourceTree = SOURCE_ROOT; };
+		6441120A1E2D345600C3ED18 /* BVTPageRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTPageRootViewController.h; path = Classes/BVTPageRootViewController.h; sourceTree = SOURCE_ROOT; };
+		6441120B1E2D345600C3ED18 /* BVTPageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTPageRootViewController.m; path = Classes/BVTPageRootViewController.m; sourceTree = SOURCE_ROOT; };
 		6441121E1E2D347A00C3ED18 /* BVTExploreCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTExploreCollectionViewCell.xib; sourceTree = "<group>"; };
 		6441121F1E2D347A00C3ED18 /* BVTHeaderTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTHeaderTitleView.xib; sourceTree = "<group>"; };
 		644112201E2D347A00C3ED18 /* BVTSplitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTSplitTableViewCell.xib; sourceTree = "<group>"; };
@@ -184,16 +183,27 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		64CF50E91E2D4E39004856DB /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				644112081E2D345600C3ED18 /* BVTPageContentViewController.h */,
+				644112091E2D345600C3ED18 /* BVTPageContentViewController.m */,
+				6441120A1E2D345600C3ED18 /* BVTPageRootViewController.h */,
+				6441120B1E2D345600C3ED18 /* BVTPageRootViewController.m */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
 		64F41D561E2C497F0053EBE2 = {
 			isa = PBXGroup;
 			children = (
-				644111A21E2D32CD00C3ED18 /* Resources */,
 				643B4DB01E2CB2D300951303 /* Assets.xcassets */,
 				64F41D621E2C497F0053EBE2 /* Supporting Files */,
 				64F41D611E2C497F0053EBE2 /* Classes */,
+				644111A21E2D32CD00C3ED18 /* Resources */,
+				81DC3A0A017F6247E73F74F1 /* Frameworks */,
 				64F41D601E2C497F0053EBE2 /* Products */,
 				D78ABA542C27A54E9B11D3A9 /* Pods */,
-				81DC3A0A017F6247E73F74F1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,6 +218,7 @@
 		64F41D611E2C497F0053EBE2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				64CF50E91E2D4E39004856DB /* Tutorial */,
 				644111E81E2D345600C3ED18 /* BVTAboutTableViewController.h */,
 				644111E91E2D345600C3ED18 /* BVTAboutTableViewController.m */,
 				644111EA1E2D345600C3ED18 /* BVTCategoryTableViewController.h */,
@@ -238,10 +249,6 @@
 				644112031E2D345600C3ED18 /* BVTYelpMapTableViewCell.m */,
 				644112061E2D345600C3ED18 /* BVTYelpRatingTableViewCell.h */,
 				644112071E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m */,
-				644112081E2D345600C3ED18 /* PageContentViewController.h */,
-				644112091E2D345600C3ED18 /* PageContentViewController.m */,
-				6441120A1E2D345600C3ED18 /* RootViewController.h */,
-				6441120B1E2D345600C3ED18 /* RootViewController.m */,
 				643B4DBE1E2CB2F100951303 /* Yelp */,
 			);
 			name = Classes;
@@ -350,7 +357,6 @@
 				644112291E2D347A00C3ED18 /* BVTSplitTableViewCell.xib in Resources */,
 				643B4DB11E2CB2D300951303 /* Assets.xcassets in Resources */,
 				6441122C1E2D347A00C3ED18 /* BVTYelpContactTableViewCell.xib in Resources */,
-				643B4DAE1E2CB2C300951303 /* Info.plist in Resources */,
 				6441122D1E2D347A00C3ED18 /* BVTYelpMapTableViewCell.xib in Resources */,
 				6441122B1E2D347A00C3ED18 /* BVTYelpAddressTableViewCell.xib in Resources */,
 				644112271E2D347A00C3ED18 /* BVTExploreCollectionViewCell.xib in Resources */,
@@ -414,7 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6441120D1E2D345600C3ED18 /* BVTCategoryTableViewController.m in Sources */,
-				6441121C1E2D345600C3ED18 /* PageContentViewController.m in Sources */,
+				6441121C1E2D345600C3ED18 /* BVTPageContentViewController.m in Sources */,
 				644112111E2D345600C3ED18 /* BVTHeaderTitleView.m in Sources */,
 				644112181E2D345600C3ED18 /* BVTYelpContactTableViewCell.m in Sources */,
 				644112131E2D345600C3ED18 /* BVTStyles.m in Sources */,
@@ -426,7 +432,7 @@
 				644112141E2D345600C3ED18 /* BVTSubCategoryTableViewController.m in Sources */,
 				6441120F1E2D345600C3ED18 /* BVTExploreCollectionViewCell.m in Sources */,
 				644112191E2D345600C3ED18 /* BVTYelpMapTableViewCell.m in Sources */,
-				6441121D1E2D345600C3ED18 /* RootViewController.m in Sources */,
+				6441121D1E2D345600C3ED18 /* BVTPageRootViewController.m in Sources */,
 				6441120C1E2D345600C3ED18 /* BVTAboutTableViewController.m in Sources */,
 				643B4DAF1E2CB2C300951303 /* main.m in Sources */,
 				644112151E2D345600C3ED18 /* BVTSurpriseTableViewController.m in Sources */,

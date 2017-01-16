@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PageContentViewController.h"
+#import "BVTPageRootViewController.h"
 
-@interface RootViewController : UIViewController <UIPageViewControllerDataSource>
+@interface BVTPageRootViewController : UIViewController <UIPageViewControllerDataSource>
 
 - (IBAction)startWalkthrough:(id)sender;
 

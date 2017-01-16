@@ -6,16 +6,16 @@
 //  Copyright © 2016 gomez. All rights reserved.
 //
 
-#import "RootViewController.h"
+#import "BVTPageRootViewController.h"
 
 #import "BVTExploreViewController.h"
-#import "PageContentViewController.h"
+#import "BVTPageContentViewController.h"
 
-@interface RootViewController ()
+@interface BVTPageRootViewController ()
 
 @end
 
-@implementation RootViewController
+@implementation BVTPageRootViewController
 
 
 - (void)viewDidLoad
@@ -45,7 +45,7 @@
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     self.pageViewController.dataSource = self;
     
-    PageContentViewController *startingViewController = [self viewControllerAtIndex:0];
+    BVTPageContentViewController *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
@@ -62,20 +62,20 @@
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"BVTTutorialComplete"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    PageContentViewController *startingViewController = [self viewControllerAtIndex:0];
+    BVTPageContentViewController *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
     [self performSegueWithIdentifier:@"ShowTabBarController" sender:nil];
 }
 
-- (PageContentViewController *)viewControllerAtIndex:(NSUInteger)index
+- (BVTPageContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {
     if (([self.pageTitles count] == 0) || (index >= [self.pageTitles count])) {
         return nil;
     }
     
     // Create a new view controller and pass suitable data.
-    PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    BVTPageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
     pageContentViewController.imageFile = self.images[index];
 
     pageContentViewController.titleText = self.pageTitles[index];
@@ -88,7 +88,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSUInteger index = ((PageContentViewController*) viewController).pageIndex;
+    NSUInteger index = ((BVTPageContentViewController*) viewController).pageIndex;
     
     if ((index == 0) || (index == NSNotFound)) {
         return nil;
@@ -100,7 +100,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSUInteger index = ((PageContentViewController*) viewController).pageIndex;
+    NSUInteger index = ((BVTPageContentViewController*) viewController).pageIndex;
     
     if (index == NSNotFound) {
         return nil;
