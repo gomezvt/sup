@@ -5,8 +5,9 @@
 //  Created by Greg on 1/15/17.
 //  Copyright © 2017 gms. All rights reserved.
 //
+#import "AppDelegate.h"
 
-@import YelpAPI
+@import YelpAPI;
 
 @interface AppDelegate ()
 @property (strong, nonatomic) YLPClient *client;
