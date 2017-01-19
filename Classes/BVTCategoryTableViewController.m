@@ -11,7 +11,7 @@
 #import "BVTHeaderTitleView.h"
 #import "BVTThumbNailTableViewCell.h"
 #import "BVTSubCategoryTableViewController.h"
-
+#import "BVTStyles.h"
 #import "AppDelegate.h"
 
 #import "YLPClient+Search.h"
@@ -33,10 +33,6 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 static NSString *const kThumbNailCell = @"BVTThumbNailTableViewCell";
 static NSString *const kDefaultCellIdentifier = @"Cell";
 static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
-
-static NSString *const kGalleries = @"Galleries";
-static NSString *const kPerformingArts = @"Performing Arts";
-static NSString *const kMuseums = @"Museums";
 
 @implementation BVTCategoryTableViewController
 
@@ -63,6 +59,43 @@ static NSString *const kMuseums = @"Museums";
     {
         categories = @[ kGalleries, kPerformingArts, kMuseums ];
     }
+    else if ([self.categoryTitle isEqualToString:@"Cafes and Bakeries"])
+    {
+        categories = @[ kCafes, kBakeries ];
+    }
+    else if ([self.categoryTitle isEqualToString:@"Music"])
+    {
+        categories = @[ kMusicVenues, kMusicalInstruments ];
+    }
+    else if ([self.categoryTitle isEqualToString:@"Hotels, Hostels, Bed & Breakfast"])
+    {
+        categories = @[ kHotels, kHostels, kBedBreakfasts ];
+    }
+    else if ([self.categoryTitle isEqualToString:@"Recreation and Attractions"])
+    {
+        categories = @[  ];
+    }
+    else if ([self.categoryTitle isEqualToString:@"Bars and Lounges"])
+    {
+        categories = @[  ];
+    }
+    else if ([self.categoryTitle isEqualToString:@"Restaurants"])
+    {
+        categories = @[  ];
+    }
+    else if ([self.categoryTitle isEqualToString:@"Shopping"])
+    {
+        categories = @[  ];
+    }
+    else if ([self.categoryTitle isEqualToString:@"Tours and Festivals"])
+    {
+        categories = @[  ];
+    }
+    else
+    {
+        // Travel
+        categories = @[  ];
+    }
     
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:kDefaultCellIdentifier];
@@ -85,14 +118,22 @@ static NSString *const kMuseums = @"Museums";
     BVTThumbNailTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *selectionTitle = cell.titleLabel.text;
     
-    [[AppDelegate sharedClient] searchWithLocation:@"San Francisco, CA" term:nil limit:5 offset:0 sort:YLPSortTypeDistance completionHandler:^
+    [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:selectionTitle limit:5 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error) {
          dispatch_async(dispatch_get_main_queue(), ^{
-             if (error){
-                 NSLog(@"An error happened during the request: %@", error);
+             if (searchResults.businesses.count > 0) {
+                 NSMutableArray *filteredArray = [NSMutableArray array];
+                 for (YLPBusiness *biz in searchResults.businesses)
+                 {
+                     if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name CONTAINS %@", selectionTitle]] lastObject])
+                     {
+                         [filteredArray addObject:biz];
+                     }
+                 }
+                 [self performSegueWithIdentifier:kShowSubCategorySegue sender:@[ selectionTitle, filteredArray ]];
              }
-             else if (searchResults) {
-                 [self performSegueWithIdentifier:kShowSubCategorySegue sender:@[ selectionTitle, searchResults ]];
+             else if (error) {
+                 NSLog(@"An error happened during the request: %@", error);
              }
              else {
                  NSLog(@"No business was found");

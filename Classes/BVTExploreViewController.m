@@ -55,7 +55,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     UINib *cellNib = [UINib nibWithNibName:kCollectionViewCellNib bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:kDefaultCellIdentifier];
     
-    cellTitles = @[ @"Arts and Museums", @"Coffee and Cafés", @"Hotels, Inns, and B&Bs", @"Recreation and Attractions", @"Live Music", @"Bars and Lounges", @"Restaurants", @"Shopping", @"Tours and Festivals", @"Travel" ];
+    cellTitles = @[ @"Arts and Museums", @"Cafes and Bakeries", @"Music", @"Hotels, Hostels, Bed & Breakfast", @"Recreation and Attractions", @"Bars and Lounges", @"Restaurants", @"Shopping", @"Tours and Festivals", @"Travel" ];
 }
 
 #pragma mark - CollectionView Delegate
@@ -83,27 +83,8 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     BVTExploreCollectionViewCell *cell = (BVTExploreCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     NSString *selectionTitle = cell.titleLabel.text;
-    if ([selectionTitle isEqualToString:@"Live Music"])
-    {
-        [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:selectionTitle limit:20 offset:0 sort:YLPSortTypeDistance completionHandler:^
-         (YLPSearch *searchResults, NSError *error) {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 if (error){
-                     NSLog(@"An error happened during the request: %@", error);
-                 }
-                 else if (searchResults) {
-                     [self performSegueWithIdentifier:kShowSubCategorySegue sender:@[ selectionTitle, searchResults.businesses ]];
-                 }
-                 else {
-                     NSLog(@"No business was found");
-                 }
-             });
-         }];
-    }
-    else
-    {
-        [self performSegueWithIdentifier:kShowCategorySegue sender:selectionTitle];
-    }
+    
+    [self performSegueWithIdentifier:kShowCategorySegue sender:selectionTitle];
 }
 
 #pragma mark - Navigation

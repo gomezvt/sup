@@ -87,18 +87,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.searchResults.businesses.count;
+    NSArray *businesses = (NSArray *)self.searchResults;
+    
+    return businesses.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kDefaultCellIdentifier forIndexPath:indexPath];
     
-    
-    YLPBusiness *business = [self.searchResults.businesses objectAtIndex:indexPath.row];
-
+    NSArray *businesses = (NSArray *)self.searchResults;
+    YLPBusiness *business = [businesses objectAtIndex:indexPath.row];
     cell.titleLabel.text = business.name;
-    
+
     return cell;
 }
 
