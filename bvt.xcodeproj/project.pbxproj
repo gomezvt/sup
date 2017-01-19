@@ -7,17 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		642067911E2D68F20047A3B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 642067901E2D68F20047A3B6 /* Assets.xcassets */; };
-		642067961E2D69080047A3B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 642067921E2D69080047A3B6 /* LaunchScreen.storyboard */; };
-		642067971E2D69080047A3B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 642067941E2D69080047A3B6 /* Main.storyboard */; };
-		642067A01E2D69100047A3B6 /* BVTExploreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 642067981E2D69100047A3B6 /* BVTExploreCollectionViewCell.xib */; };
-		642067A11E2D69100047A3B6 /* BVTHeaderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 642067991E2D69100047A3B6 /* BVTHeaderTitleView.xib */; };
-		642067A21E2D69100047A3B6 /* BVTSplitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6420679A1E2D69100047A3B6 /* BVTSplitTableViewCell.xib */; };
-		642067A31E2D69100047A3B6 /* BVTThumbNailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6420679B1E2D69100047A3B6 /* BVTThumbNailTableViewCell.xib */; };
-		642067A41E2D69100047A3B6 /* BVTYelpAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6420679C1E2D69100047A3B6 /* BVTYelpAddressTableViewCell.xib */; };
-		642067A51E2D69100047A3B6 /* BVTYelpContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6420679D1E2D69100047A3B6 /* BVTYelpContactTableViewCell.xib */; };
-		642067A61E2D69100047A3B6 /* BVTYelpMapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6420679E1E2D69100047A3B6 /* BVTYelpMapTableViewCell.xib */; };
-		642067A71E2D69100047A3B6 /* BVTYelpRatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6420679F1E2D69100047A3B6 /* BVTYelpRatingTableViewCell.xib */; };
 		643B4DAF1E2CB2C300951303 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 643B4DAD1E2CB2C300951303 /* main.m */; };
 		643B4DC31E2CB2F100951303 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 643B4DB91E2CB2F100951303 /* AppDelegate.m */; };
 		644111E71E2D33E000C3ED18 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644111E61E2D33E000C3ED18 /* MapKit.framework */; };
@@ -38,6 +27,17 @@
 		6441121B1E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112071E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m */; };
 		6441121C1E2D345600C3ED18 /* BVTPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112091E2D345600C3ED18 /* BVTPageContentViewController.m */; };
 		6441121D1E2D345600C3ED18 /* BVTPageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6441120B1E2D345600C3ED18 /* BVTPageRootViewController.m */; };
+		64934CA51E306AC500386B5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64934CA41E306AC500386B5B /* Assets.xcassets */; };
+		64934CAA1E306AD900386B5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64934CA61E306AD900386B5B /* LaunchScreen.storyboard */; };
+		64934CAB1E306AD900386B5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64934CA81E306AD900386B5B /* Main.storyboard */; };
+		64934CB21E306B7000386B5B /* BVTExploreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CB11E306B7000386B5B /* BVTExploreCollectionViewCell.xib */; };
+		64934CB81E306BA100386B5B /* BVTSplitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CB71E306BA100386B5B /* BVTSplitTableViewCell.xib */; };
+		64934CBA1E306BA800386B5B /* BVTThumbNailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CB91E306BA800386B5B /* BVTThumbNailTableViewCell.xib */; };
+		64934CBC1E306BB500386B5B /* BVTYelpAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CBB1E306BB500386B5B /* BVTYelpAddressTableViewCell.xib */; };
+		64934CBE1E306BC700386B5B /* BVTYelpContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CBD1E306BC700386B5B /* BVTYelpContactTableViewCell.xib */; };
+		64934CC01E306BCE00386B5B /* BVTYelpMapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CBF1E306BCE00386B5B /* BVTYelpMapTableViewCell.xib */; };
+		64934CC21E306BD300386B5B /* BVTYelpRatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CC11E306BD300386B5B /* BVTYelpRatingTableViewCell.xib */; };
+		64934CC41E306C1E00386B5B /* BVTHeaderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */; };
 		CF386C2C86B09043D41680B2 /* libPods-bvt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590D4A53A998579B76DD8514 /* libPods-bvt.a */; };
 /* End PBXBuildFile section */
 
@@ -58,17 +58,7 @@
 		590D4A53A998579B76DD8514 /* libPods-bvt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bvt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		640178FF1E2C4BAF00BBA8D2 /* libYelpAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libYelpAPI.a; path = "../../Library/Developer/Xcode/DerivedData/bvt-hjftkdqploieouekjahtdglmzgkr/Build/Products/Debug-iphonesimulator/YelpAPI/libYelpAPI.a"; sourceTree = "<group>"; };
 		640179011E2C4BB900BBA8D2 /* YelpAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YelpAPI.framework; path = System/Library/Frameworks/YelpAPI.framework; sourceTree = SDKROOT; };
-		642067901E2D68F20047A3B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
-		642067931E2D69080047A3B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		642067951E2D69080047A3B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		642067981E2D69100047A3B6 /* BVTExploreCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTExploreCollectionViewCell.xib; path = Resources/BVTExploreCollectionViewCell.xib; sourceTree = "<group>"; };
-		642067991E2D69100047A3B6 /* BVTHeaderTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTHeaderTitleView.xib; path = Resources/BVTHeaderTitleView.xib; sourceTree = "<group>"; };
-		6420679A1E2D69100047A3B6 /* BVTSplitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTSplitTableViewCell.xib; path = Resources/BVTSplitTableViewCell.xib; sourceTree = "<group>"; };
-		6420679B1E2D69100047A3B6 /* BVTThumbNailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTThumbNailTableViewCell.xib; path = Resources/BVTThumbNailTableViewCell.xib; sourceTree = "<group>"; };
-		6420679C1E2D69100047A3B6 /* BVTYelpAddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpAddressTableViewCell.xib; path = Resources/BVTYelpAddressTableViewCell.xib; sourceTree = "<group>"; };
-		6420679D1E2D69100047A3B6 /* BVTYelpContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpContactTableViewCell.xib; path = Resources/BVTYelpContactTableViewCell.xib; sourceTree = "<group>"; };
-		6420679E1E2D69100047A3B6 /* BVTYelpMapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpMapTableViewCell.xib; path = Resources/BVTYelpMapTableViewCell.xib; sourceTree = "<group>"; };
-		6420679F1E2D69100047A3B6 /* BVTYelpRatingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpRatingTableViewCell.xib; path = Resources/BVTYelpRatingTableViewCell.xib; sourceTree = "<group>"; };
+		642067991E2D69100047A3B6 /* BVTHeaderTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTHeaderTitleView.xib; path = ../Resources/BVTHeaderTitleView.xib; sourceTree = "<group>"; };
 		643B4DAC1E2CB2C300951303 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		643B4DAD1E2CB2C300951303 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		643B4DB81E2CB2F100951303 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -108,6 +98,17 @@
 		644112091E2D345600C3ED18 /* BVTPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTPageContentViewController.m; path = Classes/BVTPageContentViewController.m; sourceTree = SOURCE_ROOT; };
 		6441120A1E2D345600C3ED18 /* BVTPageRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTPageRootViewController.h; path = Classes/BVTPageRootViewController.h; sourceTree = SOURCE_ROOT; };
 		6441120B1E2D345600C3ED18 /* BVTPageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTPageRootViewController.m; path = Classes/BVTPageRootViewController.m; sourceTree = SOURCE_ROOT; };
+		64934CA41E306AC500386B5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Classes/Assets.xcassets; sourceTree = "<group>"; };
+		64934CA71E306AD900386B5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Classes/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		64934CA91E306AD900386B5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Classes/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		64934CB11E306B7000386B5B /* BVTExploreCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTExploreCollectionViewCell.xib; path = Classes/BVTExploreCollectionViewCell.xib; sourceTree = "<group>"; };
+		64934CB71E306BA100386B5B /* BVTSplitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTSplitTableViewCell.xib; path = Classes/BVTSplitTableViewCell.xib; sourceTree = "<group>"; };
+		64934CB91E306BA800386B5B /* BVTThumbNailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTThumbNailTableViewCell.xib; path = Classes/BVTThumbNailTableViewCell.xib; sourceTree = "<group>"; };
+		64934CBB1E306BB500386B5B /* BVTYelpAddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpAddressTableViewCell.xib; path = Classes/BVTYelpAddressTableViewCell.xib; sourceTree = "<group>"; };
+		64934CBD1E306BC700386B5B /* BVTYelpContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpContactTableViewCell.xib; path = Classes/BVTYelpContactTableViewCell.xib; sourceTree = "<group>"; };
+		64934CBF1E306BCE00386B5B /* BVTYelpMapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpMapTableViewCell.xib; path = Classes/BVTYelpMapTableViewCell.xib; sourceTree = "<group>"; };
+		64934CC11E306BD300386B5B /* BVTYelpRatingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpRatingTableViewCell.xib; path = Classes/BVTYelpRatingTableViewCell.xib; sourceTree = "<group>"; };
+		64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BVTHeaderTitleView.xib; path = Classes/BVTHeaderTitleView.xib; sourceTree = "<group>"; };
 		64F41D5F1E2C497F0053EBE2 /* bvt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bvt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		812CD2D8F0E4D852D7328DA4 /* Pods-bvt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.debug.xcconfig"; sourceTree = "<group>"; };
 		A13E28BFC52912BF5475C256 /* Pods-bvt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.release.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,61 +127,98 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		643B4DBE1E2CB2F100951303 /* Yelp */ = {
+		64934CB01E306B5D00386B5B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				643B4DBF1E2CB2F100951303 /* Client */,
-				643B4DC01E2CB2F100951303 /* Common */,
-				643B4DC11E2CB2F100951303 /* Request */,
-				643B4DC21E2CB2F100951303 /* Response */,
-			);
-			name = Yelp;
-			path = Classes/yelp;
-			sourceTree = SOURCE_ROOT;
-		};
-		643B4DBF1E2CB2F100951303 /* Client */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Client;
-			sourceTree = "<group>";
-		};
-		643B4DC01E2CB2F100951303 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		643B4DC11E2CB2F100951303 /* Request */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Request;
-			sourceTree = "<group>";
-		};
-		643B4DC21E2CB2F100951303 /* Response */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Response;
-			sourceTree = "<group>";
-		};
-		644111A21E2D32CD00C3ED18 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				642067921E2D69080047A3B6 /* LaunchScreen.storyboard */,
-				642067941E2D69080047A3B6 /* Main.storyboard */,
-				642067981E2D69100047A3B6 /* BVTExploreCollectionViewCell.xib */,
-				642067991E2D69100047A3B6 /* BVTHeaderTitleView.xib */,
-				6420679A1E2D69100047A3B6 /* BVTSplitTableViewCell.xib */,
-				6420679B1E2D69100047A3B6 /* BVTThumbNailTableViewCell.xib */,
-				6420679C1E2D69100047A3B6 /* BVTYelpAddressTableViewCell.xib */,
-				6420679D1E2D69100047A3B6 /* BVTYelpContactTableViewCell.xib */,
-				6420679E1E2D69100047A3B6 /* BVTYelpMapTableViewCell.xib */,
-				6420679F1E2D69100047A3B6 /* BVTYelpRatingTableViewCell.xib */,
+				64934CA41E306AC500386B5B /* Assets.xcassets */,
+				64934CA81E306AD900386B5B /* Main.storyboard */,
+				64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */,
+				64934CA61E306AD900386B5B /* LaunchScreen.storyboard */,
+				64934CB11E306B7000386B5B /* BVTExploreCollectionViewCell.xib */,
+				64934CB71E306BA100386B5B /* BVTSplitTableViewCell.xib */,
+				64934CB91E306BA800386B5B /* BVTThumbNailTableViewCell.xib */,
+				64934CBB1E306BB500386B5B /* BVTYelpAddressTableViewCell.xib */,
+				64934CBD1E306BC700386B5B /* BVTYelpContactTableViewCell.xib */,
+				64934CBF1E306BCE00386B5B /* BVTYelpMapTableViewCell.xib */,
+				64934CC11E306BD300386B5B /* BVTYelpRatingTableViewCell.xib */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		64B4468D1E3049B700327C26 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				644111E81E2D345600C3ED18 /* BVTAboutTableViewController.h */,
+				644111E91E2D345600C3ED18 /* BVTAboutTableViewController.m */,
+			);
+			name = About;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		64B4468E1E3049BD00327C26 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				64B446951E304C2E00327C26 /* Cell Classes */,
+				64B446971E304C8400327C26 /* Controller Classes */,
+			);
+			name = Explore;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		64B4468F1E3049C500327C26 /* Surprise */ = {
+			isa = PBXGroup;
+			children = (
+				644111FA1E2D345600C3ED18 /* BVTSurpriseTableViewController.h */,
+				644111FB1E2D345600C3ED18 /* BVTSurpriseTableViewController.m */,
+			);
+			name = Surprise;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		64B446951E304C2E00327C26 /* Cell Classes */ = {
+			isa = PBXGroup;
+			children = (
+				644111FC1E2D345600C3ED18 /* BVTThumbNailTableViewCell.h */,
+				644111FD1E2D345600C3ED18 /* BVTThumbNailTableViewCell.m */,
+				644111FE1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.h */,
+				644111FF1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.m */,
+				644112001E2D345600C3ED18 /* BVTYelpContactTableViewCell.h */,
+				644112011E2D345600C3ED18 /* BVTYelpContactTableViewCell.m */,
+				644112021E2D345600C3ED18 /* BVTYelpMapTableViewCell.h */,
+				644112031E2D345600C3ED18 /* BVTYelpMapTableViewCell.m */,
+				644112061E2D345600C3ED18 /* BVTYelpRatingTableViewCell.h */,
+				644112071E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m */,
+				644111F41E2D345600C3ED18 /* BVTSplitTableViewCell.h */,
+				644111F51E2D345600C3ED18 /* BVTSplitTableViewCell.m */,
+				644111EE1E2D345600C3ED18 /* BVTExploreCollectionViewCell.h */,
+				644111EF1E2D345600C3ED18 /* BVTExploreCollectionViewCell.m */,
+			);
+			name = "Cell Classes";
+			sourceTree = "<group>";
+		};
+		64B446971E304C8400327C26 /* Controller Classes */ = {
+			isa = PBXGroup;
+			children = (
+				644111F01E2D345600C3ED18 /* BVTExploreViewController.h */,
+				644111F11E2D345600C3ED18 /* BVTExploreViewController.m */,
+				644111EA1E2D345600C3ED18 /* BVTCategoryTableViewController.h */,
+				644111EB1E2D345600C3ED18 /* BVTCategoryTableViewController.m */,
+				644111F81E2D345600C3ED18 /* BVTSubCategoryTableViewController.h */,
+				644111F91E2D345600C3ED18 /* BVTSubCategoryTableViewController.m */,
+				644111EC1E2D345600C3ED18 /* BVTDetailTableViewController.h */,
+				644111ED1E2D345600C3ED18 /* BVTDetailTableViewController.m */,
+			);
+			name = "Controller Classes";
+			sourceTree = "<group>";
+		};
+		64B446981E304CB200327C26 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				644111F21E2D345600C3ED18 /* BVTHeaderTitleView.h */,
+				644111F31E2D345600C3ED18 /* BVTHeaderTitleView.m */,
+				642067991E2D69100047A3B6 /* BVTHeaderTitleView.xib */,
+			);
+			name = Header;
 			sourceTree = "<group>";
 		};
 		64CF50E91E2D4E39004856DB /* Tutorial */ = {
@@ -197,11 +235,10 @@
 		64F41D561E2C497F0053EBE2 = {
 			isa = PBXGroup;
 			children = (
-				642067901E2D68F20047A3B6 /* Assets.xcassets */,
-				64F41D621E2C497F0053EBE2 /* Supporting Files */,
 				64F41D611E2C497F0053EBE2 /* Classes */,
-				644111A21E2D32CD00C3ED18 /* Resources */,
+				64934CB01E306B5D00386B5B /* Resources */,
 				81DC3A0A017F6247E73F74F1 /* Frameworks */,
+				64F41D621E2C497F0053EBE2 /* Supporting Files */,
 				64F41D601E2C497F0053EBE2 /* Products */,
 				D78ABA542C27A54E9B11D3A9 /* Pods */,
 			);
@@ -218,38 +255,13 @@
 		64F41D611E2C497F0053EBE2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				64CF50E91E2D4E39004856DB /* Tutorial */,
-				644111E81E2D345600C3ED18 /* BVTAboutTableViewController.h */,
-				644111E91E2D345600C3ED18 /* BVTAboutTableViewController.m */,
-				644111EA1E2D345600C3ED18 /* BVTCategoryTableViewController.h */,
-				644111EB1E2D345600C3ED18 /* BVTCategoryTableViewController.m */,
-				644111EC1E2D345600C3ED18 /* BVTDetailTableViewController.h */,
-				644111ED1E2D345600C3ED18 /* BVTDetailTableViewController.m */,
-				644111EE1E2D345600C3ED18 /* BVTExploreCollectionViewCell.h */,
-				644111EF1E2D345600C3ED18 /* BVTExploreCollectionViewCell.m */,
-				644111F01E2D345600C3ED18 /* BVTExploreViewController.h */,
-				644111F11E2D345600C3ED18 /* BVTExploreViewController.m */,
-				644111F21E2D345600C3ED18 /* BVTHeaderTitleView.h */,
-				644111F31E2D345600C3ED18 /* BVTHeaderTitleView.m */,
-				644111F41E2D345600C3ED18 /* BVTSplitTableViewCell.h */,
-				644111F51E2D345600C3ED18 /* BVTSplitTableViewCell.m */,
 				644111F61E2D345600C3ED18 /* BVTStyles.h */,
 				644111F71E2D345600C3ED18 /* BVTStyles.m */,
-				644111F81E2D345600C3ED18 /* BVTSubCategoryTableViewController.h */,
-				644111F91E2D345600C3ED18 /* BVTSubCategoryTableViewController.m */,
-				644111FA1E2D345600C3ED18 /* BVTSurpriseTableViewController.h */,
-				644111FB1E2D345600C3ED18 /* BVTSurpriseTableViewController.m */,
-				644111FC1E2D345600C3ED18 /* BVTThumbNailTableViewCell.h */,
-				644111FD1E2D345600C3ED18 /* BVTThumbNailTableViewCell.m */,
-				644111FE1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.h */,
-				644111FF1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.m */,
-				644112001E2D345600C3ED18 /* BVTYelpContactTableViewCell.h */,
-				644112011E2D345600C3ED18 /* BVTYelpContactTableViewCell.m */,
-				644112021E2D345600C3ED18 /* BVTYelpMapTableViewCell.h */,
-				644112031E2D345600C3ED18 /* BVTYelpMapTableViewCell.m */,
-				644112061E2D345600C3ED18 /* BVTYelpRatingTableViewCell.h */,
-				644112071E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m */,
-				643B4DBE1E2CB2F100951303 /* Yelp */,
+				64CF50E91E2D4E39004856DB /* Tutorial */,
+				64B446981E304CB200327C26 /* Header */,
+				64B4468E1E3049BD00327C26 /* Explore */,
+				64B4468D1E3049B700327C26 /* About */,
+				64B4468F1E3049C500327C26 /* Surprise */,
 			);
 			name = Classes;
 			path = bvt;
@@ -350,17 +362,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				642067A11E2D69100047A3B6 /* BVTHeaderTitleView.xib in Resources */,
-				642067A71E2D69100047A3B6 /* BVTYelpRatingTableViewCell.xib in Resources */,
-				642067A61E2D69100047A3B6 /* BVTYelpMapTableViewCell.xib in Resources */,
-				642067971E2D69080047A3B6 /* Main.storyboard in Resources */,
-				642067911E2D68F20047A3B6 /* Assets.xcassets in Resources */,
-				642067A51E2D69100047A3B6 /* BVTYelpContactTableViewCell.xib in Resources */,
-				642067A31E2D69100047A3B6 /* BVTThumbNailTableViewCell.xib in Resources */,
-				642067A01E2D69100047A3B6 /* BVTExploreCollectionViewCell.xib in Resources */,
-				642067961E2D69080047A3B6 /* LaunchScreen.storyboard in Resources */,
-				642067A21E2D69100047A3B6 /* BVTSplitTableViewCell.xib in Resources */,
-				642067A41E2D69100047A3B6 /* BVTYelpAddressTableViewCell.xib in Resources */,
+				64934CAA1E306AD900386B5B /* LaunchScreen.storyboard in Resources */,
+				64934CAB1E306AD900386B5B /* Main.storyboard in Resources */,
+				64934CA51E306AC500386B5B /* Assets.xcassets in Resources */,
+				64934CC41E306C1E00386B5B /* BVTHeaderTitleView.xib in Resources */,
+				64934CBA1E306BA800386B5B /* BVTThumbNailTableViewCell.xib in Resources */,
+				64934CB81E306BA100386B5B /* BVTSplitTableViewCell.xib in Resources */,
+				64934CC21E306BD300386B5B /* BVTYelpRatingTableViewCell.xib in Resources */,
+				64934CBE1E306BC700386B5B /* BVTYelpContactTableViewCell.xib in Resources */,
+				64934CC01E306BCE00386B5B /* BVTYelpMapTableViewCell.xib in Resources */,
+				64934CBC1E306BB500386B5B /* BVTYelpAddressTableViewCell.xib in Resources */,
+				64934CB21E306B7000386B5B /* BVTExploreCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,18 +456,18 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		642067921E2D69080047A3B6 /* LaunchScreen.storyboard */ = {
+		64934CA61E306AD900386B5B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				642067931E2D69080047A3B6 /* Base */,
+				64934CA71E306AD900386B5B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		642067941E2D69080047A3B6 /* Main.storyboard */ = {
+		64934CA81E306AD900386B5B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				642067951E2D69080047A3B6 /* Base */,
+				64934CA91E306AD900386B5B /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
