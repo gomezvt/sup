@@ -55,7 +55,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     UINib *cellNib = [UINib nibWithNibName:kCollectionViewCellNib bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:kDefaultCellIdentifier];
     
-    cellTitles = @[ @"Arts and Museums", @"Cafes and Bakeries", @"Music", @"Hotels, Hostels, Bed & Breakfast", @"Recreation and Attractions", @"Bars and Lounges", @"Restaurants", @"Shopping", @"Tours and Festivals", @"Travel" ];
+    cellTitles = @[ @"Arts and Museums", @"Coffee, Sweets, and Bakeries", @"Music", @"Hotels, Hostels, Bed & Breakfast", @"Entertainment and Recreation", @"Bars and Lounges", @"Restaurants", @"Shopping", @"Tours and Festivals", @"Travel" ];
 }
 
 #pragma mark - CollectionView Delegate

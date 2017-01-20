@@ -57,31 +57,31 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     if ([self.categoryTitle isEqualToString:@"Arts and Museums"])
     {
-        categories = @[ kGalleries, kPerformingArts, kMuseums ];
+        categories = kArtsMuseums;
     }
-    else if ([self.categoryTitle isEqualToString:@"Cafes and Bakeries"])
+    else if ([self.categoryTitle isEqualToString:@"Coffee, Sweets, and Bakeries"])
     {
-        categories = @[ kCafes, kBakeries ];
+        categories = kCoffeeSweetsBakeries;
     }
     else if ([self.categoryTitle isEqualToString:@"Music"])
     {
-        categories = @[ kMusicVenues, kMusicalInstruments ];
+        categories = kMusic;
     }
     else if ([self.categoryTitle isEqualToString:@"Hotels, Hostels, Bed & Breakfast"])
     {
-        categories = @[ kHotels, kHostels, kBedBreakfasts ];
+        categories = kHotelsHostelsBB;
     }
-    else if ([self.categoryTitle isEqualToString:@"Recreation and Attractions"])
+    else if ([self.categoryTitle isEqualToString:@"Entertainment and Recreation"])
     {
-        categories = @[  ];
+        categories = kEntertainmentRecreation;
     }
     else if ([self.categoryTitle isEqualToString:@"Bars and Lounges"])
     {
-        categories = @[  ];
+        categories = kBarsLounges;
     }
     else if ([self.categoryTitle isEqualToString:@"Restaurants"])
     {
-        categories = @[  ];
+        categories = kRestaurants;
     }
     else if ([self.categoryTitle isEqualToString:@"Shopping"])
     {
