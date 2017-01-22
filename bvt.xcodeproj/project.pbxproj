@@ -132,8 +132,8 @@
 			children = (
 				64934CA41E306AC500386B5B /* Assets.xcassets */,
 				64934CA81E306AD900386B5B /* Main.storyboard */,
-				64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */,
 				64934CA61E306AD900386B5B /* LaunchScreen.storyboard */,
+				64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */,
 				64934CB11E306B7000386B5B /* BVTExploreCollectionViewCell.xib */,
 				64934CB71E306BA100386B5B /* BVTSplitTableViewCell.xib */,
 				64934CB91E306BA800386B5B /* BVTThumbNailTableViewCell.xib */,

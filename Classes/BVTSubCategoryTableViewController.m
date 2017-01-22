@@ -68,7 +68,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     YLPBusiness *selectedBusiness = [self.searchResults.businesses objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:kShowDetailSegue sender:@[ selectedBusiness.name, selectedBusiness ]];
+    [self performSegueWithIdentifier:kShowDetailSegue sender:nil];
+
+//    [self performSegueWithIdentifier:kShowDetailSegue sender:@[ selectedBusiness.name, selectedBusiness ]];
 
 //    [[AppDelegate sharedClient] businessWithId:selectedBusiness.name completionHandler:^
 //     (YLPBusiness *business, NSError *error) {
@@ -89,16 +91,18 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     NSArray *businesses = (NSArray *)self.searchResults;
     
-    return businesses.count;
+//    return businesses.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kDefaultCellIdentifier forIndexPath:indexPath];
     
-    NSArray *businesses = (NSArray *)self.searchResults;
-    YLPBusiness *business = [businesses objectAtIndex:indexPath.row];
-    cell.titleLabel.text = business.name;
+//    NSArray *businesses = (NSArray *)self.searchResults;
+//    YLPBusiness *business = [businesses objectAtIndex:indexPath.row];
+//    cell.titleLabel.text = business.name;
+    cell.titleLabel.text = @"test";
 
     return cell;
 }

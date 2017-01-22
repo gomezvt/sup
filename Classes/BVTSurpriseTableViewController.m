@@ -7,16 +7,34 @@
 //
 
 #import "BVTSurpriseTableViewController.h"
+#import "BVTHeaderTitleView.h"
 
 @interface BVTSurpriseTableViewController ()
 
+@property (nonatomic, strong) BVTHeaderTitleView *headerTitleView;
+
+
 @end
 
+static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
+
 @implementation BVTSurpriseTableViewController
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
+    self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    self.navigationItem.titleView = self.headerTitleView;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.tableView.estimatedRowHeight = 44.f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 #pragma mark - Table view data source

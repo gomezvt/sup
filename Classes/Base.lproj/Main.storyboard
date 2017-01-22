@@ -27,7 +27,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-938" y="299"/>
+            <point key="canvasLocation" x="-1400" y="218"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="dSn-cT-ESK">
@@ -35,7 +35,7 @@
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="VPe-us-vOl" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFl-7F-avE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1799" y="224"/>
+            <point key="canvasLocation" x="-1400" y="909"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="Zfl-L9-yCF">
@@ -70,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5u-iD-Rii" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2649" y="567"/>
+            <point key="canvasLocation" x="-2172" y="218"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="wX0-ps-Brz">
@@ -114,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLm-gM-KDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1799.2" y="922.48875562218893"/>
+            <point key="canvasLocation" x="-2172" y="909"/>
         </scene>
         <!--Explore-->
         <scene sceneID="0bO-EL-LAf">
@@ -131,7 +131,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uuf-mJ-fMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4" y="-309"/>
+            <point key="canvasLocation" x="39" y="-312"/>
         </scene>
         <!--Burlingtonian-->
         <scene sceneID="Vu4-MZ-ht8">
@@ -188,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nki-a4-fcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="723" y="-312"/>
+            <point key="canvasLocation" x="738" y="-312"/>
         </scene>
         <!--Burlingtonian-->
         <scene sceneID="Kyz-Hy-ijJ">
@@ -241,7 +241,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Burlingtonian" id="BVD-Vj-j3a">
-                        <barButtonItem key="leftBarButtonItem" image="Back" id="0s3-3l-ATZ">
+                        <barButtonItem key="leftBarButtonItem" image="back_chevron" id="0s3-3l-ATZ">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="didTapBack:" destination="YHp-ZS-BPP" id="YhO-Mg-CX1"/>
                             </connections>
@@ -255,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pxs-wc-U0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1439" y="-157"/>
+            <point key="canvasLocation" x="1438" y="-312"/>
         </scene>
         <!--Burlingtonian-->
         <scene sceneID="pAY-1M-M1K">
@@ -341,7 +342,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Burlingtonian" id="6Ev-et-1hj">
-                        <barButtonItem key="leftBarButtonItem" image="Back" id="xtu-Fw-XHD">
+                        <barButtonItem key="leftBarButtonItem" image="back_chevron" id="xtu-Fw-XHD">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="didTapBack:" destination="YcC-JR-9wn" id="Nca-xW-dNn"/>
                             </connections>
@@ -354,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymI-zU-424" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2931.8840579710145" y="-310.59782608695656"/>
+            <point key="canvasLocation" x="2807" y="-312"/>
         </scene>
         <!--About-->
         <scene sceneID="GJw-sP-Vdi">
@@ -371,7 +373,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G6y-ru-Zja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4" y="386"/>
+            <point key="canvasLocation" x="38" y="352"/>
         </scene>
         <!--Surprise-->
         <scene sceneID="zUc-bP-jnc">
@@ -388,7 +390,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r37-ze-SJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4" y="1086"/>
+            <point key="canvasLocation" x="38" y="1026"/>
         </scene>
         <!--Burlingtonian-->
         <scene sceneID="ULk-wZ-2AK">
@@ -418,7 +420,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0np-Xi-SN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="724" y="1085"/>
+            <point key="canvasLocation" x="738" y="1026"/>
         </scene>
         <!--Burlingtonian-->
         <scene sceneID="Bfu-4q-3xs">
@@ -448,7 +450,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbB-GG-seh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="724" y="386"/>
+            <point key="canvasLocation" x="738" y="351"/>
         </scene>
         <!--Burlingtonian-->
         <scene sceneID="A4F-SH-zzx">
@@ -501,7 +503,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Burlingtonian" id="sZr-hq-PGZ">
-                        <barButtonItem key="leftBarButtonItem" image="Back" id="7mA-wp-KOg">
+                        <barButtonItem key="leftBarButtonItem" image="back_chevron" id="7mA-wp-KOg">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="didTapBack:" destination="xXJ-IN-eoB" id="XEW-NC-xML"/>
                             </connections>
@@ -515,11 +518,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXK-K2-rwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2155" y="-347"/>
+            <point key="canvasLocation" x="2128" y="-312"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Back" width="15" height="15"/>
+        <image name="back_chevron" width="15" height="15"/>
         <image name="yelp" width="81" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>

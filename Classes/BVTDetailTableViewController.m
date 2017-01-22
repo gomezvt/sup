@@ -76,8 +76,6 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    self.tableView.backgroundColor = [UIColor colorWithRed:(249/255.0) green:(249/255.0) blue:(249/255.0) alpha:1];
-    
     self.tableView.tableFooterView = [UIView new];
 }
 

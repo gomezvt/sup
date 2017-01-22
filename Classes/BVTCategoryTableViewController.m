@@ -117,29 +117,30 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     BVTThumbNailTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *selectionTitle = cell.titleLabel.text;
-    
-    [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:selectionTitle limit:30 offset:0 sort:YLPSortTypeDistance completionHandler:^
-     (YLPSearch *searchResults, NSError *error) {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             if (searchResults.businesses.count > 0) {
-                 NSMutableArray *filteredArray = [NSMutableArray array];
-                 for (YLPBusiness *biz in searchResults.businesses)
-                 {
-                     if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", selectionTitle]] lastObject])
-                     {
-                         [filteredArray addObject:biz];
-                     }
-                 }
-                 [self performSegueWithIdentifier:kShowSubCategorySegue sender:@[ selectionTitle, filteredArray ]];
-             }
-             else if (error) {
-                 NSLog(@"An error happened during the request: %@", error);
-             }
-             else {
-                 NSLog(@"No business was found");
-             }
-         });
-     }];
+    [self performSegueWithIdentifier:kShowSubCategorySegue sender:nil];
+
+//    [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:selectionTitle limit:30 offset:0 sort:YLPSortTypeDistance completionHandler:^
+//     (YLPSearch *searchResults, NSError *error) {
+//         dispatch_async(dispatch_get_main_queue(), ^{
+//             if (searchResults.businesses.count > 0) {
+//                 NSMutableArray *filteredArray = [NSMutableArray array];
+//                 for (YLPBusiness *biz in searchResults.businesses)
+//                 {
+//                     if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", selectionTitle]] lastObject])
+//                     {
+//                         [filteredArray addObject:biz];
+//                     }
+//                 }
+//                 [self performSegueWithIdentifier:kShowSubCategorySegue sender:@[ selectionTitle, filteredArray ]];
+//             }
+//             else if (error) {
+//                 NSLog(@"An error happened during the request: %@", error);
+//             }
+//             else {
+//                 NSLog(@"No business was found");
+//             }
+//         });
+//     }];
 }
 
 #pragma mark - TableView Data Source
@@ -196,14 +197,14 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSArray *info = sender;
-    if ([[segue identifier] isEqualToString:kShowSubCategorySegue])
-    {
-        // Get destination view
-        BVTSubCategoryTableViewController *vc = [segue destinationViewController];
-        vc.subCategoryTitle = [info firstObject];
-        vc.searchResults = [info lastObject];
-    }
+//    NSArray *info = sender;
+//    if ([[segue identifier] isEqualToString:kShowSubCategorySegue])
+//    {
+//        // Get destination view
+//        BVTSubCategoryTableViewController *vc = [segue destinationViewController];
+//        vc.subCategoryTitle = [info firstObject];
+//        vc.searchResults = [info lastObject];
+//    }
 }
 
 @end
