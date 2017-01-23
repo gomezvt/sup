@@ -67,17 +67,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    YLPBusiness *selectedBusiness = [self.searchResults.businesses objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:kShowDetailSegue sender:nil];
-
-//    [self performSegueWithIdentifier:kShowDetailSegue sender:@[ selectedBusiness.name, selectedBusiness ]];
-
-//    [[AppDelegate sharedClient] businessWithId:selectedBusiness.name completionHandler:^
-//     (YLPBusiness *business, NSError *error) {
-//         dispatch_async(dispatch_get_main_queue(), ^{
-//             [self performSegueWithIdentifier:kShowDetailSegue sender:@[ selectedBusiness.name, selectedBusiness ]];
-//         });
-//     }];
+    YLPBusiness *selectedBusiness = [self.filteredResults objectAtIndex:indexPath.row];
+    
+    [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
+     (YLPBusiness *business, NSError *error) {
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [self performSegueWithIdentifier:kShowDetailSegue sender:selectedBusiness ];
+         });
+     }];    
 }
 
 #pragma mark - TableView Data Source
@@ -89,10 +86,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *businesses = (NSArray *)self.searchResults;
+//    NSArray *businesses = (NSArray *)self.filteredResults;
     
-//    return businesses.count;
-    return 1;
+    return self.filteredResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -100,9 +96,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kDefaultCellIdentifier forIndexPath:indexPath];
     
 //    NSArray *businesses = (NSArray *)self.searchResults;
-//    YLPBusiness *business = [businesses objectAtIndex:indexPath.row];
-//    cell.titleLabel.text = business.name;
-    cell.titleLabel.text = @"test";
+    YLPBusiness *business = [self.filteredResults objectAtIndex:indexPath.row];
+    cell.titleLabel.text = business.name;
 
     return cell;
 }
@@ -140,13 +135,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSArray *info = sender;
     if ([[segue identifier] isEqualToString:kShowDetailSegue])
     {
         // Get destination view
         BVTDetailTableViewController *vc = [segue destinationViewController];
-        vc.detailTitle = [info firstObject];
-        vc.business = [info lastObject];
+        vc.selectedBusiness = sender;
     }
 }
 

@@ -29,7 +29,9 @@
         _identifier = businessDict[@"id"];
         NSString *phone = [businessDict ylp_objectMaybeNullForKey:@"phone"];
         _phone = phone.length > 0 ? phone : nil;
-        
+        _hours = businessDict[@"hours"];
+        _price = businessDict[@"price"];
+
         _categories = [self.class categoriesFromJSONArray:businessDict[@"categories"]];
         YLPCoordinate *coordinate = [self.class coordinateFromJSONDictionary:businessDict[@"coordinates"]];
         _location = [[YLPLocation alloc] initWithDictionary:businessDict[@"location"] coordinate:coordinate];

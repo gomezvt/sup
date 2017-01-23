@@ -13,6 +13,6 @@
 @interface BVTDetailTableViewController : UIViewController
 
 @property (nonatomic, copy) NSString *detailTitle;
-@property (nonatomic, strong) YLPBusiness *business;
+@property (nonatomic, strong) YLPBusiness *selectedBusiness;
 
 @end

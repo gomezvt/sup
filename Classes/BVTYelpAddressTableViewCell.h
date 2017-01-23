@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "YLPBusiness.h"
+
 @interface BVTYelpAddressTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UILabel *addressLabel;
-@property (nonatomic, weak) IBOutlet UILabel *addressLabel2;
+@property (nonatomic, strong) YLPBusiness *selectedBusiness;
 
 @end

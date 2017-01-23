@@ -14,9 +14,6 @@
 #import "BVTYelpRatingTableViewCell.h"
 #import "BVTYelpMapTableViewCell.h"
 #import "BVTSplitTableViewCell.h"
-#import "BVTStyles.h"
-#import "YLPClient+Business.h"
-#import "YLPBusiness.h"
 
 @interface BVTDetailTableViewController ()
 
@@ -56,7 +53,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 {
     [super viewDidLoad];
     
-    self.titleLabel.text = self.detailTitle;
+    self.titleLabel.text = self.selectedBusiness.name;
 
     UINib *yelpMapCellNib = [UINib nibWithNibName:kYelpMapCellNib bundle:nil];
     [self.tableView registerNib:yelpMapCellNib forCellReuseIdentifier:kYelpMapCellIdentifier];
@@ -128,89 +125,21 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     if (indexPath.row == 0)
     {
         BVTYelpRatingTableViewCell *ratingCell = (BVTYelpRatingTableViewCell *)cell;
-        ratingCell.reviewsCountLabel.text = [NSString stringWithFormat:@"%ld Reviews", self.business.reviewCount];
-        
-//        NSString *catString;
-        // TODO: make sure there arent more than three categories per place or fix code accordingly for more
-        
-//        NSArray *categories = self.business.categories;
-        
-//        if (self.business.categories.count == 1)
-//        {
-//            catString = categories[0];
-//        }
-//        else if (self.business.categories.count == 2)
-//        {
-//            catString = [NSString stringWithFormat:@"%@, %@", categories[0], categories[1]];
-//        }
-//        else if (self.business.categories.count == 3)
-//        {
-//            catString = [NSString stringWithFormat:@"%@, %@, %@", categories[0], categories[1], categories[2]];
-//        }
-//
-//        ratingCell.yelpCategoryLabel.text = catString;
-        
-        NSString *ratingString;
-        if (self.business.rating == 0)
-        {
-            ratingString = star_zero;
-        }
-        else if (self.business.rating == 1)
-        {
-            ratingString = star_one;
-        }
-        else if (self.business.rating == 1.5)
-        {
-            ratingString = star_one_half;
-        }
-        else if (self.business.rating == 2)
-        {
-            ratingString = star_two;
-        }
-        else if (self.business.rating == 2.5)
-        {
-            ratingString = star_two_half;
-        }
-        else if (self.business.rating == 3)
-        {
-            ratingString = star_three;
-        }
-        else if (self.business.rating == 3.5)
-        {
-            ratingString = star_three_half;
-        }
-        else if (self.business.rating == 4)
-        {
-            ratingString = star_four;
-        }
-        else if (self.business.rating == 4.5)
-        {
-            ratingString = star_four_half;
-        }
-        else if (self.business.rating == 5)
-        {
-            ratingString = star_five;
-        }
-        
-        [ratingCell.ratingStarsView setImage:[UIImage imageNamed:ratingString]];
+        ratingCell.selectedBusiness = self.selectedBusiness;
     }
     else if (indexPath.row == 1)
     {
-                BVTYelpContactTableViewCell *defaultCell = (BVTYelpContactTableViewCell *)cell;
-        defaultCell.phoneNumberLabel.text = self.business.phone;
+        BVTYelpContactTableViewCell *defaultCell = (BVTYelpContactTableViewCell *)cell;
+        defaultCell.phoneNumberLabel.text = self.selectedBusiness.phone;
     }
     else if (indexPath.row == 2)
     {
-//                BVTYelpAddressTableViewCell *defaultCell = (BVTYelpAddressTableViewCell *)cell;
-//        NSDictionary *address = self.business[@"location"];
-//
-//        defaultCell.addressLabel.text = address[@"display_address"][0];
-//        defaultCell.addressLabel2.text = address[@"display_address"][1];
-
+        BVTYelpAddressTableViewCell *defaultCell = (BVTYelpAddressTableViewCell *)cell;
+        defaultCell.selectedBusiness = self.selectedBusiness;
     }
     else if (indexPath.row == 3)
     {
-//        BVTYelpContactTableViewCell *defaultCell = (BVTYelpContactTableViewCell *)cell;
+        BVTYelpContactTableViewCell *defaultCell = (BVTYelpContactTableViewCell *)cell;
     }
     else if (indexPath.row == 4 || indexPath.row == 5)
     {
