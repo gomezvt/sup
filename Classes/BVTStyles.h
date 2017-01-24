@@ -14,7 +14,7 @@
 
 #define kCoffeeSweetsBakeries @[ @"Bakeries", @"Bubble Tea", @"Candy Stores", @"Chocolatiers & Shops", @"Coffee & Tea", @"Coffee Roasteries", @"Desserts", @"Ice Cream & Frozen Yogurt", @"Tea Rooms" ]
 
-#define kMusic @[ @"Musicians", @"Music Venues" ]
+#define kMusic @[ @"Music Venues" ]
 
 #define kHotelsHostelsBB @[ @"Bed & Breakfast",  @"Guest Houses", @"Hostels", @"Hotels", @"Mountain Huts", @"Rest Stops" ]
 
@@ -32,6 +32,6 @@
 
 @interface BVTStyles : NSObject
 
-//+ (UIColor *)redColor;
++ (UIColor *)BVTLightGray;
 
 @end

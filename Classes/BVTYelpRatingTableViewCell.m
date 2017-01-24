@@ -33,7 +33,7 @@ NSString *const star_five       = @"star_five.png";
 {
     _selectedBusiness = selectedBusiness;
     
-    self.reviewsCountLabel.text = [NSString stringWithFormat:@"%ld Reviews", self.selectedBusiness.reviewCount];
+    self.reviewsCountLabel.text = [NSString stringWithFormat:@"%ld Review(s) in Yelp", self.selectedBusiness.reviewCount];
     
     self.yelpPriceLabel.text = self.selectedBusiness.price;
     

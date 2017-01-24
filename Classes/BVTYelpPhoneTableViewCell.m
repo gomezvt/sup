@@ -6,21 +6,18 @@
 //  Copyright © 2016 gomez. All rights reserved.
 //
 
-#import "BVTYelpContactTableViewCell.h"
+#import "BVTYelpPhoneTableViewCell.h"
 
-@interface BVTYelpContactTableViewCell ()
+@interface BVTYelpPhoneTableViewCell ()
 
-@property (nonatomic, weak) IBOutlet UIView *backView;
 @property (nonatomic, weak) IBOutlet UILabel *phoneNumberLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *PhoneImageView;
 
 @end
 
-@implementation BVTYelpContactTableViewCell
+@implementation BVTYelpPhoneTableViewCell
 
 - (void)awakeFromNib {
-    
-    self.backView.layer.cornerRadius = 15.f;
-    
     [super awakeFromNib];
     // Initialization code
 }
@@ -28,7 +25,6 @@
 - (void)setSelectedBusiness:(YLPBusiness *)selectedBusiness
 {
     _selectedBusiness = selectedBusiness;
-    
     self.phoneNumberLabel.text = self.selectedBusiness.phone;
 }
 

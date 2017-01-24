@@ -12,9 +12,9 @@
 
 @implementation BVTStyles
 
-//+ (UIColor *)redColor
-//{
-//    return [UIColor redColor];
-//}
++ (UIColor *)BVTLightGray
+{
+    return [UIColor colorWithRed:236 green:235 blue:5 alpha:232];
+}
 
 @end

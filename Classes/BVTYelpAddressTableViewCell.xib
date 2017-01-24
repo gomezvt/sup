@@ -20,16 +20,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="W9c-r6-sNE">
-                        <rect key="frame" x="16" y="16" width="288" height="63.5"/>
+                        <rect key="frame" x="16" y="16" width="252" height="63.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5e-mx-h47">
-                                <rect key="frame" x="0.0" y="0.0" width="288" height="35"/>
+                                <rect key="frame" x="0.0" y="0.0" width="252" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h01-Ws-tuP">
-                                <rect key="frame" x="0.0" y="43" width="288" height="20.5"/>
+                                <rect key="frame" x="0.0" y="43" width="252" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -44,14 +44,23 @@
                             <constraint firstAttribute="width" constant="1" id="YpJ-EP-ffB"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="QU1-Gy-CnE">
+                        <rect key="frame" x="276" y="33" width="28" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="eWU-Ct-IRd"/>
+                            <constraint firstAttribute="width" constant="28" id="tGv-nV-J8v"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="W9c-r6-sNE" secondAttribute="trailing" constant="8" id="65O-af-s2c"/>
                     <constraint firstItem="W9c-r6-sNE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="9HH-fv-vSW"/>
                     <constraint firstItem="zNf-Af-wAE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="JAW-XD-vF7"/>
                     <constraint firstAttribute="bottomMargin" secondItem="W9c-r6-sNE" secondAttribute="bottom" constant="8" id="LF8-JT-PbY"/>
+                    <constraint firstItem="QU1-Gy-CnE" firstAttribute="leading" secondItem="W9c-r6-sNE" secondAttribute="trailing" constant="8" id="bnC-G7-CKW"/>
                     <constraint firstAttribute="bottom" secondItem="zNf-Af-wAE" secondAttribute="bottom" id="dUc-9a-xJo"/>
                     <constraint firstItem="W9c-r6-sNE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="iYd-Nb-Y26"/>
+                    <constraint firstItem="QU1-Gy-CnE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="veb-qu-qTn"/>
+                    <constraint firstAttribute="trailing" secondItem="QU1-Gy-CnE" secondAttribute="trailing" constant="16" id="ymf-7S-OKw"/>
                     <constraint firstItem="W9c-r6-sNE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="zcN-Gp-95u"/>
                     <constraint firstItem="zNf-Af-wAE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ztb-GA-nL7"/>
                 </constraints>
@@ -60,7 +69,10 @@
                 <outlet property="addressLabel" destination="U5e-mx-h47" id="tQR-hP-Fv5"/>
                 <outlet property="addressLabel2" destination="h01-Ws-tuP" id="eE9-4Q-JOc"/>
             </connections>
-            <point key="canvasLocation" x="-592" y="-497.5"/>
+            <point key="canvasLocation" x="-592" y="-498"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="location" width="28" height="28"/>
+    </resources>
 </document>

@@ -94,7 +94,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kDefaultCellIdentifier forIndexPath:indexPath];
     
     YLPBusiness *business = [self.filteredResults objectAtIndex:indexPath.row];
-    cell.titleLabel.text = business.name;
+    
+    cell.business = business;
 
     return cell;
 }

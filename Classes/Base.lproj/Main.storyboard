@@ -183,12 +183,11 @@
                     <connections>
                         <outlet property="collectionView" destination="77w-9n-NFD" id="yee-4T-oeF"/>
                         <segue destination="YHp-ZS-BPP" kind="show" identifier="ShowCategory" id="ofq-6B-lcT"/>
-                        <segue destination="xXJ-IN-eoB" kind="show" identifier="ShowSubCategory" id="6DY-xV-pk1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nki-a4-fcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="738" y="-312"/>
+            <point key="canvasLocation" x="714" y="-312"/>
         </scene>
         <!--Burlingtonian-->
         <scene sceneID="Kyz-Hy-ijJ">
@@ -223,6 +222,16 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lhf-SF-auj">
                                 <rect key="frame" x="0.0" y="108" width="414" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="wlY-sR-KOH">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wlY-sR-KOH" id="Vow-YO-FME">
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="YHp-ZS-BPP" id="oOi-Ub-IPn"/>
                                     <outlet property="delegate" destination="YHp-ZS-BPP" id="IEJ-nb-EkH"/>
@@ -256,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pxs-wc-U0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1438" y="-312"/>
+            <point key="canvasLocation" x="1396" y="-312"/>
         </scene>
         <!--Burlingtonian-->
         <scene sceneID="pAY-1M-M1K">
@@ -271,10 +280,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YE9-6P-X3I">
-                                <rect key="frame" x="0.0" y="627" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="N8l-UA-Wk3">
-                                        <rect key="frame" x="131" y="15" width="152.66666666666669" height="30"/>
+                                        <rect key="frame" x="131" y="7" width="152.66666666666669" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihd-Kp-2cp">
                                                 <rect key="frame" x="0.0" y="6" width="83.666666666666657" height="18"/>
@@ -295,7 +304,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.043137254899999998" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="85b-O6-CxS"/>
+                                    <constraint firstAttribute="height" constant="44" id="85b-O6-CxS"/>
                                     <constraint firstItem="N8l-UA-Wk3" firstAttribute="centerY" secondItem="YE9-6P-X3I" secondAttribute="centerY" id="l6a-YT-oss"/>
                                     <constraint firstItem="N8l-UA-Wk3" firstAttribute="centerX" secondItem="YE9-6P-X3I" secondAttribute="centerX" id="oeH-Mp-DCb"/>
                                 </constraints>
@@ -319,7 +328,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ePQ-RT-2C1">
-                                <rect key="frame" x="0.0" y="108" width="414" height="519"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="YcC-JR-9wn" id="9lR-NZ-6ua"/>
@@ -337,8 +346,8 @@
                             <constraint firstItem="Ls7-IL-97c" firstAttribute="top" secondItem="YE9-6P-X3I" secondAttribute="bottom" id="NtW-zn-6ia"/>
                             <constraint firstItem="ePQ-RT-2C1" firstAttribute="leading" secondItem="RrL-Hk-JdW" secondAttribute="leading" id="VYK-hQ-DcP"/>
                             <constraint firstAttribute="trailing" secondItem="yDE-mZ-Ywi" secondAttribute="trailing" id="eLZ-7h-NbF"/>
+                            <constraint firstItem="YE9-6P-X3I" firstAttribute="top" secondItem="ePQ-RT-2C1" secondAttribute="bottom" id="kHG-Ca-4W0"/>
                             <constraint firstAttribute="trailing" secondItem="ePQ-RT-2C1" secondAttribute="trailing" id="mFg-e7-fEQ"/>
-                            <constraint firstItem="YE9-6P-X3I" firstAttribute="top" secondItem="ePQ-RT-2C1" secondAttribute="bottom" id="rP8-jD-Zs8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Burlingtonian" id="6Ev-et-1hj">
@@ -525,7 +534,4 @@
         <image name="back_chevron" width="15" height="15"/>
         <image name="yelp" width="60" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Jxr-dn-o6X"/>
-    </inferredMetricsTieBreakers>
 </document>

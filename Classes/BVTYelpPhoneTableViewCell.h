@@ -10,7 +10,7 @@
 
 #import "YLPBusiness.h"
 
-@interface BVTYelpContactTableViewCell : UITableViewCell
+@interface BVTYelpPhoneTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) YLPBusiness *selectedBusiness;
 

@@ -10,7 +10,7 @@
 
 #import "BVTHeaderTitleView.h"
 #import "BVTYelpAddressTableViewCell.h"
-#import "BVTYelpContactTableViewCell.h"
+#import "BVTYelpPhoneTableViewCell.h"
 #import "BVTYelpRatingTableViewCell.h"
 #import "BVTYelpMapTableViewCell.h"
 #import "BVTSplitTableViewCell.h"
@@ -25,14 +25,14 @@
 
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 static NSString *const kYelpAddressCellNib = @"BVTYelpAddressTableViewCell";
-static NSString *const kYelpContactCellNib = @"BVTYelpContactTableViewCell";
+static NSString *const kYelpPhoneCellNib = @"BVTYelpPhoneTableViewCell";
 static NSString *const kYelpRatingCellNib = @"BVTYelpRatingTableViewCell";
 static NSString *const kYelpMapCellNib = @"BVTYelpMapTableViewCell";
 static NSString *const kSplitCellNib = @"BVTSplitTableViewCell";
 
 static NSString *const kYelpMapCellIdentifier = @"YelpMapCell";
 static NSString *const kYelpAddressCellIdentifier = @"YelpAddressCell";
-static NSString *const kYelpContactCellIdentifier = @"YelpContactCell";
+static NSString *const kYelpPhoneCellIdentifier = @"YelpContactCell";
 static NSString *const kYelpRatingCellIdentifier = @"YelpRatingCell";
 static NSString *const kSplitCellIdentifier = @"SplitCell";
 
@@ -61,8 +61,8 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     UINib *yelpAddressCellNib = [UINib nibWithNibName:kYelpAddressCellNib bundle:nil];
     [self.tableView registerNib:yelpAddressCellNib forCellReuseIdentifier:kYelpAddressCellIdentifier];
     
-    UINib *yelpContactCellNib = [UINib nibWithNibName:kYelpContactCellNib bundle:nil];
-    [self.tableView registerNib:yelpContactCellNib forCellReuseIdentifier:kYelpContactCellIdentifier];
+    UINib *yelpPhoneCellNib = [UINib nibWithNibName:kYelpPhoneCellNib bundle:nil];
+    [self.tableView registerNib:yelpPhoneCellNib forCellReuseIdentifier:kYelpPhoneCellIdentifier];
     
     UINib *yelpRatingCellNib = [UINib nibWithNibName:kYelpRatingCellNib bundle:nil];
     [self.tableView registerNib:yelpRatingCellNib forCellReuseIdentifier:kYelpRatingCellIdentifier];
@@ -92,69 +92,133 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (!self.selectedBusiness.phone)
+    {
+        return 5;
+    }
     return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *identifier = @"";
-    if (indexPath.row == 0)
+    if (!self.selectedBusiness.phone)
     {
-        identifier = kYelpRatingCellIdentifier;
+        if (indexPath.row == 0)
+        {
+            identifier = kYelpRatingCellIdentifier;
+        }
+        else if (indexPath.row == 1)
+        {
+            identifier = kYelpAddressCellIdentifier;
+        }
+        else if (indexPath.row == 2)
+        {
+            identifier = kYelpMapCellIdentifier;
+        }
+        else if (indexPath.row == 3 || indexPath.row == 4)
+        {
+            identifier = kSplitCellIdentifier;
+        }
     }
-    else if (indexPath.row == 1)
+    else
     {
-        identifier = kYelpContactCellIdentifier;
-    }
-    else if (indexPath.row == 2)
-    {
-        identifier = kYelpAddressCellIdentifier;
-    }
-    else if (indexPath.row == 3)
-    {
-        identifier = kYelpMapCellIdentifier;
-    }
-    else if (indexPath.row == 4 || indexPath.row == 5)
-    {
-        identifier = kSplitCellIdentifier;
+        if (indexPath.row == 0)
+        {
+            identifier = kYelpRatingCellIdentifier;
+        }
+        else if (indexPath.row == 1)
+        {
+            identifier = kYelpPhoneCellIdentifier;
+        }
+        else if (indexPath.row == 2)
+        {
+            identifier = kYelpAddressCellIdentifier;
+        }
+        else if (indexPath.row == 3)
+        {
+            identifier = kYelpMapCellIdentifier;
+        }
+        else if (indexPath.row == 4 || indexPath.row == 5)
+        {
+            identifier = kSplitCellIdentifier;
+        }
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if (indexPath.row == 0)
+    if (!self.selectedBusiness.phone)
     {
-        BVTYelpRatingTableViewCell *ratingCell = (BVTYelpRatingTableViewCell *)cell;
-        ratingCell.selectedBusiness = self.selectedBusiness;
-    }
-    else if (indexPath.row == 1)
-    {
-        BVTYelpContactTableViewCell *defaultCell = (BVTYelpContactTableViewCell *)cell;
-        defaultCell.selectedBusiness = self.selectedBusiness;
-    }
-    else if (indexPath.row == 2)
-    {
-        BVTYelpAddressTableViewCell *defaultCell = (BVTYelpAddressTableViewCell *)cell;
-        defaultCell.selectedBusiness = self.selectedBusiness;
-    }
-    else if (indexPath.row == 3)
-    {
-        // Map
-    }
-    else if (indexPath.row == 4 || indexPath.row == 5)
-    {
-        BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
-        if (indexPath.row == 4)
+        if (indexPath.row == 0)
         {
-            [splitCell.leftButton setTitle:@"Deals" forState:UIControlStateNormal];
-            [splitCell.rightButton setTitle:@"Reviews" forState:UIControlStateNormal];
+            BVTYelpRatingTableViewCell *ratingCell = (BVTYelpRatingTableViewCell *)cell;
+            ratingCell.selectedBusiness = self.selectedBusiness;
         }
-        else
+        else if (indexPath.row == 1)
         {
-            [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
-            [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
+            BVTYelpAddressTableViewCell *defaultCell = (BVTYelpAddressTableViewCell *)cell;
+            defaultCell.selectedBusiness = self.selectedBusiness;
+        }
+        else if (indexPath.row == 2)
+        {
+            // Map
+        }
+        else if (indexPath.row == 3 || indexPath.row == 4)
+        {
+            BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+            if (indexPath.row == 3)
+            {
+                [splitCell.leftButton setTitle:@"Deals" forState:UIControlStateNormal];
+                [splitCell.rightButton setTitle:@"Reviews" forState:UIControlStateNormal];
+            }
+            else
+            {
+                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
+            }
         }
     }
+    else
+    {
+        if (indexPath.row == 0)
+        {
+            BVTYelpRatingTableViewCell *ratingCell = (BVTYelpRatingTableViewCell *)cell;
+            ratingCell.selectedBusiness = self.selectedBusiness;
+        }
+        else if (indexPath.row == 1)
+        {
+            BVTYelpPhoneTableViewCell *defaultCell = (BVTYelpPhoneTableViewCell *)cell;
+            defaultCell.selectedBusiness = self.selectedBusiness;
+        }
+        else if (indexPath.row == 2)
+        {
+            BVTYelpAddressTableViewCell *defaultCell = (BVTYelpAddressTableViewCell *)cell;
+            defaultCell.selectedBusiness = self.selectedBusiness;
+        }
+        else if (indexPath.row == 3)
+        {
+            // Map
+        }
+        else if (indexPath.row == 4 || indexPath.row == 5)
+        {
+            BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+            if (indexPath.row == 4)
+            {
+                [splitCell.leftButton setTitle:@"Deals" forState:UIControlStateNormal];
+                [splitCell.rightButton setTitle:@"Reviews" forState:UIControlStateNormal];
+            }
+            else
+            {
+                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
+            }
+        }
+    }
+    
+
+    
+    
 
     return cell;
 }
