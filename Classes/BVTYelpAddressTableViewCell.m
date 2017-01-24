@@ -31,8 +31,8 @@
     }
     else
     {
-        self.addressLabel.text = @"";
-        self.addressLabel2.text = @"";
+        self.addressLabel.text = nil;
+        self.addressLabel2.text = nil;
 
         self.textLabel.text = [NSString stringWithFormat:@"%@, %@ %@", location.city, location.stateCode, location.postalCode];
         

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "YLPBusiness.h"
+
 @interface BVTYelpContactTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UILabel *phoneNumberLabel;
+@property (nonatomic, strong) YLPBusiness *selectedBusiness;
 
 @end

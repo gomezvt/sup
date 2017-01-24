@@ -11,10 +11,6 @@
 #import "BVTCategoryTableViewController.h"
 #import "BVTExploreCollectionViewCell.h"
 #import "BVTHeaderTitleView.h"
-#import "BVTSubCategoryTableViewController.h"
-#import "AppDelegate.h"
-#import "YLPClient+Search.h"
-#import "YLPSearch.h"
 
 @interface BVTExploreViewController ()
 
@@ -43,9 +39,6 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     headerTitleView.centerXConstraint.constant = 0.f;
     
     self.navigationItem.titleView = headerTitleView;
-    
-    
-   
 }
 
 - (void)viewDidLoad

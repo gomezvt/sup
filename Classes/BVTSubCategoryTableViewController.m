@@ -86,8 +86,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    NSArray *businesses = (NSArray *)self.filteredResults;
-    
     return self.filteredResults.count;
 }
 
@@ -95,7 +93,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kDefaultCellIdentifier forIndexPath:indexPath];
     
-//    NSArray *businesses = (NSArray *)self.searchResults;
     YLPBusiness *business = [self.filteredResults objectAtIndex:indexPath.row];
     cell.titleLabel.text = business.name;
 
