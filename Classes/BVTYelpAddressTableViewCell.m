@@ -14,6 +14,7 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *addressLabel;
 @property (nonatomic, weak) IBOutlet UILabel *addressLabel2;
+@property (nonatomic, weak) IBOutlet UILabel *addressLabel3;
 
 @end
 
@@ -23,19 +24,52 @@
 {
     _selectedBusiness = selectedBusiness;
     
-    YLPLocation *location = self.selectedBusiness.location;
-    if (location.address.count > 0)
+    NSMutableString *cityStateZipString = [[NSMutableString alloc] init];
+    if (self.selectedBusiness.location.city)
     {
-        self.addressLabel.text = location.address[0];
-        self.addressLabel2.text = [NSString stringWithFormat:@"%@, %@ %@", location.city, location.stateCode, location.postalCode];
+        NSString *cityString = self.selectedBusiness.location.city;
+        [cityStateZipString appendString:cityString];
+    }
+    
+    if (self.selectedBusiness.location.stateCode)
+    {
+        NSString *stateString = [NSString stringWithFormat:@", %@", self.selectedBusiness.location.stateCode];
+        [cityStateZipString appendString:stateString];
+    }
+    
+    if (self.selectedBusiness.location.postalCode)
+    {
+        NSString *postalString = [NSString stringWithFormat:@" %@", self.selectedBusiness.location.postalCode];
+        [cityStateZipString appendString:postalString];
+    }
+    
+    if (self.selectedBusiness.location.address.count == 1)
+    {
+        NSString *addressString = self.selectedBusiness.location.address[0];
+        self.addressLabel.text = addressString;
+        self.addressLabel2.text = cityStateZipString;
+        [self.addressLabel3 removeFromSuperview];
+        
+        self.mapsQueryString = [NSString stringWithFormat:@"http://maps.apple.com/?address=%@,%@,%@", addressString, self.selectedBusiness.location.city, self.selectedBusiness.location.stateCode];
+    }
+    else if (self.selectedBusiness.location.address.count == 2)
+    {
+        NSString *addressString = self.selectedBusiness.location.address[0];
+        NSString *addressString1 = self.selectedBusiness.location.address[1];
+
+        self.addressLabel.text = addressString;
+        self.addressLabel2.text = addressString1;
+        self.addressLabel3.text = cityStateZipString;
+        
+        self.mapsQueryString = [NSString stringWithFormat:@"http://maps.apple.com/?address=%@,%@,%@,%@", addressString, addressString1, self.selectedBusiness.location.city, self.selectedBusiness.location.stateCode];
     }
     else
     {
-        self.addressLabel.text = nil;
-        self.addressLabel2.text = nil;
-
-        self.textLabel.text = [NSString stringWithFormat:@"%@, %@ %@", location.city, location.stateCode, location.postalCode];
+        self.textLabel.text = cityStateZipString;
         
+        [self.addressLabel removeFromSuperview];
+        [self.addressLabel2 removeFromSuperview];
+        [self.addressLabel3 removeFromSuperview];
     }
 }
 

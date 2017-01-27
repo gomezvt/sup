@@ -83,6 +83,25 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     self.headerTitleView.centerXConstraint.constant = [self _adjustTitleViewCenter];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[BVTYelpAddressTableViewCell class]])
+    {
+        BVTYelpAddressTableViewCell *addressCell = (BVTYelpAddressTableViewCell *)cell;
+        
+        NSString *filteredString = [addressCell.mapsQueryString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+        NSURL *url = [NSURL URLWithString:filteredString];
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+            NSLog(@"");
+        }];
+    }
+    else if ([cell isKindOfClass:[BVTYelpPhoneTableViewCell class]])
+    {
+        
+    }
+}
+
 #pragma mark - TableView Data Source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -159,6 +178,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         {
             BVTYelpAddressTableViewCell *defaultCell = (BVTYelpAddressTableViewCell *)cell;
             defaultCell.selectedBusiness = self.selectedBusiness;
+            
         }
         else if (indexPath.row == 2)
         {
