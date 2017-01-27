@@ -89,7 +89,6 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     if ([cell isKindOfClass:[BVTYelpAddressTableViewCell class]])
     {
         BVTYelpAddressTableViewCell *addressCell = (BVTYelpAddressTableViewCell *)cell;
-        
         NSString *filteredString = [addressCell.mapsQueryString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
         NSURL *url = [NSURL URLWithString:filteredString];
         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
@@ -98,7 +97,8 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     }
     else if ([cell isKindOfClass:[BVTYelpPhoneTableViewCell class]])
     {
-        
+        BVTYelpPhoneTableViewCell *phoneCell = (BVTYelpPhoneTableViewCell *)cell;
+        [phoneCell didTapPhoneNumberButton:indexPath];
     }
 }
 

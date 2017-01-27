@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) YLPBusiness *selectedBusiness;
 
+- (IBAction)didTapPhoneNumberButton:(id)sender;
+
 @end

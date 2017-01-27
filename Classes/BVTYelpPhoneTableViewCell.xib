@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,38 +19,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="349" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="gAW-TW-H8y">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="7Cn-nk-8c0">
                         <rect key="frame" x="305" y="8" width="28" height="28"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="28" id="F8p-3V-8cH"/>
-                            <constraint firstAttribute="width" constant="28" id="KPX-MB-v35"/>
+                            <constraint firstAttribute="height" constant="28" id="8J2-CY-uB3"/>
+                            <constraint firstAttribute="width" constant="28" id="jgV-35-zXS"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZ5-C4-DRY">
-                        <rect key="frame" x="16" y="8" width="51" height="27"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Rl-JM-IDO">
+                        <rect key="frame" x="16" y="16" width="42" height="11.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <state key="normal" title="Button">
-                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="didTapPhoneNumberButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dGl-IG-wCm"/>
-                        </connections>
-                    </button>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="fZ5-C4-DRY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Myx-PA-mXg"/>
-                    <constraint firstItem="fZ5-C4-DRY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Yl7-6s-Wf9"/>
-                    <constraint firstItem="gAW-TW-H8y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aEZ-La-yDP"/>
-                    <constraint firstAttribute="trailing" secondItem="gAW-TW-H8y" secondAttribute="trailing" constant="16" id="rf3-YQ-sEL"/>
-                    <constraint firstAttribute="bottom" secondItem="fZ5-C4-DRY" secondAttribute="bottom" constant="8" id="vuw-gG-SjU"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="2Rl-JM-IDO" secondAttribute="bottom" constant="8" id="kZ0-Hz-e7d"/>
+                    <constraint firstItem="7Cn-nk-8c0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pLL-pv-Iu8"/>
+                    <constraint firstAttribute="trailing" secondItem="7Cn-nk-8c0" secondAttribute="trailing" constant="16" id="pTK-yc-mpx"/>
+                    <constraint firstItem="2Rl-JM-IDO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="tzJ-c9-qK1"/>
+                    <constraint firstItem="2Rl-JM-IDO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="xrT-1U-LQo"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="PhoneImageView" destination="gAW-TW-H8y" id="TZQ-GL-yLp"/>
-                <outlet property="phoneNumberButton" destination="fZ5-C4-DRY" id="nXX-zf-9pU"/>
+                <outlet property="phoneNumberLabel" destination="2Rl-JM-IDO" id="oZy-wT-PhY"/>
             </connections>
-            <point key="canvasLocation" x="-389.5" y="-1513"/>
+            <point key="canvasLocation" x="-842" y="-1642"/>
         </tableViewCell>
     </objects>
     <resources>

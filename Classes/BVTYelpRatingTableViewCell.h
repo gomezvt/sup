@@ -27,7 +27,7 @@ extern NSString *const star_five;
 @property (nonatomic, weak) IBOutlet UILabel *yelpCategoryLabel;
 @property (nonatomic, weak) IBOutlet UILabel *reviewsCountLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *ratingStarsView;
-//@property (nonatomic, strong) NSDictionary *businessDetail;
+
 @property (nonatomic, strong) YLPBusiness *selectedBusiness;
 
 @end

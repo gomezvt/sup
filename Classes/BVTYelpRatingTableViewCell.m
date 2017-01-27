@@ -33,7 +33,7 @@ NSString *const star_five       = @"star_five.png";
 {
     _selectedBusiness = selectedBusiness;
     
-    self.reviewsCountLabel.text = [NSString stringWithFormat:@"%ld Review(s) in Yelp", self.selectedBusiness.reviewCount];
+    self.reviewsCountLabel.text = [NSString stringWithFormat:@"%ld Review(s) in", self.selectedBusiness.reviewCount];
     
     self.yelpPriceLabel.text = self.selectedBusiness.price;
     
@@ -111,6 +111,13 @@ NSString *const star_five       = @"star_five.png";
     }
     
     [self.ratingStarsView setImage:[UIImage imageNamed:ratingString]];
+}
+
+- (IBAction)didTapYelpButton:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:self.selectedBusiness.URL options:@{} completionHandler:^(BOOL success) {
+        NSLog(@"");
+    }];
 }
 
 
