@@ -9,6 +9,7 @@
 #import "BVTYelpAddressTableViewCell.h"
 
 #import "YLPLocation.h"
+#import "YLPCoordinate.h"
 
 @interface BVTYelpAddressTableViewCell ()
 
@@ -49,8 +50,6 @@
         self.addressLabel.text = addressString;
         self.addressLabel2.text = cityStateZipString;
         [self.addressLabel3 removeFromSuperview];
-        
-        self.mapsQueryString = [NSString stringWithFormat:@"http://maps.apple.com/?address=%@,%@,%@", addressString, self.selectedBusiness.location.city, self.selectedBusiness.location.stateCode];
     }
     else if (self.selectedBusiness.location.address.count == 2)
     {
@@ -60,8 +59,6 @@
         self.addressLabel.text = addressString;
         self.addressLabel2.text = addressString1;
         self.addressLabel3.text = cityStateZipString;
-        
-        self.mapsQueryString = [NSString stringWithFormat:@"http://maps.apple.com/?address=%@,%@,%@,%@", addressString, addressString1, self.selectedBusiness.location.city, self.selectedBusiness.location.stateCode];
     }
     else
     {
@@ -71,6 +68,8 @@
         [self.addressLabel2 removeFromSuperview];
         [self.addressLabel3 removeFromSuperview];
     }
+    
+    self.mapsQueryString = [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&s11=%f,%f&z=10&t=s", self.selectedBusiness.name, self.selectedBusiness.location.coordinate.latitude, self.selectedBusiness.location.coordinate.longitude];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
