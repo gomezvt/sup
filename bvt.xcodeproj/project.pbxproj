@@ -38,6 +38,7 @@
 		64934CC01E306BCE00386B5B /* BVTYelpMapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CBF1E306BCE00386B5B /* BVTYelpMapTableViewCell.xib */; };
 		64934CC21E306BD300386B5B /* BVTYelpRatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CC11E306BD300386B5B /* BVTYelpRatingTableViewCell.xib */; };
 		64934CC41E306C1E00386B5B /* BVTHeaderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */; };
+		64C6983C1E42660400F09483 /* BVTHeaderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C6983B1E42660400F09483 /* BVTHeaderTitleView.xib */; };
 		CF386C2C86B09043D41680B2 /* libPods-bvt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590D4A53A998579B76DD8514 /* libPods-bvt.a */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +59,6 @@
 		590D4A53A998579B76DD8514 /* libPods-bvt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bvt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		640178FF1E2C4BAF00BBA8D2 /* libYelpAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libYelpAPI.a; path = "../../Library/Developer/Xcode/DerivedData/bvt-hjftkdqploieouekjahtdglmzgkr/Build/Products/Debug-iphonesimulator/YelpAPI/libYelpAPI.a"; sourceTree = "<group>"; };
 		640179011E2C4BB900BBA8D2 /* YelpAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YelpAPI.framework; path = System/Library/Frameworks/YelpAPI.framework; sourceTree = SDKROOT; };
-		642067991E2D69100047A3B6 /* BVTHeaderTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTHeaderTitleView.xib; path = ../Resources/BVTHeaderTitleView.xib; sourceTree = "<group>"; };
 		643B4DAC1E2CB2C300951303 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		643B4DAD1E2CB2C300951303 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		643B4DB81E2CB2F100951303 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -109,6 +109,7 @@
 		64934CBF1E306BCE00386B5B /* BVTYelpMapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpMapTableViewCell.xib; path = Classes/BVTYelpMapTableViewCell.xib; sourceTree = "<group>"; };
 		64934CC11E306BD300386B5B /* BVTYelpRatingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpRatingTableViewCell.xib; path = Classes/BVTYelpRatingTableViewCell.xib; sourceTree = "<group>"; };
 		64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BVTHeaderTitleView.xib; path = Classes/BVTHeaderTitleView.xib; sourceTree = "<group>"; };
+		64C6983B1E42660400F09483 /* BVTHeaderTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTHeaderTitleView.xib; path = Classes/BVTHeaderTitleView.xib; sourceTree = SOURCE_ROOT; };
 		64F41D5F1E2C497F0053EBE2 /* Burlingtonian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Burlingtonian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		812CD2D8F0E4D852D7328DA4 /* Pods-bvt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.debug.xcconfig"; sourceTree = "<group>"; };
 		A13E28BFC52912BF5475C256 /* Pods-bvt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.release.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.release.xcconfig"; sourceTree = "<group>"; };
@@ -216,7 +217,7 @@
 			children = (
 				644111F21E2D345600C3ED18 /* BVTHeaderTitleView.h */,
 				644111F31E2D345600C3ED18 /* BVTHeaderTitleView.m */,
-				642067991E2D69100047A3B6 /* BVTHeaderTitleView.xib */,
+				64C6983B1E42660400F09483 /* BVTHeaderTitleView.xib */,
 			);
 			name = Header;
 			sourceTree = "<group>";
@@ -363,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64934CAA1E306AD900386B5B /* LaunchScreen.storyboard in Resources */,
+				64C6983C1E42660400F09483 /* BVTHeaderTitleView.xib in Resources */,
 				64934CAB1E306AD900386B5B /* Main.storyboard in Resources */,
 				64934CA51E306AC500386B5B /* Assets.xcassets in Resources */,
 				64934CC41E306C1E00386B5B /* BVTHeaderTitleView.xib in Resources */,

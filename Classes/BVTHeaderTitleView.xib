@@ -31,7 +31,7 @@
             <connections>
                 <outlet property="centerXConstraint" destination="qb7-E7-oSo" id="0wP-rc-9ex"/>
             </connections>
-            <point key="canvasLocation" x="-30.5" y="-245"/>
+            <point key="canvasLocation" x="-271" y="-88"/>
         </view>
     </objects>
 </document>
