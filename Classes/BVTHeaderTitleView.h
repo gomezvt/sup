@@ -10,6 +10,4 @@
 
 @interface BVTHeaderTitleView : UIView
 
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *centerXConstraint;
-
 @end
