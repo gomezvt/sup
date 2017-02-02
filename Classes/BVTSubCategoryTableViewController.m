@@ -52,8 +52,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:kDefaultCellIdentifier];
 
-//    self.tableView.estimatedRowHeight = 44.f;
-//    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44.f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 #pragma mark - TableView Delegate
@@ -68,11 +68,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
              [self performSegueWithIdentifier:kShowDetailSegue sender:selectedBusiness ];
          });
      }];    
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
-    return 93.f;
 }
 
 #pragma mark - TableView Data Source
