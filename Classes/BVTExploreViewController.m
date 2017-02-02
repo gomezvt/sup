@@ -36,7 +36,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     BVTHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    
+    headerTitleView.titleViewLabelConstraint.constant = 0.f;
     self.navigationItem.titleView = headerTitleView;
 }
 

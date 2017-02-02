@@ -10,4 +10,6 @@
 
 @interface BVTHeaderTitleView : UIView
 
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *titleViewLabelConstraint;
+
 @end

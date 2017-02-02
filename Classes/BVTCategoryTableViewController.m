@@ -22,7 +22,6 @@
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property (nonatomic, strong) BVTHeaderTitleView *headerTitleView;
 
 @end
 
@@ -41,8 +40,9 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     [super awakeFromNib];
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
-    self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    self.navigationItem.titleView = self.headerTitleView;
+    BVTHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    headerTitleView.titleViewLabelConstraint.constant = -22.f;
+    self.navigationItem.titleView = headerTitleView;
 }
 
 - (void)viewDidLoad

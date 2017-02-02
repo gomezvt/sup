@@ -19,7 +19,6 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) BVTHeaderTitleView *headerTitleView;
 
 @end
 
@@ -45,8 +44,9 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     [super awakeFromNib];
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
-    self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    self.navigationItem.titleView = self.headerTitleView;
+    BVTHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    headerTitleView.titleViewLabelConstraint.constant = -22.f;
+    self.navigationItem.titleView = headerTitleView;
 }
 
 - (void)viewDidLoad
