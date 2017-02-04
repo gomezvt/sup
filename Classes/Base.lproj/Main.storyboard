@@ -120,7 +120,7 @@
             <objects>
                 <navigationController storyboardIdentifier="ExploreViewController" title="Explore" id="gdy-lf-hYK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" id="pkx-3u-nWS"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5G9-8J-jiN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5G9-8J-jiN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -338,7 +338,7 @@
             <objects>
                 <navigationController title="About" id="Hhj-qR-dGP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="About" id="Lg2-xH-wjt"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gO4-B5-oe3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gO4-B5-oe3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -355,7 +355,7 @@
             <objects>
                 <navigationController title="Surprise" id="yX9-Uv-g7i" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Surprise Me" id="TXz-o0-dmV"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Gvg-rn-KXI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gvg-rn-KXI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

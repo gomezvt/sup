@@ -9,6 +9,8 @@
 #import "BVTSurpriseTableViewController.h"
 #import "BVTHeaderTitleView.h"
 
+#import "BVTStyles.h"
+
 @interface BVTSurpriseTableViewController ()
 
 @property (nonatomic, strong) BVTHeaderTitleView *headerTitleView;
@@ -27,6 +29,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     self.navigationItem.titleView = self.headerTitleView;
+    self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
+
 }
 
 - (void)viewDidLoad
