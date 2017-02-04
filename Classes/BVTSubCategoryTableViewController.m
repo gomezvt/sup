@@ -85,10 +85,29 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kDefaultCellIdentifier forIndexPath:indexPath];
+    cell.tag = indexPath.row;
     
     YLPBusiness *business = [self.filteredResults objectAtIndex:indexPath.row];
-
     cell.business = business;
+    
+    UIImage *image = [UIImage imageNamed:@"placeholder"];
+    cell.thumbNailView.image = image;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // Your Background work
+        NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update your UI
+            if (cell.tag == indexPath.row)
+            {
+                if (imageData)
+                {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    cell.thumbNailView.image = image;
+                }
+            }
+        });
+    });
 
     return cell;
 }

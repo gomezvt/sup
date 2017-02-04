@@ -35,17 +35,6 @@
         self.addressLabel.text = [NSString stringWithFormat:@"%@, %@ %@", location.city, location.stateCode, location.postalCode];
         [self.addressLabel2 removeFromSuperview];
     }
-    
-    __block NSData *imageData;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // Your Background work
-        imageData = [NSData dataWithContentsOfURL:business.imageURL];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Update your UI
-            UIImage *image = [UIImage imageWithData:imageData];
-            self.thumbNailView.image = image;
-        });
-    });
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
