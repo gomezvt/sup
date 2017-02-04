@@ -8,16 +8,7 @@
 
 #import "BVTHeaderTitleView.h"
 
-#import "BVTStyles.h"
-
 @implementation BVTHeaderTitleView
-
-//- (void)awakeFromNib
-//{
-//    [super awakeFromNib];
-//    
-//    self.backgroundColor = [BVTStyles iconGreen];
-//}
 
 /*
 // Only override drawRect: if you perform custom drawing.
