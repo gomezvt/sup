@@ -11,6 +11,7 @@
 #import "BVTCategoryTableViewController.h"
 #import "BVTExploreCollectionViewCell.h"
 #import "BVTHeaderTitleView.h"
+#import "BVTStyles.h"
 
 @interface BVTExploreViewController ()
 
@@ -38,6 +39,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     BVTHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     headerTitleView.titleViewLabelConstraint.constant = 0.f;
     self.navigationItem.titleView = headerTitleView;
+    self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
 }
 
 - (void)viewDidLoad

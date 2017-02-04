@@ -17,6 +17,8 @@
 #import "YLPBusiness.h"
 #import "YLPSearch.h"
 
+#import "BVTStyles.h"
+
 @interface BVTSubCategoryTableViewController ()
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -41,6 +43,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     BVTHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     headerTitleView.titleViewLabelConstraint.constant = -22.f;
     self.navigationItem.titleView = headerTitleView;
+    self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
+
 }
 
 - (void)viewDidLoad

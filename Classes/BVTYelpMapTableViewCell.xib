@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,20 +19,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3vS-Tw-KiN">
-                        <rect key="frame" x="8" y="8" width="304" height="120"/>
+                        <rect key="frame" x="16" y="16" width="288" height="104.5"/>
                         <constraints>
                             <constraint firstAttribute="height" priority="750" constant="120" id="6kK-Nd-uuc"/>
                         </constraints>
                     </mapView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="3vS-Tw-KiN" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="3Db-5E-tZc"/>
-                    <constraint firstItem="3vS-Tw-KiN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="9OM-ae-YAE"/>
-                    <constraint firstItem="3vS-Tw-KiN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="iyH-ke-FKE"/>
-                    <constraint firstItem="3vS-Tw-KiN" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="vjD-eS-oV8"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="3vS-Tw-KiN" secondAttribute="bottom" constant="8" id="AVt-XS-zBQ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="3vS-Tw-KiN" secondAttribute="trailing" constant="8" id="bZn-I2-Vdf"/>
+                    <constraint firstItem="3vS-Tw-KiN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="iyH-ke-FKE"/>
+                    <constraint firstItem="3vS-Tw-KiN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="qWW-sk-2th"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="34" y="-22"/>
+            <point key="canvasLocation" x="34" y="-22.5"/>
         </tableViewCell>
     </objects>
 </document>

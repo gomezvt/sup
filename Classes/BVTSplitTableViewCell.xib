@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ur4-Mw-8Xo" id="sHr-w2-g05">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ji-Rn-U9b">
@@ -27,27 +26,27 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wal-sa-0nN">
-                        <rect key="frame" x="8" y="6" width="144" height="30"/>
+                        <rect key="frame" x="8" y="8" width="144" height="28"/>
                         <state key="normal" title="Button">
                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjb-do-9jI">
-                        <rect key="frame" x="168" y="6" width="144" height="30"/>
+                        <rect key="frame" x="168" y="8" width="144" height="27.5"/>
                         <state key="normal" title="Button"/>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Jjb-do-9jI" firstAttribute="top" secondItem="sHr-w2-g05" secondAttribute="top" constant="6" id="8bn-h5-jfO"/>
-                    <constraint firstItem="Wal-sa-0nN" firstAttribute="top" secondItem="sHr-w2-g05" secondAttribute="top" constant="6" id="Are-rY-V03"/>
-                    <constraint firstAttribute="bottom" secondItem="Wal-sa-0nN" secondAttribute="bottom" constant="7" id="Bku-AU-hSS"/>
+                    <constraint firstItem="Wal-sa-0nN" firstAttribute="top" secondItem="sHr-w2-g05" secondAttribute="top" constant="8" id="FY4-Kq-oOK"/>
+                    <constraint firstAttribute="bottom" secondItem="Wal-sa-0nN" secondAttribute="bottom" constant="8" id="Lc3-OD-YqR"/>
+                    <constraint firstItem="Jjb-do-9jI" firstAttribute="top" secondItem="sHr-w2-g05" secondAttribute="top" constant="8" id="MvC-IR-xM7"/>
                     <constraint firstItem="6ji-Rn-U9b" firstAttribute="leading" secondItem="Wal-sa-0nN" secondAttribute="trailing" constant="8" id="RC1-Dp-5UN"/>
                     <constraint firstItem="Wal-sa-0nN" firstAttribute="leading" secondItem="sHr-w2-g05" secondAttribute="leading" constant="8" id="Rr8-J6-VIS"/>
                     <constraint firstItem="6ji-Rn-U9b" firstAttribute="centerX" secondItem="sHr-w2-g05" secondAttribute="centerX" id="UaX-th-0p2"/>
+                    <constraint firstAttribute="bottom" secondItem="Jjb-do-9jI" secondAttribute="bottom" constant="8" id="XPg-qk-NUF"/>
                     <constraint firstAttribute="trailing" secondItem="Jjb-do-9jI" secondAttribute="trailing" constant="8" id="c2C-E4-DMb"/>
                     <constraint firstItem="Jjb-do-9jI" firstAttribute="leading" secondItem="6ji-Rn-U9b" secondAttribute="trailing" constant="8" id="gJ6-85-ndd"/>
                     <constraint firstItem="6ji-Rn-U9b" firstAttribute="centerY" secondItem="sHr-w2-g05" secondAttribute="centerY" id="hco-tb-VwT"/>
-                    <constraint firstAttribute="bottom" secondItem="Jjb-do-9jI" secondAttribute="bottom" constant="7" id="nCa-tp-y3f"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

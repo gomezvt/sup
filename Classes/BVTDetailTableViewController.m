@@ -15,6 +15,8 @@
 #import "BVTYelpMapTableViewCell.h"
 #import "BVTSplitTableViewCell.h"
 
+#import "BVTStyles.h"
+
 @interface BVTDetailTableViewController ()
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -47,6 +49,8 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     BVTHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     headerTitleView.titleViewLabelConstraint.constant = -22.f;
     self.navigationItem.titleView = headerTitleView;
+    self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
+
 }
 
 - (void)viewDidLoad

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -121,7 +120,7 @@
             <objects>
                 <navigationController storyboardIdentifier="ExploreViewController" title="Explore" id="gdy-lf-hYK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" id="pkx-3u-nWS"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5G9-8J-jiN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5G9-8J-jiN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -211,7 +210,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Ybj-na-bak" firstAttribute="centerY" secondItem="iho-ZQ-14d" secondAttribute="centerY" id="1C0-PD-j1A"/>
                                     <constraint firstAttribute="height" constant="44" id="Lnc-Dn-YAc"/>
@@ -251,7 +250,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Burlingtonian" id="BVD-Vj-j3a">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="0s3-3l-ATZ">
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="didTapBack:" destination="YHp-ZS-BPP" id="YhO-Mg-CX1"/>
                             </connections>
@@ -289,7 +288,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="bOf-ne-afx" firstAttribute="leading" secondItem="yDE-mZ-Ywi" secondAttribute="leading" constant="8" id="043-0n-lxP"/>
                                     <constraint firstAttribute="trailing" secondItem="bOf-ne-afx" secondAttribute="trailing" constant="8" id="D8V-xb-Kuu"/>
@@ -319,7 +318,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Burlingtonian" id="6Ev-et-1hj">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="xtu-Fw-XHD">
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="didTapBack:" destination="YcC-JR-9wn" id="Nca-xW-dNn"/>
                             </connections>
@@ -339,7 +338,7 @@
             <objects>
                 <navigationController title="About" id="Hhj-qR-dGP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="About" id="Lg2-xH-wjt"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gO4-B5-oe3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gO4-B5-oe3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -349,14 +348,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G6y-ru-Zja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="38" y="352"/>
+            <point key="canvasLocation" x="39" y="528"/>
         </scene>
         <!--Surprise-->
         <scene sceneID="zUc-bP-jnc">
             <objects>
                 <navigationController title="Surprise" id="yX9-Uv-g7i" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Surprise Me" id="TXz-o0-dmV"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gvg-rn-KXI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Gvg-rn-KXI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -366,7 +365,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r37-ze-SJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="38" y="1026"/>
+            <point key="canvasLocation" x="39" y="1364"/>
         </scene>
         <!--Burlingtonian-->
         <scene sceneID="ULk-wZ-2AK">
@@ -450,7 +449,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="HLp-lw-jU1" firstAttribute="centerY" secondItem="tvr-cm-0ag" secondAttribute="centerY" id="OK9-vM-veK"/>
                                     <constraint firstItem="HLp-lw-jU1" firstAttribute="leading" secondItem="tvr-cm-0ag" secondAttribute="leading" constant="8" id="Ths-8I-rzb"/>
@@ -480,7 +479,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Burlingtonian" id="sZr-hq-PGZ">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="7mA-wp-KOg">
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="didTapBack:" destination="xXJ-IN-eoB" id="XEW-NC-xML"/>
                             </connections>

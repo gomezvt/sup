@@ -10,6 +10,8 @@
 
 #import <UIKit/UIKit.h>
 
+
+// Categories modeled after those found on https://www.yelp.com/developers/documentation/v2/category_list
 #define kArtsMuseums @[ @"Art Galleries", @"Museums", @"Performing Arts" ]
 
 #define kCoffeeSweetsBakeries @[ @"Bakeries", @"Bubble Tea", @"Candy Stores", @"Chocolatiers & Shops", @"Coffee & Tea", @"Coffee Roasteries", @"Desserts", @"Ice Cream & Frozen Yogurt", @"Tea Rooms" ]
@@ -32,6 +34,7 @@
 
 @interface BVTStyles : NSObject
 
-+ (UIColor *)BVTLightGray;
++ (UIColor *)lightGray;
++ (UIColor *)iconGreen;
 
 @end
