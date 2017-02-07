@@ -27,6 +27,8 @@
 		6441121B1E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112071E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m */; };
 		6441121C1E2D345600C3ED18 /* BVTPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112091E2D345600C3ED18 /* BVTPageContentViewController.m */; };
 		6441121D1E2D345600C3ED18 /* BVTPageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6441120B1E2D345600C3ED18 /* BVTPageRootViewController.m */; };
+		64908A7C1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64908A7A1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.m */; };
+		64908A7D1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64908A7B1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.xib */; };
 		64934CA51E306AC500386B5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64934CA41E306AC500386B5B /* Assets.xcassets */; };
 		64934CAA1E306AD900386B5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64934CA61E306AD900386B5B /* LaunchScreen.storyboard */; };
 		64934CAB1E306AD900386B5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64934CA81E306AD900386B5B /* Main.storyboard */; };
@@ -83,7 +85,6 @@
 		644111F91E2D345600C3ED18 /* BVTSubCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSubCategoryTableViewController.m; path = Classes/BVTSubCategoryTableViewController.m; sourceTree = SOURCE_ROOT; };
 		644111FA1E2D345600C3ED18 /* BVTSurpriseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSurpriseTableViewController.h; path = Classes/BVTSurpriseTableViewController.h; sourceTree = SOURCE_ROOT; };
 		644111FB1E2D345600C3ED18 /* BVTSurpriseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSurpriseTableViewController.m; path = Classes/BVTSurpriseTableViewController.m; sourceTree = SOURCE_ROOT; };
-		644111FC1E2D345600C3ED18 /* BVTThumbNailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTThumbNailTableViewCell.h; path = Classes/BVTThumbNailTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		644111FD1E2D345600C3ED18 /* BVTThumbNailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTThumbNailTableViewCell.m; path = Classes/BVTThumbNailTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		644111FE1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTYelpAddressTableViewCell.h; path = Classes/BVTYelpAddressTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		644111FF1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpAddressTableViewCell.m; path = Classes/BVTYelpAddressTableViewCell.m; sourceTree = SOURCE_ROOT; };
@@ -97,6 +98,10 @@
 		644112091E2D345600C3ED18 /* BVTPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTPageContentViewController.m; path = Classes/BVTPageContentViewController.m; sourceTree = SOURCE_ROOT; };
 		6441120A1E2D345600C3ED18 /* BVTPageRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTPageRootViewController.h; path = Classes/BVTPageRootViewController.h; sourceTree = SOURCE_ROOT; };
 		6441120B1E2D345600C3ED18 /* BVTPageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTPageRootViewController.m; path = Classes/BVTPageRootViewController.m; sourceTree = SOURCE_ROOT; };
+		64908A731E494E2E00BC6884 /* BVTThumbNailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVTThumbNailTableViewCell.h; path = bvt/Classes/BVTThumbNailTableViewCell.h; sourceTree = "<group>"; };
+		64908A791E494E6100BC6884 /* BVTYelpCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTYelpCategoryTableViewCell.h; path = Classes/BVTYelpCategoryTableViewCell.h; sourceTree = "<group>"; };
+		64908A7A1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpCategoryTableViewCell.m; path = Classes/BVTYelpCategoryTableViewCell.m; sourceTree = "<group>"; };
+		64908A7B1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpCategoryTableViewCell.xib; path = Classes/BVTYelpCategoryTableViewCell.xib; sourceTree = "<group>"; };
 		64934CA41E306AC500386B5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Classes/Assets.xcassets; sourceTree = "<group>"; };
 		64934CA71E306AD900386B5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Classes/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64934CA91E306AD900386B5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Classes/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -177,7 +182,7 @@
 		64B446951E304C2E00327C26 /* Cell Classes */ = {
 			isa = PBXGroup;
 			children = (
-				644111FC1E2D345600C3ED18 /* BVTThumbNailTableViewCell.h */,
+				64908A731E494E2E00BC6884 /* BVTThumbNailTableViewCell.h */,
 				644111FD1E2D345600C3ED18 /* BVTThumbNailTableViewCell.m */,
 				644111FE1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.h */,
 				644111FF1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.m */,
@@ -233,6 +238,9 @@
 		64F41D561E2C497F0053EBE2 = {
 			isa = PBXGroup;
 			children = (
+				64908A791E494E6100BC6884 /* BVTYelpCategoryTableViewCell.h */,
+				64908A7A1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.m */,
+				64908A7B1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.xib */,
 				64F41D611E2C497F0053EBE2 /* Classes */,
 				64934CB01E306B5D00386B5B /* Resources */,
 				81DC3A0A017F6247E73F74F1 /* Frameworks */,
@@ -368,6 +376,7 @@
 				64934CB81E306BA100386B5B /* BVTSplitTableViewCell.xib in Resources */,
 				64934CC21E306BD300386B5B /* BVTYelpRatingTableViewCell.xib in Resources */,
 				64934CBE1E306BC700386B5B /* BVTYelpPhoneTableViewCell.xib in Resources */,
+				64908A7D1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.xib in Resources */,
 				64934CC01E306BCE00386B5B /* BVTYelpMapTableViewCell.xib in Resources */,
 				64934CBC1E306BB500386B5B /* BVTYelpAddressTableViewCell.xib in Resources */,
 				64934CB21E306B7000386B5B /* BVTExploreCollectionViewCell.xib in Resources */,
@@ -445,6 +454,7 @@
 				6441121D1E2D345600C3ED18 /* BVTPageRootViewController.m in Sources */,
 				6441120C1E2D345600C3ED18 /* BVTAboutTableViewController.m in Sources */,
 				643B4DAF1E2CB2C300951303 /* main.m in Sources */,
+				64908A7C1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.m in Sources */,
 				644112151E2D345600C3ED18 /* BVTSurpriseTableViewController.m in Sources */,
 				644112121E2D345600C3ED18 /* BVTSplitTableViewCell.m in Sources */,
 				6441121B1E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m in Sources */,
