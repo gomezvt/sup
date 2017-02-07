@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "YLPBusiness.h"
+
 @interface BVTYelpCategoryTableViewCell : UITableViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel *categoryLabel;
+@property (nonatomic, strong) YLPBusiness *selectedBusiness;
 
 @end

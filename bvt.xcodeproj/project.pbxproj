@@ -39,7 +39,9 @@
 		64934CC01E306BCE00386B5B /* BVTYelpMapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CBF1E306BCE00386B5B /* BVTYelpMapTableViewCell.xib */; };
 		64934CC21E306BD300386B5B /* BVTYelpRatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CC11E306BD300386B5B /* BVTYelpRatingTableViewCell.xib */; };
 		64934CC41E306C1E00386B5B /* BVTHeaderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */; };
-		64B418D61E49516800850538 /* BVTYelpCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B418D51E49516800850538 /* BVTYelpCategoryTableViewCell.xib */; };
+		64E905EE1E49704000331C3F /* BVTYelpHoursTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E905EC1E49704000331C3F /* BVTYelpHoursTableViewCell.m */; };
+		64E905EF1E49704000331C3F /* BVTYelpHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E905ED1E49704000331C3F /* BVTYelpHoursTableViewCell.xib */; };
+		64E905F31E4970BC00331C3F /* BVTYelpCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E905F21E4970BC00331C3F /* BVTYelpCategoryTableViewCell.xib */; };
 		CF386C2C86B09043D41680B2 /* libPods-bvt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590D4A53A998579B76DD8514 /* libPods-bvt.a */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +114,10 @@
 		64934CBF1E306BCE00386B5B /* BVTYelpMapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpMapTableViewCell.xib; path = Classes/BVTYelpMapTableViewCell.xib; sourceTree = "<group>"; };
 		64934CC11E306BD300386B5B /* BVTYelpRatingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpRatingTableViewCell.xib; path = Classes/BVTYelpRatingTableViewCell.xib; sourceTree = "<group>"; };
 		64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BVTHeaderTitleView.xib; path = Classes/BVTHeaderTitleView.xib; sourceTree = "<group>"; };
-		64B418D51E49516800850538 /* BVTYelpCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTYelpCategoryTableViewCell.xib; sourceTree = "<group>"; };
+		64E905EB1E49704000331C3F /* BVTYelpHoursTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTYelpHoursTableViewCell.h; path = Classes/BVTYelpHoursTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		64E905EC1E49704000331C3F /* BVTYelpHoursTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpHoursTableViewCell.m; path = Classes/BVTYelpHoursTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		64E905ED1E49704000331C3F /* BVTYelpHoursTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpHoursTableViewCell.xib; path = Classes/BVTYelpHoursTableViewCell.xib; sourceTree = "<group>"; };
+		64E905F21E4970BC00331C3F /* BVTYelpCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpCategoryTableViewCell.xib; path = Classes/BVTYelpCategoryTableViewCell.xib; sourceTree = "<group>"; };
 		64F41D5F1E2C497F0053EBE2 /* Burlingtonian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Burlingtonian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		812CD2D8F0E4D852D7328DA4 /* Pods-bvt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.debug.xcconfig"; sourceTree = "<group>"; };
 		A13E28BFC52912BF5475C256 /* Pods-bvt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.release.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,7 +143,8 @@
 				64934CA81E306AD900386B5B /* Main.storyboard */,
 				64934CA61E306AD900386B5B /* LaunchScreen.storyboard */,
 				64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */,
-				64B418D51E49516800850538 /* BVTYelpCategoryTableViewCell.xib */,
+				64E905F21E4970BC00331C3F /* BVTYelpCategoryTableViewCell.xib */,
+				64E905ED1E49704000331C3F /* BVTYelpHoursTableViewCell.xib */,
 				64934CB11E306B7000386B5B /* BVTExploreCollectionViewCell.xib */,
 				64934CB71E306BA100386B5B /* BVTSplitTableViewCell.xib */,
 				64934CB91E306BA800386B5B /* BVTThumbNailTableViewCell.xib */,
@@ -153,8 +159,8 @@
 		64B4468D1E3049B700327C26 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				644111E81E2D345600C3ED18 /* BVTAboutTableViewController.h */,
 				644111E91E2D345600C3ED18 /* BVTAboutTableViewController.m */,
+				644111E81E2D345600C3ED18 /* BVTAboutTableViewController.h */,
 			);
 			name = About;
 			path = ..;
@@ -185,6 +191,8 @@
 			children = (
 				64908A731E494E2E00BC6884 /* BVTThumbNailTableViewCell.h */,
 				644111FD1E2D345600C3ED18 /* BVTThumbNailTableViewCell.m */,
+				64E905EB1E49704000331C3F /* BVTYelpHoursTableViewCell.h */,
+				64E905EC1E49704000331C3F /* BVTYelpHoursTableViewCell.m */,
 				64908A791E494E6100BC6884 /* BVTYelpCategoryTableViewCell.h */,
 				64908A7A1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.m */,
 				644111FE1E2D345600C3ED18 /* BVTYelpAddressTableViewCell.h */,
@@ -369,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64934CAA1E306AD900386B5B /* LaunchScreen.storyboard in Resources */,
+				64E905EF1E49704000331C3F /* BVTYelpHoursTableViewCell.xib in Resources */,
 				64934CAB1E306AD900386B5B /* Main.storyboard in Resources */,
 				64934CA51E306AC500386B5B /* Assets.xcassets in Resources */,
 				64934CC41E306C1E00386B5B /* BVTHeaderTitleView.xib in Resources */,
@@ -376,8 +385,8 @@
 				64934CB81E306BA100386B5B /* BVTSplitTableViewCell.xib in Resources */,
 				64934CC21E306BD300386B5B /* BVTYelpRatingTableViewCell.xib in Resources */,
 				64934CBE1E306BC700386B5B /* BVTYelpPhoneTableViewCell.xib in Resources */,
-				64B418D61E49516800850538 /* BVTYelpCategoryTableViewCell.xib in Resources */,
 				64934CC01E306BCE00386B5B /* BVTYelpMapTableViewCell.xib in Resources */,
+				64E905F31E4970BC00331C3F /* BVTYelpCategoryTableViewCell.xib in Resources */,
 				64934CBC1E306BB500386B5B /* BVTYelpAddressTableViewCell.xib in Resources */,
 				64934CB21E306B7000386B5B /* BVTExploreCollectionViewCell.xib in Resources */,
 			);
@@ -449,6 +458,7 @@
 				643B4DC31E2CB2F100951303 /* AppDelegate.m in Sources */,
 				644112171E2D345600C3ED18 /* BVTYelpAddressTableViewCell.m in Sources */,
 				644112141E2D345600C3ED18 /* BVTSubCategoryTableViewController.m in Sources */,
+				64E905EE1E49704000331C3F /* BVTYelpHoursTableViewCell.m in Sources */,
 				6441120F1E2D345600C3ED18 /* BVTExploreCollectionViewCell.m in Sources */,
 				644112191E2D345600C3ED18 /* BVTYelpMapTableViewCell.m in Sources */,
 				6441121D1E2D345600C3ED18 /* BVTPageRootViewController.m in Sources */,
