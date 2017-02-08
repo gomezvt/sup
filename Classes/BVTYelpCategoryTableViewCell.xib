@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozY-P1-dtg">
-                    <rect key="frame" x="16" y="16" width="359" height="12"/>
+                    <rect key="frame" x="16" y="16" width="343" height="12"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -24,17 +24,17 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ozY-P1-dtg" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" constant="8" id="DGA-e5-gdC"/>
-                <constraint firstAttribute="bottomMargin" secondItem="ozY-P1-dtg" secondAttribute="bottom" constant="8" id="KIf-9u-3Dp"/>
-                <constraint firstItem="ozY-P1-dtg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="8" id="TBS-qV-T9e"/>
-                <constraint firstItem="ozY-P1-dtg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="8" id="VbT-c8-T2i"/>
+                <constraint firstItem="ozY-P1-dtg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="8" id="7f6-Kh-YTO"/>
+                <constraint firstItem="ozY-P1-dtg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="8" id="CWa-8u-xIy"/>
+                <constraint firstAttribute="trailingMargin" secondItem="ozY-P1-dtg" secondAttribute="trailing" constant="8" id="bSr-MF-s4d"/>
+                <constraint firstAttribute="bottomMargin" secondItem="ozY-P1-dtg" secondAttribute="bottom" constant="8" id="jkr-Jt-DcP"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="categoryLabel" destination="ozY-P1-dtg" id="g8q-ev-wrS"/>
             </connections>
-            <point key="canvasLocation" x="0.5" y="-63"/>
+            <point key="canvasLocation" x="0.5" y="9.5"/>
         </view>
     </objects>
 </document>

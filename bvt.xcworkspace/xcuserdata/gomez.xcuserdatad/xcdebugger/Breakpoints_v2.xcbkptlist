@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTThumbNailTableViewCell.m"
-            timestampString = "507868660.064669"
+            timestampString = "508201173.388281"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65">
+            startingLineNumber = "127"
+            endingLineNumber = "127">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -194,12 +194,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/YelpAPI/Classes/Response/YLPBusiness.m"
-            timestampString = "508129174.544965"
+            timestampString = "508196443.884438"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "-initWithDictionary:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/YelpAPI/Classes/Response/YLPBusiness.m"
+            timestampString = "508196437.656031"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-initWithDictionary:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/BVTThumbNailTableViewCell.m"
+            timestampString = "508201169.563071"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-setBusiness:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
