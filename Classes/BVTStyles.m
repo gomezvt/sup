@@ -15,6 +15,11 @@
     return [UIColor colorWithRed:236.f/255 green:235.f/255 blue:5.f/255 alpha:1.f];
 }
 
++ (UIColor *)moneyGreen
+{
+    return [UIColor colorWithRed:0.f/255 green:145.f/255 blue:0.f/255 alpha:1.f];
+}
+
 + (UIColor *)iconGreen
 {
     return [UIColor colorWithRed:75.f/255 green:124.f/255 blue:89.f/255 alpha:1.f];

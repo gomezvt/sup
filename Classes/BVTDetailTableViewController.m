@@ -122,178 +122,102 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSInteger indexPaths = 8;
     if (!self.selectedBusiness.phone)
     {
-        return 7;
+        indexPaths -= 1;
     }
-    return 8;
+    
+    if (self.selectedBusiness.businessHours.count == 0)
+    {
+        indexPaths -= 1;
+    }
+    
+    return indexPaths;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *identifier = @"";
-    if (!self.selectedBusiness.phone)
+    if (indexPath.row == 0)
     {
-        if (indexPath.row == 0)
-        {
-            identifier = kYelpRatingCellIdentifier;
-        }
-        else if (indexPath.row == 1)
-        {
-            identifier = kYelpCategoryCellIdentifier;
-        }
-        else if (indexPath.row == 2)
-        {
-            identifier = kYelpHoursCellIdentifier;
-        }
-        else if (indexPath.row == 3)
-        {
-            identifier = kYelpAddressCellIdentifier;
-        }
-        else if (indexPath.row == 4)
-        {
-            identifier = kYelpMapCellIdentifier;
-        }
-        else if (indexPath.row == 5 || indexPath.row == 6)
-        {
-            identifier = kSplitCellIdentifier;
-        }
+        identifier = kYelpRatingCellIdentifier;
     }
-    else
+    else if (indexPath.row == 1)
     {
-        if (indexPath.row == 0)
-        {
-            identifier = kYelpRatingCellIdentifier;
-        }
-        else if (indexPath.row == 1)
-        {
-            identifier = kYelpCategoryCellIdentifier;
-        }
-        else if (indexPath.row == 2)
-        {
-            identifier = kYelpHoursCellIdentifier;
-        }
-        else if (indexPath.row == 3)
-        {
-            identifier = kYelpPhoneCellIdentifier;
-        }
-        else if (indexPath.row == 4)
-        {
-            identifier = kYelpAddressCellIdentifier;
-        }
-        else if (indexPath.row == 5)
-        {
-            identifier = kYelpMapCellIdentifier;
-        }
-        else if (indexPath.row == 6 || indexPath.row == 7)
-        {
-            identifier = kSplitCellIdentifier;
-        }
+        identifier = kYelpCategoryCellIdentifier;
+    }
+    else if (indexPath.row == 2)
+    {
+        identifier = kYelpHoursCellIdentifier;
+    }
+    else if (indexPath.row == 3)
+    {
+        identifier = kYelpPhoneCellIdentifier;
+    }
+    else if (indexPath.row == 4)
+    {
+        identifier = kYelpAddressCellIdentifier;
+    }
+    else if (indexPath.row == 5)
+    {
+        identifier = kYelpMapCellIdentifier;
+    }
+    else if (indexPath.row == 6 || indexPath.row == 7)
+    {
+        identifier = kSplitCellIdentifier;
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if (!self.selectedBusiness.phone)
+    if (indexPath.row == 0)
     {
-        if (indexPath.row == 0)
+        BVTYelpRatingTableViewCell *ratingCell = (BVTYelpRatingTableViewCell *)cell;
+        ratingCell.selectedBusiness = self.selectedBusiness;
+    }
+    else if (indexPath.row == 1)
+    {
+        BVTYelpCategoryTableViewCell *defaultCell = (BVTYelpCategoryTableViewCell *)cell;
+        defaultCell.selectedBusiness = self.selectedBusiness;
+    }
+    else if (indexPath.row == 2)
+    {
+        BVTYelpHoursTableViewCell *defaultCell = (BVTYelpHoursTableViewCell *)cell;
+        defaultCell.isOpenLabel.text = self.selectedBusiness.isOpenNow ? @"Open" : @"Closed";
+        defaultCell.isOpenLabel.textColor = [UIColor redColor];
+        if ([defaultCell.isOpenLabel.text isEqualToString:@"Open"])
         {
-            BVTYelpRatingTableViewCell *ratingCell = (BVTYelpRatingTableViewCell *)cell;
-            ratingCell.selectedBusiness = self.selectedBusiness;
-        }
-        else if (indexPath.row == 1)
-        {
-            BVTYelpCategoryTableViewCell *defaultCell = (BVTYelpCategoryTableViewCell *)cell;
-            defaultCell.selectedBusiness = self.selectedBusiness;
-            
-        }
-        else if (indexPath.row == 2)
-        {
-            BVTYelpHoursTableViewCell *defaultCell = (BVTYelpHoursTableViewCell *)cell;
-            defaultCell.isOpenLabel.text = self.selectedBusiness.isOpenNow ? @"Open" : @"Closed";
-            defaultCell.isOpenLabel.textColor = [UIColor redColor];
-            if ([defaultCell.isOpenLabel.text isEqualToString:@"Open"])
-            {
-                defaultCell.isOpenLabel.textColor = [UIColor greenColor];
-            }
-            
-        }
-        else if (indexPath.row == 3)
-        {
-            BVTYelpAddressTableViewCell *defaultCell = (BVTYelpAddressTableViewCell *)cell;
-            defaultCell.selectedBusiness = self.selectedBusiness;
-            
-        }
-        else if (indexPath.row == 4)
-        {
-            BVTYelpMapTableViewCell *defaultCell = (BVTYelpMapTableViewCell *)cell;
-            defaultCell.selectedBusiness = self.selectedBusiness;
-        }
-        else if (indexPath.row == 5 || indexPath.row == 6)
-        {
-            BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
-            if (indexPath.row == 5)
-            {
-                [splitCell.leftButton setTitle:@"Deals" forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:@"Reviews" forState:UIControlStateNormal];
-            }
-            else
-            {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
-            }
+            defaultCell.isOpenLabel.textColor = [BVTStyles moneyGreen];
         }
     }
-    else
+    else if (indexPath.row == 3)
     {
-        if (indexPath.row == 0)
+        BVTYelpPhoneTableViewCell *defaultCell = (BVTYelpPhoneTableViewCell *)cell;
+        defaultCell.selectedBusiness = self.selectedBusiness;
+    }
+    else if (indexPath.row == 4)
+    {
+        BVTYelpAddressTableViewCell *defaultCell = (BVTYelpAddressTableViewCell *)cell;
+        defaultCell.selectedBusiness = self.selectedBusiness;
+    }
+    else if (indexPath.row == 5)
+    {
+        BVTYelpMapTableViewCell *defaultCell = (BVTYelpMapTableViewCell *)cell;
+        defaultCell.selectedBusiness = self.selectedBusiness;
+    }
+    else if (indexPath.row == 6 || indexPath.row == 7)
+    {
+        BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+        if (indexPath.row == 6)
         {
-            BVTYelpRatingTableViewCell *ratingCell = (BVTYelpRatingTableViewCell *)cell;
-            ratingCell.selectedBusiness = self.selectedBusiness;
+            [splitCell.leftButton setTitle:@"Deals" forState:UIControlStateNormal];
+            [splitCell.rightButton setTitle:@"Reviews" forState:UIControlStateNormal];
         }
-        else if (indexPath.row == 1)
+        else
         {
-            BVTYelpCategoryTableViewCell *defaultCell = (BVTYelpCategoryTableViewCell *)cell;
-            defaultCell.selectedBusiness = self.selectedBusiness;
-        }
-        else if (indexPath.row == 2)
-        {
-            BVTYelpHoursTableViewCell *defaultCell = (BVTYelpHoursTableViewCell *)cell;
-            defaultCell.isOpenLabel.text = self.selectedBusiness.isOpenNow ? @"Open" : @"Closed";
-            defaultCell.isOpenLabel.textColor = [UIColor redColor];
-            if ([defaultCell.isOpenLabel.text isEqualToString:@"Open"])
-            {
-                defaultCell.isOpenLabel.textColor = [UIColor greenColor];
-            }
-        }
-        else if (indexPath.row == 3)
-        {
-            BVTYelpPhoneTableViewCell *defaultCell = (BVTYelpPhoneTableViewCell *)cell;
-            defaultCell.selectedBusiness = self.selectedBusiness;
-        }
-        else if (indexPath.row == 4)
-        {
-            BVTYelpAddressTableViewCell *defaultCell = (BVTYelpAddressTableViewCell *)cell;
-            defaultCell.selectedBusiness = self.selectedBusiness;
-        }
-        else if (indexPath.row == 5)
-        {
-            BVTYelpMapTableViewCell *defaultCell = (BVTYelpMapTableViewCell *)cell;
-            defaultCell.selectedBusiness = self.selectedBusiness;
-        }
-        else if (indexPath.row == 6 || indexPath.row == 7)
-        {
-            BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
-            if (indexPath.row == 6)
-            {
-                [splitCell.leftButton setTitle:@"Deals" forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:@"Reviews" forState:UIControlStateNormal];
-            }
-            else
-            {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
-            }
+            [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+            [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
         }
     }
     

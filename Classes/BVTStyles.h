@@ -36,5 +36,6 @@
 
 + (UIColor *)lightGray;
 + (UIColor *)iconGreen;
++ (UIColor *)moneyGreen;
 
 @end

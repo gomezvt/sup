@@ -40,12 +40,18 @@
     
     MKCoordinateRegion region;
     MKCoordinateSpan span;
-    span.latitudeDelta = 0.005;
-    span.longitudeDelta = 0.005;
+    span.latitudeDelta = 0.001;
+    span.longitudeDelta = 0.001;
     
     region.span = span;
     region.center = location;
     [self.mapView setRegion:region animated:YES];
+    
+    MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
+    annotationPoint.coordinate = location;
+    annotationPoint.title = self.selectedBusiness.name;
+    [self.mapView addAnnotation:annotationPoint];
+
 }
 
 @end
