@@ -38,8 +38,9 @@
         id hoursItem = businessDict[@"hours"];
         if ([hoursItem isKindOfClass:[NSArray class]])
         {
-            NSDictionary *hoursDict = [hoursItem lastObject];
-            self.isOpenNow = hoursDict[@"is_open_now"];
+            NSArray *hours = [NSArray arrayWithObject:[hoursItem lastObject]];
+            self.hours = [hours lastObject];
+            self.isOpenNow = self.hours[@"is_open_now"];
         }
 
         _categories = [self.class categoriesFromJSONArray:businessDict[@"categories"]];
