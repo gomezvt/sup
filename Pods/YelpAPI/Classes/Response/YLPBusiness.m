@@ -16,32 +16,22 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)businessDict {
     if (self = [super init]) {
+        NSString *phone = [businessDict ylp_objectMaybeNullForKey:@"phone"];
         NSString *imageURLString = [businessDict ylp_objectMaybeNullForKey:@"image_url"];
-
+        
         _closed = [businessDict[@"is_closed"] boolValue];
-
         _URL = [[NSURL alloc] initWithString:businessDict[@"url"]];
         _imageURL = imageURLString.length > 0 ? [[NSURL alloc] initWithString:imageURLString] : nil;
-        
         _rating = [businessDict[@"rating"] doubleValue];
         _reviewCount = [businessDict[@"review_count"] integerValue];
-        
         _name = businessDict[@"name"];
         _identifier = businessDict[@"id"];
-        NSString *phone = [businessDict ylp_objectMaybeNullForKey:@"phone"];
         _phone = phone.length > 0 ? phone : nil;
         _price = businessDict[@"price"];
-
         
         // BusinessWithID returned values
-
         id hoursItem = businessDict[@"hours"];
-        if ([hoursItem isKindOfClass:[NSArray class]])
-        {
-            NSArray *hours = [NSArray arrayWithObject:[hoursItem lastObject]];
-            self.hours = [hours lastObject];
-            self.isOpenNow = self.hours[@"is_open_now"];
-        }
+        _hours = [hoursItem lastObject];
 
         _categories = [self.class categoriesFromJSONArray:businessDict[@"categories"]];
         YLPCoordinate *coordinate = [self.class coordinateFromJSONDictionary:businessDict[@"coordinates"]];

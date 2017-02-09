@@ -69,7 +69,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
      (YLPBusiness *business, NSError *error) {
          dispatch_async(dispatch_get_main_queue(), ^{
-             [self performSegueWithIdentifier:kShowDetailSegue sender:selectedBusiness ];
+             [self performSegueWithIdentifier:kShowDetailSegue sender:business ];
          });
      }];    
 }

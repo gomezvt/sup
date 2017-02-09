@@ -16,7 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YLPBusiness : NSObject
 
 @property (nonatomic, getter=isClosed, readonly) BOOL closed;
-@property (nonatomic) BOOL isOpenNow;
 
 @property (nonatomic, readonly, nullable, copy) NSURL *imageURL;
 @property (nonatomic, readonly, copy) NSURL *URL;
@@ -28,12 +27,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, nullable, copy) NSString *phone;
 @property (nonatomic, readonly, copy) NSString *identifier;
 
-@property (nonatomic, strong) NSDictionary *hours;
 @property (nonatomic, readonly, copy) NSString *price;
-
 @property (nonatomic, readonly, copy) NSArray<YLPCategory *> *categories;
 
 @property (nonatomic, readonly) YLPLocation *location;
+
+@property (nonatomic, strong) NSDictionary *hours;
 
 @end
 
