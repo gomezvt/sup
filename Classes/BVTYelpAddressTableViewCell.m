@@ -14,8 +14,6 @@
 @interface BVTYelpAddressTableViewCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *addressLabel;
-@property (nonatomic, weak) IBOutlet UILabel *addressLabel2;
-@property (nonatomic, weak) IBOutlet UILabel *addressLabel3;
 
 @end
 
@@ -25,51 +23,40 @@
 {
     _selectedBusiness = selectedBusiness;
     
+    YLPLocation *location = self.selectedBusiness.location;
     NSMutableString *cityStateZipString = [[NSMutableString alloc] init];
-    if (self.selectedBusiness.location.city)
+    if (location.city)
     {
-        NSString *cityString = self.selectedBusiness.location.city;
+        NSString *cityString = location.city;
         [cityStateZipString appendString:cityString];
     }
     
-    if (self.selectedBusiness.location.stateCode)
+    if (location.stateCode)
     {
-        NSString *stateString = [NSString stringWithFormat:@", %@", self.selectedBusiness.location.stateCode];
+        NSString *stateString = [NSString stringWithFormat:@", %@", location.stateCode];
         [cityStateZipString appendString:stateString];
     }
     
-    if (self.selectedBusiness.location.postalCode)
+    if (location.postalCode)
     {
-        NSString *postalString = [NSString stringWithFormat:@" %@", self.selectedBusiness.location.postalCode];
+        NSString *postalString = [NSString stringWithFormat:@" %@", location.postalCode];
         [cityStateZipString appendString:postalString];
     }
     
-    if (self.selectedBusiness.location.address.count == 1)
+    if (location.address.count == 0)
     {
-        NSString *addressString = self.selectedBusiness.location.address[0];
-        self.addressLabel.text = addressString;
-        self.addressLabel2.text = cityStateZipString;
-        [self.addressLabel3 removeFromSuperview];
+        self.addressLabel.text = cityStateZipString;
     }
-    else if (self.selectedBusiness.location.address.count == 2)
+    else if (location.address.count == 1)
     {
-        NSString *addressString = self.selectedBusiness.location.address[0];
-        NSString *addressString1 = self.selectedBusiness.location.address[1];
+        self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@", location.address[0], cityStateZipString];
+    }
+    else if (location.address.count == 2)
+    {
+        self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", location.address[0], location.address[1], cityStateZipString];
+    }
 
-        self.addressLabel.text = addressString;
-        self.addressLabel2.text = addressString1;
-        self.addressLabel3.text = cityStateZipString;
-    }
-    else
-    {
-        self.textLabel.text = cityStateZipString;
-        
-        [self.addressLabel removeFromSuperview];
-        [self.addressLabel2 removeFromSuperview];
-        [self.addressLabel3 removeFromSuperview];
-    }
-    
-    self.mapsQueryString = [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&s11=%f,%f&z=10&t=s", self.selectedBusiness.name, self.selectedBusiness.location.coordinate.latitude, self.selectedBusiness.location.coordinate.longitude];
+    self.mapsQueryString = [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&s11=%f,%f&z=10&t=s", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
