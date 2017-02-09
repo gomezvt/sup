@@ -32,7 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) YLPLocation *location;
 
-@property (nonatomic, strong) NSDictionary *hours;
+@property (nonatomic, strong) NSArray *businessHours;
+@property (nonatomic) BOOL isOpenNow;
 
 @end
 

@@ -10,6 +10,7 @@
 
 #import "BVTHeaderTitleView.h"
 #import "BVTYelpAddressTableViewCell.h"
+#import "BVTYelpHoursTableViewCell.h"
 #import "BVTYelpPhoneTableViewCell.h"
 #import "BVTYelpRatingTableViewCell.h"
 #import "BVTYelpMapTableViewCell.h"
@@ -208,7 +209,13 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         }
         else if (indexPath.row == 2)
         {
-
+            BVTYelpHoursTableViewCell *defaultCell = (BVTYelpHoursTableViewCell *)cell;
+            defaultCell.isOpenLabel.text = self.selectedBusiness.isOpenNow ? @"Open" : @"Closed";
+            defaultCell.isOpenLabel.textColor = [UIColor redColor];
+            if ([defaultCell.isOpenLabel.text isEqualToString:@"Open"])
+            {
+                defaultCell.isOpenLabel.textColor = [UIColor greenColor];
+            }
             
         }
         else if (indexPath.row == 3)
@@ -250,8 +257,13 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         }
         else if (indexPath.row == 2)
         {
-
-            
+            BVTYelpHoursTableViewCell *defaultCell = (BVTYelpHoursTableViewCell *)cell;
+            defaultCell.isOpenLabel.text = self.selectedBusiness.isOpenNow ? @"Open" : @"Closed";
+            defaultCell.isOpenLabel.textColor = [UIColor redColor];
+            if ([defaultCell.isOpenLabel.text isEqualToString:@"Open"])
+            {
+                defaultCell.isOpenLabel.textColor = [UIColor greenColor];
+            }
         }
         else if (indexPath.row == 3)
         {

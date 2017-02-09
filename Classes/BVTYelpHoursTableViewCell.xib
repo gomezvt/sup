@@ -41,7 +41,10 @@
                     <constraint firstItem="tJF-nM-YYc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qwQ-jb-7vc"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="34" y="158.5"/>
+            <connections>
+                <outlet property="isOpenLabel" destination="3yj-PI-wgu" id="5ui-Vk-i55"/>
+            </connections>
+            <point key="canvasLocation" x="-33" y="-41"/>
         </tableViewCell>
     </objects>
     <resources>

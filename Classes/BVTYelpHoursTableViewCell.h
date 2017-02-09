@@ -10,4 +10,6 @@
 
 @interface BVTYelpHoursTableViewCell : UITableViewCell
 
+@property (nonatomic, weak) IBOutlet UILabel *isOpenLabel;
+
 @end
