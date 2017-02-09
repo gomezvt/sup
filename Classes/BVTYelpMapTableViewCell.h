@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "YLPBusiness.h"
+
 @interface BVTYelpMapTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) YLPBusiness *selectedBusiness;
 
 @end

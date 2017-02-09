@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="136.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3vS-Tw-KiN">
@@ -32,7 +32,10 @@
                     <constraint firstItem="3vS-Tw-KiN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="qWW-sk-2th"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="34" y="-22.5"/>
+            <connections>
+                <outlet property="mapView" destination="3vS-Tw-KiN" id="7OX-A2-kKu"/>
+            </connections>
+            <point key="canvasLocation" x="-46" y="-325"/>
         </tableViewCell>
     </objects>
 </document>

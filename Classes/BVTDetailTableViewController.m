@@ -226,7 +226,8 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         }
         else if (indexPath.row == 4)
         {
-            // Map
+            BVTYelpMapTableViewCell *defaultCell = (BVTYelpMapTableViewCell *)cell;
+            defaultCell.selectedBusiness = self.selectedBusiness;
         }
         else if (indexPath.row == 5 || indexPath.row == 6)
         {
@@ -277,7 +278,8 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         }
         else if (indexPath.row == 5)
         {
-            // Map
+            BVTYelpMapTableViewCell *defaultCell = (BVTYelpMapTableViewCell *)cell;
+            defaultCell.selectedBusiness = self.selectedBusiness;
         }
         else if (indexPath.row == 6 || indexPath.row == 7)
         {
