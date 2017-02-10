@@ -257,12 +257,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         if (indexPath.row == 2)
         {
             BVTYelpHoursTableViewCell *hoursCell = (BVTYelpHoursTableViewCell *)cell;
-            hoursCell.isOpenLabel.text = self.selectedBusiness.isOpenNow ? @"Open" : @"Closed";
-            hoursCell.isOpenLabel.textColor = [UIColor redColor];
-            if ([hoursCell.isOpenLabel.text isEqualToString:@"Open"])
-            {
-                hoursCell.isOpenLabel.textColor = [BVTStyles moneyGreen];
-            }
+            hoursCell.selectedBusiness = self.selectedBusiness;
         }
         else if (indexPath.row == 3)
         {
@@ -327,12 +322,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         if (indexPath.row == 2)
         {
             BVTYelpHoursTableViewCell *hoursCell = (BVTYelpHoursTableViewCell *)cell;
-            hoursCell.isOpenLabel.text = self.selectedBusiness.isOpenNow ? @"Open" : @"Closed";
-            hoursCell.isOpenLabel.textColor = [UIColor redColor];
-            if ([hoursCell.isOpenLabel.text isEqualToString:@"Open"])
-            {
-                hoursCell.isOpenLabel.textColor = [BVTStyles moneyGreen];
-            }
+            hoursCell.selectedBusiness = self.selectedBusiness;
         }
         else if (indexPath.row == 3)
         {

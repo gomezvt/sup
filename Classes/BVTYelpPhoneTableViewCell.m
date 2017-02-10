@@ -25,7 +25,17 @@
 {
     _selectedBusiness = selectedBusiness;
     
-    self.phoneNumberLabel.text = self.selectedBusiness.phone;
+    NSString *phone = self.selectedBusiness.phone;
+    if ([phone hasPrefix:@"+1802"] && ![phone containsString:@"-"] && phone.length == 12)
+    {
+        NSMutableString *mutablePhone = [[NSMutableString alloc] initWithString:phone];
+        [mutablePhone insertString:@" (" atIndex:2];
+        [mutablePhone insertString:@") " atIndex:7];
+        [mutablePhone insertString:@"-" atIndex:12];
+
+        phone = mutablePhone;
+    }
+    self.phoneNumberLabel.text = phone;
 }
 
 - (IBAction)didTapPhoneNumberButton:(id)sender
