@@ -110,7 +110,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *selectionTitle = cell.textLabel.text;
 
-    [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
+    [[AppDelegate sharedClient] searchWithLocation:@"New York, NY" term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error) {
          dispatch_async(dispatch_get_main_queue(), ^{
              if (searchResults.businesses.count > 0) {

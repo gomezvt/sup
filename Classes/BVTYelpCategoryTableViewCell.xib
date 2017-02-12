@@ -34,7 +34,7 @@
             <connections>
                 <outlet property="categoryLabel" destination="ozY-P1-dtg" id="g8q-ev-wrS"/>
             </connections>
-            <point key="canvasLocation" x="0.5" y="9.5"/>
+            <point key="canvasLocation" x="-275" y="-200"/>
         </view>
     </objects>
 </document>

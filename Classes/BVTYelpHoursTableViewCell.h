@@ -13,6 +13,7 @@
 @interface BVTYelpHoursTableViewCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *isOpenLabel;
+@property (nonatomic, weak) IBOutlet UILabel *openClosesLabel;
 @property (nonatomic, strong) YLPBusiness *selectedBusiness;
 
 @end

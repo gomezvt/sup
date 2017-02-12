@@ -15,6 +15,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    self.openClosesLabel.text = @"";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -34,6 +36,93 @@
         self.isOpenLabel.textColor = [BVTStyles moneyGreen];
     }
     
+    NSDateFormatter *dateFormatter;
+    if (!dateFormatter)
+    {
+        dateFormatter = [[NSDateFormatter alloc] init];
+    }
+    
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EDT"]];
+    [dateFormatter setDateFormat:@"EEEE"];
+    
+    NSString *dayName = [dateFormatter stringFromDate:[NSDate date]];
+    NSNumber *dayNum;
+    if ([dayName isEqualToString:@"Tuesday"])
+    {
+        dayNum = [NSNumber numberWithInteger:1];
+    }
+    else if ([dayName isEqualToString:@"Wednesday"])
+    {
+        dayNum = [NSNumber numberWithInteger:2];
+    }
+    else if ([dayName isEqualToString:@"Thursday"])
+    {
+        dayNum = [NSNumber numberWithInteger:3];
+    }
+    else if ([dayName isEqualToString:@"Friday"])
+    {
+        dayNum = [NSNumber numberWithInteger:4];
+    }
+    else if ([dayName isEqualToString:@"Saturday"])
+    {
+        dayNum = [NSNumber numberWithInteger:5];
+    }
+    else if ([dayName isEqualToString:@"Sunday"])
+    {
+        dayNum = [NSNumber numberWithInteger:6];
+    }
+    
+    NSDictionary *todayDict = [[selectedBusiness.businessHours filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"day == %@", dayNum]] lastObject];
+
+    if (todayDict)
+    {
+        NSString *timeStr;
+        NSString *openCloseStr;
+        if (self.selectedBusiness.isOpenNow)
+        {
+            openCloseStr = @"Closes at";
+            timeStr = todayDict[@"end"];
+        }
+        else
+        {
+            openCloseStr = @"Opens at";
+            timeStr = todayDict[@"start"];
+        }
+        
+        NSDateFormatter *df;
+        if (!df)
+        {
+            df = [[NSDateFormatter alloc] init];
+
+        }
+        
+        df.dateFormat = @"HH:mm"; // The old format
+
+        NSMutableString *mutableTime = [NSMutableString stringWithString:timeStr];
+        [mutableTime insertString:@":" atIndex:2];
+
+        NSString *time = mutableTime;
+
+        
+        NSDate *date = [df dateFromString:time];
+        df.dateFormat = @"hh:mm a"; // The new format
+
+        NSString *newStr = [df stringFromDate:date];
+//        NSString *formattedTimeStr;
+        self.openClosesLabel.text = [NSString stringWithFormat:@"%@ %@", openCloseStr, newStr];
+//        self.openClosesLabel.text = timeToDisplay;
+    }
+    
+    
+//    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"EDT"];
+//    dateFormatter.dateFormat = @"EEEE";
+//    NSLog(@"%@", [dateFormatter stringFromDate:[NSDate date]]);
+//    
+//    if (
+    
+//    NSString *date = [dateFormatter stringFromDate:[NSDate date]];
+//    self.openClosesLabel.text = date;
 }
 
 @end

@@ -238,15 +238,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/BVTYelpPhoneTableViewCell.m"
-            timestampString = "508446361.680968"
+            filePath = "Classes/BVTYelpHoursTableViewCell.m"
+            timestampString = "508564923.027042"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-setSelectedBusiness:"
             landmarkType = "7">
          </BreakpointContent>
