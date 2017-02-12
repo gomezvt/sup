@@ -48,10 +48,7 @@
 
 - (IBAction)didTapPhoneNumberButton:(id)sender
 {
-    NSString *phone = [self formattedPhoneString];
-    
-    // TODO: this might not work.. may need to have the phone string unconfigured to call
-    NSString *phoneString = [NSString stringWithFormat:@"telprompt:%@", phone];
+    NSString *phoneString = [NSString stringWithFormat:@"telprompt:%@", self.selectedBusiness.phone];
     NSURL *phoneURL = [NSURL URLWithString:phoneString];
     
     [[UIApplication sharedApplication] openURL:phoneURL options:@{} completionHandler:^(BOOL success) {

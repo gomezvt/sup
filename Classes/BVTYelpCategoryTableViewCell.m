@@ -28,34 +28,12 @@
 {
     _selectedBusiness = selectedBusiness;
     
-    YLPCategory *categoryOne;
-    YLPCategory *categoryTwo;
-    YLPCategory *categoryThree;
-    
-    NSString *catString;
-    NSArray *categories = self.selectedBusiness.categories;
-    
-    if (self.selectedBusiness.categories.count == 1)
+    NSMutableString *catString = [[NSMutableString alloc] initWithString:@"Place categories: "];
+    for (YLPCategory *category in self.selectedBusiness.categories)
     {
-        categoryOne = categories[0];
-        catString = [NSString stringWithFormat:@"Place category: %@", categoryOne.name];
-    }
-    else if (self.selectedBusiness.categories.count == 2)
-    {
-        categoryOne = categories[0];
-        categoryTwo = categories[1];
-        
-        catString = [NSString stringWithFormat:@"Place categories: %@, %@", categoryOne.name, categoryTwo.name];
-    }
-    else if (self.selectedBusiness.categories.count == 3)
-    {
-        categoryOne = categories[0];
-        categoryTwo = categories[1];
-        categoryThree = categories[2];
-        
-        catString = [NSString stringWithFormat:@"Place categories: %@, %@, %@", categoryOne.name, categoryTwo.name, categoryThree.name];
+        [catString appendString:[NSString stringWithFormat:@"%@, ", category.name]];
     }
     
-    self.categoryLabel.text = catString;
+    self.categoryLabel.text = [catString substringToIndex:[catString length] -2];
 }
 @end
