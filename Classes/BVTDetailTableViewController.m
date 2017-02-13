@@ -97,6 +97,25 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     self.tableView.tableFooterView = [UIView new];
 }
 
+- (void)displayYelpProfile
+{
+    [[UIApplication sharedApplication] openURL:self.selectedBusiness.URL options:@{} completionHandler:^(BOOL success) {
+        NSLog(@"");
+    }];
+}
+
+- (IBAction)didTapYelpButton:(id)sender
+{
+    [self displayYelpProfile];
+}
+
+- (void)displayYelpBizProfile
+{
+    [[UIApplication sharedApplication] openURL:self.selectedBusiness.URL options:@{} completionHandler:^(BOOL success) {
+        NSLog(@"");
+    }];
+}
+
 - (void)displayGoogleMaps
 {
     YLPLocation *location = self.selectedBusiness.location;
@@ -115,6 +134,10 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     if ([button.titleLabel.text isEqualToString:@"Map"])
     {
         [self displayGoogleMaps];
+    }
+    else if ([button.titleLabel.text isEqualToString:@"Yelp Profile"])
+    {
+        [self displayYelpProfile];
     }
 }
 
@@ -298,12 +321,12 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
             if (indexPath.row == 6)
             {
-                [splitCell.leftButton setTitle:@"Deals" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:@"Reviews" forState:UIControlStateNormal];
             }
             else
             {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
             }
         }
@@ -325,12 +348,12 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
             if (indexPath.row == 4)
             {
-                [splitCell.leftButton setTitle:@"Deals" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:@"Reviews" forState:UIControlStateNormal];
             }
             else
             {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
             }
         }
@@ -358,12 +381,12 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
             if (indexPath.row == 5)
             {
-                [splitCell.leftButton setTitle:@"Deals" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:@"Reviews" forState:UIControlStateNormal];
             }
             else
             {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
             }
         }
@@ -391,12 +414,12 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
             if (indexPath.row == 5)
             {
-                [splitCell.leftButton setTitle:@"Deals" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:@"Reviews" forState:UIControlStateNormal];
             }
             else
             {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
             }
         }
