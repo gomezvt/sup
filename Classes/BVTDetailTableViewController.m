@@ -16,6 +16,9 @@
 #import "BVTYelpMapTableViewCell.h"
 #import "BVTSplitTableViewCell.h"
 #import "BVTYelpCategoryTableViewCell.h"
+#import "YLPClient+Business.h"
+
+#import "AppDelegate.h"
 
 #import "YLPLocation.h"
 #import "YLPCoordinate.h"
@@ -138,6 +141,18 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     else if ([button.titleLabel.text isEqualToString:@"Yelp Profile"])
     {
         [self displayYelpProfile];
+    }
+    else if ([button.titleLabel.text isEqualToString:@"Reviews"])
+    {
+        [[AppDelegate sharedClient] reviewsWithId:self.selectedBusiness.identifier completionHandler:^
+         (YLPBusiness *business, NSError *error) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+             });
+         }];    
+    }
+    else if ([button.titleLabel.text isEqualToString:@"Photos"])
+    {
+        
     }
 }
 
@@ -423,7 +438,6 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
                 [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
             }
         }
-
     }
     
     return cell;

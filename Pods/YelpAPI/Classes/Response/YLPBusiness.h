@@ -35,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray *businessHours;
 @property (nonatomic) BOOL isOpenNow;
 
+@property (nonatomic) id reviews;
+
 @end
 
 NS_ASSUME_NONNULL_END
