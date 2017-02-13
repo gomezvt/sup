@@ -55,8 +55,6 @@
     {
         self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", location.address[0], location.address[1], cityStateZipString];
     }
-
-    self.mapsQueryString = [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&s11=%f,%f&z=10&t=s", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

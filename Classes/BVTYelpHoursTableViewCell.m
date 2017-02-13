@@ -47,7 +47,7 @@
     [dateFormatter setDateFormat:@"EEEE"];
     
     NSString *dayName = [dateFormatter stringFromDate:[NSDate date]];
-    NSNumber *dayNum;
+    NSNumber *dayNum = [NSNumber numberWithInteger:0];
     if ([dayName isEqualToString:@"Tuesday"])
     {
         dayNum = [NSNumber numberWithInteger:1];

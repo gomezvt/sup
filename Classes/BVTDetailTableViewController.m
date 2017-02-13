@@ -17,6 +17,9 @@
 #import "BVTSplitTableViewCell.h"
 #import "BVTYelpCategoryTableViewCell.h"
 
+#import "YLPLocation.h"
+#import "YLPCoordinate.h"
+
 #import "BVTStyles.h"
 
 @interface BVTDetailTableViewController ()
@@ -94,17 +97,33 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     self.tableView.tableFooterView = [UIView new];
 }
 
+- (void)displayGoogleMaps
+{
+    YLPLocation *location = self.selectedBusiness.location;
+    NSString *mapsQueryString = [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&s11=%f,%f&z=10&t=s", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude];
+    
+    NSString *filteredString = [mapsQueryString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    NSURL *url = [NSURL URLWithString:filteredString];
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+        NSLog(@"");
+    }];
+}
+
+- (IBAction)didTapSplitViewCellButton:(id)sender
+{
+    UIButton *button = sender;
+    if ([button.titleLabel.text isEqualToString:@"Map"])
+    {
+        [self displayGoogleMaps];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell isKindOfClass:[BVTYelpAddressTableViewCell class]])
     {
-        BVTYelpAddressTableViewCell *addressCell = (BVTYelpAddressTableViewCell *)cell;
-        NSString *filteredString = [addressCell.mapsQueryString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-        NSURL *url = [NSURL URLWithString:filteredString];
-        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
-            NSLog(@"");
-        }];
+        [self displayGoogleMaps];
     }
     else if ([cell isKindOfClass:[BVTYelpPhoneTableViewCell class]])
     {
