@@ -337,8 +337,8 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             }
             else
             {
-                [splitCell.leftButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Photos" forState:UIControlStateNormal];
+                [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
             }
         }
     }
@@ -364,8 +364,8 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             }
             else
             {
-                [splitCell.leftButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Photos" forState:UIControlStateNormal];
+                [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
             }
         }
 
@@ -397,8 +397,8 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             }
             else
             {
-                [splitCell.leftButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Photos" forState:UIControlStateNormal];
+                [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
             }
         }
 
@@ -430,8 +430,8 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             }
             else
             {
-                [splitCell.leftButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:@"Photos" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Photos" forState:UIControlStateNormal];
+                [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
             }
         }
     }
