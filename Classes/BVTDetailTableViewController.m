@@ -144,11 +144,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     }
     else if ([button.titleLabel.text isEqualToString:@"Reviews"])
     {
-        [[AppDelegate sharedClient] reviewsWithId:self.selectedBusiness.identifier completionHandler:^
-         (YLPBusiness *business, NSError *error) {
-             dispatch_async(dispatch_get_main_queue(), ^{
-             });
-         }];    
+   
     }
     else if ([button.titleLabel.text isEqualToString:@"Photos"])
     {
