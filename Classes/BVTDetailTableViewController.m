@@ -15,6 +15,7 @@
 #import "BVTYelpRatingTableViewCell.h"
 #import "BVTYelpMapTableViewCell.h"
 #import "BVTSplitTableViewCell.h"
+#import "BVTPresentationTableViewController.h"
 #import "BVTYelpCategoryTableViewCell.h"
 #import "YLPClient+Business.h"
 
@@ -26,6 +27,7 @@
 #import "BVTStyles.h"
 
 @interface BVTDetailTableViewController ()
+    <UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -78,7 +80,6 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     UINib *yelpHoursCellNib = [UINib nibWithNibName:kYelpHoursCellNib bundle:nil];
     [self.tableView registerNib:yelpHoursCellNib forCellReuseIdentifier:kYelpHoursCellIdentifier];
     
-    
     UINib *yelpAddressCellNib = [UINib nibWithNibName:kYelpAddressCellNib bundle:nil];
     [self.tableView registerNib:yelpAddressCellNib forCellReuseIdentifier:kYelpAddressCellIdentifier];
     
@@ -96,7 +97,6 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
     self.tableView.tableFooterView = [UIView new];
 }
 
@@ -129,27 +129,6 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
         NSLog(@"");
     }];
-}
-
-- (IBAction)didTapSplitViewCellButton:(id)sender
-{
-    UIButton *button = sender;
-    if ([button.titleLabel.text isEqualToString:@"Map"])
-    {
-        [self displayGoogleMaps];
-    }
-    else if ([button.titleLabel.text isEqualToString:@"Yelp Profile"])
-    {
-        [self displayYelpProfile];
-    }
-    else if ([button.titleLabel.text isEqualToString:@"Reviews"])
-    {
-   
-    }
-    else if ([button.titleLabel.text isEqualToString:@"Photos"])
-    {
-        
-    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
@@ -330,6 +309,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         else if (indexPath.row == 6 || indexPath.row == 7)
         {
             BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+            splitCell.selectedBusiness = self.selectedBusiness;
             if (indexPath.row == 6)
             {
                 [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
@@ -357,6 +337,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         else if (indexPath.row == 4 || indexPath.row == 5)
         {
             BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+            splitCell.selectedBusiness = self.selectedBusiness;
             if (indexPath.row == 4)
             {
                 [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
@@ -390,6 +371,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         else if (indexPath.row == 5 || indexPath.row == 6)
         {
             BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+            splitCell.selectedBusiness = self.selectedBusiness;
             if (indexPath.row == 5)
             {
                 [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
@@ -423,6 +405,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         else if (indexPath.row == 5 || indexPath.row == 6)
         {
             BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+            splitCell.selectedBusiness = self.selectedBusiness;
             if (indexPath.row == 5)
             {
                 [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
@@ -439,7 +422,46 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     return cell;
 }
 
+- (UIModalPresentationStyle) adaptivePresentationStyleForPresentationController: (UIPresentationController * ) controller {
+    return UIModalPresentationNone;
+}
 #pragma mark - IBActions
+
+- (IBAction)popoverWithoutBarButton:(id)sender
+{
+    UIButton *button = sender;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    if ([button.titleLabel.text isEqualToString:@"Reviews"] || [button.titleLabel.text isEqualToString:@"Photos"])
+    {
+        BVTPresentationTableViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"PresTVC"];
+        controller.business = self.selectedBusiness;
+        controller.sender = button;
+        
+        // configure the Popover presentation controller
+        controller.popoverPresentationController.delegate = self;
+        controller.modalPresentationStyle = UIModalPresentationPopover;
+        controller.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+        controller.preferredContentSize = CGSizeMake(400, 500);
+        controller.popoverPresentationController.sourceView = button;
+        controller.popoverPresentationController.sourceRect = CGRectMake(0.f,0.f,160.f,300.f);
+        controller.presentationController.delegate = self;
+        
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+}
+
+- (IBAction)didTapSplitViewCellButton:(id)sender
+{
+    UIButton *button = sender;
+    if ([button.titleLabel.text isEqualToString:@"Map"])
+    {
+        [self displayGoogleMaps];
+    }
+    else if ([button.titleLabel.text isEqualToString:@"Yelp Profile"])
+    {
+        [self displayYelpProfile];
+    }
+}
 
 - (IBAction)didTapBack:(id)sender
 {

@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ur4-Mw-8Xo" id="sHr-w2-g05">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ji-Rn-U9b">
@@ -32,6 +32,7 @@
                         </state>
                         <connections>
                             <action selector="didTapSplitViewCellButton:" destination="-1" eventType="touchUpInside" id="ZQS-jx-L9d"/>
+                            <action selector="popoverWithoutBarButton:" destination="-1" eventType="touchUpInside" id="oY9-I0-eQr"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjb-do-9jI">
@@ -39,6 +40,7 @@
                         <state key="normal" title="Button"/>
                         <connections>
                             <action selector="didTapSplitViewCellButton:" destination="-1" eventType="touchUpInside" id="9Qt-xb-X1u"/>
+                            <action selector="popoverWithoutBarButton:" destination="-1" eventType="touchUpInside" id="XIT-i4-5ZQ"/>
                         </connections>
                     </button>
                 </subviews>
@@ -59,7 +61,7 @@
                 <outlet property="leftButton" destination="Wal-sa-0nN" id="kl2-iB-eO2"/>
                 <outlet property="rightButton" destination="Jjb-do-9jI" id="cnz-LX-Jod"/>
             </connections>
-            <point key="canvasLocation" x="-342" y="-380"/>
+            <point key="canvasLocation" x="-400" y="-380"/>
         </tableViewCell>
     </objects>
 </document>

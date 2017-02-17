@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "YLPBusiness.h"
+
 @interface BVTSplitTableViewCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UIButton *leftButton;
 @property (nonatomic, weak) IBOutlet UIButton *rightButton;
+@property (nonatomic, strong) YLPBusiness *selectedBusiness;
 
 @end
