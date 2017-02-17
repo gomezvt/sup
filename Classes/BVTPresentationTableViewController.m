@@ -20,6 +20,17 @@ static NSString *const kPhotoCellID = @"BVTYelpPhotoCellIdentifier";
 static NSString *const kReviewsNib = @"BVTYelpReviewsTableViewCell";
 static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
 
+NSString *const kstar_zero_mini          = @"star_zero_mini.png";
+NSString *const kstar_one_mini           = @"star_one_mini.png";
+NSString *const kstar_one_half_mini      = @"star_one_half_mini.png";
+NSString *const kstar_two_mini           = @"star_two_mini.png";
+NSString *const kstar_two_half_mini      = @"star_two_half_mini.png";
+NSString *const kstar_three_mini         = @"star_three_mini.png";
+NSString *const kstar_three_half_mini    = @"star_three_half_mini.png";
+NSString *const kstar_four_mini          = @"star_four_mini.png";
+NSString *const kstar_four_half_mini     = @"star_four_half_mini.png";
+NSString *const kstar_five_mini          = @"star_five_mini.png";
+
 @implementation BVTPresentationTableViewController
 
 - (void)viewDidLoad
@@ -48,11 +59,11 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
     if ([self.sender isKindOfClass:[UIButton class]])
     {
         UIButton *button = (UIButton *)self.sender;
-        if ([button.titleLabel.text isEqualToString:@"Reviews"])
+        if ([button.titleLabel.text containsString:@"Reviews"])
         {
             return self.business.reviews.count;
         }
-        else if ([button.titleLabel.text isEqualToString:@"Photos"])
+        else if ([button.titleLabel.text containsString:@"Photos"])
         {
             return self.business.photos.count;
         }
@@ -67,11 +78,11 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
     if ([self.sender isKindOfClass:[UIButton class]])
     {
         UIButton *button = (UIButton *)self.sender;
-        if ([button.titleLabel.text isEqualToString:@"Reviews"])
+        if ([button.titleLabel.text containsString:@"Reviews"])
         {
             identifier = kReviewsCellID;
         }
-        else if ([button.titleLabel.text isEqualToString:@"Photos"])
+        else if ([button.titleLabel.text containsString:@"Photos"])
         {
             identifier = kPhotoCellID;
         }
@@ -81,9 +92,79 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
     
     if ([identifier isEqualToString:kReviewsCellID])
     {
-        NSDictionary *reviewDict = [self.business.reviews objectAtIndex:indexPath.row];
         BVTYelpReviewsTableViewCell *reviewsCell = (BVTYelpReviewsTableViewCell *)cell;
+        NSDateFormatter *dateFormatter;
+        if (!dateFormatter)
+        {
+            dateFormatter = [[NSDateFormatter alloc] init];
+        }
+        [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd  HH':'mm':'ss"];
+        NSDictionary *reviewDict = [self.business.reviews objectAtIndex:indexPath.row];
+        NSDate *date = [dateFormatter dateFromString:reviewDict[@"time_created"]];
+        [dateFormatter setDateFormat:@"MMM d, yyyy h:mm a"];
+        reviewsCell.dateLabel.text = [dateFormatter stringFromDate:date];
         reviewsCell.reviewLabel.text = reviewDict[@"text"];
+
+        NSDictionary *user = reviewDict[@"user"];
+        reviewsCell.nameLabel.text = user[@"name"];
+        
+        reviewsCell.userImageView.image = [UIImage imageNamed:@"placeholder"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *userStr = user[@"image_url"];
+            NSURL *url = [NSURL URLWithString:userStr];
+            NSData *imageData = [NSData dataWithContentsOfURL:url];
+            UIImage *image = [UIImage imageWithData:imageData];
+            if (image)
+            {
+                reviewsCell.userImageView.image = image;
+            }
+        });
+        
+        NSString *ratingString;
+        NSNumber *rating = reviewDict[@"rating"];
+        if ([rating integerValue] == 0)
+        {
+            ratingString = kstar_zero_mini;
+        }
+        else if ([rating integerValue] == 1)
+        {
+            ratingString = kstar_one_mini;
+        }
+        else if ([rating integerValue] == 1.5)
+        {
+            ratingString = kstar_one_half_mini;
+        }
+        else if ([rating integerValue] == 2)
+        {
+            ratingString = kstar_two_mini;
+        }
+        else if ([rating integerValue] == 2.5)
+        {
+            ratingString = kstar_two_half_mini;
+        }
+        else if ([rating integerValue] == 3)
+        {
+            ratingString = kstar_three_mini;
+        }
+        else if ([rating integerValue] == 3.5)
+        {
+            ratingString = kstar_three_half_mini;
+        }
+        else if ([rating integerValue] == 4)
+        {
+            ratingString = kstar_four_mini;
+        }
+        else if ([rating integerValue] == 4.5)
+        {
+            ratingString = kstar_four_half_mini;
+        }
+        else
+        {
+            // 5 star rating
+            ratingString = kstar_five_mini;
+        }
+        
+        [reviewsCell.ratingView setImage:[UIImage imageNamed:ratingString]];
     }
     else if ([identifier isEqualToString:kPhotoCellID])
     {
@@ -93,49 +174,5 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
  
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
