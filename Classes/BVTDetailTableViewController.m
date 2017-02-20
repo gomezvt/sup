@@ -322,12 +322,12 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             splitCell.selectedBusiness = self.selectedBusiness;
             if (indexPath.row == 6)
             {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
             }
             else
             {
-                [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
             }
         }
@@ -350,12 +350,12 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             splitCell.selectedBusiness = self.selectedBusiness;
             if (indexPath.row == 4)
             {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
             }
             else
             {
-                [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
             }
         }
@@ -384,12 +384,12 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             splitCell.selectedBusiness = self.selectedBusiness;
             if (indexPath.row == 5)
             {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
             }
             else
             {
-                [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
             }
         }
@@ -418,12 +418,12 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             splitCell.selectedBusiness = self.selectedBusiness;
             if (indexPath.row == 5)
             {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
             }
             else
             {
-                [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
+                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
                 [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
             }
         }
@@ -432,9 +432,16 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     return cell;
 }
 
-- (UIModalPresentationStyle) adaptivePresentationStyleForPresentationController: (UIPresentationController * ) controller {
+- (void)prepareForPopoverPresentation:(UIPopoverPresentationController *)popoverPresentationController;
+{
+    //
+}
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController: (UIPresentationController * ) controller
+{
     return UIModalPresentationNone;
 }
+
 #pragma mark - IBActions
 
 - (IBAction)popoverWithoutBarButton:(id)sender
