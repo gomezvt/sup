@@ -56,6 +56,8 @@ NSString *const kYLPErrorDomain = @"com.yelp.YelpAPI.ErrorDomain";
 - (void)queryWithRequest:(NSURLRequest *)request
        completionHandler:(void (^)(NSDictionary *jsonResponse, NSError *error))completionHandler {
     [YLPClient queryWithRequest:request completionHandler:completionHandler];
+    
+
 }
 
 #pragma mark Request utilities
@@ -74,14 +76,25 @@ NSString *const kYLPErrorDomain = @"com.yelp.YelpAPI.ErrorDomain";
         }
         
         if (!error && httpResponse.statusCode == 200) {
+//            [[NSNotificationCenter defaultCenter]
+//             postNotificationName:@"TestNotificationSuccess"
+//             object:self];
             completionHandler(responseJSON, nil);
         } else {
+//            [[NSNotificationCenter defaultCenter]
+//             postNotificationName:@"TestNotificationError"
+//             object:self];
             // If a request fails due to systematic errors with the API then an NSError will be returned.
             error = error ? error : [NSError errorWithDomain:kYLPErrorDomain code:httpResponse.statusCode userInfo:responseJSON];
             completionHandler(nil, error);
         }
     }] resume];
 }
+
+//[[NSNotificationCenter defaultCenter] addObserver: [self class]
+//                                         selector: @selector(handleEnteredBackground:)
+//                                             name: UIApplicationDidEnterBackgroundNotification
+//                                           object: nil];
 
 + (NSArray<NSURLQueryItem *> *)queryItemsForParams:(NSDictionary<NSString *, id> *)params {
     NSMutableArray *queryItems = [NSMutableArray array];

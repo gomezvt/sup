@@ -41,9 +41,11 @@
 		64934CC01E306BCE00386B5B /* BVTYelpMapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CBF1E306BCE00386B5B /* BVTYelpMapTableViewCell.xib */; };
 		64934CC21E306BD300386B5B /* BVTYelpRatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CC11E306BD300386B5B /* BVTYelpRatingTableViewCell.xib */; };
 		64934CC41E306C1E00386B5B /* BVTHeaderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */; };
+		64C7331A1E5A855C0019F166 /* BVTHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C733191E5A855C0019F166 /* BVTHUDView.m */; };
 		64C88B4E1E5545CF00ECA06B /* BVTPresentationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C88B4D1E5545CF00ECA06B /* BVTPresentationTableViewController.m */; };
 		64C88B5B1E55498100ECA06B /* BVTYelpPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C88B5A1E55498100ECA06B /* BVTYelpPhotoTableViewCell.xib */; };
 		64C88B5E1E55499800ECA06B /* BVTYelpPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C88B5D1E55499800ECA06B /* BVTYelpPhotoTableViewCell.m */; };
+		64E194F51E5AA42D0010FF1C /* BVTHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E194F41E5AA42D0010FF1C /* BVTHUDView.xib */; };
 		64E905EE1E49704000331C3F /* BVTYelpHoursTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E905EC1E49704000331C3F /* BVTYelpHoursTableViewCell.m */; };
 		64E905EF1E49704000331C3F /* BVTYelpHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E905ED1E49704000331C3F /* BVTYelpHoursTableViewCell.xib */; };
 		64E905F31E4970BC00331C3F /* BVTYelpCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E905F21E4970BC00331C3F /* BVTYelpCategoryTableViewCell.xib */; };
@@ -122,11 +124,14 @@
 		64934CBF1E306BCE00386B5B /* BVTYelpMapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpMapTableViewCell.xib; path = Classes/BVTYelpMapTableViewCell.xib; sourceTree = "<group>"; };
 		64934CC11E306BD300386B5B /* BVTYelpRatingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpRatingTableViewCell.xib; path = Classes/BVTYelpRatingTableViewCell.xib; sourceTree = "<group>"; };
 		64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BVTHeaderTitleView.xib; path = Classes/BVTHeaderTitleView.xib; sourceTree = "<group>"; };
+		64C733181E5A855C0019F166 /* BVTHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVTHUDView.h; sourceTree = SOURCE_ROOT; };
+		64C733191E5A855C0019F166 /* BVTHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVTHUDView.m; sourceTree = SOURCE_ROOT; };
 		64C88B4C1E5545CF00ECA06B /* BVTPresentationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTPresentationTableViewController.h; path = Classes/BVTPresentationTableViewController.h; sourceTree = SOURCE_ROOT; };
 		64C88B4D1E5545CF00ECA06B /* BVTPresentationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTPresentationTableViewController.m; path = Classes/BVTPresentationTableViewController.m; sourceTree = SOURCE_ROOT; };
 		64C88B5A1E55498100ECA06B /* BVTYelpPhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpPhotoTableViewCell.xib; path = Classes/BVTYelpPhotoTableViewCell.xib; sourceTree = "<group>"; };
 		64C88B5C1E55499800ECA06B /* BVTYelpPhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTYelpPhotoTableViewCell.h; path = /Users/gomez/Developer/bvt/Classes/BVTYelpPhotoTableViewCell.h; sourceTree = "<absolute>"; };
 		64C88B5D1E55499800ECA06B /* BVTYelpPhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpPhotoTableViewCell.m; path = /Users/gomez/Developer/bvt/Classes/BVTYelpPhotoTableViewCell.m; sourceTree = "<absolute>"; };
+		64E194F41E5AA42D0010FF1C /* BVTHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVTHUDView.xib; sourceTree = SOURCE_ROOT; };
 		64E905EB1E49704000331C3F /* BVTYelpHoursTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTYelpHoursTableViewCell.h; path = Classes/BVTYelpHoursTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		64E905EC1E49704000331C3F /* BVTYelpHoursTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpHoursTableViewCell.m; path = Classes/BVTYelpHoursTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		64E905ED1E49704000331C3F /* BVTYelpHoursTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpHoursTableViewCell.xib; path = Classes/BVTYelpHoursTableViewCell.xib; sourceTree = "<group>"; };
@@ -254,15 +259,6 @@
 			name = Header;
 			sourceTree = "<group>";
 		};
-		64C88B4A1E55417800ECA06B /* Reusable */ = {
-			isa = PBXGroup;
-			children = (
-				64C88B4C1E5545CF00ECA06B /* BVTPresentationTableViewController.h */,
-				64C88B4D1E5545CF00ECA06B /* BVTPresentationTableViewController.m */,
-			);
-			name = Reusable;
-			sourceTree = "<group>";
-		};
 		64C88B4B1E55418E00ECA06B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,8 +302,12 @@
 		64F41D611E2C497F0053EBE2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				64C88B4C1E5545CF00ECA06B /* BVTPresentationTableViewController.h */,
+				64C88B4D1E5545CF00ECA06B /* BVTPresentationTableViewController.m */,
+				64C733181E5A855C0019F166 /* BVTHUDView.h */,
+				64C733191E5A855C0019F166 /* BVTHUDView.m */,
+				64E194F41E5AA42D0010FF1C /* BVTHUDView.xib */,
 				64C88B4B1E55418E00ECA06B /* Categories */,
-				64C88B4A1E55417800ECA06B /* Reusable */,
 				64CF50E91E2D4E39004856DB /* Tutorial */,
 				64B446981E304CB200327C26 /* Header */,
 				64B4468E1E3049BD00327C26 /* Explore */,
@@ -420,6 +420,7 @@
 				64934CC41E306C1E00386B5B /* BVTHeaderTitleView.xib in Resources */,
 				64C88B5B1E55498100ECA06B /* BVTYelpPhotoTableViewCell.xib in Resources */,
 				64934CBA1E306BA800386B5B /* BVTThumbNailTableViewCell.xib in Resources */,
+				64E194F51E5AA42D0010FF1C /* BVTHUDView.xib in Resources */,
 				64934CB81E306BA100386B5B /* BVTSplitTableViewCell.xib in Resources */,
 				64934CC21E306BD300386B5B /* BVTYelpRatingTableViewCell.xib in Resources */,
 				64934CBE1E306BC700386B5B /* BVTYelpPhoneTableViewCell.xib in Resources */,
@@ -509,6 +510,7 @@
 				644112151E2D345600C3ED18 /* BVTSurpriseTableViewController.m in Sources */,
 				644112121E2D345600C3ED18 /* BVTSplitTableViewCell.m in Sources */,
 				64C88B5E1E55499800ECA06B /* BVTYelpPhotoTableViewCell.m in Sources */,
+				64C7331A1E5A855C0019F166 /* BVTHUDView.m in Sources */,
 				6441121B1E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
