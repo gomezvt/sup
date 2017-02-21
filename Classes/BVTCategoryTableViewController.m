@@ -111,10 +111,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    BVTHUDView *hud = [BVTHUDView configureHUDWithView:tableView animated:YES];
+    BVTHUDView *hud = [BVTHUDView hudWithView:tableView];
     
     // Set the label text.
-    hud.label.text = NSLocalizedString(@"Loading...", @"HUD loading title");
+    hud.label.text = @"test";
     // You can also adjust other label properties if needed.
     // hud.label.font = [UIFont italicSystemFontOfSize:16.f];
     
