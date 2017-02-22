@@ -10,9 +10,6 @@
 
 @interface BVTHUDView : UIView
 
-@property (nonatomic, weak) IBOutlet UILabel *label;
-
-//+ (instancetype)configureHUDWithView:(UIView *)view animated:(BOOL)animated;
 + (instancetype)hudWithView:(UIView *)view;
 
 @end

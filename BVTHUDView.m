@@ -16,21 +16,18 @@
 
 + (instancetype)hudWithView:(UIView *)view
 {
-    BVTHUDView *hud = [[self alloc] initWithFrame:CGRectMake(0,0,70,70)];
-    hud.backgroundColor = [UIColor redColor];
+    CGRect rect = CGRectMake(0, 0, 80, 80);
     
+    BVTHUDView *hud = [[self alloc] initWithFrame:rect];
+    hud.center = view.center;
     [view addSubview:hud];
-    
-    return hud;
-//+ (instancetype)configureHUDWithView:(UIView *)view animated:(BOOL)animated
-//{
-//    BVTHUDView *hud = [[BVTHUDView alloc] initWithFrame:CGRectMake(0,0,70.f,70.f)];
-//    
-//    [view addSubview:hud];
-// 
-//    return hud;
-//}
-}
 
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, -150, 80, 80)];
+    label.text = @"Loading...";
+    label.textAlignment = NSTextAlignmentCenter;
+    [hud addSubview:label];
+
+    return hud;
+}
 
 @end
