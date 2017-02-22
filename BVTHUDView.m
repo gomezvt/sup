@@ -16,16 +16,19 @@
 
 + (instancetype)hudWithView:(UIView *)view
 {
-    CGRect rect = CGRectMake(0, 0, 80, 80);
-    
-    BVTHUDView *hud = [[self alloc] initWithFrame:rect];
-    hud.center = view.center;
+    BVTHUDView *hud = [[self alloc] initWithFrame:CGRectMake(0, 0, 80.f, 80.f)];
     [view addSubview:hud];
-
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, -150, 80, 80)];
+    
+    UIActivityIndicatorView *ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    ai.center = hud.center;
+    [ai startAnimating];
+    [hud addSubview:ai];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, 80, 20)];
     label.text = @"Loading...";
-    label.textAlignment = NSTextAlignmentCenter;
     [hud addSubview:label];
+
+    hud.center = view.center;
 
     return hud;
 }

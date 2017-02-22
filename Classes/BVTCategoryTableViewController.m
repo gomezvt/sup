@@ -107,7 +107,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    BVTHUDView *hudClass = [BVTHUDView hudWithView:tableView];
+    BVTHUDView *hudClass = [BVTHUDView hudWithView:self.navigationController.view];
 
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *selectionTitle = cell.textLabel.text;
