@@ -21,7 +21,6 @@
 #import "BVTStyles.h"
 
 @interface BVTCategoryTableViewController ()
-//    <UITabBarDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -199,15 +198,6 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
     return cell;
 }
-
-//- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-//{
-//    if (self.hud)
-//    {
-//        [self removeHUD];
-//
-//    }
-//}
 
 #pragma mark - IBActions
 

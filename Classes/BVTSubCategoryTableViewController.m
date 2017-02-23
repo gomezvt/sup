@@ -16,6 +16,7 @@
 #import "YLPClient+Business.h"
 #import "YLPBusiness.h"
 #import "YLPSearch.h"
+#import "BVTHUDView.h"
 
 #import "BVTStyles.h"
 
@@ -23,6 +24,7 @@
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *backChevron;
 
 @end
 
@@ -64,34 +66,59 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
+    BVTHUDView *hud = [BVTHUDView hudWithView:self.navigationController.view];
+    self.tableView.userInteractionEnabled = NO;
+    self.backChevron.enabled = NO;
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     YLPBusiness *selectedBusiness = [self.filteredResults objectAtIndex:indexPath.row];
     [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
      (YLPBusiness *business, NSError *error) {
-
-         dispatch_async(dispatch_get_main_queue(), ^{
-             NSMutableArray *photosArray = [NSMutableArray array];
-             if (business.photos.count > 0)
-             {
-                 for (NSString *photoStr in business.photos)
-                 {
-                     NSURL *url = [NSURL URLWithString:photoStr];
-                     NSData *imageData = [NSData dataWithContentsOfURL:url];
-                     UIImage *image = [UIImage imageWithData:imageData];
-                     [photosArray addObject:image];
-                 }
-             }
-             business.photos = photosArray;
+         if (error) {
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
              
-             [[AppDelegate sharedClient] reviewsWithId:business.identifier completionHandler:^
-              (YLPBusiness *reviewsBiz, NSError *error) {
-                  dispatch_async(dispatch_get_main_queue(), ^{
-                      business.reviews = reviewsBiz.reviews;
-                      [self performSegueWithIdentifier:kShowDetailSegue sender:business ];
-                  });
-              }];
-         });
+             UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+             [alertController addAction:ok];
+             
+             [self presentViewController:alertController animated:YES completion:nil];
+             self.backChevron.enabled = YES;
+             self.tableView.userInteractionEnabled = YES;
+             [hud removeFromSuperview];
+         }
+         else
+         {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 NSMutableArray *photosArray = [NSMutableArray array];
+                 if (business.photos.count > 0)
+                 {
+                     for (NSString *photoStr in business.photos)
+                     {
+                         NSURL *url = [NSURL URLWithString:photoStr];
+                         NSData *imageData = [NSData dataWithContentsOfURL:url];
+                         UIImage *image = [UIImage imageWithData:imageData];
+                         [photosArray addObject:image];
+                     }
+                 }
+                 business.photos = photosArray;
+                 
+                 [[AppDelegate sharedClient] reviewsWithId:business.identifier completionHandler:^
+                  (YLPBusiness *reviewsBiz, NSError *error) {
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          business.reviews = reviewsBiz.reviews;
+                          [self performSegueWithIdentifier:kShowDetailSegue sender:business];
+                          self.backChevron.enabled = YES;
+                          self.tableView.userInteractionEnabled = YES;
+                          [hud removeFromSuperview];
+                      });
+                  }];
+             });
+         }
+
+         
      }];
 }
+
 
 #pragma mark - TableView Data Source
 

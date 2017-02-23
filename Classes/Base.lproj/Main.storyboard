@@ -505,6 +505,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backChevron" destination="7mA-wp-KOg" id="CZM-rM-RxS"/>
                         <outlet property="tableView" destination="qIq-Io-IuE" id="wkd-ll-I1G"/>
                         <outlet property="titleLabel" destination="HLp-lw-jU1" id="esv-xm-Vo6"/>
                         <segue destination="YcC-JR-9wn" kind="show" identifier="ShowDetail" id="7ud-uz-d7s"/>

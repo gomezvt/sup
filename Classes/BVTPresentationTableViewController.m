@@ -110,7 +110,12 @@ NSString *const kstar_five_mini          = @"star_five_mini.png";
         
         reviewsCell.userImageView.image = [UIImage imageNamed:@"placeholder"];
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *userStr = user[@"image_url"];
+            id userId = user[@"image_url"];
+            NSString *userStr;
+            if ([userId isKindOfClass:[NSString class]])
+            {
+                userStr = user[@"image_url"];
+            }
             NSURL *url = [NSURL URLWithString:userStr];
             NSData *imageData = [NSData dataWithContentsOfURL:url];
             UIImage *image = [UIImage imageWithData:imageData];
