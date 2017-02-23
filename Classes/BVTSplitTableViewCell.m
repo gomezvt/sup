@@ -23,27 +23,4 @@
     // Configure the view for the selected state
 }
 
-//- (void)setSelectedBusiness:(YLPBusiness *)selectedBusiness
-//{
-//    _selectedBusiness = selectedBusiness;
-//    
-//    if (self.selectedBusiness.imageURL)
-//    {
-//        
-//    }
-//    
-//    if (self.selectedBusiness.photos.count > 0)
-//    {
-//        
-//    }
-//    else if (self.selectedBusiness.imageURL)
-//    {
-//        
-//    }
-//    else
-//    {
-//        
-//    }
-//}
-
 @end

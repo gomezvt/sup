@@ -376,9 +376,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="WqS-5B-EK9">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Options for a Surprise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csm-ns-gva">
+                                    <rect key="frame" x="8" y="11.666666666666664" width="398" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="csm-ns-gva" firstAttribute="centerY" secondItem="WqS-5B-EK9" secondAttribute="centerY" id="2Ci-Wi-9SB"/>
+                                <constraint firstItem="csm-ns-gva" firstAttribute="leading" secondItem="WqS-5B-EK9" secondAttribute="leading" constant="8" id="OW7-RB-spc"/>
+                                <constraint firstAttribute="height" constant="44" id="dJU-Jo-udB"/>
+                                <constraint firstAttribute="trailing" secondItem="csm-ns-gva" secondAttribute="trailing" constant="8" id="erX-Eo-ttD"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="eWm-Zh-bqQ">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eWm-Zh-bqQ" id="74e-af-fzH">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -396,7 +415,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0np-Xi-SN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="738" y="1026"/>
+            <point key="canvasLocation" x="897" y="1058"/>
         </scene>
         <!--Burlingtonian-->
         <scene sceneID="Bfu-4q-3xs">
