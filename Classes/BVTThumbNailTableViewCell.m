@@ -10,16 +10,7 @@
 
 #import "YLPLocation.h"
 
-NSString *const star_zero_mini          = @"star_zero_mini.png";
-NSString *const star_one_mini           = @"star_one_mini.png";
-NSString *const star_one_half_mini      = @"star_one_half_mini.png";
-NSString *const star_two_mini           = @"star_two_mini.png";
-NSString *const star_two_half_mini      = @"star_two_half_mini.png";
-NSString *const star_three_mini         = @"star_three_mini.png";
-NSString *const star_three_half_mini    = @"star_three_half_mini.png";
-NSString *const star_four_mini          = @"star_four_mini.png";
-NSString *const star_four_half_mini     = @"star_four_half_mini.png";
-NSString *const star_five_mini          = @"star_five_mini.png";
+#import "BVTStyles.h"
 
 @interface BVTThumbNailTableViewCell ()
 

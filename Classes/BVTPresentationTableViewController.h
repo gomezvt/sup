@@ -13,6 +13,5 @@
 @interface BVTPresentationTableViewController : UITableViewController
 
 @property (nonatomic, strong) YLPBusiness *business;
-@property (nonatomic, strong) id sender;
 
 @end

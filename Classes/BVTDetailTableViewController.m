@@ -453,7 +453,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     {
         BVTPresentationTableViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"PresTVC"];
         controller.business = self.selectedBusiness;
-        controller.sender = button;
+        controller.title = button.titleLabel.text;
         
         // configure the Popover presentation controller
         controller.popoverPresentationController.delegate = self;

@@ -11,6 +11,8 @@
 #import "BVTYelpPhotoTableViewCell.h"
 #import "BVTYelpReviewsTableViewCell.h"
 
+#import "BVTStyles.h"
+
 @interface BVTPresentationTableViewController ()
 
 @end
@@ -19,17 +21,6 @@ static NSString *const kPhotoNib = @"BVTYelpPhotoTableViewCell";
 static NSString *const kPhotoCellID = @"BVTYelpPhotoCellIdentifier";
 static NSString *const kReviewsNib = @"BVTYelpReviewsTableViewCell";
 static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
-
-NSString *const kstar_zero_mini          = @"star_zero_mini.png";
-NSString *const kstar_one_mini           = @"star_one_mini.png";
-NSString *const kstar_one_half_mini      = @"star_one_half_mini.png";
-NSString *const kstar_two_mini           = @"star_two_mini.png";
-NSString *const kstar_two_half_mini      = @"star_two_half_mini.png";
-NSString *const kstar_three_mini         = @"star_three_mini.png";
-NSString *const kstar_three_half_mini    = @"star_three_half_mini.png";
-NSString *const kstar_four_mini          = @"star_four_mini.png";
-NSString *const kstar_four_half_mini     = @"star_four_half_mini.png";
-NSString *const kstar_five_mini          = @"star_five_mini.png";
 
 @implementation BVTPresentationTableViewController
 
@@ -56,36 +47,28 @@ NSString *const kstar_five_mini          = @"star_five_mini.png";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([self.sender isKindOfClass:[UIButton class]])
+    if ([self.title containsString:@"Reviews"])
     {
-        UIButton *button = (UIButton *)self.sender;
-        if ([button.titleLabel.text containsString:@"Reviews"])
-        {
-            return self.business.reviews.count;
-        }
-        else if ([button.titleLabel.text containsString:@"Photos"])
-        {
-            return self.business.photos.count;
-        }
+        return self.business.reviews.count;
+    }
+    else if ([self.title containsString:@"Photos"])
+    {
+        return self.business.photos.count;
     }
     return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *identifier;
+    NSString *identifier = @"";
 
-    if ([self.sender isKindOfClass:[UIButton class]])
+    if ([self.title containsString:@"Reviews"])
     {
-        UIButton *button = (UIButton *)self.sender;
-        if ([button.titleLabel.text containsString:@"Reviews"])
-        {
-            identifier = kReviewsCellID;
-        }
-        else if ([button.titleLabel.text containsString:@"Photos"])
-        {
-            identifier = kPhotoCellID;
-        }
+        identifier = kReviewsCellID;
+    }
+    else if ([self.title containsString:@"Photos"])
+    {
+        identifier = kPhotoCellID;
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
@@ -99,6 +82,7 @@ NSString *const kstar_five_mini          = @"star_five_mini.png";
             dateFormatter = [[NSDateFormatter alloc] init];
         }
         [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd  HH':'mm':'ss"];
+        
         NSDictionary *reviewDict = [self.business.reviews objectAtIndex:indexPath.row];
         NSDate *date = [dateFormatter dateFromString:reviewDict[@"time_created"]];
         [dateFormatter setDateFormat:@"MMM d, yyyy h:mm a"];
@@ -111,7 +95,7 @@ NSString *const kstar_five_mini          = @"star_five_mini.png";
         reviewsCell.userImageView.image = [UIImage imageNamed:@"placeholder"];
         dispatch_async(dispatch_get_main_queue(), ^{
             id userId = user[@"image_url"];
-            NSString *userStr;
+            NSString *userStr = @"";
             if ([userId isKindOfClass:[NSString class]])
             {
                 userStr = user[@"image_url"];
@@ -129,44 +113,44 @@ NSString *const kstar_five_mini          = @"star_five_mini.png";
         NSNumber *rating = reviewDict[@"rating"];
         if ([rating integerValue] == 0)
         {
-            ratingString = kstar_zero_mini;
+            ratingString = star_zero_mini;
         }
         else if ([rating integerValue] == 1)
         {
-            ratingString = kstar_one_mini;
+            ratingString = star_one_mini;
         }
         else if ([rating integerValue] == 1.5)
         {
-            ratingString = kstar_one_half_mini;
+            ratingString = star_one_half_mini;
         }
         else if ([rating integerValue] == 2)
         {
-            ratingString = kstar_two_mini;
+            ratingString = star_two_mini;
         }
         else if ([rating integerValue] == 2.5)
         {
-            ratingString = kstar_two_half_mini;
+            ratingString = star_two_half_mini;
         }
         else if ([rating integerValue] == 3)
         {
-            ratingString = kstar_three_mini;
+            ratingString = star_three_mini;
         }
         else if ([rating integerValue] == 3.5)
         {
-            ratingString = kstar_three_half_mini;
+            ratingString = star_three_half_mini;
         }
         else if ([rating integerValue] == 4)
         {
-            ratingString = kstar_four_mini;
+            ratingString = star_four_mini;
         }
         else if ([rating integerValue] == 4.5)
         {
-            ratingString = kstar_four_half_mini;
+            ratingString = star_four_half_mini;
         }
         else
         {
             // 5 star rating
-            ratingString = kstar_five_mini;
+            ratingString = star_five_mini;
         }
         
         [reviewsCell.ratingView setImage:[UIImage imageNamed:ratingString]];

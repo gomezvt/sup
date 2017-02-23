@@ -32,6 +32,28 @@
 
 #define kTravel @[ @"Airports", @"Airport Shuttles", @"Bike Sharing", @"Bus Stations", @"Cable Cars", @"Car Rental", @"Limos", @"Luggage Storage", @"Metro Stations", @"Motorcycle Rental", @"Passport & Visa Services", @"Pedicabs", @"Private Jet Charter", @"Public Transportation", @"RV Rental", @"Taxis", @"Town Car Service", @"Trains", @"Train Stations", @"Travel Agents", @"Vacation Rentals", @"Vacation Rental Agents", @"Visitor Centers" ]
 
+extern NSString *const star_zero_mini;
+extern NSString *const star_one_mini;
+extern NSString *const star_one_half_mini;
+extern NSString *const star_two_mini;
+extern NSString *const star_two_half_mini;
+extern NSString *const star_three_mini;
+extern NSString *const star_three_half_mini;
+extern NSString *const star_four_mini;
+extern NSString *const star_four_half_mini;
+extern NSString *const star_five_mini;
+
+extern NSString *const star_zero;
+extern NSString *const star_one;
+extern NSString *const star_one_half;
+extern NSString *const star_two;
+extern NSString *const star_two_half;
+extern NSString *const star_three;
+extern NSString *const star_three_half;
+extern NSString *const star_four;
+extern NSString *const star_four_half;
+extern NSString *const star_five;
+
 @interface BVTStyles : NSObject
 
 + (UIColor *)lightGray;

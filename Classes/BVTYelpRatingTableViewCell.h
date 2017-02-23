@@ -12,22 +12,9 @@
 
 @interface BVTYelpRatingTableViewCell : UITableViewCell
 
-extern NSString *const star_zero;
-extern NSString *const star_one;
-extern NSString *const star_one_half;
-extern NSString *const star_two;
-extern NSString *const star_two_half;
-extern NSString *const star_three;
-extern NSString *const star_three_half;
-extern NSString *const star_four;
-extern NSString *const star_four_half;
-extern NSString *const star_five;
-
+@property (nonatomic, strong) YLPBusiness *selectedBusiness;
 @property (nonatomic, weak) IBOutlet UILabel *yelpPriceLabel;
-//@property (nonatomic, weak) IBOutlet UILabel *yelpCategoryLabel;
 @property (nonatomic, weak) IBOutlet UILabel *reviewsCountLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *ratingStarsView;
-
-@property (nonatomic, strong) YLPBusiness *selectedBusiness;
 
 @end
