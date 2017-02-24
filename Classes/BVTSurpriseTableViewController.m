@@ -8,7 +8,7 @@
 
 #import "BVTSurpriseTableViewController.h"
 #import "BVTHeaderTitleView.h"
-
+#import "BVTSurpriseCategoryTableViewController.h"
 #import "BVTStyles.h"
 
 @interface BVTSurpriseTableViewController ()
@@ -18,6 +18,7 @@
 @end
 
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
+static NSString *const kShowCategorySegue = @"ShowCategory";
 
 @implementation BVTSurpriseTableViewController
 
@@ -42,6 +43,15 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
 #pragma mark - Table view data source
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    NSString *selectionTitle = [kBVTCategories objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:kShowCategorySegue sender:selectionTitle];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -49,16 +59,24 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return kBVTCategories.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = @"Surprise";
+    cell.textLabel.text = [kBVTCategories objectAtIndex:indexPath.row];
     
     return cell;
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    BVTSurpriseCategoryTableViewController *vc = [segue destinationViewController];
+    vc.categoryTitle = sender;
 }
 
 @end

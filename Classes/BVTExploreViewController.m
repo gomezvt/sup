@@ -19,11 +19,9 @@
 
 @end
 
-static NSArray *cellTitles;
 static NSArray *businessesToDisplay;
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 static NSString *const kCollectionViewCellNib = @"BVTExploreCollectionViewCell";
-static NSString *const kDefaultCellIdentifier = @"Cell";
 static NSString *const kShowCategorySegue = @"ShowCategory";
 static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
@@ -47,9 +45,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     [super viewDidLoad];
     
     UINib *cellNib = [UINib nibWithNibName:kCollectionViewCellNib bundle:nil];
-    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:kDefaultCellIdentifier];
-    
-    cellTitles = @[ @"Arts and Museums", @"Coffee, Sweets, and Bakeries", @"Music", @"Hotels, Hostels, Bed & Breakfast", @"Entertainment and Recreation", @"Bars and Lounges", @"Restaurants", @"Shopping", @"Tours and Festivals", @"Travel" ];
+    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"Cell"];
 }
 
 #pragma mark - CollectionView Delegate
@@ -61,14 +57,14 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return cellTitles.count;
+    return kBVTCategories.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    BVTExploreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDefaultCellIdentifier forIndexPath:indexPath];
+    BVTExploreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
-    cell.titleLabel.text = [cellTitles objectAtIndex:indexPath.row];
+    cell.titleLabel.text = [kBVTCategories objectAtIndex:indexPath.row];
     
     return cell;
 }

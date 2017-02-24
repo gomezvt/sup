@@ -10,6 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
+#define kBVTCategories @[ @"Arts and Museums", @"Coffee, Sweets, and Bakeries", @"Music", @"Hotels, Hostels, Bed & Breakfast", @"Entertainment and Recreation", @"Bars and Lounges", @"Restaurants", @"Shopping", @"Tours and Festivals", @"Travel" ]
 
 // Categories modeled after those found on https://www.yelp.com/developers/documentation/v2/category_list
 #define kArtsMuseums @[ @"Art Galleries", @"Museums", @"Performing Arts" ]

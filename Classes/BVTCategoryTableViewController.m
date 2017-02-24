@@ -31,7 +31,6 @@
 static NSArray *categories;
 static NSArray *businessesToDisplay;
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
-static NSString *const kDefaultCellIdentifier = @"Cell";
 static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 @implementation BVTCategoryTableViewController
@@ -192,7 +191,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDefaultCellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     cell.textLabel.text = [categories objectAtIndex:indexPath.row];
 

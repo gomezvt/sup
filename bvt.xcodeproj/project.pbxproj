@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		642362121E5FCD4900073B68 /* BVTSurpriseCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642362111E5FCD4900073B68 /* BVTSurpriseCategoryTableViewController.m */; };
+		642362181E5FDA8400073B68 /* BVTSurpriseShoppingCartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642362171E5FDA8400073B68 /* BVTSurpriseShoppingCartTableViewController.m */; };
 		643B4DAF1E2CB2C300951303 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 643B4DAD1E2CB2C300951303 /* main.m */; };
 		643B4DC31E2CB2F100951303 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 643B4DB91E2CB2F100951303 /* AppDelegate.m */; };
 		644111E71E2D33E000C3ED18 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644111E61E2D33E000C3ED18 /* MapKit.framework */; };
@@ -68,6 +70,10 @@
 		590D4A53A998579B76DD8514 /* libPods-bvt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bvt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		640178FF1E2C4BAF00BBA8D2 /* libYelpAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libYelpAPI.a; path = "../../Library/Developer/Xcode/DerivedData/bvt-hjftkdqploieouekjahtdglmzgkr/Build/Products/Debug-iphonesimulator/YelpAPI/libYelpAPI.a"; sourceTree = "<group>"; };
 		640179011E2C4BB900BBA8D2 /* YelpAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YelpAPI.framework; path = System/Library/Frameworks/YelpAPI.framework; sourceTree = SDKROOT; };
+		642362101E5FCD4900073B68 /* BVTSurpriseCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSurpriseCategoryTableViewController.h; path = /Users/gomez/Developer/bvt/Classes/BVTSurpriseCategoryTableViewController.h; sourceTree = "<absolute>"; };
+		642362111E5FCD4900073B68 /* BVTSurpriseCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSurpriseCategoryTableViewController.m; path = /Users/gomez/Developer/bvt/Classes/BVTSurpriseCategoryTableViewController.m; sourceTree = "<absolute>"; };
+		642362161E5FDA8400073B68 /* BVTSurpriseShoppingCartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSurpriseShoppingCartTableViewController.h; path = /Users/gomez/Developer/bvt/Classes/BVTSurpriseShoppingCartTableViewController.h; sourceTree = "<absolute>"; };
+		642362171E5FDA8400073B68 /* BVTSurpriseShoppingCartTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSurpriseShoppingCartTableViewController.m; path = /Users/gomez/Developer/bvt/Classes/BVTSurpriseShoppingCartTableViewController.m; sourceTree = "<absolute>"; };
 		643B4DAC1E2CB2C300951303 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		643B4DAD1E2CB2C300951303 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		643B4DB81E2CB2F100951303 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -199,6 +205,10 @@
 			children = (
 				644111FA1E2D345600C3ED18 /* BVTSurpriseTableViewController.h */,
 				644111FB1E2D345600C3ED18 /* BVTSurpriseTableViewController.m */,
+				642362101E5FCD4900073B68 /* BVTSurpriseCategoryTableViewController.h */,
+				642362111E5FCD4900073B68 /* BVTSurpriseCategoryTableViewController.m */,
+				642362161E5FDA8400073B68 /* BVTSurpriseShoppingCartTableViewController.h */,
+				642362171E5FDA8400073B68 /* BVTSurpriseShoppingCartTableViewController.m */,
 			);
 			name = Surprise;
 			path = ..;
@@ -489,11 +499,13 @@
 				644112181E2D345600C3ED18 /* BVTYelpPhoneTableViewCell.m in Sources */,
 				644112131E2D345600C3ED18 /* BVTStyles.m in Sources */,
 				644112101E2D345600C3ED18 /* BVTExploreViewController.m in Sources */,
+				642362181E5FDA8400073B68 /* BVTSurpriseShoppingCartTableViewController.m in Sources */,
 				6441120E1E2D345600C3ED18 /* BVTDetailTableViewController.m in Sources */,
 				644112161E2D345600C3ED18 /* BVTThumbNailTableViewCell.m in Sources */,
 				643B4DC31E2CB2F100951303 /* AppDelegate.m in Sources */,
 				644112171E2D345600C3ED18 /* BVTYelpAddressTableViewCell.m in Sources */,
 				644112141E2D345600C3ED18 /* BVTSubCategoryTableViewController.m in Sources */,
+				642362121E5FCD4900073B68 /* BVTSurpriseCategoryTableViewController.m in Sources */,
 				64E905EE1E49704000331C3F /* BVTYelpHoursTableViewCell.m in Sources */,
 				6441120F1E2D345600C3ED18 /* BVTExploreCollectionViewCell.m in Sources */,
 				644112191E2D345600C3ED18 /* BVTYelpMapTableViewCell.m in Sources */,

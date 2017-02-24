@@ -30,7 +30,6 @@
 
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 static NSString *const kThumbNailCell = @"BVTThumbNailTableViewCell";
-static NSString *const kDefaultCellIdentifier = @"Cell";
 static NSString *const kShowDetailSegue = @"ShowDetail";
 
 @implementation BVTSubCategoryTableViewController
@@ -56,7 +55,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.titleLabel.text = self.subCategoryTitle;
 
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
-    [self.tableView registerNib:cellNib forCellReuseIdentifier:kDefaultCellIdentifier];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:@"Cell"];
 
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -134,7 +133,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kDefaultCellIdentifier forIndexPath:indexPath];
+    BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
     
     YLPBusiness *business = [self.filteredResults objectAtIndex:indexPath.row];
