@@ -8,10 +8,15 @@
 
 #import "BVTSurpriseCategoryTableViewController.h"
 
+#import "BVTSurpriseShoppingCartTableViewController.h"
 #import "BVTHeaderTitleView.h"
 #import "BVTStyles.h"
 
 @interface BVTSurpriseCategoryTableViewController ()
+
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UIButton *goButton;
+@property (nonatomic, strong) NSMutableArray *selectedCategories;
 
 @end
 
@@ -25,12 +30,35 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 {
     [super awakeFromNib];
     
+    self.selectedCategories = [NSMutableArray array];
+    
+    
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     BVTHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.goButton setEnabled:[self evaluateButtonState]];
+
+}
+
+- (BOOL)evaluateButtonState
+{
+    BOOL isEnabled = NO;
+    
+    if (self.selectedCategories.count > 0)
+    {
+        isEnabled = YES;
+    }
+    
+    return isEnabled;
 }
 
 #pragma mark - IBActions
@@ -96,9 +124,36 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    NSString *selectionTitle = [kBVTCategories objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *category = [categories objectAtIndex:indexPath.row];
+    UIImageView *checkView;
+    NSString *fullCat = [NSString stringWithFormat:@"%@: %@", self.categoryTitle, category];
+    if (!cell.accessoryView)
+    {
+        checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"green_check"]];
+        [self.selectedCategories addObject:fullCat];
+    }
+    else
+    {
+        [self.selectedCategories removeObject:fullCat];
+        cell.accessoryView = nil;
+    }
+    cell.accessoryView = checkView;
+
     
-    [self performSegueWithIdentifier:kShowShoppingCartSegue sender:nil];
+    [self.goButton setEnabled:[self evaluateButtonState]];
+
+    
+
+}
+
+- (IBAction)didTapButton:(id)sender
+{
+    // Not wired directly from button as this will cause a double presentation
+    
+    //    NSString *selectionTitle = [kBVTCategories objectAtIndex:indexPath.row];
+    
+        [self performSegueWithIdentifier:kShowShoppingCartSegue sender:self.selectedCategories];
 }
 
 #pragma mark - Table view data source
@@ -111,6 +166,20 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return categories.count;
+}
+
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(nonnull UITableViewCell *)cell forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+//{
+//    [cell prepareForReuse];
+//}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get destination view
+    BVTSurpriseShoppingCartTableViewController *vc = [segue destinationViewController];
+    vc.selectedCategories = self.selectedCategories;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

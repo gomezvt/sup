@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BVTSurpriseShoppingCartTableViewController : UITableViewController
+@interface BVTSurpriseShoppingCartTableViewController : UIViewController
+
+@property (nonatomic, strong) NSMutableArray *selectedCategories;
 
 @end
