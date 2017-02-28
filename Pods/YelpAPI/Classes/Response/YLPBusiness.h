@@ -37,10 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray *reviews;
 @property (nonatomic, strong) NSArray *photos;
-//@property (nonatomic, strong) NSArray *businessPhotos;
 
-//@property (nonatomic, strong) UIImage *businessThumbnail;
-//@property (nonatomic, strong) NSMutableArray *photosArray;
+@property (nonatomic, strong) NSArray *userPhotosArray;
 
 @end
 

@@ -21,4 +21,11 @@
     // Configure the view for the selected state
 }
 
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    
+    self.photoView.image = nil;
+}
+
 @end

@@ -18,12 +18,6 @@
     return [self requestWithPath:businessPath];
 }
 
-- (NSURLRequest *)reviewsRequestWithId:(NSString *)businessId {
-    NSString *businessPath = [@"/v3/businesses/" stringByAppendingString:businessId];
-    NSString *reviewsPath = [businessPath stringByAppendingString:@"/reviews"];
-    return [self requestWithPath:reviewsPath];
-}
-
 - (void)businessWithId:(NSString *)businessId
      completionHandler:(void (^)(YLPBusiness *business, NSError *error))completionHandler {
     NSURLRequest *req = [self businessRequestWithId:businessId];
@@ -36,19 +30,5 @@
         }
     }];
 }
-
-- (void)reviewsWithId:(NSString *)businessId
-     completionHandler:(void (^)(YLPBusiness *business, NSError *error))completionHandler {
-    NSURLRequest *req = [self reviewsRequestWithId:businessId];
-    [self queryWithRequest:req completionHandler:^(NSDictionary *responseDict, NSError *error) {
-        if (error) {
-            completionHandler(nil, error);
-        } else {
-            YLPBusiness *business = [[YLPBusiness alloc] initWithDictionary:responseDict];
-            completionHandler(business, nil);
-        }
-    }];
-}
-
 
 @end

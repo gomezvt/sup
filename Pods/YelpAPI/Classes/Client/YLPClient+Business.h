@@ -18,9 +18,6 @@ typedef void(^YLPBusinessCompletionHandler)(YLPBusiness * _Nullable business, NS
 - (void)businessWithId:(NSString *)businessId
      completionHandler:(YLPBusinessCompletionHandler)completionHandler;
 
-- (void)reviewsWithId:(NSString *)businessId
-     completionHandler:(YLPBusinessCompletionHandler)completionHandler;
-
 @end
 
 NS_ASSUME_NONNULL_END

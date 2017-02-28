@@ -17,8 +17,11 @@
 #import "YLPBusiness.h"
 #import "YLPSearch.h"
 #import "BVTHUDView.h"
-
+#import "YLPClient+Reviews.h"
+#import "YLPBusinessReviews.h"
 #import "BVTStyles.h"
+#import "YLPReview.h"
+#import "YLPUser.h"
 
 @interface BVTSubCategoryTableViewController ()
 
@@ -77,7 +80,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
          if (error) {
              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
              
-             UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
              [alertController addAction:ok];
              
              [self presentViewController:alertController animated:YES completion:nil];
@@ -87,10 +90,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
          }
          else
          {
+             // *** Get business photos in advance if they exist, to display from Presentation VC
              dispatch_async(dispatch_get_main_queue(), ^{
-                 NSMutableArray *photosArray = [NSMutableArray array];
                  if (business.photos.count > 0)
                  {
+                     NSMutableArray *photosArray = [NSMutableArray array];
                      for (NSString *photoStr in business.photos)
                      {
                          NSURL *url = [NSURL URLWithString:photoStr];
@@ -98,19 +102,34 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          UIImage *image = [UIImage imageWithData:imageData];
                          [photosArray addObject:image];
                      }
+                     
+                     business.photos = photosArray;
                  }
-                 business.photos = photosArray;
                  
-                 [[AppDelegate sharedClient] reviewsWithId:business.identifier completionHandler:^
-                  (YLPBusiness *reviewsBiz, NSError *error) {
-                      dispatch_async(dispatch_get_main_queue(), ^{
-                          business.reviews = reviewsBiz.reviews;
-                          [self performSegueWithIdentifier:kShowDetailSegue sender:business];
-                          self.backChevron.enabled = YES;
-                          self.tableView.userInteractionEnabled = YES;
-                          [hud removeFromSuperview];
-                      });
-                  }];
+                 [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
+                                                    completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
+                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                            // *** Get review user photos in advance if they exist, to display from Presentation VC
+                                                            NSMutableArray *userPhotos = [NSMutableArray array];
+                                                            for (YLPReview *review in reviews.reviews)
+                                                            {
+                                                                YLPUser *user = review.user;
+                                                                if (user.imageURL)
+                                                                {
+                                                                    NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
+                                                                    UIImage *image = [UIImage imageWithData:imageData];
+                                                                    [userPhotos addObject:image];
+                                                                }
+                                                            }
+                                                            business.reviews = reviews.reviews;
+                                                            business.userPhotosArray = userPhotos;
+                                                            self.backChevron.enabled = YES;
+                                                            self.tableView.userInteractionEnabled = YES;
+                                                            [hud removeFromSuperview];
+                                                            
+                                                            [self performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                        });
+                                                    }];
              });
          }
 

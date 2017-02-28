@@ -10,9 +10,9 @@
 
 #import "BVTYelpPhotoTableViewCell.h"
 #import "BVTYelpReviewsTableViewCell.h"
-
+#import "YLPReview.h"
 #import "BVTStyles.h"
-
+#import "YLPUser.h"
 @interface BVTPresentationTableViewController ()
 
 @end
@@ -76,74 +76,61 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
     if ([identifier isEqualToString:kReviewsCellID])
     {
         BVTYelpReviewsTableViewCell *reviewsCell = (BVTYelpReviewsTableViewCell *)cell;
+        reviewsCell.tag = cell.tag;
+        
+        YLPReview *review = [self.business.reviews objectAtIndex:indexPath.row];
         NSDateFormatter *dateFormatter;
         if (!dateFormatter)
         {
             dateFormatter = [[NSDateFormatter alloc] init];
         }
-        [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd  HH':'mm':'ss"];
-        
-        NSDictionary *reviewDict = [self.business.reviews objectAtIndex:indexPath.row];
-        NSDate *date = [dateFormatter dateFromString:reviewDict[@"time_created"]];
         [dateFormatter setDateFormat:@"MMM d, yyyy h:mm a"];
-        reviewsCell.dateLabel.text = [dateFormatter stringFromDate:date];
-        reviewsCell.reviewLabel.text = reviewDict[@"text"];
+        
+        reviewsCell.dateLabel.text = [dateFormatter stringFromDate:review.timeCreated];
+        reviewsCell.reviewLabel.text = review.excerpt;
+        reviewsCell.nameLabel.text = review.user.name;
+        
+        UIImage *image = [self.business.userPhotosArray objectAtIndex:indexPath.row];
+        if (!image)
+        {
+            image = [UIImage imageNamed:@"placeholder"];
+        }
+        reviewsCell.userImageView.image = image;
 
-        NSDictionary *user = reviewDict[@"user"];
-        reviewsCell.nameLabel.text = user[@"name"];
-        
-        reviewsCell.userImageView.image = [UIImage imageNamed:@"placeholder"];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            id userId = user[@"image_url"];
-            NSString *userStr = @"";
-            if ([userId isKindOfClass:[NSString class]])
-            {
-                userStr = user[@"image_url"];
-            }
-            NSURL *url = [NSURL URLWithString:userStr];
-            NSData *imageData = [NSData dataWithContentsOfURL:url];
-            UIImage *image = [UIImage imageWithData:imageData];
-            if (image)
-            {
-                reviewsCell.userImageView.image = image;
-            }
-        });
-        
         NSString *ratingString;
-        NSNumber *rating = reviewDict[@"rating"];
-        if ([rating integerValue] == 0)
+        if (review.rating == 0)
         {
             ratingString = star_zero_mini;
         }
-        else if ([rating integerValue] == 1)
+        else if (review.rating == 1)
         {
             ratingString = star_one_mini;
         }
-        else if ([rating integerValue] == 1.5)
+        else if (review.rating == 1.5)
         {
             ratingString = star_one_half_mini;
         }
-        else if ([rating integerValue] == 2)
+        else if (review.rating == 2)
         {
             ratingString = star_two_mini;
         }
-        else if ([rating integerValue] == 2.5)
+        else if (review.rating == 2.5)
         {
             ratingString = star_two_half_mini;
         }
-        else if ([rating integerValue] == 3)
+        else if (review.rating == 3)
         {
             ratingString = star_three_mini;
         }
-        else if ([rating integerValue] == 3.5)
+        else if (review.rating == 3.5)
         {
             ratingString = star_three_half_mini;
         }
-        else if ([rating integerValue] == 4)
+        else if (review.rating == 4)
         {
             ratingString = star_four_mini;
         }
-        else if ([rating integerValue] == 4.5)
+        else if (review.rating == 4.5)
         {
             ratingString = star_four_half_mini;
         }
@@ -158,9 +145,18 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
     else if ([identifier isEqualToString:kPhotoCellID])
     {
         BVTYelpPhotoTableViewCell *photoCell = (BVTYelpPhotoTableViewCell *)cell;
-        photoCell.photoView.image = [self.business.photos objectAtIndex:indexPath.row];
+        photoCell.tag = indexPath.row;
+
+        UIImage *image = [self.business.photos objectAtIndex:indexPath.row];
+        if (!image)
+        {
+            image = [UIImage imageNamed:@"placeholder"];
+        }
+        photoCell.photoView.image = image;
     }
  
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
 }
 
