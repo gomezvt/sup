@@ -10,6 +10,6 @@
 
 @interface BVTSurpriseShoppingCartTableViewController : UIViewController
 
-@property (nonatomic, strong) NSMutableArray *selectedCategories;
+@property (nonatomic, strong) NSDictionary *selectedCategories;
 
 @end

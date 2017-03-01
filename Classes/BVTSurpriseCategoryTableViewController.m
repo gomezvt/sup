@@ -16,13 +16,14 @@
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
-@property (nonatomic, strong) NSMutableArray *selectedCategories;
 
 @end
 
 static NSArray *categories;
+
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
+static NSString *const kCheckMarkGraphic = @"green_check";
 
 @implementation BVTSurpriseCategoryTableViewController
 
@@ -30,15 +31,16 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 {
     [super awakeFromNib];
     
-    self.selectedCategories = [NSMutableArray array];
-    
+////    if (!self.selectedCategories)
+////    {
+//        self.selectedCategories = [[NSMutableArray alloc] init];
+////    }
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     BVTHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -46,7 +48,6 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     [super viewWillAppear:animated];
     
     [self.goButton setEnabled:[self evaluateButtonState]];
-
 }
 
 - (BOOL)evaluateButtonState
@@ -65,7 +66,11 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 
 - (IBAction)didTapBack:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([self.delegate respondsToSelector:@selector(didTapBackChevron:withCategories:)])
+    {
+        [self.delegate didTapBackChevron:sender withCategories:self.selectedCategories];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)viewDidLoad
@@ -125,17 +130,18 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
     NSString *category = [categories objectAtIndex:indexPath.row];
     UIImageView *checkView;
-    NSString *fullCat = [NSString stringWithFormat:@"%@: %@", self.categoryTitle, category];
+//    NSString *fullCat = [NSString stringWithFormat:@"%@: %@", self.categoryTitle, category];
     if (!cell.accessoryView)
     {
-        checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"green_check"]];
-        [self.selectedCategories addObject:fullCat];
+        checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kCheckMarkGraphic]];
+        [self.selectedCategories addObject:category];
     }
     else
     {
-        [self.selectedCategories removeObject:fullCat];
+        [self.selectedCategories removeObject:category];
         cell.accessoryView = nil;
     }
     cell.accessoryView = checkView;
@@ -146,7 +152,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 - (IBAction)didTapButton:(id)sender
 {
     // Not wired directly from button as this will cause a double presentation
-    [self performSegueWithIdentifier:kShowShoppingCartSegue sender:self.selectedCategories];
+    [self performSegueWithIdentifier:kShowShoppingCartSegue sender:nil];
 }
 
 #pragma mark - Table view data source
@@ -167,15 +173,33 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 {
     // Get destination view
     BVTSurpriseShoppingCartTableViewController *vc = [segue destinationViewController];
-    vc.selectedCategories = self.selectedCategories;
+    
+    NSDictionary *selectedCategories = [NSDictionary dictionaryWithObject:self.selectedCategories forKey:self.categoryTitle];
+    vc.selectedCategories = selectedCategories;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+
+    NSString *title = [categories objectAtIndex:indexPath.row];
+    cell.textLabel.text = title;
+    cell.textLabel.numberOfLines = 0;
     
-    cell.textLabel.text = [categories objectAtIndex:indexPath.row];
+    UIImageView *checkView;
+//    NSString *fullCat = [NSString stringWithFormat:@"%@: %@", self.categoryTitle, title];
+
+    if (![self.selectedCategories containsObject:title])
+    {
+        checkView = nil;
+    }
+    else
+    {
+        checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"green_check"]];
+    }
     
+    cell.accessoryView = checkView;
+
     return cell;
 }
 @end

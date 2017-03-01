@@ -10,4 +10,6 @@
 
 @interface BVTSurpriseTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSMutableArray *selectedCategories;
+
 @end
