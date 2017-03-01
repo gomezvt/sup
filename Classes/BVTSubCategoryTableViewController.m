@@ -24,10 +24,13 @@
 #import "YLPUser.h"
 
 @interface BVTSubCategoryTableViewController ()
+    <BVTHUDViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *backChevron;
+@property (nonatomic, strong) BVTHUDView *hud;
+@property (nonatomic) BOOL didCancelRequest;
 
 @end
 
@@ -64,11 +67,22 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
+- (void)didTapHUDCancelButton
+{
+    self.didCancelRequest = YES;
+    self.backChevron.enabled = YES;
+    self.tableView.userInteractionEnabled = YES;
+    [self.hud removeFromSuperview];
+}
+
 #pragma mark - TableView Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    BVTHUDView *hud = [BVTHUDView hudWithView:self.navigationController.view];
+    self.hud = [BVTHUDView hudWithView:self.navigationController.view];
+    self.hud.delegate = self;
+    
+    self.didCancelRequest = NO;
     self.tableView.userInteractionEnabled = NO;
     self.backChevron.enabled = NO;
     
@@ -86,7 +100,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
              [self presentViewController:alertController animated:YES completion:nil];
              self.backChevron.enabled = YES;
              self.tableView.userInteractionEnabled = YES;
-             [hud removeFromSuperview];
+             [self.hud removeFromSuperview];
          }
          else
          {
@@ -125,9 +139,12 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                             business.userPhotosArray = userPhotos;
                                                             self.backChevron.enabled = YES;
                                                             self.tableView.userInteractionEnabled = YES;
-                                                            [hud removeFromSuperview];
+                                                            [self.hud removeFromSuperview];
                                                             
-                                                            [self performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                            if (!self.didCancelRequest)
+                                                            {
+                                                                [self performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                            }
                                                         });
                                                     }];
              });
