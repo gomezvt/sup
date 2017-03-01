@@ -140,20 +140,13 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     }
     cell.accessoryView = checkView;
 
-    
     [self.goButton setEnabled:[self evaluateButtonState]];
-
-    
-
 }
 
 - (IBAction)didTapButton:(id)sender
 {
     // Not wired directly from button as this will cause a double presentation
-    
-    //    NSString *selectionTitle = [kBVTCategories objectAtIndex:indexPath.row];
-    
-        [self performSegueWithIdentifier:kShowShoppingCartSegue sender:self.selectedCategories];
+    [self performSegueWithIdentifier:kShowShoppingCartSegue sender:self.selectedCategories];
 }
 
 #pragma mark - Table view data source
