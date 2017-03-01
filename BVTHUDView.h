@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BVTHUDViewDelegate <NSObject>
+
+- (void)didTapHUDCancelButton;
+
+@end
+
 @interface BVTHUDView : UIView
 
 + (instancetype)hudWithView:(UIView *)view;
+@property(nonatomic, weak)id <BVTHUDViewDelegate> delegate;
 
 @end

@@ -21,10 +21,14 @@
 #import "BVTStyles.h"
 
 @interface BVTCategoryTableViewController ()
+    <BVTHUDViewDelegate>
 
+@property (nonatomic, strong) BVTHUDView *hud;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *backChevron;
+@property (nonatomic) BOOL didCancelRequest;
+
 
 @end
 
@@ -103,11 +107,22 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
+- (void)didTapHUDCancelButton
+{
+    self.didCancelRequest = YES;
+    self.backChevron.enabled = YES;
+    self.tableView.userInteractionEnabled = YES;
+    [self.hud removeFromSuperview];
+}
+
 #pragma mark - TableView Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    BVTHUDView *hud = [BVTHUDView hudWithView:self.navigationController.view];
+    self.hud = [BVTHUDView hudWithView:self.navigationController.view];
+    self.hud.delegate = self;
+    self.didCancelRequest = NO;
+    
     self.tableView.userInteractionEnabled = NO;
     self.backChevron.enabled = NO;
     
@@ -117,7 +132,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     
-    [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
+    [[AppDelegate sharedClient] searchWithLocation:@"New York, NY" term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error) {
          dispatch_async(dispatch_get_main_queue(), ^{
              if (searchResults.businesses.count > 0) {
@@ -135,8 +150,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
                      NSArray *descriptor = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
                      NSArray *sortedArray = [filteredArray sortedArrayUsingDescriptors:descriptor];
                      
-                     [self performSegueWithIdentifier:kShowSubCategorySegue sender:@[ selectionTitle, sortedArray ]];
-                     
+                     if (!self.didCancelRequest)
+                     {
+                         [self performSegueWithIdentifier:kShowSubCategorySegue sender:@[ selectionTitle, sortedArray ]];
+                     }
                  }
                  else
                  {
@@ -170,7 +187,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
              }
              self.backChevron.enabled = YES;
              self.tableView.userInteractionEnabled = YES;
-             [hud removeFromSuperview];
+             [self.hud removeFromSuperview];
          });
      }];
 }
