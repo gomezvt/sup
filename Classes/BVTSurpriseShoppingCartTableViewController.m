@@ -109,7 +109,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-    NSArray *subCategories = [self.selectedCategories allValues];
+//    NSArray *subCategories = [self.selectedCategories allValues];
     
 //    cell.textLabel.text = [self.selectedCategories objectAtIndex:indexPath.row];
     cell.textLabel.numberOfLines = 0;

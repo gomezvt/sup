@@ -1,23 +1,15 @@
 //
-//  BVTSurpriseCategoryTableViewController.h
-//  bvt
+//  BVTSurpriseTableViewController.h
+//  burlingtonian
 //
-//  Created by Greg on 2/23/17.
-//  Copyright © 2017 gms. All rights reserved.
+//  Created by Greg on 12/20/16.
+//  Copyright © 2016 gomez. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@protocol BVTSurpriseCategoryTableViewControllerDelegate <NSObject>
+@interface BVTSurpriseCategoryTableViewController : UITableViewController
 
-- (void)didTapBackChevron:(id)sender withCategories:(NSMutableArray *)categories;
-
-@end
-
-@interface BVTSurpriseCategoryTableViewController : UIViewController
-
-@property (nonatomic, copy) NSString *categoryTitle;
-@property (nonatomic, strong) NSMutableArray *selectedCategories;
-@property(nonatomic, weak)id <BVTSurpriseCategoryTableViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSMutableDictionary *selectedCategories;
 
 @end

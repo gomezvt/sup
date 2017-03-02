@@ -371,7 +371,7 @@
         <!--Burlingtonian-->
         <scene sceneID="ULk-wZ-2AK">
             <objects>
-                <tableViewController id="27m-ha-KXX" customClass="BVTSurpriseTableViewController" sceneMemberID="viewController">
+                <tableViewController id="27m-ha-KXX" customClass="BVTSurpriseCategoryTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Mu-Dd-M3r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -423,7 +423,7 @@
         <!--Burlingtonian-->
         <scene sceneID="x8r-6n-wkn">
             <objects>
-                <viewController id="drD-Ic-Hni" customClass="BVTSurpriseCategoryTableViewController" sceneMemberID="viewController">
+                <viewController id="drD-Ic-Hni" customClass="BVTSurpriseSubCategoryTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C5B-vQ-Skg"/>
                         <viewControllerLayoutGuide type="bottom" id="l5c-N4-Nfh"/>

@@ -1,29 +1,25 @@
 //
-//  BVTSurpriseCategoryTableViewController.m
-//  bvt
+//  BVTSurpriseTableViewController.m
+//  burlingtonian
 //
-//  Created by Greg on 2/23/17.
-//  Copyright © 2017 gms. All rights reserved.
+//  Created by Greg on 12/20/16.
+//  Copyright © 2016 gomez. All rights reserved.
 //
 
 #import "BVTSurpriseCategoryTableViewController.h"
-
-#import "BVTSurpriseShoppingCartTableViewController.h"
 #import "BVTHeaderTitleView.h"
+#import "BVTSurpriseSubCategoryTableViewController.h"
 #import "BVTStyles.h"
 
 @interface BVTSurpriseCategoryTableViewController ()
+<BVTSurpriseSubCategoryTableViewControllerDelegate>
 
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, weak) IBOutlet UIButton *goButton;
+@property (nonatomic, strong) BVTHeaderTitleView *headerTitleView;
 
 @end
 
-static NSArray *categories;
-
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
-static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
-static NSString *const kCheckMarkGraphic = @"green_check";
+static NSString *const kShowCategorySegue = @"ShowCategory";
 
 @implementation BVTSurpriseCategoryTableViewController
 
@@ -32,125 +28,42 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     [super awakeFromNib];
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
-    BVTHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    headerTitleView.titleViewLabelConstraint.constant = -20.f;
-    self.navigationItem.titleView = headerTitleView;
+    self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
+    
+
+
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)didTapBackChevron:(id)sender withCategories:(NSMutableArray *)categories
 {
-    [super viewWillAppear:animated];
-    
-    [self.goButton setEnabled:[self evaluateButtonState]];
-}
-
-- (BOOL)evaluateButtonState
-{
-    BOOL isEnabled = NO;
-    
-    if (self.selectedCategories.count > 0)
-    {
-        isEnabled = YES;
-    }
-    
-    return isEnabled;
-}
-
-#pragma mark - IBActions
-
-- (IBAction)didTapBack:(id)sender
-{
-    if ([self.delegate respondsToSelector:@selector(didTapBackChevron:withCategories:)])
-    {
-        [self.delegate didTapBackChevron:sender withCategories:self.selectedCategories];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+//    self.selectedCategories = categories;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    categories = @[ ];
-        
-    if ([self.categoryTitle isEqualToString:@"Arts and Museums"])
-    {
-        categories = kArtsMuseums;
-    }
-    else if ([self.categoryTitle isEqualToString:@"Coffee, Sweets, and Bakeries"])
-    {
-        categories = kCoffeeSweetsBakeries;
-    }
-    else if ([self.categoryTitle isEqualToString:@"Music"])
-    {
-        categories = kMusic;
-    }
-    else if ([self.categoryTitle isEqualToString:@"Hotels, Hostels, Bed & Breakfast"])
-    {
-        categories = kHotelsHostelsBB;
-    }
-    else if ([self.categoryTitle isEqualToString:@"Entertainment and Recreation"])
-    {
-        categories = kEntertainmentRecreation;
-    }
-    else if ([self.categoryTitle isEqualToString:@"Bars and Lounges"])
-    {
-        categories = kBarsLounges;
-    }
-    else if ([self.categoryTitle isEqualToString:@"Restaurants"])
-    {
-        categories = kRestaurants;
-    }
-    else if ([self.categoryTitle isEqualToString:@"Shopping"])
-    {
-        categories = kShopping;
-    }
-    else if ([self.categoryTitle isEqualToString:@"Tours and Festivals"])
-    {
-        categories = kToursFestivals;
-    }
-    else
-    {
-        // Travel
-        categories = kTravel;
-    }
-    
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    if (!self.selectedCategories)
+    {
+        self.selectedCategories = [[NSMutableDictionary alloc] init];
+    }
 }
+
+#pragma mark - Table view data source
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    NSString *selectionTitle = [kBVTCategories objectAtIndex:indexPath.row];
     
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    NSString *category = [categories objectAtIndex:indexPath.row];
-    UIImageView *checkView;
-//    NSString *fullCat = [NSString stringWithFormat:@"%@: %@", self.categoryTitle, category];
-    if (!cell.accessoryView)
-    {
-        checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kCheckMarkGraphic]];
-        [self.selectedCategories addObject:category];
-    }
-    else
-    {
-        [self.selectedCategories removeObject:category];
-        cell.accessoryView = nil;
-    }
-    cell.accessoryView = checkView;
-
-    [self.goButton setEnabled:[self evaluateButtonState]];
+    [self performSegueWithIdentifier:kShowCategorySegue sender:selectionTitle];
 }
-
-- (IBAction)didTapButton:(id)sender
-{
-    // Not wired directly from button as this will cause a double presentation
-    [self performSegueWithIdentifier:kShowShoppingCartSegue sender:nil];
-}
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -159,42 +72,28 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return categories.count;
+    return kBVTCategories.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    cell.textLabel.text = [kBVTCategories objectAtIndex:indexPath.row];
+    cell.textLabel.numberOfLines = 0;
+
+    return cell;
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get destination view
-    BVTSurpriseShoppingCartTableViewController *vc = [segue destinationViewController];
+    BVTSurpriseSubCategoryTableViewController *vc = [segue destinationViewController];
+    vc.delegate = self;
+    vc.selectedCategories = self.selectedCategories;
     
-    NSDictionary *selectedCategories = [NSDictionary dictionaryWithObject:self.selectedCategories forKey:self.categoryTitle];
-    vc.selectedCategories = selectedCategories;
+    vc.categoryTitle = sender;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSString *title = [categories objectAtIndex:indexPath.row];
-    cell.textLabel.text = title;
-    cell.textLabel.numberOfLines = 0;
-    
-    UIImageView *checkView;
-//    NSString *fullCat = [NSString stringWithFormat:@"%@: %@", self.categoryTitle, title];
-
-    if (![self.selectedCategories containsObject:title])
-    {
-        checkView = nil;
-    }
-    else
-    {
-        checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"green_check"]];
-    }
-    
-    cell.accessoryView = checkView;
-
-    return cell;
-}
 @end
