@@ -53,10 +53,16 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 - (BOOL)evaluateButtonState
 {
     BOOL isEnabled = NO;
+    NSArray *selectedCats = [self.selectedCategories allValues];
     
-    if (self.selectedCategories.count > 0)
+    for (NSArray *array in selectedCats)
     {
-        isEnabled = YES;
+        if (array.count > 0)
+        {
+            isEnabled = YES;
+            
+            break;
+        }
     }
     
     return isEnabled;
@@ -68,10 +74,6 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 {
     if ([self.delegate respondsToSelector:@selector(didTapBackChevron:withCategories:)])
     {
-//        self.dict = [NSDictionary dictionaryWithObject:self.subCats forKey:self.categoryTitle];
-//        [self.selectedCategories addEntriesFromDictionary:self.dict];
-
-        
         [self.delegate didTapBackChevron:sender withCategories:self.selectedCategories];
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -139,19 +141,22 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     NSString *category = [categories objectAtIndex:indexPath.row];
-    UIImageView *checkView;
-//    NSString *fullCat = [NSString stringWithFormat:@"%@: %@", self.categoryTitle, category];
-//    if (!cell.accessoryView)
-//    {
-        checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kCheckMarkGraphic]];
+    
+    if (cell.accessoryView)
+    {
+        if ([self.subCats containsObject:category])
+        {
+            [self.subCats removeObject:category];
+        }
+        cell.accessoryView = nil;
+    }
+    else
+    {
+        UIImageView *checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kCheckMarkGraphic]];
+        cell.accessoryView = checkView;
         [self.subCats addObject:category];
-//    }
-//    else
-//    {
-//        [self.subCats removeObject:category];
-//        cell.accessoryView = nil;
-//    }
-    cell.accessoryView = checkView;
+    }
+
     
     
     NSDictionary *dict = [NSDictionary dictionaryWithObject:self.subCats forKey:self.categoryTitle];
@@ -162,12 +167,6 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
 - (IBAction)didTapButton:(id)sender
 {
-//    self.dict = [NSDictionary dictionaryWithObject:self.subCats forKey:self.categoryTitle];
-//    [self.selectedCategories addEntriesFromDictionary:self.dict];
-
-
-//    [self.selectedCategories addObject:self.dict];
-    
     // Not wired directly from button as this will cause a double presentation
     [self performSegueWithIdentifier:kShowShoppingCartSegue sender:nil];
 }
@@ -190,10 +189,6 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 {
     // Get destination view
     BVTSurpriseShoppingCartTableViewController *vc = [segue destinationViewController];
-    
-
-//    [self.selectedCategories addObject:self.dict];
-    
     vc.selectedCategories = self.selectedCategories;
 }
 
@@ -205,17 +200,18 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     cell.textLabel.text = title;
     cell.textLabel.numberOfLines = 0;
     
-    UIImageView *checkView;
-    if (![self.selectedCategories objectForKey:title])
+    NSArray *array = [self.selectedCategories allValues];
+    NSString *btitle = [[array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[c] %@", title]] lastObject];
+    if (!btitle)
     {
-        checkView = nil;
+        cell.accessoryView = nil;
     }
     else
     {
-        checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"green_check"]];
+        UIImageView *checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"green_check"]];
+        cell.accessoryView = checkView;
     }
     
-    cell.accessoryView = checkView;
 
     return cell;
 }
