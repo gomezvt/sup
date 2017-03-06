@@ -45,8 +45,6 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 {
     [super viewWillAppear:animated];
     
-//    self.dict = [NSDictionary dictionary];
-    
     [self.goButton setEnabled:[self evaluateButtonState]];
 }
 
@@ -57,18 +55,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     {
         isEnabled = YES;
     }
-//    NSArray *selectedCats = [self.selectedCategories allValues];
-    
-//    for (NSArray *array in selectedCats)
-//    {
-//        if (array.count > 0)
-//        {
-//            isEnabled = YES;
-//            
-//            break;
-//        }
-//    }
-    
+
     return isEnabled;
 }
 
@@ -99,7 +86,6 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
     }
 
-    
     categories = @[ ];
         
     if ([self.categoryTitle isEqualToString:@"Arts and Museums"])
@@ -153,9 +139,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    NSString *category = [categories objectAtIndex:indexPath.row];
-    
+    NSString *category = [categories objectAtIndex:indexPath.row];    
     if (cell.accessoryView)
     {
         if ([self.mut containsObject:category])
@@ -179,8 +163,6 @@ static NSString *const kCheckMarkGraphic = @"green_check";
         [self.subCats addObject:category];
     }
 
-    
-    
     NSDictionary *dict = [NSDictionary dictionaryWithObject:self.mut forKey:self.categoryTitle];
     [self.selectedCategories addEntriesFromDictionary:dict];
 
@@ -235,7 +217,6 @@ static NSString *const kCheckMarkGraphic = @"green_check";
         UIImageView *checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"green_check"]];
         cell.accessoryView = checkView;
     }
-    
 
     return cell;
 }
