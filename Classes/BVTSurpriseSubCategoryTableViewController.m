@@ -13,11 +13,11 @@
 #import "BVTStyles.h"
 
 @interface BVTSurpriseSubCategoryTableViewController ()
+    <BVTSurpriseShoppingCartTableViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
-//@property (nonatomic, strong) NSDictionary *dict;
-@property (nonatomic, strong) NSMutableArray *subCats;
+@property (nonatomic, strong) NSMutableArray *mut;
 
 @end
 
@@ -38,7 +38,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
-
+    self.mut = [NSMutableArray array];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -53,17 +53,21 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 - (BOOL)evaluateButtonState
 {
     BOOL isEnabled = NO;
-    NSArray *selectedCats = [self.selectedCategories allValues];
-    
-    for (NSArray *array in selectedCats)
+    if (self.subCats.count > 0)
     {
-        if (array.count > 0)
-        {
-            isEnabled = YES;
-            
-            break;
-        }
+        isEnabled = YES;
     }
+//    NSArray *selectedCats = [self.selectedCategories allValues];
+    
+//    for (NSArray *array in selectedCats)
+//    {
+//        if (array.count > 0)
+//        {
+//            isEnabled = YES;
+//            
+//            break;
+//        }
+//    }
     
     return isEnabled;
 }
@@ -72,18 +76,28 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
 - (IBAction)didTapBack:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(didTapBackChevron:withCategories:)])
+    if ([self.delegate respondsToSelector:@selector(didTapBackWithSubCategories:withCategories:)])
     {
-        [self.delegate didTapBackChevron:sender withCategories:self.selectedCategories];
+        [self.delegate didTapBackWithSubCategories:self.subCats withCategories:self.selectedCategories];
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (void)didTapBackWithSubCategories:(NSMutableArray *)array withCategories:(NSMutableDictionary *)categories
+{
+    self.subCats = array;
+    self.selectedCategories = categories;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.subCats = [NSMutableArray array];
+    if (!self.subCats)
+    {
+        self.subCats = [NSMutableArray array];
+
+    }
 
     
     categories = @[ ];
@@ -144,9 +158,16 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     
     if (cell.accessoryView)
     {
+        if ([self.mut containsObject:category])
+        {
+            [self.mut removeObject:category];
+
+        }
+        
         if ([self.subCats containsObject:category])
         {
             [self.subCats removeObject:category];
+
         }
         cell.accessoryView = nil;
     }
@@ -154,12 +175,13 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     {
         UIImageView *checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kCheckMarkGraphic]];
         cell.accessoryView = checkView;
+        [self.mut addObject:category];
         [self.subCats addObject:category];
     }
 
     
     
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:self.subCats forKey:self.categoryTitle];
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:self.mut forKey:self.categoryTitle];
     [self.selectedCategories addEntriesFromDictionary:dict];
 
     [self.goButton setEnabled:[self evaluateButtonState]];
@@ -190,6 +212,8 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     // Get destination view
     BVTSurpriseShoppingCartTableViewController *vc = [segue destinationViewController];
     vc.selectedCategories = self.selectedCategories;
+    vc.subCats = self.subCats;
+    vc.delegate = self;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

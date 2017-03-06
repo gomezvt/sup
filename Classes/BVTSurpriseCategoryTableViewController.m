@@ -15,6 +15,7 @@
 <BVTSurpriseSubCategoryTableViewControllerDelegate>
 
 @property (nonatomic, strong) BVTHeaderTitleView *headerTitleView;
+@property (nonatomic, strong) NSMutableArray *subCats;
 
 @end
 
@@ -36,9 +37,10 @@ static NSString *const kShowCategorySegue = @"ShowCategory";
 
 }
 
-- (void)didTapBackChevron:(id)sender withCategories:(NSMutableArray *)categories
+- (void)didTapBackWithSubCategories:(NSMutableArray *)array withCategories:(NSMutableDictionary *)categories
 {
-//    self.selectedCategories = categories;
+    self.subCats = array;
+    self.selectedCategories = categories;
 }
 
 - (void)viewDidLoad
@@ -92,7 +94,7 @@ static NSString *const kShowCategorySegue = @"ShowCategory";
     BVTSurpriseSubCategoryTableViewController *vc = [segue destinationViewController];
     vc.delegate = self;
     vc.selectedCategories = self.selectedCategories;
-    
+    vc.subCats = self.subCats;
     vc.categoryTitle = sender;
 }
 
