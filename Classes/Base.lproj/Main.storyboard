@@ -384,15 +384,17 @@
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoc-y8-kQY">
-                                        <rect key="frame" x="360" y="7" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="275" y="7" width="131" height="30"/>
+                                        <state key="normal" title="Review and Submit">
+                                            <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="didTapButton:" destination="drD-Ic-Hni" eventType="touchUpInside" id="2M4-Z7-BpA"/>
                                             <segue destination="Lks-cD-BTu" kind="show" identifier="ShowShoppingCart" id="y5n-5S-q2S"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="gTm-m7-0yy"/>
                                     <constraint firstAttribute="trailing" secondItem="zoc-y8-kQY" secondAttribute="trailing" constant="8" id="nm2-R5-oKV"/>
@@ -495,14 +497,16 @@
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anx-P9-EDI">
-                                        <rect key="frame" x="360" y="7" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="275" y="7" width="131" height="30"/>
+                                        <state key="normal" title="Review and Submit">
+                                            <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="didTapButton:" destination="drD-Ic-Hni" eventType="touchUpInside" id="j2Y-h4-6hP"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="anx-P9-EDI" secondAttribute="trailing" constant="8" id="8H3-7b-8MA"/>
                                     <constraint firstAttribute="bottom" secondItem="anx-P9-EDI" secondAttribute="bottom" constant="7" id="BWl-MD-U49"/>
@@ -559,7 +563,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2EX-kl-RpN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1577" y="1815"/>
+            <point key="canvasLocation" x="1491" y="1401"/>
         </scene>
         <!--Burlingtonian-->
         <scene sceneID="9HH-QN-d49">
@@ -593,14 +597,16 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scJ-6i-ccx">
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="jpL-jo-d0k"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-3J-PRy">
                                 <rect key="frame" x="357" y="653" width="49" height="30"/>
-                                <state key="normal" title="Submit"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="didTapButton:" destination="drD-Ic-Hni" eventType="touchUpInside" id="ND6-qe-bIY"/>
                                     <action selector="didTapSubmit:" destination="Lks-cD-BTu" eventType="touchUpInside" id="J1f-Tg-Esz"/>
@@ -781,6 +787,6 @@
         <image name="back_chevron" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y5n-5S-q2S"/>
+        <segue reference="itC-Zp-WcB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -62,7 +62,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
+    [self.goButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     if (!self.selectedCategories)
     {
         self.selectedCategories = [[NSMutableDictionary alloc] init];

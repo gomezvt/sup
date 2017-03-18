@@ -132,6 +132,8 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    [self.goButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
