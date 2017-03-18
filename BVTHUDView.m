@@ -49,7 +49,7 @@
     UIView *cancelView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 110.f, 50.f)];
     cancelView.backgroundColor = green;
     cancelView.layer.cornerRadius = 20.f;
-    cancelView.center = CGPointMake(hud.center.x, 150.f);
+    cancelView.center = CGPointMake(hud.center.x, 140.f);
     cancelView.alpha = .9f;
     
     UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0.f, 0.f, 110.f, 30.f)];

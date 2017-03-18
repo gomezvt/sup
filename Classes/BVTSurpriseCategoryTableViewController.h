@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BVTSurpriseCategoryTableViewController : UITableViewController
+@interface BVTSurpriseCategoryTableViewController : UIViewController
 
 @property (nonatomic, strong) NSMutableDictionary *selectedCategories;
 
