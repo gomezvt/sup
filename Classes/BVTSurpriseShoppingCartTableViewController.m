@@ -76,10 +76,10 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *array = [self.selectedCategories allValues];
-    NSArray *b = [array objectAtIndex:section];
+    NSString *key = [self.selectedCategories allKeys][section];
+    NSArray *a = [self.selectedCategories objectForKey:key];
     
-    return b.count;
+    return a.count;
 }
 
 - (void)viewWillAppear:(BOOL)animated
