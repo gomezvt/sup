@@ -428,7 +428,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wZC-dH-3b2" id="cPs-It-ycJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -608,8 +608,7 @@
                                     <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapButton:" destination="drD-Ic-Hni" eventType="touchUpInside" id="ND6-qe-bIY"/>
-                                    <action selector="didTapSubmit:" destination="Lks-cD-BTu" eventType="touchUpInside" id="J1f-Tg-Esz"/>
+                                    <action selector="didTapSubmit:" destination="Lks-cD-BTu" eventType="touchUpInside" id="kwn-S8-E3C"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2FZ-Ix-VMn">
@@ -657,7 +656,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="goButton" destination="iy3-3J-PRy" id="F1c-PN-6i0"/>
+                        <outlet property="goButton" destination="iy3-3J-PRy" id="nrP-TY-GaP"/>
                         <outlet property="tableView" destination="2FZ-Ix-VMn" id="pBX-oo-gpK"/>
                     </connections>
                 </viewController>

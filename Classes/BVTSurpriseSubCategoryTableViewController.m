@@ -161,7 +161,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     {
         UIImageView *checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kCheckMarkGraphic]];
         cell.accessoryView = checkView;
-        [self.mut addObject:category];
+        [self.mut addObject:category];[self.goButton setEnabled:[self evaluateButtonState]];
         [self.subCats addObject:category];
     }
 
