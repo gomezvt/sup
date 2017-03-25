@@ -10,6 +10,6 @@
 
 @interface BVTSurpriseCategoryTableViewController : UIViewController
 
-@property (nonatomic, strong) NSMutableDictionary *selectedCategories;
+@property (nonatomic, strong) NSMutableDictionary *catDict;
 
 @end

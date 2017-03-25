@@ -16,7 +16,6 @@
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
-//@property (nonatomic, strong) NSMutableArray *a;
 
 @end
 
@@ -46,9 +45,9 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
 - (IBAction)didTapBack:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(didTapBackWithSubCategories:withCategories:)])
+    if ([self.delegate respondsToSelector:@selector(didTapBackWithCategories:)])
     {
-        [self.delegate didTapBackWithSubCategories:self.subCats withCategories:self.selectedCategories];
+        [self.delegate didTapBackWithCategories:self.catDict];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -59,20 +58,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 {
     [super viewDidLoad];
     
-    
     [self.goButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
 
-}
-
-- (BOOL)evaluateButtonState
-{
-    BOOL isEnabled = NO;
-    if (self.subCats.count > 0)
-    {
-        isEnabled = YES;
-    }
-    
-    return isEnabled;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,68 +71,58 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.selectedCategories allKeys].count;
+    return self.catDict.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSString *key = [self.selectedCategories allKeys][section];
-    self.subCats = [self.selectedCategories objectForKey:key];
-    
-    return self.subCats.count;
+    NSString *key = [self.catDict allKeys][section];
+    NSArray *k = [self.catDict objectForKey:key];
+
+    return k.count;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-[self.goButton setEnabled:[self evaluateButtonState]];
+    [self.goButton setEnabled:[self evaluateButtonState]];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSArray *array = [self.selectedCategories allValues][section];
+    NSArray *array = [self.catDict allValues][section];
     if (array.count > 0)
     {
-        return [self.selectedCategories allKeys][section];
+        return [self.catDict allKeys][section];
     }
 
         return nil;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    //add code here for when you hit delete
-//    NSString *key = [self.selectedCategories allKeys][indexPath.section];
-//    NSArray *a = [self.selectedCategories objectForKey:key];
-//    NSMutableArray *array = [NSMutableArray array];
-//    [array addObjectsFromArray:a];
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSArray *key = [self.selectedCategories allValues][indexPath.section];
-        NSString *str = [key objectAtIndex:indexPath.row];
-        if ([self.subCats containsObject:str])
+
+- (BOOL)evaluateButtonState
+{
+    BOOL isEnabled = NO;
+    NSArray *allValues = [self.catDict allValues];
+    for (NSArray *array in allValues)
+    {
+        if (array.count > 0)
         {
-            [self.subCats removeObjectAtIndex:indexPath.row];
-            [tableView reloadData];
-            
-            [self.goButton setEnabled:[self evaluateButtonState]];
-
+            isEnabled = YES;
+            break;
         }
-        
-
-        
-        
     }
+    
+    return isEnabled;
 }
-
-
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSArray *sectionValues = [self.selectedCategories allValues][indexPath.section];
+    NSArray *sectionValues = [self.catDict allValues][indexPath.section];
 
     cell.textLabel.text = sectionValues[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

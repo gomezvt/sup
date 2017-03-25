@@ -16,7 +16,6 @@
 <BVTSurpriseSubCategoryTableViewControllerDelegate>
 
 @property (nonatomic, strong) BVTHeaderTitleView *headerTitleView;
-@property (nonatomic, strong) NSMutableArray *subCats;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
 
@@ -41,19 +40,9 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 
 }
 
-- (IBAction)didTapBack:(id)sender
+- (void)didTapBackWithCategories:(NSMutableDictionary *)categories
 {
-//    if ([self.delegate respondsToSelector:@selector(didTapBackWithSubCategories:withCategories:)])
-//    {
-//        [self.delegate didTapBackWithSubCategories:self.subCats withCategories:self.selectedCategories];
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
-}
-
-- (void)didTapBackWithSubCategories:(NSMutableArray *)array withCategories:(NSMutableDictionary *)categories
-{
-    self.subCats = array;
-    self.selectedCategories = categories;
+    self.catDict = categories;
 }
 
 - (void)viewDidLoad
@@ -63,10 +52,6 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.goButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-    if (!self.selectedCategories)
-    {
-        self.selectedCategories = [[NSMutableDictionary alloc] init];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -79,9 +64,14 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 - (BOOL)evaluateButtonState
 {
     BOOL isEnabled = NO;
-    if (self.subCats.count > 0)
+    NSArray *allValues = [self.catDict allValues];
+    for (NSArray *array in allValues)
     {
-        isEnabled = YES;
+        if (array.count > 0)
+        {
+            isEnabled = YES;
+            break;
+        }
     }
     
     return isEnabled;
@@ -126,15 +116,13 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     {
         // Get destination view
         BVTSurpriseShoppingCartTableViewController *vc = [segue destinationViewController];
-        vc.selectedCategories = self.selectedCategories;
-        vc.subCats = self.subCats;
+        vc.catDict = self.catDict;
     }
     else
     {
         BVTSurpriseSubCategoryTableViewController *vc = [segue destinationViewController];
         vc.delegate = self;
-        vc.selectedCategories = self.selectedCategories;
-        vc.subCats = self.subCats;
+        vc.catDict = self.catDict;
         vc.categoryTitle = sender;
     }
 }

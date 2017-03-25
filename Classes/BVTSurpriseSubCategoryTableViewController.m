@@ -38,7 +38,6 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
-    self.mut = [NSMutableArray array];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,9 +50,14 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 - (BOOL)evaluateButtonState
 {
     BOOL isEnabled = NO;
-    if (self.subCats.count > 0)
+    NSArray *allValues = [self.catDict allValues];
+    for (NSArray *array in allValues)
     {
-        isEnabled = YES;
+        if (array.count > 0)
+        {
+            isEnabled = YES;
+            break;
+        }
     }
 
     return isEnabled;
@@ -63,27 +67,30 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
 - (IBAction)didTapBack:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(didTapBackWithSubCategories:withCategories:)])
+    if ([self.delegate respondsToSelector:@selector(didTapBackWithCategories:)])
     {
-        [self.delegate didTapBackWithSubCategories:self.subCats withCategories:self.selectedCategories];
+        [self.delegate didTapBackWithCategories:self.catDict];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
-- (void)didTapBackWithSubCategories:(NSMutableArray *)array withCategories:(NSMutableDictionary *)categories
+- (void)didTapBackWithCategories:(NSMutableDictionary *)categories
 {
-    self.subCats = array;
-    self.selectedCategories = categories;
+    self.catDict = self.catDict;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    if (!self.subCats)
+    if (!self.mut)
     {
-        self.subCats = [NSMutableArray array];
-
+        self.mut = [NSMutableArray array];
+    }
+    
+    if (!self.catDict)
+    {
+        self.catDict = [[NSMutableDictionary alloc] init];
     }
 
     categories = @[ ];
@@ -140,34 +147,27 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    NSArray *previousValues = [self.catDict objectForKey:self.categoryTitle];
+    if (previousValues.count > 0)
+    {
+        self.mut = [previousValues mutableCopy];
+    }
+    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *category = [categories objectAtIndex:indexPath.row];    
     if (cell.accessoryView)
     {
-        if ([self.mut containsObject:category])
-        {
-            [self.mut removeObject:category];
-
-        }
-        
-        if ([self.subCats containsObject:category])
-        {
-            [self.subCats removeObject:category];
-
-        }
+        [self.mut removeObject:category];
         cell.accessoryView = nil;
     }
     else
     {
         UIImageView *checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kCheckMarkGraphic]];
         cell.accessoryView = checkView;
-        [self.mut addObject:category];[self.goButton setEnabled:[self evaluateButtonState]];
-        [self.subCats addObject:category];
+        [self.mut addObject:category];
     }
 
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:self.mut forKey:self.categoryTitle];
-    [self.selectedCategories addEntriesFromDictionary:dict];
-
+    self.catDict[self.categoryTitle] = self.mut;
     [self.goButton setEnabled:[self evaluateButtonState]];
 }
 
@@ -195,8 +195,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 {
     // Get destination view
     BVTSurpriseShoppingCartTableViewController *vc = [segue destinationViewController];
-    vc.selectedCategories = self.selectedCategories;
-    vc.subCats = self.subCats;
+    vc.catDict = self.catDict;
     vc.delegate = self;
 }
 
@@ -208,7 +207,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     cell.textLabel.text = title;
     cell.textLabel.numberOfLines = 0;
     
-    NSArray *array = [self.selectedCategories allValues];
+    NSArray *array = [self.catDict allValues];
     NSString *btitle = [[array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[c] %@", title]] lastObject];
     if (!btitle)
     {
