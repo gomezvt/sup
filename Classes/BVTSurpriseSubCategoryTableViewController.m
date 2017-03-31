@@ -44,6 +44,10 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 {
     [super viewWillAppear:animated];
     
+    // Reload table either way, especially in the case if we come back from
+    // shopping cart after all items have been deleted and we need to clear checkmarks
+    [self.tableView reloadData];
+    
     [self.goButton setEnabled:[self evaluateButtonState]];
 }
 

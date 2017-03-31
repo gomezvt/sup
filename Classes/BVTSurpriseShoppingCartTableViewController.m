@@ -29,6 +29,28 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     // WIP
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //remove the deleted object from your data source.
+        //If your data source is an NSMutableArray, do this
+//        [self.dataArray removeObjectAtIndex:indexPath.row];
+        
+        NSString *key = [self.catDict allKeys][indexPath.section];
+        NSMutableArray *k = [self.catDict objectForKey:key];
+        
+        id object = [k objectAtIndex:indexPath.row];
+
+        [k removeObject:object];
+        
+        [tableView reloadData]; // tell table to refresh now
+        [self.goButton setEnabled:[self evaluateButtonState]];
+    }
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -39,6 +61,22 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
     
+}
+
+- (BOOL)evaluateButtonState
+{
+    BOOL isEnabled = NO;
+    NSArray *allValues = [self.catDict allValues];
+    for (NSArray *array in allValues)
+    {
+        if (array.count > 0)
+        {
+            isEnabled = YES;
+            break;
+        }
+    }
+    
+    return isEnabled;
 }
 
 #pragma mark - IBActions
@@ -82,13 +120,6 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     return k.count;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self.goButton setEnabled:[self evaluateButtonState]];
-}
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSArray *array = [self.catDict allValues][section];
@@ -99,24 +130,6 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
         return nil;
 }
-
-
-- (BOOL)evaluateButtonState
-{
-    BOOL isEnabled = NO;
-    NSArray *allValues = [self.catDict allValues];
-    for (NSArray *array in allValues)
-    {
-        if (array.count > 0)
-        {
-            isEnabled = YES;
-            break;
-        }
-    }
-    
-    return isEnabled;
-}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
