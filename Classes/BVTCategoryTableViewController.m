@@ -133,65 +133,81 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
     
     [[AppDelegate sharedClient] searchWithLocation:@"New York, NY" term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
-     (YLPSearch *searchResults, NSError *error) {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             if (searchResults.businesses.count > 0) {
-                 NSMutableArray *filteredArray = [NSMutableArray array];
-                 for (YLPBusiness *biz in searchResults.businesses)
+     (YLPSearch *searchResults, NSError *error){
+         if (searchResults.businesses.count == 0)
+         {
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
+             
+             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+             [alertController addAction:ok];
+             
+             [self presentViewController:alertController animated:YES completion:nil];
+             
+         }
+         else if (searchResults.businesses.count > 0)
+         {
+             dispatch_async(dispatch_get_main_queue(), ^{
                  {
-                     if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", selectionTitle]] lastObject] && biz.closed == NO)
+                     NSMutableArray *filteredArray = [NSMutableArray array];
+                     for (YLPBusiness *biz in searchResults.businesses)
                      {
-                         [filteredArray addObject:biz];
+                         if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", selectionTitle]] lastObject] && biz.closed == NO)
+                         {
+                             [filteredArray addObject:biz];
+                         }
                      }
-                 }
-                 
-                 if (filteredArray.count > 0)
-                 {
-                     NSArray *descriptor = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-                     NSArray *sortedArray = [filteredArray sortedArrayUsingDescriptors:descriptor];
                      
-                     if (!self.didCancelRequest)
+                     if (filteredArray.count > 0)
                      {
-                         [self performSegueWithIdentifier:kShowSubCategorySegue sender:@[ selectionTitle, sortedArray ]];
+                         NSArray *descriptor = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+                         NSArray *sortedArray = [filteredArray sortedArrayUsingDescriptors:descriptor];
+                         
+                         if (!self.didCancelRequest)
+                         {
+                             [self performSegueWithIdentifier:kShowSubCategorySegue sender:@[ selectionTitle, sortedArray ]];
+                             
+                             [self _hideHUD];
+                             
+                         }
                      }
+                     else
+                     {
+                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No results match the selected category" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
+                         
+                         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                         [alertController addAction:ok];
+                         
+                         [self presentViewController:alertController animated:YES completion:nil];
+                         
+                         [self _hideHUD];
+                         
+                         
+                     }
+                     
                  }
-                 else
-                 {
-                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No results match the selected category" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
-                     
-                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                     [alertController addAction:ok];
-                     
-                     [self presentViewController:alertController animated:YES completion:nil];
-                     
-                 }
-
-             }
-             else if (error) {
-                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
-                 
-                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                 [alertController addAction:ok];
-                 
-                 [self presentViewController:alertController animated:YES completion:nil];
-
-             }
-             else {
-                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
-                 
-                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                 [alertController addAction:ok];
-                 
-                 [self presentViewController:alertController animated:YES completion:nil];
-
-             }
-             self.backChevron.enabled = YES;
-             self.tableView.userInteractionEnabled = YES;
-             [self.hud removeFromSuperview];
-         });
+             });
+         }
+         
+         if (error)
+         {
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
+             
+             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+             [alertController addAction:ok];
+             
+             [self presentViewController:alertController animated:YES completion:nil];
+             
+             [self _hideHUD];
+         }
      }];
 }
 
+- (void)_hideHUD
+{
+    self.backChevron.enabled = YES;
+    self.tableView.userInteractionEnabled = YES;
+    [self.hud removeFromSuperview];
+}
 
 
 #pragma mark - TableView Data Source
