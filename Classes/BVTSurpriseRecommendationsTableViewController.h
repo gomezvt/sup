@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BVTSurpriseRecommendationsTableViewController : UITableViewController
+@interface BVTSurpriseRecommendationsTableViewController : UIViewController
+
+@property (nonatomic, strong) NSMutableArray *businessOptions;
 
 @end

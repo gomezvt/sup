@@ -845,7 +845,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Burlingtonian" id="dJd-et-rs7"/>
                     <connections>
-                        <outlet property="tableView" destination="yc7-k8-Iqf" id="tZQ-cO-2sM"/>
+                        <outlet property="tableView" destination="yc7-k8-Iqf" id="Sbx-Sh-3Ci"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vhO-Pq-HzD" userLabel="First Responder" sceneMemberID="firstResponder"/>
