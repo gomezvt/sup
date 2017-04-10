@@ -29,9 +29,11 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *backChevron;
 @property (nonatomic, strong) NSMutableDictionary *mutDict;
 @property (nonatomic, strong) NSMutableArray *subCategories;
+@property (nonatomic, strong) NSMutableArray *resultsArray;
 
 @end
 
+static int i = 0;
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
 @implementation BVTSurpriseShoppingCartTableViewController
@@ -46,6 +48,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
 - (IBAction)didTapSubmit:(id)sender
 {
+    [self.resultsArray removeAllObjects];
+    i = 0;
     NSArray *array = [self.catDict allValues];
     self.hud = [BVTHUDView hudWithView:self.navigationController.view];
     self.hud.delegate = self;
@@ -97,8 +101,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSString *key = [self.catDict allKeys][indexPath.section];
         NSMutableArray *k = [self.catDict objectForKey:key];
-        id object = [k objectAtIndex:indexPath.row];
-        [k removeObject:object];
+        [k removeObjectAtIndex:indexPath.row];
+        [self.subCategories removeObjectAtIndex:indexPath.row];
         
         [tableView reloadData]; // tell table to refresh now
         [self.goButton setEnabled:[self evaluateButtonState]];
@@ -150,6 +154,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 {
     [super viewDidLoad];
     
+    self.resultsArray = [NSMutableArray array];
     self.subCategories = [NSMutableArray array];
     self.mutDict = [[NSMutableDictionary alloc] init];;
     
@@ -167,28 +172,47 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 {
     if ([[notification name] isEqualToString:@"BVTReceivedBusinessesNotification"])
     {
-        static int i = 0;
         i++;
-        NSMutableArray *resultsArray = [NSMutableArray array];
         YLPSearch *searchObject = notification.object;
-        for (YLPBusiness *biz in searchObject.businesses)
+        
+        for (NSString *category in self.subCategories)
         {
-            for (YLPCategory *category in biz.categories)
+            for (YLPBusiness *biz in searchObject.businesses)
             {
-                if ([self.subCategories containsObject:category.name])
+                //TODO: DONT ADD DUPLICATES
+                if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", category]] lastObject])
                 {
-                    [resultsArray addObject:[NSDictionary dictionaryWithObject:biz forKey:category.name]];
+                    [self.resultsArray addObject:[NSDictionary dictionaryWithObject:biz forKey:category]];
                 }
             }
         }
         
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         if (i == self.subCategories.count)
         {
+            if (self.resultsArray.count == 0)
+            {
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No results were found for the selected category(s)" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                [alertController addAction:ok];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+            }
+            else
+            {
+                for (NSString *category in self.subCategories)
+                {
+                    NSArray *array = [self.resultsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] %K", category]];
+                    // TODO:figure out sorting here
+                    [dict setObject:array forKey:category];
+                }
+                
+                [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
+            }
             dispatch_async(dispatch_get_main_queue(), ^{
                 // code here
-                i = 0;
                 [self _hideHUD];
-                [self performSegueWithIdentifier:@"ShowRecommendations" sender:resultsArray];
             });
         }
     }
@@ -257,6 +281,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 {
     // Get destination view
     BVTSurpriseRecommendationsTableViewController *vc = [segue destinationViewController];
+    vc.businessOptions = sender;
 }
 
 @end

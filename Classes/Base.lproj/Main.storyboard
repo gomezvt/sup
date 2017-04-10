@@ -843,9 +843,18 @@
                             <constraint firstItem="g3D-MI-P0t" firstAttribute="leading" secondItem="UIW-lG-Fxy" secondAttribute="leading" id="d6I-TT-Ckn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Burlingtonian" id="dJd-et-rs7"/>
+                    <navigationItem key="navigationItem" title="Burlingtonian" id="MyT-RQ-JR1">
+                        <barButtonItem key="leftBarButtonItem" image="back_chevron" id="ggj-3y-bly">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="didTapBack:" destination="Hmd-41-ruR" id="M0K-Pf-tqv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="backChevron" destination="ggj-3y-bly" id="XPT-5h-KBH"/>
                         <outlet property="tableView" destination="yc7-k8-Iqf" id="Sbx-Sh-3Ci"/>
+                        <segue destination="YcC-JR-9wn" kind="show" identifier="ShowDetail" id="lMI-Vd-YSr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vhO-Pq-HzD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -858,5 +867,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="itC-Zp-WcB"/>
+        <segue reference="lMI-Vd-YSr"/>
     </inferredMetricsTieBreakers>
 </document>

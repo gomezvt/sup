@@ -98,9 +98,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
              [alertController addAction:ok];
              
              [self presentViewController:alertController animated:YES completion:nil];
-             self.backChevron.enabled = YES;
-             self.tableView.userInteractionEnabled = YES;
-             [self.hud removeFromSuperview];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [self _hideHUD];
+
+             });
          }
          else
          {
@@ -124,23 +125,21 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                     completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                         dispatch_async(dispatch_get_main_queue(), ^{
                                                             // *** Get review user photos in advance if they exist, to display from Presentation VC
-                                                            NSMutableArray *userPhotos = [NSMutableArray array];
-                                                            for (YLPReview *review in reviews.reviews)
-                                                            {
-                                                                YLPUser *user = review.user;
-                                                                if (user.imageURL)
-                                                                {
-                                                                    NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
-                                                                    UIImage *image = [UIImage imageWithData:imageData];
-                                                                    [userPhotos addObject:image];
-                                                                }
-                                                            }
+//                                                            NSMutableArray *userPhotos = [NSMutableArray array];
+//                                                            for (YLPReview *review in reviews.reviews)
+//                                                            {
+//                                                                YLPUser *user = review.user;
+//                                                                if (user.imageURL)
+//                                                                {
+//                                                                    NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
+//                                                                    UIImage *image = [UIImage imageWithData:imageData];
+//                                                                    [userPhotos addObject:image];
+//                                                                }
+//                                                            }
                                                             business.reviews = reviews.reviews;
-                                                            business.userPhotosArray = userPhotos;
-                                                            self.backChevron.enabled = YES;
-                                                            self.tableView.userInteractionEnabled = YES;
-                                                            [self.hud removeFromSuperview];
-                                                            
+//                                                            business.userPhotosArray = userPhotos;
+
+                                                            [self _hideHUD];
                                                             if (!self.didCancelRequest)
                                                             {
                                                                 [self performSegueWithIdentifier:kShowDetailSegue sender:business];
@@ -154,6 +153,12 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
      }];
 }
 
+- (void)_hideHUD
+{
+    self.backChevron.enabled = YES;
+    self.tableView.userInteractionEnabled = YES;
+    [self.hud removeFromSuperview];
+}
 
 #pragma mark - TableView Data Source
 

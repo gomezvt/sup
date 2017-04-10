@@ -10,6 +10,6 @@
 
 @interface BVTSurpriseRecommendationsTableViewController : UIViewController
 
-@property (nonatomic, strong) NSMutableArray *businessOptions;
+@property (nonatomic, strong) NSMutableDictionary *businessOptions;
 
 @end

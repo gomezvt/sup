@@ -90,7 +90,13 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
         reviewsCell.reviewLabel.text = review.excerpt;
         reviewsCell.nameLabel.text = review.user.name;
         
-        UIImage *image = [self.business.userPhotosArray objectAtIndex:indexPath.row];
+//        UIImage *image = [self.business.userPhotosArray objectAtIndex:indexPath.row];
+//        if (!image)
+//        {
+//            image = [UIImage imageNamed:@"placeholder"];
+//        }
+        NSData *imageData = [NSData dataWithContentsOfURL:review.user.imageURL];
+        UIImage *image = [UIImage imageWithData:imageData];
         if (!image)
         {
             image = [UIImage imageNamed:@"placeholder"];
