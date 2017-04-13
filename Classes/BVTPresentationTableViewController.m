@@ -90,16 +90,14 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
         reviewsCell.reviewLabel.text = review.excerpt;
         reviewsCell.nameLabel.text = review.user.name;
         
-//        UIImage *image = [self.business.userPhotosArray objectAtIndex:indexPath.row];
-//        if (!image)
-//        {
-//            image = [UIImage imageNamed:@"placeholder"];
-//        }
-        NSData *imageData = [NSData dataWithContentsOfURL:review.user.imageURL];
-        UIImage *image = [UIImage imageWithData:imageData];
-        if (!image)
+        UIImage *image = [UIImage imageNamed:@"placeholder"];
+        for (NSDictionary *dict in self.business.userPhotosArray)
         {
-            image = [UIImage imageNamed:@"placeholder"];
+            NSString *key = [[dict allKeys] lastObject];
+            if ([key isEqual:review.user.imageURL])
+            {
+                image = dict[key];
+            }
         }
         reviewsCell.userImageView.image = image;
 

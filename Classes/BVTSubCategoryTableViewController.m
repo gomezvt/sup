@@ -125,19 +125,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                     completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                         dispatch_async(dispatch_get_main_queue(), ^{
                                                             // *** Get review user photos in advance if they exist, to display from Presentation VC
-//                                                            NSMutableArray *userPhotos = [NSMutableArray array];
-//                                                            for (YLPReview *review in reviews.reviews)
-//                                                            {
-//                                                                YLPUser *user = review.user;
-//                                                                if (user.imageURL)
-//                                                                {
-//                                                                    NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
-//                                                                    UIImage *image = [UIImage imageWithData:imageData];
-//                                                                    [userPhotos addObject:image];
-//                                                                }
-//                                                            }
+                                                            NSMutableArray *userPhotos = [NSMutableArray array];
+                                                            for (YLPReview *review in reviews.reviews)
+                                                            {
+                                                                YLPUser *user = review.user;
+                                                                if (user.imageURL)
+                                                                {
+                                                                    NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
+                                                                    UIImage *image = [UIImage imageWithData:imageData];
+                                                                    [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];
+                                                                }
+                                                            }
                                                             business.reviews = reviews.reviews;
-//                                                            business.userPhotosArray = userPhotos;
+                                                            business.userPhotosArray = userPhotos;
 
                                                             [self _hideHUD];
                                                             if (!self.didCancelRequest)
