@@ -277,7 +277,10 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     NSArray *array = [self.catDict allValues][section];
     if (array.count > 0)
     {
-        return [self.catDict allKeys][section];
+        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+        NSArray *sortedArray = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+        
+        return sortedArray[section];
     }
 
         return nil;
@@ -287,9 +290,14 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSArray *sectionValues = [self.catDict allValues][indexPath.section];
+//    NSArray *sectionValues = [self.catDict allValues][indexPath.section];
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    NSArray *allValues = [self.catDict allValues];
+    NSArray *arrayToFilter = [allValues firstObject];
+    NSArray *sortedArray = [arrayToFilter sortedArrayUsingDescriptors: @[descriptor]];
+    
 
-    cell.textLabel.text = sectionValues[indexPath.row];
+    cell.textLabel.text = sortedArray[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.textLabel.numberOfLines = 0;
