@@ -290,12 +290,9 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-//    NSArray *sectionValues = [self.catDict allValues][indexPath.section];
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-    NSArray *allValues = [self.catDict allValues];
-    NSArray *arrayToFilter = [allValues firstObject];
-    NSArray *sortedArray = [arrayToFilter sortedArrayUsingDescriptors: @[descriptor]];
-    
+    NSArray *allValues = [self.catDict allValues][indexPath.section];
+    NSArray *sortedArray = [allValues sortedArrayUsingDescriptors: @[descriptor]];    
 
     cell.textLabel.text = sortedArray[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
