@@ -38,6 +38,11 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
     [self.tableView registerNib:yelpReviewsCellNib forCellReuseIdentifier:kReviewsCellID];
 }
 
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.preferredContentSize = CGSizeMake(320, self.tableView.contentSize.height);
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
