@@ -27,6 +27,7 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *backChevron;
 @property (nonatomic, strong) BVTHUDView *hud;
 @property (nonatomic) BOOL didCancelRequest;
+//@property (nonatomic, strong) NSMutableArray *bizArray;
 
 @end
 
@@ -64,6 +65,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    self.bizArray = [NSMutableArray array];
+//    for (
+//    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+//    NSArray *allValues = [self.businessOptions allValues][indexPath.section];
+//    NSArray *sortedArray = [allValues sortedArrayUsingDescriptors: @[descriptor]];
+
+    
     
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"Cell"];
@@ -105,10 +114,20 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+//    NSArray *array = [self.businessOptions allValues][section];
+//    if (array.count > 0)
+//    {
+//        return [self.businessOptions allKeys][section];
+//    }
+//    
+//    return nil;
     NSArray *array = [self.businessOptions allValues][section];
     if (array.count > 0)
     {
-        return [self.businessOptions allKeys][section];
+        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+        NSArray *sortedArray = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+        
+        return sortedArray[section];
     }
     
     return nil;
@@ -119,9 +138,16 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
     
-    NSArray *sectionValues = [self.businessOptions allValues][indexPath.section];
-    NSDictionary *businessDict = sectionValues[indexPath.row];
-    YLPBusiness *biz = [[businessDict allValues] lastObject];
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSDictionary *dict in [self.businessOptions allValues][indexPath.section])
+    {
+        [array addObject:[[dict allValues] lastObject]];
+    }
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    
+    NSArray *sortedArray = [array sortedArrayUsingDescriptors: @[descriptor]];
+    
+    YLPBusiness *biz = sortedArray[indexPath.row];
     
     cell.business = biz;
     

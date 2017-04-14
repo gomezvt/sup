@@ -292,7 +292,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
     NSArray *allValues = [self.catDict allValues][indexPath.section];
-    NSArray *sortedArray = [allValues sortedArrayUsingDescriptors: @[descriptor]];    
+    NSArray *sortedArray = [allValues sortedArrayUsingDescriptors: @[descriptor]];
 
     cell.textLabel.text = sortedArray[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
