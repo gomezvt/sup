@@ -43,6 +43,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     self.didCancelRequest = YES;
     self.backChevron.enabled = YES;
     self.tableView.userInteractionEnabled = YES;
+    self.goButton.enabled = YES;
     [self.hud removeFromSuperview];
 }
 
@@ -274,27 +275,30 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSArray *array = [self.catDict allValues][section];
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    
+    NSString *key = [self.catDict allKeys][section];
+    NSArray *array = [self.catDict valueForKey:key];
+    
     if (array.count > 0)
     {
-        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-        NSArray *sortedArray = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+        NSArray *sortedArray2 = [array sortedArrayUsingDescriptors: @[descriptor]];
+        [self.mutDict setObject:sortedArray2 forKey:key];
         
-        return sortedArray[section];
+        return key;
     }
-
-        return nil;
+    
+    return nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    NSString *key = [self.catDict allKeys][indexPath.section];
 
-    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-    NSArray *allValues = [self.catDict allValues][indexPath.section];
-    NSArray *sortedArray = [allValues sortedArrayUsingDescriptors: @[descriptor]];
+    NSArray *allValues = [self.mutDict valueForKey:key];
 
-    cell.textLabel.text = sortedArray[indexPath.row];
+    cell.textLabel.text = allValues[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.textLabel.numberOfLines = 0;
