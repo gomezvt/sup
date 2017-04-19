@@ -20,6 +20,7 @@
 #import "YLPClient+Reviews.h"
 #import "YLPClient+Business.h"
 #import "BVTDetailTableViewController.h"
+#import "BVTTableViewSectionHeaderView.h"
 
 @interface BVTSurpriseRecommendationsTableViewController ()
     <BVTHUDViewDelegate>
@@ -29,8 +30,11 @@
 @property (nonatomic, strong) BVTHUDView *hud;
 @property (nonatomic) BOOL didCancelRequest;
 @property (nonatomic, strong) NSMutableDictionary *orderedDict;
+@property (nonatomic, strong) BVTTableViewSectionHeaderView *headerView;
 
 @end
+
+static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeaderView";
 
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 static NSString *const kThumbNailCell = @"BVTThumbNailTableViewCell";
@@ -58,6 +62,22 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
     
+    UINib *headerView = [UINib nibWithNibName:kTableViewSectionHeaderView bundle:nil];
+    [self.tableView registerNib:headerView forHeaderFooterViewReuseIdentifier:kTableViewSectionHeaderView];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *key = [self.businessOptions allKeys][section];
+    NSArray *array = [self.businessOptions valueForKey:key];
+    
+    NSString *title;
+    if (array.count > 0)
+    {
+        title = key;
+    }
+
+    return title;
 }
 
 - (IBAction)didTapBack:(id)sender
@@ -69,9 +89,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
+    self.tableView.sectionFooterHeight = 0.0f;
     
-
-
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"Cell"];
     
@@ -91,6 +110,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     return self.businessOptions.count;
 }
 
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSString *key = [self.businessOptions allKeys][section];
@@ -99,27 +120,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     return k.count;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString *key = [self.businessOptions allKeys][section];
-    NSArray *array = [self.businessOptions valueForKey:key];
-
-    if (array.count > 0)
-    {
-//        NSMutableArray *array2 = [NSMutableArray array];
-//        for (NSDictionary *dict in array)
-//        {
-//            NSArray *ar = [dict allValues];
-//            [array2 addObject:[ar firstObject]];
-//        }
-//        NSSortDescriptor *descriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-//        NSArray *sortedArray2 = [array2 sortedArrayUsingDescriptors: @[descriptor2]];
-//        [self.orderedDict setObject:sortedArray2 forKey:key];
-        
-        return key;
-    }
-    
-    return nil;
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 44.f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -161,6 +163,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
     return cell;
 }
+
+
 
 #pragma mark - TableView Delegate
 

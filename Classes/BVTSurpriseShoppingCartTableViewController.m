@@ -18,6 +18,7 @@
 #import "YLPBusiness.h"
 #import "YLPClient+Search.h"
 #import "BVTHUDView.h"
+#import "BVTTableViewSectionHeaderView.h"
 
 @interface BVTSurpriseShoppingCartTableViewController ()
 <BVTHUDViewDelegate>
@@ -30,11 +31,13 @@
 @property (nonatomic, strong) NSMutableDictionary *mutDict;
 @property (nonatomic, strong) NSMutableArray *subCategories;
 @property (nonatomic, strong) NSMutableArray *resultsArray;
+@property (nonatomic, strong) BVTTableViewSectionHeaderView *headerView;
 
 @end
 
 static int i = 0;
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
+static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeaderView";
 
 @implementation BVTSurpriseShoppingCartTableViewController
 
@@ -89,6 +92,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     }
 }
 
+
 - (void)_hideHUD
 {
     self.backChevron.enabled = YES;
@@ -99,6 +103,27 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
+}
+
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    
+    NSString *key = [self.catDict allKeys][section];
+    NSArray *array = [self.catDict valueForKey:key];
+    
+    NSString *title;
+    if (array.count > 0)
+    {
+        NSArray *sortedArray2 = [array sortedArrayUsingDescriptors: @[descriptor]];
+        [self.catDict setObject:sortedArray2 forKey:key];
+        
+        title = key;
+    }
+    
+    return title;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -123,6 +148,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
     
+    UINib *headerView = [UINib nibWithNibName:kTableViewSectionHeaderView bundle:nil];
+    [self.tableView registerNib:headerView forHeaderFooterViewReuseIdentifier:kTableViewSectionHeaderView];
 }
 
 - (BOOL)evaluateButtonState
@@ -158,6 +185,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 {
     [super viewDidLoad];
     
+    self.tableView.sectionFooterHeight = 0.0f;
+    
     self.resultsArray = [NSMutableArray array];
     self.subCategories = [NSMutableArray array];
     self.mutDict = [[NSMutableDictionary alloc] init];;
@@ -167,7 +196,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
                                                  name:@"BVTReceivedBusinessesNotification"
                                                object:nil];
 
-    
+
     [self.goButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
 
 }
@@ -273,22 +302,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     return k.count;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-    
-    NSString *key = [self.catDict allKeys][section];
-    NSArray *array = [self.catDict valueForKey:key];
-    
-    if (array.count > 0)
-    {
-        NSArray *sortedArray2 = [array sortedArrayUsingDescriptors: @[descriptor]];
-        [self.mutDict setObject:sortedArray2 forKey:key];
-        
-        return key;
-    }
-    
-    return nil;
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 44.f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -296,7 +311,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     NSString *key = [self.catDict allKeys][indexPath.section];
 
-    NSArray *allValues = [self.mutDict valueForKey:key];
+    NSArray *allValues = [self.catDict valueForKey:key];
 
     cell.textLabel.text = allValues[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

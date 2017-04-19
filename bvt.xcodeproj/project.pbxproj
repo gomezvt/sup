@@ -43,9 +43,11 @@
 		64934CC01E306BCE00386B5B /* BVTYelpMapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CBF1E306BCE00386B5B /* BVTYelpMapTableViewCell.xib */; };
 		64934CC21E306BD300386B5B /* BVTYelpRatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CC11E306BD300386B5B /* BVTYelpRatingTableViewCell.xib */; };
 		64934CC41E306C1E00386B5B /* BVTHeaderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */; };
+		64A3386C1EA6F48E0061CA83 /* BVTTableViewSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A3386B1EA6F48E0061CA83 /* BVTTableViewSectionHeaderView.m */; };
+		64A3386E1EA706640061CA83 /* BVTTableViewSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A3386D1EA706640061CA83 /* BVTTableViewSectionHeaderView.xib */; };
+		64A338711EA7067F0061CA83 /* BVTHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A338701EA7067F0061CA83 /* BVTHUDView.m */; };
 		64B990CE1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B990CD1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.m */; };
 		64B990CF1E99D5190002EE4E /* BVTSurpriseRecommendationsTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 64B990CC1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.h */; };
-		64C7331A1E5A855C0019F166 /* BVTHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C733191E5A855C0019F166 /* BVTHUDView.m */; };
 		64C88B4E1E5545CF00ECA06B /* BVTPresentationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C88B4D1E5545CF00ECA06B /* BVTPresentationTableViewController.m */; };
 		64C88B5B1E55498100ECA06B /* BVTYelpPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C88B5A1E55498100ECA06B /* BVTYelpPhotoTableViewCell.xib */; };
 		64C88B5E1E55499800ECA06B /* BVTYelpPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C88B5D1E55499800ECA06B /* BVTYelpPhotoTableViewCell.m */; };
@@ -75,7 +77,7 @@
 		642362101E5FCD4900073B68 /* BVTSurpriseSubCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSurpriseSubCategoryTableViewController.h; path = /Users/gomez/Developer/bvt/Classes/BVTSurpriseSubCategoryTableViewController.h; sourceTree = "<absolute>"; };
 		642362111E5FCD4900073B68 /* BVTSurpriseSubCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSurpriseSubCategoryTableViewController.m; path = /Users/gomez/Developer/bvt/Classes/BVTSurpriseSubCategoryTableViewController.m; sourceTree = "<absolute>"; };
 		642362161E5FDA8400073B68 /* BVTSurpriseShoppingCartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSurpriseShoppingCartTableViewController.h; path = /Users/gomez/Developer/bvt/Classes/BVTSurpriseShoppingCartTableViewController.h; sourceTree = "<absolute>"; };
-		642362171E5FDA8400073B68 /* BVTSurpriseShoppingCartTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSurpriseShoppingCartTableViewController.m; path = /Users/gomez/Developer/bvt/Classes/BVTSurpriseShoppingCartTableViewController.m; sourceTree = "<absolute>"; };
+		642362171E5FDA8400073B68 /* BVTSurpriseShoppingCartTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSurpriseShoppingCartTableViewController.m; path = Classes/BVTSurpriseShoppingCartTableViewController.m; sourceTree = SOURCE_ROOT; };
 		643B4DAC1E2CB2C300951303 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		643B4DAD1E2CB2C300951303 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		643B4DB81E2CB2F100951303 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -131,10 +133,13 @@
 		64934CBF1E306BCE00386B5B /* BVTYelpMapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpMapTableViewCell.xib; path = Classes/BVTYelpMapTableViewCell.xib; sourceTree = "<group>"; };
 		64934CC11E306BD300386B5B /* BVTYelpRatingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpRatingTableViewCell.xib; path = Classes/BVTYelpRatingTableViewCell.xib; sourceTree = "<group>"; };
 		64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BVTHeaderTitleView.xib; path = Classes/BVTHeaderTitleView.xib; sourceTree = "<group>"; };
+		64A3386A1EA6F48E0061CA83 /* BVTTableViewSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTTableViewSectionHeaderView.h; path = Classes/BVTTableViewSectionHeaderView.h; sourceTree = SOURCE_ROOT; };
+		64A3386B1EA6F48E0061CA83 /* BVTTableViewSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTTableViewSectionHeaderView.m; path = Classes/BVTTableViewSectionHeaderView.m; sourceTree = SOURCE_ROOT; };
+		64A3386D1EA706640061CA83 /* BVTTableViewSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTTableViewSectionHeaderView.xib; path = Classes/BVTTableViewSectionHeaderView.xib; sourceTree = "<group>"; };
+		64A3386F1EA7067F0061CA83 /* BVTHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTHUDView.h; path = Classes/BVTHUDView.h; sourceTree = SOURCE_ROOT; };
+		64A338701EA7067F0061CA83 /* BVTHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTHUDView.m; path = Classes/BVTHUDView.m; sourceTree = SOURCE_ROOT; };
 		64B990CC1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSurpriseRecommendationsTableViewController.h; path = /Users/gomez/Developer/bvt/Classes/BVTSurpriseRecommendationsTableViewController.h; sourceTree = "<absolute>"; };
-		64B990CD1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSurpriseRecommendationsTableViewController.m; path = /Users/gomez/Developer/bvt/Classes/BVTSurpriseRecommendationsTableViewController.m; sourceTree = "<absolute>"; };
-		64C733181E5A855C0019F166 /* BVTHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVTHUDView.h; sourceTree = SOURCE_ROOT; };
-		64C733191E5A855C0019F166 /* BVTHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVTHUDView.m; sourceTree = SOURCE_ROOT; };
+		64B990CD1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSurpriseRecommendationsTableViewController.m; path = Classes/BVTSurpriseRecommendationsTableViewController.m; sourceTree = SOURCE_ROOT; };
 		64C88B4C1E5545CF00ECA06B /* BVTPresentationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTPresentationTableViewController.h; path = Classes/BVTPresentationTableViewController.h; sourceTree = SOURCE_ROOT; };
 		64C88B4D1E5545CF00ECA06B /* BVTPresentationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTPresentationTableViewController.m; path = Classes/BVTPresentationTableViewController.m; sourceTree = SOURCE_ROOT; };
 		64C88B5A1E55498100ECA06B /* BVTYelpPhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpPhotoTableViewCell.xib; path = Classes/BVTYelpPhotoTableViewCell.xib; sourceTree = "<group>"; };
@@ -180,6 +185,7 @@
 				64934CBF1E306BCE00386B5B /* BVTYelpMapTableViewCell.xib */,
 				64934CC11E306BD300386B5B /* BVTYelpRatingTableViewCell.xib */,
 				64C88B5A1E55498100ECA06B /* BVTYelpPhotoTableViewCell.xib */,
+				64A3386D1EA706640061CA83 /* BVTTableViewSectionHeaderView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -269,6 +275,8 @@
 			children = (
 				644111F21E2D345600C3ED18 /* BVTHeaderTitleView.h */,
 				644111F31E2D345600C3ED18 /* BVTHeaderTitleView.m */,
+				64A3386A1EA6F48E0061CA83 /* BVTTableViewSectionHeaderView.h */,
+				64A3386B1EA6F48E0061CA83 /* BVTTableViewSectionHeaderView.m */,
 			);
 			name = Header;
 			sourceTree = "<group>";
@@ -318,8 +326,8 @@
 			children = (
 				64C88B4C1E5545CF00ECA06B /* BVTPresentationTableViewController.h */,
 				64C88B4D1E5545CF00ECA06B /* BVTPresentationTableViewController.m */,
-				64C733181E5A855C0019F166 /* BVTHUDView.h */,
-				64C733191E5A855C0019F166 /* BVTHUDView.m */,
+				64A3386F1EA7067F0061CA83 /* BVTHUDView.h */,
+				64A338701EA7067F0061CA83 /* BVTHUDView.m */,
 				64C88B4B1E55418E00ECA06B /* Categories */,
 				64CF50E91E2D4E39004856DB /* Tutorial */,
 				64B446981E304CB200327C26 /* Header */,
@@ -439,6 +447,7 @@
 				64934CC01E306BCE00386B5B /* BVTYelpMapTableViewCell.xib in Resources */,
 				64E905F31E4970BC00331C3F /* BVTYelpCategoryTableViewCell.xib in Resources */,
 				64934CBC1E306BB500386B5B /* BVTYelpAddressTableViewCell.xib in Resources */,
+				64A3386E1EA706640061CA83 /* BVTTableViewSectionHeaderView.xib in Resources */,
 				648166B11E5657B400071628 /* BVTYelpReviewsTableViewCell.xib in Resources */,
 				64934CB21E306B7000386B5B /* BVTExploreCollectionViewCell.xib in Resources */,
 			);
@@ -511,9 +520,11 @@
 				644112161E2D345600C3ED18 /* BVTThumbNailTableViewCell.m in Sources */,
 				643B4DC31E2CB2F100951303 /* AppDelegate.m in Sources */,
 				644112171E2D345600C3ED18 /* BVTYelpAddressTableViewCell.m in Sources */,
+				64A3386C1EA6F48E0061CA83 /* BVTTableViewSectionHeaderView.m in Sources */,
 				644112141E2D345600C3ED18 /* BVTSubCategoryTableViewController.m in Sources */,
 				642362121E5FCD4900073B68 /* BVTSurpriseSubCategoryTableViewController.m in Sources */,
 				64E905EE1E49704000331C3F /* BVTYelpHoursTableViewCell.m in Sources */,
+				64A338711EA7067F0061CA83 /* BVTHUDView.m in Sources */,
 				6441120F1E2D345600C3ED18 /* BVTExploreCollectionViewCell.m in Sources */,
 				644112191E2D345600C3ED18 /* BVTYelpMapTableViewCell.m in Sources */,
 				648166B01E5657B400071628 /* BVTYelpReviewsTableViewCell.m in Sources */,
@@ -526,7 +537,6 @@
 				644112151E2D345600C3ED18 /* BVTSurpriseCategoryTableViewController.m in Sources */,
 				644112121E2D345600C3ED18 /* BVTSplitTableViewCell.m in Sources */,
 				64C88B5E1E55499800ECA06B /* BVTYelpPhotoTableViewCell.m in Sources */,
-				64C7331A1E5A855C0019F166 /* BVTHUDView.m in Sources */,
 				6441121B1E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
