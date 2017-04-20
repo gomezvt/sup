@@ -21,7 +21,7 @@
 #import "BVTTableViewSectionHeaderView.h"
 
 @interface BVTSurpriseShoppingCartTableViewController ()
-<BVTHUDViewDelegate>
+    <BVTHUDViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
@@ -105,25 +105,12 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     return YES;
 }
 
-
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    NSArray *sortedArray2 = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
     
-    NSString *key = [self.catDict allKeys][section];
-    NSArray *array = [self.catDict valueForKey:key];
-    
-    NSString *title;
-    if (array.count > 0)
-    {
-        NSArray *sortedArray2 = [array sortedArrayUsingDescriptors: @[descriptor]];
-        [self.catDict setObject:sortedArray2 forKey:key];
-        
-        title = key;
-    }
-    
-    return title;
+    return [sortedArray2 objectAtIndex:section];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -185,7 +172,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     [super viewDidLoad];
     
-    self.tableView.sectionFooterHeight = 0.0f;
+    self.tableView.sectionHeaderHeight = 44.f;
     
     self.resultsArray = [NSMutableArray array];
     self.subCategories = [NSMutableArray array];
@@ -290,32 +277,32 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSString *key = [self.catDict allKeys][section];
-    NSArray *k = [self.catDict objectForKey:key];
-    for (NSString *category in k)
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    NSArray *sortedArray2 = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+    NSString *key = [sortedArray2 objectAtIndex:section];
+    NSArray *values = [self.catDict valueForKey:key];
+    for (NSString *category in values)
     {
         if (![self.subCategories containsObject:category])
         {
             [self.subCategories addObject:category];
         }
     }
-    return k.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 44.f;
+    return values.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    NSString *key = [self.catDict allKeys][indexPath.section];
-
-    NSArray *allValues = [self.catDict valueForKey:key];
-
-    cell.textLabel.text = allValues[indexPath.row];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    NSArray *sortedArray2 = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+    NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
+    NSArray *values = [self.catDict valueForKey:key];
+    NSArray *valuesToDisplay = [values sortedArrayUsingDescriptors: @[descriptor]];
+    
+    cell.textLabel.text = [valuesToDisplay objectAtIndex:indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.numberOfLines = 0;
 
     return cell;

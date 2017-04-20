@@ -68,16 +68,17 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *key = [self.businessOptions allKeys][section];
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    NSArray *sortedArray2 = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+    NSString *key = [sortedArray2 objectAtIndex:section];
     NSArray *array = [self.businessOptions valueForKey:key];
-    
-    NSString *title;
+
     if (array.count > 0)
     {
-        title = key;
+        return key;
     }
 
-    return title;
+    return nil;
 }
 
 - (IBAction)didTapBack:(id)sender
@@ -89,7 +90,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
-    self.tableView.sectionFooterHeight = 0.0f;
+    self.tableView.sectionHeaderHeight = 44.f;
     
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"Cell"];
@@ -110,56 +111,59 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     return self.businessOptions.count;
 }
 
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSString *key = [self.businessOptions allKeys][section];
-    NSArray *k = [self.businessOptions objectForKey:key];
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    NSArray *sortedArray2 = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+    NSString *key = [sortedArray2 objectAtIndex:section];
+    NSArray *values = [self.businessOptions valueForKey:key];
 
-    return k.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 44.f;
+    return values.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
-    
-    NSString *key = [self.businessOptions allKeys][indexPath.section];
 
-    NSArray *allValues = [self.businessOptions valueForKey:key];
-    NSDictionary *bizDict = allValues[indexPath.row];
-    YLPBusiness *biz = [[bizDict allValues] lastObject];
-    
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    NSArray *sortedArray2 = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+    NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
+    NSArray *values = [self.businessOptions valueForKey:key];
+    if (values.count > 0)
+    {
+        NSMutableArray *tempArray = [NSMutableArray array];
+        for (NSDictionary *dict in values)
+        {
+            [tempArray addObject:[[dict allValues] lastObject]];
+        }
+        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+        NSArray *bizArray = [tempArray sortedArrayUsingDescriptors: @[nameDescriptor]];
 
-    
-    cell.business = biz;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.textLabel.numberOfLines = 0;
-    
-    UIImage *image = [UIImage imageNamed:@"placeholder"];
-    cell.thumbNailView.image = image;
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // Your Background work
-        NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Update your UI
-            if (cell.tag == indexPath.row)
-            {
-                if (imageData)
+        YLPBusiness *biz = [bizArray objectAtIndex:indexPath.row];
+        cell.business = biz;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.numberOfLines = 0;
+        
+        UIImage *image = [UIImage imageNamed:@"placeholder"];
+        cell.thumbNailView.image = image;
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // Your Background work
+            NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update your UI
+                if (cell.tag == indexPath.row)
                 {
-                    UIImage *image = [UIImage imageWithData:imageData];
-                    cell.thumbNailView.image = image;
+                    if (imageData)
+                    {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        cell.thumbNailView.image = image;
+                    }
                 }
-            }
+            });
         });
-    });
+    }
 
     return cell;
 }
