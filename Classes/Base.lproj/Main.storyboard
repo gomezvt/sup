@@ -384,7 +384,7 @@
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoc-y8-kQY">
-                                        <rect key="frame" x="275" y="7" width="131" height="30"/>
+                                        <rect key="frame" x="263" y="7" width="131" height="30"/>
                                         <state key="normal" title="Review and Submit">
                                             <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -397,9 +397,8 @@
                                 <color key="backgroundColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="gTm-m7-0yy"/>
-                                    <constraint firstAttribute="trailing" secondItem="zoc-y8-kQY" secondAttribute="trailing" constant="8" id="nm2-R5-oKV"/>
-                                    <constraint firstAttribute="bottom" secondItem="zoc-y8-kQY" secondAttribute="bottom" constant="7" id="yt5-HB-4eq"/>
-                                    <constraint firstItem="zoc-y8-kQY" firstAttribute="top" secondItem="wmK-aK-23R" secondAttribute="top" constant="7" id="zUg-GI-AUE"/>
+                                    <constraint firstItem="zoc-y8-kQY" firstAttribute="centerY" secondItem="wmK-aK-23R" secondAttribute="centerY" id="lgT-M4-eyd"/>
+                                    <constraint firstAttribute="trailing" secondItem="zoc-y8-kQY" secondAttribute="trailing" constant="20" id="nm2-R5-oKV"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4y-De-upL">
@@ -497,7 +496,7 @@
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anx-P9-EDI">
-                                        <rect key="frame" x="275" y="7" width="131" height="30"/>
+                                        <rect key="frame" x="263" y="7" width="131" height="30"/>
                                         <state key="normal" title="Review and Submit">
                                             <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -508,9 +507,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="anx-P9-EDI" secondAttribute="trailing" constant="8" id="8H3-7b-8MA"/>
-                                    <constraint firstAttribute="bottom" secondItem="anx-P9-EDI" secondAttribute="bottom" constant="7" id="BWl-MD-U49"/>
-                                    <constraint firstItem="anx-P9-EDI" firstAttribute="top" secondItem="1uM-Gm-hdk" secondAttribute="top" constant="7" id="bOn-vT-aqL"/>
+                                    <constraint firstAttribute="trailing" secondItem="anx-P9-EDI" secondAttribute="trailing" constant="20" id="8H3-7b-8MA"/>
+                                    <constraint firstItem="anx-P9-EDI" firstAttribute="centerY" secondItem="1uM-Gm-hdk" secondAttribute="centerY" id="Zai-ni-dho"/>
                                     <constraint firstAttribute="height" constant="44" id="kbq-t4-h9J"/>
                                 </constraints>
                             </view>
@@ -597,13 +595,26 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scJ-6i-ccx">
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDr-6T-qaW">
+                                        <rect key="frame" x="20" y="7" width="57" height="30"/>
+                                        <state key="normal" title="Clear All">
+                                            <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapClearAllButton:" destination="Lks-cD-BTu" eventType="touchUpInside" id="DrA-Qh-5Lw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="VDr-6T-qaW" firstAttribute="leading" secondItem="scJ-6i-ccx" secondAttribute="leading" constant="20" id="AIk-6K-JaX"/>
                                     <constraint firstAttribute="height" constant="44" id="jpL-jo-d0k"/>
+                                    <constraint firstItem="VDr-6T-qaW" firstAttribute="centerY" secondItem="scJ-6i-ccx" secondAttribute="centerY" id="vp9-0r-SNB"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-3J-PRy">
-                                <rect key="frame" x="357" y="653" width="49" height="30"/>
+                                <rect key="frame" x="345" y="650" width="49" height="30"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -635,15 +646,14 @@
                             <constraint firstItem="ubo-Rt-vau" firstAttribute="top" secondItem="scJ-6i-ccx" secondAttribute="bottom" id="1pr-HR-Wu0"/>
                             <constraint firstItem="scJ-6i-ccx" firstAttribute="top" secondItem="2FZ-Ix-VMn" secondAttribute="bottom" id="31c-Po-557"/>
                             <constraint firstItem="OgY-xN-8lW" firstAttribute="top" secondItem="FrZ-Tb-73E" secondAttribute="bottom" id="5rx-nD-nko"/>
-                            <constraint firstItem="ubo-Rt-vau" firstAttribute="top" secondItem="iy3-3J-PRy" secondAttribute="bottom" constant="4" id="AJh-sY-aJJ"/>
                             <constraint firstAttribute="trailing" secondItem="2FZ-Ix-VMn" secondAttribute="trailing" id="BnL-iX-JN7"/>
                             <constraint firstAttribute="trailing" secondItem="scJ-6i-ccx" secondAttribute="trailing" id="HB2-7j-2nl"/>
                             <constraint firstAttribute="trailing" secondItem="OgY-xN-8lW" secondAttribute="trailing" id="HUb-8X-S6d"/>
                             <constraint firstItem="2FZ-Ix-VMn" firstAttribute="top" secondItem="OgY-xN-8lW" secondAttribute="bottom" id="Lkw-z4-CS4"/>
-                            <constraint firstAttribute="trailing" secondItem="iy3-3J-PRy" secondAttribute="trailing" constant="8" id="aYM-5w-UgT"/>
+                            <constraint firstAttribute="trailing" secondItem="iy3-3J-PRy" secondAttribute="trailing" constant="20" id="aYM-5w-UgT"/>
+                            <constraint firstItem="iy3-3J-PRy" firstAttribute="centerY" secondItem="scJ-6i-ccx" secondAttribute="centerY" id="kDf-q8-awI"/>
                             <constraint firstItem="OgY-xN-8lW" firstAttribute="leading" secondItem="4YH-VZ-krk" secondAttribute="leading" id="qJZ-E0-2s5"/>
                             <constraint firstItem="2FZ-Ix-VMn" firstAttribute="leading" secondItem="4YH-VZ-krk" secondAttribute="leading" id="rOl-O3-5gO"/>
-                            <constraint firstItem="iy3-3J-PRy" firstAttribute="top" secondItem="2FZ-Ix-VMn" secondAttribute="bottom" constant="10" id="xsr-Gj-XGW"/>
                             <constraint firstItem="scJ-6i-ccx" firstAttribute="leading" secondItem="4YH-VZ-krk" secondAttribute="leading" id="yK9-Ff-g0q"/>
                         </constraints>
                     </view>
@@ -657,6 +667,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backChevron" destination="poj-7e-AcF" id="Rgj-fC-IbB"/>
+                        <outlet property="clearButton" destination="VDr-6T-qaW" id="uCr-G9-JL1"/>
                         <outlet property="goButton" destination="iy3-3J-PRy" id="nrP-TY-GaP"/>
                         <outlet property="tableView" destination="2FZ-Ix-VMn" id="pBX-oo-gpK"/>
                         <segue destination="Hmd-41-ruR" kind="show" identifier="ShowRecommendations" id="x9D-jj-p1x"/>

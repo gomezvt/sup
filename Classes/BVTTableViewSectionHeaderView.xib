@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-1249.5" y="-1020"/>
+            <point key="canvasLocation" x="-1290" y="-1076"/>
         </view>
     </objects>
 </document>

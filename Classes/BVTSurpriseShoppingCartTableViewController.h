@@ -11,6 +11,7 @@
 @protocol BVTSurpriseShoppingCartTableViewControllerDelegate <NSObject>
 
 - (void)didTapBackWithCategories:(NSMutableDictionary *)categories ;
+- (void)didClearShoppingCart;
 
 @end
 
