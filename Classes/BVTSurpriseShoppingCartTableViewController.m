@@ -16,6 +16,7 @@
 #import "YLPCategory.h"
 #import "YLPSearch.h"
 #import "YLPBusiness.h"
+#import "YLPLocation.h"
 #import "YLPClient+Search.h"
 #import "BVTHUDView.h"
 #import "BVTTableViewSectionHeaderView.h"
@@ -46,7 +47,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     self.didCancelRequest = YES;
     self.backChevron.enabled = YES;
     self.tableView.userInteractionEnabled = YES;
-    self.goButton.enabled = YES;
+    [self.goButton setEnabled:[self evaluateButtonState]];
     [self.hud removeFromSuperview];
 }
 
@@ -81,7 +82,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                  [alertController addAction:ok];
                  [self presentViewController:alertController animated:YES completion:nil];
-                 [self.goButton setEnabled:YES];
+                 [self.goButton setEnabled:[self evaluateButtonState]];
                  
                  dispatch_async(dispatch_get_main_queue(), ^{
                      // code here
@@ -109,14 +110,23 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
     NSArray *sortedArray2 = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
-    
-    return [sortedArray2 objectAtIndex:section];
+    NSString *key = [sortedArray2 objectAtIndex:section];
+    NSArray *array = [self.catDict valueForKey:key];
+    if (array.count > 0)
+    {
+        return key;
+    }
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSString *key = [self.catDict allKeys][indexPath.section];
-        NSMutableArray *k = [self.catDict objectForKey:key];
+        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+        NSArray *sortedArray2 = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+        
+        
+        NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
+        NSMutableArray *k = [self.catDict valueForKey:key];
         [k removeObjectAtIndex:indexPath.row];
         [self.subCategories removeObjectAtIndex:indexPath.row];
         
@@ -182,10 +192,15 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                              selector:@selector(didReceiveBusinessesNotification:)
                                                  name:@"BVTReceivedBusinessesNotification"
                                                object:nil];
-
-
+    
     [self.goButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.goButton setEnabled:[self evaluateButtonState]];
 }
 
 - (void)didReceiveBusinessesNotification:(NSNotification *)notification
@@ -205,7 +220,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                     for (NSDictionary *dict in self.resultsArray)
                     {
                         YLPBusiness *bizz = [[dict allValues] lastObject];
-                        if ([biz.name isEqualToString:bizz.name] && [[dict allKeys] lastObject] == category)
+                        if ([[biz.location.address lastObject] isEqualToString:[bizz.location.address lastObject]] && [[dict allKeys] lastObject] == category)
                         {
                             isDuplicate = YES;
                         }
@@ -233,7 +248,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                 [alertController addAction:ok];
                 
                 [self presentViewController:alertController animated:YES completion:nil];
-                [self.goButton setEnabled:YES];
+//                [self.goButton setEnabled:YES];
             }
             else
             {
@@ -245,7 +260,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                 }
                 
                 [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
-                [self.goButton setEnabled:YES];
+//                [self.goButton setEnabled:YES];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 // code here
