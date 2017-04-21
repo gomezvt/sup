@@ -753,6 +753,9 @@
                                             <constraint firstAttribute="height" constant="30" id="dNH-8a-21F"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="starsort2"/>
+                                        <connections>
+                                            <action selector="didTapStarSortIcon:" destination="xXJ-IN-eoB" eventType="touchUpInside" id="UR0-1j-NK2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
@@ -795,6 +798,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backChevron" destination="7mA-wp-KOg" id="CZM-rM-RxS"/>
+                        <outlet property="starSortIcon" destination="2fn-hn-Sta" id="ZEg-tE-CAZ"/>
                         <outlet property="tableView" destination="qIq-Io-IuE" id="wkd-ll-I1G"/>
                         <outlet property="titleLabel" destination="HLp-lw-jU1" id="esv-xm-Vo6"/>
                         <segue destination="YcC-JR-9wn" kind="show" identifier="ShowDetail" id="7ud-uz-d7s"/>
