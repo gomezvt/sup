@@ -182,10 +182,26 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.backChevron.enabled = NO;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    NSArray *sortedArray2 = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+    NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
+    NSArray *values = [self.businessOptions valueForKey:key];
+    NSMutableArray *tempArray = [NSMutableArray array];
+
+    if (values.count > 0)
+    {
+        for (NSDictionary *dict in values)
+        {
+            [tempArray addObject:[[dict allValues] lastObject]];
+        }
+
+    }
+    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    NSArray *bizArray = [tempArray sortedArrayUsingDescriptors: @[nameDescriptor]];
     
-    NSArray *sectionValues = [self.businessOptions allValues][indexPath.section];
-    NSDictionary *businessDict = sectionValues[indexPath.row];
-    YLPBusiness *selectedBusiness = [[businessDict allValues] lastObject];
+    YLPBusiness *selectedBusiness = [bizArray objectAtIndex:indexPath.row];
+
     
     [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
      (YLPBusiness *business, NSError *error) {

@@ -11,9 +11,11 @@
 #import "BVTSurpriseShoppingCartTableViewController.h"
 #import "BVTHeaderTitleView.h"
 #import "BVTStyles.h"
+#import "BVTPresentationTableViewController.h"
 
 @interface BVTSurpriseSubCategoryTableViewController ()
-    <BVTSurpriseShoppingCartTableViewControllerDelegate>
+<BVTSurpriseShoppingCartTableViewControllerDelegate, UIPopoverPresentationControllerDelegate>
+
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
@@ -43,6 +45,16 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
+}
+
+- (void)prepareForPopoverPresentation:(UIPopoverPresentationController *)popoverPresentationController;
+{
+    //
+}
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController: (UIPresentationController * ) controller
+{
+    return UIModalPresentationNone;
 }
 
 - (void)viewWillAppear:(BOOL)animated

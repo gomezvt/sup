@@ -56,8 +56,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     [self.tableView reloadData];
     [self.clearButton setEnabled:[self evaluateButtonState]];
     [self.goButton setEnabled:[self evaluateButtonState]];
-
+    
+    [self presentMessage];
 }
+
 
 - (void)didTapHUDCancelButton
 {
@@ -138,6 +140,17 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     return nil;
 }
 
+- (void)presentMessage
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 30.f)];
+    label.text = @"Add a sub category to proceed.";
+    [super.view addSubview:label];
+    label.center = self.tableView.center;
+    self.tableView.separatorColor = [UIColor clearColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor lightGrayColor];
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSString *key = [self.catDict allKeys][indexPath.section];
@@ -148,6 +161,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
         if (k.count == 0)
         {
             [tableView reloadData];
+            
+            [self presentMessage];
         }
         // tell table to refresh now
         [self.goButton setEnabled:[self evaluateButtonState]];
