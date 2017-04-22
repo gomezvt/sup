@@ -153,12 +153,15 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSString *key = [self.catDict allKeys][indexPath.section];
-        NSMutableArray *k = [self.catDict objectForKey:key];
-        [k removeObjectAtIndex:indexPath.row];
+        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+        NSArray *sortedArray2 = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+        NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
+        
+        NSMutableArray *array = [self.catDict valueForKey:key];
+        [array removeObjectAtIndex:indexPath.row];
         [self.subCategories removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        if (k.count == 0)
+        if (array.count == 0)
         {
             [tableView reloadData];
             
