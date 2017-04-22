@@ -66,6 +66,14 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     [self.tableView reloadData];
     
     [self.goButton setEnabled:[self evaluateButtonState]];
+    if (self.goButton.enabled)
+    {
+        [self.goButton.layer setBorderColor:[[BVTStyles iconGreen] CGColor]];
+    }
+    else
+    {
+        [self.goButton.layer setBorderColor:[[UIColor lightGrayColor] CGColor]];
+    }
 }
 
 - (BOOL)evaluateButtonState
@@ -102,6 +110,12 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
 - (void)viewDidLoad
 {
+    CALayer * layer = [self.goButton layer];
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius:10.0];
+    [layer setBorderWidth:1.0];
+    [layer setBorderColor:[[BVTStyles iconGreen] CGColor]];
+    
     [super viewDidLoad];
     
     if (!self.mut)
@@ -190,6 +204,14 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
     self.catDict[self.categoryTitle] = self.mut;
     [self.goButton setEnabled:[self evaluateButtonState]];
+    if (self.goButton.enabled)
+    {
+        [self.goButton.layer setBorderColor:[[BVTStyles iconGreen] CGColor]];
+    }
+    else
+    {
+        [self.goButton.layer setBorderColor:[[UIColor lightGrayColor] CGColor]];
+    }
 }
 
 - (IBAction)didTapButton:(id)sender

@@ -33,6 +33,8 @@
 @property (nonatomic) BOOL didCancelRequest;
 @property (nonatomic, weak) IBOutlet UIButton *starSortIcon;
 @property (nonatomic, strong) NSMutableArray *sortedArray;
+@property (nonatomic, weak) IBOutlet UIButton *priceButton;
+@property (nonatomic, weak) IBOutlet UIButton *distanceButton;
 
 @end
 
@@ -87,6 +89,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    CALayer * layer = [self.priceButton layer];
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius:10.0];
+    [layer setBorderWidth:1.0];
+    [layer setBorderColor:[[BVTStyles iconGreen] CGColor]];
+    
+    CALayer * layer2 = [self.distanceButton layer];
+    [layer2 setMasksToBounds:YES];
+    [layer2 setCornerRadius:10.0];
+    [layer2 setBorderWidth:1.0];
+    [layer2 setBorderColor:[[BVTStyles iconGreen] CGColor]];
+
 }
 
 - (void)didTapHUDCancelButton

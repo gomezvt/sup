@@ -136,6 +136,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
      (YLPSearch *searchResults, NSError *error){
          if (searchResults.businesses.count == 0)
          {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 // code here
+                 [self _hideHUD];
+             });
              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
              
              UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -173,6 +177,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
                      }
                      else
                      {
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             // code here
+                             [self _hideHUD];
+                         });
                          UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No results match the selected category" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
                          
                          UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -180,7 +188,6 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
                          
                          [self presentViewController:alertController animated:YES completion:nil];
                          
-                         [self _hideHUD];
                          
                          
                      }
@@ -191,6 +198,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
          
          if (error)
          {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 // code here
+                 [self _hideHUD];
+             });
              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
              
              UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -198,10 +209,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
              
              [self presentViewController:alertController animated:YES completion:nil];
              
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 // code here
-                 [self _hideHUD];
-             });
+
          }
      }];
 }

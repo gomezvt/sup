@@ -49,6 +49,11 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 {
     [super viewDidLoad];
     
+    CALayer * layer = [self.goButton layer];
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius:10.0];
+    [layer setBorderWidth:1.0];
+    
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.goButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
@@ -59,6 +64,14 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     [super viewWillAppear:animated];
     
     [self.goButton setEnabled:[self evaluateButtonState]];
+    if (self.goButton.enabled)
+    {
+        [self.goButton.layer setBorderColor:[[BVTStyles iconGreen] CGColor]];
+    }
+    else
+    {
+        [self.goButton.layer setBorderColor:[[UIColor lightGrayColor] CGColor]];
+    }
 }
 
 - (BOOL)evaluateButtonState
