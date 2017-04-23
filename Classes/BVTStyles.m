@@ -47,4 +47,9 @@ NSString *const star_five_mini          = @"star_five_mini.png";
     return [UIColor colorWithRed:75.f/255 green:124.f/255 blue:89.f/255 alpha:1.f];
 }
 
++ (UIColor *)buttonBorder
+{
+    return [UIColor colorWithRed:135.f/255 green:172.f/255 blue:147.f/255 alpha:1.f];
+}
+
 @end

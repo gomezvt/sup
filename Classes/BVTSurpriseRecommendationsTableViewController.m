@@ -206,15 +206,20 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
      (YLPBusiness *business, NSError *error) {
          if (error) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+
+             self.backChevron.enabled = YES;
+             self.tableView.userInteractionEnabled = YES;
+             [self.hud removeFromSuperview];
+             
              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
              
              UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
              [alertController addAction:ok];
              
              [self presentViewController:alertController animated:YES completion:nil];
-             self.backChevron.enabled = YES;
-             self.tableView.userInteractionEnabled = YES;
-             [self.hud removeFromSuperview];
+             });
+
          }
          else
          {

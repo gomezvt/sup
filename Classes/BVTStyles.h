@@ -57,6 +57,7 @@ extern NSString *const star_five;
 
 @interface BVTStyles : NSObject
 
++ (UIColor *)buttonBorder;
 + (UIColor *)lightGray;
 + (UIColor *)iconGreen;
 + (UIColor *)moneyGreen;
