@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSubCategoryTableViewController.m"
-            timestampString = "514610352.1292"
+            timestampString = "514662306.781966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -164,12 +164,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSubCategoryTableViewController.m"
-            timestampString = "514610352.1292"
+            timestampString = "514662306.781966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/BVTDetailTableViewController.m"
+            timestampString = "514657918.709344"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "449"
+            endingLineNumber = "449"
+            landmarkName = "-popoverWithoutBarButton:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

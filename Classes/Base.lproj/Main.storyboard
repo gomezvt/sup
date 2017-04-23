@@ -791,8 +791,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54q-YM-6ux">
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="la0-HY-kpe">
-                                        <rect key="frame" x="20" y="7" width="43" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="la0-HY-kpe">
+                                        <rect key="frame" x="19.999999999999996" y="7" width="36.666666666666657" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Hhg-De-Y9d"/>
                                         </constraints>
@@ -800,33 +800,52 @@
                                         <color key="textColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2zm-Sb-EUh">
-                                        <rect key="frame" x="107" y="7" width="200" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2zm-Sb-EUh">
+                                        <rect key="frame" x="72" y="7" width="320" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOx-zy-a0F">
-                                                <rect key="frame" x="0.0" y="0.0" width="92" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="101.33333333333334" height="30"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
-                                                <state key="normal" title="$$$">
+                                                <state key="normal" title="$$">
                                                     <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="didTapPriceButton:" destination="xXJ-IN-eoB" eventType="touchUpInside" id="Qov-hk-ayg"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJ0-4z-GUL">
-                                                <rect key="frame" x="108" y="0.0" width="92" height="30"/>
+                                                <rect key="frame" x="109.33333333333333" y="0.0" width="101.33333333333336" height="30"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
                                                 <state key="normal" title="5 mi. away">
-                                                    <color key="titleColor" red="0.52932554483413696" green="0.67264115810394287" blue="0.57792097330093384" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="didTapDistanceButton:" destination="xXJ-IN-eoB" eventType="touchUpInside" id="kMh-uv-hec"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kkf-4g-pxu">
+                                                <rect key="frame" x="218.66666666666671" y="0.0" width="101.33333333333329" height="30"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <size key="titleShadowOffset" width="3" height="3"/>
+                                                <state key="normal" title="Open Now">
+                                                    <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapOpenButton:" destination="xXJ-IN-eoB" eventType="touchUpInside" id="wXm-Dg-Mnf"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="Rcq-x8-TmX"/>
+                                            <constraint firstAttribute="width" constant="320" id="Rcq-x8-TmX"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="la0-HY-kpe" firstAttribute="leading" secondItem="54q-YM-6ux" secondAttribute="leading" constant="20" id="TQy-Dh-fv1"/>
-                                    <constraint firstItem="2zm-Sb-EUh" firstAttribute="centerX" secondItem="54q-YM-6ux" secondAttribute="centerX" id="fQu-0T-sdk"/>
+                                    <constraint firstItem="2zm-Sb-EUh" firstAttribute="centerX" secondItem="54q-YM-6ux" secondAttribute="centerX" constant="25" id="fQu-0T-sdk"/>
                                     <constraint firstAttribute="height" constant="44" id="hzm-kP-Vt3"/>
                                     <constraint firstItem="2zm-Sb-EUh" firstAttribute="centerY" secondItem="54q-YM-6ux" secondAttribute="centerY" id="s8W-tI-rv7"/>
                                     <constraint firstItem="la0-HY-kpe" firstAttribute="centerY" secondItem="54q-YM-6ux" secondAttribute="centerY" id="vdN-rf-mbp"/>
@@ -858,6 +877,7 @@
                     <connections>
                         <outlet property="backChevron" destination="7mA-wp-KOg" id="CZM-rM-RxS"/>
                         <outlet property="distanceButton" destination="qJ0-4z-GUL" id="DdM-CK-Rsg"/>
+                        <outlet property="openNowButton" destination="Kkf-4g-pxu" id="tQc-LD-OQ0"/>
                         <outlet property="priceButton" destination="kOx-zy-a0F" id="x22-1c-EDo"/>
                         <outlet property="starSortIcon" destination="2fn-hn-Sta" id="ZEg-tE-CAZ"/>
                         <outlet property="tableView" destination="qIq-Io-IuE" id="wkd-ll-I1G"/>
