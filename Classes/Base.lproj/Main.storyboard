@@ -807,7 +807,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="101.33333333333334" height="30"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
-                                                <state key="normal" title="$$">
+                                                <state key="normal" title="Any price">
                                                     <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -829,7 +829,7 @@
                                                 <rect key="frame" x="218.66666666666671" y="0.0" width="101.33333333333329" height="30"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
-                                                <state key="normal" title="Open Now">
+                                                <state key="normal" title="Open now">
                                                     <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>

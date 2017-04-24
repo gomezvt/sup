@@ -13,6 +13,6 @@
 @interface BVTSubCategoryTableViewController : UIViewController
 
 @property (nonatomic, copy) NSString *subCategoryTitle;
-@property (nonatomic, strong) NSMutableArray *filteredResults;
+@property (nonatomic, strong) NSArray *filteredResults;
 
 @end
