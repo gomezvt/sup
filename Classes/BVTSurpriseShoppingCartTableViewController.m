@@ -250,7 +250,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didReceiveBusinessesNotification:)
-                                                 name:@"BVTReceivedBusinessesNotification"
+                                                 name:@"BVTReceivedBusinessesSearchNotification"
                                                object:nil];
     
     [self.goButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
@@ -268,7 +268,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
 - (void)didReceiveBusinessesNotification:(NSNotification *)notification
 {
-    if ([[notification name] isEqualToString:@"BVTReceivedBusinessesNotification"])
+    if ([[notification name] isEqualToString:@"BVTReceivedBusinessesSearchNotification"])
     {
         i++;
         YLPSearch *searchObject = notification.object;

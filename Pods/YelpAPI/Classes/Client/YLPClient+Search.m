@@ -72,7 +72,7 @@
             completionHandler(search, nil);
             
             [[NSNotificationCenter defaultCenter]
-             postNotificationName:@"BVTReceivedBusinessesIdNotification"
+             postNotificationName:@"BVTReceivedBusinessesSearchNotification"
              object:search];
         }
         
