@@ -84,31 +84,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         sortedArray = [self.filteredArrayCopy filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"price = %@", filterKey]];
     }
 
-    if (sortedArray.count == 0)
-    {
-        self.label.hidden = NO;
-        if (!self.label)
-        {
-            self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 30.f)];
-            self.label.text = @"No sorted results found.";
-            [self.view addSubview:self.label];
-            self.label.center = self.tableView.center;
-            self.tableView.separatorColor = [UIColor clearColor];
-            self.label.textAlignment = NSTextAlignmentCenter;
-            self.label.textColor = [UIColor lightGrayColor];
-        }
-    }
-    else
-    {
-        self.label.hidden = YES;
-    }
+
     self.filteredResults = sortedArray;
-    if (self.filteredResults.count == 0)
-    {
-        
-    }
     
-    [self.tableView reloadData];
+    [self evaluateSortedItemsState:self.filteredResults];
 }
 
 - (IBAction)didTapDistanceButton:(id)sender
@@ -133,12 +112,17 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     {
         [self.distanceButton setTitle:@"5 mi. away" forState:UIControlStateNormal];
     }
+    
+    NSArray *sortedArray; // need to work this TODO:
+    self.filteredResults = sortedArray;
+
+    [self evaluateSortedItemsState:self.filteredResults];
 }
 
 - (IBAction)didTapOpenButton:(id)sender
 {
         NSArray *sortedArray;
-    if ([self.openNowButton.titleLabel.text isEqualToString:@"Open or closed"])
+    if ([self.openNowButton.titleLabel.text isEqualToString:@"Closed now"])
     {
         [self.openNowButton setTitle:@"Open now" forState:UIControlStateNormal];
         sortedArray = [self.filteredArrayCopy filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)]];
@@ -148,43 +132,37 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         [self.openNowButton setTitle:@"Closed now" forState:UIControlStateNormal];
         sortedArray = [self.filteredArrayCopy filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"isOpenNow = %@", @(NO)]];
     }
-    else if ([self.openNowButton.titleLabel.text isEqualToString:@"Closed now"])
-    {
-        sortedArray = self.filteredArrayCopy;
-        [self.openNowButton setTitle:@"Open or closed" forState:UIControlStateNormal];
-    }
     
     self.filteredResults = sortedArray;
     
-    [self.tableView reloadData];
+    [self evaluateSortedItemsState:self.filteredResults];
 }
 
-- (void)evaluateBizOpenState
+- (void)evaluateSortedItemsState:(NSArray *)items
 {
-
-        if (self.filteredResults.count == 0)
-        {
-            self.label.hidden = NO;
-            if (!self.label)
-            {
-                self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 30.f)];
-                self.label.text = @"No sorted results found.";
-                [self.view addSubview:self.label];
-                self.label.center = self.tableView.center;
-                self.tableView.separatorColor = [UIColor clearColor];
-                self.label.textAlignment = NSTextAlignmentCenter;
-                self.label.textColor = [UIColor lightGrayColor];
-            }
-        }
-            else
-            {
-                self.label.hidden = YES;
-            }
     
-
+    if (items.count == 0)
+    {
+        self.label.hidden = NO;
+        if (!self.label)
+        {
+            self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 30.f)];
+            self.label.text = @"No sorted results found";
+            [self.view addSubview:self.label];
+            self.label.center = self.tableView.center;
+            self.tableView.separatorColor = [UIColor clearColor];
+            self.label.textAlignment = NSTextAlignmentCenter;
+            self.label.textColor = [UIColor lightGrayColor];
+        }
+    }
+    else
+    {
+        self.label.hidden = YES;
+    }
+    
+    
     [self.tableView reloadData];
 }
-
 
 - (IBAction)didTapStarSortIcon:(id)sender
 {
@@ -282,6 +260,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     
     [super viewDidLoad];
+    
+    
     
     if (!self.cachedDetails)
     {
@@ -405,6 +385,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                  
                  [[AppDelegate sharedClient] reviewsForBusinessWithId:selectedBusiness.identifier
                                                     completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
+                                                        if (error)
+                                                        {
+                                                            
+                                                        }
                                                         dispatch_async(dispatch_get_main_queue(), ^{
                                                             // *** Get review user photos in advance if they exist, to display from Presentation VC
                                                             NSMutableArray *userPhotos = [NSMutableArray array];
@@ -424,6 +408,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                             [self _hideHUD];
                                                             if (!self.didCancelRequest)
                                                             {
+                                                                // get biz photos here if we dont have them?
                                                                 [self performSegueWithIdentifier:kShowDetailSegue sender:selectedBusiness];
                                                             }
                                                         });
