@@ -10,4 +10,6 @@
 
 @interface BVTExploreViewController : UIViewController
 
+@property (nonatomic, strong) NSMutableDictionary *cachedDetails;
+
 @end

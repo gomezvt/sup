@@ -62,7 +62,7 @@
         _identifier = businessDict[@"id"];
         _phone = phone.length > 0 ? phone : nil;
         _price = businessDict[@"price"];
-        
+         _open_now = businessDict[@"is_open_now"];
         // BusinessWithID returned values
         id hoursItem = businessDict[@"hours"];
         if ([hoursItem isKindOfClass:[NSArray class]])

@@ -38,6 +38,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *openNowButton;
 @property (nonatomic, strong) NSArray *filteredArrayCopy;
 @property (nonatomic, strong) UILabel *label;
+@property (nonatomic, strong) NSMutableArray *filteredArray;
 
 @end
 
@@ -102,6 +103,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         self.label.hidden = YES;
     }
     self.filteredResults = sortedArray;
+    if (self.filteredResults.count == 0)
+    {
+        
+    }
     
     [self.tableView reloadData];
 }
@@ -132,15 +137,54 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (IBAction)didTapOpenButton:(id)sender
 {
-    if ([self.openNowButton.titleLabel.text isEqualToString:@"Open now"])
+        NSArray *sortedArray;
+    if ([self.openNowButton.titleLabel.text isEqualToString:@"Open or closed"])
+    {
+        [self.openNowButton setTitle:@"Open now" forState:UIControlStateNormal];
+        sortedArray = [self.filteredArrayCopy filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)]];
+    }
+    else if ([self.openNowButton.titleLabel.text isEqualToString:@"Open now"])
     {
         [self.openNowButton setTitle:@"Closed now" forState:UIControlStateNormal];
+        sortedArray = [self.filteredArrayCopy filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"isOpenNow = %@", @(NO)]];
     }
     else if ([self.openNowButton.titleLabel.text isEqualToString:@"Closed now"])
     {
-        [self.openNowButton setTitle:@"Open now" forState:UIControlStateNormal];
+        sortedArray = self.filteredArrayCopy;
+        [self.openNowButton setTitle:@"Open or closed" forState:UIControlStateNormal];
     }
+    
+    self.filteredResults = sortedArray;
+    
+    [self.tableView reloadData];
 }
+
+- (void)evaluateBizOpenState
+{
+
+        if (self.filteredResults.count == 0)
+        {
+            self.label.hidden = NO;
+            if (!self.label)
+            {
+                self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 30.f)];
+                self.label.text = @"No sorted results found.";
+                [self.view addSubview:self.label];
+                self.label.center = self.tableView.center;
+                self.tableView.separatorColor = [UIColor clearColor];
+                self.label.textAlignment = NSTextAlignmentCenter;
+                self.label.textColor = [UIColor lightGrayColor];
+            }
+        }
+            else
+            {
+                self.label.hidden = YES;
+            }
+    
+
+    [self.tableView reloadData];
+}
+
 
 - (IBAction)didTapStarSortIcon:(id)sender
 {
@@ -169,6 +213,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super awakeFromNib];
     
+
+    
+    
     self.sortedArray = [NSMutableArray array];
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
@@ -176,14 +223,133 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
+    
 
+
+    
+}
+
+- (void) dealloc
+{
+    // If you don't remove yourself as an observer, the Notification Center
+    // will continue to try and send notification objects to the deallocated
+    // object.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+- (void)didReceiveBusinessesNotification:(NSNotification *)notification
+{
+    if ([[notification name] isEqualToString:@"BVTReceivedBusinessesIdNotification"])
+    {
+        YLPBusiness *business = notification.object;
+        if (business.photos.count > 0)
+        {
+            NSMutableArray *photosArray = [NSMutableArray array];
+            for (NSString *photoStr in business.photos)
+            {
+                NSURL *url = [NSURL URLWithString:photoStr];
+                NSData *imageData = [NSData dataWithContentsOfURL:url];
+                UIImage *image = [UIImage imageWithData:imageData];
+                [photosArray addObject:image];
+            }
+            
+            business.photos = photosArray;
+        }
+        
+        [self.filteredArray addObject:business];
+        
+        
+        if (self.filteredArray.count == self.filteredResults.count)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSArray *descriptor = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+                NSArray *sortedArray = [self.filteredArray sortedArrayUsingDescriptors:descriptor];
+                self.filteredResults = sortedArray;
+                [self.cachedDetails setObject:self.filteredResults forKey:self.subCategoryTitle];
+                [self.tableView reloadData];
+                [self _hideHUD];
+                
+                [self.openNowButton setHidden:NO];
+
+//                [self performSegueWithIdentifier:kShowSubCategorySegue sender:@[ self.selectionTitle, sortedArray ]];
+            });
+        }
+    }
 }
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     
+    if (!self.cachedDetails)
+    {
+        self.cachedDetails = [NSMutableDictionary dictionary];
+    }
+    
+    [self.openNowButton setHidden:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didReceiveBusinessesNotification:)
+                                                 name:@"BVTReceivedBusinessesIdNotification"
+                                               object:nil];
+    
+    NSArray *details = [self.cachedDetails valueForKey:self.subCategoryTitle];
+    if (details.count > 0)
+    {
+        self.filteredResults = details;
+        [self.openNowButton setHidden:NO];
+
+    }
+    else
+    {
+        self.filteredArray = [NSMutableArray array];
+
+        if (self.filteredResults.count > 0)
+        {
+            self.hud = [BVTHUDView hudWithView:self.navigationController.view];
+            self.hud.delegate = self;
+            
+            self.didCancelRequest = NO;
+            self.tableView.userInteractionEnabled = NO;
+            self.backChevron.enabled = NO;
+            for (YLPBusiness *selectedBusiness in self.filteredResults)
+            {
+                
+                
+                [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
+                 (YLPBusiness *business, NSError *error) {
+                     
+                     if (error) {
+                         
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             [self _hideHUD];
+                             
+                             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
+                             
+                             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                             [alertController addAction:ok];
+                             
+                             [self presentViewController:alertController animated:YES completion:nil];
+                             
+                         });
+                     }
+                     
+                 }];
+            }
+            
+        }
+    }
+
+    
+    
+
+    
+
     self.filteredArrayCopy = self.filteredResults;
+    
+
     
     self.titleLabel.text = self.subCategoryTitle;
 
@@ -218,6 +384,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.backChevron.enabled = YES;
     self.tableView.userInteractionEnabled = YES;
     [self.hud removeFromSuperview];
+    
 }
 
 #pragma mark - TableView Delegate
@@ -234,40 +401,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     YLPBusiness *selectedBusiness = [self.filteredResults objectAtIndex:indexPath.row];
-    [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
-     (YLPBusiness *business, NSError *error) {
-         if (error) {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 [self _hideHUD];
 
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
-             
-             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-             [alertController addAction:ok];
-             
-             [self presentViewController:alertController animated:YES completion:nil];
-
-             });
-         }
-         else
-         {
-             // *** Get business photos in advance if they exist, to display from Presentation VC
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 if (business.photos.count > 0)
-                 {
-                     NSMutableArray *photosArray = [NSMutableArray array];
-                     for (NSString *photoStr in business.photos)
-                     {
-                         NSURL *url = [NSURL URLWithString:photoStr];
-                         NSData *imageData = [NSData dataWithContentsOfURL:url];
-                         UIImage *image = [UIImage imageWithData:imageData];
-                         [photosArray addObject:image];
-                     }
-                     
-                     business.photos = photosArray;
-                 }
                  
-                 [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
+                 [[AppDelegate sharedClient] reviewsForBusinessWithId:selectedBusiness.identifier
                                                     completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                         dispatch_async(dispatch_get_main_queue(), ^{
                                                             // *** Get review user photos in advance if they exist, to display from Presentation VC
@@ -282,21 +418,17 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                                     [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];
                                                                 }
                                                             }
-                                                            business.reviews = reviews.reviews;
-                                                            business.userPhotosArray = userPhotos;
+                                                            selectedBusiness.reviews = reviews.reviews;
+                                                            selectedBusiness.userPhotosArray = userPhotos;
 
                                                             [self _hideHUD];
                                                             if (!self.didCancelRequest)
                                                             {
-                                                                [self performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                                [self performSegueWithIdentifier:kShowDetailSegue sender:selectedBusiness];
                                                             }
                                                         });
                                                     }];
-             });
-         }
-
-         
-     }];
+ 
 }
 
 - (void)_hideHUD
@@ -352,6 +484,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (IBAction)didTapBack:(id)sender
 {
+    if ([self.delegate respondsToSelector:@selector(didTapBackWithDetails:)])
+    {
+        [self.delegate didTapBackWithDetails:self.cachedDetails];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

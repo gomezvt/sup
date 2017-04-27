@@ -740,7 +740,7 @@
         <!--Burlingtonian-->
         <scene sceneID="A4F-SH-zzx">
             <objects>
-                <viewController id="xXJ-IN-eoB" customClass="BVTSubCategoryTableViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SubCat" id="xXJ-IN-eoB" customClass="BVTSubCategoryTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="egq-p2-mRD"/>
                         <viewControllerLayoutGuide type="bottom" id="Afb-KY-yVv"/>
