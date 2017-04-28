@@ -259,7 +259,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     [super viewDidLoad];
     
+    self.filteredArrayCopy = self.filteredResults;
+
     
+    self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.filteredArrayCopy.count];
     
     if (!self.cachedDetails)
     {
@@ -286,12 +289,12 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
         if (self.filteredResults.count > 0)
         {
-            self.hud = [BVTHUDView hudWithView:self.navigationController.view];
-            self.hud.delegate = self;
-            
-            self.didCancelRequest = NO;
-            self.tableView.userInteractionEnabled = NO;
-            self.backChevron.enabled = NO;
+//            self.hud = [BVTHUDView hudWithView:self.navigationController.view];
+//            self.hud.delegate = self;
+//            
+//            self.didCancelRequest = NO;
+//            self.tableView.userInteractionEnabled = NO;
+//            self.backChevron.enabled = NO;
             for (YLPBusiness *selectedBusiness in self.filteredResults)
             {
                 
@@ -302,7 +305,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                      if (error) {
                          
                          dispatch_async(dispatch_get_main_queue(), ^{
-                             [self _hideHUD];
+//                             [self _hideHUD];
                              
                              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
                              
@@ -320,16 +323,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         }
     }
 
-    
-    
-
-    
-
-    self.filteredArrayCopy = self.filteredResults;
-    
-
-    
-    self.titleLabel.text = self.subCategoryTitle;
 
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"Cell"];
