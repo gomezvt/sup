@@ -283,7 +283,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                     for (NSDictionary *dict in self.resultsArray)
                     {
                         YLPBusiness *bizz = [[dict allValues] lastObject];
-                        if ([[biz.location.address lastObject] isEqualToString:[bizz.location.address lastObject]] && [[dict allKeys] lastObject] == category)
+                        if ([biz.phone isEqualToString:bizz.phone] && [biz.name isEqualToString:bizz.name] && [[dict allKeys] lastObject] == category)
                         {
                             isDuplicate = YES;
                         }
