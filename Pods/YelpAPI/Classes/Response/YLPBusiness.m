@@ -7,10 +7,12 @@
 //
 
 #import "YLPBusiness.h"
+
 #import "YLPCategory.h"
 #import "YLPCoordinate.h"
 #import "YLPLocation.h"
 #import "YLPResponsePrivate.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation YLPBusiness
 
@@ -90,6 +92,17 @@
         _categories = [self.class categoriesFromJSONArray:businessDict[@"categories"]];
         YLPCoordinate *coordinate = [self.class coordinateFromJSONDictionary:businessDict[@"coordinates"]];
         _location = [[YLPLocation alloc] initWithDictionary:businessDict[@"location"] coordinate:coordinate];
+        
+        //        for (YLPBusiness *business in self.filteredArrayCopy)
+        //        {
+        //            CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:business.location.coordinate.latitude longitude:business.location.coordinate.longitude];
+        //
+        //
+        //
+        //        }
+        
+
+        
     }
     
 //    NSArray *photos

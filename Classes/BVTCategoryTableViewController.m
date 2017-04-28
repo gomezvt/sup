@@ -19,7 +19,8 @@
 #import "YLPBusiness.h"
 #import "BVTHUDView.h"
 #import "BVTStyles.h"
-
+#import "YLPLocation.h"
+#import "YLPCoordinate.h"
 @interface BVTCategoryTableViewController ()
     <BVTHUDViewDelegate, BVTSubCategoryTableViewControllerDelegate>
 
@@ -159,6 +160,12 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
                      NSMutableArray *filteredArray = [NSMutableArray array];
                      for (YLPBusiness *biz in searchResults.businesses)
                      {
+                         AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                         
+                         CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:biz.location.coordinate.latitude longitude:biz.location.coordinate.longitude];
+                         CLLocationDistance meters = [appDel.userLocation distanceFromLocation:bizLocation];
+                         double miles = meters / 1609.34;
+                         biz.miles = miles;
                          if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", selectionTitle]] lastObject] && biz.closed == NO)
                          {
                              [filteredArray addObject:biz];

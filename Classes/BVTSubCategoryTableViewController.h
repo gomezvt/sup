@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+//#import <CoreLocation/CoreLocation.h>
+
+//@class CLLocationManager;
+
 @class YLPSearch;
 
 @protocol BVTSubCategoryTableViewControllerDelegate <NSObject>
@@ -16,11 +20,12 @@
 
 @end
 
-@interface BVTSubCategoryTableViewController : UIViewController
+@interface BVTSubCategoryTableViewController : UIViewController 
 
 @property (nonatomic, copy) NSString *subCategoryTitle;
 @property (nonatomic, strong) NSArray *filteredResults;
 @property (nonatomic, strong) NSMutableDictionary *cachedDetails;
+
 @property(nonatomic, weak)id <BVTSubCategoryTableViewControllerDelegate> delegate;
 
 @end

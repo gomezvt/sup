@@ -23,6 +23,7 @@
 #import "YLPReview.h"
 #import "YLPUser.h"
 
+
 @interface BVTSubCategoryTableViewController ()
     <BVTHUDViewDelegate>
 
@@ -39,6 +40,9 @@
 @property (nonatomic, strong) NSArray *filteredArrayCopy;
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) NSMutableArray *filteredArray;
+@property (nonatomic, strong) NSString *pricePredicate;
+@property (nonatomic, strong) NSString *distancePredicate;
+@property (nonatomic, strong) NSString *openClosePredicate;
 
 @end
 
@@ -50,42 +54,45 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (IBAction)didTapPriceButton:(id)sender
 {
-    NSString *filterKey;
     NSArray *sortedArray;
     
     if ([self.priceButton.titleLabel.text isEqualToString:@"Any $"])
     {
-        filterKey = @"$";
-        [self.priceButton setTitle:filterKey forState:UIControlStateNormal];
+        self.pricePredicate = @"$";
+        [self.priceButton setTitle:self.pricePredicate forState:UIControlStateNormal];
     }
     else if ([self.priceButton.titleLabel.text isEqualToString:@"$"])
     {
-        filterKey = @"$$";
-        [self.priceButton setTitle:filterKey forState:UIControlStateNormal];
+        self.pricePredicate = @"$$";
+        [self.priceButton setTitle:self.pricePredicate forState:UIControlStateNormal];
     }
     else if ([self.priceButton.titleLabel.text isEqualToString:@"$$"])
     {
-        filterKey = @"$$$";
-        [self.priceButton setTitle:filterKey forState:UIControlStateNormal];
+        self.pricePredicate = @"$$$";
+        [self.priceButton setTitle:self.pricePredicate forState:UIControlStateNormal];
     }
     else if ([self.priceButton.titleLabel.text isEqualToString:@"$$$"])
     {
-        filterKey = @"$$$$";
-        [self.priceButton setTitle:filterKey forState:UIControlStateNormal];
+        self.pricePredicate = @"$$$$";
+        [self.priceButton setTitle:self.pricePredicate forState:UIControlStateNormal];
     }
     else if ([self.priceButton.titleLabel.text isEqualToString:@"$$$$"])
     {
-        filterKey = @"Any $";
-        [self.priceButton setTitle:filterKey forState:UIControlStateNormal];
+        self.pricePredicate = @"Any $";
+        [self.priceButton setTitle:self.pricePredicate forState:UIControlStateNormal];
     }
     
-    sortedArray = [self.filteredArrayCopy filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"price = %@", filterKey]];
+//    sortedArray = [self.filteredArrayCopy filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"price = %@", filterKey]];
     
+//    NSPredicate *predicateCString = [NSPredicate predicateWithFormat:@"partCode == %@", [myFilter objectForKey:@"area3"]];
+//    NSPredicate *predicateDString = [NSPredicate predicateWithFormat:@"doorNo CONTAINS[cd] %@", [myFilter objectForKey:@"door"]];
+//    NSPredicate *predicateEString = [NSPredicate predicateWithFormat:@"doorDesc CONTAINS[cd] %@", [myFilter objectForKey:@"doorDesc"]];
+//    
+//    NSPredicate *compoundPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:@[predicateAreaString, predicateBString, predicateCString, predicateDString, predicateEString]];
+//    
+//    NSMutableArray *filteredArray = [NSMutableArray arrayWithArray:[currentInstalls filteredArrayUsingPredicate:compoundPredicate]];
+//    currentInstalls = [filteredArray mutableCopy];
     
-    
-    self.filteredResults = sortedArray;
-    
-    [self evaluateSortedItemsState:self.filteredResults];
 }
 
 - (IBAction)didTapDistanceButton:(id)sender
@@ -111,10 +118,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         [self.distanceButton setTitle:@"5 miles" forState:UIControlStateNormal];
     }
     
-    NSArray *sortedArray; // need to work this TODO:
-    self.filteredResults = sortedArray;
 
-    [self evaluateSortedItemsState:self.filteredResults];
+//    NSArray *array = [self.filteredArrayCopy filteredArrayUsingPredicate:[]
+//    CLLocationDistance meters = [newLocation distanceFromLocation:oldLocation];
 }
 
 - (IBAction)didTapOpenButton:(id)sender
@@ -128,12 +134,12 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     else if ([self.openNowButton.titleLabel.text isEqualToString:@"Open"])
     {
         [self.openNowButton setTitle:@"Closed" forState:UIControlStateNormal];
-        sortedArray = [self.filteredArrayCopy filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"isOpenNow = %@", @(NO)]];
+
     }
     
-    self.filteredResults = sortedArray;
+    sortedArray = [self.filteredArrayCopy filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"isOpenNow = %@", @(NO)]];
     
-    [self evaluateSortedItemsState:self.filteredResults];
+    
 }
 
 - (void)evaluateSortedItemsState:(NSArray *)items
@@ -254,13 +260,26 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     }
 }
 
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+
+{
+    
+}
+
 - (void)viewDidLoad
 {
     
     [super viewDidLoad];
-    
+
     self.filteredArrayCopy = self.filteredResults;
 
+    
+
+
+    
     
     self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.filteredArrayCopy.count];
     

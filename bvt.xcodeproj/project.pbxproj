@@ -29,6 +29,7 @@
 		6441121B1E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112071E2D345600C3ED18 /* BVTYelpRatingTableViewCell.m */; };
 		6441121C1E2D345600C3ED18 /* BVTPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112091E2D345600C3ED18 /* BVTPageContentViewController.m */; };
 		6441121D1E2D345600C3ED18 /* BVTPageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6441120B1E2D345600C3ED18 /* BVTPageRootViewController.m */; };
+		6473625A1EB2F34700C3DA25 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 647362591EB2F34700C3DA25 /* CoreLocation.framework */; };
 		648166B01E5657B400071628 /* BVTYelpReviewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 648166AE1E5657B400071628 /* BVTYelpReviewsTableViewCell.m */; };
 		648166B11E5657B400071628 /* BVTYelpReviewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 648166AF1E5657B400071628 /* BVTYelpReviewsTableViewCell.xib */; };
 		64908A7C1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64908A7A1E494E6100BC6884 /* BVTYelpCategoryTableViewCell.m */; };
@@ -116,6 +117,7 @@
 		644112091E2D345600C3ED18 /* BVTPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTPageContentViewController.m; path = Classes/BVTPageContentViewController.m; sourceTree = SOURCE_ROOT; };
 		6441120A1E2D345600C3ED18 /* BVTPageRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTPageRootViewController.h; path = Classes/BVTPageRootViewController.h; sourceTree = SOURCE_ROOT; };
 		6441120B1E2D345600C3ED18 /* BVTPageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTPageRootViewController.m; path = Classes/BVTPageRootViewController.m; sourceTree = SOURCE_ROOT; };
+		647362591EB2F34700C3DA25 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		648166AD1E5657B400071628 /* BVTYelpReviewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTYelpReviewsTableViewCell.h; path = /Users/gomez/Developer/bvt/Classes/BVTYelpReviewsTableViewCell.h; sourceTree = "<absolute>"; };
 		648166AE1E5657B400071628 /* BVTYelpReviewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpReviewsTableViewCell.m; path = /Users/gomez/Developer/bvt/Classes/BVTYelpReviewsTableViewCell.m; sourceTree = "<absolute>"; };
 		648166AF1E5657B400071628 /* BVTYelpReviewsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpReviewsTableViewCell.xib; path = Classes/BVTYelpReviewsTableViewCell.xib; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6473625A1EB2F34700C3DA25 /* CoreLocation.framework in Frameworks */,
 				644111E71E2D33E000C3ED18 /* MapKit.framework in Frameworks */,
 				CF386C2C86B09043D41680B2 /* libPods-bvt.a in Frameworks */,
 			);
@@ -354,6 +357,7 @@
 		81DC3A0A017F6247E73F74F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				647362591EB2F34700C3DA25 /* CoreLocation.framework */,
 				644111E61E2D33E000C3ED18 /* MapKit.framework */,
 				640179011E2C4BB900BBA8D2 /* YelpAPI.framework */,
 				640178FF1E2C4BAF00BBA8D2 /* libYelpAPI.a */,
