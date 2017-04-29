@@ -42,6 +42,7 @@
 @property (nonatomic, strong) NSMutableArray *filteredArray;
 @property (nonatomic) double milesKeyValue;
 @property (nonatomic, strong) NSString *priceKeyValue;
+@property (nonatomic) BOOL openCloseKeyValue;
 
 @end
 
@@ -85,10 +86,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 - (void)sortArrayWithPredicates
 {
     NSPredicate *pricePredicate;
-    if (!self.milesKeyValue)
-    {
-        self.milesKeyValue = 5;
-    }
     
     if (!self.priceKeyValue)
     {
@@ -103,27 +100,43 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     {
         pricePredicate = [NSPredicate predicateWithFormat:@"price = %@", self.priceKeyValue];
     }
-
-    NSPredicate *distancePredicate = [NSPredicate predicateWithFormat:@"miles <= %d", self.milesKeyValue];
     
+    NSPredicate *distancePredicate;
+    if (self.milesKeyValue == 0)
+    {
+        distancePredicate = [NSPredicate predicateWithFormat:@"miles <= %d", 5];
+    }
+    else
+    {
+        distancePredicate = [NSPredicate predicateWithFormat:@"miles <= %d", self.milesKeyValue];
+
+    }
+    
+    
+    NSPredicate *openClosePredicate;
+
+    if (self.openNowButton.hidden == NO)
+    {
+        if (self.openCloseKeyValue == YES)
+        {
+            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)];
+        }
+        else
+        {
+            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(NO)];
+        }
+    }
+
     NSPredicate *comboPredicate;
-//    if (self.openNowButton.hidden == NO)
-//    {
-//        NSPredicate *openClosePredicate;
-//        if ([self.openNowButton.titleLabel.text isEqualToString:@"Closed"])
-//        {
-//            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)];
-//        }
-//        else
-//        {
-//            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(NO)];
-//        }
-//        comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates: @[pricePredicate, openClosePredicate, distancePredicate]];
-//    }
-//    else
-//    {
+    if (openClosePredicate)
+    {
+        comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates: @[pricePredicate, distancePredicate, openClosePredicate]];
+    }
+    else
+    {
         comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates: @[pricePredicate, distancePredicate]];
-//    }
+    }
+    
 
     NSArray *sortedArray = [self.filteredArrayCopy filteredArrayUsingPredicate:comboPredicate];
     self.filteredResults = sortedArray;
@@ -186,10 +199,12 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     if ([self.openNowButton.titleLabel.text isEqualToString:@"Closed"])
     {
+        self.openCloseKeyValue = YES;
         [self.openNowButton setTitle:@"Open" forState:UIControlStateNormal];
     }
     else if ([self.openNowButton.titleLabel.text isEqualToString:@"Open"])
     {
+        self.openCloseKeyValue = NO;
         [self.openNowButton setTitle:@"Closed" forState:UIControlStateNormal];
     }
     
@@ -303,14 +318,16 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                      {
                          dispatch_async(dispatch_get_main_queue(), ^{
                              NSArray *descriptor = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+                             self.openCloseKeyValue = YES;
                              NSArray *sortedArray = [self.filteredArray sortedArrayUsingDescriptors:descriptor];
+                             [self.openNowButton setHidden:NO];
+
                              self.filteredResults = sortedArray;
                              self.filteredArrayCopy = sortedArray;
                              [self.cachedDetails setObject:self.filteredResults forKey:self.subCategoryTitle];
                              [self sortArrayWithPredicates];
                              [self _hideHUD];
                              
-                             [self.openNowButton setHidden:NO];
                          });
                      }
 
