@@ -21,6 +21,7 @@
 #import "YLPClient+Business.h"
 #import "BVTDetailTableViewController.h"
 #import "BVTTableViewSectionHeaderView.h"
+#import "BVTSurpriseRecommendationsTableViewCell.h"
 
 @interface BVTSurpriseRecommendationsTableViewController ()
 <BVTHUDViewDelegate>
@@ -123,7 +124,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    BVTSurpriseRecommendationsTableViewCell *cell = (BVTSurpriseRecommendationsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
     
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];

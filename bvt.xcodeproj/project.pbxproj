@@ -47,6 +47,8 @@
 		64A3386C1EA6F48E0061CA83 /* BVTTableViewSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A3386B1EA6F48E0061CA83 /* BVTTableViewSectionHeaderView.m */; };
 		64A3386E1EA706640061CA83 /* BVTTableViewSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A3386D1EA706640061CA83 /* BVTTableViewSectionHeaderView.xib */; };
 		64A338711EA7067F0061CA83 /* BVTHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A338701EA7067F0061CA83 /* BVTHUDView.m */; };
+		64B3E4751EB454160088B9AF /* BVTSurpriseRecommendationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B3E4731EB454160088B9AF /* BVTSurpriseRecommendationsTableViewCell.m */; };
+		64B3E4761EB454160088B9AF /* BVTSurpriseRecommendationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B3E4741EB454160088B9AF /* BVTSurpriseRecommendationsTableViewCell.xib */; };
 		64B990CE1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B990CD1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.m */; };
 		64B990CF1E99D5190002EE4E /* BVTSurpriseRecommendationsTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 64B990CC1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.h */; };
 		64C88B4E1E5545CF00ECA06B /* BVTPresentationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C88B4D1E5545CF00ECA06B /* BVTPresentationTableViewController.m */; };
@@ -140,6 +142,9 @@
 		64A3386D1EA706640061CA83 /* BVTTableViewSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTTableViewSectionHeaderView.xib; path = Classes/BVTTableViewSectionHeaderView.xib; sourceTree = "<group>"; };
 		64A3386F1EA7067F0061CA83 /* BVTHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTHUDView.h; path = Classes/BVTHUDView.h; sourceTree = SOURCE_ROOT; };
 		64A338701EA7067F0061CA83 /* BVTHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTHUDView.m; path = Classes/BVTHUDView.m; sourceTree = SOURCE_ROOT; };
+		64B3E4721EB454160088B9AF /* BVTSurpriseRecommendationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSurpriseRecommendationsTableViewCell.h; path = bvt/Classes/BVTSurpriseRecommendationsTableViewCell.h; sourceTree = "<group>"; };
+		64B3E4731EB454160088B9AF /* BVTSurpriseRecommendationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSurpriseRecommendationsTableViewCell.m; path = bvt/Classes/BVTSurpriseRecommendationsTableViewCell.m; sourceTree = "<group>"; };
+		64B3E4741EB454160088B9AF /* BVTSurpriseRecommendationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTSurpriseRecommendationsTableViewCell.xib; path = Classes/BVTSurpriseRecommendationsTableViewCell.xib; sourceTree = "<group>"; };
 		64B990CC1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSurpriseRecommendationsTableViewController.h; path = /Users/gomez/Developer/bvt/Classes/BVTSurpriseRecommendationsTableViewController.h; sourceTree = "<absolute>"; };
 		64B990CD1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSurpriseRecommendationsTableViewController.m; path = Classes/BVTSurpriseRecommendationsTableViewController.m; sourceTree = SOURCE_ROOT; };
 		64C88B4C1E5545CF00ECA06B /* BVTPresentationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTPresentationTableViewController.h; path = Classes/BVTPresentationTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -178,6 +183,7 @@
 				64934CA61E306AD900386B5B /* LaunchScreen.storyboard */,
 				64934CC31E306C1E00386B5B /* BVTHeaderTitleView.xib */,
 				648166AF1E5657B400071628 /* BVTYelpReviewsTableViewCell.xib */,
+				64B3E4741EB454160088B9AF /* BVTSurpriseRecommendationsTableViewCell.xib */,
 				64E905F21E4970BC00331C3F /* BVTYelpCategoryTableViewCell.xib */,
 				64E905ED1E49704000331C3F /* BVTYelpHoursTableViewCell.xib */,
 				64934CB11E306B7000386B5B /* BVTExploreCollectionViewCell.xib */,
@@ -191,6 +197,15 @@
 				64A3386D1EA706640061CA83 /* BVTTableViewSectionHeaderView.xib */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		64B3E4711EB453ED0088B9AF /* Cell Classes */ = {
+			isa = PBXGroup;
+			children = (
+				64B3E4721EB454160088B9AF /* BVTSurpriseRecommendationsTableViewCell.h */,
+				64B3E4731EB454160088B9AF /* BVTSurpriseRecommendationsTableViewCell.m */,
+			);
+			name = "Cell Classes";
 			sourceTree = "<group>";
 		};
 		64B4468D1E3049B700327C26 /* About */ = {
@@ -216,6 +231,7 @@
 		64B4468F1E3049C500327C26 /* Surprise */ = {
 			isa = PBXGroup;
 			children = (
+				64B3E4711EB453ED0088B9AF /* Cell Classes */,
 				644111FA1E2D345600C3ED18 /* BVTSurpriseCategoryTableViewController.h */,
 				644111FB1E2D345600C3ED18 /* BVTSurpriseCategoryTableViewController.m */,
 				642362101E5FCD4900073B68 /* BVTSurpriseSubCategoryTableViewController.h */,
@@ -454,6 +470,7 @@
 				64A3386E1EA706640061CA83 /* BVTTableViewSectionHeaderView.xib in Resources */,
 				648166B11E5657B400071628 /* BVTYelpReviewsTableViewCell.xib in Resources */,
 				64934CB21E306B7000386B5B /* BVTExploreCollectionViewCell.xib in Resources */,
+				64B3E4761EB454160088B9AF /* BVTSurpriseRecommendationsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64B3E4751EB454160088B9AF /* BVTSurpriseRecommendationsTableViewCell.m in Sources */,
 				6441120D1E2D345600C3ED18 /* BVTCategoryTableViewController.m in Sources */,
 				6441121C1E2D345600C3ED18 /* BVTPageContentViewController.m in Sources */,
 				644112111E2D345600C3ED18 /* BVTHeaderTitleView.m in Sources */,
