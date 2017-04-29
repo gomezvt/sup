@@ -64,6 +64,12 @@
                             <constraint firstAttribute="height" constant="14" id="amE-f5-Xgh"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90Y-ch-noK">
+                        <rect key="frame" x="296.5" y="92.5" width="37.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.56862745098039214" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="lrq-TU-W5i" secondAttribute="trailing" id="5NA-BJ-OBy"/>
@@ -72,6 +78,8 @@
                     <constraint firstItem="AeJ-26-xQ3" firstAttribute="top" secondItem="lrq-TU-W5i" secondAttribute="bottom" constant="4" id="Kji-30-7nG"/>
                     <constraint firstAttribute="bottomMargin" secondItem="AeJ-26-xQ3" secondAttribute="bottom" id="Sk0-1C-jVt"/>
                     <constraint firstItem="AeJ-26-xQ3" firstAttribute="leading" secondItem="VgR-GH-Clz" secondAttribute="trailing" constant="8" id="Vdm-QD-XhU"/>
+                    <constraint firstItem="90Y-ch-noK" firstAttribute="centerY" secondItem="AeJ-26-xQ3" secondAttribute="centerY" id="aje-8x-Xnt"/>
+                    <constraint firstAttribute="trailing" secondItem="90Y-ch-noK" secondAttribute="trailing" constant="8" id="dz1-vs-D92"/>
                     <constraint firstItem="lrq-TU-W5i" firstAttribute="top" secondItem="0MF-qt-Jt5" secondAttribute="topMargin" id="ftd-vz-8BQ"/>
                     <constraint firstItem="VgR-GH-Clz" firstAttribute="leading" secondItem="0MF-qt-Jt5" secondAttribute="leadingMargin" id="kgr-b7-FKb"/>
                 </constraints>
@@ -80,6 +88,7 @@
                 <outlet property="addressLabel" destination="D3i-hR-NpQ" id="aFT-W7-ja9"/>
                 <outlet property="addressLabel2" destination="Unt-My-BaT" id="yef-Vl-olt"/>
                 <outlet property="addressLabel3" destination="rJx-kw-Ny9" id="pjV-Lk-5Aa"/>
+                <outlet property="priceLabel" destination="90Y-ch-noK" id="fy4-jx-R2H"/>
                 <outlet property="ratingStarsView" destination="AeJ-26-xQ3" id="5M0-we-frN"/>
                 <outlet property="thumbNailView" destination="VgR-GH-Clz" id="AAw-k9-Dne"/>
                 <outlet property="titleLabel" destination="3Tg-lK-Tc4" id="hmQ-M0-aPY"/>

@@ -38,7 +38,7 @@
 static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeaderView";
 
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
-static NSString *const kThumbNailCell = @"BVTThumbNailTableViewCell";
+static NSString *const kRecommendationsCell = @"BVTSurpriseRecommendationsTableViewCell";
 static NSString *const kShowDetailSegue = @"ShowDetail";
 
 @implementation BVTSurpriseRecommendationsTableViewController
@@ -93,7 +93,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     self.tableView.sectionHeaderHeight = 44.f;
     
-    UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
+    UINib *cellNib = [UINib nibWithNibName:kRecommendationsCell bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"Cell"];
     
     self.tableView.estimatedRowHeight = 44.f;
