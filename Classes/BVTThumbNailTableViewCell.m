@@ -70,6 +70,12 @@
         self.addressLabel2.text = location.address[1];
         self.addressLabel3.text = cityStateZipString;
     }
+    else if (location.address.count == 3)
+    {
+        self.addressLabel.text = location.address[0];
+        self.addressLabel2.text = [NSString stringWithFormat:@"%@, %@", location.address[1], location.address[2]];
+        self.addressLabel3.text = cityStateZipString;
+    }
     
     NSString *ratingString;
     if (self.business.rating == 0)

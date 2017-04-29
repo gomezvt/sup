@@ -23,7 +23,7 @@
 #import "YLPCoordinate.h"
 
 @interface BVTCategoryTableViewController ()
-    <BVTHUDViewDelegate, BVTSubCategoryTableViewControllerDelegate>
+<BVTHUDViewDelegate, BVTSubCategoryTableViewControllerDelegate>
 
 @property (nonatomic, strong) BVTHUDView *hud;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -52,7 +52,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
-
+    
 }
 
 - (void)didTapBackWithDetails:(NSMutableDictionary *)details
@@ -135,97 +135,81 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *selectionTitle = cell.textLabel.text;
-
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     
     [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
          dispatch_async(dispatch_get_main_queue(), ^{
              // code here
-         if (searchResults.businesses.count == 0)
-         {
-
+             if (searchResults.businesses.count == 0)
+             {
                  [self _hideHUD];
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
-             
-             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-             [alertController addAction:ok];
-             
-             [self presentViewController:alertController animated:YES completion:nil];
-             
-         }
-         else if (searchResults.businesses.count > 0)
-         {
-   
-                     NSMutableArray *filteredArray = [NSMutableArray array];
-                     for (YLPBusiness *biz in searchResults.businesses)
-                     {
-                         AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                         
-                         CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:biz.location.coordinate.latitude longitude:biz.location.coordinate.longitude];
-                         CLLocationDistance meters = [appDel.userLocation distanceFromLocation:bizLocation];
-                         
-                         double miles = meters / 1609.34;
-                         biz.miles = miles;
-                         if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", selectionTitle]] lastObject] && biz.closed == NO)
-                         {
-                             [filteredArray addObject:biz];
-                         }
-                     }
+                 
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
+                 
+                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                 [alertController addAction:ok];
+                 
+                 [self presentViewController:alertController animated:YES completion:nil];
+                 
+             }
+             else if (searchResults.businesses.count > 0)
+             {
+                 NSMutableArray *filteredArray = [NSMutableArray array];
+                 for (YLPBusiness *biz in searchResults.businesses)
+                 {
+                     AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      
-                     if (filteredArray.count > 0)
-                     {
-                         NSArray *descriptor = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-                         NSArray *sortedArray = [filteredArray sortedArrayUsingDescriptors:descriptor];
-                         
-                         
-                             [self _hideHUD];
-
-                         BVTSubCategoryTableViewController *subCat = [self.storyboard instantiateViewControllerWithIdentifier:@"SubCat"];
-                         subCat.subCategoryTitle = selectionTitle;
-                         subCat.filteredResults = sortedArray;
-                         subCat.cachedDetails = self.cachedDetails;
-                         subCat.delegate = self;
-                         [self.navigationController pushViewController:subCat animated:YES];
-                         
-                             
-                         
-                     }
-                     else
-                     {
-                             // code here
-                             [self _hideHUD];
-                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No results match the selected category" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
-                         
-                         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                         [alertController addAction:ok];
-                         
-                         [self presentViewController:alertController animated:YES completion:nil];
-                         
-                         
-                         
-                     }
+                     CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:biz.location.coordinate.latitude longitude:biz.location.coordinate.longitude];
+                     CLLocationDistance meters = [appDel.userLocation distanceFromLocation:bizLocation];
                      
+                     double miles = meters / 1609.34;
+                     biz.miles = miles;
+                     if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", selectionTitle]] lastObject] && biz.closed == NO)
+                     {
+                         [filteredArray addObject:biz];
+                     }
                  }
-         
-         
-         if (error)
-         {
-                 // code here
+                 
+                 if (filteredArray.count > 0)
+                 {
+                     NSArray *descriptor = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+                     NSArray *sortedArray = [filteredArray sortedArrayUsingDescriptors:descriptor];
+                     
+                     
+                     [self _hideHUD];
+                     
+                     BVTSubCategoryTableViewController *subCat = [self.storyboard instantiateViewControllerWithIdentifier:@"SubCat"];
+                     subCat.subCategoryTitle = selectionTitle;
+                     subCat.filteredResults = sortedArray;
+                     subCat.cachedDetails = self.cachedDetails;
+                     subCat.delegate = self;
+                     
+                     [self.navigationController pushViewController:subCat animated:YES];
+                 }
+                 else
+                 {
+                     [self _hideHUD];
+                     
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No results match the selected category" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
+                     
+                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                     [alertController addAction:ok];
+                     
+                     [self presentViewController:alertController animated:YES completion:nil];
+                 }
+             }
+             
+             if (error)
+             {
                  [self _hideHUD];
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
-             
-             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-             [alertController addAction:ok];
-             
-             [self presentViewController:alertController animated:YES completion:nil];
-             
-         }
-                        });
-         
+                 
+                 NSLog(@"Error %@", error.localizedDescription);
+             }
+         });
      }];
-                        
 }
 
 - (void)_hideHUD
@@ -253,7 +237,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     cell.textLabel.text = [categories objectAtIndex:indexPath.row];
-
+    
     return cell;
 }
 

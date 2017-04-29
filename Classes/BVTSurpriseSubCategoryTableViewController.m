@@ -14,8 +14,8 @@
 #import "BVTPresentationTableViewController.h"
 
 @interface BVTSurpriseSubCategoryTableViewController ()
-<BVTSurpriseShoppingCartTableViewControllerDelegate, UIPopoverPresentationControllerDelegate>
-
+    <BVTSurpriseShoppingCartTableViewControllerDelegate,
+     UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
@@ -88,7 +88,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
             break;
         }
     }
-
+    
     return isEnabled;
 }
 
@@ -127,9 +127,9 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     {
         self.catDict = [[NSMutableDictionary alloc] init];
     }
-
+    
     categories = @[ ];
-        
+    
     if ([self.categoryTitle isEqualToString:@"Arts and Museums"])
     {
         categories = kArtsMuseums;
@@ -175,7 +175,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.goButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -189,7 +189,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     }
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSString *category = [categories objectAtIndex:indexPath.row];    
+    NSString *category = [categories objectAtIndex:indexPath.row];
     if (cell.accessoryView)
     {
         [self.mut removeObject:category];
@@ -201,7 +201,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
         cell.accessoryView = checkView;
         [self.mut addObject:category];
     }
-
+    
     self.catDict[self.categoryTitle] = self.mut;
     [self.goButton setEnabled:[self evaluateButtonState]];
     if (self.goButton.enabled)
@@ -245,7 +245,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
+    
     NSString *title = [categories objectAtIndex:indexPath.row];
     cell.textLabel.text = title;
     cell.textLabel.numberOfLines = 0;
@@ -261,7 +261,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
         UIImageView *checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"green_check"]];
         cell.accessoryView = checkView;
     }
-
+    
     return cell;
 }
 @end

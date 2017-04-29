@@ -22,7 +22,7 @@
 #import "BVTTableViewSectionHeaderView.h"
 
 @interface BVTSurpriseShoppingCartTableViewController ()
-    <BVTHUDViewDelegate>
+<BVTHUDViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
@@ -60,7 +60,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     
     self.clearButton.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     self.goButton.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-
+    
     [self presentMessage];
 }
 
@@ -89,7 +89,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     
     self.goButton.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     self.clearButton.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-
+    
     NSMutableArray *categoryArray = [NSMutableArray array];
     for (NSArray *subCat in array)
     {
@@ -103,26 +103,20 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     {
         [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:subCatTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
          (YLPSearch *searchResults, NSError *error){
-             if (error)
-             {
-
-                 dispatch_async(dispatch_get_main_queue(), ^{
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 if (error)
+                 {
                      [self _hideHUD];
-
-                     // code here
+                     
+                     NSLog(@"Error %@", error.localizedDescription);
+                     
                      [self.goButton setEnabled:YES];
                      [self.clearButton setEnabled:YES];
                      
                      self.goButton.layer.borderColor = [[BVTStyles iconGreen] CGColor];
                      self.clearButton.layer.borderColor = [[BVTStyles iconGreen] CGColor];
-                     
-                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
-                     
-                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                     [alertController addAction:ok];
-                     [self presentViewController:alertController animated:YES completion:nil];
-                 });
-             }
+                 }
+             });
          }];
     }
 }
@@ -242,7 +236,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     [super viewDidLoad];
     
-
+    
     self.tableView.sectionHeaderHeight = 44.f;
     
     self.resultsArray = [NSMutableArray array];
@@ -255,7 +249,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     
     [self.goButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     [self.clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -289,7 +283,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                         }
                     }
                 }
-
+                
                 if (isDuplicate == NO)
                 {
                     if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", category]] lastObject])
@@ -320,7 +314,6 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                     
                     [self presentViewController:alertController animated:YES completion:nil];
                 });
-
             }
             else
             {
@@ -331,15 +324,12 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                     [dict setObject:array forKey:category];
                 }
                 
-                [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self _hideHUD];
+                    [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
+                });
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // code here
-                [self _hideHUD];
-            });
         }
-        
-        
     }
 }
 
@@ -392,7 +382,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     cell.textLabel.text = [valuesToDisplay objectAtIndex:indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.numberOfLines = 0;
-
+    
     return cell;
 }
 

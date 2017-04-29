@@ -35,9 +35,6 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
-    
-
-
 }
 
 - (void)didTapBackWithCategories:(NSMutableDictionary *)categories
@@ -95,7 +92,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     NSString *selectionTitle = [kBVTCategories objectAtIndex:indexPath.row];
     
     [self performSegueWithIdentifier:kShowCategorySegue sender:selectionTitle];
@@ -117,7 +114,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     
     cell.textLabel.text = [kBVTCategories objectAtIndex:indexPath.row];
     cell.textLabel.numberOfLines = 0;
-
+    
     return cell;
 }
 
