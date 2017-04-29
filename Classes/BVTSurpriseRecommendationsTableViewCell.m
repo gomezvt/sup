@@ -30,6 +30,9 @@
 {
     _business = business;
     
+    NSString *miles = [NSString stringWithFormat:@"%.2f mi.", self.business.miles];
+    _milesLabel.text = miles;
+    
     YLPLocation *location = business.location;
     self.titleLabel.text = business.name;
     NSMutableString *cityStateZipString = [[NSMutableString alloc] init];
