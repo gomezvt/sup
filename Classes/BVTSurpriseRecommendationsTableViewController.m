@@ -142,6 +142,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         NSArray *bizArray = [tempArray sortedArrayUsingDescriptors: @[nameDescriptor]];
         
         YLPBusiness *biz = [bizArray objectAtIndex:indexPath.row];
+        
         cell.business = biz;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.numberOfLines = 0;
@@ -164,11 +165,26 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                 }
             });
         });
+        
+        [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
+         (YLPBusiness *business, NSError *error) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 if (business.isOpenNow)
+                 {
+                     cell.openCloseLabel.text = @"Open";
+                     cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                 }
+                 else
+                 {
+                     cell.openCloseLabel.text = @"Closed";
+                     cell.openCloseLabel.textColor = [UIColor redColor];
+                 }
+             });
+         }];
     }
     
     return cell;
 }
-
 
 - (void)_hideHud
 {
@@ -292,8 +308,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         BVTDetailTableViewController *vc = [segue destinationViewController];
         vc.selectedBusiness = sender;
     }
-    
 }
-
 
 @end
