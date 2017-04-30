@@ -116,7 +116,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         self.distanceButton.hidden = NO;
         if (self.milesKeyValue == 0)
         {
-            distancePredicate = [NSPredicate predicateWithFormat:@"miles <= 5"];
+            distancePredicate = [NSPredicate predicateWithFormat:@"miles >= 0"];
         }
         else
         {
@@ -201,6 +201,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         [self.distanceButton setTitle:@"100 Miles" forState:UIControlStateNormal];
     }
     else if ([self.distanceButton.titleLabel.text isEqualToString:@"100 Miles"])
+    {
+        self.milesKeyValue = 0;
+        [self.distanceButton setTitle:@"Any Miles" forState:UIControlStateNormal];
+    }
+    else if ([self.distanceButton.titleLabel.text isEqualToString:@"Any Miles"])
     {
         self.milesKeyValue = 5;
         [self.distanceButton setTitle:@"5 Miles" forState:UIControlStateNormal];
