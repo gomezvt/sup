@@ -14,6 +14,12 @@
 
 @interface BVTThumbNailTableViewCell ()
 
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *addressLabel;
+@property (nonatomic, weak) IBOutlet UILabel *addressLabel2;
+@property (nonatomic, weak) IBOutlet UILabel *addressLabel3;
+@property (nonatomic, weak) IBOutlet UILabel *milesLabel;
+@property (nonatomic, weak) IBOutlet UILabel *priceLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *ratingStarsView;
 
 @end
@@ -29,6 +35,10 @@
 - (void)setBusiness:(YLPBusiness *)business
 {
     _business = business;
+    
+    NSString *miles = [NSString stringWithFormat:@"%.2f mi.", self.business.miles];
+    _milesLabel.text = miles;
+    self.priceLabel.text = business.price;
     
     YLPLocation *location = business.location;
     self.titleLabel.text = business.name;

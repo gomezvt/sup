@@ -13,11 +13,6 @@
 @interface BVTThumbNailTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) YLPBusiness *business;
-
-@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property (nonatomic, weak) IBOutlet UILabel *addressLabel;
-@property (nonatomic, weak) IBOutlet UILabel *addressLabel2;
-@property (nonatomic, weak) IBOutlet UILabel *addressLabel3;
 @property (nonatomic, weak) IBOutlet UIImageView *thumbNailView;
 
 @end

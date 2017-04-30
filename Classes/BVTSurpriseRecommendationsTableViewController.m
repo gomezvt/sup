@@ -21,7 +21,7 @@
 #import "YLPClient+Business.h"
 #import "BVTDetailTableViewController.h"
 #import "BVTTableViewSectionHeaderView.h"
-#import "BVTSurpriseRecommendationsTableViewCell.h"
+#import "BVTThumbNailTableViewCell.h"
 
 @interface BVTSurpriseRecommendationsTableViewController ()
 <BVTHUDViewDelegate>
@@ -38,7 +38,7 @@
 static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeaderView";
 
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
-static NSString *const kRecommendationsCell = @"BVTSurpriseRecommendationsTableViewCell";
+static NSString *const kThumbNailCell = @"BVTThumbNailTableViewCell";
 static NSString *const kShowDetailSegue = @"ShowDetail";
 
 @implementation BVTSurpriseRecommendationsTableViewController
@@ -93,7 +93,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     self.tableView.sectionHeaderHeight = 44.f;
     
-    UINib *cellNib = [UINib nibWithNibName:kRecommendationsCell bundle:nil];
+    UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"Cell"];
     
     self.tableView.estimatedRowHeight = 44.f;
@@ -124,7 +124,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BVTSurpriseRecommendationsTableViewCell *cell = (BVTSurpriseRecommendationsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
     
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
