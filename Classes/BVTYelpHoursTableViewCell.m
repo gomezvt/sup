@@ -33,7 +33,7 @@
     self.isOpenLabel.textColor = [UIColor redColor];
     if ([self.isOpenLabel.text isEqualToString:@"Open Now"])
     {
-        self.isOpenLabel.textColor = [BVTStyles moneyGreen];
+        self.isOpenLabel.textColor = [BVTStyles iconGreen];
     }
     
     NSDateFormatter *dateFormatter;

@@ -42,7 +42,7 @@
 @property (nonatomic, strong) NSMutableArray *filteredArray;
 @property (nonatomic) double milesKeyValue;
 @property (nonatomic, strong) NSString *priceKeyValue;
-@property (nonatomic) BOOL openCloseKeyValue;
+@property (nonatomic, strong) NSString *openCloseKeyValue;
 
 @end
 
@@ -92,6 +92,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         self.priceKeyValue = @"Any $";
     }
     
+    if (!self.openCloseKeyValue)
+    {
+        self.openCloseKeyValue = @"Open or closed";
+    }
+    
     NSMutableArray *arrayPred = [NSMutableArray array];
     if ([self.priceKeyValue isEqualToString:@"Any $"])
     {
@@ -111,11 +116,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         self.distanceButton.hidden = NO;
         if (self.milesKeyValue == 0)
         {
-            distancePredicate = [NSPredicate predicateWithFormat:@"miles <= %d", 5];
+            distancePredicate = [NSPredicate predicateWithFormat:@"miles <= 5"];
         }
         else
         {
-            distancePredicate = [NSPredicate predicateWithFormat:@"miles <= %d", self.milesKeyValue];
+            distancePredicate = [NSPredicate predicateWithFormat:@"miles <= %g", self.milesKeyValue];
         }
         
         [arrayPred addObject:distancePredicate];
@@ -128,13 +133,17 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     NSPredicate *openClosePredicate;
     if (self.openNowButton.hidden == NO)
     {
-        if (self.openCloseKeyValue == YES)
+        if ([self.openCloseKeyValue isEqualToString:@"Open"])
         {
             openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)];
         }
-        else
+        else if ([self.openCloseKeyValue isEqualToString:@"Closed"])
         {
             openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(NO)];
+        }
+        else if ([self.openCloseKeyValue isEqualToString:@"Open or closed"])
+        {
+            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ OR isOpenNow = %@", @(NO), @(YES)];
         }
         
         [arrayPred addObject:openClosePredicate];
@@ -204,12 +213,17 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     if ([self.openNowButton.titleLabel.text isEqualToString:@"Closed"])
     {
-        self.openCloseKeyValue = YES;
+        self.openCloseKeyValue = @"Open";
         [self.openNowButton setTitle:@"Open" forState:UIControlStateNormal];
     }
     else if ([self.openNowButton.titleLabel.text isEqualToString:@"Open"])
     {
-        self.openCloseKeyValue = NO;
+        self.openCloseKeyValue = @"Open or closed";
+        [self.openNowButton setTitle:@"Open or closed" forState:UIControlStateNormal];
+    }
+    else if ([self.openNowButton.titleLabel.text isEqualToString:@"Open or closed"])
+    {
+        self.openCloseKeyValue = @"Closed";
         [self.openNowButton setTitle:@"Closed" forState:UIControlStateNormal];
     }
     
@@ -330,10 +344,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                              [self _hideHUD];
                              
                              NSArray *descriptor = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-                             self.openCloseKeyValue = YES;
                              NSArray *sortedArray = [self.filteredArray sortedArrayUsingDescriptors:descriptor];
                              [self.openNowButton setHidden:NO];
-                             
                              self.filteredResults = sortedArray;
                              self.filteredArrayCopy = sortedArray;
                              [self.cachedDetails setObject:self.filteredResults forKey:self.subCategoryTitle];
@@ -466,6 +478,46 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     UIImage *image = [UIImage imageNamed:@"placeholder"];
     cell.thumbNailView.image = image;
+    
+    if (self.openNowButton.hidden == NO)
+    {
+        cell.openCloseLabel.hidden = NO;
+        
+        if ([self.openCloseKeyValue isEqualToString:@"Open or closed"])
+        {
+            if (business.isOpenNow)
+            {
+                cell.openCloseLabel.text = @"Open";
+            }
+            else
+            {
+                cell.openCloseLabel.text = @"Closed";
+            }
+        }
+        else
+        {
+            cell.openCloseLabel.text = self.openCloseKeyValue;
+        }
+        
+        if ([cell.openCloseLabel.text isEqualToString:@"Open"])
+        {
+            cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+        }
+        
+        if ([cell.openCloseLabel.text isEqualToString:@"Closed"])
+        {
+            cell.openCloseLabel.textColor = [UIColor redColor];
+        }
+        
+        if ([cell.openCloseLabel.text isEqualToString:@"Open or closed"])
+        {
+            cell.openCloseLabel.textColor = [UIColor lightGrayColor];
+        }
+    }
+    else
+    {
+        cell.openCloseLabel.hidden = YES;
+    }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // Your Background work

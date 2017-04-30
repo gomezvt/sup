@@ -9,8 +9,10 @@
 #import "BVTThumbNailTableViewCell.h"
 
 #import "YLPLocation.h"
-
+#import "AppDelegate.h"
 #import "BVTStyles.h"
+#import "YLPLocation.h"
+#import "YLPCoordinate.h"
 
 @interface BVTThumbNailTableViewCell ()
 
@@ -36,8 +38,19 @@
 {
     _business = business;
     
-    NSString *miles = [NSString stringWithFormat:@"%.2f mi.", self.business.miles];
-    _milesLabel.text = miles;
+    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:business.location.coordinate.latitude longitude:business.location.coordinate.longitude];
+    CLLocationDistance meters = [appDel.userLocation distanceFromLocation:bizLocation];
+    
+    double miles = meters / 1609.34;
+    business.miles = miles;
+    
+    
+    
+    
+    NSString *milesStr = [NSString stringWithFormat:@"%.2f mi.", self.business.miles];
+    self.milesLabel.text = milesStr;
     self.priceLabel.text = business.price;
     
     YLPLocation *location = business.location;

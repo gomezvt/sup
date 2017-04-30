@@ -779,20 +779,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54q-YM-6ux">
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="la0-HY-kpe">
-                                        <rect key="frame" x="8" y="13" width="40" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="Y0R-qH-zgE"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <color key="textColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="2zm-Sb-EUh">
-                                        <rect key="frame" x="56" y="7.6666666666666288" width="350" height="30"/>
+                                        <rect key="frame" x="8" y="7.6666666666666288" width="398" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOx-zy-a0F">
-                                                <rect key="frame" x="0.0" y="0.0" width="114" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
@@ -804,7 +795,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJ0-4z-GUL">
-                                                <rect key="frame" x="118" y="0.0" width="114" height="30"/>
+                                                <rect key="frame" x="134" y="0.0" width="130" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
@@ -816,11 +807,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kkf-4g-pxu">
-                                                <rect key="frame" x="236" y="0.0" width="114" height="30"/>
+                                                <rect key="frame" x="268" y="0.0" width="130" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
-                                                <state key="normal" title="Open">
+                                                <state key="normal" title="Open or closed">
                                                     <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -833,9 +824,7 @@
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="2zm-Sb-EUh" secondAttribute="trailing" constant="8" id="G6t-6q-fAr"/>
-                                    <constraint firstItem="la0-HY-kpe" firstAttribute="leading" secondItem="54q-YM-6ux" secondAttribute="leading" constant="8" id="HYY-IL-usQ"/>
-                                    <constraint firstItem="2zm-Sb-EUh" firstAttribute="leading" secondItem="la0-HY-kpe" secondAttribute="trailing" constant="8" id="Mfc-tT-oy4"/>
-                                    <constraint firstItem="la0-HY-kpe" firstAttribute="centerY" secondItem="54q-YM-6ux" secondAttribute="centerY" id="Zx3-nX-UJJ"/>
+                                    <constraint firstItem="2zm-Sb-EUh" firstAttribute="leading" secondItem="54q-YM-6ux" secondAttribute="leading" constant="8" id="Gco-5c-L7g"/>
                                     <constraint firstAttribute="height" constant="44" id="hzm-kP-Vt3"/>
                                     <constraint firstItem="2zm-Sb-EUh" firstAttribute="centerY" secondItem="54q-YM-6ux" secondAttribute="centerY" id="s8W-tI-rv7"/>
                                 </constraints>
