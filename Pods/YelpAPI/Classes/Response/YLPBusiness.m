@@ -18,14 +18,10 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)businessDict {
     if (self = [super init]) {
+        
         NSString *phone = [businessDict ylp_objectMaybeNullForKey:@"phone"];
         NSString *imageURLString = [businessDict ylp_objectMaybeNullForKey:@"image_url"];
-//        if (imageURLString)
-//        {
-//            NSURL *url = [NSURL URLWithString:imageURLString];
-//            NSData *imageData = [NSData dataWithContentsOfURL:url];
-//            self.businessThumbnail = [UIImage imageWithData:imageData];
-//        }
+
         _closed = [businessDict[@"is_closed"] boolValue];
         if (businessDict[@"url"])
         {
@@ -44,16 +40,8 @@
         id photos = businessDict[@"photos"];
         if (photos)
         {
-//            NSMutableArray *photosArray = [NSMutableArray array];
             if ([photos isKindOfClass:[NSArray class]])
             {
-//                for (NSString *imageStr in photos)
-//                {
-//                    NSURL *url = [NSURL URLWithString:imageStr];
-//                    NSData *imageData = [NSData dataWithContentsOfURL:url];
-//                    UIImage *image = [UIImage imageWithData:imageData];
-//                    [photosArray addObject:image];
-//                }
                 _photos = photos;
             }
         }
@@ -82,63 +70,11 @@
                 _businessHours = hoursDict[@"open"];
             }
         }
-        
-//        if (businessDict[@"reviews"])
-//        {
-//            _reviews = businessDict[@"reviews"];
-//        }
-
 
         _categories = [self.class categoriesFromJSONArray:businessDict[@"categories"]];
         YLPCoordinate *coordinate = [self.class coordinateFromJSONDictionary:businessDict[@"coordinates"]];
         _location = [[YLPLocation alloc] initWithDictionary:businessDict[@"location"] coordinate:coordinate];
-        
-        //        for (YLPBusiness *business in self.filteredArrayCopy)
-        //        {
-        //            CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:business.location.coordinate.latitude longitude:business.location.coordinate.longitude];
-        //
-        //
-        //
-        //        }
-        
-
-        
     }
-    
-//    NSArray *photos
-//    if (business.photos.count > 0)
-//    {
-//        for (NSString *imageStr in business.photos)
-//        {
-//            NSURL *url = [NSURL URLWithString:imageStr];
-//            NSData *imageData = [NSData dataWithContentsOfURL:url];
-//            UIImage *image = [UIImage imageWithData:imageData];
-//            [business.photosArray addObject:image];
-//        }
-//    }
-//    
-//    [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
-//     (YLPBusiness *business, NSError *error) {
-//         dispatch_async(dispatch_get_main_queue(), ^{
-//             if (business.photos.count > 0)
-//             {
-//                 for (NSString *imageStr in business.photos)
-//                 {
-//                     NSURL *url = [NSURL URLWithString:imageStr];
-//                     NSData *imageData = [NSData dataWithContentsOfURL:url];
-//                     UIImage *image = [UIImage imageWithData:imageData];
-//                     [business.photosArray addObject:image];
-//                 }
-//             }
-//             [[AppDelegate sharedClient] reviewsWithId:selectedBusiness.identifier completionHandler:^
-//              (YLPBusiness *reviewsBiz, NSError *error) {
-//                  dispatch_async(dispatch_get_main_queue(), ^{
-//                      business.reviews = reviewsBiz.reviews;
-//                      [self performSegueWithIdentifier:kShowDetailSegue sender:business ];
-//                  });
-//              }];
-//         });
-//     }];
     
     return self;
 }

@@ -54,7 +54,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
 }
 
-- (void)didTapBackWithDetails:(NSMutableDictionary *)details
+- (void)didTapBackWithDetails:(NSMutableArray *)details
 {
     self.cachedDetails = details;
 }

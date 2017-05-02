@@ -16,7 +16,7 @@
 
 @protocol BVTSubCategoryTableViewControllerDelegate <NSObject>
 
-- (void)didTapBackWithDetails:(NSMutableDictionary *)details ;
+- (void)didTapBackWithDetails:(NSMutableArray *)details ;
 
 @end
 
@@ -24,7 +24,7 @@
 
 @property (nonatomic, copy) NSString *subCategoryTitle;
 @property (nonatomic, strong) NSArray *filteredResults;
-@property (nonatomic, strong) NSMutableDictionary *cachedDetails;
+@property (nonatomic, strong) NSMutableArray *cachedDetails;
 @property(nonatomic, weak)id <BVTSubCategoryTableViewControllerDelegate> delegate;
 
 @end

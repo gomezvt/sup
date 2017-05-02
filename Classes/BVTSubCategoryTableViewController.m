@@ -131,25 +131,22 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     }
     
     NSPredicate *openClosePredicate;
-    if (self.openNowButton.hidden == NO)
+    if ([self.openCloseKeyValue isEqualToString:@"Open"])
     {
-        if ([self.openCloseKeyValue isEqualToString:@"Open"])
-        {
-            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)];
-        }
-        else if ([self.openCloseKeyValue isEqualToString:@"Closed"])
-        {
-            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(NO)];
-        }
-        else if ([self.openCloseKeyValue isEqualToString:@"Open/Closed"])
-        {
-            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ OR isOpenNow = %@", @(NO), @(YES)];
-        }
-        
-        [arrayPred addObject:openClosePredicate];
+        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)];
+    }
+    else if ([self.openCloseKeyValue isEqualToString:@"Closed"])
+    {
+        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(NO)];
+    }
+    else if ([self.openCloseKeyValue isEqualToString:@"Open/Closed"])
+    {
+        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ OR isOpenNow = %@", @(NO), @(YES)];
     }
     
-    NSPredicate *comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates: [arrayPred copy]];
+    [arrayPred addObject:openClosePredicate];
+    
+    NSPredicate *comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:[arrayPred copy]];
     
     NSArray *sortedArray = [self.filteredArrayCopy filteredArrayUsingPredicate:comboPredicate];
     self.filteredResults = sortedArray;
@@ -282,8 +279,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
-    [self.openNowButton setHidden:YES];
-    
     AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (!appDel.userLocation)
     {
@@ -299,23 +294,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     if (!self.cachedDetails)
     {
-        self.cachedDetails = [NSMutableDictionary dictionary];
+        self.cachedDetails = [[NSMutableArray alloc] init];
     }
     
-    NSArray *details = [self.cachedDetails valueForKey:self.subCategoryTitle];
-    if (details.count > 0)
+    if (self.filteredResults.count > 0)
     {
-        self.filteredResults = details;
-        [self.openNowButton setHidden:NO];
-        
-    }
-    else
-    {
-        self.filteredArray = [NSMutableArray array];
-        
-        if (self.filteredResults.count > 0)
+        for (YLPBusiness *selectedBusiness in self.filteredResults)
         {
-            for (YLPBusiness *selectedBusiness in self.filteredResults)
+            if (![[self.cachedDetails filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", selectedBusiness.phone]] lastObject])
             {
                 [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
                  (YLPBusiness *business, NSError *error) {
@@ -341,26 +327,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          
                          if (business)
                          {
-                             [self.filteredArray addObject:business];
-                         }
-                         
-                         if (self.filteredArray.count == self.filteredResults.count)
-                         {
-                             [self _hideHUD];
-                             
-                             NSArray *descriptor = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-                             NSArray *sortedArray = [self.filteredArray sortedArrayUsingDescriptors:descriptor];
-                             [self.openNowButton setHidden:NO];
-                             self.filteredResults = sortedArray;
-                             self.filteredArrayCopy = sortedArray;
-                             [self.cachedDetails setObject:self.filteredResults forKey:self.subCategoryTitle];
-                             [self sortArrayWithPredicates];
-                         }
-                         
-                         if (error) {
-                             [self _hideHUD];
-                             
-                             NSLog(@"Error %@", error.localizedDescription);
+                             [self.cachedDetails addObject:business];
                          }
                      });
                  }];
@@ -483,11 +450,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     UIImage *image = [UIImage imageNamed:@"placeholder"];
     cell.thumbNailView.image = image;
-    
-    if (self.openNowButton.hidden == NO)
-    {
-        cell.openCloseLabel.hidden = NO;
-        
+ 
         if ([self.openCloseKeyValue isEqualToString:@"Open/Closed"])
         {
             if (business.isOpenNow)
@@ -518,12 +481,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         {
             cell.openCloseLabel.textColor = [UIColor lightGrayColor];
         }
-    }
-    else
-    {
-        cell.openCloseLabel.hidden = YES;
-    }
-    
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // Your Background work
         NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];

@@ -38,7 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) double miles;
 @property (nonatomic, strong) NSArray *reviews;
 @property (nonatomic, strong) NSArray *photos;
-
 @property (nonatomic, strong) NSArray *userPhotosArray;
 
 @end
