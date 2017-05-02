@@ -37,7 +37,6 @@
 @property (nonatomic, weak) IBOutlet UIButton *priceButton;
 @property (nonatomic, weak) IBOutlet UIButton *distanceButton;
 @property (nonatomic, weak) IBOutlet UIButton *openNowButton;
-@property (nonatomic, strong) NSArray *filteredArrayCopy;
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) NSMutableArray *filteredArray;
 @property (nonatomic) double milesKeyValue;
@@ -137,7 +136,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     }
     else if ([self.openCloseKeyValue isEqualToString:@"Closed"])
     {
-        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(NO)];
+        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ && hoursItem != %@", @(NO), nil];
     }
     else if ([self.openCloseKeyValue isEqualToString:@"Open/Closed"])
     {
@@ -148,7 +147,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     NSPredicate *comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:[arrayPred copy]];
     
-    NSArray *sortedArray = [self.filteredArrayCopy filteredArrayUsingPredicate:comboPredicate];
+    NSArray *sortedArray = [self.filteredResults filteredArrayUsingPredicate:comboPredicate];
+    self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.sortedArray.count];
+
     self.filteredResults = sortedArray;
     if (self.filteredResults.count == 0)
     {
@@ -279,6 +280,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
+    self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.filteredResults.count];
+    
     AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (!appDel.userLocation)
     {
@@ -288,9 +291,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     {
         [self.distanceButton setHidden:NO];
     }
-    self.filteredArrayCopy = self.filteredResults;
-    
-    self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.filteredResults.count];
     
     if (!self.cachedDetails)
     {
@@ -328,6 +328,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          if (business)
                          {
                              [self.cachedDetails addObject:business];
+                         }
+                         YLPBusiness *last = [self.filteredResults lastObject];
+                         if ([business.name isEqualToString:last.name])
+                         {
+                             self.filteredResults = self.cachedDetails;
                          }
                      });
                  }];
