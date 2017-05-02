@@ -170,7 +170,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
          (YLPBusiness *business, NSError *error) {
              dispatch_async(dispatch_get_main_queue(), ^{
-                 if (business.isOpenNow)
+                 if (!business.hoursItem)
+                 {
+                     cell.openCloseLabel.text = @"";
+                 }
+                 else if (business.isOpenNow)
                  {
                      cell.openCloseLabel.text = @"Open";
                      cell.openCloseLabel.textColor = [BVTStyles iconGreen];

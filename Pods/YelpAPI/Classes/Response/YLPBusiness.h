@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YLPBusiness : NSObject
 
 @property (nonatomic, getter=isClosed, readonly) BOOL closed;
-
+@property (nonatomic, strong) id hoursItem;
 @property (nonatomic, readonly, nullable, copy) NSURL *imageURL;
 @property (nonatomic, readonly, copy) NSURL *URL;
 
