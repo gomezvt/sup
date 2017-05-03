@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol BVTCategoryTableViewControllerDelegate <NSObject>
-
-- (void)didTapBackWithDetails:(NSMutableArray *)details ;
-
-@end
+//@protocol BVTCategoryTableViewControllerDelegate <NSObject>
+//
+//- (void)didTapBackWithDetails:(NSMutableArray *)details ;
+//
+//@end
 
 @interface BVTCategoryTableViewController : UIViewController
 
 @property (nonatomic, copy) NSString *categoryTitle;
-@property (nonatomic, strong) NSMutableArray *cachedDetails;
+//@property (nonatomic, strong) NSMutableArray *cachedDetails;
 
-@property(nonatomic, weak)id <BVTCategoryTableViewControllerDelegate> delegate;
+//@property(nonatomic, weak)id <BVTCategoryTableViewControllerDelegate> delegate;
 
 @end

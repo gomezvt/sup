@@ -22,10 +22,13 @@
 #import "BVTStyles.h"
 #import "YLPReview.h"
 #import "YLPUser.h"
-
+#import "BVTCache.h"
 
 @interface BVTSubCategoryTableViewController ()
 <BVTHUDViewDelegate>
+{
+    BVTCache *cache;
+}
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -42,6 +45,7 @@
 @property (nonatomic) double milesKeyValue;
 @property (nonatomic, strong) NSString *priceKeyValue;
 @property (nonatomic, strong) NSString *openCloseKeyValue;
+@property (nonatomic, strong) NSArray *detailsArray;
 
 @end
 
@@ -86,17 +90,12 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     NSPredicate *pricePredicate;
     
+    NSMutableArray *arrayPred = [NSMutableArray array];
     if (!self.priceKeyValue)
     {
         self.priceKeyValue = @"Any $";
     }
     
-    if (!self.openCloseKeyValue)
-    {
-        self.openCloseKeyValue = @"Open/Closed";
-    }
-    
-    NSMutableArray *arrayPred = [NSMutableArray array];
     if ([self.priceKeyValue isEqualToString:@"Any $"])
     {
         pricePredicate = [NSPredicate predicateWithFormat:@"price = %@ OR price = %@ OR price = %@ OR price = %@ OR price = %@", nil, @"$", @"$$", @"$$$", @"$$$$"];
@@ -130,27 +129,39 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     }
     
     NSPredicate *openClosePredicate;
-    if ([self.openCloseKeyValue isEqualToString:@"Open"])
+    if (self.openNowButton.hidden == NO)
     {
-        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)];
+        if (!self.openCloseKeyValue)
+        {
+            self.openCloseKeyValue = @"Open/Closed";
+        }
+        
+        if ([self.openCloseKeyValue isEqualToString:@"Open"])
+        {
+            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)];
+        }
+        else if ([self.openCloseKeyValue isEqualToString:@"Closed"])
+        {
+            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ && hoursItem != %@", @(NO), nil];
+        }
+        else if ([self.openCloseKeyValue isEqualToString:@"Open/Closed"])
+        {
+            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ OR isOpenNow = %@", @(NO), @(YES)];
+        }
+        
+        [arrayPred addObject:openClosePredicate];
     }
-    else if ([self.openCloseKeyValue isEqualToString:@"Closed"])
-    {
-        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ && hoursItem != %@", @(NO), nil];
-    }
-    else if ([self.openCloseKeyValue isEqualToString:@"Open/Closed"])
-    {
-        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ OR isOpenNow = %@", @(NO), @(YES)];
-    }
-    
-    [arrayPred addObject:openClosePredicate];
     
     NSPredicate *comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:[arrayPred copy]];
     
-    NSArray *sortedArray = [self.filteredResults filteredArrayUsingPredicate:comboPredicate];
-    self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.sortedArray.count];
+    NSArray *sortedArray = [self.detailsArray filteredArrayUsingPredicate:comboPredicate];
+    self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)sortedArray.count];
 
-    self.filteredResults = sortedArray;
+    NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    NSArray *sortedToUse = [sortedArray sortedArrayUsingDescriptors: @[nameDescriptor]];
+    
+    
+    self.filteredResults = [sortedToUse copy];
     if (self.filteredResults.count == 0)
     {
         self.titleLabel.text = [NSString stringWithFormat:@"%@ (0)", self.subCategoryTitle];
@@ -262,6 +273,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     self.sortedArray = [NSMutableArray array];
     
+    
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     BVTHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
@@ -269,16 +281,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [self sortArrayWithPredicates];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.openNowButton setHidden:YES];
+    
+    self.detailsArray = [self.filteredResults copy];
+
+    
+    if (!cache)
+    {
+        cache = [[BVTCache alloc] init];
+    }
     
     self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.filteredResults.count];
     
@@ -292,21 +307,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         [self.distanceButton setHidden:NO];
     }
     
-    if (!self.cachedDetails)
-    {
-        self.cachedDetails = [[NSMutableArray alloc] init];
-    }
-    
     if (self.filteredResults.count > 0)
     {
+        NSMutableArray *bizAdd = [NSMutableArray array];
         for (YLPBusiness *selectedBusiness in self.filteredResults)
         {
-            if (![[self.cachedDetails filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", selectedBusiness.phone]] lastObject])
+            YLPBusiness *cachedBiz = [cache objectForKey:self.subCategoryTitle];
+            if (![cachedBiz.phone isEqualToString:selectedBusiness.phone])
             {
+                dispatch_async(dispatch_get_main_queue(), ^{
+
                 [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
                  (YLPBusiness *business, NSError *error) {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         
+                     
                          if (business.photos.count > 0)
                          {
                              NSMutableArray *photosArray = [NSMutableArray array];
@@ -327,15 +340,22 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          
                          if (business)
                          {
-                             [self.cachedDetails addObject:business];
+                             [bizAdd addObject:business];
+                             [cache setObject:business forKey:self.subCategoryTitle];
+                             if (bizAdd.count == self.filteredResults.count)
+                             {
+                                 dispatch_async(dispatch_get_main_queue(), ^{
+
+                                 self.detailsArray = [bizAdd copy];
+                                 [self.openNowButton setHidden:NO];
+                                 [self sortArrayWithPredicates];
+                                 
+                                     self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.detailsArray.count];
+                                 });
+                             }
                          }
-                         YLPBusiness *last = [self.filteredResults lastObject];
-                         if ([business.name isEqualToString:last.name])
-                         {
-                             self.filteredResults = self.cachedDetails;
-                         }
-                     });
                  }];
+                });
             }
         }
     }
@@ -387,14 +407,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    YLPBusiness *selectedBusiness = [self.filteredResults objectAtIndex:indexPath.row];
-    YLPBusiness *cachedBiz = [[self.cachedDetails filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", selectedBusiness.phone]] lastObject];
-    if (cachedBiz)
+    YLPBusiness *business = [self.filteredResults objectAtIndex:indexPath.row];
+    YLPBusiness *cachedBiz = [cache objectForKey:self.subCategoryTitle];
+    if ([cachedBiz.phone isEqualToString:business.phone])
     {
-        selectedBusiness = cachedBiz;
+        business = cachedBiz;
     }
     
-    [[AppDelegate sharedClient] reviewsForBusinessWithId:selectedBusiness.identifier
+    [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
                                        completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                            dispatch_async(dispatch_get_main_queue(), ^{
                                                
@@ -416,14 +436,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                        [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];
                                                    }
                                                }
-                                               selectedBusiness.reviews = reviews.reviews;
-                                               selectedBusiness.userPhotosArray = userPhotos;
+                                               business.reviews = reviews.reviews;
+                                               business.userPhotosArray = userPhotos;
                                                
                                                [self _hideHUD];
                                                if (!self.didCancelRequest)
                                                {
                                                    // get biz photos here if we dont have them?
-                                                   [self performSegueWithIdentifier:kShowDetailSegue sender:selectedBusiness];
+                                                   [self performSegueWithIdentifier:kShowDetailSegue sender:business];
                                                }
                                            });
                                        }];
@@ -455,13 +475,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     cell.tag = indexPath.row;
     
     YLPBusiness *business = [self.filteredResults objectAtIndex:indexPath.row];
-    
-    YLPBusiness *cachedBiz = [[self.cachedDetails filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", business.phone]] lastObject];
-    if (cachedBiz)
+    YLPBusiness *cachedBiz = [cache objectForKey:self.subCategoryTitle];
+    if ([cachedBiz.phone isEqualToString:business.phone])
     {
         business = cachedBiz;
     }
-    
     cell.business = business;
     
     UIImage *image = [UIImage imageNamed:@"placeholder"];
@@ -505,10 +523,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (IBAction)didTapBack:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(didTapBackWithDetails:)])
-    {
-        [self.delegate didTapBackWithDetails:self.cachedDetails];
-    }
+//    if ([self.delegate respondsToSelector:@selector(didTapBackWithDetails:)])
+//    {
+//        [self.delegate didTapBackWithDetails:self.cachedDetails];
+//    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

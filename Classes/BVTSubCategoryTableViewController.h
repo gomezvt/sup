@@ -14,17 +14,17 @@
 
 @class YLPSearch;
 
-@protocol BVTSubCategoryTableViewControllerDelegate <NSObject>
-
-- (void)didTapBackWithDetails:(NSMutableArray *)details ;
-
-@end
+//@protocol BVTSubCategoryTableViewControllerDelegate <NSObject>
+//
+//- (void)didTapBackWithDetails:(NSMutableArray *)details ;
+//
+//@end
 
 @interface BVTSubCategoryTableViewController : UIViewController 
 
 @property (nonatomic, copy) NSString *subCategoryTitle;
 @property (nonatomic, strong) NSArray *filteredResults;
-@property (nonatomic, strong) NSMutableArray *cachedDetails;
-@property(nonatomic, weak)id <BVTSubCategoryTableViewControllerDelegate> delegate;
+//@property (nonatomic, strong) NSMutableArray *cachedDetails;
+//@property(nonatomic, weak)id <BVTSubCategoryTableViewControllerDelegate> delegate;
 
 @end
