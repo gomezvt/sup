@@ -155,20 +155,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     }
     
     NSPredicate *comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:[arrayPred copy]];
-    NSArray *sortedArray;
 
     if (self.gotDetails)
     {
         NSArray *values = self.cachedDetails[self.subCategoryTitle];
-        self.displayArray = values;
-       sortedArray = [self.displayArray filteredArrayUsingPredicate:comboPredicate];
-        self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)sortedArray.count];
+
+        self.displayArray = [values filteredArrayUsingPredicate:comboPredicate];
+        self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.displayArray.count];
         
-        NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-        NSArray *sortedToUse = [sortedArray sortedArrayUsingDescriptors: @[nameDescriptor]];
-        
-        
-        self.displayArray = [sortedToUse copy];
         if (self.displayArray.count == 0)
         {
             self.titleLabel.text = [NSString stringWithFormat:@"%@ (0)", self.subCategoryTitle];
@@ -190,18 +184,13 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
             self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.self.displayArray.count];
             self.label.hidden = YES;
         }
-
+        
     }
     else
     {
-      sortedArray  = [self.originalFilteredResults filteredArrayUsingPredicate:comboPredicate];
-        self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)sortedArray.count];
+        self.filteredResults  = [self.originalFilteredResults filteredArrayUsingPredicate:comboPredicate];
+        self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.filteredResults.count];
         
-        NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-        NSArray *sortedToUse = [sortedArray sortedArrayUsingDescriptors: @[nameDescriptor]];
-        
-        
-        self.filteredResults = [sortedToUse copy];
         if (self.filteredResults.count == 0)
         {
             self.titleLabel.text = [NSString stringWithFormat:@"%@ (0)", self.subCategoryTitle];
@@ -225,8 +214,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         }
 
     }
-    
-
     
     [self.tableView reloadData];
 }
@@ -348,6 +335,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     self.originalFilteredResults = self.filteredResults;
     
+    NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    self.filteredResults = [self.originalFilteredResults sortedArrayUsingDescriptors: @[nameDescriptor]];
+    
+    
     originalCount = self.filteredResults.count;
     
     
@@ -373,8 +364,13 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     NSArray *values = self.cachedDetails[self.subCategoryTitle];
     if (values.count == originalCount)
     {
-        [self.openNowButton setHidden:NO];
         self.displayArray = values;
+
+        NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+        self.displayArray = [values sortedArrayUsingDescriptors: @[nameDescriptor]];
+        
+        
+        [self.openNowButton setHidden:NO];
 //        self.displayArray = values;
         self.gotDetails = YES;
 
@@ -421,9 +417,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                  if (bizAdd.count == originalCount)
                                  {
                                      dispatch_async(dispatch_get_main_queue(), ^{
-                                         [self.cachedDetails setObject:bizAdd forKey:self.subCategoryTitle];
+                                         NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+                                         self.displayArray = [bizAdd sortedArrayUsingDescriptors: @[nameDescriptor]];
+                                         
+                                         [self.cachedDetails setObject:self.displayArray forKey:self.subCategoryTitle];
                                          self.gotDetails = YES;
-                                         self.displayArray = bizAdd;
                                          [self.openNowButton setHidden:NO];
                                      });
                                  }
