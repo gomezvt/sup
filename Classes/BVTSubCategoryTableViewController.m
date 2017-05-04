@@ -483,14 +483,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    YLPBusiness *business = [self.filteredResults objectAtIndex:indexPath.row];
-    NSArray *values = self.cachedDetails[self.subCategoryTitle];
-
-    
-    YLPBusiness *cachedBiz = [[values filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", business.phone]] lastObject];
-    if (cachedBiz)
+    YLPBusiness *business;   
+    if (self.gotDetails)
     {
-        business = cachedBiz;
+        business = [self.displayArray objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        business = [self.filteredResults objectAtIndex:indexPath.row];
     }
     
     [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
@@ -563,17 +563,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     cell.tag = indexPath.row;
     
     YLPBusiness *business;
-    
 
     if (self.gotDetails)
     {
         business = [self.displayArray objectAtIndex:indexPath.row];
-
-//        YLPBusiness *cachedBiz = [[values filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", business.phone]] lastObject];
-//        if (cachedBiz)
-//        {
-//            business = cachedBiz;
-//        }
     }
     else
     {

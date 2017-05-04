@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSubCategoryTableViewController.m"
-            timestampString = "515559579.877732"
+            timestampString = "515562825.492508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "660"
-            endingLineNumber = "660">
+            startingLineNumber = "653"
+            endingLineNumber = "653">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
