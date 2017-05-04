@@ -15,7 +15,7 @@
 
 
 
-@interface BVTExploreViewController () //  <BVTCategoryTableViewControllerDelegate>
+@interface BVTExploreViewController () <BVTCategoryTableViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 
@@ -29,10 +29,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 @implementation BVTExploreViewController
 
-//- (void)didTapBackWithDetails:(NSMutableArray *)details
-//{
-//    self.cachedDetails = details;
-//}
+- (void)didTapBackWithDetails:(NSMutableDictionary *)details
+{
+    self.cachedDetails = details;
+}
 
 #pragma mark - View Life Cycle
 
@@ -90,8 +90,8 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     BVTCategoryTableViewController *vc = [segue destinationViewController];
     vc.categoryTitle = sender;
-//    vc.delegate = self;
-//    vc.cachedDetails = self.cachedDetails;
+    vc.delegate = self;
+    vc.cachedDetails = self.cachedDetails;
 }
 
 @end

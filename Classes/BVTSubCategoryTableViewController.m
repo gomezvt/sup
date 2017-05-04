@@ -22,13 +22,10 @@
 #import "BVTStyles.h"
 #import "YLPReview.h"
 #import "YLPUser.h"
-#import "BVTCache.h"
 
 @interface BVTSubCategoryTableViewController ()
 <BVTHUDViewDelegate>
-{
-    BVTCache *cache;
-}
+
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -46,9 +43,14 @@
 @property (nonatomic, strong) NSString *priceKeyValue;
 @property (nonatomic, strong) NSString *openCloseKeyValue;
 @property (nonatomic, strong) NSArray *detailsArray;
+@property (nonatomic, strong) NSArray *displayArray;
+@property (nonatomic) BOOL gotDetails;
+@property (nonatomic, strong) NSArray *originalFilteredResults;
+@property (nonatomic, strong) NSArray *originalDisplayResults;
 
 @end
 
+static NSInteger originalCount;
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 static NSString *const kThumbNailCell = @"BVTThumbNailTableViewCell";
 static NSString *const kShowDetailSegue = @"ShowDetail";
@@ -153,36 +155,78 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     }
     
     NSPredicate *comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:[arrayPred copy]];
-    
-    NSArray *sortedArray = [self.detailsArray filteredArrayUsingPredicate:comboPredicate];
-    self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)sortedArray.count];
+    NSArray *sortedArray;
 
-    NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    NSArray *sortedToUse = [sortedArray sortedArrayUsingDescriptors: @[nameDescriptor]];
-    
-    
-    self.filteredResults = [sortedToUse copy];
-    if (self.filteredResults.count == 0)
+    if (self.gotDetails)
     {
-        self.titleLabel.text = [NSString stringWithFormat:@"%@ (0)", self.subCategoryTitle];
-        if (!self.label)
-        {
-            self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 30.f)];
-            self.label.text = @"No sorted results found";
-            [self.view addSubview:self.label];
-            self.label.center = self.tableView.center;
-            self.tableView.separatorColor = [UIColor clearColor];
-            self.label.textAlignment = NSTextAlignmentCenter;
-            self.label.textColor = [UIColor lightGrayColor];
-        }
+        NSArray *values = self.cachedDetails[self.subCategoryTitle];
+        self.displayArray = values;
+       sortedArray = [self.displayArray filteredArrayUsingPredicate:comboPredicate];
+        self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)sortedArray.count];
         
-        self.label.hidden = NO;
+        NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+        NSArray *sortedToUse = [sortedArray sortedArrayUsingDescriptors: @[nameDescriptor]];
+        
+        
+        self.displayArray = [sortedToUse copy];
+        if (self.displayArray.count == 0)
+        {
+            self.titleLabel.text = [NSString stringWithFormat:@"%@ (0)", self.subCategoryTitle];
+            if (!self.label)
+            {
+                self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 30.f)];
+                self.label.text = @"No sorted results found";
+                [self.view addSubview:self.label];
+                self.label.center = self.tableView.center;
+                self.tableView.separatorColor = [UIColor clearColor];
+                self.label.textAlignment = NSTextAlignmentCenter;
+                self.label.textColor = [UIColor lightGrayColor];
+            }
+            
+            self.label.hidden = NO;
+        }
+        else
+        {
+            self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.self.displayArray.count];
+            self.label.hidden = YES;
+        }
+
     }
     else
     {
-        self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.filteredResults.count];
-        self.label.hidden = YES;
+      sortedArray  = [self.originalFilteredResults filteredArrayUsingPredicate:comboPredicate];
+        self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)sortedArray.count];
+        
+        NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+        NSArray *sortedToUse = [sortedArray sortedArrayUsingDescriptors: @[nameDescriptor]];
+        
+        
+        self.filteredResults = [sortedToUse copy];
+        if (self.filteredResults.count == 0)
+        {
+            self.titleLabel.text = [NSString stringWithFormat:@"%@ (0)", self.subCategoryTitle];
+            if (!self.label)
+            {
+                self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 30.f)];
+                self.label.text = @"No sorted results found";
+                [self.view addSubview:self.label];
+                self.label.center = self.tableView.center;
+                self.tableView.separatorColor = [UIColor clearColor];
+                self.label.textAlignment = NSTextAlignmentCenter;
+                self.label.textColor = [UIColor lightGrayColor];
+            }
+            
+            self.label.hidden = NO;
+        }
+        else
+        {
+            self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.filteredResults.count];
+            self.label.hidden = YES;
+        }
+
     }
+    
+
     
     [self.tableView reloadData];
 }
@@ -248,19 +292,36 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     self.starSortIcon.selected = ![self.starSortIcon isSelected];
     
-    
-    
-    if (self.starSortIcon.isSelected)
+    if (self.gotDetails)
     {
-        NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"rating" ascending:YES];
-        self.filteredResults = [[self.filteredResults sortedArrayUsingDescriptors: @[nameDescriptor]] mutableCopy];
-        
+        if (self.starSortIcon.isSelected)
+        {
+            NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"rating" ascending:YES];
+            self.displayArray = [[self.displayArray sortedArrayUsingDescriptors: @[nameDescriptor]] mutableCopy];
+            
+        }
+        else
+        {
+            NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"rating" ascending:NO];
+            self.displayArray = [[self.displayArray sortedArrayUsingDescriptors: @[nameDescriptor]] mutableCopy];
+        }
     }
     else
     {
-        NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"rating" ascending:NO];
-        self.filteredResults = [[self.filteredResults sortedArrayUsingDescriptors: @[nameDescriptor]] mutableCopy];
+        if (self.starSortIcon.isSelected)
+        {
+            NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"rating" ascending:YES];
+            self.filteredResults = [[self.filteredResults sortedArrayUsingDescriptors: @[nameDescriptor]] mutableCopy];
+            
+        }
+        else
+        {
+            NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"rating" ascending:NO];
+            self.filteredResults = [[self.filteredResults sortedArrayUsingDescriptors: @[nameDescriptor]] mutableCopy];
+        }
     }
+    
+
     
     [self.tableView reloadData];
 }
@@ -285,15 +346,17 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
-    [self.openNowButton setHidden:YES];
+    self.originalFilteredResults = self.filteredResults;
     
-    self.detailsArray = [self.filteredResults copy];
-
+    originalCount = self.filteredResults.count;
     
-    if (!cache)
+    
+    if (!self.cachedDetails)
     {
-        cache = [[BVTCache alloc] init];
+        self.cachedDetails = [[NSMutableDictionary alloc] init];
     }
+    
+//    self.displayArray = [self.filteredResults copy];
     
     self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.filteredResults.count];
     
@@ -307,56 +370,71 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         [self.distanceButton setHidden:NO];
     }
     
-    if (self.filteredResults.count > 0)
+    NSArray *values = self.cachedDetails[self.subCategoryTitle];
+    if (values.count == originalCount)
     {
-        NSMutableArray *bizAdd = [NSMutableArray array];
-        for (YLPBusiness *selectedBusiness in self.filteredResults)
-        {
-            YLPBusiness *cachedBiz = [cache objectForKey:self.subCategoryTitle];
-            if (![cachedBiz.phone isEqualToString:selectedBusiness.phone])
-            {
-                dispatch_async(dispatch_get_main_queue(), ^{
+        [self.openNowButton setHidden:NO];
+        self.displayArray = values;
+//        self.displayArray = values;
+        self.gotDetails = YES;
 
-                [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
-                 (YLPBusiness *business, NSError *error) {
-                     
-                         if (business.photos.count > 0)
-                         {
-                             NSMutableArray *photosArray = [NSMutableArray array];
-                             for (NSString *photoStr in business.photos)
+    }
+    else
+    {
+        self.gotDetails = NO;
+        if (self.filteredResults.count > 0)
+        {
+            [self.openNowButton setHidden:YES];
+
+            NSMutableArray *bizAdd = [NSMutableArray array];
+            for (YLPBusiness *selectedBusiness in self.filteredResults)
+            {
+                NSArray *values = self.cachedDetails[self.subCategoryTitle];
+                if (![[values filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", selectedBusiness.phone]] lastObject])
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
+                         (YLPBusiness *business, NSError *error) {
+                             
+                             if (business.photos.count > 0)
                              {
-                                 NSURL *url = [NSURL URLWithString:photoStr];
-                                 NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                 UIImage *image = [UIImage imageNamed:@"placeholder"];
-                                 if (imageData)
+                                 NSMutableArray *photosArray = [NSMutableArray array];
+                                 for (NSString *photoStr in business.photos)
                                  {
-                                     image = [UIImage imageWithData:imageData];
+                                     NSURL *url = [NSURL URLWithString:photoStr];
+                                     NSData *imageData = [NSData dataWithContentsOfURL:url];
+                                     UIImage *image = [UIImage imageNamed:@"placeholder"];
+                                     if (imageData)
+                                     {
+                                         image = [UIImage imageWithData:imageData];
+                                     }
+                                     [photosArray addObject:image];
                                  }
-                                 [photosArray addObject:image];
+                                 
+                                 business.photos = photosArray;
                              }
                              
-                             business.photos = photosArray;
-                         }
-                         
-                         if (business)
-                         {
-                             [bizAdd addObject:business];
-                             [cache setObject:business forKey:self.subCategoryTitle];
-                             if (bizAdd.count == self.filteredResults.count)
+                             if (business)
                              {
-                                 dispatch_async(dispatch_get_main_queue(), ^{
-
-                                 self.detailsArray = [bizAdd copy];
-                                 [self.openNowButton setHidden:NO];
-                                 [self sortArrayWithPredicates];
-                                 
-                                     self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.detailsArray.count];
-                                 });
+                                 [bizAdd addObject:business];
+                                 if (bizAdd.count == originalCount)
+                                 {
+                                     dispatch_async(dispatch_get_main_queue(), ^{
+                                         [self.cachedDetails setObject:bizAdd forKey:self.subCategoryTitle];
+                                         self.gotDetails = YES;
+                                         self.displayArray = bizAdd;
+                                         [self.openNowButton setHidden:NO];
+                                     });
+                                 }
                              }
-                         }
-                 }];
-                });
-            }
+                         }];
+                    });
+                }
+    }
+    
+            
+
         }
     }
     
@@ -408,8 +486,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     YLPBusiness *business = [self.filteredResults objectAtIndex:indexPath.row];
-    YLPBusiness *cachedBiz = [cache objectForKey:self.subCategoryTitle];
-    if ([cachedBiz.phone isEqualToString:business.phone])
+    NSArray *values = self.cachedDetails[self.subCategoryTitle];
+
+    
+    YLPBusiness *cachedBiz = [[values filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", business.phone]] lastObject];
+    if (cachedBiz)
     {
         business = cachedBiz;
     }
@@ -466,7 +547,16 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.filteredResults.count;
+    NSInteger i = 0;
+    if (self.gotDetails)
+    {
+        i = self.displayArray.count;
+    }
+    else
+    {
+        i = self.filteredResults.count;
+    }
+    return i;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -474,12 +564,24 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
     
-    YLPBusiness *business = [self.filteredResults objectAtIndex:indexPath.row];
-    YLPBusiness *cachedBiz = [cache objectForKey:self.subCategoryTitle];
-    if ([cachedBiz.phone isEqualToString:business.phone])
+    YLPBusiness *business;
+    
+
+    if (self.gotDetails)
     {
-        business = cachedBiz;
+        business = [self.displayArray objectAtIndex:indexPath.row];
+
+//        YLPBusiness *cachedBiz = [[values filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", business.phone]] lastObject];
+//        if (cachedBiz)
+//        {
+//            business = cachedBiz;
+//        }
     }
+    else
+    {
+        business = [self.filteredResults objectAtIndex:indexPath.row];
+    }
+
     cell.business = business;
     
     UIImage *image = [UIImage imageNamed:@"placeholder"];
@@ -523,10 +625,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (IBAction)didTapBack:(id)sender
 {
-//    if ([self.delegate respondsToSelector:@selector(didTapBackWithDetails:)])
-//    {
-//        [self.delegate didTapBackWithDetails:self.cachedDetails];
-//    }
+    if ([self.delegate respondsToSelector:@selector(didTapBackWithDetails:)])
+    {
+        [self.delegate didTapBackWithDetails:self.cachedDetails];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

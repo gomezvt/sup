@@ -22,7 +22,7 @@
 
 
 @interface BVTCategoryTableViewController ()
-<BVTHUDViewDelegate>//BVTSubCategoryTableViewControllerDelegate>
+<BVTHUDViewDelegate, BVTSubCategoryTableViewControllerDelegate>
 
 @property (nonatomic, strong) BVTHUDView *hud;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -54,10 +54,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
 }
 
-//- (void)didTapBackWithDetails:(NSMutableArray *)details
-//{
-//    self.cachedDetails = details;
-//}
+- (void)didTapBackWithDetails:(NSMutableDictionary *)details
+{
+    self.cachedDetails = details;
+}
 
 - (void)viewDidLoad
 {
@@ -176,8 +176,8 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
                      BVTSubCategoryTableViewController *subCat = [self.storyboard instantiateViewControllerWithIdentifier:@"SubCat"];
                      subCat.subCategoryTitle = selectionTitle;
                      subCat.filteredResults = sortedArray;
-//                     subCat.cachedDetails = self.cachedDetails;
-//                     subCat.delegate = self;
+                     subCat.cachedDetails = self.cachedDetails;
+                     subCat.delegate = self;
                      
                      [self.navigationController pushViewController:subCat animated:YES];
                  }
@@ -237,10 +237,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 - (IBAction)didTapBack:(id)sender
 {
-//    if ([self.delegate respondsToSelector:@selector(didTapBackWithDetails:)])
-//    {
-//        [self.delegate didTapBackWithDetails:self.cachedDetails];
-//    }
+    if ([self.delegate respondsToSelector:@selector(didTapBackWithDetails:)])
+    {
+        [self.delegate didTapBackWithDetails:self.cachedDetails];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
