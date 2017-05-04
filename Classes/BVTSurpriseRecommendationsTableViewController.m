@@ -114,12 +114,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-    NSArray *sortedArray2 = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
-    NSString *key = [sortedArray2 objectAtIndex:section];
-    NSArray *values = [self.businessOptions valueForKey:key];
-    
-    return values.count;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -127,9 +122,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
     
-    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-    NSArray *sortedArray2 = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
-    NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
+    NSString *key = [[self.businessOptions allKeys] objectAtIndex:indexPath.section];
     NSArray *values = [self.businessOptions valueForKey:key];
     if (values.count > 0)
     {
@@ -138,11 +131,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         {
             [tempArray addObject:[[dict allValues] lastObject]];
         }
-        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-        NSArray *bizArray = [tempArray sortedArrayUsingDescriptors: @[nameDescriptor]];
         
-        YLPBusiness *biz = [bizArray objectAtIndex:indexPath.row];
-        
+        YLPBusiness *biz = [tempArray objectAtIndex:indexPath.row];
+        //        YLPBusiness *biz = [bizArray objectAtIndex:arc4random()%[bizArray count]];
+
         cell.business = biz;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.numberOfLines = 0;
@@ -211,9 +203,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-    NSArray *sortedArray2 = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
-    NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
+    NSString *key = [[self.businessOptions allKeys] objectAtIndex:indexPath.section];
     NSArray *values = [self.businessOptions valueForKey:key];
     NSMutableArray *tempArray = [NSMutableArray array];
     
@@ -225,12 +215,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         }
         
     }
-    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    NSArray *bizArray = [tempArray sortedArrayUsingDescriptors: @[nameDescriptor]];
     
-    YLPBusiness *selectedBusiness = [bizArray objectAtIndex:indexPath.row];
-    
-    
+    YLPBusiness *selectedBusiness = [tempArray objectAtIndex:indexPath.row];
     [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
      (YLPBusiness *business, NSError *error) {
          dispatch_async(dispatch_get_main_queue(), ^{
