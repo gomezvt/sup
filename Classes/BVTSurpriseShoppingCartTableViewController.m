@@ -281,7 +281,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                     for (NSDictionary *dict in self.resultsArray)
                     {
                         YLPBusiness *bizz = [[dict allValues] lastObject];
-                        if ([biz.phone isEqualToString:bizz.phone] && [biz.name isEqualToString:bizz.name] && [[dict allKeys] lastObject] == category)
+                        if ([biz.phone isEqualToString:bizz.phone] && [[dict allKeys] lastObject] == category)
                         {
                             isDuplicate = YES;
                         }
@@ -328,18 +328,71 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
             }
             else
             {
+                
+                
                 for (NSString *category in self.subCategories)
                 {
-                    NSArray *array = [self.resultsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] %K", category]];
+                    
+                    NSMutableArray *ar = [NSMutableArray array];
+                    for (i = 0; [self.resultsArray count]; i++)
+                    {
+                        NSDictionary *d = [self.resultsArray objectAtIndex:arc4random()%[self.resultsArray count]];
+                        YLPBusiness *biz = [[d allValues] lastObject];
+                        if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", category]] lastObject])
+                        {
+                            if (ar.count >= 1)
+                            {
+                                YLPBusiness *biz1;
+                                YLPBusiness *biz2;
+                                if (ar.count == 1)
+                                {
+                                    NSDictionary *dict1 = [ar objectAtIndex:0];
+                                    biz1 = [[dict1 allValues] lastObject];
+                                    if (![biz.phone isEqualToString:biz1.phone])
+                                    {
+                                        [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:category]];
+                                    }
+                                }
+                                else if (ar.count == 2)
+                                {
+                                    NSDictionary *dict1 = [ar objectAtIndex:0];
+                                    biz1 = [[dict1 allValues] lastObject];
+                                    
+                                    
+                                    NSDictionary *dict2 = [ar objectAtIndex:1];
+                                    biz2 = [[dict2 allValues] lastObject];
+                                    
+                                    if (![biz.phone isEqualToString:biz1.phone] && ![biz.phone isEqualToString:biz2.phone])
+                                    {
+                                        [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:category]];
+                                        
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:category]];
+                            }
+                        }
+                        }
+                        
+
+                    
+                    
+                    NSArray *array = [ar filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] %K", category]];
+                    
+ 
+                    
                     // TODO:figure out sorting here
                     [dict setObject:array forKey:category];
                 }
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self _hideHUD];
-                    [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
-                });
             }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self _hideHUD];
+                [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
+            });
         }
     }
 }

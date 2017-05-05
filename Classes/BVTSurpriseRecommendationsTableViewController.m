@@ -72,9 +72,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
     NSArray *sortedArray2 = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
     NSString *key = [sortedArray2 objectAtIndex:section];
-    NSArray *array = [self.businessOptions valueForKey:key];
+    NSArray *values = [self.businessOptions valueForKey:key];
     
-    if (array.count > 0)
+    if (values.count > 0)
     {
         return key;
     }
@@ -122,8 +122,15 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
     
-    NSString *key = [[self.businessOptions allKeys] objectAtIndex:indexPath.section];
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    NSArray *sortedArray2 = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+    NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
     NSArray *values = [self.businessOptions valueForKey:key];
+    
+    
+    
+    
+
     if (values.count > 0)
     {
         NSMutableArray *tempArray = [NSMutableArray array];
@@ -132,8 +139,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
             [tempArray addObject:[[dict allValues] lastObject]];
         }
         
-        YLPBusiness *biz = [tempArray objectAtIndex:indexPath.row];
-        //        YLPBusiness *biz = [bizArray objectAtIndex:arc4random()%[bizArray count]];
+        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+        NSArray *sortedArray2 = [tempArray sortedArrayUsingDescriptors: @[descriptor]];
+        
+        YLPBusiness *biz = [sortedArray2 objectAtIndex:indexPath.row];
 
         cell.business = biz;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -203,8 +212,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *key = [[self.businessOptions allKeys] objectAtIndex:indexPath.section];
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    NSArray *sortedArray2 = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+    NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
     NSArray *values = [self.businessOptions valueForKey:key];
+    
     NSMutableArray *tempArray = [NSMutableArray array];
     
     if (values.count > 0)
@@ -213,10 +225,12 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         {
             [tempArray addObject:[[dict allValues] lastObject]];
         }
-        
     }
     
-    YLPBusiness *selectedBusiness = [tempArray objectAtIndex:indexPath.row];
+    NSSortDescriptor *descriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    NSArray *sortedArray = [tempArray sortedArrayUsingDescriptors: @[descriptor2]];
+    
+    YLPBusiness *selectedBusiness = [sortedArray objectAtIndex:indexPath.row];
     [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
      (YLPBusiness *business, NSError *error) {
          dispatch_async(dispatch_get_main_queue(), ^{
@@ -224,6 +238,13 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                  [self _hideHud];
                  
                  NSLog(@"Error %@", error.localizedDescription);
+
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please try again" preferredStyle:UIAlertControllerStyleAlert];
+                 
+                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                 [alertController addAction:ok];
+                 
+                 [self presentViewController:alertController animated:YES completion:nil];
              }
              else
              {
@@ -251,6 +272,15 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                         dispatch_async(dispatch_get_main_queue(), ^{
                                                             if (error) {
                                                                 [self _hideHud];
+                                                                
+                                                                NSLog(@"Error %@", error.localizedDescription);
+                                                                
+                                                                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please try again" preferredStyle:UIAlertControllerStyleAlert];
+                                                                
+                                                                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                                                [alertController addAction:ok];
+                                                                
+                                                                [self presentViewController:alertController animated:YES completion:nil];
                                                                 
                                                                 NSLog(@"Error %@", error.localizedDescription);
                                                             }
