@@ -342,7 +342,11 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                 
                 for (NSString *key in [dict allKeys])
                 {
+
+                    
                     NSArray *values = [dict valueForKey:key];
+
+                    
                     if (values.count > 3)
                     {
                         NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
@@ -384,11 +388,31 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                         }
                         
                     }
+                    else if (values.count > 0)
+                    {
+                        NSMutableArray *arra = [NSMutableArray array];
+                        for (NSDictionary *dict in values)
+                        {
+                            YLPBusiness *biz = [[dict allValues] lastObject];
+                            [arra addObject:biz];
+                        }
+                        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+                        NSArray *sortedArray2 = [arra sortedArrayUsingDescriptors: @[descriptor]];
+                        
+                        NSMutableArray *ar = [NSMutableArray array];
+                        for (YLPBusiness *biz in sortedArray2)
+                        {
+                            [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
+                        }
+                        
+                        [dict setValue:ar forKey:key];
+                    }
                 }
                 
-                [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
+
                     [self _hideHUD];
                 });
             }
