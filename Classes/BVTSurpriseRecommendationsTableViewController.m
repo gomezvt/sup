@@ -55,6 +55,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super awakeFromNib];
     
+
+    
     self.orderedDict = [NSMutableDictionary dictionary];
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
@@ -90,6 +92,42 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+//    for (NSString *key in self.businessOptions)
+//    {
+//        NSArray *values = [[self.businessOptions allValues] valueForKey:key];
+//        NSArray *values2 = [values lastObject];
+//        
+//        YLPBusiness *biz = [values2 objectAtIndex:arc4random()%[values2 count]];
+//        YLPBusiness *biz2 = [values2 objectAtIndex:arc4random()%[values2 count]];
+//        YLPBusiness *biz3 = [values2 objectAtIndex:arc4random()%[values2 count]];
+//        
+//        if (![biz isKindOfClass:[NSNull class]] && ![biz2 isKindOfClass:[NSNull class]] && ![biz3 isKindOfClass:[NSNull class]])
+//        {
+//            if ([biz.phone isEqualToString:biz2.phone] || [biz.phone isEqualToString:biz3.phone] ||
+//                [biz2.phone isEqualToString:biz.phone] || [biz2.phone isEqualToString:biz3.phone] ||
+//                [biz3.phone isEqualToString:biz.phone] || [biz3.phone isEqualToString:biz2.phone])
+//            {
+//                return;
+//            }
+//            
+//            NSMutableArray *ar = [NSMutableArray array];
+//            [ar addObject:biz];
+//            [ar addObject:biz2];
+//            [ar addObject:biz3];
+//
+//            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+//            NSArray *sortedArray2 = [ar sortedArrayUsingDescriptors: @[descriptor]];
+//            
+//            NSMutableArray *ar2 = [NSMutableArray array];
+//            for (YLPBusiness *biz in sortedArray2)
+//            {
+//                [ar2 addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
+//            }
+//            
+//            [self.businessOptions setValue:ar2 forKey:key];
+//        }
+//    }
     
     self.tableView.sectionHeaderHeight = 44.f;
     
