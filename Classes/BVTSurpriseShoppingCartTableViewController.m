@@ -164,6 +164,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+//        NSArray *sortedArray2 = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
+//        NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
+//        NSArray *values = [self.businessOptions valueForKey:key];
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
         NSArray *sortedArray2 = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
         NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
@@ -171,16 +175,20 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
         NSMutableArray *array = [self.catDict valueForKey:key];
         [array removeObjectAtIndex:indexPath.row];
         [self.subCategories removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        if (array.count == 0)
-        {
-            [tableView reloadData];
-            
-            [self presentMessage];
-        }
+        
         // tell table to refresh now
         [self evaluateButtonStateForButton:self.goButton];
         [self evaluateButtonStateForButton:self.clearButton];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView reloadData];
+
+        BOOL containsValues = [[[self.catDict allValues] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"@count > 0"]] lastObject];
+
+        if (!containsValues)
+        {
+            [self presentMessage];
+        }
     }
 }
 
@@ -206,20 +214,17 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     [layer setBorderWidth:1.0];
     
     NSArray *allValues = [self.catDict allValues];
-    for (NSArray *array in allValues)
+    BOOL containsValues = [[allValues filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"@count > 0"]] lastObject];
+    
+    if (containsValues)
     {
-        if (array.count > 0)
-        {
-            [button setEnabled:YES];
-            [button.layer setBorderColor:[[BVTStyles iconGreen] CGColor]];
-            break;
-        }
-        else
-        {
-            [button setEnabled:NO];
-            [button.layer setBorderColor:[[UIColor lightGrayColor] CGColor]];
-            break;
-        }
+        [button setEnabled:YES];
+        [button.layer setBorderColor:[[BVTStyles iconGreen] CGColor]];
+    }
+    else
+    {
+        [button setEnabled:NO];
+        [button.layer setBorderColor:[[UIColor lightGrayColor] CGColor]];
     }
 }
 
@@ -408,10 +413,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                         [dict setValue:ar forKey:key];
                     }
                 }
-                
+                [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
+
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
 
                     [self _hideHUD];
                 });
