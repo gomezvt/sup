@@ -540,22 +540,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSurpriseRecommendationsTableViewController.m"
-            timestampString = "516074874.877744"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "-tableView:numberOfRowsInSection:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -748,7 +732,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSurpriseShoppingCartTableViewController.m"
@@ -757,22 +741,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "355"
             endingLineNumber = "355"
-            landmarkName = "-didReceiveBusinessesNotification:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSurpriseShoppingCartTableViewController.m"
-            timestampString = "516077494.83161"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
             landmarkName = "-didReceiveBusinessesNotification:"
             landmarkType = "7">
          </BreakpointContent>
@@ -935,6 +903,54 @@
             endingLineNumber = "188"
             landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/BVTSurpriseShoppingCartTableViewController.m"
+            timestampString = "516078926.603726"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
+            landmarkName = "-didReceiveBusinessesNotification:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BVTSurpriseShoppingCartTableViewController didReceiveBusinessesNotification:]"
+                  moduleName = "Burlingtonian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSurpriseShoppingCartTableViewController.m"
+                  timestampString = "516078926.822886"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "418"
+                  endingLineNumber = "418"
+                  offsetFromSymbolStart = "9576">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__79-[BVTSurpriseShoppingCartTableViewController didReceiveBusinessesNotification:]_block_invoke.274"
+                  moduleName = "Burlingtonian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSurpriseShoppingCartTableViewController.m"
+                  timestampString = "516078926.824517"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "418"
+                  endingLineNumber = "418"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

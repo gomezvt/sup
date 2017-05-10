@@ -413,10 +413,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                         [dict setValue:ar forKey:key];
                     }
                 }
-                [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
 
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
 
                     [self _hideHUD];
                 });
