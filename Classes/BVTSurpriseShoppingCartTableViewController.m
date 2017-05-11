@@ -56,9 +56,9 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     [self.subCategories removeAllObjects];
     [self.resultsArray removeAllObjects];
     
-    if ([self.delegate respondsToSelector:@selector(didClearShoppingCart)])
+    if ([self.delegate respondsToSelector:@selector(didRemoveObjectsFromArray:)])
     {
-        [self.delegate didClearShoppingCart];
+        [self.delegate didRemoveObjectsFromArray:self.subCategories];
     }
     [self.tableView reloadData];
     
@@ -177,6 +177,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
         [sortedArray2 removeObject:category];
         [self.subCategories removeObject:category];
         [self.catDict setValue:self.subCategories forKey:key];
+        if ([self.delegate respondsToSelector:@selector(didRemoveObjectsFromArray:)])
+        {
+            [self.delegate didRemoveObjectsFromArray:self.subCategories];
+        }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];

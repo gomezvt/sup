@@ -31,9 +31,9 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
 @implementation BVTSurpriseSubCategoryTableViewController
 
-- (void)didClearShoppingCart
+- (void)didRemoveObjectsFromArray:(NSArray *)array
 {
-    [self.mut removeAllObjects];
+    self.mut = [array mutableCopy];
 }
 
 - (void)awakeFromNib
