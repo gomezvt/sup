@@ -25,7 +25,14 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 static NSString *const kShowCategorySegue = @"ShowCategory";
 static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 
+
 @implementation BVTSurpriseCategoryTableViewController
+
+- (void)didTapBackWithDetails:(NSMutableArray *)details
+{
+    self.cachedDetails = details;
+    
+}
 
 - (void)awakeFromNib
 {
@@ -126,6 +133,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     {
         // Get destination view
         BVTSurpriseShoppingCartTableViewController *vc = [segue destinationViewController];
+        vc.cachedDetails = self.cachedDetails;
         vc.catDict = self.catDict;
     }
     else
@@ -134,6 +142,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
         vc.delegate = self;
         vc.catDict = self.catDict;
         vc.categoryTitle = sender;
+        vc.cachedDetails = self.cachedDetails;
     }
 }
 

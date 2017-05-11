@@ -24,7 +24,7 @@
 #import "YLPCoordinate.h"
 
 @interface BVTSurpriseShoppingCartTableViewController ()
-<BVTHUDViewDelegate>
+<BVTHUDViewDelegate, BVTSurpriseRecommendationsTableViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
@@ -45,7 +45,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
 @implementation BVTSurpriseShoppingCartTableViewController
 
-
+- (void)didTapBackWithDetails:(NSMutableArray *)details
+{
+    self.cachedDetails = details;
+}
 
 - (IBAction)didTapClearAllButton:(id)sender
 {
@@ -235,6 +238,11 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     {
         [self.delegate didTapBackWithCategories:self.catDict];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(didTapBackWithDetails:)])
+    {
+        [self.delegate didTapBackWithDetails:self.cachedDetails];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -364,7 +372,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                             
                             NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
                             YLPBusiness *biz3 = [[values3 allValues] lastObject];
-                            
+
                             while ([biz.phone isEqualToString:biz2.phone] || [biz.phone isEqualToString:biz3.phone] ||
                                    [biz2.phone isEqualToString:biz.phone] || [biz2.phone isEqualToString:biz3.phone] ||
                                    [biz3.phone isEqualToString:biz.phone] || [biz3.phone isEqualToString:biz2.phone])
@@ -378,6 +386,20 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                 NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
                                 biz3 = [[values3 allValues] lastObject];
                             }
+                            
+//                            while ([[biz.location.address firstObject] isEqualToString:[biz2.location.address firstObject]] || [[biz.location.address firstObject] isEqualToString:[biz3.location.address firstObject]] ||
+//                                   [[biz2.location.address firstObject] isEqualToString:[biz.location.address firstObject]] || [[biz2.location.address firstObject] isEqualToString:[biz3.location.address firstObject]] ||
+//                                   [[biz3.location.address firstObject] isEqualToString:biz.location.address.firstObject] || [[biz3.location.address firstObject] isEqualToString:[biz2.location.address firstObject]])
+//                            {
+//                                NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
+//                                biz = [[values1 allValues] lastObject];
+//                                
+//                                NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
+//                                biz2 = [[values2 allValues] lastObject];
+//                                
+//                                NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
+//                                biz3 = [[values3 allValues] lastObject];
+//                            }
                             
                             NSArray *bizzes = @[ biz, biz2, biz3 ];
                             
@@ -494,7 +516,9 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     // Get destination view
     BVTSurpriseRecommendationsTableViewController *vc = [segue destinationViewController];
+    vc.delegate = self;
     vc.businessOptions = sender;
+    vc.cachedDetails = self.cachedDetails;
 }
 
 @end

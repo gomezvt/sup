@@ -12,6 +12,7 @@
 
 - (void)didTapBackWithCategories:(NSMutableDictionary *)categories ;
 - (void)didClearShoppingCart;
+- (void)didTapBackWithDetails:(NSMutableArray *)details ;
 
 @end
 
@@ -19,5 +20,6 @@
 
 @property (nonatomic, strong) NSMutableDictionary *catDict;
 @property(nonatomic, weak)id <BVTSurpriseShoppingCartTableViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSMutableArray *cachedDetails;
 
 @end

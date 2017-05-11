@@ -11,6 +11,7 @@
 @protocol BVTSurpriseSubCategoryTableViewControllerDelegate <NSObject>
 
 - (void)didTapBackWithCategories:(NSMutableDictionary *)categories;
+- (void)didTapBackWithDetails:(NSMutableArray *)details ;
 
 @end
 
@@ -18,7 +19,7 @@
 
 @property (nonatomic, copy) NSString *categoryTitle;
 @property (nonatomic, strong) NSMutableDictionary *catDict;
-
+@property (nonatomic, strong) NSMutableArray *cachedDetails;
 @property(nonatomic, weak)id <BVTSurpriseSubCategoryTableViewControllerDelegate> delegate;
 
 @end

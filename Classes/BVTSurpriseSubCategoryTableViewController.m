@@ -105,8 +105,14 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     if ([self.delegate respondsToSelector:@selector(didTapBackWithCategories:)])
     {
         [self.delegate didTapBackWithCategories:self.catDict];
-        [self.navigationController popViewControllerAnimated:YES];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(didTapBackWithDetails:)])
+    {
+        [self.delegate didTapBackWithDetails:self.cachedDetails];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didTapBackWithCategories:(NSMutableDictionary *)categories
@@ -234,6 +240,12 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     return categories.count;
 }
 
+- (void)didTapBackWithDetails:(NSMutableArray *)details
+{
+    
+    self.cachedDetails = details;
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -242,6 +254,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     BVTSurpriseShoppingCartTableViewController *vc = [segue destinationViewController];
     vc.catDict = self.catDict;
     vc.delegate = self;
+    vc.cachedDetails = self.cachedDetails;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

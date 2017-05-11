@@ -86,49 +86,23 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (IBAction)didTapBack:(id)sender
 {
+    if ([self.delegate respondsToSelector:@selector(didTapBackWithDetails:)])
+    {
+        [self.delegate didTapBackWithDetails:self.cachedDetails];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-//    for (NSString *key in self.businessOptions)
-//    {
-//        NSArray *values = [[self.businessOptions allValues] valueForKey:key];
-//        NSArray *values2 = [values lastObject];
-//        
-//        YLPBusiness *biz = [values2 objectAtIndex:arc4random()%[values2 count]];
-//        YLPBusiness *biz2 = [values2 objectAtIndex:arc4random()%[values2 count]];
-//        YLPBusiness *biz3 = [values2 objectAtIndex:arc4random()%[values2 count]];
-//        
-//        if (![biz isKindOfClass:[NSNull class]] && ![biz2 isKindOfClass:[NSNull class]] && ![biz3 isKindOfClass:[NSNull class]])
-//        {
-//            if ([biz.phone isEqualToString:biz2.phone] || [biz.phone isEqualToString:biz3.phone] ||
-//                [biz2.phone isEqualToString:biz.phone] || [biz2.phone isEqualToString:biz3.phone] ||
-//                [biz3.phone isEqualToString:biz.phone] || [biz3.phone isEqualToString:biz2.phone])
-//            {
-//                return;
-//            }
-//            
-//            NSMutableArray *ar = [NSMutableArray array];
-//            [ar addObject:biz];
-//            [ar addObject:biz2];
-//            [ar addObject:biz3];
-//
-//            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-//            NSArray *sortedArray2 = [ar sortedArrayUsingDescriptors: @[descriptor]];
-//            
-//            NSMutableArray *ar2 = [NSMutableArray array];
-//            for (YLPBusiness *biz in sortedArray2)
-//            {
-//                [ar2 addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
-//            }
-//            
-//            [self.businessOptions setValue:ar2 forKey:key];
-//        }
-//    }
     
+    if (!self.cachedDetails)
+    {
+        self.cachedDetails = [[NSMutableArray alloc] init];
+    }
+    
+
     self.tableView.sectionHeaderHeight = 44.f;
     
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
@@ -186,50 +160,103 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         NSArray *sortedArray2 = [tempArray sortedArrayUsingDescriptors: @[descriptor]];
         
         YLPBusiness *biz = [sortedArray2 objectAtIndex:indexPath.row];
-
+        YLPBusiness *cachedBiz = [[self.cachedDetails filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", biz.phone]] lastObject];
+        if (cachedBiz)
+        {
+            biz = cachedBiz;
+        }
         cell.business = biz;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.numberOfLines = 0;
         
-        UIImage *image = [UIImage imageNamed:@"placeholder"];
-        cell.thumbNailView.image = image;
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            // Your Background work
-            NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // Update your UI
-                if (cell.tag == indexPath.row)
-                {
-                    if (imageData)
+
+            UIImage *image = [UIImage imageNamed:@"placeholder"];
+            cell.thumbNailView.image = image;
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                // Your Background work
+                NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // Update your UI
+                    if (cell.tag == indexPath.row)
                     {
-                        UIImage *image = [UIImage imageWithData:imageData];
-                        cell.thumbNailView.image = image;
+                        if (imageData)
+                        {
+                            UIImage *image = [UIImage imageWithData:imageData];
+                            cell.thumbNailView.image = image;
+                        }
                     }
-                }
+                });
             });
-        });
+            
+            
+            cell.openCloseLabel.text = @"";
         
-        cell.openCloseLabel.text = @"";
-        [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
-         (YLPBusiness *business, NSError *error) {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 if (!business.hoursItem)
-                 {
-                     cell.openCloseLabel.text = @"";
-                 }
-                 else if (business.isOpenNow)
-                 {
-                     cell.openCloseLabel.text = @"Open";
-                     cell.openCloseLabel.textColor = [BVTStyles iconGreen];
-                 }
-                 else
-                 {
-                     cell.openCloseLabel.text = @"Closed";
-                     cell.openCloseLabel.textColor = [UIColor redColor];
-                 }
-             });
-         }];
+        if (!cachedBiz)
+        {
+            [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
+             (YLPBusiness *business, NSError *error) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     
+                     // *** Get business photos in advance if they exist, to display from Presentation VC
+                     if (business.photos.count > 0)
+                     {
+                         NSMutableArray *photosArray = [NSMutableArray array];
+                         for (NSString *photoStr in business.photos)
+                         {
+                             NSURL *url = [NSURL URLWithString:photoStr];
+                             NSData *imageData = [NSData dataWithContentsOfURL:url];
+                             UIImage *image = [UIImage imageNamed:@"placeholder"];
+                             if (imageData)
+                             {
+                                 image = [UIImage imageWithData:imageData];
+                             }
+                             [photosArray addObject:image];
+                         }
+                         
+                         business.photos = photosArray;
+                     }
+                     
+                     if (![self.cachedDetails containsObject:business])
+                     {
+                         [self.cachedDetails addObject:business];
+                     }
+                     
+                     if (!business.hoursItem)
+                     {
+                         cell.openCloseLabel.text = @"";
+                     }
+                     else if (business.isOpenNow)
+                     {
+                         cell.openCloseLabel.text = @"Open";
+                         cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                     }
+                     else
+                     {
+                         cell.openCloseLabel.text = @"Closed";
+                         cell.openCloseLabel.textColor = [UIColor redColor];
+                     }
+                 });
+             }];
+        }
+        else
+        {
+            if (!cachedBiz.hoursItem)
+            {
+                cell.openCloseLabel.text = @"";
+            }
+            else if (cachedBiz.isOpenNow)
+            {
+                cell.openCloseLabel.text = @"Open";
+                cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+            }
+            else
+            {
+                cell.openCloseLabel.text = @"Closed";
+                cell.openCloseLabel.textColor = [UIColor redColor];
+            }
+        }
+        
     }
     
     return cell;
@@ -274,94 +301,151 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     NSArray *sortedArray = [tempArray sortedArrayUsingDescriptors: @[descriptor2]];
     
     YLPBusiness *selectedBusiness = [sortedArray objectAtIndex:indexPath.row];
-    [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
-     (YLPBusiness *business, NSError *error) {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             if (error) {
-                 [self _hideHud];
-                 
-                 NSLog(@"Error %@", error.localizedDescription);
+    YLPBusiness *cachedBiz = [[self.cachedDetails filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", selectedBusiness.phone]] lastObject];
+    if (cachedBiz)
+    {
+        selectedBusiness = cachedBiz;
+        [[AppDelegate sharedClient] reviewsForBusinessWithId:selectedBusiness.identifier
+                                           completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
+                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                   if (error) {
+                                                       [self _hideHud];
+                                                       
+                                                       NSLog(@"Error %@", error.localizedDescription);
+                                                       
+                                                       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please try again" preferredStyle:UIAlertControllerStyleAlert];
+                                                       
+                                                       UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                                       [alertController addAction:ok];
+                                                       
+                                                       [self presentViewController:alertController animated:YES completion:nil];
+                                                       
+                                                       NSLog(@"Error %@", error.localizedDescription);
+                                                   }
+                                                   else
+                                                   {
+                                                       [self _hideHud];
+                                                       
+                                                       // *** Get review user photos in advance if they exist, to display from Presentation VC
+                                                       NSMutableArray *userPhotos = [NSMutableArray array];
+                                                       for (YLPReview *review in reviews.reviews)
+                                                       {
+                                                           YLPUser *user = review.user;
+                                                           if (user.imageURL)
+                                                           {
+                                                               NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
+                                                               UIImage *image = [UIImage imageNamed:@"placeholder"];
+                                                               if (imageData)
+                                                               {
+                                                                   image = [UIImage imageWithData:imageData];
+                                                               }
+                                                               [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];                                                                }
+                                                       }
+                                                       selectedBusiness.reviews = reviews.reviews;
+                                                       selectedBusiness.userPhotosArray = userPhotos;
+                                                       
+                                                       if (!self.didCancelRequest)
+                                                       {
+                                                           [self performSegueWithIdentifier:kShowDetailSegue sender:selectedBusiness];
+                                                       }
+                                                   }
+                                                   
+                                               });
+                                           }];
 
-                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please try again" preferredStyle:UIAlertControllerStyleAlert];
-                 
-                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                 [alertController addAction:ok];
-                 
-                 [self presentViewController:alertController animated:YES completion:nil];
-             }
-             else
-             {
-                 // *** Get business photos in advance if they exist, to display from Presentation VC
-                 if (business.photos.count > 0)
+    }
+    else
+    {
+        [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
+         (YLPBusiness *business, NSError *error) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 if (error) {
+                     [self _hideHud];
+                     
+                     NSLog(@"Error %@", error.localizedDescription);
+                     
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please try again" preferredStyle:UIAlertControllerStyleAlert];
+                     
+                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                     [alertController addAction:ok];
+                     
+                     [self presentViewController:alertController animated:YES completion:nil];
+                 }
+                 else
                  {
-                     NSMutableArray *photosArray = [NSMutableArray array];
-                     for (NSString *photoStr in business.photos)
+                     // *** Get business photos in advance if they exist, to display from Presentation VC
+                     if (business.photos.count > 0)
                      {
-                         NSURL *url = [NSURL URLWithString:photoStr];
-                         NSData *imageData = [NSData dataWithContentsOfURL:url];
-                         UIImage *image = [UIImage imageNamed:@"placeholder"];
-                         if (imageData)
+                         NSMutableArray *photosArray = [NSMutableArray array];
+                         for (NSString *photoStr in business.photos)
                          {
-                             image = [UIImage imageWithData:imageData];
+                             NSURL *url = [NSURL URLWithString:photoStr];
+                             NSData *imageData = [NSData dataWithContentsOfURL:url];
+                             UIImage *image = [UIImage imageNamed:@"placeholder"];
+                             if (imageData)
+                             {
+                                 image = [UIImage imageWithData:imageData];
+                             }
+                             [photosArray addObject:image];
                          }
-                         [photosArray addObject:image];
+                         
+                         business.photos = photosArray;
                      }
                      
-                     business.photos = photosArray;
+                     [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
+                                                        completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
+                                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                                if (error) {
+                                                                    [self _hideHud];
+                                                                    
+                                                                    NSLog(@"Error %@", error.localizedDescription);
+                                                                    
+                                                                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please try again" preferredStyle:UIAlertControllerStyleAlert];
+                                                                    
+                                                                    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                                                    [alertController addAction:ok];
+                                                                    
+                                                                    [self presentViewController:alertController animated:YES completion:nil];
+                                                                    
+                                                                    NSLog(@"Error %@", error.localizedDescription);
+                                                                }
+                                                                else
+                                                                {
+                                                                    [self _hideHud];
+                                                                    
+                                                                    // *** Get review user photos in advance if they exist, to display from Presentation VC
+                                                                    NSMutableArray *userPhotos = [NSMutableArray array];
+                                                                    for (YLPReview *review in reviews.reviews)
+                                                                    {
+                                                                        YLPUser *user = review.user;
+                                                                        if (user.imageURL)
+                                                                        {
+                                                                            NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
+                                                                            UIImage *image = [UIImage imageNamed:@"placeholder"];
+                                                                            if (imageData)
+                                                                            {
+                                                                                image = [UIImage imageWithData:imageData];
+                                                                            }
+                                                                            [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];                                                                }
+                                                                    }
+                                                                    business.reviews = reviews.reviews;
+                                                                    business.userPhotosArray = userPhotos;
+                                                                    
+                                                                    if (!self.didCancelRequest)
+                                                                    {
+                                                                        [self performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                                    }
+                                                                }
+                                                                
+                                                            });
+                                                        }];
                  }
                  
-                 [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
-                                                    completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
-                                                        dispatch_async(dispatch_get_main_queue(), ^{
-                                                            if (error) {
-                                                                [self _hideHud];
-                                                                
-                                                                NSLog(@"Error %@", error.localizedDescription);
-                                                                
-                                                                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please try again" preferredStyle:UIAlertControllerStyleAlert];
-                                                                
-                                                                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                                                                [alertController addAction:ok];
-                                                                
-                                                                [self presentViewController:alertController animated:YES completion:nil];
-                                                                
-                                                                NSLog(@"Error %@", error.localizedDescription);
-                                                            }
-                                                            else
-                                                            {
-                                                                [self _hideHud];
-                                                                
-                                                                // *** Get review user photos in advance if they exist, to display from Presentation VC
-                                                                NSMutableArray *userPhotos = [NSMutableArray array];
-                                                                for (YLPReview *review in reviews.reviews)
-                                                                {
-                                                                    YLPUser *user = review.user;
-                                                                    if (user.imageURL)
-                                                                    {
-                                                                        NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
-                                                                        UIImage *image = [UIImage imageNamed:@"placeholder"];
-                                                                        if (imageData)
-                                                                        {
-                                                                            image = [UIImage imageWithData:imageData];
-                                                                        }
-                                                                        [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];                                                                }
-                                                                }
-                                                                business.reviews = reviews.reviews;
-                                                                business.userPhotosArray = userPhotos;
-                                                                
-                                                                if (!self.didCancelRequest)
-                                                                {
-                                                                    [self performSegueWithIdentifier:kShowDetailSegue sender:business];
-                                                                }
-                                                            }
-                                                            
-                                                        });
-                                                    }];
-             }
+             });
              
-         });
-         
-     }];
+         }];
+    }
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

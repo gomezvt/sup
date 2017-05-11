@@ -11,5 +11,6 @@
 @interface BVTSurpriseCategoryTableViewController : UIViewController
 
 @property (nonatomic, strong) NSMutableDictionary *catDict;
+@property (nonatomic, strong) NSMutableArray *cachedDetails;
 
 @end
