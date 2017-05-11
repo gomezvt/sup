@@ -142,7 +142,18 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
      (YLPSearch *searchResults, NSError *error){
          dispatch_async(dispatch_get_main_queue(), ^{
              // code here
-             if (searchResults.businesses.count == 0)
+             if (error)
+             {
+                 [self _hideHUD];
+                 
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                 
+                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                 [alertController addAction:ok];
+                 
+                 [self presentViewController:alertController animated:YES completion:nil];
+             }
+             else if (searchResults.businesses.count == 0)
              {
                  [self _hideHUD];
                  
@@ -203,13 +214,6 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
                      
                      [self presentViewController:alertController animated:YES completion:nil];
                  }
-             }
-             
-             if (error)
-             {
-                 [self _hideHUD];
-                 
-                 NSLog(@"Error %@", error.localizedDescription);
              }
          });
      }];

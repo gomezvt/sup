@@ -311,16 +311,13 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                    if (error) {
                                                        [self _hideHud];
                                                        
-                                                       NSLog(@"Error %@", error.localizedDescription);
-                                                       
-                                                       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please try again" preferredStyle:UIAlertControllerStyleAlert];
+                                                       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                                                        
                                                        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                                                        [alertController addAction:ok];
                                                        
                                                        [self presentViewController:alertController animated:YES completion:nil];
                                                        
-                                                       NSLog(@"Error %@", error.localizedDescription);
                                                    }
                                                    else
                                                    {
@@ -362,9 +359,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                  if (error) {
                      [self _hideHud];
                      
-                     NSLog(@"Error %@", error.localizedDescription);
-                     
-                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please try again" preferredStyle:UIAlertControllerStyleAlert];
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                      
                      UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                      [alertController addAction:ok];
@@ -398,16 +393,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                                 if (error) {
                                                                     [self _hideHud];
                                                                     
-                                                                    NSLog(@"Error %@", error.localizedDescription);
                                                                     
-                                                                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please try again" preferredStyle:UIAlertControllerStyleAlert];
+                                                                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                                                                     
                                                                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                                                                     [alertController addAction:ok];
                                                                     
                                                                     [self presentViewController:alertController animated:YES completion:nil];
                                                                     
-                                                                    NSLog(@"Error %@", error.localizedDescription);
                                                                 }
                                                                 else
                                                                 {
