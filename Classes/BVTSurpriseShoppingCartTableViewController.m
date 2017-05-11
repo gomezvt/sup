@@ -143,8 +143,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
     NSArray *sortedArray2 = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
     NSString *key = [sortedArray2 objectAtIndex:section];
-    NSArray *array = [self.catDict valueForKey:key];
-    if (array.count > 0)
+    NSMutableArray *values = [[[self.catDict valueForKey:key] sortedArrayUsingDescriptors: @[descriptor]] mutableCopy];
+    if (values.count > 0)
     {
         return key;
     }
@@ -164,28 +164,27 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-//        NSArray *sortedArray2 = [[self.businessOptions allKeys] sortedArrayUsingDescriptors: @[descriptor]];
-//        NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
-//        NSArray *values = [self.businessOptions valueForKey:key];
+
+        NSString *key = [[self.catDict allKeys] objectAtIndex:indexPath.section];
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-        NSArray *sortedArray2 = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
-        NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
+        NSMutableArray *sortedArray2 = [[self.subCategories sortedArrayUsingDescriptors: @[descriptor]] mutableCopy];
+
+        NSString *category = [sortedArray2 objectAtIndex:indexPath.row];
+
+        [sortedArray2 removeObject:category];
+        [self.subCategories removeObject:category];
+        [self.catDict setValue:self.subCategories forKey:key];
         
-        NSMutableArray *array = [self.catDict valueForKey:key];
-        [array removeObjectAtIndex:indexPath.row];
-        [self.subCategories removeObjectAtIndex:indexPath.row];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView reloadData];
+        });
         
-        // tell table to refresh now
         [self evaluateButtonStateForButton:self.goButton];
         [self evaluateButtonStateForButton:self.clearButton];
         
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [self.tableView reloadData];
 
-        BOOL containsValues = [[[self.catDict allValues] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"@count > 0"]] lastObject];
-
-        if (!containsValues)
+        if (sortedArray2.count == 0)
         {
             [self presentMessage];
         }
@@ -345,40 +344,45 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                     [dict setObject:array forKey:category];
                 }
                 
-                for (NSString *key in [dict allKeys])
+                NSArray *allkeys = [dict allKeys];
+                if (allkeys.count > 0)
                 {
-
+                    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+                    NSArray *keys = [allkeys sortedArrayUsingDescriptors: @[descriptor]];
                     
-                    NSArray *values = [dict valueForKey:key];
-
-                    
-                    if (values.count > 3)
+                    for (NSString *key in keys)
                     {
-                        NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
-                        YLPBusiness *biz = [[values1 allValues] lastObject];
+                        NSArray *values = [dict valueForKey:key];
                         
-                        NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
-                        YLPBusiness *biz2 = [[values2 allValues] lastObject];
-                        
-                        NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
-                        YLPBusiness *biz3 = [[values3 allValues] lastObject];
-                        
-                        if (![biz isKindOfClass:[NSNull class]] && ![biz2 isKindOfClass:[NSNull class]] && ![biz3 isKindOfClass:[NSNull class]])
+                        if (values.count > 3)
                         {
-                            if ([biz.phone isEqualToString:biz2.phone] || [biz.phone isEqualToString:biz3.phone] ||
-                                [biz2.phone isEqualToString:biz.phone] || [biz2.phone isEqualToString:biz3.phone] ||
-                                [biz3.phone isEqualToString:biz.phone] || [biz3.phone isEqualToString:biz2.phone])
+                            NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
+                            YLPBusiness *biz = [[values1 allValues] lastObject];
+                            
+                            NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
+                            YLPBusiness *biz2 = [[values2 allValues] lastObject];
+                            
+                            NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
+                            YLPBusiness *biz3 = [[values3 allValues] lastObject];
+                            
+                            while ([biz.phone isEqualToString:biz2.phone] || [biz.phone isEqualToString:biz3.phone] ||
+                                   [biz2.phone isEqualToString:biz.phone] || [biz2.phone isEqualToString:biz3.phone] ||
+                                   [biz3.phone isEqualToString:biz.phone] || [biz3.phone isEqualToString:biz2.phone])
                             {
-                                return;
+                                NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
+                                biz = [[values1 allValues] lastObject];
+                                
+                                NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
+                                biz2 = [[values2 allValues] lastObject];
+                                
+                                NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
+                                biz3 = [[values3 allValues] lastObject];
                             }
                             
-                            NSMutableArray *ar2 = [NSMutableArray array];
-                            [ar2 addObject:biz];
-                            [ar2 addObject:biz2];
-                            [ar2 addObject:biz3];
+                            NSArray *bizzes = @[ biz, biz2, biz3 ];
                             
                             NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-                            NSArray *sortedArray2 = [ar2 sortedArrayUsingDescriptors: @[descriptor]];
+                            NSArray *sortedArray2 = [bizzes sortedArrayUsingDescriptors: @[descriptor]];
                             
                             NSMutableArray *ar = [NSMutableArray array];
                             for (YLPBusiness *biz in sortedArray2)
@@ -391,38 +395,37 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                 [dict setValue:ar forKey:key];
                             }
                         }
-                        
-                    }
-                    else if (values.count > 0)
-                    {
-                        NSMutableArray *arra = [NSMutableArray array];
-                        for (NSDictionary *dict in values)
+                        else if (values.count > 0)
                         {
-                            YLPBusiness *biz = [[dict allValues] lastObject];
-                            [arra addObject:biz];
+                            NSMutableArray *arra = [NSMutableArray array];
+                            for (NSDictionary *dict in values)
+                            {
+                                YLPBusiness *biz = [[dict allValues] lastObject];
+                                [arra addObject:biz];
+                            }
+                            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+                            NSArray *sortedArray2 = [arra sortedArrayUsingDescriptors: @[descriptor]];
+                            
+                            NSMutableArray *ar = [NSMutableArray array];
+                            for (YLPBusiness *biz in sortedArray2)
+                            {
+                                [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
+                            }
+                            
+                            [dict setValue:ar forKey:key];
                         }
-                        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-                        NSArray *sortedArray2 = [arra sortedArrayUsingDescriptors: @[descriptor]];
                         
-                        NSMutableArray *ar = [NSMutableArray array];
-                        for (YLPBusiness *biz in sortedArray2)
+                        if (key == [allkeys lastObject])
                         {
-                            [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
+                                
+                                [self _hideHUD];
+                            });
                         }
-                        
-                        [dict setValue:ar forKey:key];
                     }
                 }
-
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
-
-                    [self _hideHUD];
-                });
             }
-            
-
         }
     }
 }
@@ -452,7 +455,15 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
     NSArray *sortedArray2 = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
     NSString *key = [sortedArray2 objectAtIndex:section];
-    NSArray *values = [self.catDict valueForKey:key];
+    NSMutableArray *values = [[[self.catDict valueForKey:key] sortedArrayUsingDescriptors: @[descriptor]] mutableCopy];
+    
+    
+//    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+//    NSMutableArray *sortedArray2 = [[self.subCategories sortedArrayUsingDescriptors: @[descriptor]] mutableCopy];
+
+    
+    
+    
     for (NSString *category in values)
     {
         if (![self.subCategories containsObject:category])
@@ -470,10 +481,9 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
     NSArray *sortedArray2 = [[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]];
     NSString *key = [sortedArray2 objectAtIndex:indexPath.section];
-    NSArray *values = [self.catDict valueForKey:key];
-    NSArray *valuesToDisplay = [values sortedArrayUsingDescriptors: @[descriptor]];
+    NSMutableArray *values = [[[self.catDict valueForKey:key] sortedArrayUsingDescriptors: @[descriptor]] mutableCopy];
     
-    cell.textLabel.text = [valuesToDisplay objectAtIndex:indexPath.row];
+    cell.textLabel.text = [values objectAtIndex:indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.numberOfLines = 0;
     
