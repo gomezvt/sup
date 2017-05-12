@@ -106,6 +106,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     self.tableView.userInteractionEnabled = NO;
     self.backChevron.enabled = NO;
     
+    __weak typeof(self) weakSelf = self;
+
     for (NSString *subCatTitle in categoryArray)
     {
         [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:subCatTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
@@ -113,15 +115,15 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
              dispatch_async(dispatch_get_main_queue(), ^{
                  if (error)
                  {
-                     [self _hideHUD];
+                     [weakSelf _hideHUD];
                      
                      NSLog(@"Error %@", error.localizedDescription);
                      
-                     [self.goButton setEnabled:YES];
-                     [self.clearButton setEnabled:YES];
+                     [weakSelf.goButton setEnabled:YES];
+                     [weakSelf.clearButton setEnabled:YES];
                      
-                     self.goButton.layer.borderColor = [[BVTStyles iconGreen] CGColor];
-                     self.clearButton.layer.borderColor = [[BVTStyles iconGreen] CGColor];
+                     weakSelf.goButton.layer.borderColor = [[BVTStyles iconGreen] CGColor];
+                     weakSelf.clearButton.layer.borderColor = [[BVTStyles iconGreen] CGColor];
                  }
              });
          }];

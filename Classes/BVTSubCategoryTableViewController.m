@@ -389,6 +389,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                 NSArray *values = self.cachedDetails[self.subCategoryTitle];
                 if (![[values filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", selectedBusiness.phone]] lastObject])
                 {
+                    __weak typeof(self) weakSelf = self;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
                         [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
@@ -419,11 +420,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                  {
                                      dispatch_async(dispatch_get_main_queue(), ^{
                                          NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-                                         self.displayArray = [bizAdd sortedArrayUsingDescriptors: @[nameDescriptor]];
+                                         weakSelf.displayArray = [bizAdd sortedArrayUsingDescriptors: @[nameDescriptor]];
                                          
-                                         [self.cachedDetails setObject:self.displayArray forKey:self.subCategoryTitle];
-                                         self.gotDetails = YES;
-                                         [self.openNowButton setHidden:NO];
+                                         [weakSelf.cachedDetails setObject:weakSelf.displayArray forKey:weakSelf.subCategoryTitle];
+                                         weakSelf.gotDetails = YES;
+                                         [weakSelf.openNowButton setHidden:NO];
                                      });
                                  }
                              }
@@ -494,13 +495,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         business = [self.filteredResults objectAtIndex:indexPath.row];
     }
     
+    __weak typeof(self) weakSelf = self;
     [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
                                        completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                            dispatch_async(dispatch_get_main_queue(), ^{
                                                
                                                if (error)
                                                {
-                                                   [self _hideHUD];
+                                                   [weakSelf _hideHUD];
                                                    
                                                    NSLog(@"Error %@", error.localizedDescription);
                                                }
@@ -519,11 +521,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                business.reviews = reviews.reviews;
                                                business.userPhotosArray = userPhotos;
                                                
-                                               [self _hideHUD];
-                                               if (!self.didCancelRequest)
+                                               [weakSelf _hideHUD];
+                                               if (!weakSelf.didCancelRequest)
                                                {
                                                    // get biz photos here if we dont have them?
-                                                   [self performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                   [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
                                                }
                                            });
                                        }];

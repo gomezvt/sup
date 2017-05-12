@@ -137,32 +137,32 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
+    __weak typeof(self) weakSelf = self;
     [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
          dispatch_async(dispatch_get_main_queue(), ^{
              // code here
              if (error)
              {
-                 [self _hideHUD];
+                 [weakSelf _hideHUD];
                  
                  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                  
                  UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                  [alertController addAction:ok];
                  
-                 [self presentViewController:alertController animated:YES completion:nil];
+                 [weakSelf presentViewController:alertController animated:YES completion:nil];
              }
              else if (searchResults.businesses.count == 0)
              {
-                 [self _hideHUD];
+                 [weakSelf _hideHUD];
                  
                  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
                  
                  UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                  [alertController addAction:ok];
                  
-                 [self presentViewController:alertController animated:YES completion:nil];
+                 [weakSelf presentViewController:alertController animated:YES completion:nil];
                  
              }
              else if (searchResults.businesses.count > 0)
@@ -193,26 +193,26 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
                      NSArray *sortedArray = [filteredArray sortedArrayUsingDescriptors:descriptor];
                      
                      
-                     [self _hideHUD];
+                     [weakSelf _hideHUD];
                      
-                     BVTSubCategoryTableViewController *subCat = [self.storyboard instantiateViewControllerWithIdentifier:@"SubCat"];
+                     BVTSubCategoryTableViewController *subCat = [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"SubCat"];
                      subCat.subCategoryTitle = selectionTitle;
                      subCat.filteredResults = sortedArray;
-                     subCat.cachedDetails = self.cachedDetails;
-                     subCat.delegate = self;
+                     subCat.cachedDetails = weakSelf.cachedDetails;
+                     subCat.delegate = weakSelf;
                      
-                     [self.navigationController pushViewController:subCat animated:YES];
+                     [weakSelf.navigationController pushViewController:subCat animated:YES];
                  }
                  else
                  {
-                     [self _hideHUD];
+                     [weakSelf _hideHUD];
                      
                      UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No results match the selected category" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
                      
                      UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                      [alertController addAction:ok];
                      
-                     [self presentViewController:alertController animated:YES completion:nil];
+                     [weakSelf presentViewController:alertController animated:YES completion:nil];
                  }
              }
          });
