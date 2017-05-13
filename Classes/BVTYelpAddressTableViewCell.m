@@ -55,6 +55,10 @@
     {
         self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", location.address[0], location.address[1], cityStateZipString];
     }
+    else if (location.address.count == 3)
+    {
+        self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@, %@\n%@", location.address[0], location.address[1], location.address[2], cityStateZipString];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

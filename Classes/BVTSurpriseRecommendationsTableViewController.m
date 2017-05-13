@@ -195,10 +195,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         if (!cachedBiz)
         {
             __weak typeof(self) weakSelf = self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+
             [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
              (YLPBusiness *business, NSError *error) {
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     
+                 
                      // *** Get business photos in advance if they exist, to display from Presentation VC
                      if (business.photos.count > 0)
                      {
@@ -220,9 +221,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                      
                      if (![weakSelf.cachedDetails containsObject:business])
                      {
-                         [weakSelf.cachedDetails addObject:business];
+                         if (business)
+                         {
+                             [weakSelf.cachedDetails addObject:business];
+                         }
                      }
-                     
+                 
+                                  dispatch_async(dispatch_get_main_queue(), ^{
+
                      if (!business.hoursItem)
                      {
                          cell.openCloseLabel.text = @"";
@@ -239,6 +245,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                      }
                  });
              }];
+            });
         }
         else
         {

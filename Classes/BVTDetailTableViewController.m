@@ -122,7 +122,29 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 - (void)displayGoogleMaps
 {
     YLPLocation *location = self.selectedBusiness.location;
-    NSString *mapsQueryString = [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&s11=%f,%f&z=10&t=s", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude];
+
+//    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString *mapsQueryString;
+//    if ([self.selectedBusiness.location.address firstObject])
+//    {
+//            mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@,address=%@&z=20&t=s", self.selectedBusiness.name, [self.selectedBusiness.location.address firstObject]];
+//    }
+//    else
+//    {
+            mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@,qs11=%f,%f,near=%f,%f&z=20&t=s", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude, location.coordinate.latitude, location.coordinate.longitude];
+//    }
+
+
+//    if (appDel.userLocation)
+//    {
+//        CLLocation *userLoc = appDel.userLocation;
+//        CLLocationCoordinate2D coordinate = [userLoc coordinate];
+//        
+//        CGFloat latitude = coordinate.latitude;
+//        CGFloat longitude = coordinate.longitude;
+//        mapsQueryString = [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&near=%f,%f", self.selectedBusiness.name, latitude,longitude];
+//
+//    }
     
     NSString *filteredString = [mapsQueryString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     NSURL *url = [NSURL URLWithString:filteredString];
