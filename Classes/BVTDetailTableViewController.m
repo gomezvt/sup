@@ -131,7 +131,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 //        mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@", self.selectedBusiness.name];
 //    }
 //    else{
-            mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&ll=%f,%f", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude];
+            mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&nearll=%f,%f", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude];
 //    }
 
 
