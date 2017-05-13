@@ -125,13 +125,24 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 
 //    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *mapsQueryString;
-//    if ([self.selectedBusiness.location.address firstObject])
+    
+//    if (![self.selectedBusiness.location.address firstObject])
 //    {
-//            mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@,address=%@&z=20&t=s", self.selectedBusiness.name, [self.selectedBusiness.location.address firstObject]];
+//        mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@", self.selectedBusiness.name];
 //    }
-//    else
+//    else{
+            mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&ll=%f,%f", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude];
+//    }
+
+
+    
+    
+    
+    
+    
+
 //    {
-            mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@,qs11=%f,%f,near=%f,%f&z=20&t=s", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude, location.coordinate.latitude, location.coordinate.longitude];
+//            mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@,qs11=%f,%f,near=%f,%f&z=20&t=s", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude, location.coordinate.latitude, location.coordinate.longitude];
 //    }
 
 
