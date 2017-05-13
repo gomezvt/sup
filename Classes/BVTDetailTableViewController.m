@@ -131,7 +131,30 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 //        mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@", self.selectedBusiness.name];
 //    }
 //    else{
-            mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&nearll=%f,%f", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude];
+    if (location.address.count > 0)
+
+    {
+        mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&nearll=%f,%f", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude];
+    }
+    else if (location.address.count == 0 && location.coordinate)
+    {
+        
+            mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&ll=%f,%f", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude];
+    }
+    else
+    {
+                mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@", self.selectedBusiness.name];
+    }
+//    else if (location.address == 0 && location.coordinate)
+//    {
+//        mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&ll=%f,%f", self.selectedBusiness.name, location.coordinate.latitude, location.coordinate.longitude];
+//
+//    }
+//    else
+//    {
+//        mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@", self.selectedBusiness.name];
+//        
+//    }
 //    }
 
 
@@ -156,8 +179,16 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 //        mapsQueryString = [NSString stringWithFormat:@"http://maps.apple.com/?q=%@&near=%f,%f", self.selectedBusiness.name, latitude,longitude];
 //
 //    }
-    
-    NSString *filteredString = [mapsQueryString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    NSString *filteredString;
+
+    if ([mapsQueryString containsString:@" "])
+    {
+        filteredString = [mapsQueryString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    }
+    else
+    {
+        filteredString = mapsQueryString;
+    }
     NSURL *url = [NSURL URLWithString:filteredString];
     [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
         NSLog(@"");
