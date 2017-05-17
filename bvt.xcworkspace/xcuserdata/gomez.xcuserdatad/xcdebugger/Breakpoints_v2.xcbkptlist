@@ -187,53 +187,6 @@
             endingLineNumber = "530"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__71-[BVTSubCategoryTableViewController tableView:didSelectRowAtIndexPath:]_block_invoke_2"
-                  moduleName = "Burlingtonian"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSubCategoryTableViewController.m"
-                  timestampString = "516470252.956113"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "530"
-                  endingLineNumber = "530"
-                  offsetFromSymbolStart = "1507">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.331"
-                  moduleName = "Burlingtonian"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSubCategoryTableViewController.m"
-                  timestampString = "516470252.958849"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "530"
-                  endingLineNumber = "530"
-                  offsetFromSymbolStart = "181">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.332"
-                  moduleName = "Burlingtonian"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSubCategoryTableViewController.m"
-                  timestampString = "516470252.960483"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "530"
-                  endingLineNumber = "530"
-                  offsetFromSymbolStart = "95">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -274,13 +227,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSubCategoryTableViewController.m"
-            timestampString = "516470307.910947"
+            filePath = "Classes/BVTSurpriseRecommendationsTableViewController.m"
+            timestampString = "516471090.062239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "566"
-            endingLineNumber = "566"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -290,13 +243,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSubCategoryTableViewController.m"
-            timestampString = "516470314.297691"
+            filePath = "Classes/BVTSurpriseRecommendationsTableViewController.m"
+            timestampString = "516471116.006278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "574"
-            endingLineNumber = "574"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

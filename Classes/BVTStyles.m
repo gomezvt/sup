@@ -34,7 +34,7 @@ NSString *const star_five_mini          = @"star_five_mini.png";
 
 + (UIColor *)lightGray
 {
-    return [UIColor colorWithRed:236.f/255 green:235.f/255 blue:5.f/255 alpha:1.f];
+    return [UIColor colorWithRed:153.f/255 green:153.f/255 blue:153.f/255 alpha:1.f];
 }
 
 + (UIColor *)iconGreen

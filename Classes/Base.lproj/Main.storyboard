@@ -11,12 +11,14 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="BVTTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.56782407410000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="gdy-lf-hYK" kind="relationship" relationship="viewControllers" id="Nrq-fD-8jb"/>
@@ -177,7 +179,7 @@
                             <constraint firstAttribute="trailing" secondItem="77w-9n-NFD" secondAttribute="trailing" id="zHH-Fo-ewN"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Explore" id="Ih3-eu-4JK"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="compass" id="Ih3-eu-4JK"/>
                     <navigationItem key="navigationItem" title="Burlingtonian" id="RCZ-KR-qnl"/>
                     <connections>
                         <outlet property="collectionView" destination="77w-9n-NFD" id="yee-4T-oeF"/>
@@ -226,7 +228,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wlY-sR-KOH" id="Vow-YO-FME">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -368,7 +370,7 @@
             </objects>
             <point key="canvasLocation" x="39" y="1364"/>
         </scene>
-        <!--Surprise Category Table View Controller-->
+        <!--Surprise Me-->
         <scene sceneID="f3u-B1-k2u">
             <objects>
                 <viewController id="CcW-yj-hls" customClass="BVTSurpriseCategoryTableViewController" sceneMemberID="viewController">
@@ -452,6 +454,7 @@
                             <constraint firstItem="wmK-aK-23R" firstAttribute="top" secondItem="alT-WY-K2j" secondAttribute="bottom" id="j93-PC-B5o"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Surprise Me" image="surprise" id="ubz-5l-16j"/>
                     <navigationItem key="navigationItem" id="kMy-tZ-wru"/>
                     <connections>
                         <outlet property="goButton" destination="zoc-y8-kQY" id="qAj-Wm-IOU"/>
@@ -700,7 +703,7 @@
                             <outlet property="delegate" destination="Ltk-uh-3zO" id="uW5-Nx-cQ8"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="About" id="TCD-nD-dqv"/>
+                    <tabBarItem key="tabBarItem" title="About" image="about" id="TCD-nD-dqv"/>
                     <navigationItem key="navigationItem" title="Burlingtonian" id="Wxk-3K-b5Z"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbB-GG-seh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -741,7 +744,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="HLp-lw-jU1">
-                                        <rect key="frame" x="56" y="11.333333333333329" width="302" height="23"/>
+                                        <rect key="frame" x="56" y="11" width="302" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -780,7 +783,7 @@
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="2zm-Sb-EUh">
-                                        <rect key="frame" x="8" y="7.6666666666666288" width="398" height="30"/>
+                                        <rect key="frame" x="8" y="7" width="398" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOx-zy-a0F">
                                                 <rect key="frame" x="0.0" y="0.0" width="130" height="30"/>
@@ -947,11 +950,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="about" width="30" height="30"/>
         <image name="back_chevron" width="15" height="15"/>
+        <image name="compass" width="30" height="30"/>
         <image name="starsort1" width="40" height="30"/>
+        <image name="surprise" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7ud-uz-d7s"/>
-        <segue reference="itC-Zp-WcB"/>
+        <segue reference="y5n-5S-q2S"/>
+        <segue reference="lMI-Vd-YSr"/>
     </inferredMetricsTieBreakers>
 </document>
