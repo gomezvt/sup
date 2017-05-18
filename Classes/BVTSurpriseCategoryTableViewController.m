@@ -53,6 +53,9 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 {
     [super viewDidLoad];
     
+    self.tableView.tableFooterView = [UIView new];
+
+    
     CALayer * layer = [self.goButton layer];
     [layer setMasksToBounds:YES];
     [layer setCornerRadius:10.0];

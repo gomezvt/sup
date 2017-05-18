@@ -72,6 +72,9 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 {
     [super viewDidLoad];
     
+    self.tableView.tableFooterView = [UIView new];
+
+    
     self.titleLabel.text = self.selectedBusiness.name;
     
     UINib *yelpMapCellNib = [UINib nibWithNibName:kYelpMapCellNib bundle:nil];

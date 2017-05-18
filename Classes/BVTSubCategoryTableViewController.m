@@ -336,6 +336,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
+    self.tableView.tableFooterView = [UIView new];
+
+    
     self.originalFilteredResults = self.filteredResults;
     
     NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];

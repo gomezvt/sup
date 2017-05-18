@@ -97,6 +97,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
+    self.tableView.tableFooterView = [UIView new];
+
+    
     if (!self.cachedDetails)
     {
         self.cachedDetails = [[NSMutableArray alloc] init];

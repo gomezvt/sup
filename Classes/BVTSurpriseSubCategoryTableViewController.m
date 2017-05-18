@@ -122,6 +122,9 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
 - (void)viewDidLoad
 {
+    
+    self.tableView.tableFooterView = [UIView new];
+
     CALayer * layer = [self.goButton layer];
     [layer setMasksToBounds:YES];
     [layer setCornerRadius:10.0];
