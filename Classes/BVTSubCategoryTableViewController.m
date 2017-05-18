@@ -580,9 +580,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                             detailBiz.reviews = reviews.reviews;
                                                             detailBiz.userPhotosArray = userPhotos;
                                                             
-                                                            [weakSelf _hideHUD];
                                                             if (!weakSelf.didCancelRequest)
                                                             {
+                                                                [weakSelf _hideHUD];
+
                                                                 // get biz photos here if we dont have them?
                                                                 [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:detailBiz];
                                                             }

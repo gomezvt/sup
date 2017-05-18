@@ -193,17 +193,19 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
                  {
                      NSArray *descriptor = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
                      NSArray *sortedArray = [filteredArray sortedArrayUsingDescriptors:descriptor];
-                     
-                     
-                     [weakSelf _hideHUD];
-                     
+                    
                      BVTSubCategoryTableViewController *subCat = [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"SubCat"];
                      subCat.subCategoryTitle = selectionTitle;
                      subCat.filteredResults = sortedArray;
                      subCat.cachedDetails = weakSelf.cachedDetails;
                      subCat.delegate = weakSelf;
                      
-                     [weakSelf.navigationController pushViewController:subCat animated:YES];
+                     if (!weakSelf.didCancelRequest)
+                     {
+                         [weakSelf _hideHUD];
+
+                         [weakSelf.navigationController pushViewController:subCat animated:YES];
+                     }
                  }
                  else
                  {

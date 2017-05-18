@@ -444,13 +444,17 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                             [dict setValue:ar forKey:key];
                         }
                         
-                        if (key == [allkeys lastObject])
+                        if (!self.didCancelRequest)
                         {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
-                                
-                                [self _hideHUD];
-                            });
+                            if (key == [allkeys lastObject])
+                            {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    
+                                    [self _hideHUD];
+                                    
+                                    [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
+                                });
+                            }
                         }
                     }
                 }
