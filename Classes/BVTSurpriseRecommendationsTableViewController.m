@@ -341,7 +341,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                            if (user.imageURL)
                                                            {
                                                                NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
-                                                               UIImage *image = [UIImage imageNamed:@"placeholder"];
+                                                               UIImage *image = [UIImage imageNamed:@"user"];
                                                                if (imageData)
                                                                {
                                                                    image = [UIImage imageWithData:imageData];
@@ -425,7 +425,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                                         if (user.imageURL)
                                                                         {
                                                                             NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
-                                                                            UIImage *image = [UIImage imageNamed:@"placeholder"];
+                                                                            UIImage *image = [UIImage imageNamed:@"user"];
                                                                             if (imageData)
                                                                             {
                                                                                 image = [UIImage imageWithData:imageData];
