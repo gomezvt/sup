@@ -108,6 +108,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     
     __weak typeof(self) weakSelf = self;
 
+    __block BOOL didError = NO;
     for (NSString *subCatTitle in categoryArray)
     {
         [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:subCatTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
@@ -115,7 +116,16 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
              dispatch_async(dispatch_get_main_queue(), ^{
                  if (error)
                  {
+                     didError = YES;
+                     
                      [weakSelf _hideHUD];
+                     
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                     
+                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                     [alertController addAction:ok];
+                     
+                     [weakSelf presentViewController:alertController animated:YES completion:nil];
                      
                      NSLog(@"Error %@", error.localizedDescription);
                      
@@ -127,6 +137,11 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  }
              });
          }];
+        
+        if (didError)
+        {
+            break;
+        }
     }
 }
 

@@ -15,5 +15,6 @@
 @property (nonatomic, strong) YLPBusiness *business;
 @property (nonatomic, weak) IBOutlet UIImageView *thumbNailView;
 @property (nonatomic, weak) IBOutlet UILabel *openCloseLabel;
+@property (nonatomic, weak) IBOutlet UILabel *secondaryOpenCloseLabel;
 
 @end

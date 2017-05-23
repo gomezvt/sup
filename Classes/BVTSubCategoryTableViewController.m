@@ -47,6 +47,7 @@
 @property (nonatomic) BOOL gotDetails;
 @property (nonatomic, strong) NSArray *originalFilteredResults;
 @property (nonatomic, strong) NSArray *originalDisplayResults;
+@property (nonatomic) BOOL isLargePhone;
 
 @end
 
@@ -336,6 +337,18 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
+    CGRect mainScreen = [[UIScreen mainScreen] bounds];
+    NSLog(@"HEIGHT %f. WIDTH %f", mainScreen.size.height, mainScreen.size.width);
+    
+    if (mainScreen.size.width > 375.f)
+    {
+        self.isLargePhone = YES;
+    }
+    else
+    {
+        self.isLargePhone = NO;
+    }
+    
     self.tableView.tableFooterView = [UIView new];
 
     
@@ -428,6 +441,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                          [weakSelf.cachedDetails setObject:weakSelf.displayArray forKey:weakSelf.subCategoryTitle];
                                          weakSelf.gotDetails = YES;
                                          [weakSelf.openNowButton setHidden:NO];
+                                         [weakSelf sortArrayWithPredicates];
                                      });
                                  }
                              }
@@ -628,6 +642,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+
     cell.tag = indexPath.row;
     
     YLPBusiness *business;
@@ -641,25 +657,49 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         business = [self.filteredResults objectAtIndex:indexPath.row];
     }
 
-    cell.business = business;
-    
-    UIImage *image = [UIImage imageNamed:@"placeholder"];
-    cell.thumbNailView.image = image;
- 
-    if (!business.hoursItem)
+    if (!self.isLargePhone)
     {
-        cell.openCloseLabel.text = @"";
-    }
-    else if (business.isOpenNow)
-    {
-        cell.openCloseLabel.text = @"Open";
-        cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+        cell.openCloseLabel.hidden = YES;
+        cell.secondaryOpenCloseLabel.hidden = NO;
+        
+        if (!business.hoursItem)
+        {
+            cell.secondaryOpenCloseLabel.text = @"";
+        }
+        else if (business.isOpenNow)
+        {
+            cell.secondaryOpenCloseLabel.text = @"Open Now";
+            cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+        }
+        else
+        {
+            cell.secondaryOpenCloseLabel.text = @"Closed Now";
+            cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+        }
     }
     else
     {
-        cell.openCloseLabel.text = @"Closed";
-        cell.openCloseLabel.textColor = [UIColor redColor];
+        cell.openCloseLabel.hidden = NO;
+        cell.secondaryOpenCloseLabel.hidden = YES;
+        
+        if (!business.hoursItem)
+        {
+            cell.openCloseLabel.text = @"";
+        }
+        else if (business.isOpenNow)
+        {
+            cell.openCloseLabel.text = @"Open Now";
+            cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+        }
+        else
+        {
+            cell.openCloseLabel.text = @"Closed Now";
+            cell.openCloseLabel.textColor = [UIColor redColor];
+        }
+        
     }
+    
+    cell.business = business;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // Your Background work
@@ -672,6 +712,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                 {
                     UIImage *image = [UIImage imageWithData:imageData];
                     cell.thumbNailView.image = image;
+                }
+                else
+                {
+                    cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
                 }
             }
         });

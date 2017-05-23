@@ -147,20 +147,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="77w-9n-NFD">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="30" maxX="0.0" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="o0F-72-wrb">
-                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="itemSize" width="100" height="130"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="30" maxX="20" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="aEK-t2-XUL">
-                                        <rect key="frame" x="30" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="20" y="30" width="100" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
                                     </collectionViewCell>
@@ -174,8 +175,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="77w-9n-NFD" firstAttribute="leading" secondItem="FdU-Q6-3QL" secondAttribute="leading" id="6bT-Hr-oeV"/>
-                            <constraint firstItem="77w-9n-NFD" firstAttribute="top" secondItem="tUE-MQ-9Jm" secondAttribute="bottom" id="7XA-cX-exi"/>
-                            <constraint firstItem="f4s-nV-xyo" firstAttribute="top" secondItem="77w-9n-NFD" secondAttribute="bottom" id="yLM-lb-tdW"/>
+                            <constraint firstItem="77w-9n-NFD" firstAttribute="top" secondItem="tUE-MQ-9Jm" secondAttribute="bottom" id="7XA-cX-exi">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-64"/>
+                            </constraint>
+                            <constraint firstItem="f4s-nV-xyo" firstAttribute="top" secondItem="77w-9n-NFD" secondAttribute="bottom" id="yLM-lb-tdW">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-49"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="77w-9n-NFD" secondAttribute="trailing" id="zHH-Fo-ewN"/>
                         </constraints>
                     </view>
@@ -188,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nki-a4-fcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="714" y="-312"/>
+            <point key="canvasLocation" x="713.04347826086962" y="-312.22826086956525"/>
         </scene>
         <!--Burlingtonian-->
         <scene sceneID="Kyz-Hy-ijJ">
@@ -285,7 +290,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="bOf-ne-afx">
-                                        <rect key="frame" x="8" y="11.333333333333329" width="398" height="23"/>
+                                        <rect key="frame" x="8" y="10.666666666666671" width="398" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -386,7 +391,7 @@
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoc-y8-kQY">
-                                        <rect key="frame" x="251" y="7.3333333333333712" width="155" height="30"/>
+                                        <rect key="frame" x="251" y="7.6666666666666288" width="155" height="30"/>
                                         <state key="normal" title="   Review and Submit   ">
                                             <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -499,7 +504,7 @@
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anx-P9-EDI">
-                                        <rect key="frame" x="251" y="7.3333333333333712" width="155" height="30"/>
+                                        <rect key="frame" x="251" y="7.6666666666666288" width="155" height="30"/>
                                         <state key="normal" title="   Review and Submit   ">
                                             <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -600,7 +605,7 @@
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDr-6T-qaW">
-                                        <rect key="frame" x="8" y="7.3333333333333712" width="81" height="30"/>
+                                        <rect key="frame" x="8" y="7.6666666666666288" width="81" height="30"/>
                                         <state key="normal" title="   Clear All   ">
                                             <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -617,7 +622,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-3J-PRy">
-                                <rect key="frame" x="333" y="650.33333333333337" width="73" height="30"/>
+                                <rect key="frame" x="333" y="650.66666666666663" width="73" height="30"/>
                                 <state key="normal" title="   Submit   ">
                                     <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -886,7 +891,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommendations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="YHP-ho-Gin">
-                                        <rect key="frame" x="8" y="11.333333333333329" width="398" height="23"/>
+                                        <rect key="frame" x="8" y="10.666666666666671" width="398" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

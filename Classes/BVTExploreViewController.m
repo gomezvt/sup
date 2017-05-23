@@ -67,14 +67,61 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     return kBVTCategories.count;
 }
 
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return CGSizeMake(84, 84);
+//}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BVTExploreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
     cell.titleLabel.text = [kBVTCategories objectAtIndex:indexPath.row];
     
+    if (indexPath.row == 0)
+    {
+        cell.menuItemView.image = [UIImage imageNamed:@"iMuseum"];
+    }
+    else if (indexPath.row == 1)
+    {
+        cell.menuItemView.image = [UIImage imageNamed:@"iCoffee"];
+    }
+    else if (indexPath.row == 2)
+    {
+        cell.menuItemView.image = [UIImage imageNamed:@"iMusic"];
+    }
+    else if (indexPath.row == 3)
+    {
+        cell.menuItemView.image = [UIImage imageNamed:@"iHotels"];
+    }
+    else if (indexPath.row == 4)
+    {
+        cell.menuItemView.image = [UIImage imageNamed:@"iRecreation"];
+    }
+    else if (indexPath.row == 5)
+    {
+        cell.menuItemView.image = [UIImage imageNamed:@"iBars"];
+    }
+    else if (indexPath.row == 6)
+    {
+        cell.menuItemView.image = [UIImage imageNamed:@"iEat"];
+    }
+    else if (indexPath.row == 7)
+    {
+        cell.menuItemView.image = [UIImage imageNamed:@"iShopping"];
+    }
+    else if (indexPath.row == 8)
+    {
+        cell.menuItemView.image = [UIImage imageNamed:@"iTours"];
+    }
+    else if (indexPath.row == 9)
+    {
+        cell.menuItemView.image = [UIImage imageNamed:@"iTravel"];
+    }
+    
     return cell;
 }
+
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -32,6 +32,7 @@
 @property (nonatomic) BOOL didCancelRequest;
 @property (nonatomic, strong) NSMutableDictionary *orderedDict;
 @property (nonatomic, strong) BVTTableViewSectionHeaderView *headerView;
+@property (nonatomic) BOOL isLargePhone;
 
 @end
 
@@ -55,7 +56,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super awakeFromNib];
     
-
+    
     
     self.orderedDict = [NSMutableDictionary dictionary];
     
@@ -97,15 +98,27 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
+    CGRect mainScreen = [[UIScreen mainScreen] bounds];
+    NSLog(@"HEIGHT %f. WIDTH %f", mainScreen.size.height, mainScreen.size.width);
+    
+    if (mainScreen.size.width > 375.f)
+    {
+        self.isLargePhone = YES;
+    }
+    else
+    {
+        self.isLargePhone = NO;
+    }
+    
     self.tableView.tableFooterView = [UIView new];
-
+    
     
     if (!self.cachedDetails)
     {
         self.cachedDetails = [[NSMutableArray alloc] init];
     }
     
-
+    
     self.tableView.sectionHeaderHeight = 44.f;
     
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
@@ -150,7 +163,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     
     
-
+    
     if (values.count > 0)
     {
         NSMutableArray *tempArray = [NSMutableArray array];
@@ -172,37 +185,47 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.numberOfLines = 0;
         
-
-            UIImage *image = [UIImage imageNamed:@"placeholder"];
-            cell.thumbNailView.image = image;
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                // Your Background work
-                NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    // Update your UI
-                    if (cell.tag == indexPath.row)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // Your Background work
+            NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update your UI
+                if (cell.tag == indexPath.row)
+                {
+                    if (imageData)
                     {
-                        if (imageData)
-                        {
-                            UIImage *image = [UIImage imageWithData:imageData];
-                            cell.thumbNailView.image = image;
-                        }
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        cell.thumbNailView.image = image;
                     }
-                });
+                    else
+                    {
+                        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+                    }
+                }
             });
-            
-            
+        });
+        
+        if (!self.isLargePhone)
+        {
+            cell.openCloseLabel.hidden = YES;
+            cell.secondaryOpenCloseLabel.hidden = NO;
+            cell.secondaryOpenCloseLabel.text = @"";
+        }
+        else
+        {
+            cell.openCloseLabel.hidden = NO;
             cell.openCloseLabel.text = @"";
+            cell.secondaryOpenCloseLabel.hidden = YES;
+        }
         
         if (!cachedBiz)
         {
             __weak typeof(self) weakSelf = self;
             dispatch_async(dispatch_get_main_queue(), ^{
-
-            [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
-             (YLPBusiness *business, NSError *error) {
-                 
+                
+                [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
+                 (YLPBusiness *business, NSError *error) {
+                     
                      // *** Get business photos in advance if they exist, to display from Presentation VC
                      if (business.photos.count > 0)
                      {
@@ -229,42 +252,84 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                              [weakSelf.cachedDetails addObject:business];
                          }
                      }
-                 
-                                  dispatch_async(dispatch_get_main_queue(), ^{
-
-                     if (!business.hoursItem)
-                     {
-                         cell.openCloseLabel.text = @"";
-                     }
-                     else if (business.isOpenNow)
-                     {
-                         cell.openCloseLabel.text = @"Open";
-                         cell.openCloseLabel.textColor = [BVTStyles iconGreen];
-                     }
-                     else
-                     {
-                         cell.openCloseLabel.text = @"Closed";
-                         cell.openCloseLabel.textColor = [UIColor redColor];
-                     }
-                 });
-             }];
+                     
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         
+                         if (!self.isLargePhone)
+                         {
+                             if (!business.hoursItem)
+                             {
+                                 cell.secondaryOpenCloseLabel.text = @"";
+                             }
+                             else if (business.isOpenNow)
+                             {
+                                 cell.secondaryOpenCloseLabel.text = @"Open Now";
+                                 cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+                             }
+                             else
+                             {
+                                 cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                                 cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                             }
+                         }
+                         else
+                         {
+                             if (!business.hoursItem)
+                             {
+                                 cell.openCloseLabel.text = @"";
+                             }
+                             else if (business.isOpenNow)
+                             {
+                                 cell.openCloseLabel.text = @"Open Now";
+                                 cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                             }
+                             else
+                             {
+                                 cell.openCloseLabel.text = @"Closed Now";
+                                 cell.openCloseLabel.textColor = [UIColor redColor];
+                             }
+                         }
+                         [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                     });
+                 }];
             });
         }
         else
         {
-            if (!cachedBiz.hoursItem)
+            if (!self.isLargePhone)
             {
-                cell.openCloseLabel.text = @"";
-            }
-            else if (cachedBiz.isOpenNow)
-            {
-                cell.openCloseLabel.text = @"Open";
-                cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                if (!cachedBiz.hoursItem)
+                {
+                    cell.secondaryOpenCloseLabel.text = @"";
+                }
+                else if (cachedBiz.isOpenNow)
+                {
+                    cell.secondaryOpenCloseLabel.text = @"Open Now";
+                    cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+                }
+                else
+                {
+                    cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                    cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                }
             }
             else
             {
-                cell.openCloseLabel.text = @"Closed";
-                cell.openCloseLabel.textColor = [UIColor redColor];
+                if (!cachedBiz.hoursItem)
+                {
+                    cell.openCloseLabel.text = @"";
+                }
+                else if (cachedBiz.isOpenNow)
+                {
+                    cell.openCloseLabel.text = @"Open Now";
+                    cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                }
+                else
+                {
+                    cell.openCloseLabel.text = @"Closed Now";
+                    cell.openCloseLabel.textColor = [UIColor redColor];
+                }
+                
             }
         }
         
@@ -354,14 +419,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                        if (!weakSelf.didCancelRequest)
                                                        {
                                                            [weakSelf _hideHud];
-
+                                                           
                                                            [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:selectedBusiness];
                                                        }
                                                    }
                                                    
                                                });
                                            }];
-
+        
     }
     else
     {
@@ -438,7 +503,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                                     if (!weakSelf.didCancelRequest)
                                                                     {
                                                                         [weakSelf _hideHud];
-
+                                                                        
                                                                         [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
                                                                     }
                                                                 }

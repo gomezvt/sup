@@ -18,8 +18,6 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *addressLabel;
-@property (nonatomic, weak) IBOutlet UILabel *addressLabel2;
-@property (nonatomic, weak) IBOutlet UILabel *addressLabel3;
 @property (nonatomic, weak) IBOutlet UILabel *milesLabel;
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *ratingStarsView;
@@ -83,27 +81,18 @@
     if (location.address.count == 0)
     {
         self.addressLabel.text = cityStateZipString;
-
-        [self.addressLabel2 removeFromSuperview];
-        [self.addressLabel3 removeFromSuperview];
     }
     else if (location.address.count == 1)
     {
-        self.addressLabel.text = location.address[0];
-        self.addressLabel2.text = cityStateZipString;
-        [self.addressLabel3 removeFromSuperview];
+        self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@", location.address[0], cityStateZipString];
     }
     else if (location.address.count == 2)
     {
-        self.addressLabel.text = location.address[0];
-        self.addressLabel2.text = location.address[1];
-        self.addressLabel3.text = cityStateZipString;
+        self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", location.address[0], location.address[1], cityStateZipString];
     }
     else if (location.address.count == 3)
     {
-        self.addressLabel.text = location.address[0];
-        self.addressLabel2.text = [NSString stringWithFormat:@"%@, %@", location.address[1], location.address[2]];
-        self.addressLabel3.text = cityStateZipString;
+        self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@, %@\n%@", location.address[0], location.address[1], location.address[2], cityStateZipString];
     }
     
     NSString *ratingString;
@@ -150,6 +139,12 @@
     }
     
     [self.ratingStarsView setImage:[UIImage imageNamed:ratingString]];
+}
+
+- (void)prepareForReuse
+{
+    self.openCloseLabel.text = @"";
+    self.secondaryOpenCloseLabel.text = @"";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
