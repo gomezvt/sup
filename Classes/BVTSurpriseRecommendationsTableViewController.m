@@ -184,7 +184,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         cell.business = biz;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.numberOfLines = 0;
-        
+        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             // Your Background work
             NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
@@ -197,10 +197,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                         UIImage *image = [UIImage imageWithData:imageData];
                         cell.thumbNailView.image = image;
                     }
-                    else
-                    {
-                        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
-                    }
                 }
             });
         });
@@ -208,14 +204,15 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         if (!self.isLargePhone)
         {
             cell.openCloseLabel.hidden = YES;
-            cell.secondaryOpenCloseLabel.hidden = NO;
             cell.secondaryOpenCloseLabel.text = @"";
+            cell.secondaryHeightConstraint.constant = 14.f;
         }
         else
         {
             cell.openCloseLabel.hidden = NO;
             cell.openCloseLabel.text = @"";
-            cell.secondaryOpenCloseLabel.hidden = YES;
+            cell.secondaryHeightConstraint.constant = 0.f;
+
         }
         
         if (!cachedBiz)
@@ -259,17 +256,28 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          {
                              if (!business.hoursItem)
                              {
-                                 cell.secondaryOpenCloseLabel.text = @"";
+                                 cell.secondaryHeightConstraint.constant = 0.f;
+
+                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
                              }
                              else if (business.isOpenNow)
                              {
+                                 cell.secondaryHeightConstraint.constant = 14.f;
+
                                  cell.secondaryOpenCloseLabel.text = @"Open Now";
                                  cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
                              }
                              else
                              {
+                                 cell.secondaryHeightConstraint.constant = 14.f;
+
                                  cell.secondaryOpenCloseLabel.text = @"Closed Now";
                                  cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
                              }
                          }
                          else
@@ -282,14 +290,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                              {
                                  cell.openCloseLabel.text = @"Open Now";
                                  cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
                              }
                              else
                              {
                                  cell.openCloseLabel.text = @"Closed Now";
                                  cell.openCloseLabel.textColor = [UIColor redColor];
+                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
                              }
                          }
-                         [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+
                      });
                  }];
             });
@@ -300,17 +313,27 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
             {
                 if (!cachedBiz.hoursItem)
                 {
-                    cell.secondaryOpenCloseLabel.text = @"";
+                    cell.secondaryHeightConstraint.constant = 0.f;
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
                 }
                 else if (cachedBiz.isOpenNow)
                 {
+                    cell.secondaryHeightConstraint.constant = 14.f;
+
                     cell.secondaryOpenCloseLabel.text = @"Open Now";
                     cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
                 }
                 else
                 {
+                    cell.secondaryHeightConstraint.constant = 14.f;
+
                     cell.secondaryOpenCloseLabel.text = @"Closed Now";
                     cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
                 }
             }
             else
@@ -323,11 +346,15 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                 {
                     cell.openCloseLabel.text = @"Open Now";
                     cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
                 }
                 else
                 {
                     cell.openCloseLabel.text = @"Closed Now";
                     cell.openCloseLabel.textColor = [UIColor redColor];
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
                 }
                 
             }

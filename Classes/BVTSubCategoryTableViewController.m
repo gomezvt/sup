@@ -660,19 +660,24 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     if (!self.isLargePhone)
     {
         cell.openCloseLabel.hidden = YES;
-        cell.secondaryOpenCloseLabel.hidden = NO;
         
         if (!business.hoursItem)
         {
+            cell.secondaryHeightConstraint.constant = 0.f;
+
             cell.secondaryOpenCloseLabel.text = @"";
         }
         else if (business.isOpenNow)
         {
+            cell.secondaryHeightConstraint.constant = 16.f;
+
             cell.secondaryOpenCloseLabel.text = @"Open Now";
             cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
         }
         else
         {
+            cell.secondaryHeightConstraint.constant = 16.f;
+
             cell.secondaryOpenCloseLabel.text = @"Closed Now";
             cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
         }
@@ -700,7 +705,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     }
     
     cell.business = business;
-    
+    cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // Your Background work
         NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
@@ -712,10 +717,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                 {
                     UIImage *image = [UIImage imageWithData:imageData];
                     cell.thumbNailView.image = image;
-                }
-                else
-                {
-                    cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
                 }
             }
         });
