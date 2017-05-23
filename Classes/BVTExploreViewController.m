@@ -18,6 +18,7 @@
 @interface BVTExploreViewController () <BVTCategoryTableViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic) BOOL isLargePhone;
 
 @end
 
@@ -53,6 +54,18 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     UINib *cellNib = [UINib nibWithNibName:kCollectionViewCellNib bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"Cell"];
+    
+    CGRect mainScreen = [[UIScreen mainScreen] bounds];
+    NSLog(@"HEIGHT %f. WIDTH %f", mainScreen.size.height, mainScreen.size.width);
+    
+    if (mainScreen.size.width > 375.f)
+    {
+        self.isLargePhone = YES;
+    }
+    else
+    {
+        self.isLargePhone = NO;
+    }
 }
 
 #pragma mark - CollectionView Delegate
@@ -67,10 +80,19 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     return kBVTCategories.count;
 }
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return CGSizeMake(84, 84);
-//}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize size;
+    if (self.isLargePhone)
+    {
+        size = CGSizeMake(100, 150);
+    }
+    else
+    {
+        size = CGSizeMake(80, 120);
+    }
+    return size;
+}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -78,6 +100,22 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     cell.titleLabel.text = [kBVTCategories objectAtIndex:indexPath.row];
     
+
+    if (self.isLargePhone)
+    {
+        cell.imageWidth.constant = 84.f;
+        cell.imageHeight.constant = 84.f;
+        cell.titleLabel.font = [UIFont systemFontOfSize:15.f];
+        [cell.titleLabel sizeToFit];
+    }
+    else
+    {
+        cell.imageWidth.constant = 64.f;
+        cell.imageHeight.constant = 64.f;
+        cell.titleLabel.font = [UIFont systemFontOfSize:12.f];
+        [cell.titleLabel sizeToFit];
+    }
+
     if (indexPath.row == 0)
     {
         cell.menuItemView.image = [UIImage imageNamed:@"iMuseum"];
@@ -122,6 +160,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     return cell;
 }
 
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return CGSizeMake(CGRectGetWidth(collectionView.frame), (CGRectGetHeight(collectionView.frame)));
+//}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
