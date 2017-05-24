@@ -107,6 +107,47 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         cell.imageHeight.constant = 84.f;
         cell.titleLabel.font = [UIFont systemFontOfSize:15.f];
         [cell.titleLabel sizeToFit];
+        
+        if (indexPath.row == 0)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"iMuseum"];
+        }
+        else if (indexPath.row == 1)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"iCoffee"];
+        }
+        else if (indexPath.row == 2)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"iMusic"];
+        }
+        else if (indexPath.row == 3)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"iHotels"];
+        }
+        else if (indexPath.row == 4)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"iRecreation"];
+        }
+        else if (indexPath.row == 5)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"iBars"];
+        }
+        else if (indexPath.row == 6)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"iEat"];
+        }
+        else if (indexPath.row == 7)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"iShopping"];
+        }
+        else if (indexPath.row == 8)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"iTours"];
+        }
+        else if (indexPath.row == 9)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"iTravel"];
+        }
     }
     else
     {
@@ -114,48 +155,50 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         cell.imageHeight.constant = 64.f;
         cell.titleLabel.font = [UIFont systemFontOfSize:12.f];
         [cell.titleLabel sizeToFit];
+        
+        if (indexPath.row == 0)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"isMuseum"];
+        }
+        else if (indexPath.row == 1)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"isCoffee"];
+        }
+        else if (indexPath.row == 2)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"isMusic"];
+        }
+        else if (indexPath.row == 3)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"isHotels"];
+        }
+        else if (indexPath.row == 4)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"isRecreation"];
+        }
+        else if (indexPath.row == 5)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"isBars"];
+        }
+        else if (indexPath.row == 6)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"isEat"];
+        }
+        else if (indexPath.row == 7)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"isShopping"];
+        }
+        else if (indexPath.row == 8)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"isTours"];
+        }
+        else if (indexPath.row == 9)
+        {
+            cell.menuItemView.image = [UIImage imageNamed:@"isTravel"];
+        }
     }
 
-    if (indexPath.row == 0)
-    {
-        cell.menuItemView.image = [UIImage imageNamed:@"iMuseum"];
-    }
-    else if (indexPath.row == 1)
-    {
-        cell.menuItemView.image = [UIImage imageNamed:@"iCoffee"];
-    }
-    else if (indexPath.row == 2)
-    {
-        cell.menuItemView.image = [UIImage imageNamed:@"iMusic"];
-    }
-    else if (indexPath.row == 3)
-    {
-        cell.menuItemView.image = [UIImage imageNamed:@"iHotels"];
-    }
-    else if (indexPath.row == 4)
-    {
-        cell.menuItemView.image = [UIImage imageNamed:@"iRecreation"];
-    }
-    else if (indexPath.row == 5)
-    {
-        cell.menuItemView.image = [UIImage imageNamed:@"iBars"];
-    }
-    else if (indexPath.row == 6)
-    {
-        cell.menuItemView.image = [UIImage imageNamed:@"iEat"];
-    }
-    else if (indexPath.row == 7)
-    {
-        cell.menuItemView.image = [UIImage imageNamed:@"iShopping"];
-    }
-    else if (indexPath.row == 8)
-    {
-        cell.menuItemView.image = [UIImage imageNamed:@"iTours"];
-    }
-    else if (indexPath.row == 9)
-    {
-        cell.menuItemView.image = [UIImage imageNamed:@"iTravel"];
-    }
+    
     
     return cell;
 }

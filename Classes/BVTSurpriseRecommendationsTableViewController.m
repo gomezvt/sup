@@ -258,7 +258,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                              {
                                  cell.secondaryHeightConstraint.constant = 0.f;
 
-                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
                              }
                              else if (business.isOpenNow)
@@ -267,7 +267,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
                                  cell.secondaryOpenCloseLabel.text = @"Open Now";
                                  cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
-                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
                              }
                              else
@@ -276,7 +276,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
                                  cell.secondaryOpenCloseLabel.text = @"Closed Now";
                                  cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
                              }
                          }
@@ -290,14 +290,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                              {
                                  cell.openCloseLabel.text = @"Open Now";
                                  cell.openCloseLabel.textColor = [BVTStyles iconGreen];
-                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
                              }
                              else
                              {
                                  cell.openCloseLabel.text = @"Closed Now";
                                  cell.openCloseLabel.textColor = [UIColor redColor];
-                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
                              }
                          }
@@ -314,7 +314,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                 if (!cachedBiz.hoursItem)
                 {
                     cell.secondaryHeightConstraint.constant = 0.f;
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
                 }
                 else if (cachedBiz.isOpenNow)
@@ -323,7 +323,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
                     cell.secondaryOpenCloseLabel.text = @"Open Now";
                     cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
                 }
                 else
@@ -332,7 +332,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
                     cell.secondaryOpenCloseLabel.text = @"Closed Now";
                     cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
                 }
             }
@@ -346,14 +346,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                 {
                     cell.openCloseLabel.text = @"Open Now";
                     cell.openCloseLabel.textColor = [BVTStyles iconGreen];
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
                 }
                 else
                 {
                     cell.openCloseLabel.text = @"Closed Now";
                     cell.openCloseLabel.textColor = [UIColor redColor];
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
                 }
                 
