@@ -705,22 +705,34 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     }
     
     cell.business = business;
-    cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // Your Background work
-        NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Update your UI
-            if (cell.tag == indexPath.row)
-            {
-                if (imageData)
+    if (business.bizThumbNail)
+    {
+        cell.thumbNailView.image = business.bizThumbNail;
+    }
+    else
+    {
+        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // Your Background work
+            NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update your UI
+                if (cell.tag == indexPath.row)
                 {
-                    UIImage *image = [UIImage imageWithData:imageData];
-                    cell.thumbNailView.image = image;
+                    if (imageData)
+                    {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        business.bizThumbNail = image;
+                        cell.thumbNailView.image = image;
+                    }
+                    else
+                    {
+                        business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                    }
                 }
-            }
+            });
         });
-    });
+    }
     
     return cell;
 }

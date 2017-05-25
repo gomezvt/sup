@@ -184,22 +184,15 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         cell.business = biz;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.numberOfLines = 0;
-        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            // Your Background work
-            NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // Update your UI
-                if (cell.tag == indexPath.row)
-                {
-                    if (imageData)
-                    {
-                        UIImage *image = [UIImage imageWithData:imageData];
-                        cell.thumbNailView.image = image;
-                    }
-                }
-            });
-        });
+        
+        if (biz.bizThumbNail)
+        {
+            cell.thumbNailView.image = biz.bizThumbNail;
+        }
+        else
+        {
+            cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+        }
         
         if (!self.isLargePhone)
         {
@@ -241,6 +234,27 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          
                          business.photos = photosArray;
                      }
+                     
+                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                         // Your Background work
+                         NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             // Update your UI
+                             if (cell.tag == indexPath.row)
+                             {
+                                 if (imageData)
+                                 {
+                                     UIImage *image = [UIImage imageWithData:imageData];
+                                     business.bizThumbNail = image;
+                                     cell.thumbNailView.image = image;
+                                 }
+                                 else
+                                 {
+                                     business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                                 }
+                             }
+                         });
+                     });
                      
                      if (![weakSelf.cachedDetails containsObject:business])
                      {
