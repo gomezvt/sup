@@ -213,8 +213,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
         [self evaluateButtonStateForButton:self.goButton];
         [self evaluateButtonStateForButton:self.clearButton];
         
-        
-        if (sortedArray2.count == 0)
+
+        NSArray *allValues = [self.catDict allValues];
+        BOOL containsValues = [[allValues filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"@count > 0"]] lastObject];
+        if (!containsValues)
         {
             [self presentMessage];
         }
