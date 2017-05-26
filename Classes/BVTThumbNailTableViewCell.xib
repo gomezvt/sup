@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="401" height="89"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Il-da-0AJ" id="wWB-JR-YSc">
-                <rect key="frame" x="0.0" y="0.0" width="363" height="88.666666666666671"/>
+                <rect key="frame" x="0.0" y="0.0" width="368" height="88.666666666666671"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="2IZ-2M-WEF">
@@ -92,9 +92,6 @@
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Open Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XS0-fJ-Wju">
                                 <rect key="frame" x="0.0" y="58.666666666666671" width="264" height="14"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="ZXF-ED-eHG"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -117,12 +114,11 @@
                 <outlet property="openCloseLabel" destination="BSz-uc-ifS" id="Wrv-gA-ZYo"/>
                 <outlet property="priceLabel" destination="2qV-5b-wNl" id="Qya-DF-1HX"/>
                 <outlet property="ratingStarsView" destination="i7t-N5-Vi0" id="NL3-e3-BM1"/>
-                <outlet property="secondaryHeightConstraint" destination="ZXF-ED-eHG" id="aw0-bJ-4y5"/>
                 <outlet property="secondaryOpenCloseLabel" destination="XS0-fJ-Wju" id="esp-yN-CLQ"/>
                 <outlet property="thumbNailView" destination="2IZ-2M-WEF" id="J0J-ka-cuI"/>
                 <outlet property="titleLabel" destination="VFs-Bn-4bX" id="AHv-xU-F93"/>
             </connections>
-            <point key="canvasLocation" x="-1227.5" y="-1275.5"/>
+            <point key="canvasLocation" x="-1354" y="-1441"/>
         </tableViewCell>
     </objects>
 </document>
