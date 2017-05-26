@@ -317,21 +317,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
         {
             for (YLPBusiness *biz in searchObject.businesses)
             {
-                BOOL isDuplicate = NO;
-                if (self.resultsArray.count > 0)
-                {
-                    for (NSDictionary *dict in self.resultsArray)
-                    {
-                        YLPBusiness *bizz = [[dict allValues] lastObject];
-                        if ([biz.phone isEqualToString:bizz.phone] && [[dict allKeys] lastObject] == category)
-                        {
-                            isDuplicate = YES;
-                        }
-                    }
-                }
-                
-                if (isDuplicate == NO)
-                {
+
                     if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", category]] lastObject])
                     {
                         AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -343,7 +329,6 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                         biz.miles = miles;
                         [self.resultsArray addObject:[NSDictionary dictionaryWithObject:biz forKey:category]];
                     }
-                }
             }
         }
         
@@ -417,20 +402,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                 NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
                                 biz3 = [[values3 allValues] lastObject];
                             }
-                            
-//                            while ([[biz.location.address firstObject] isEqualToString:[biz2.location.address firstObject]] || [[biz.location.address firstObject] isEqualToString:[biz3.location.address firstObject]] ||
-//                                   [[biz2.location.address firstObject] isEqualToString:[biz.location.address firstObject]] || [[biz2.location.address firstObject] isEqualToString:[biz3.location.address firstObject]] ||
-//                                   [[biz3.location.address firstObject] isEqualToString:biz.location.address.firstObject] || [[biz3.location.address firstObject] isEqualToString:[biz2.location.address firstObject]])
-//                            {
-//                                NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
-//                                biz = [[values1 allValues] lastObject];
-//                                
-//                                NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
-//                                biz2 = [[values2 allValues] lastObject];
-//                                
-//                                NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
-//                                biz3 = [[values3 allValues] lastObject];
-//                            }
+
                             
                             NSArray *bizzes = @[ biz, biz2, biz3 ];
                             
