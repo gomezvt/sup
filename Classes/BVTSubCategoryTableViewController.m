@@ -403,7 +403,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
             for (YLPBusiness *selectedBusiness in self.filteredResults)
             {
                 NSArray *values = self.cachedDetails[self.subCategoryTitle];
-                if (![[values filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"phone = %@", selectedBusiness.phone]] lastObject])
+                if (![values containsObject:selectedBusiness])
                 {
                     __weak typeof(self) weakSelf = self;
                     dispatch_async(dispatch_get_main_queue(), ^{
