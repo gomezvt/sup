@@ -61,10 +61,14 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     if (mainScreen.size.width > 375.f)
     {
         self.isLargePhone = YES;
+        
+        [self.collectionView setContentInset:UIEdgeInsetsMake(10.f,10.f,10.f,10.f)];
     }
     else
     {
         self.isLargePhone = NO;
+        
+        [self.collectionView setContentInset:UIEdgeInsetsZero];
     }
 }
 
@@ -116,35 +120,35 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         {
             cell.menuItemView.image = [UIImage imageNamed:@"iCoffee"];
         }
+//        else if (indexPath.row == 2)
+//        {
+//            cell.menuItemView.image = [UIImage imageNamed:@"iMusic"];
+//        }
         else if (indexPath.row == 2)
-        {
-            cell.menuItemView.image = [UIImage imageNamed:@"iMusic"];
-        }
-        else if (indexPath.row == 3)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"iHotels"];
         }
-        else if (indexPath.row == 4)
+        else if (indexPath.row == 3)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"iRecreation"];
         }
-        else if (indexPath.row == 5)
+        else if (indexPath.row == 4)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"iBars"];
         }
-        else if (indexPath.row == 6)
+        else if (indexPath.row == 5)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"iEat"];
         }
-        else if (indexPath.row == 7)
+        else if (indexPath.row == 6)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"iShopping"];
         }
-        else if (indexPath.row == 8)
+        else if (indexPath.row == 7)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"iTours"];
         }
-        else if (indexPath.row == 9)
+        else if (indexPath.row == 8)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"iTravel"];
         }
@@ -164,35 +168,35 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         {
             cell.menuItemView.image = [UIImage imageNamed:@"isCoffee"];
         }
+//        else if (indexPath.row == 2)
+//        {
+//            cell.menuItemView.image = [UIImage imageNamed:@"isMusic"];
+//        }
         else if (indexPath.row == 2)
-        {
-            cell.menuItemView.image = [UIImage imageNamed:@"isMusic"];
-        }
-        else if (indexPath.row == 3)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"isHotels"];
         }
-        else if (indexPath.row == 4)
+        else if (indexPath.row == 3)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"isRecreation"];
         }
-        else if (indexPath.row == 5)
+        else if (indexPath.row == 4)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"isBars"];
         }
-        else if (indexPath.row == 6)
+        else if (indexPath.row == 5)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"isEat"];
         }
-        else if (indexPath.row == 7)
+        else if (indexPath.row == 6)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"isShopping"];
         }
-        else if (indexPath.row == 8)
+        else if (indexPath.row == 7)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"isTours"];
         }
-        else if (indexPath.row == 9)
+        else if (indexPath.row == 8)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"isTravel"];
         }

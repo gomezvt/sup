@@ -10,14 +10,14 @@
 
 #import <UIKit/UIKit.h>
 
-#define kBVTCategories @[ @"Arts & Museums", @"Coffee, Sweets, & Bakeries", @"Music", @"Hotels, Hostels, Bed & Breakfast", @"Entertainment & Recreation", @"Bars & Lounges", @"Restaurants", @"Shopping", @"Tours & Festivals", @"Travel" ]
+#define kBVTCategories @[ @"Arts, Museums, & Music", @"Coffee, Sweets, & Bakeries", @"Hotels, Hostels, Bed & Breakfast", @"Entertainment & Recreation", @"Bars & Lounges", @"Restaurants", @"Shopping", @"Tours & Festivals", @"Travel" ]
 
 // Categories modeled after those found on https://www.yelp.com/developers/documentation/v2/category_list
-#define kArtsMuseums @[ @"Art Galleries", @"Museums", @"Performing Arts" ]
+#define kArtsMuseums @[ @"Art Galleries", @"Museums", @"Music Venues", @"Performing Arts" ]
 
 #define kCoffeeSweetsBakeries @[ @"Bakeries", @"Bubble Tea", @"Candy Stores", @"Chocolatiers & Shops", @"Coffee & Tea", @"Coffee Roasteries", @"Desserts", @"Ice Cream & Frozen Yogurt", @"Tea Rooms" ]
 
-#define kMusic @[ @"Music Venues" ]
+//#define kMusic @[ @"Music Venues" ]
 
 #define kHotelsHostelsBB @[ @"Bed & Breakfast",  @"Guest Houses", @"Hostels", @"Hotels", @"Mountain Huts", @"Rest Stops" ]
 
