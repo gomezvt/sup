@@ -389,9 +389,9 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                             NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
                             YLPBusiness *biz3 = [[values3 allValues] lastObject];
 
-                            while ([biz.phone isEqualToString:biz2.phone] || [biz.phone isEqualToString:biz3.phone] ||
-                                   [biz2.phone isEqualToString:biz.phone] || [biz2.phone isEqualToString:biz3.phone] ||
-                                   [biz3.phone isEqualToString:biz.phone] || [biz3.phone isEqualToString:biz2.phone])
+                            while ([biz isEqual:biz2] || [biz isEqual:biz3] ||
+                                   [biz2 isEqual:biz] || [biz2 isEqual:biz3] ||
+                                   [biz3 isEqual:biz] || [biz3 isEqual:biz2])
                             {
                                 NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
                                 biz = [[values1 allValues] lastObject];
