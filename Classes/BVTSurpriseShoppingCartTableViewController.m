@@ -389,9 +389,9 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                             NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
                             YLPBusiness *biz3 = [[values3 allValues] lastObject];
 
-                            while ([biz isEqual:biz2] || [biz isEqual:biz3] ||
-                                   [biz2 isEqual:biz] || [biz2 isEqual:biz3] ||
-                                   [biz3 isEqual:biz] || [biz3 isEqual:biz2])
+                            while ([biz.identifier isEqualToString:biz2.identifier] || [biz.identifier isEqualToString:biz3.identifier] ||
+                                   [biz2.identifier isEqualToString:biz.identifier] || [biz2.identifier isEqualToString:biz3.identifier] ||
+                                   [biz3.identifier isEqualToString:biz.identifier] || [biz3.identifier isEqualToString:biz2.identifier])
                             {
                                 NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
                                 biz = [[values1 allValues] lastObject];
@@ -420,24 +420,91 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                 [dict setValue:ar forKey:key];
                             }
                         }
-                        else if (values.count > 0)
+                        else if (values.count == 3)
                         {
-                            NSMutableArray *arra = [NSMutableArray array];
-                            for (NSDictionary *dict in values)
-                            {
-                                YLPBusiness *biz = [[dict allValues] lastObject];
-                                [arra addObject:biz];
-                            }
-                            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-                            NSArray *sortedArray2 = [arra sortedArrayUsingDescriptors: @[descriptor]];
+                            NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
+                            YLPBusiness *biz = [[values1 allValues] lastObject];
                             
-                            NSMutableArray *ar = [NSMutableArray array];
-                            for (YLPBusiness *biz in sortedArray2)
+                            NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
+                            YLPBusiness *biz2 = [[values2 allValues] lastObject];
+                            
+                            NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
+                            YLPBusiness *biz3 = [[values3 allValues] lastObject];
+                            
+                            if ([biz.identifier isEqualToString:biz2.identifier] && [biz.identifier isEqualToString:biz3.identifier] &&
+                                 [biz2.identifier isEqualToString:biz.identifier] && [biz2.identifier isEqualToString:biz3.identifier] &&
+                                 [biz3.identifier isEqualToString:biz.identifier] && [biz3.identifier isEqualToString:biz2.identifier])
                             {
+                                NSMutableArray *ar = [NSMutableArray array];
                                 [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
+                                [dict setValue:ar forKey:key];
                             }
+                            else
+                            {
+                                while ([biz.identifier isEqualToString:biz2.identifier] || [biz.identifier isEqualToString:biz3.identifier] ||
+                                       [biz2.identifier isEqualToString:biz.identifier] || [biz2.identifier isEqualToString:biz3.identifier] ||
+                                       [biz3.identifier isEqualToString:biz.identifier] || [biz3.identifier isEqualToString:biz2.identifier])
+                                {
+                                    NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
+                                    biz = [[values1 allValues] lastObject];
+                                    
+                                    NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
+                                    biz2 = [[values2 allValues] lastObject];
+                                    
+                                    NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
+                                    biz3 = [[values3 allValues] lastObject];
+                                }
+                                
+                                NSArray *bizzes = @[ biz, biz2, biz3 ];
+                                
+                                NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+                                NSArray *sortedArray2 = [bizzes sortedArrayUsingDescriptors: @[descriptor]];
+                                
+                                NSMutableArray *ar = [NSMutableArray array];
+                                for (YLPBusiness *biz in sortedArray2)
+                                {
+                                    [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
+                                }
+                                
+                                if (ar.count == 3)
+                                {
+                                    [dict setValue:ar forKey:key];
+                                }
+                            }
+                        }
+                        else if (values.count == 2)
+                        {
+                            NSDictionary *values1 = [values firstObject];
+                            YLPBusiness *biz = [[values1 allValues] firstObject];
                             
-                            [dict setValue:ar forKey:key];
+                            NSDictionary *values2 = [values lastObject];
+                            YLPBusiness *biz2 = [[values2 allValues] lastObject];
+
+                            if ([biz.identifier isEqualToString:biz2.identifier])
+                            {
+                                NSMutableArray *ar = [NSMutableArray array];
+                                [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
+                                [dict setValue:ar forKey:key];
+                            }
+                            else
+                            {
+                                NSArray *bizzes = @[ biz, biz2 ];
+                                
+                                NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+                                NSArray *sortedArray2 = [bizzes sortedArrayUsingDescriptors: @[descriptor]];
+                                
+                                NSMutableArray *ar = [NSMutableArray array];
+                                for (YLPBusiness *biz in sortedArray2)
+                                {
+                                    [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
+                                }
+                                
+                                if (ar.count == 2)
+                                {
+                                    [dict setValue:ar forKey:key];
+                                }
+                            }
+
                         }
                         
                         if (!self.didCancelRequest)

@@ -643,7 +643,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-
     cell.tag = indexPath.row;
     
     YLPBusiness *business;
@@ -656,47 +655,31 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     {
         business = [self.filteredResults objectAtIndex:indexPath.row];
     }
+    
+    cell.openCloseLabel.text = @"";
+    cell.secondaryOpenCloseLabel.text = @"";
 
     if (!self.isLargePhone)
     {
-        cell.openCloseLabel.hidden = YES;
-        
-        if (!business.hoursItem)
+        if (business.isOpenNow)
         {
-            cell.secondaryHeightConstraint.constant = 0.f;
-
-            cell.secondaryOpenCloseLabel.text = @"";
-        }
-        else if (business.isOpenNow)
-        {
-            cell.secondaryHeightConstraint.constant = 16.f;
-
             cell.secondaryOpenCloseLabel.text = @"Open Now";
             cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
         }
-        else
+        else if (business.hoursItem && !business.isOpenNow)
         {
-            cell.secondaryHeightConstraint.constant = 16.f;
-
             cell.secondaryOpenCloseLabel.text = @"Closed Now";
             cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
         }
     }
     else
     {
-        cell.openCloseLabel.hidden = NO;
-        cell.secondaryOpenCloseLabel.hidden = YES;
-        
-        if (!business.hoursItem)
-        {
-            cell.openCloseLabel.text = @"";
-        }
-        else if (business.isOpenNow)
+        if (business.isOpenNow)
         {
             cell.openCloseLabel.text = @"Open Now";
             cell.openCloseLabel.textColor = [BVTStyles iconGreen];
         }
-        else
+        else if (business.hoursItem && !business.isOpenNow)
         {
             cell.openCloseLabel.text = @"Closed Now";
             cell.openCloseLabel.textColor = [UIColor redColor];

@@ -16,6 +16,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView *thumbNailView;
 @property (nonatomic, weak) IBOutlet UILabel *openCloseLabel;
 @property (nonatomic, weak) IBOutlet UILabel *secondaryOpenCloseLabel;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *secondaryHeightConstraint;
+//@property (nonatomic, weak) IBOutlet NSLayoutConstraint *secondaryHeightConstraint;
 
 @end

@@ -185,6 +185,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.numberOfLines = 0;
         
+        cell.openCloseLabel.text = @"";
+        cell.secondaryOpenCloseLabel.text = @"";
+        
         if (biz.bizThumbNail)
         {
             cell.thumbNailView.image = biz.bizThumbNail;
@@ -192,22 +195,28 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         else
         {
             cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                // Your Background work
+                NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // Update your UI
+                    if (cell.tag == indexPath.row)
+                    {
+                        if (imageData)
+                        {
+                            UIImage *image = [UIImage imageWithData:imageData];
+                            biz.bizThumbNail = image;
+                            cell.thumbNailView.image = image;
+                        }
+                        else
+                        {
+                            biz.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                        }
+                    }
+                });
+            });
         }
-        
-        if (!self.isLargePhone)
-        {
-            cell.openCloseLabel.hidden = YES;
-            cell.secondaryOpenCloseLabel.text = @"";
-            cell.secondaryHeightConstraint.constant = 14.f;
-        }
-        else
-        {
-            cell.openCloseLabel.hidden = NO;
-            cell.openCloseLabel.text = @"";
-            cell.secondaryHeightConstraint.constant = 0.f;
 
-        }
-        
         if (!cachedBiz)
         {
             __weak typeof(self) weakSelf = self;
@@ -235,27 +244,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          business.photos = photosArray;
                      }
                      
-                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                         // Your Background work
-                         NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
-                         dispatch_async(dispatch_get_main_queue(), ^{
-                             // Update your UI
-                             if (cell.tag == indexPath.row)
-                             {
-                                 if (imageData)
-                                 {
-                                     UIImage *image = [UIImage imageWithData:imageData];
-                                     business.bizThumbNail = image;
-                                     cell.thumbNailView.image = image;
-                                 }
-                                 else
-                                 {
-                                     business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
-                                 }
-                             }
-                         });
-                     });
-                     
                      if (![weakSelf.cachedDetails containsObject:business])
                      {
                          if (business)
@@ -268,55 +256,34 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          
                          if (!self.isLargePhone)
                          {
-                             if (!business.hoursItem)
+                             if (business.isOpenNow)
                              {
-                                 cell.secondaryHeightConstraint.constant = 0.f;
-
-//                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
-                             }
-                             else if (business.isOpenNow)
-                             {
-                                 cell.secondaryHeightConstraint.constant = 14.f;
-
                                  cell.secondaryOpenCloseLabel.text = @"Open Now";
                                  cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
-//                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
                              }
-                             else
+                             else if (business.hoursItem && !business.isOpenNow)
                              {
-                                 cell.secondaryHeightConstraint.constant = 14.f;
-
                                  cell.secondaryOpenCloseLabel.text = @"Closed Now";
                                  cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-//                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
                              }
+                             
+                             [tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
                          }
                          else
                          {
-                             if (!business.hoursItem)
-                             {
-                                 cell.openCloseLabel.text = @"";
-                             }
-                             else if (business.isOpenNow)
+                             if (business.isOpenNow)
                              {
                                  cell.openCloseLabel.text = @"Open Now";
                                  cell.openCloseLabel.textColor = [BVTStyles iconGreen];
-//                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
                              }
-                             else
+                             else if (business.hoursItem && !business.isOpenNow)
                              {
                                  cell.openCloseLabel.text = @"Closed Now";
                                  cell.openCloseLabel.textColor = [UIColor redColor];
-//                                 [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
                              }
+                             
+                             [tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
                          }
-
-
                      });
                  }];
             });
@@ -325,55 +292,31 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         {
             if (!self.isLargePhone)
             {
-                if (!cachedBiz.hoursItem)
+                if (cachedBiz.isOpenNow)
                 {
-                    cell.secondaryHeightConstraint.constant = 0.f;
-//                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
-                }
-                else if (cachedBiz.isOpenNow)
-                {
-                    cell.secondaryHeightConstraint.constant = 14.f;
-
                     cell.secondaryOpenCloseLabel.text = @"Open Now";
                     cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
-//                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
                 }
-                else
+                else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
                 {
-                    cell.secondaryHeightConstraint.constant = 14.f;
-
                     cell.secondaryOpenCloseLabel.text = @"Closed Now";
                     cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-//                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
                 }
             }
             else
             {
-                if (!cachedBiz.hoursItem)
-                {
-                    cell.openCloseLabel.text = @"";
-                }
-                else if (cachedBiz.isOpenNow)
+                if (cachedBiz.isOpenNow)
                 {
                     cell.openCloseLabel.text = @"Open Now";
                     cell.openCloseLabel.textColor = [BVTStyles iconGreen];
-//                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
                 }
-                else
+                else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
                 {
                     cell.openCloseLabel.text = @"Closed Now";
                     cell.openCloseLabel.textColor = [UIColor redColor];
-//                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
                 }
-                
             }
         }
-        
     }
     
     return cell;
