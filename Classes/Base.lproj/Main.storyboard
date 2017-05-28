@@ -375,7 +375,7 @@
             </objects>
             <point key="canvasLocation" x="39" y="1364"/>
         </scene>
-        <!--Surprise Me-->
+        <!--Burlingtonian-->
         <scene sceneID="f3u-B1-k2u">
             <objects>
                 <viewController id="CcW-yj-hls" customClass="BVTSurpriseCategoryTableViewController" sceneMemberID="viewController">
@@ -460,7 +460,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Surprise Me" image="surprise" id="ubz-5l-16j"/>
-                    <navigationItem key="navigationItem" id="kMy-tZ-wru"/>
+                    <navigationItem key="navigationItem" title="Burlingtonian" id="kMy-tZ-wru"/>
                     <connections>
                         <outlet property="goButton" destination="zoc-y8-kQY" id="qAj-Wm-IOU"/>
                         <segue destination="drD-Ic-Hni" kind="show" identifier="ShowCategory" id="5rf-N7-gkv"/>
@@ -1031,6 +1031,7 @@
                     <navigationItem key="navigationItem" title="Burlingtonian" id="UDj-Ez-VZf"/>
                     <connections>
                         <outlet property="label" destination="DkY-eb-Swa" id="z7D-hC-TBJ"/>
+                        <outlet property="searchBar" destination="1jc-RU-WXF" id="X2W-oL-aJT"/>
                         <outlet property="tableView" destination="gOI-Cl-wUJ" id="Lc2-re-Ba4"/>
                         <segue destination="YcC-JR-9wn" kind="show" identifier="ShowDetail" id="6FD-Q3-pb4"/>
                     </connections>

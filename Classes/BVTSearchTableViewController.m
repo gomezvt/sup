@@ -49,6 +49,7 @@
 @property (nonatomic) BOOL didCancelRequest;
 @property (nonatomic, strong) NSArray *recentSearches;
 @property (nonatomic, weak) IBOutlet UILabel *label;
+@property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -67,10 +68,23 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     BVTHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    headerTitleView.titleViewLabelConstraint.constant = -20.f;
+    headerTitleView.titleViewLabelConstraint.constant = 0.f;
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
     
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar;
+{
+    searchBar.showsCancelButton = YES;
+    
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar;
+{
+    searchBar.showsCancelButton = NO;
+    searchBar.text = @"";
+    [searchBar resignFirstResponder];
 }
 
 - (void)viewDidLoad
@@ -142,7 +156,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     self.hud = [BVTHUDView hudWithView:self.navigationController.view];
     self.hud.delegate = self;
-    
+
     __weak typeof(self) weakSelf = self;
     [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:searchBar.text limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
@@ -191,6 +205,9 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
          });
      }];
 
+    [searchBar resignFirstResponder];
+    searchBar.text = @"";
+    searchBar.showsCancelButton = NO;
 }
 
 #pragma mark - TableView Delegate
