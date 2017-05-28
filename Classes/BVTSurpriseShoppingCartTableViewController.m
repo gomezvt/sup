@@ -19,7 +19,7 @@
 #import "YLPLocation.h"
 #import "YLPClient+Search.h"
 #import "BVTHUDView.h"
-#import "BVTTableViewSectionHeaderView.h"
+//#import "BVTTableViewSectionHeaderView.h"
 #import "YLPLocation.h"
 #import "YLPCoordinate.h"
 
@@ -35,13 +35,13 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *backChevron;
 @property (nonatomic, strong) NSMutableArray *subCategories;
 @property (nonatomic, strong) NSMutableArray *resultsArray;
-@property (nonatomic, strong) BVTTableViewSectionHeaderView *headerView;
+//@property (nonatomic, strong) BVTTableViewSectionHeaderView *headerView;
 
 @end
 
 static int i = 0;
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
-static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeaderView";
+//static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeaderView";
 
 @implementation BVTSurpriseShoppingCartTableViewController
 
@@ -223,6 +223,11 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 44.f;
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -233,8 +238,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
     
-    UINib *headerView = [UINib nibWithNibName:kTableViewSectionHeaderView bundle:nil];
-    [self.tableView registerNib:headerView forHeaderFooterViewReuseIdentifier:kTableViewSectionHeaderView];
+//    UINib *headerView = [UINib nibWithNibName:kTableViewSectionHeaderView bundle:nil];
+//    [self.tableView registerNib:headerView forHeaderFooterViewReuseIdentifier:kTableViewSectionHeaderView];
 }
 
 - (void)evaluateButtonStateForButton:(UIButton *)button
