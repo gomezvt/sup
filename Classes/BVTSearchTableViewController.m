@@ -50,6 +50,8 @@
 @property (nonatomic, strong) NSArray *recentSearches;
 @property (nonatomic, weak) IBOutlet UILabel *label;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, weak) IBOutlet UIView *titleView;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -91,6 +93,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     [super viewDidLoad];
     
+    self.titleView.hidden = YES;
     [self.view bringSubviewToFront:self.label];
     
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
@@ -111,24 +114,24 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     self.tableView.tableFooterView = [UIView new];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return @"Search Results";
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    CGFloat height;
-    if (self.recentSearches.count == 0)
-    {
-        height = 0.f;
-    }
-    else
-    {
-        height = 44.f;
-    }
-    return height;
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    return @"Search Results";
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    CGFloat height;
+//    if (self.recentSearches.count == 0)
+//    {
+//        height = 0.f;
+//    }
+//    else
+//    {
+//        height = 44.f;
+//    }
+//    return height;
+//}
 
 - (void)didTapHUDCancelButton
 {
@@ -191,8 +194,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
              else if (searchResults.businesses.count > 0)
              {
                  [weakSelf _hideHUD];
-                 
+                 weakSelf.titleView.hidden = NO;
                  weakSelf.label.hidden = YES;
+                 weakSelf.titleLabel.text = [NSString stringWithFormat:@"Search Results (%lu)", (unsigned long)searchResults.businesses.count];
+                 
                  NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
                  NSArray *sortedArray = [searchResults.businesses sortedArrayUsingDescriptors: @[descriptor]];
                  
@@ -206,7 +211,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
      }];
 
     [searchBar resignFirstResponder];
-    searchBar.text = @"";
+//    searchBar.text = @"";
     searchBar.showsCancelButton = NO;
 }
 
