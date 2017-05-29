@@ -165,8 +165,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         NSArray *values = self.cachedDetails[self.subCategoryTitle];
 
         self.displayArray = [values filteredArrayUsingPredicate:comboPredicate];
-        self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.displayArray.count];
-        
+
         if (self.displayArray.count == 0)
         {
             self.titleLabel.text = [NSString stringWithFormat:@"%@ (0)", self.subCategoryTitle];
@@ -193,15 +192,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     else
     {
         self.filteredResults  = [self.originalFilteredResults filteredArrayUsingPredicate:comboPredicate];
-        self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.filteredResults.count];
-        
+
         if (self.filteredResults.count == 0)
         {
             self.titleLabel.text = [NSString stringWithFormat:@"%@ (0)", self.subCategoryTitle];
             if (!self.label)
             {
                 self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 30.f)];
-                self.label.text = @"No sorted results found";
+                self.label.text = @"No sorted results found.";
                 [self.view addSubview:self.label];
                 self.label.center = self.tableView.center;
                 self.tableView.separatorColor = [UIColor clearColor];
