@@ -199,10 +199,13 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     }
 }
 
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;
 {
     self.hud = [BVTHUDView hudWithView:self.navigationController.view];
     self.hud.delegate = self;
+    self.gotDetails = NO;
+    self.tableView.userInteractionEnabled = NO;
 
     __weak typeof(self) weakSelf = self;
     [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:searchBar.text limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
@@ -225,18 +228,28 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  [weakSelf _hideHUD];
                  
                  weakSelf.label.hidden = NO;
+                 weakSelf.recentSearches = @[];
+                 weakSelf.detailsArray = @[];
+                 [weakSelf.tableView reloadData];
                  weakSelf.label.text = @"No search results found.";
+                 weakSelf.titleLabel.text = [NSString stringWithFormat:@"Search Results (0)"];
+
              }
              else if (searchResults.businesses.count > 0)
              {
-                 [weakSelf _hideHUD];
+//                 if (!weakSelf.gotDetails)
+//                 {
+                     [weakSelf _hideHUD];
+                     
+                     weakSelf.label.hidden = YES;
+                     weakSelf.titleLabel.text = [NSString stringWithFormat:@"Search Results (%lu)", (unsigned long)searchResults.businesses.count];
+
+//                 }
                  weakSelf.starButton.hidden = NO;
                  weakSelf.sortView.hidden = NO;
                  weakSelf.titleView.hidden = NO;
 
-                 weakSelf.label.hidden = YES;
                  weakSelf.originalDisplayResults = searchResults.businesses;
-                 weakSelf.titleLabel.text = [NSString stringWithFormat:@"Search Results (%lu)", (unsigned long)searchResults.businesses.count];
                  
                  NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
                  NSArray *sortedArray = [searchResults.businesses sortedArrayUsingDescriptors: @[descriptor]];
@@ -246,8 +259,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  
                  if (self.recentSearches.count > 0)
                  {
-                     [self.openNowButton setHidden:YES];
-                     
+//                     weakSelf.openNowButton.hidden = YES;
                      NSMutableArray *bizAdd = [NSMutableArray array];
                      for (YLPBusiness *selectedBusiness in self.recentSearches)
                      {
@@ -281,10 +293,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                   {
                                       dispatch_async(dispatch_get_main_queue(), ^{
                                           NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+                                          [weakSelf _hideHUD];
                                           weakSelf.detailsArray = [bizAdd sortedArrayUsingDescriptors: @[nameDescriptor]];
-                                          
                                           weakSelf.gotDetails = YES;
-                                          [weakSelf.openNowButton setHidden:NO];
+//                                          weakSelf.openNowButton.hidden = NO;
                                           weakSelf.originalDetailsArray = weakSelf.detailsArray;
                                           [weakSelf sortArrayWithPredicates];
                                       });
@@ -300,6 +312,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     [searchBar resignFirstResponder];
     searchBar.showsCancelButton = NO;
 }
+
+
 
 - (IBAction)didTapStarSortIcon:(id)sender
 {
@@ -476,10 +490,12 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     YLPBusiness *biz;
     if (self.gotDetails)
     {
+        self.openNowButton.hidden = NO;
         biz = [self.detailsArray objectAtIndex:indexPath.row];
     }
     else
     {
+        self.openNowButton.hidden = YES;
         biz =  [self.recentSearches objectAtIndex:indexPath.row];
     }
     
