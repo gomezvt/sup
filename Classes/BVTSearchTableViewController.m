@@ -65,7 +65,7 @@
 @property (nonatomic) BOOL gotDetails;
 @property (nonatomic, strong) NSArray *detailsArray;
 @property (nonatomic, strong) NSArray *originalDetailsArray;
-
+@property (nonatomic) BOOL didSelectBiz;
 @property (nonatomic) BOOL isLargePhone;
 
 @end
@@ -206,7 +206,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     self.hud.delegate = self;
     self.gotDetails = NO;
     self.tableView.userInteractionEnabled = NO;
-
+    self.didSelectBiz = NO;
+    
     __weak typeof(self) weakSelf = self;
     [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:searchBar.text limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
@@ -293,7 +294,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                   {
                                       dispatch_async(dispatch_get_main_queue(), ^{
                                           NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-                                          [weakSelf _hideHUD];
+                                          if (!weakSelf.didSelectBiz)
+                                          {
+                                              [weakSelf _hideHUD];
+                                          }
                                           weakSelf.detailsArray = [bizAdd sortedArrayUsingDescriptors: @[nameDescriptor]];
                                           weakSelf.gotDetails = YES;
 //                                          weakSelf.openNowButton.hidden = NO;
@@ -364,6 +368,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     self.didCancelRequest = NO;
 
     self.tableView.userInteractionEnabled = NO;
+    self.didSelectBiz = YES;
     
     YLPBusiness *selectedBusiness = [self.recentSearches objectAtIndex:indexPath.row];
     __weak typeof(self) weakSelf = self;
