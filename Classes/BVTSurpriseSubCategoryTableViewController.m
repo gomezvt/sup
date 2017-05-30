@@ -269,7 +269,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     cell.textLabel.numberOfLines = 0;
     
     NSArray *array = [self.catDict valueForKey:self.categoryTitle];
-    NSString *btitle = [[array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self MATCHES[c] %@", title]] lastObject];
+    NSString *btitle = [[array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self == %@", title]] lastObject];
     if (!btitle)
     {
         cell.accessoryView = nil;
