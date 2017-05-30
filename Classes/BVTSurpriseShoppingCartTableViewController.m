@@ -223,10 +223,10 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 44.f;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 44.f;
+//}
 
 - (void)awakeFromNib
 {
