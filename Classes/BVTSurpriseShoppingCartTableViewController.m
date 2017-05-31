@@ -74,6 +74,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
 - (void)didTapHUDCancelButton
 {
+    i = 0;
     self.didCancelRequest = YES;
     self.backChevron.enabled = YES;
     self.tableView.userInteractionEnabled = YES;
@@ -420,10 +421,10 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
                                 [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
                             }
                             
-                            if (ar.count == 3)
-                            {
+//                            if (ar.count == 3)
+//                            {
                                 [dict setValue:ar forKey:key];
-                            }
+//                            }
                         }
                         else if (values.count == 3)
                         {
@@ -471,10 +472,10 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
                                     [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
                                 }
                                 
-                                if (ar.count == 3)
-                                {
+//                                if (ar.count == 3)
+//                                {
                                     [dict setValue:ar forKey:key];
-                                }
+//                                }
                             }
                         }
                         else if (values.count == 2)
@@ -504,10 +505,10 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
                                     [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
                                 }
                                 
-                                if (ar.count == 2)
-                                {
+//                                if (ar.count == 2)
+//                                {
                                     [dict setValue:ar forKey:key];
-                                }
+//                                }
                             }
 
                         }

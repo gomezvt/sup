@@ -252,8 +252,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          }
                      }
                      
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         
+                     if (cell.tag == indexPath.row)
+                     {
                          if (!self.isLargePhone)
                          {
                              if (business.isOpenNow)
@@ -280,14 +280,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                  cell.openCloseLabel.textColor = [UIColor redColor];
                              }
                          }
-                         
-                         if (biz == [tempArray lastObject])
-                         {
-                             [tableView reloadSections:[NSIndexSet indexSetWithIndex:[indexPath section]] withRowAnimation:UITableViewRowAnimationAutomatic];
+                     }
 
-                             NSLog(@"SECTION %ld", (long)indexPath.section);
-                         }
-                     });
                  }];
             });
         }

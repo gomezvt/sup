@@ -171,7 +171,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     
     if (self.recentSearches.count == 0)
     {
-        self.label.text = @"Go ahead and search away.";
+        self.label.text = @"Search for a food, place, or something else.";
     }
  
     self.tableView.tableFooterView = [UIView new];
@@ -233,7 +233,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  weakSelf.detailsArray = @[];
                  [weakSelf.tableView reloadData];
                  weakSelf.label.text = @"No search results found.";
-                 weakSelf.titleLabel.text = [NSString stringWithFormat:@"Search Results (0)"];
+                 weakSelf.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (0)"];
 
              }
              else if (searchResults.businesses.count > 0)
@@ -243,7 +243,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                      [weakSelf _hideHUD];
                      
                      weakSelf.label.hidden = YES;
-                     weakSelf.titleLabel.text = [NSString stringWithFormat:@"Search Results (%lu)", (unsigned long)searchResults.businesses.count];
+                     weakSelf.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (%lu)", (unsigned long)searchResults.businesses.count];
 
 //                 }
                  weakSelf.starButton.hidden = NO;
@@ -675,11 +675,11 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 //        NSArray *values = self.cachedDetails[self.subCategoryTitle];
         
         self.detailsArray = [self.originalDetailsArray filteredArrayUsingPredicate:comboPredicate];
-        self.titleLabel.text = [NSString stringWithFormat:@"Search Results (%lu)", (unsigned long)self.detailsArray.count];
+        self.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (%lu)", (unsigned long)self.detailsArray.count];
         
         if (self.detailsArray.count == 0)
         {
-            self.titleLabel.text = [NSString stringWithFormat:@"Search Results (0)"];
+            self.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (0)"];
 
                 self.label.text = @"No sorted results found.";
 
@@ -688,7 +688,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
         }
         else
         {
-            self.titleLabel.text = [NSString stringWithFormat:@"Search Results (%lu)", (unsigned long)self.detailsArray.count];
+            self.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (%lu)", (unsigned long)self.detailsArray.count];
             self.label.hidden = YES;
         }
         
@@ -699,13 +699,13 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
         if (self.recentSearches.count == 0)
         {
-            self.titleLabel.text = [NSString stringWithFormat:@"Search Results (0)"];
+            self.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (0)"];
             self.label.text = @"No sorted results found.";
             self.label.hidden = NO;
         }
         else
         {
-            self.titleLabel.text = [NSString stringWithFormat:@"Search Results (%lu)", (unsigned long)self.recentSearches.count];
+            self.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (%lu)", (unsigned long)self.recentSearches.count];
             self.label.hidden = YES;
         }
     }
