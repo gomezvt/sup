@@ -252,36 +252,38 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          }
                      }
                      
-                     if (cell.tag == indexPath.row)
-                     {
-                         if (!self.isLargePhone)
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         
+                         if (cell.tag == indexPath.row)
                          {
-                             if (business.isOpenNow)
+                             if (!self.isLargePhone)
                              {
-                                 cell.secondaryOpenCloseLabel.text = @"Open Now";
-                                 cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+                                 if (business.isOpenNow)
+                                 {
+                                     cell.secondaryOpenCloseLabel.text = @"Open Now";
+                                     cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+                                 }
+                                 else if (business.hoursItem && !business.isOpenNow)
+                                 {
+                                     cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                                     cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                                 }
                              }
-                             else if (business.hoursItem && !business.isOpenNow)
+                             else
                              {
-                                 cell.secondaryOpenCloseLabel.text = @"Closed Now";
-                                 cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                                 if (business.isOpenNow)
+                                 {
+                                     cell.openCloseLabel.text = @"Open Now";
+                                     cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                                 }
+                                 else if (business.hoursItem && !business.isOpenNow)
+                                 {
+                                     cell.openCloseLabel.text = @"Closed Now";
+                                     cell.openCloseLabel.textColor = [UIColor redColor];
+                                 }
                              }
                          }
-                         else
-                         {
-                             if (business.isOpenNow)
-                             {
-                                 cell.openCloseLabel.text = @"Open Now";
-                                 cell.openCloseLabel.textColor = [BVTStyles iconGreen];
-                             }
-                             else if (business.hoursItem && !business.isOpenNow)
-                             {
-                                 cell.openCloseLabel.text = @"Closed Now";
-                                 cell.openCloseLabel.textColor = [UIColor redColor];
-                             }
-                         }
-                     }
-
+                     });
                  }];
             });
         }

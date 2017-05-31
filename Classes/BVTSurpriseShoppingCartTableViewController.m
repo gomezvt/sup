@@ -35,6 +35,7 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *backChevron;
 @property (nonatomic, strong) NSMutableArray *subCategories;
 @property (nonatomic, strong) NSMutableArray *resultsArray;
+@property (nonatomic, strong) NSMutableArray *tempArray;
 //@property (nonatomic, strong) BVTTableViewSectionHeaderView *headerView;
 
 @end
@@ -287,6 +288,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 {
     [super viewDidLoad];
     
+    self.tempArray = [[NSMutableArray alloc] init];
     self.tableView.tableFooterView = [UIView new];
 
     self.tableView.sectionHeaderHeight = 44.f;
@@ -323,18 +325,21 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
         {
             for (YLPBusiness *biz in searchObject.businesses)
             {
-
-                    if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", category]] lastObject])
+                if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", category]] lastObject])
+                {
+                    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    
+                    CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:biz.location.coordinate.latitude longitude:biz.location.coordinate.longitude];
+                    CLLocationDistance meters = [appDel.userLocation distanceFromLocation:bizLocation];
+                    
+                    double miles = meters / 1609.34;
+                    biz.miles = miles;
+                    if (![self.tempArray containsObject:[NSString stringWithFormat:@"%@%@", biz.identifier, category]])
                     {
-                        AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                        
-                        CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:biz.location.coordinate.latitude longitude:biz.location.coordinate.longitude];
-                        CLLocationDistance meters = [appDel.userLocation distanceFromLocation:bizLocation];
-                        
-                        double miles = meters / 1609.34;
-                        biz.miles = miles;
                         [self.resultsArray addObject:[NSDictionary dictionaryWithObject:biz forKey:category]];
+                        [self.tempArray addObject:[NSString stringWithFormat:@"%@%@", biz.identifier, category]];
                     }
+                }
             }
         }
         
@@ -384,49 +389,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
                     {
                         NSArray *values = [dict valueForKey:key];
                         
-                        if (values.count > 3)
-                        {
-                            NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
-                            YLPBusiness *biz = [[values1 allValues] lastObject];
-                            
-                            NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
-                            YLPBusiness *biz2 = [[values2 allValues] lastObject];
-                            
-                            NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
-                            YLPBusiness *biz3 = [[values3 allValues] lastObject];
-
-                            while ([biz.identifier isEqualToString:biz2.identifier] || [biz.identifier isEqualToString:biz3.identifier] ||
-                                   [biz2.identifier isEqualToString:biz.identifier] || [biz2.identifier isEqualToString:biz3.identifier] ||
-                                   [biz3.identifier isEqualToString:biz.identifier] || [biz3.identifier isEqualToString:biz2.identifier])
-                            {
-                                NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
-                                biz = [[values1 allValues] lastObject];
-                                
-                                NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
-                                biz2 = [[values2 allValues] lastObject];
-                                
-                                NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
-                                biz3 = [[values3 allValues] lastObject];
-                            }
-
-                            
-                            NSArray *bizzes = @[ biz, biz2, biz3 ];
-                            
-                            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-                            NSArray *sortedArray2 = [bizzes sortedArrayUsingDescriptors: @[descriptor]];
-                            
-                            NSMutableArray *ar = [NSMutableArray array];
-                            for (YLPBusiness *biz in sortedArray2)
-                            {
-                                [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
-                            }
-                            
-//                            if (ar.count == 3)
-//                            {
-                                [dict setValue:ar forKey:key];
-//                            }
-                        }
-                        else if (values.count == 3)
+                        if (values.count >= 3)
                         {
                             NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
                             YLPBusiness *biz = [[values1 allValues] lastObject];
@@ -437,13 +400,14 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
                             NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
                             YLPBusiness *biz3 = [[values3 allValues] lastObject];
                             
-                            if ([biz.identifier isEqualToString:biz2.identifier] && [biz.identifier isEqualToString:biz3.identifier] &&
-                                 [biz2.identifier isEqualToString:biz.identifier] && [biz2.identifier isEqualToString:biz3.identifier] &&
-                                 [biz3.identifier isEqualToString:biz.identifier] && [biz3.identifier isEqualToString:biz2.identifier])
+                            if (values.count == 3 &&
+                                ([biz.identifier isEqualToString:biz2.identifier] && [biz.identifier isEqualToString:biz3.identifier] &&
+                                [biz2.identifier isEqualToString:biz.identifier] && [biz2.identifier isEqualToString:biz3.identifier] &&
+                                [biz3.identifier isEqualToString:biz.identifier] && [biz3.identifier isEqualToString:biz2.identifier]))
                             {
                                 NSMutableArray *ar = [NSMutableArray array];
                                 [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
-                                [dict setValue:ar forKey:key];
+                                [dict setValue:ar forKey:key];                                
                             }
                             else
                             {
@@ -472,10 +436,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
                                     [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
                                 }
                                 
-//                                if (ar.count == 3)
-//                                {
-                                    [dict setValue:ar forKey:key];
-//                                }
+                                [dict setValue:ar forKey:key];
                             }
                         }
                         else if (values.count == 2)
@@ -505,10 +466,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
                                     [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
                                 }
                                 
-//                                if (ar.count == 2)
-//                                {
-                                    [dict setValue:ar forKey:key];
-//                                }
+                                [dict setValue:ar forKey:key];
                             }
 
                         }

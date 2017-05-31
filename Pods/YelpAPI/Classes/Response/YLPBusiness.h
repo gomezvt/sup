@@ -29,7 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImage *bizThumbNail;
 @property (nonatomic, readonly, copy) NSString *price;
 @property (nonatomic, readonly, copy) NSArray<YLPCategory *> *categories;
-
 @property (nonatomic, readonly) YLPLocation *location;
 
 @property (nonatomic, strong) NSArray *businessHours;
