@@ -263,8 +263,18 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
                          [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
                           (YLPBusiness *business, NSError *error) {
-                              
-                              if (business.photos.count > 0)
+                              if (error)
+                              {
+                                  [weakSelf _hideHUD];
+                                  
+                                  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                                  
+                                  UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                  [alertController addAction:ok];
+                                  
+                                  [weakSelf presentViewController:alertController animated:YES completion:nil];
+                              }
+                              else if (business.photos.count > 0)
                               {
                                   NSMutableArray *photosArray = [NSMutableArray array];
                                   for (NSString *photoStr in business.photos)

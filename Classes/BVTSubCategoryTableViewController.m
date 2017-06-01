@@ -408,8 +408,18 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                         
                         [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
                          (YLPBusiness *business, NSError *error) {
-                             
-                             if (business.photos.count > 0)
+                             if (error)
+                             {
+                                 [weakSelf _hideHUD];
+                                 
+                                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                                 
+                                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                 [alertController addAction:ok];
+                                 
+                                 [weakSelf presentViewController:alertController animated:YES completion:nil];
+                             }
+                             else if (business.photos.count > 0)
                              {
                                  NSMutableArray *photosArray = [NSMutableArray array];
                                  for (NSString *photoStr in business.photos)
@@ -508,32 +518,41 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                            completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                dispatch_async(dispatch_get_main_queue(), ^{
                                                    
-                                                   if (error)
-                                                   {
+                                                   if (error) {
                                                        [weakSelf _hideHUD];
                                                        
-                                                       NSLog(@"Error %@", error.localizedDescription);
+                                                       
+                                                       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                                                       
+                                                       UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                                       [alertController addAction:ok];
+                                                       
+                                                       [weakSelf presentViewController:alertController animated:YES completion:nil];
+                                                       
                                                    }
-                                                   // *** Get review user photos in advance if they exist, to display from Presentation VC
-                                                   NSMutableArray *userPhotos = [NSMutableArray array];
-                                                   for (YLPReview *review in reviews.reviews)
+                                                   else
                                                    {
-                                                       YLPUser *user = review.user;
-                                                       if (user.imageURL)
+                                                       // *** Get review user photos in advance if they exist, to display from Presentation VC
+                                                       NSMutableArray *userPhotos = [NSMutableArray array];
+                                                       for (YLPReview *review in reviews.reviews)
                                                        {
-                                                           NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
-                                                           UIImage *image = [UIImage imageWithData:imageData];
-                                                           [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];
+                                                           YLPUser *user = review.user;
+                                                           if (user.imageURL)
+                                                           {
+                                                               NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
+                                                               UIImage *image = [UIImage imageWithData:imageData];
+                                                               [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];
+                                                           }
                                                        }
-                                                   }
-                                                   business.reviews = reviews.reviews;
-                                                   business.userPhotosArray = userPhotos;
-                                                   
-                                                   [weakSelf _hideHUD];
-                                                   if (!weakSelf.didCancelRequest)
-                                                   {
-                                                       // get biz photos here if we dont have them?
-                                                       [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                       business.reviews = reviews.reviews;
+                                                       business.userPhotosArray = userPhotos;
+                                                       
+                                                       [weakSelf _hideHUD];
+                                                       if (!weakSelf.didCancelRequest)
+                                                       {
+                                                           // get biz photos here if we dont have them?
+                                                           [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                       }
                                                    }
                                                });
                                            }];
@@ -547,8 +566,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
             
             [[AppDelegate sharedClient] businessWithId:business.identifier completionHandler:^
              (YLPBusiness *detailBiz, NSError *error) {
-                 
-                 if (detailBiz.photos.count > 0)
+                 if (error) {
+                     [weakSelf _hideHUD];
+                     
+                     
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                     
+                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                     [alertController addAction:ok];
+                     
+                     [weakSelf presentViewController:alertController animated:YES completion:nil];
+                     
+                 }
+                 else if (detailBiz.photos.count > 0)
                  {
                      NSMutableArray *photosArray = [NSMutableArray array];
                      for (NSString *photoStr in detailBiz.photos)
@@ -570,34 +600,44 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                     completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                         dispatch_async(dispatch_get_main_queue(), ^{
                                                             
-                                                            if (error)
-                                                            {
+                                                            if (error) {
                                                                 [weakSelf _hideHUD];
                                                                 
-                                                                NSLog(@"Error %@", error.localizedDescription);
+                                                                
+                                                                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                                                                
+                                                                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                                                [alertController addAction:ok];
+                                                                
+                                                                [weakSelf presentViewController:alertController animated:YES completion:nil];
+                                                                
                                                             }
-                                                            // *** Get review user photos in advance if they exist, to display from Presentation VC
-                                                            NSMutableArray *userPhotos = [NSMutableArray array];
-                                                            for (YLPReview *review in reviews.reviews)
+                                                            else
                                                             {
-                                                                YLPUser *user = review.user;
-                                                                if (user.imageURL)
+                                                                // *** Get review user photos in advance if they exist, to display from Presentation VC
+                                                                NSMutableArray *userPhotos = [NSMutableArray array];
+                                                                for (YLPReview *review in reviews.reviews)
                                                                 {
-                                                                    NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
-                                                                    UIImage *image = [UIImage imageWithData:imageData];
-                                                                    [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];
+                                                                    YLPUser *user = review.user;
+                                                                    if (user.imageURL)
+                                                                    {
+                                                                        NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
+                                                                        UIImage *image = [UIImage imageWithData:imageData];
+                                                                        [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];
+                                                                    }
+                                                                }
+                                                                detailBiz.reviews = reviews.reviews;
+                                                                detailBiz.userPhotosArray = userPhotos;
+                                                                
+                                                                if (!weakSelf.didCancelRequest)
+                                                                {
+                                                                    [weakSelf _hideHUD];
+                                                                    
+                                                                    // get biz photos here if we dont have them?
+                                                                    [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:detailBiz];
                                                                 }
                                                             }
-                                                            detailBiz.reviews = reviews.reviews;
-                                                            detailBiz.userPhotosArray = userPhotos;
                                                             
-                                                            if (!weakSelf.didCancelRequest)
-                                                            {
-                                                                [weakSelf _hideHUD];
-
-                                                                // get biz photos here if we dont have them?
-                                                                [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:detailBiz];
-                                                            }
                                                         });
                                                     }];
              }];

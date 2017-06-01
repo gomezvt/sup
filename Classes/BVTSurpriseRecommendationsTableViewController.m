@@ -224,7 +224,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                 
                 [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
                  (YLPBusiness *business, NSError *error) {
-                     
+                     //TODO: enter error logic here?
                      // *** Get business photos in advance if they exist, to display from Presentation VC
                      if (business.photos.count > 0)
                      {
