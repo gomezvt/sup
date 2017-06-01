@@ -176,7 +176,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 - (void)presentMessage
 {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 30.f)];
-    label.text = @"Add a category to submit.";
+    label.text = @"Add one or more sub categories to submit.";
     [super.view addSubview:label];
     label.center = self.tableView.center;
     self.tableView.separatorColor = [UIColor clearColor];
