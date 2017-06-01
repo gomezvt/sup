@@ -171,7 +171,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     
     if (self.recentSearches.count == 0)
     {
-        self.label.text = @"Search for a food, place, or something else.";
+        self.label.text = @"No recent search results.";
     }
  
     self.tableView.tableFooterView = [UIView new];
@@ -238,18 +238,15 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
              }
              else if (searchResults.businesses.count > 0)
              {
-//                 if (!weakSelf.gotDetails)
-//                 {
-                     [weakSelf _hideHUD];
-                     
-                     weakSelf.label.hidden = YES;
-                     weakSelf.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (%lu)", (unsigned long)searchResults.businesses.count];
-
-//                 }
+                 [weakSelf _hideHUD];
+                 
+                 weakSelf.label.hidden = YES;
+                 weakSelf.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (%lu)", (unsigned long)searchResults.businesses.count];
+                 
                  weakSelf.starButton.hidden = NO;
                  weakSelf.sortView.hidden = NO;
                  weakSelf.titleView.hidden = NO;
-
+                 
                  weakSelf.originalDisplayResults = searchResults.businesses;
                  
                  NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
@@ -260,7 +257,6 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  
                  if (self.recentSearches.count > 0)
                  {
-//                     weakSelf.openNowButton.hidden = YES;
                      NSMutableArray *bizAdd = [NSMutableArray array];
                      for (YLPBusiness *selectedBusiness in self.recentSearches)
                      {
@@ -300,7 +296,6 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                           }
                                           weakSelf.detailsArray = [bizAdd sortedArrayUsingDescriptors: @[nameDescriptor]];
                                           weakSelf.gotDetails = YES;
-//                                          weakSelf.openNowButton.hidden = NO;
                                           weakSelf.originalDetailsArray = weakSelf.detailsArray;
                                           [weakSelf sortArrayWithPredicates];
                                       });

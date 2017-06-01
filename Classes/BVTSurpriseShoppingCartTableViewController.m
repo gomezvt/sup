@@ -139,11 +139,6 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
                  }
              });
          }];
-        
-        if (didError)
-        {
-            break;
-        }
     }
 }
 
@@ -310,6 +305,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 {
     [super viewWillAppear:animated];
     
+    [self.tempArray removeAllObjects];
+    
     [self evaluateButtonStateForButton:self.goButton];
     [self evaluateButtonStateForButton:self.clearButton];
 }
@@ -367,8 +364,6 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
             }
             else
             {
-                
-                
                 for (NSString *category in self.subCategories)
                 {
                     NSArray *array = [self.resultsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] %K", category]];
