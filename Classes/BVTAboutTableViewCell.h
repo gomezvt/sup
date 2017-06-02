@@ -10,4 +10,8 @@
 
 @interface BVTAboutTableViewCell : UITableViewCell
 
+@property (nonatomic, weak) IBOutlet UIImageView *aboutImageView;
+@property (nonatomic, weak) IBOutlet UILabel *label;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *imageViewWidth;
+
 @end

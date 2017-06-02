@@ -8,7 +8,7 @@
 
 #import "BVTAboutTableViewController.h"
 #import "BVTHeaderTitleView.h"
-
+#import "BVTAboutTableViewCell.h"
 #import "BVTStyles.h"
 
 @interface BVTAboutTableViewController ()
@@ -19,6 +19,7 @@
 @end
 
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
+static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
 
 @implementation BVTAboutTableViewController
 
@@ -30,12 +31,14 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
-
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UINib *aboutCellNib = [UINib nibWithNibName:kAboutTableViewNib bundle:nil];
+    [self.tableView registerNib:aboutCellNib forCellReuseIdentifier:@"AboutCell"];
     
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -113,11 +116,23 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    NSString *identifier = @"Cell";
     
-//    cell.textLabel.font = [UIFont systemFontOfSize:15.f weight:2.f];
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 3)
+        {
+            identifier = @"AboutCell";
+        }
+    }
+    else if (indexPath.section == 1)
+    {
+        identifier = @"AboutCell";
+    }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    
     cell.textLabel.textColor = [UIColor darkGrayColor];
-    
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.textLabel.numberOfLines = 0;
     
@@ -135,24 +150,33 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
         }
         else if (indexPath.row == 2)
         {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.textLabel.text = @"Powered by Yelp";
+            cell.textLabel.text = @"Version 2.0.0";
         }
         else
         {
-            cell.textLabel.text = @"Version 2.0.0";
+            BVTAboutTableViewCell *aboutCell = (BVTAboutTableViewCell *)cell;
+            aboutCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            aboutCell.label.text = @"Powered";
+            aboutCell.aboutImageView.image = [UIImage imageNamed:@"yelp_mini"];
+            aboutCell.imageViewWidth.constant = 61.f;
         }
     }
     else if (indexPath.section == 1)
     {
+        BVTAboutTableViewCell *aboutCell = (BVTAboutTableViewCell *)cell;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if (indexPath.row == 0)
         {
-            cell.textLabel.text = @"Follow us on Twitter";
+            aboutCell.aboutImageView.image = [UIImage imageNamed:@"twitter"];
+            aboutCell.imageViewWidth.constant = 37.f;
+
+            aboutCell.label.text = @"Follow us";
         }
         else
         {
-            cell.textLabel.text = @"Like us on Facebook";
+            aboutCell.aboutImageView.image = [UIImage imageNamed:@"fb"];
+            aboutCell.label.text = @"Like us";
+            aboutCell.imageViewWidth.constant = 30.f;
         }
     }
     else

@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,9 +14,36 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y5C-yL-HHm">
+                        <rect key="frame" x="20" y="7" width="55" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Grz-F3-qpB"/>
+                            <constraint firstAttribute="width" constant="55" id="rEj-jQ-P8E"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rF-mz-jMy">
+                        <rect key="frame" x="83" y="12" width="42" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="0rF-mz-jMy" firstAttribute="centerY" secondItem="y5C-yL-HHm" secondAttribute="centerY" id="134-dB-uej"/>
+                    <constraint firstItem="y5C-yL-HHm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="63p-Ve-wue"/>
+                    <constraint firstItem="y5C-yL-HHm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Ndj-lU-fwj"/>
+                    <constraint firstItem="0rF-mz-jMy" firstAttribute="leading" secondItem="y5C-yL-HHm" secondAttribute="trailing" constant="8" id="poW-u8-FpI"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="aboutImageView" destination="y5C-yL-HHm" id="Grk-SM-XNr"/>
+                <outlet property="imageViewWidth" destination="rEj-jQ-P8E" id="kgT-cB-Zam"/>
+                <outlet property="label" destination="0rF-mz-jMy" id="vYf-GR-3aI"/>
+            </connections>
+            <point key="canvasLocation" x="-143" y="-87"/>
         </tableViewCell>
     </objects>
 </document>
