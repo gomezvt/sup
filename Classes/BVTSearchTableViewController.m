@@ -174,6 +174,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
         self.label.text = @"No recent search results.";
     }
  
+    self.tableView.estimatedRowHeight = 44.f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.tableFooterView = [UIView new];
 }
 
