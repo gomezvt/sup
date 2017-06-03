@@ -11,39 +11,83 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="BVTAboutTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="403" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="403" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y5C-yL-HHm">
-                        <rect key="frame" x="20" y="7" width="55" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="Grz-F3-qpB"/>
-                            <constraint firstAttribute="width" constant="55" id="rEj-jQ-P8E"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rF-mz-jMy">
-                        <rect key="frame" x="83" y="12" width="42" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T3O-0i-9qG">
+                        <rect key="frame" x="20" y="7.5" width="158.5" height="29"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeb-sS-zlu">
+                                <rect key="frame" x="0.0" y="0.0" width="89.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yelp" translatesAutoresizingMaskIntoConstraints="NO" id="vqH-Zc-Nbc">
+                                <rect key="frame" x="97.5" y="0.0" width="61" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="SaK-mE-dbg"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hrz-Ab-oZM">
+                        <rect key="frame" x="268" y="7.5" width="115" height="29"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like us on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4im-Gp-clM">
+                                <rect key="frame" x="0.0" y="0.0" width="77" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fb" translatesAutoresizingMaskIntoConstraints="NO" id="IWz-PG-L4H">
+                                <rect key="frame" x="85" y="0.0" width="30" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="P2Q-TR-Vzv"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XO9-LA-9mt">
+                        <rect key="frame" x="0.0" y="0.0" width="179" height="44"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="didTapYelpButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8lC-dg-FwL"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xe9-Ng-8pK">
+                        <rect key="frame" x="268" y="0.0" width="135" height="44"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="didTapFBButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eso-1j-Zjr"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="0rF-mz-jMy" firstAttribute="centerY" secondItem="y5C-yL-HHm" secondAttribute="centerY" id="134-dB-uej"/>
-                    <constraint firstItem="y5C-yL-HHm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="63p-Ve-wue"/>
-                    <constraint firstItem="y5C-yL-HHm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Ndj-lU-fwj"/>
-                    <constraint firstItem="0rF-mz-jMy" firstAttribute="leading" secondItem="y5C-yL-HHm" secondAttribute="trailing" constant="8" id="poW-u8-FpI"/>
+                    <constraint firstItem="T3O-0i-9qG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="1Mp-dM-t7J"/>
+                    <constraint firstItem="XO9-LA-9mt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="7cI-bq-dru"/>
+                    <constraint firstItem="XO9-LA-9mt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="B5j-Ca-y6y"/>
+                    <constraint firstAttribute="bottom" secondItem="hrz-Ab-oZM" secondAttribute="bottom" constant="7" id="WhA-g5-yTI"/>
+                    <constraint firstAttribute="bottom" secondItem="T3O-0i-9qG" secondAttribute="bottom" constant="7" id="bNq-fg-Yht"/>
+                    <constraint firstItem="T3O-0i-9qG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dRn-k2-fHh"/>
+                    <constraint firstAttribute="bottom" secondItem="Xe9-Ng-8pK" secondAttribute="bottom" id="dhd-p0-jnv"/>
+                    <constraint firstItem="XO9-LA-9mt" firstAttribute="trailing" secondItem="T3O-0i-9qG" secondAttribute="trailing" id="eX6-7S-KSv"/>
+                    <constraint firstItem="Xe9-Ng-8pK" firstAttribute="leading" secondItem="hrz-Ab-oZM" secondAttribute="leading" id="i9p-sb-an0"/>
+                    <constraint firstAttribute="bottom" secondItem="XO9-LA-9mt" secondAttribute="bottom" id="j6x-dL-CCh"/>
+                    <constraint firstItem="hrz-Ab-oZM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="lPJ-R3-gA9"/>
+                    <constraint firstAttribute="trailing" secondItem="hrz-Ab-oZM" secondAttribute="trailing" constant="20" id="xl9-7W-ZVQ"/>
+                    <constraint firstItem="Xe9-Ng-8pK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ybB-UK-1Nq"/>
+                    <constraint firstAttribute="trailing" secondItem="Xe9-Ng-8pK" secondAttribute="trailing" id="ykI-5u-LMU"/>
                 </constraints>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="aboutImageView" destination="y5C-yL-HHm" id="Grk-SM-XNr"/>
-                <outlet property="imageViewWidth" destination="rEj-jQ-P8E" id="kgT-cB-Zam"/>
-                <outlet property="label" destination="0rF-mz-jMy" id="vYf-GR-3aI"/>
-            </connections>
-            <point key="canvasLocation" x="-143" y="-87"/>
+            <point key="canvasLocation" x="-68" y="-404"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="fb" width="30" height="30"/>
+        <image name="yelp" width="60" height="30"/>
+    </resources>
 </document>

@@ -85,7 +85,7 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -95,10 +95,6 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
     if (section == 0)
     {
         rows = 4;
-    }
-    else if (section == 1)
-    {
-        rows = 2;
     }
     else
     {
@@ -125,10 +121,6 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
             identifier = @"AboutCell";
         }
     }
-    else if (indexPath.section == 1)
-    {
-        identifier = @"AboutCell";
-    }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
@@ -151,32 +143,6 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
         else if (indexPath.row == 2)
         {
             cell.textLabel.text = @"Version 2.0.0";
-        }
-        else
-        {
-            BVTAboutTableViewCell *aboutCell = (BVTAboutTableViewCell *)cell;
-            aboutCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            aboutCell.label.text = @"Powered";
-            aboutCell.aboutImageView.image = [UIImage imageNamed:@"yelp_mini"];
-            aboutCell.imageViewWidth.constant = 61.f;
-        }
-    }
-    else if (indexPath.section == 1)
-    {
-        BVTAboutTableViewCell *aboutCell = (BVTAboutTableViewCell *)cell;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        if (indexPath.row == 0)
-        {
-            aboutCell.aboutImageView.image = [UIImage imageNamed:@"twitter"];
-            aboutCell.imageViewWidth.constant = 37.f;
-
-            aboutCell.label.text = @"Follow us";
-        }
-        else
-        {
-            aboutCell.aboutImageView.image = [UIImage imageNamed:@"fb"];
-            aboutCell.label.text = @"Like us";
-            aboutCell.imageViewWidth.constant = 30.f;
         }
     }
     else

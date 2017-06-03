@@ -15,6 +15,16 @@
     // Initialization code
 }
 
+- (IBAction)didTapYelpButton:(id)sender
+{
+    
+}
+
+- (IBAction)didTapFBButton:(id)sender
+{
+    
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
