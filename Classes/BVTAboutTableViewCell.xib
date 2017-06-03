@@ -17,8 +17,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="403" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T3O-0i-9qG">
-                        <rect key="frame" x="20" y="7.5" width="158.5" height="29"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="T3O-0i-9qG">
+                        <rect key="frame" x="20" y="7.5" width="154.5" height="29"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeb-sS-zlu">
                                 <rect key="frame" x="0.0" y="0.0" width="89.5" height="29"/>
@@ -27,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yelp" translatesAutoresizingMaskIntoConstraints="NO" id="vqH-Zc-Nbc">
-                                <rect key="frame" x="97.5" y="0.0" width="61" height="29"/>
+                                <rect key="frame" x="93.5" y="0.0" width="61" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="61" id="SaK-mE-dbg"/>
                                 </constraints>
@@ -52,7 +52,7 @@
                         </subviews>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XO9-LA-9mt">
-                        <rect key="frame" x="0.0" y="0.0" width="179" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="175" height="44"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <connections>
                             <action selector="didTapYelpButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8lC-dg-FwL"/>
