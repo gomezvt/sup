@@ -69,13 +69,9 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
     {
         title = @"About Burlingtonian";
     }
-    else if (section == 1)
-    {
-        title = @"Follow Us for Updates";
-    }
     else
     {
-        title = @"We Value Your Feedback";
+        title = @"Your Feedback is Valuable";
     }
     
     return title;
