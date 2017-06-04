@@ -124,17 +124,22 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
                  if (error)
                  {
                      didError = YES;
-                     
+
                      [weakSelf _hideHUD];
+
+                     NSString *string = error.userInfo[@"NSDebugDescription"];
                      
-                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                     
-                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                     [alertController addAction:ok];
-                     
-                     [weakSelf presentViewController:alertController animated:YES completion:nil];
-                     
-                     NSLog(@"Error %@", error.localizedDescription);
+                     if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."])
+                     {
+                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                         
+                         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                         [alertController addAction:ok];
+                         
+                         [weakSelf presentViewController:alertController animated:YES completion:nil];
+                         
+                         NSLog(@"Error %@", error.localizedDescription);
+                     }
                      
                      [weakSelf.goButton setEnabled:YES];
                      [weakSelf.clearButton setEnabled:YES];
