@@ -48,6 +48,7 @@
 		64A3386C1EA6F48E0061CA83 /* BVTTableViewSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A3386B1EA6F48E0061CA83 /* BVTTableViewSectionHeaderView.m */; };
 		64A338711EA7067F0061CA83 /* BVTHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A338701EA7067F0061CA83 /* BVTHUDView.m */; };
 		64A481081EC94E6800A80600 /* BVTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A481071EC94E6800A80600 /* BVTTabBarController.m */; };
+		64AC0DEB1EE3A6070061733A /* BVTDisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AC0DE91EE3A5BD0061733A /* BVTDisclaimerViewController.m */; };
 		64AED0AE1EDA6EDC004627D9 /* BVTSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AED0AD1EDA6EDC004627D9 /* BVTSearchTableViewController.m */; };
 		64B990CE1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B990CD1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.m */; };
 		64B990CF1E99D5190002EE4E /* BVTSurpriseRecommendationsTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 64B990CC1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.h */; };
@@ -145,6 +146,8 @@
 		64A338701EA7067F0061CA83 /* BVTHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTHUDView.m; path = Classes/BVTHUDView.m; sourceTree = SOURCE_ROOT; };
 		64A481061EC94E6800A80600 /* BVTTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTTabBarController.h; path = Classes/BVTTabBarController.h; sourceTree = SOURCE_ROOT; };
 		64A481071EC94E6800A80600 /* BVTTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTTabBarController.m; path = Classes/BVTTabBarController.m; sourceTree = SOURCE_ROOT; };
+		64AC0DE81EE3A5BD0061733A /* BVTDisclaimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTDisclaimerViewController.h; path = /Users/gomez/Developer/bvt/Classes/BVTDisclaimerViewController.h; sourceTree = "<absolute>"; };
+		64AC0DE91EE3A5BD0061733A /* BVTDisclaimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTDisclaimerViewController.m; path = /Users/gomez/Developer/bvt/Classes/BVTDisclaimerViewController.m; sourceTree = "<absolute>"; };
 		64AED0AC1EDA6EDC004627D9 /* BVTSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSearchTableViewController.h; path = Classes/BVTSearchTableViewController.h; sourceTree = SOURCE_ROOT; };
 		64AED0AD1EDA6EDC004627D9 /* BVTSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTSearchTableViewController.m; path = Classes/BVTSearchTableViewController.m; sourceTree = SOURCE_ROOT; };
 		64B990CC1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTSurpriseRecommendationsTableViewController.h; path = /Users/gomez/Developer/bvt/Classes/BVTSurpriseRecommendationsTableViewController.h; sourceTree = "<absolute>"; };
@@ -216,6 +219,8 @@
 				644111E91E2D345600C3ED18 /* BVTAboutTableViewController.m */,
 				64C6DD1E1EE0F6C300C8132F /* BVTAboutTableViewCell.h */,
 				649B84571EE0F92E00C3D6CD /* BVTAboutTableViewCell.m */,
+				64AC0DE81EE3A5BD0061733A /* BVTDisclaimerViewController.h */,
+				64AC0DE91EE3A5BD0061733A /* BVTDisclaimerViewController.m */,
 			);
 			name = About;
 			path = ..;
@@ -535,6 +540,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64AC0DEB1EE3A6070061733A /* BVTDisclaimerViewController.m in Sources */,
 				6441120D1E2D345600C3ED18 /* BVTCategoryTableViewController.m in Sources */,
 				6441121C1E2D345600C3ED18 /* BVTPageContentViewController.m in Sources */,
 				64AED0AE1EDA6EDC004627D9 /* BVTSearchTableViewController.m in Sources */,

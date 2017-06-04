@@ -711,10 +711,64 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="About" image="about" id="TCD-nD-dqv"/>
                     <navigationItem key="navigationItem" title="Burlingtonian" id="Wxk-3K-b5Z"/>
+                    <connections>
+                        <segue destination="C8i-nC-YuE" kind="show" identifier="ShowDisclaimer" id="Qap-WS-gGM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbB-GG-seh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="770" y="527"/>
+        </scene>
+        <!--Burlingtonian-->
+        <scene sceneID="XqU-vz-WG5">
+            <objects>
+                <viewController id="C8i-nC-YuE" customClass="BVTDisclaimerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dig-2a-dBN"/>
+                        <viewControllerLayoutGuide type="bottom" id="MI0-Hc-dHR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="abD-Fl-ZzT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHV-K9-LtT">
+                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy and Terms of Use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="2dm-wM-fF1">
+                                        <rect key="frame" x="8" y="10.666666666666671" width="398" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="2dm-wM-fF1" firstAttribute="leading" secondItem="CHV-K9-LtT" secondAttribute="leading" constant="8" id="7yS-Bc-mkz"/>
+                                    <constraint firstItem="2dm-wM-fF1" firstAttribute="centerY" secondItem="CHV-K9-LtT" secondAttribute="centerY" id="TFW-PT-4fj"/>
+                                    <constraint firstAttribute="trailing" secondItem="2dm-wM-fF1" secondAttribute="trailing" constant="8" id="XhC-zb-x5I"/>
+                                    <constraint firstAttribute="height" constant="44" id="frB-3o-zgh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CHV-K9-LtT" firstAttribute="leading" secondItem="abD-Fl-ZzT" secondAttribute="leading" id="4Lr-Cr-lfo"/>
+                            <constraint firstItem="CHV-K9-LtT" firstAttribute="top" secondItem="Dig-2a-dBN" secondAttribute="bottom" id="a9a-cL-DSc"/>
+                            <constraint firstAttribute="trailing" secondItem="CHV-K9-LtT" secondAttribute="trailing" id="kNN-kQ-UUc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Burlingtonian" id="CxO-v9-Ikk">
+                        <barButtonItem key="leftBarButtonItem" image="back_chevron" id="1xe-l6-TZF">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="didTapBack:" destination="C8i-nC-YuE" id="Gkp-Uq-vhJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cdS-nJ-Qel" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1561" y="527"/>
         </scene>
         <!--Presentation Table View Controller-->
         <scene sceneID="vdV-sT-dTA">
@@ -1150,7 +1204,7 @@
         <image name="surprise" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6FD-Q3-pb4"/>
         <segue reference="itC-Zp-WcB"/>
+        <segue reference="lMI-Vd-YSr"/>
     </inferredMetricsTieBreakers>
 </document>

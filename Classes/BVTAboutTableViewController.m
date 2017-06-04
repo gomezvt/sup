@@ -10,8 +10,9 @@
 #import "BVTHeaderTitleView.h"
 #import "BVTAboutTableViewCell.h"
 #import "BVTStyles.h"
+#import <MessageUI/MessageUI.h>
 
-@interface BVTAboutTableViewController ()
+@interface BVTAboutTableViewController () <UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) BVTHeaderTitleView *headerTitleView;
 
@@ -100,10 +101,44 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
     return rows;
 }
 
+
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0 && indexPath.row == 1)
+    {
+        [self performSegueWithIdentifier:@"ShowDisclaimer" sender:nil];
+    }
+    else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 1)
+        {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/burlingtonian-live-like-a-local-in-vermont/id581817418?mt=8"]  options:@{} completionHandler:^(BOOL success) {
+                
+                NSLog(@"");
+            }];
+        }
+        else if (indexPath.row == 2)
+        {
+            MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+            mail.mailComposeDelegate = self;
+            [mail setSubject:@"Burlingtonian Feedback"];
+            [mail setMessageBody:@"" isHTML:NO];
+            [mail setToRecipients:@[@"greg@theburlingtonian.com"]];
+            
+            [self presentViewController:mail animated:YES completion:nil];
+        }
+    }
+}
 
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error;
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -17,12 +17,16 @@
 
 - (IBAction)didTapYelpButton:(id)sender
 {
-    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://yelp.com"]  options:@{} completionHandler:^(BOOL success) {
+        NSLog(@"");
+    }];
 }
 
 - (IBAction)didTapFBButton:(id)sender
 {
-    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.facebook.com/theburlingtonian"]  options:@{} completionHandler:^(BOOL success) {
+        NSLog(@"");
+    }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
