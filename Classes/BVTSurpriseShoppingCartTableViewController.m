@@ -129,7 +129,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 
                      NSString *string = error.userInfo[@"NSDebugDescription"];
                      
-                     if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."])
+                                      if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
                      {
                          UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                          
