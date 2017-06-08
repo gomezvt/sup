@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "placeholder_bvt_icon_60x90.png",
+      "filename" : "placeholder_90x60.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "placeholder_bvt_icon_120x180.png",
+      "filename" : "placeholder_180x120.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "placeholder_bvt_icon_180x270.png",
+      "filename" : "placeholder_270x180.png",
       "scale" : "3x"
     }
   ],
