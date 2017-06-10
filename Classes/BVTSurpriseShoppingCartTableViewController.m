@@ -79,6 +79,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     self.didCancelRequest = YES;
     self.backChevron.enabled = YES;
     self.tableView.userInteractionEnabled = YES;
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+
     [self evaluateButtonStateForButton:self.goButton];
     [self evaluateButtonStateForButton:self.clearButton];
     [self.hud removeFromSuperview];
@@ -106,6 +108,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     }
     
     self.tableView.userInteractionEnabled = NO;
+    self.tabBarController.tabBar.userInteractionEnabled = NO;
+
     self.backChevron.enabled = NO;
     
     __weak typeof(self) weakSelf = self;
@@ -157,6 +161,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 {
     self.backChevron.enabled = YES;
     self.tableView.userInteractionEnabled = YES;
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+
     [self.hud removeFromSuperview];
 }
 
@@ -181,7 +187,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 - (void)presentMessage
 {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 30.f)];
-    label.text = @"Add one or more sub categories to submit.";
+    label.text = @"Add one or more categories to submit.";
     [super.view addSubview:label];
     label.center = self.tableView.center;
     self.tableView.separatorColor = [UIColor clearColor];

@@ -10,7 +10,6 @@
 
 @interface BVTPageContentViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property NSString *imageFile;
 @property NSUInteger pageIndex;

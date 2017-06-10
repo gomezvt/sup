@@ -17,7 +17,6 @@
 
 @implementation BVTPageRootViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -25,46 +24,53 @@
     BOOL tutorialIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"BVTTutorialComplete"];
     if (tutorialIsComplete)
     {
-        // skip the tutorial here
-        
-//        BVTExploreViewController *bvt = [[BVTExploreViewController alloc] initWithNibName:@"BVTExploreViewController" bundle:nil];
-//        BVTExploreViewController* tutorialViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ExploreViewController"];
-//        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:tutorialViewController];
-//        
-//        
-//        [self presentViewController:nc animated:YES completion:nil];
-
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSegueWithIdentifier:@"ShowTabBarController" sender:nil];
+        });
     }
-    
-    // Create the data model
-    self.pageTitles = @[@"1", @"2", @"3", @"4"];
-    self.images = @[@"page1.png", @"page2.png", @"page3.png", @"page4.png"];
-
-    // Create page view controller
-    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
-    self.pageViewController.dataSource = self;
-    
-    BVTPageContentViewController *startingViewController = [self viewControllerAtIndex:0];
-    NSArray *viewControllers = @[startingViewController];
-    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
-    // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 50);
-    
-    [self addChildViewController:_pageViewController];
-    [self.view addSubview:_pageViewController.view];
-    [self.pageViewController didMoveToParentViewController:self];
+    else
+    {
+        // Create the data model
+        self.pageTitles = @[@"1", @"2", @"3"];
+        self.images = @[@"page1.png", @"page2.png", @"page3.png"];
+        
+        CGRect mainScreen = [[UIScreen mainScreen] bounds];
+        if (mainScreen.size.width > 375.f)
+        {
+            self.images = @[@"Tutorial_Explore_6_7_Plus.png", @"Tutorial_Search_6_7_Plus.png", @"Tutorial_Surprise_6_7_Plus.png"];
+        }
+        else if (mainScreen.size.width == 375.f)
+        {
+            self.images = @[@"Tutorial_Explore_6_7", @"Tutorial_Search_6_7.png", @"Tutorial_Surprise_6_7.png"];
+        }
+        else
+        {
+            self.images = @[@"Tutorial_Explore_SE.png", @"Tutorial_Search_SE.png", @"Tutorial_Surprise_SE.png"];
+        }
+        
+        
+        // Create page view controller
+        self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
+        self.pageViewController.dataSource = self;
+        
+        BVTPageContentViewController *startingViewController = [self viewControllerAtIndex:0];
+        NSArray *viewControllers = @[startingViewController];
+        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        
+        // Change the size of page view controller
+        self.pageViewController.view.frame = CGRectMake(0, -60.f, self.view.frame.size.width, self.view.frame.size.height + 30.f);
+        
+        [self addChildViewController:_pageViewController];
+        [self.view addSubview:_pageViewController.view];
+        [self.pageViewController didMoveToParentViewController:self];
+    }
 }
 
 - (IBAction)startWalkthrough:(id)sender
 {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"BVTTutorialComplete"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    BVTPageContentViewController *startingViewController = [self viewControllerAtIndex:0];
-    NSArray *viewControllers = @[startingViewController];
-    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+
     [self performSegueWithIdentifier:@"ShowTabBarController" sender:nil];
 }
 

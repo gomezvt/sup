@@ -183,6 +183,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     self.didCancelRequest = YES;
     self.tableView.userInteractionEnabled = YES;
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+
     [self.hud removeFromSuperview];
 }
 
@@ -208,6 +210,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     self.hud.delegate = self;
     self.gotDetails = NO;
     self.tableView.userInteractionEnabled = NO;
+    self.tabBarController.tabBar.userInteractionEnabled = NO;
+
     self.didSelectBiz = NO;
     
     __weak typeof(self) weakSelf = self;
@@ -293,11 +297,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                   {
                                       NSURL *url = [NSURL URLWithString:photoStr];
                                       NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                      UIImage *image = [UIImage imageNamed:@"placeholder"];
-                                      if (imageData)
-                                      {
-                                          image = [UIImage imageWithData:imageData];
-                                      }
+                                      UIImage *image = [UIImage imageWithData:imageData];
                                       [photosArray addObject:image];
                                   }
                                   
@@ -385,6 +385,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     self.didCancelRequest = NO;
 
     self.tableView.userInteractionEnabled = NO;
+    self.tabBarController.tabBar.userInteractionEnabled = NO;
+
     self.didSelectBiz = YES;
     
     YLPBusiness *selectedBusiness = [self.recentSearches objectAtIndex:indexPath.row];
@@ -419,11 +421,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                          {
                              NSURL *url = [NSURL URLWithString:photoStr];
                              NSData *imageData = [NSData dataWithContentsOfURL:url];
-                             UIImage *image = [UIImage imageNamed:@"placeholder"];
-                             if (imageData)
-                             {
-                                 image = [UIImage imageWithData:imageData];
-                             }
+                             UIImage *image = [UIImage imageWithData:imageData];
+
                              [photosArray addObject:image];
                          }
     
@@ -490,6 +489,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 - (void)_hideHUD
 {
     self.tableView.userInteractionEnabled = YES;
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+
     [self.hud removeFromSuperview];
 }
 

@@ -431,11 +431,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                  {
                                      NSURL *url = [NSURL URLWithString:photoStr];
                                      NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                     UIImage *image = [UIImage imageNamed:@"placeholder"];
-                                     if (imageData)
-                                     {
-                                         image = [UIImage imageWithData:imageData];
-                                     }
+                                     UIImage *image = [UIImage imageWithData:imageData];
+
                                      [photosArray addObject:image];
                                  }
                                  
@@ -498,6 +495,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.didCancelRequest = YES;
     self.backChevron.enabled = YES;
     self.tableView.userInteractionEnabled = YES;
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+
     [self.hud removeFromSuperview];
 }
 
@@ -510,6 +509,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     self.didCancelRequest = NO;
     self.tableView.userInteractionEnabled = NO;
+    self.tabBarController.tabBar.userInteractionEnabled = NO;
+
     self.backChevron.enabled = NO;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -598,11 +599,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                      {
                          NSURL *url = [NSURL URLWithString:photoStr];
                          NSData *imageData = [NSData dataWithContentsOfURL:url];
-                         UIImage *image = [UIImage imageNamed:@"placeholder"];
-                         if (imageData)
-                         {
-                             image = [UIImage imageWithData:imageData];
-                         }
+                         UIImage *image = [UIImage imageWithData:imageData];
+
                          [photosArray addObject:image];
                      }
                      
@@ -669,6 +667,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     self.backChevron.enabled = YES;
     self.tableView.userInteractionEnabled = YES;
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+
     [self.hud removeFromSuperview];
 }
 

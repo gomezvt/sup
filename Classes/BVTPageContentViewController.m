@@ -30,7 +30,6 @@
     
     self.imageView.image = [UIImage imageNamed:self.imageFile];
 
-    self.titleLabel.text = self.titleText;
 }
 
 @end
