@@ -441,10 +441,27 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                              
                              if (business)
                              {
-                                 [bizAdd addObject:business];
-                                 if (bizAdd.count == originalCount)
-                                 {
+                                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                                     // Your Background work
+                                     NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                         // Update your UI
+
+                                             if (imageData)
+                                             {
+                                                 UIImage *image = [UIImage imageWithData:imageData];
+                                                 business.bizThumbNail = image;
+                                             }
+                                             else
+                                             {
+                                                 business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                                             }
+                                     });
+                                     
+                                     [bizAdd addObject:business];
+                                     if (bizAdd.count == originalCount)
+                                     {
+                                                                              dispatch_async(dispatch_get_main_queue(), ^{
                                          NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
                                          weakSelf.displayArray = [bizAdd sortedArrayUsingDescriptors: @[nameDescriptor]];
                                          
@@ -452,8 +469,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                          weakSelf.gotDetails = YES;
                                          [weakSelf.openNowButton setHidden:NO];
                                          [weakSelf sortArrayWithPredicates];
-                                     });
-                                 }
+                                                                              });
+                                     }
+                                 });
+                                 
+
                              }
                          }];
                     });
@@ -557,9 +577,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                        business.reviews = reviews.reviews;
                                                        business.userPhotosArray = userPhotos;
                                                        
-                                                       [weakSelf _hideHUD];
                                                        if (!weakSelf.didCancelRequest)
                                                        {
+                                                           [weakSelf _hideHUD];
+
                                                            // get biz photos here if we dont have them?
                                                            [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
                                                        }
@@ -704,10 +725,32 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     if (self.gotDetails)
     {
         business = [self.displayArray objectAtIndex:indexPath.row];
+        cell.thumbNailView.image = business.bizThumbNail;
     }
     else
     {
         business = [self.filteredResults objectAtIndex:indexPath.row];
+        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // Your Background work
+            NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update your UI
+                if (cell.tag == indexPath.row)
+                {
+                    if (imageData)
+                    {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        business.bizThumbNail = image;
+                        cell.thumbNailView.image = image;
+                    }
+                    else
+                    {
+                        business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                    }
+                }
+            });
+        });
     }
     
     cell.openCloseLabel.text = @"";
@@ -742,34 +785,34 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     }
     
     cell.business = business;
-    if (business.bizThumbNail)
-    {
-        cell.thumbNailView.image = business.bizThumbNail;
-    }
-    else
-    {
-        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            // Your Background work
-            NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // Update your UI
-                if (cell.tag == indexPath.row)
-                {
-                    if (imageData)
-                    {
-                        UIImage *image = [UIImage imageWithData:imageData];
-                        business.bizThumbNail = image;
-                        cell.thumbNailView.image = image;
-                    }
-                    else
-                    {
-                        business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
-                    }
-                }
-            });
-        });
-    }
+//    if (business.bizThumbNail)
+//    {
+//        cell.thumbNailView.image = business.bizThumbNail;
+//    }
+//    else
+//    {
+//        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            // Your Background work
+//            NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                // Update your UI
+//                if (cell.tag == indexPath.row)
+//                {
+//                    if (imageData)
+//                    {
+//                        UIImage *image = [UIImage imageWithData:imageData];
+//                        business.bizThumbNail = image;
+//                        cell.thumbNailView.image = image;
+//                    }
+//                    else
+//                    {
+//                        business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+//                    }
+//                }
+//            });
+//        });
+//    }
     
     return cell;
 }
