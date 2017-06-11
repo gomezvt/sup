@@ -61,5 +61,5 @@ extern NSString *const star_five;
 + (UIColor *)buttonBorder;
 + (UIColor *)lightGray;
 + (UIColor *)iconGreen;
-
++ (UIColor *)tabBarTint;
 @end
