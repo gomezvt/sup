@@ -171,7 +171,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     
     if (self.recentSearches.count == 0)
     {
-        self.label.text = @"No recent search results.";
+        self.label.text = @"Go ahead, search away...";
     }
  
     self.tableView.estimatedRowHeight = 44.f;
@@ -182,6 +182,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 - (void)didTapHUDCancelButton
 {
     self.didCancelRequest = YES;
+    self.searchBar.userInteractionEnabled = YES;
     self.tableView.userInteractionEnabled = YES;
     self.tabBarController.tabBar.userInteractionEnabled = YES;
 
@@ -211,6 +212,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     self.gotDetails = NO;
     self.tableView.userInteractionEnabled = NO;
     self.tabBarController.tabBar.userInteractionEnabled = NO;
+    self.searchBar.userInteractionEnabled = NO;
 
     self.didSelectBiz = NO;
     
@@ -306,6 +308,21 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                               
                               if (business)
                               {
+                                  NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
+                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                      // Update your UI
+                                      
+                                      if (imageData)
+                                      {
+                                          UIImage *image = [UIImage imageWithData:imageData];
+                                          business.bizThumbNail = image;
+                                      }
+                                      else
+                                      {
+                                          business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                                      }
+                                  });
+                                  
                                   [bizAdd addObject:business];
                                   
                                   if (bizAdd.count == weakSelf.recentSearches.count)
@@ -490,6 +507,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     self.tableView.userInteractionEnabled = YES;
     self.tabBarController.tabBar.userInteractionEnabled = YES;
+    self.searchBar.userInteractionEnabled = YES;
 
     [self.hud removeFromSuperview];
 }
@@ -520,11 +538,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
-    YLPBusiness *biz;
-    if (self.gotDetails)
+    YLPBusiness *biz = [self.detailsArray objectAtIndex:indexPath.row];
+    if (biz)
     {
         self.openNowButton.hidden = NO;
-        biz = [self.detailsArray objectAtIndex:indexPath.row];
     }
     else
     {
