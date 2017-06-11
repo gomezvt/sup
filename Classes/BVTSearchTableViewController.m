@@ -67,6 +67,7 @@
 @property (nonatomic, strong) NSArray *originalDetailsArray;
 @property (nonatomic) BOOL didSelectBiz;
 @property (nonatomic) BOOL isLargePhone;
+@property (nonatomic, strong) NSMutableDictionary *cacheDict;
 
 @end
 
@@ -112,6 +113,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.cacheDict = [[NSMutableDictionary alloc] init];
     
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
 
@@ -216,6 +219,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
     self.didSelectBiz = NO;
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+
     __weak typeof(self) weakSelf = self;
     [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:searchBar.text limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
@@ -253,6 +258,18 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
              {
                  [weakSelf _hideHUD];
                  
+                 weakSelf.gotDetails = [weakSelf.cacheDict valueForKey:weakSelf.searchBar.text];
+                 
+                 if (weakSelf.gotDetails)
+                 {
+                     weakSelf.openNowButton.hidden = NO;
+                     weakSelf.detailsArray = [weakSelf.cacheDict valueForKey:weakSelf.searchBar.text];
+                 }
+                 else
+                 {
+                     weakSelf.openNowButton.hidden = YES;
+                 }
+                 
                  weakSelf.label.hidden = YES;
                  weakSelf.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (%lu)", (unsigned long)searchResults.businesses.count];
                  
@@ -266,86 +283,95 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  NSArray *sortedArray = [searchResults.businesses sortedArrayUsingDescriptors: @[descriptor]];
                  
                  weakSelf.recentSearches = sortedArray;
-                 [weakSelf.tableView reloadData];
+                 
+                [weakSelf.tableView reloadData];
+
+                 
                  
                  if (self.recentSearches.count > 0)
                  {
                      NSMutableArray *bizAdd = [NSMutableArray array];
                      for (YLPBusiness *selectedBusiness in self.recentSearches)
                      {
-
-                         [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
-                          (YLPBusiness *business, NSError *error) {
-                              if (error)
-                              {
-                                  [weakSelf _hideHUD];
-
-                                  NSString *string = error.userInfo[@"NSDebugDescription"];
-                                  
-                                                   if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
+                         if (![[weakSelf.detailsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", selectedBusiness.identifier]] lastObject])
+                         {
+                             [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
+                              (YLPBusiness *business, NSError *error) {
+                                  if (error)
                                   {
-                                      UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                                      [weakSelf _hideHUD];
                                       
-                                      UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                                      [alertController addAction:ok];
+                                      NSString *string = error.userInfo[@"NSDebugDescription"];
                                       
-                                      [weakSelf presentViewController:alertController animated:YES completion:nil];
-                                  }
-                              }
-                              else if (business.photos.count > 0)
-                              {
-                                  NSMutableArray *photosArray = [NSMutableArray array];
-                                  for (NSString *photoStr in business.photos)
-                                  {
-                                      NSURL *url = [NSURL URLWithString:photoStr];
-                                      NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                      UIImage *image = [UIImage imageWithData:imageData];
-                                      [photosArray addObject:image];
-                                  }
-                                  
-                                  business.photos = photosArray;
-                              }
-                              
-                              if (business)
-                              {
-                                  NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
-                                  dispatch_async(dispatch_get_main_queue(), ^{
-                                      // Update your UI
-                                      
-                                      if (imageData)
+                                      if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
                                       {
+                                          UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                                          
+                                          UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                          [alertController addAction:ok];
+                                          
+                                          [weakSelf presentViewController:alertController animated:YES completion:nil];
+                                      }
+                                  }
+                                  else if (business.photos.count > 0)
+                                  {
+                                      NSMutableArray *photosArray = [NSMutableArray array];
+                                      for (NSString *photoStr in business.photos)
+                                      {
+                                          NSURL *url = [NSURL URLWithString:photoStr];
+                                          NSData *imageData = [NSData dataWithContentsOfURL:url];
                                           UIImage *image = [UIImage imageWithData:imageData];
-                                          business.bizThumbNail = image;
+                                          [photosArray addObject:image];
                                       }
-                                      else
-                                      {
-                                          business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
-                                      }
-                                  });
-                                  
-                                  [bizAdd addObject:business];
-                                  
-                                  if (bizAdd.count == weakSelf.recentSearches.count)
-                                  {
-                                      dispatch_async(dispatch_get_main_queue(), ^{
-                                          NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-                                          if (!weakSelf.didSelectBiz)
-                                          {
-                                              [weakSelf _hideHUD];
-                                          }
-                                          weakSelf.detailsArray = [bizAdd sortedArrayUsingDescriptors: @[nameDescriptor]];
-                                          weakSelf.gotDetails = YES;
-                                          weakSelf.originalDetailsArray = weakSelf.detailsArray;
-                                          [weakSelf sortArrayWithPredicates];
-                                      });
+                                      
+                                      business.photos = photosArray;
                                   }
-                              }
-                          }];
+                                  
+                                  if (business)
+                                  {
+                                      NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
+                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                          // Update your UI
+                                          
+                                          if (imageData)
+                                          {
+                                              UIImage *image = [UIImage imageWithData:imageData];
+                                              business.bizThumbNail = image;
+                                          }
+                                          else
+                                          {
+                                              business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                                          }
+                                      });
+                                      
+                                      [bizAdd addObject:business];
+                                      
+                                      if (bizAdd.count == weakSelf.recentSearches.count)
+                                      {
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              NSSortDescriptor *nameDescriptor =  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+                                              if (!weakSelf.didSelectBiz)
+                                              {
+                                                  [weakSelf _hideHUD];
+                                              }
+                                              weakSelf.openNowButton.hidden = NO;
+                                              weakSelf.detailsArray = [bizAdd sortedArrayUsingDescriptors: @[nameDescriptor]];
+                                              [weakSelf.cacheDict setObject:weakSelf.detailsArray forKey:weakSelf.searchBar.text];
+                                              weakSelf.gotDetails = YES;
+                                              weakSelf.originalDetailsArray = weakSelf.detailsArray;
+                                              [weakSelf sortArrayWithPredicates];
+                                          });
+                                      }
+                                  }
+                              }];
+                         }
+                         
                      }
                  }
              }
          });
      }];
+    });
 
     [searchBar resignFirstResponder];
     searchBar.showsCancelButton = NO;
@@ -539,15 +565,36 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
     YLPBusiness *biz;
+    
     if (self.gotDetails)
     {
-        self.openNowButton.hidden = NO;
         biz = [self.detailsArray objectAtIndex:indexPath.row];
+        cell.thumbNailView.image = biz.bizThumbNail;
     }
     else
     {
-        self.openNowButton.hidden = YES;
         biz =  [self.recentSearches objectAtIndex:indexPath.row];
+        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // Your Background work
+            NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update your UI
+                if (cell.tag == indexPath.row)
+                {
+                    if (imageData)
+                    {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        biz.bizThumbNail = image;
+                        cell.thumbNailView.image = image;
+                    }
+                    else
+                    {
+                        biz.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                    }
+                }
+            });
+        });
     }
     
     cell.business = biz;
@@ -582,34 +629,34 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
         }
     }
     
-    if (biz.bizThumbNail)
-    {
-        cell.thumbNailView.image = biz.bizThumbNail;
-    }
-    else
-    {
-        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            // Your Background work
-            NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // Update your UI
-                if (cell.tag == indexPath.row)
-                {
-                    if (imageData)
-                    {
-                        UIImage *image = [UIImage imageWithData:imageData];
-                        biz.bizThumbNail = image;
-                        cell.thumbNailView.image = image;
-                    }
-                    else
-                    {
-                        biz.bizThumbNail = [UIImage imageNamed:@"placeholder"];
-                    }
-                }
-            });
-        });
-    }
+//    if (biz.bizThumbNail)
+//    {
+//        cell.thumbNailView.image = biz.bizThumbNail;
+//    }
+//    else
+//    {
+//        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            // Your Background work
+//            NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                // Update your UI
+//                if (cell.tag == indexPath.row)
+//                {
+//                    if (imageData)
+//                    {
+//                        UIImage *image = [UIImage imageWithData:imageData];
+//                        biz.bizThumbNail = image;
+//                        cell.thumbNailView.image = image;
+//                    }
+//                    else
+//                    {
+//                        biz.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+//                    }
+//                }
+//            });
+//        });
+//    }
     
     return cell;
 }
