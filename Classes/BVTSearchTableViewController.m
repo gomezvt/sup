@@ -258,7 +258,11 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
              {
                  [weakSelf _hideHUD];
                  
-                 weakSelf.gotDetails = [weakSelf.cacheDict valueForKey:weakSelf.searchBar.text];
+                 weakSelf.gotDetails = [weakSelf.cacheDict valueForKey:[weakSelf.searchBar.text capitalizedString]];
+                 if (!weakSelf.gotDetails)
+                 {
+                     weakSelf.gotDetails = [weakSelf.cacheDict valueForKey:[weakSelf.searchBar.text lowercaseString]];
+                 }
                  
                  if (weakSelf.gotDetails)
                  {
