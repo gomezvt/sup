@@ -118,38 +118,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSubCategoryTableViewController.m"
-            timestampString = "519272806.472057"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "768"
-            endingLineNumber = "768"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSubCategoryTableViewController.m"
-            timestampString = "519272806.472057"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "870"
-            endingLineNumber = "870"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -160,22 +128,6 @@
             startingLineNumber = "45"
             endingLineNumber = "45"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSubCategoryTableViewController.m"
-            timestampString = "519272806.472057"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "736"
-            endingLineNumber = "736"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -212,38 +164,6 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519273566.387921"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "543"
-            endingLineNumber = "543"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519271705.301794"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "446"
-            endingLineNumber = "446"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
@@ -260,11 +180,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519273566.387921"
+            timestampString = "519274991.062816"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "618"
-            endingLineNumber = "618"
+            startingLineNumber = "621"
+            endingLineNumber = "621"
             landmarkName = "-sortArrayWithPredicates"
             landmarkType = "7">
          </BreakpointContent>
@@ -292,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519273566.387921"
+            timestampString = "519274991.062816"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "659"
-            endingLineNumber = "659"
+            startingLineNumber = "662"
+            endingLineNumber = "662"
             landmarkName = "-sortArrayWithPredicates"
             landmarkType = "7">
          </BreakpointContent>
@@ -308,43 +228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519271705.301794"
+            timestampString = "519274991.062816"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519271705.301794"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519273566.387921"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "686"
-            endingLineNumber = "686"
+            startingLineNumber = "689"
+            endingLineNumber = "689"
             landmarkName = "-sortArrayWithPredicates"
             landmarkType = "7">
          </BreakpointContent>
@@ -356,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSubCategoryTableViewController.m"
-            timestampString = "519268244.313616"
+            timestampString = "519275603.36046"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "-sortArrayWithPredicates"
             landmarkType = "7">
          </BreakpointContent>
@@ -368,31 +256,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSubCategoryTableViewController.m"
-            timestampString = "519272806.472057"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "687"
-            endingLineNumber = "687"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519273566.387921"
+            timestampString = "519274985.016163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "540"
-            endingLineNumber = "540"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>

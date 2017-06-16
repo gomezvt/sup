@@ -476,67 +476,69 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     else
     {
         cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
-        
-        [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
-         (YLPBusiness *business, NSError *error) {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 business.didGetDetails = YES;
-                 
-                 YLPBusiness *match = [[self.originalDetailsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
-                 
-                 if (match)
-                 {
-                     NSInteger index = [self.originalDetailsArray indexOfObject:match];
-                     [self.originalDetailsArray replaceObjectAtIndex:index withObject:business];
-                 }
-                 
-                 if (!self.isLargePhone)
-                 {
-                     if (business.isOpenNow)
-                     {
-                         cell.secondaryOpenCloseLabel.text = @"Open Now";
-                         cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
-                     }
-                     else if (business.hoursItem && !business.isOpenNow)
-                     {
-                         cell.secondaryOpenCloseLabel.text = @"Closed Now";
-                         cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-                     }
-                 }
-                 else
-                 {
-                     if (business.isOpenNow)
-                     {
-                         cell.openCloseLabel.text = @"Open Now";
-                         cell.openCloseLabel.textColor = [BVTStyles iconGreen];
-                     }
-                     else if (business.hoursItem && !business.isOpenNow)
-                     {
-                         cell.openCloseLabel.text = @"Closed Now";
-                         cell.openCloseLabel.textColor = [UIColor redColor];
-                     }
-                 }
-                 if (error)
-                 {
-                     [self _hideHUD];
-                     
-                     NSString *string = error.userInfo[@"NSDebugDescription"];
-                     
-                     if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
-                     {
-                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                         
-                         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                         [alertController addAction:ok];
-                         
-                         [self presentViewController:alertController animated:YES completion:nil];
-                     }
-                 }
 
-                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if (!self.didSelectBiz)
+        {
+            [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
+             (YLPBusiness *business, NSError *error) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     business.didGetDetails = YES;
+                     
+                     YLPBusiness *match = [[self.originalDetailsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
+                     
+                     if (match)
+                     {
+                         NSInteger index = [self.originalDetailsArray indexOfObject:match];
+                         [self.originalDetailsArray replaceObjectAtIndex:index withObject:business];
+                     }
+                     
+                     if (!self.isLargePhone)
+                     {
+                         if (business.isOpenNow)
+                         {
+                             cell.secondaryOpenCloseLabel.text = @"Open Now";
+                             cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+                         }
+                         else if (business.hoursItem && !business.isOpenNow)
+                         {
+                             cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                             cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                         }
+                     }
+                     else
+                     {
+                         if (business.isOpenNow)
+                         {
+                             cell.openCloseLabel.text = @"Open Now";
+                             cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                         }
+                         else if (business.hoursItem && !business.isOpenNow)
+                         {
+                             cell.openCloseLabel.text = @"Closed Now";
+                             cell.openCloseLabel.textColor = [UIColor redColor];
+                         }
+                     }
+                     if (error)
+                     {
+                         [self _hideHUD];
+                         
+                         NSString *string = error.userInfo[@"NSDebugDescription"];
+                         
+                         if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
+                         {
+                             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                             
+                             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                             [alertController addAction:ok];
+                             
+                             [self presentViewController:alertController animated:YES completion:nil];
+                         }
+                     }
+                     
+                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                          // Your Background work
                          NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
-                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                              // Update your UI
                              if (cell.tag == indexPath.row)
                              {
@@ -566,13 +568,14 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                  }
                                  
                                  [self.cachedBiz addObject:business];
-
+                                 
                              }
                          });
                      });
-                 
-             });
-         }];
+                     
+                 });
+             }];
+        }
     }
     
     cell.business = biz;

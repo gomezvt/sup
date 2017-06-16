@@ -31,12 +31,10 @@
 @property (nonatomic, strong) BVTHUDView *hud;
 @property (nonatomic) BOOL didCancelRequest;
 @property (nonatomic, strong) NSMutableDictionary *orderedDict;
-//@property (nonatomic, strong) BVTTableViewSectionHeaderView *headerView;
+@property (nonatomic) BOOL didSelectBiz;
 @property (nonatomic) BOOL isLargePhone;
 
 @end
-
-//static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeaderView";
 
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 static NSString *const kThumbNailCell = @"BVTThumbNailTableViewCell";
@@ -57,9 +55,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
-    
-    
+
     self.orderedDict = [NSMutableDictionary dictionary];
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
@@ -67,9 +63,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
-    
-//    UINib *headerView = [UINib nibWithNibName:kTableViewSectionHeaderView bundle:nil];
-//    [self.tableView registerNib:headerView forHeaderFooterViewReuseIdentifier:kTableViewSectionHeaderView];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -94,6 +87,13 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         [self.delegate didTapBackWithDetails:self.cachedDetails];
     }
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.didSelectBiz = NO;
 }
 
 - (void)viewDidLoad
@@ -195,8 +195,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
             __weak typeof(self) weakSelf = self;
             cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
 
-//            dispatch_async(dispatch_get_main_queue(), ^{
-            
+            if (!self.didSelectBiz)
+            {
                 [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
                  (YLPBusiness *business, NSError *error) {
                      dispatch_async(dispatch_get_main_queue(), ^{
@@ -231,46 +231,46 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                              }
                          }
                          dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-
-                         // Your Background work
-                         NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
+                             
+                             // Your Background work
+                             NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
                              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                             // Update your UI
-                             if (cell.tag == indexPath.row)
-                             {
-                                 if (business.photos.count > 0)
+                                 // Update your UI
+                                 if (cell.tag == indexPath.row)
                                  {
-                                     NSMutableArray *photosArray = [NSMutableArray array];
-                                     for (NSString *photoStr in business.photos)
+                                     if (business.photos.count > 0)
                                      {
-                                         NSURL *url = [NSURL URLWithString:photoStr];
-                                         NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                         UIImage *image = [UIImage imageWithData:imageData];
+                                         NSMutableArray *photosArray = [NSMutableArray array];
+                                         for (NSString *photoStr in business.photos)
+                                         {
+                                             NSURL *url = [NSURL URLWithString:photoStr];
+                                             NSData *imageData = [NSData dataWithContentsOfURL:url];
+                                             UIImage *image = [UIImage imageWithData:imageData];
+                                             
+                                             [photosArray addObject:image];
+                                         }
                                          
-                                         [photosArray addObject:image];
+                                         business.photos = photosArray;
                                      }
                                      
-                                     business.photos = photosArray;
+                                     if (imageData)
+                                     {
+                                         UIImage *image = [UIImage imageWithData:imageData];
+                                         business.bizThumbNail = image;
+                                         cell.thumbNailView.image = image;
+                                     }
+                                     else
+                                     {
+                                         business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                                     }
+                                     
+                                     [weakSelf.cachedDetails addObject:business];
                                  }
-                                 
-                                 if (imageData)
-                                 {
-                                     UIImage *image = [UIImage imageWithData:imageData];
-                                     business.bizThumbNail = image;
-                                     cell.thumbNailView.image = image;
-                                 }
-                                 else
-                                 {
-                                     business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
-                                 }
-                                 
-                                 [weakSelf.cachedDetails addObject:business];
-                             }
-                         });
+                             });
                          });
                      });
                  }];
-//            });
+            }
         }
         else
         {
@@ -324,6 +324,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.hud = [BVTHUDView hudWithView:self.navigationController.view];
     self.hud.delegate = self;
     
+    self.didSelectBiz = YES;
     self.didCancelRequest = NO;
     self.tableView.userInteractionEnabled = NO;
     self.tabBarController.tabBar.userInteractionEnabled = NO;
