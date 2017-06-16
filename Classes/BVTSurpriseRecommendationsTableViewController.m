@@ -189,68 +189,16 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         
         cell.openCloseLabel.text = @"";
         cell.secondaryOpenCloseLabel.text = @"";
-        
-        if (biz.bizThumbNail)
-        {
-            cell.thumbNailView.image = biz.bizThumbNail;
-        }
-        else
-        {
-            cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                // Your Background work
-                NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    // Update your UI
-                    if (cell.tag == indexPath.row)
-                    {
-                        if (imageData)
-                        {
-                            UIImage *image = [UIImage imageWithData:imageData];
-                            biz.bizThumbNail = image;
-                            cell.thumbNailView.image = image;
-                        }
-                        else
-                        {
-                            biz.bizThumbNail = [UIImage imageNamed:@"placeholder"];
-                        }
-                    }
-                });
-            });
-        }
 
         if (!cachedBiz)
         {
             __weak typeof(self) weakSelf = self;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
+            cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+
+//            dispatch_async(dispatch_get_main_queue(), ^{
+            
                 [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
                  (YLPBusiness *business, NSError *error) {
-                     //TODO: enter error logic here?
-                     // *** Get business photos in advance if they exist, to display from Presentation VC
-                     if (business.photos.count > 0)
-                     {
-                         NSMutableArray *photosArray = [NSMutableArray array];
-                         for (NSString *photoStr in business.photos)
-                         {
-                             NSURL *url = [NSURL URLWithString:photoStr];
-                             NSData *imageData = [NSData dataWithContentsOfURL:url];
-                             UIImage *image = [UIImage imageWithData:imageData];
-
-                             [photosArray addObject:image];
-                         }
-                         
-                         business.photos = photosArray;
-                     }
-                     
-                     if (![weakSelf.cachedDetails containsObject:business])
-                     {
-                         if (business)
-                         {
-                             [weakSelf.cachedDetails addObject:business];
-                         }
-                     }
-                     
                      dispatch_async(dispatch_get_main_queue(), ^{
                          
                          if (cell.tag == indexPath.row)
@@ -282,12 +230,52 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                  }
                              }
                          }
+                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+                         // Your Background work
+                         NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
+                             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                             // Update your UI
+                             if (cell.tag == indexPath.row)
+                             {
+                                 if (business.photos.count > 0)
+                                 {
+                                     NSMutableArray *photosArray = [NSMutableArray array];
+                                     for (NSString *photoStr in business.photos)
+                                     {
+                                         NSURL *url = [NSURL URLWithString:photoStr];
+                                         NSData *imageData = [NSData dataWithContentsOfURL:url];
+                                         UIImage *image = [UIImage imageWithData:imageData];
+                                         
+                                         [photosArray addObject:image];
+                                     }
+                                     
+                                     business.photos = photosArray;
+                                 }
+                                 
+                                 if (imageData)
+                                 {
+                                     UIImage *image = [UIImage imageWithData:imageData];
+                                     business.bizThumbNail = image;
+                                     cell.thumbNailView.image = image;
+                                 }
+                                 else
+                                 {
+                                     business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                                 }
+                                 
+                                 [weakSelf.cachedDetails addObject:business];
+                             }
+                         });
+                         });
                      });
                  }];
-            });
+//            });
         }
         else
         {
+            cell.thumbNailView.image = biz.bizThumbNail;
+
             if (!self.isLargePhone)
             {
                 if (cachedBiz.isOpenNow)

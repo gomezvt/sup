@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="T3O-0i-9qG">
-                        <rect key="frame" x="20" y="7.5" width="154.5" height="29"/>
+                        <rect key="frame" x="16" y="7.5" width="154.5" height="29"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeb-sS-zlu">
                                 <rect key="frame" x="0.0" y="0.0" width="89.5" height="29"/>
@@ -35,7 +36,7 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hrz-Ab-oZM">
-                        <rect key="frame" x="268" y="7.5" width="115" height="29"/>
+                        <rect key="frame" x="272" y="7.5" width="115" height="29"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like us on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4im-Gp-clM">
                                 <rect key="frame" x="0.0" y="0.0" width="77" height="29"/>
@@ -52,14 +53,14 @@
                         </subviews>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XO9-LA-9mt">
-                        <rect key="frame" x="0.0" y="0.0" width="175" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="171" height="44"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <connections>
                             <action selector="didTapYelpButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8lC-dg-FwL"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xe9-Ng-8pK">
-                        <rect key="frame" x="268" y="0.0" width="135" height="44"/>
+                        <rect key="frame" x="272" y="0.0" width="131" height="44"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <connections>
                             <action selector="didTapFBButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eso-1j-Zjr"/>
@@ -70,20 +71,20 @@
                     <constraint firstItem="T3O-0i-9qG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="1Mp-dM-t7J"/>
                     <constraint firstItem="XO9-LA-9mt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="7cI-bq-dru"/>
                     <constraint firstItem="XO9-LA-9mt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="B5j-Ca-y6y"/>
+                    <constraint firstItem="T3O-0i-9qG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="I5d-Yg-X48"/>
                     <constraint firstAttribute="bottom" secondItem="hrz-Ab-oZM" secondAttribute="bottom" constant="7" id="WhA-g5-yTI"/>
                     <constraint firstAttribute="bottom" secondItem="T3O-0i-9qG" secondAttribute="bottom" constant="7" id="bNq-fg-Yht"/>
-                    <constraint firstItem="T3O-0i-9qG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dRn-k2-fHh"/>
                     <constraint firstAttribute="bottom" secondItem="Xe9-Ng-8pK" secondAttribute="bottom" id="dhd-p0-jnv"/>
                     <constraint firstItem="XO9-LA-9mt" firstAttribute="trailing" secondItem="T3O-0i-9qG" secondAttribute="trailing" id="eX6-7S-KSv"/>
                     <constraint firstItem="Xe9-Ng-8pK" firstAttribute="leading" secondItem="hrz-Ab-oZM" secondAttribute="leading" id="i9p-sb-an0"/>
                     <constraint firstAttribute="bottom" secondItem="XO9-LA-9mt" secondAttribute="bottom" id="j6x-dL-CCh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hrz-Ab-oZM" secondAttribute="trailing" constant="8" id="jkn-5O-buJ"/>
                     <constraint firstItem="hrz-Ab-oZM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="lPJ-R3-gA9"/>
-                    <constraint firstAttribute="trailing" secondItem="hrz-Ab-oZM" secondAttribute="trailing" constant="20" id="xl9-7W-ZVQ"/>
                     <constraint firstItem="Xe9-Ng-8pK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ybB-UK-1Nq"/>
                     <constraint firstAttribute="trailing" secondItem="Xe9-Ng-8pK" secondAttribute="trailing" id="ykI-5u-LMU"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="-68" y="-404"/>
+            <point key="canvasLocation" x="-148" y="-536"/>
         </tableViewCell>
     </objects>
     <resources>

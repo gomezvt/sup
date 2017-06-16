@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) id hoursItem;
 @property (nonatomic, readonly, nullable, copy) NSURL *imageURL;
 @property (nonatomic, readonly, copy) NSURL *URL;
-
+@property (nonatomic) BOOL didGetDetails;
 @property (nonatomic, readonly) double rating;
 @property (nonatomic, readonly) NSUInteger reviewCount;
 
