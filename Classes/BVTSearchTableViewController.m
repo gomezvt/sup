@@ -64,7 +64,6 @@
 @property (nonatomic) BOOL gotDetails;
 //@property (nonatomic, strong) NSArray *arrayForSorting;
 @property (nonatomic, strong) NSMutableArray *originalDetailsArray;
-@property (nonatomic) BOOL didSelectBiz;
 @property (nonatomic) BOOL isLargePhone;
 @property (nonatomic, strong) NSMutableArray *cachedBiz;
 
@@ -210,8 +209,6 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     self.tableView.userInteractionEnabled = NO;
     self.tabBarController.tabBar.userInteractionEnabled = NO;
     self.searchBar.userInteractionEnabled = NO;
-
-    self.didSelectBiz = NO;
     
     dispatch_async(dispatch_get_main_queue(), ^{
 
@@ -306,8 +303,6 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
     self.tableView.userInteractionEnabled = NO;
     self.tabBarController.tabBar.userInteractionEnabled = NO;
-
-    self.didSelectBiz = YES;
     
     YLPBusiness *selectedBusiness = [self.recentSearches objectAtIndex:indexPath.row];
     __weak typeof(self) weakSelf = self;
@@ -477,8 +472,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     {
         cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
 
-        if (!self.didSelectBiz)
-        {
+
             [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
              (YLPBusiness *business, NSError *error) {
                  dispatch_async(dispatch_get_main_queue(), ^{
@@ -576,7 +570,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  });
              }];
         }
-    }
+    
     
     cell.business = biz;
     

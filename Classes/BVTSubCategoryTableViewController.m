@@ -46,7 +46,6 @@
 @property (nonatomic, strong) NSMutableArray *displayArray;
 @property (nonatomic) BOOL gotDetails;
 @property (nonatomic, strong) NSMutableArray *originalFilteredResults;
-@property (nonatomic) BOOL didSelectBiz;
 @property (nonatomic) BOOL isLargePhone;
 
 @end
@@ -288,13 +287,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.navigationController.navigationBar.barTintColor = [BVTStyles iconGreen];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    self.didSelectBiz = NO;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -381,7 +373,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     self.hud = [BVTHUDView hudWithView:self.navigationController.view];
     self.hud.delegate = self;
-    self.didSelectBiz = YES;
     
     self.didCancelRequest = NO;
     self.tableView.userInteractionEnabled = NO;
@@ -610,8 +601,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     {
         cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
         
-        if (!self.didSelectBiz)
-        {
+
             [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
              (YLPBusiness *business, NSError *error) {
                  dispatch_async(dispatch_get_main_queue(), ^{
@@ -712,7 +702,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                  });
              }];
         }
-    }
+    
     
     cell.business = biz;
     

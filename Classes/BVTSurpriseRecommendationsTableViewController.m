@@ -31,7 +31,6 @@
 @property (nonatomic, strong) BVTHUDView *hud;
 @property (nonatomic) BOOL didCancelRequest;
 @property (nonatomic, strong) NSMutableDictionary *orderedDict;
-@property (nonatomic) BOOL didSelectBiz;
 @property (nonatomic) BOOL isLargePhone;
 
 @end
@@ -89,12 +88,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    self.didSelectBiz = NO;
-}
 
 - (void)viewDidLoad
 {
@@ -195,8 +188,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
             __weak typeof(self) weakSelf = self;
             cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
 
-            if (!self.didSelectBiz)
-            {
+            
                 [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
                  (YLPBusiness *business, NSError *error) {
                      dispatch_async(dispatch_get_main_queue(), ^{
@@ -270,7 +262,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          });
                      });
                  }];
-            }
+            
         }
         else
         {
@@ -324,7 +316,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.hud = [BVTHUDView hudWithView:self.navigationController.view];
     self.hud.delegate = self;
     
-    self.didSelectBiz = YES;
     self.didCancelRequest = NO;
     self.tableView.userInteractionEnabled = NO;
     self.tabBarController.tabBar.userInteractionEnabled = NO;
