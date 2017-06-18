@@ -125,15 +125,19 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
         [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:subCatTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
          (YLPSearch *searchResults, NSError *error){
              dispatch_async(dispatch_get_main_queue(), ^{
+                 
                  if (error)
                  {
-                     didError = YES;
-
                      [weakSelf _hideHUD];
 
-                     NSString *string = error.userInfo[@"NSDebugDescription"];
+                     [weakSelf.goButton setEnabled:YES];
+                     [weakSelf.clearButton setEnabled:YES];
                      
-                                      if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
+                     weakSelf.goButton.layer.borderColor = [[BVTStyles iconGreen] CGColor];
+                     weakSelf.clearButton.layer.borderColor = [[BVTStyles iconGreen] CGColor];
+                     
+                     NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                     if ([string isEqualToString:@"The Internet connection appears to be offline."])
                      {
                          UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                          
@@ -141,15 +145,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
                          [alertController addAction:ok];
                          
                          [weakSelf presentViewController:alertController animated:YES completion:nil];
-                         
-                         NSLog(@"Error %@", error.localizedDescription);
                      }
-                     
-                     [weakSelf.goButton setEnabled:YES];
-                     [weakSelf.clearButton setEnabled:YES];
-                     
-                     weakSelf.goButton.layer.borderColor = [[BVTStyles iconGreen] CGColor];
-                     weakSelf.clearButton.layer.borderColor = [[BVTStyles iconGreen] CGColor];
+
                  }
              });
          }];

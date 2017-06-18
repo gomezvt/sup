@@ -191,8 +191,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
             
                 [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
                  (YLPBusiness *business, NSError *error) {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         
+//                     dispatch_async(dispatch_get_main_queue(), ^{
+                     
                          if (cell.tag == indexPath.row)
                          {
                              if (!self.isLargePhone)
@@ -239,7 +239,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                              NSData *imageData = [NSData dataWithContentsOfURL:url];
                                              UIImage *image = [UIImage imageWithData:imageData];
                                              
-                                             [photosArray addObject:image];
+                                             if (imageData)
+                                             {
+                                                 [photosArray addObject:image];
+                                             }
                                          }
                                          
                                          business.photos = photosArray;
@@ -260,7 +263,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                  }
                              });
                          });
-                     });
+//                     });
                  }];
             
         }
@@ -351,21 +354,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         [[AppDelegate sharedClient] reviewsForBusinessWithId:selectedBusiness.identifier
                                            completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                dispatch_async(dispatch_get_main_queue(), ^{
-                                                   if (error) {
-                                                       
+                                                   NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                                                   
+                                                   if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                                                   {
                                                        [weakSelf _hideHud];
                                                        
-                                                       NSString *string = error.userInfo[@"NSDebugDescription"];
+                                                       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                                                        
-                                                                        if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
-                                                       {
-                                                           UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                                                           
-                                                           UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                                                           [alertController addAction:ok];
-                                                           
-                                                           [weakSelf presentViewController:alertController animated:YES completion:nil];
-                                                       }
+                                                       UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                                       [alertController addAction:ok];
+                                                       
+                                                       [weakSelf presentViewController:alertController animated:YES completion:nil];
+                                                       
                                                    }
                                                    else
                                                    {
@@ -405,21 +406,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
          (YLPBusiness *business, NSError *error) {
              dispatch_async(dispatch_get_main_queue(), ^{
-                 if (error) {
-                     
+                 NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                 
+                 if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                 {
                      [weakSelf _hideHud];
-
-                     NSString *string = error.userInfo[@"NSDebugDescription"];
                      
-                                      if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
-                     {
-                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                         
-                         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                         [alertController addAction:ok];
-                         
-                         [weakSelf presentViewController:alertController animated:YES completion:nil];
-                     }
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                     
+                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                     [alertController addAction:ok];
+                     
+                     [weakSelf presentViewController:alertController animated:YES completion:nil];
+                     
                  }
                  else
                  {
@@ -432,8 +431,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                              NSURL *url = [NSURL URLWithString:photoStr];
                              NSData *imageData = [NSData dataWithContentsOfURL:url];
                              UIImage *image = [UIImage imageWithData:imageData];
-
-                             [photosArray addObject:image];
+                             if (imageData)
+                             {
+                                 [photosArray addObject:image];
+                             }
                          }
                          
                          business.photos = photosArray;
@@ -442,21 +443,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                      [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
                                                         completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                             dispatch_async(dispatch_get_main_queue(), ^{
-                                                                if (error) {
-                                                                    
+                                                                NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                                                                
+                                                                if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                                                                {
                                                                     [weakSelf _hideHud];
                                                                     
-                                                                    NSString *string = error.userInfo[@"NSDebugDescription"];
+                                                                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                                                                     
-                                                                                     if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
-                                                                    {
-                                                                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                                                                        
-                                                                        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                                                                        [alertController addAction:ok];
-                                                                        
-                                                                        [weakSelf presentViewController:alertController animated:YES completion:nil];
-                                                                    }
+                                                                    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                                                    [alertController addAction:ok];
+                                                                    
+                                                                    [weakSelf presentViewController:alertController animated:YES completion:nil];
+                                                                    
                                                                 }
                                                                 else
                                                                 {

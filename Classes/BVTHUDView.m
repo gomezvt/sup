@@ -70,6 +70,7 @@
 {
     if ([self.delegate respondsToSelector:@selector(didTapHUDCancelButton)])
     {
+
         [self.delegate didTapHUDCancelButton];
     }
 }

@@ -65,8 +65,11 @@
 //@property (nonatomic, strong) NSArray *arrayForSorting;
 @property (nonatomic, strong) NSMutableArray *originalDetailsArray;
 @property (nonatomic) BOOL isLargePhone;
-@property (nonatomic, strong) NSMutableArray *cachedBiz;
+@property (nonatomic) BOOL didSelectBiz;
 
+@property (nonatomic, strong) NSMutableArray *cachedBiz;
+//@property (nonatomic, strong) NSOperationQueue *queue;
+//@property (nonatomic, strong) NSBlockOperation *block;
 @end
 
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
@@ -112,8 +115,13 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     [super viewDidLoad];
     
+//    self.queue = [[NSOperationQueue alloc] init];
     self.cachedBiz = [[NSMutableArray alloc] init];
-    
+//    self.block = [[NSBlockOperation alloc] init];
+//    [self.queue addOperation:self.block];
+
+
+
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
 
     
@@ -182,16 +190,21 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
 - (void)didTapHUDCancelButton
 {
+    dispatch_async(dispatch_get_main_queue(), ^{
+
     self.didCancelRequest = YES;
     self.searchBar.userInteractionEnabled = YES;
     self.tableView.userInteractionEnabled = YES;
     self.tabBarController.tabBar.userInteractionEnabled = YES;
 
+
     [self.hud removeFromSuperview];
+    });
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    self.didSelectBiz = NO;
     if ([segue.identifier isEqualToString:kShowDetailSegue])
     {
         // Get destination view
@@ -206,32 +219,35 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     self.hud = [BVTHUDView hudWithView:self.navigationController.view];
     self.hud.delegate = self;
     self.gotDetails = NO;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+
     self.tableView.userInteractionEnabled = NO;
     self.tabBarController.tabBar.userInteractionEnabled = NO;
     self.searchBar.userInteractionEnabled = NO;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [searchBar resignFirstResponder];
+        searchBar.showsCancelButton = NO;
+    });
 
     __weak typeof(self) weakSelf = self;
     [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:searchBar.text limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
          dispatch_async(dispatch_get_main_queue(), ^{
              // code here
-             if (error)
+             NSString *string = error.userInfo[@"NSLocalizedDescription"];
+             
+             if ([string isEqualToString:@"The Internet connection appears to be offline."])
              {
                  [weakSelf _hideHUD];
                  
-                 NSString *string = error.userInfo[@"NSDebugDescription"];
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                  
-                 if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
-                 {
-                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                     
-                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                     [alertController addAction:ok];
-                     
-                     [weakSelf presentViewController:alertController animated:YES completion:nil];
-                 }
+                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                 [alertController addAction:ok];
+                 
+                 [weakSelf presentViewController:alertController animated:YES completion:nil];
+                 
              }
              else if (searchResults.businesses.count == 0)
              {
@@ -264,10 +280,6 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
              }
          });
      }];
-    });
-    
-    [searchBar resignFirstResponder];
-    searchBar.showsCancelButton = NO;
 }
 
 
@@ -295,36 +307,88 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     self.hud = [BVTHUDView hudWithView:self.navigationController.view];
     self.hud.delegate = self;
     self.didCancelRequest = NO;
-
+    self.didSelectBiz = YES;
     self.tableView.userInteractionEnabled = NO;
     self.tabBarController.tabBar.userInteractionEnabled = NO;
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     YLPBusiness *selectedBusiness = [self.recentSearches objectAtIndex:indexPath.row];
+    YLPBusiness *cachedBiz = [[self.cachedBiz filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", selectedBusiness.identifier]] lastObject];
     __weak typeof(self) weakSelf = self;
 
+    if (cachedBiz)
+    {
+        
+        [[AppDelegate sharedClient] reviewsForBusinessWithId:cachedBiz.identifier
+                                           completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
+                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                   NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                                                   
+                                                   if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                                                   {
+                                                       [weakSelf _hideHUD];
+                                                       
+                                                       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                                                       
+                                                       UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                                       [alertController addAction:ok];
+                                                       
+                                                       [weakSelf presentViewController:alertController animated:YES completion:nil];
+                                                       
+                                                   }
+                                                   else
+                                                   {
+                                                       // *** Get review user photos in advance if they exist, to display from Presentation VC
+                                                       NSMutableArray *userPhotos = [NSMutableArray array];
+                                                       for (YLPReview *review in reviews.reviews)
+                                                       {
+                                                           YLPUser *user = review.user;
+                                                           if (user.imageURL)
+                                                           {
+                                                               NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
+                                                               UIImage *image = [UIImage imageNamed:@"user"];
+                                                               if (imageData)
+                                                               {
+                                                                   image = [UIImage imageWithData:imageData];
+                                                               }
+                                                               [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];                                                                }
+                                                       }
+                                                       cachedBiz.reviews = reviews.reviews;
+                                                       cachedBiz.userPhotosArray = userPhotos;
+                                                       
+                                                       if (!weakSelf.didCancelRequest)
+                                                       {
+                                                           [weakSelf _hideHUD];
+                                                           
+                                                           [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:cachedBiz];
+                                                       }
+                                                   }
+                                                   
+                                               });
+                                           }];
+    }
+    else
+    {
         [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
          (YLPBusiness *business, NSError *error) {
              dispatch_async(dispatch_get_main_queue(), ^{
-                 if (error) {
-                     
+                 NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                 
+                 if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                 {
                      [weakSelf _hideHUD];
-
-                     NSString *string = error.userInfo[@"NSDebugDescription"];
                      
-                                      if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
-                     {
-                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                         
-                         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                         [alertController addAction:ok];
-                         
-                         [weakSelf presentViewController:alertController animated:YES completion:nil];
-                     }
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                     
+                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                     [alertController addAction:ok];
+                     
+                     [weakSelf presentViewController:alertController animated:YES completion:nil];
+                     
                  }
                  else
                  {
@@ -337,31 +401,32 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                              NSURL *url = [NSURL URLWithString:photoStr];
                              NSData *imageData = [NSData dataWithContentsOfURL:url];
                              UIImage *image = [UIImage imageWithData:imageData];
-
-                             [photosArray addObject:image];
+                             
+                             if (imageData)
+                             {
+                                 [photosArray addObject:image];
+                             }
                          }
-    
+                         
                          business.photos = photosArray;
                      }
-    
+                     
                      [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
                                                         completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                             dispatch_async(dispatch_get_main_queue(), ^{
-                                                                if (error) {
-                                                                    
+                                                                NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                                                                
+                                                                if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                                                                {
                                                                     [weakSelf _hideHUD];
-
-                                                                    NSString *string = error.userInfo[@"NSDebugDescription"];
                                                                     
-                                                                                     if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
-                                                                    {
-                                                                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                                                                        
-                                                                        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                                                                        [alertController addAction:ok];
-                                                                        
-                                                                        [weakSelf presentViewController:alertController animated:YES completion:nil];
-                                                                    }
+                                                                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                                                                    
+                                                                    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                                                    [alertController addAction:ok];
+                                                                    
+                                                                    [weakSelf presentViewController:alertController animated:YES completion:nil];
+                                                                    
                                                                 }
                                                                 else
                                                                 {
@@ -382,11 +447,11 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                                                     }
                                                                     business.reviews = reviews.reviews;
                                                                     business.userPhotosArray = userPhotos;
-    
+                                                                    
                                                                     if (!weakSelf.didCancelRequest)
                                                                     {
                                                                         [weakSelf _hideHUD];
-    
+                                                                        
                                                                         [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
                                                                     }
                                                                 }
@@ -398,6 +463,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
              });
              
          }];
+    }
+    
     
 }
 
@@ -425,11 +492,14 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
     
+
     cell.openCloseLabel.text = @"";
     cell.secondaryOpenCloseLabel.text = @"";
+        
     
     YLPBusiness *biz = [self.recentSearches objectAtIndex:indexPath.row];
     YLPBusiness *cachedBiz = [[self.cachedBiz filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", biz.identifier]] lastObject];
@@ -438,9 +508,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     {
         biz = cachedBiz;
 
+
         cell.thumbNailView.image = cachedBiz.bizThumbNail;
-//        dispatch_async(dispatch_get_main_queue(), ^{
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+
             if (!self.isLargePhone)
             {
                 if (cachedBiz.isOpenNow)
@@ -467,113 +538,130 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                     cell.openCloseLabel.textColor = [UIColor redColor];
                 }
             }
+        });
     }
     else
     {
         cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+        __weak typeof(self) weakSelf = self;
 
-
-            [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
-             (YLPBusiness *business, NSError *error) {
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     business.didGetDetails = YES;
-                     
-                     YLPBusiness *match = [[self.originalDetailsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
-                     
-                     if (match)
-                     {
-                         NSInteger index = [self.originalDetailsArray indexOfObject:match];
-                         [self.originalDetailsArray replaceObjectAtIndex:index withObject:business];
-                     }
-                     
-                     if (!self.isLargePhone)
-                     {
-                         if (business.isOpenNow)
-                         {
-                             cell.secondaryOpenCloseLabel.text = @"Open Now";
-                             cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
-                         }
-                         else if (business.hoursItem && !business.isOpenNow)
-                         {
-                             cell.secondaryOpenCloseLabel.text = @"Closed Now";
-                             cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-                         }
-                     }
-                     else
-                     {
-                         if (business.isOpenNow)
-                         {
-                             cell.openCloseLabel.text = @"Open Now";
-                             cell.openCloseLabel.textColor = [BVTStyles iconGreen];
-                         }
-                         else if (business.hoursItem && !business.isOpenNow)
-                         {
-                             cell.openCloseLabel.text = @"Closed Now";
-                             cell.openCloseLabel.textColor = [UIColor redColor];
-                         }
-                     }
-                     if (error)
-                     {
-                         [self _hideHUD];
+        if (!self.didSelectBiz)
+        {
+//            self.block.qualityOfService = NSQualityOfServiceBackground;
+//            self.block.queuePriority = NSOperationQueuePriorityVeryLow;
+//            [self.block addExecutionBlock:^{
+                [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
+                 (YLPBusiness *business, NSError *error) {
+                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                         NSString *string = error.userInfo[@"NSLocalizedDescription"];
                          
-                         NSString *string = error.userInfo[@"NSDebugDescription"];
-                         
-                         if (![string isEqualToString:@"JSON text did not start with array or object and option to allow fragments not set."] && ![string isEqualToString:@"The data couldn't be read because it isn't in the correct format."])
+                         if ([string isEqualToString:@"The Internet connection appears to be offline."])
                          {
+                             [weakSelf _hideHUD];
+                             
                              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                              
                              UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                              [alertController addAction:ok];
                              
-                             [self presentViewController:alertController animated:YES completion:nil];
+                             [weakSelf presentViewController:alertController animated:YES completion:nil];
+                             
                          }
-                     }
-                     
-                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                         // Your Background work
-                         NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
-                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                             // Update your UI
-                             if (cell.tag == indexPath.row)
+                         else
+                         {
+                             if (business)
                              {
-                                 if (imageData)
-                                 {
-                                     UIImage *image = [UIImage imageWithData:imageData];
-                                     business.bizThumbNail = image;
-                                     cell.thumbNailView.image = image;
-                                 }
-                                 else
-                                 {
-                                     business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
-                                 }
+                                 business.didGetDetails = YES;
                                  
-                                 if (business.photos.count > 0)
-                                 {
-                                     NSMutableArray *photosArray = [NSMutableArray array];
-                                     for (NSString *photoStr in business.photos)
-                                     {
-                                         NSURL *url = [NSURL URLWithString:photoStr];
-                                         NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                         UIImage *image = [UIImage imageWithData:imageData];
-                                         [photosArray addObject:image];
-                                     }
-                                     
-                                     business.photos = photosArray;
-                                 }
+//                                 YLPBusiness *match = [[weakSelf.originalDetailsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
+//                                 
+//                                 if (match)
+//                                 {
+//                                     NSInteger index = [weakSelf.originalDetailsArray indexOfObject:match];
+//                                     [weakSelf.originalDetailsArray replaceObjectAtIndex:index withObject:business];
+//                                 }
                                  
-                                 [self.cachedBiz addObject:business];
-                                 
+//                                 if (!weakSelf.isLargePhone)
+//                                 {
+//                                     if (business.isOpenNow)
+//                                     {
+//                                         cell.secondaryOpenCloseLabel.text = @"Open Now";
+//                                         cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+//                                     }
+//                                     else if (business.hoursItem && !business.isOpenNow)
+//                                     {
+//                                         cell.secondaryOpenCloseLabel.text = @"Closed Now";
+//                                         cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+//                                     }
+//                                 }
+//                                 else
+//                                 {
+//                                     if (business.isOpenNow)
+//                                     {
+//                                         cell.openCloseLabel.text = @"Open Now";
+//                                         cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+//                                     }
+//                                     else if (business.hoursItem && !business.isOpenNow)
+//                                     {
+//                                         cell.openCloseLabel.text = @"Closed Now";
+//                                         cell.openCloseLabel.textColor = [UIColor redColor];
+//                                     }
+//                                 }
+//
+                                  [weakSelf.cachedBiz addObject:business];
+//                                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                                     // Your Background work
+//                                     NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
+//                                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                                         // Update your UI
+//                                         if (cell.tag == indexPath.row)
+//                                         {
+//                                             if (imageData)
+//                                             {
+//                                                 UIImage *image = [UIImage imageWithData:imageData];
+//                                                 business.bizThumbNail = image;
+//                                                 cell.thumbNailView.image = image;
+//                                             }
+//                                             else
+//                                             {
+//                                                 business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+//                                             }
+//                                             
+//                                             if (business.photos.count > 0)
+//                                             {
+//                                                 NSMutableArray *photosArray = [NSMutableArray array];
+//                                                 for (NSString *photoStr in business.photos)
+//                                                 {
+//                                                     NSURL *url = [NSURL URLWithString:photoStr];
+//                                                     NSData *imageData = [NSData dataWithContentsOfURL:url];
+//                                                     UIImage *image = [UIImage imageWithData:imageData];
+//                                                     if (imageData)
+//                                                     {
+//                                                         [photosArray addObject:image];
+//                                                     }
+//                                                 }
+//                                                 
+//                                                 business.photos = photosArray;
+//                                             }
+//                                             
+//                                             [weakSelf.cachedBiz addObject:business];
+//                                             
+//                                         }
+//                                     });
+//                                 });
                              }
-                         });
+                         }
+                         
                      });
-                     
-                 });
-             }];
+                 }];
+//            }];
+            
+//            [weakSelf.queue addOperation:weakSelf.block];
         }
-    
+    }
     
     cell.business = biz;
-    
+
     return cell;
 }
 
