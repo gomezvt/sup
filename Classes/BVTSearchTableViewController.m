@@ -552,7 +552,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 //            [self.block addExecutionBlock:^{
                 [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
                  (YLPBusiness *business, NSError *error) {
-                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                     dispatch_async(dispatch_get_main_queue(), ^{
                          NSString *string = error.userInfo[@"NSLocalizedDescription"];
                          
                          if ([string isEqualToString:@"The Internet connection appears to be offline."])
@@ -572,9 +572,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                              if (business)
                              {
                                  business.didGetDetails = YES;
-                                 
-                                 business.didGetDetails = YES;
-                                 
+                                                                  
                                  YLPBusiness *match = [[weakSelf.originalDetailsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
                                  
                                  if (match)
@@ -587,32 +585,32 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                      }
                                  }
                                  
-//                                 if (!weakSelf.isLargePhone)
-//                                 {
-//                                     if (business.isOpenNow)
-//                                     {
-//                                         cell.secondaryOpenCloseLabel.text = @"Open Now";
-//                                         cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
-//                                     }
-//                                     else if (business.hoursItem && !business.isOpenNow)
-//                                     {
-//                                         cell.secondaryOpenCloseLabel.text = @"Closed Now";
-//                                         cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-//                                     }
-//                                 }
-//                                 else
-//                                 {
-//                                     if (business.isOpenNow)
-//                                     {
-//                                         cell.openCloseLabel.text = @"Open Now";
-//                                         cell.openCloseLabel.textColor = [BVTStyles iconGreen];
-//                                     }
-//                                     else if (business.hoursItem && !business.isOpenNow)
-//                                     {
-//                                         cell.openCloseLabel.text = @"Closed Now";
-//                                         cell.openCloseLabel.textColor = [UIColor redColor];
-//                                     }
-//                                 }
+                                 if (!weakSelf.isLargePhone)
+                                 {
+                                     if (business.isOpenNow)
+                                     {
+                                         cell.secondaryOpenCloseLabel.text = @"Open Now";
+                                         cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+                                     }
+                                     else if (business.hoursItem && !business.isOpenNow)
+                                     {
+                                         cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                                         cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                                     }
+                                 }
+                                 else
+                                 {
+                                     if (business.isOpenNow)
+                                     {
+                                         cell.openCloseLabel.text = @"Open Now";
+                                         cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                                     }
+                                     else if (business.hoursItem && !business.isOpenNow)
+                                     {
+                                         cell.openCloseLabel.text = @"Closed Now";
+                                         cell.openCloseLabel.textColor = [UIColor redColor];
+                                     }
+                                 }
 //
                                   [weakSelf.cachedBiz addObject:business];
 //                                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -638,6 +636,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 //                                                 NSMutableArray *photosArray = [NSMutableArray array];
 //                                                 for (NSString *photoStr in business.photos)
 //                                                 {
+                                 
 //                                                     NSURL *url = [NSURL URLWithString:photoStr];
 //                                                     NSData *imageData = [NSData dataWithContentsOfURL:url];
 //                                                     UIImage *image = [UIImage imageWithData:imageData];
