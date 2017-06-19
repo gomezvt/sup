@@ -189,8 +189,9 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
 - (void)didTapHUDCancelButton
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.didCancelRequest = YES;
+    self.didCancelRequest = YES;
+
+    dispatch_async(dispatch_get_main_queue(), ^(void){
         self.searchBar.userInteractionEnabled = YES;
         self.tableView.userInteractionEnabled = YES;
         self.tabBarController.tabBar.userInteractionEnabled = YES;
@@ -319,7 +320,6 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
     if (cachedBiz)
     {
-        
         [[AppDelegate sharedClient] reviewsForBusinessWithId:cachedBiz.identifier
                                            completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                dispatch_async(dispatch_get_main_queue(), ^{
@@ -358,7 +358,10 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                                        }
                                                        cachedBiz.reviews = reviews.reviews;
                                                        cachedBiz.userPhotosArray = userPhotos;
+                                                       });
                                                        
+                                                       dispatch_async(dispatch_get_main_queue(), ^(void){
+
                                                        if (!weakSelf.didCancelRequest)
                                                        {
                                                            [weakSelf _hideHUD];
@@ -415,7 +418,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                      });
                      [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
                                                         completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
-                                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                            dispatch_async(dispatch_get_main_queue(), ^(void){
                                                                 NSString *string = error.userInfo[@"NSLocalizedDescription"];
                                                                 
                                                                 if ([string isEqualToString:@"The Internet connection appears to be offline."])
@@ -454,7 +457,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                                                     
                                                                     });
                                                                     
-                                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                                    dispatch_async(dispatch_get_main_queue(), ^(void){
                                                                         
                                                                         if (!weakSelf.didCancelRequest)
                                                                         {
@@ -482,10 +485,9 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     self.tableView.userInteractionEnabled = YES;
     self.tabBarController.tabBar.userInteractionEnabled = YES;
     self.searchBar.userInteractionEnabled = YES;
-
+    
     [self.hud removeFromSuperview];
 }
-
 
 #pragma mark - TableView Data Source
 
@@ -606,6 +608,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                      for (NSString *photoStr in business.photos)
                                      {
                                          NSURL *url = [NSURL URLWithString:photoStr];
+
                                          NSData *imageData = [NSData dataWithContentsOfURL:url];
                                          
                                          UIImage *image = [UIImage imageWithData:imageData];

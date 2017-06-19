@@ -44,8 +44,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (void)didTapHUDCancelButton
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.didCancelRequest = YES;
+    self.didCancelRequest = YES;
+
+    dispatch_async(dispatch_get_main_queue(), ^(void){
         self.backChevron.enabled = YES;
         self.tableView.userInteractionEnabled = YES;
         self.tabBarController.tabBar.userInteractionEnabled = YES;
@@ -248,7 +249,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                  }
                  else
                  {
-                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
                          if (business)
                          {
                              // Your Background work
@@ -259,6 +260,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                  for (NSString *photoStr in business.photos)
                                  {
                                      NSURL *url = [NSURL URLWithString:photoStr];
+
                                      NSData *imageData = [NSData dataWithContentsOfURL:url];
                                      UIImage *image = [UIImage imageWithData:imageData];
                                      
@@ -287,7 +289,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                  // Update your UI
                                  if (cell.tag == indexPath.row)
                                  {
-                                     if (!self.isLargePhone)
+                                     if (!weakSelf.isLargePhone)
                                      {
                                          if (business.isOpenNow)
                                          {
@@ -377,7 +379,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
     if (cachedBiz)
     {
-        
         [[AppDelegate sharedClient] reviewsForBusinessWithId:cachedBiz.identifier
                                            completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                dispatch_async(dispatch_get_main_queue(), ^{
@@ -412,11 +413,15 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                                    {
                                                                        image = [UIImage imageWithData:imageData];
                                                                    }
-                                                                   [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];                                                                }
+                                                                   [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];
+                                                                   }
                                                            }
                                                            cachedBiz.reviews = reviews.reviews;
                                                            cachedBiz.userPhotosArray = userPhotos;
-                                                           
+                                                       });
+                                                       
+                                                       dispatch_async(dispatch_get_main_queue(), ^(void){
+
                                                            if (!weakSelf.didCancelRequest)
                                                            {
                                                                [weakSelf _hideHud];
@@ -473,7 +478,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                      });
                      [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
                                                         completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
-                                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                            dispatch_async(dispatch_get_main_queue(), ^(void){
                                                                 NSString *string = error.userInfo[@"NSLocalizedDescription"];
                                                                 
                                                                 if ([string isEqualToString:@"The Internet connection appears to be offline."])
@@ -512,7 +517,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                                         
                                                                     });
                                                                     
-                                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                                    dispatch_async(dispatch_get_main_queue(), ^(void){
                                                                         
                                                                         if (!weakSelf.didCancelRequest)
                                                                         {

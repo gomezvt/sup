@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519532140.209503"
+            timestampString = "519533661.863023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
             <Locations>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519527029.15451"
+            timestampString = "519533661.863023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
             landmarkName = "-didTapStarSortIcon:"
             landmarkType = "7">
          </BreakpointContent>
@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519532140.209503"
+            timestampString = "519535759.27441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "764"
-            endingLineNumber = "764"
+            startingLineNumber = "767"
+            endingLineNumber = "767"
             landmarkName = "-sortArrayWithPredicates"
             landmarkType = "7">
          </BreakpointContent>
@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519532140.209503"
+            timestampString = "519535759.27441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "804"
-            endingLineNumber = "804"
+            startingLineNumber = "807"
+            endingLineNumber = "807"
             landmarkName = "-didTapDistanceButton:"
             landmarkType = "7">
          </BreakpointContent>
@@ -164,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519532140.209503"
+            timestampString = "519535759.27441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "831"
-            endingLineNumber = "831"
+            startingLineNumber = "834"
+            endingLineNumber = "834"
             landmarkName = "-didTapDistanceButton:"
             landmarkType = "7">
          </BreakpointContent>
@@ -196,7 +196,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519532140.209503"
+            timestampString = "519535759.27441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "327"
@@ -212,7 +212,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519532140.209503"
+            timestampString = "519535759.27441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "323"
@@ -244,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519532140.209503"
+            timestampString = "519535759.27441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "567"
-            endingLineNumber = "567"
+            startingLineNumber = "569"
+            endingLineNumber = "569"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -256,15 +256,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSubCategoryTableViewController.m"
-            timestampString = "519532140.209503"
+            timestampString = "519535759.27441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "568"
-            endingLineNumber = "568"
+            startingLineNumber = "575"
+            endingLineNumber = "575"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -276,27 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSurpriseRecommendationsTableViewController.m"
-            timestampString = "519532140.209503"
+            timestampString = "519533661.863023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSurpriseRecommendationsTableViewController.m"
-            timestampString = "519527301.957438"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
             <Locations>
@@ -308,11 +292,11 @@
                   moduleName = "Burlingtonian"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSurpriseRecommendationsTableViewController.m"
-                  timestampString = "519532196.034543"
+                  timestampString = "519535237.986231"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "192"
-                  endingLineNumber = "192"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
                   offsetFromSymbolStart = "2044">
                </Location>
                <Location
@@ -323,11 +307,11 @@
                   moduleName = "Burlingtonian"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSurpriseRecommendationsTableViewController.m"
-                  timestampString = "519532196.03592"
+                  timestampString = "519535237.987582"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "192"
-                  endingLineNumber = "192"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>
@@ -339,60 +323,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSubCategoryTableViewController.m"
-            timestampString = "519527590.275541"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
-            landmarkName = "-didTapHUDCancelButton"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[BVTSubCategoryTableViewController didTapHUDCancelButton]"
-                  moduleName = "Burlingtonian"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSubCategoryTableViewController.m"
-                  timestampString = "519532196.039193"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "341"
-                  endingLineNumber = "341"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__58-[BVTSubCategoryTableViewController didTapHUDCancelButton]_block_invoke"
-                  moduleName = "Burlingtonian"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSubCategoryTableViewController.m"
-                  timestampString = "519532196.040567"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "341"
-                  endingLineNumber = "341"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519527602.218183"
+            timestampString = "519533661.863023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-didTapHUDCancelButton"
             landmarkType = "7">
             <Locations>
@@ -404,12 +340,12 @@
                   moduleName = "Burlingtonian"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSearchTableViewController.m"
-                  timestampString = "519532196.043864"
+                  timestampString = "519535237.990781"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "192"
-                  endingLineNumber = "192"
-                  offsetFromSymbolStart = "32">
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "60">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -419,12 +355,12 @@
                   moduleName = "Burlingtonian"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSearchTableViewController.m"
-                  timestampString = "519532196.045258"
+                  timestampString = "519535237.992127"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "192"
-                  endingLineNumber = "192"
-                  offsetFromSymbolStart = "28">
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -436,7 +372,87 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519532140.209503"
+            timestampString = "519535759.27441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/BVTSearchTableViewController.m"
+            timestampString = "519535759.27441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "441"
+            endingLineNumber = "441"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/BVTSearchTableViewController.m"
+            timestampString = "519535759.27441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "401"
+            endingLineNumber = "401"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/BVTSearchTableViewController.m"
+            timestampString = "519535759.27441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "561"
+            endingLineNumber = "561"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/BVTSearchTableViewController.m"
+            timestampString = "519535759.27441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "506"
+            endingLineNumber = "506"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/BVTSubCategoryTableViewController.m"
+            timestampString = "519535405.215021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "376"
@@ -448,15 +464,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519532140.209503"
+            filePath = "Classes/BVTSubCategoryTableViewController.m"
+            timestampString = "519535405.215021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -467,12 +483,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519532140.209503"
+            filePath = "Classes/BVTSurpriseRecommendationsTableViewController.m"
+            timestampString = "519535759.27441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -483,13 +499,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519532209.019588"
+            filePath = "Classes/BVTSurpriseRecommendationsTableViewController.m"
+            timestampString = "519534713.487823"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "559"
-            endingLineNumber = "559"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -499,13 +515,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/BVTSearchTableViewController.m"
-            timestampString = "519532212.108048"
+            filePath = "Classes/BVTSurpriseRecommendationsTableViewController.m"
+            timestampString = "519535759.27441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "504"
-            endingLineNumber = "504"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
+            landmarkName = "-_hideHud"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/BVTSubCategoryTableViewController.m"
+            timestampString = "519535405.215021"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
+            landmarkName = "-didTapHUDCancelButton"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

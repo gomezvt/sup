@@ -338,13 +338,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (void)didTapHUDCancelButton
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.didCancelRequest = YES;
-        self.backChevron.enabled = YES;
-        self.tableView.userInteractionEnabled = YES;
-        self.tabBarController.tabBar.userInteractionEnabled = YES;
-        
-        [self.hud removeFromSuperview];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+
+    self.didCancelRequest = YES;
+    self.backChevron.enabled = YES;
+    self.tableView.userInteractionEnabled = YES;
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+    
+    [self.hud removeFromSuperview];
     });
 }
 
@@ -355,7 +356,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.didCancelRequest = NO;
     self.didSelectBiz = YES;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
         self.backChevron.enabled = NO;
         self.hud = [BVTHUDView hudWithView:self.navigationController.view];
         self.hud.delegate = self;
@@ -410,7 +411,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                            }
                                                            cachedBiz.reviews = reviews.reviews;
                                                            cachedBiz.userPhotosArray = userPhotos;
-                                                           
+                                                       });
+                                                       
+                                                       dispatch_async(dispatch_get_main_queue(), ^(void){
+
                                                            if (!weakSelf.didCancelRequest)
                                                            {
                                                                [weakSelf _hideHUD];
@@ -418,6 +422,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                                [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:cachedBiz];
                                                            }
                                                        });
+
                                                    }
                                                    
                                                });
@@ -467,7 +472,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                      });
                      [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
                                                         completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
-                                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                            dispatch_async(dispatch_get_main_queue(), ^(void){
                                                                 NSString *string = error.userInfo[@"NSLocalizedDescription"];
                                                                 
                                                                 if ([string isEqualToString:@"The Internet connection appears to be offline."])
@@ -506,7 +511,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                                         
                                                                     });
                                                                     
-                                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                                    dispatch_async(dispatch_get_main_queue(), ^(void){
                                                                         
                                                                         if (!weakSelf.didCancelRequest)
                                                                         {
@@ -532,7 +537,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.backChevron.enabled = YES;
     self.tableView.userInteractionEnabled = YES;
     self.tabBarController.tabBar.userInteractionEnabled = YES;
-
+    
     [self.hud removeFromSuperview];
 }
 
@@ -556,14 +561,16 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     dispatch_async(dispatch_get_main_queue(), ^(void){
         if (cell.tag == indexPath.row)
         {
-        cell.openCloseLabel.text = @"";
-        cell.secondaryOpenCloseLabel.text = @"";
-        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+            cell.openCloseLabel.text = @"";
+            cell.secondaryOpenCloseLabel.text = @"";
+            cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
         }
     });
     
     YLPBusiness *biz = [self.filteredResults objectAtIndex:indexPath.row];
-    YLPBusiness *cachedBiz = [[self.displayArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", biz.identifier]] lastObject];
+    
+    NSArray *cachedBizArray = [self.cachedDetails valueForKey:self.subCategoryTitle];
+    YLPBusiness *cachedBiz = [[cachedBizArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", biz.identifier]] lastObject];
     
     if (cachedBiz)
     {
@@ -655,6 +662,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                      for (NSString *photoStr in business.photos)
                                      {
                                          NSURL *url = [NSURL URLWithString:photoStr];
+
                                          NSData *imageData = [NSData dataWithContentsOfURL:url];
                                          
                                          UIImage *image = [UIImage imageWithData:imageData];
@@ -667,8 +675,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                      
                                      business.photos = photosArray;
                                      
-                                     [self.displayArray addObject:business];
-                                     [self.cachedDetails setObject:self.displayArray forKey:self.subCategoryTitle];
+                                     [weakSelf.displayArray addObject:business];
+                                     [weakSelf.cachedDetails setObject:weakSelf.displayArray forKey:weakSelf.subCategoryTitle];
                                      
                                      YLPBusiness *match = [[weakSelf.originalFilteredResults filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
                                      
