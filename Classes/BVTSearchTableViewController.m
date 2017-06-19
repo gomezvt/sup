@@ -61,7 +61,6 @@
 @property (nonatomic) double milesKeyValue;
 @property (nonatomic, strong) NSString *priceKeyValue;
 @property (nonatomic, strong) NSString *openCloseKeyValue;
-@property (nonatomic) BOOL gotDetails;
 //@property (nonatomic, strong) NSArray *arrayForSorting;
 @property (nonatomic, strong) NSMutableArray *originalDetailsArray;
 @property (nonatomic) BOOL isLargePhone;
@@ -191,14 +190,12 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 - (void)didTapHUDCancelButton
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-
-    self.didCancelRequest = YES;
-    self.searchBar.userInteractionEnabled = YES;
-    self.tableView.userInteractionEnabled = YES;
-    self.tabBarController.tabBar.userInteractionEnabled = YES;
-
-
-    [self.hud removeFromSuperview];
+        self.didCancelRequest = YES;
+        self.searchBar.userInteractionEnabled = YES;
+        self.tableView.userInteractionEnabled = YES;
+        self.tabBarController.tabBar.userInteractionEnabled = YES;
+        
+        [self.hud removeFromSuperview];
     });
 }
 
@@ -218,7 +215,6 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     self.hud = [BVTHUDView hudWithView:self.navigationController.view];
     self.hud.delegate = self;
-    self.gotDetails = NO;
     
     dispatch_async(dispatch_get_main_queue(), ^{
 
@@ -282,8 +278,6 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
      }];
 }
 
-
-
 - (IBAction)didTapStarSortIcon:(id)sender
 {
     self.starButton.selected = ![self.starButton isSelected];
@@ -306,14 +300,14 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 #pragma mark - TableView Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
-
+{    
     self.hud = [BVTHUDView hudWithView:self.navigationController.view];
     self.hud.delegate = self;
     self.didCancelRequest = NO;
     self.didSelectBiz = YES;
     self.tableView.userInteractionEnabled = NO;
     self.tabBarController.tabBar.userInteractionEnabled = NO;
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     YLPBusiness *selectedBusiness = [self.recentSearches objectAtIndex:indexPath.row];
@@ -494,8 +488,15 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
-    cell.openCloseLabel.text = @"";
-    cell.secondaryOpenCloseLabel.text = @"";
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        if (cell.tag == indexPath.row)
+        {
+        cell.openCloseLabel.text = @"";
+        cell.secondaryOpenCloseLabel.text = @"";
+        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+        }
+    });
+
     
     YLPBusiness *biz = [self.recentSearches objectAtIndex:indexPath.row];
     YLPBusiness *cachedBiz = [[self.cachedBiz filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", biz.identifier]] lastObject];
@@ -504,48 +505,48 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     {
         biz = cachedBiz;
         
-        cell.thumbNailView.image = cachedBiz.bizThumbNail;
-        
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            
-            if (!self.isLargePhone)
+            if (cell.tag == indexPath.row)
             {
-                if (cachedBiz.isOpenNow)
+                cell.thumbNailView.image = cachedBiz.bizThumbNail;
+                
+                if (!self.isLargePhone)
                 {
-                    cell.secondaryOpenCloseLabel.text = @"Open Now";
-                    cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+                    if (cachedBiz.isOpenNow)
+                    {
+                        cell.secondaryOpenCloseLabel.text = @"Open Now";
+                        cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+                    }
+                    else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
+                    {
+                        cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                        cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                    }
                 }
-                else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
+                else
                 {
-                    cell.secondaryOpenCloseLabel.text = @"Closed Now";
-                    cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-                }
-            }
-            else
-            {
-                if (cachedBiz.isOpenNow)
-                {
-                    cell.openCloseLabel.text = @"Open Now";
-                    cell.openCloseLabel.textColor = [BVTStyles iconGreen];
-                }
-                else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
-                {
-                    cell.openCloseLabel.text = @"Closed Now";
-                    cell.openCloseLabel.textColor = [UIColor redColor];
+                    if (cachedBiz.isOpenNow)
+                    {
+                        cell.openCloseLabel.text = @"Open Now";
+                        cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                    }
+                    else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
+                    {
+                        cell.openCloseLabel.text = @"Closed Now";
+                        cell.openCloseLabel.textColor = [UIColor redColor];
+                    }
                 }
             }
         });
     }
-    else
+    else if (!self.didSelectBiz)
     {
-        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
         __weak typeof(self) weakSelf = self;
         
-        if (!self.didSelectBiz)
-        {
+
             [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
              (YLPBusiness *business, NSError *error) {
-                 
+
                  NSString *string = error.userInfo[@"NSLocalizedDescription"];
                  
                  if ([string isEqualToString:@"The Internet connection appears to be offline."])
@@ -655,7 +656,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  }
              }];
         }
-    }
+    
     
     cell.business = biz;
     
@@ -736,31 +737,29 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     }
     
     NSPredicate *openClosePredicate;
-//    if (self.openNowButton.hidden == NO)
-//    {
-        if (!self.openCloseKeyValue)
-        {
-            self.openCloseKeyValue = @"Open/Closed";
-        }
-        
-        if ([self.openCloseKeyValue isEqualToString:@"Open"])
-        {
-            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)];
-        }
-        else if ([self.openCloseKeyValue isEqualToString:@"Closed"])
-        {
-            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ && hoursItem != %@", @(NO), nil];
-        }
-        else if ([self.openCloseKeyValue isEqualToString:@"Open/Closed"])
-        {
-            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ OR isOpenNow = %@", @(NO), @(YES)];
-        }
-        
-        if (openClosePredicate)
-        {
-            [arrayPred addObject:openClosePredicate];
-        }
-//    }
+    
+    if (!self.openCloseKeyValue)
+    {
+        self.openCloseKeyValue = @"Open/Closed";
+    }
+    
+    if ([self.openCloseKeyValue isEqualToString:@"Open"])
+    {
+        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)];
+    }
+    else if ([self.openCloseKeyValue isEqualToString:@"Closed"])
+    {
+        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ && hoursItem != %@", @(NO), nil];
+    }
+    else if ([self.openCloseKeyValue isEqualToString:@"Open/Closed"])
+    {
+        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ OR isOpenNow = %@", @(NO), @(YES)];
+    }
+    
+    if (openClosePredicate)
+    {
+        [arrayPred addObject:openClosePredicate];
+    }
     
     NSPredicate *comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:arrayPred];
         self.recentSearches  = [[self.originalDetailsArray filteredArrayUsingPredicate:comboPredicate] mutableCopy];
