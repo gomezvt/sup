@@ -492,26 +492,22 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
     BVTThumbNailTableViewCell *cell = (BVTThumbNailTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
-    
-
     cell.openCloseLabel.text = @"";
     cell.secondaryOpenCloseLabel.text = @"";
-        
     
     YLPBusiness *biz = [self.recentSearches objectAtIndex:indexPath.row];
     YLPBusiness *cachedBiz = [[self.cachedBiz filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", biz.identifier]] lastObject];
-
+    
     if (cachedBiz)
     {
         biz = cachedBiz;
-
-
+        
         cell.thumbNailView.image = cachedBiz.bizThumbNail;
-        dispatch_async(dispatch_get_main_queue(), ^{
-
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            
             if (!self.isLargePhone)
             {
                 if (cachedBiz.isOpenNow)
@@ -544,129 +540,125 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     {
         cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
         __weak typeof(self) weakSelf = self;
-
+        
         if (!self.didSelectBiz)
         {
-//            self.block.qualityOfService = NSQualityOfServiceBackground;
-//            self.block.queuePriority = NSOperationQueuePriorityVeryLow;
-//            [self.block addExecutionBlock:^{
-                [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
-                 (YLPBusiness *business, NSError *error) {
+            [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
+             (YLPBusiness *business, NSError *error) {
+                 
+                 NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                 
+                 if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                 {
                      dispatch_async(dispatch_get_main_queue(), ^{
-                         NSString *string = error.userInfo[@"NSLocalizedDescription"];
                          
-                         if ([string isEqualToString:@"The Internet connection appears to be offline."])
-                         {
-                             [weakSelf _hideHUD];
-                             
-                             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                             
-                             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                             [alertController addAction:ok];
-                             
-                             [weakSelf presentViewController:alertController animated:YES completion:nil];
-                             
-                         }
-                         else
-                         {
-                             if (business)
+                         [weakSelf _hideHUD];
+                         
+                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                         
+                         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                         [alertController addAction:ok];
+                         
+                         [weakSelf presentViewController:alertController animated:YES completion:nil];
+                     });
+                 }
+                 else
+                 {
+                     if (business)
+                     {
+                         business.didGetDetails = YES;
+                         
+                         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                             // Your Background work
+                             if (cell.tag == indexPath.row)
                              {
-                                 business.didGetDetails = YES;
-                                                                  
-                                 YLPBusiness *match = [[weakSelf.originalDetailsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
-                                 
-                                 if (match)
+                                 NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
+                                 if (imageData)
                                  {
-                                     NSInteger index = [weakSelf.originalDetailsArray indexOfObject:match];
-                                     
-                                     if (index)
-                                     {
-                                         [weakSelf.originalDetailsArray replaceObjectAtIndex:index withObject:business];
-                                     }
-                                 }
-                                 
-                                 if (!weakSelf.isLargePhone)
-                                 {
-                                     if (business.isOpenNow)
-                                     {
-                                         cell.secondaryOpenCloseLabel.text = @"Open Now";
-                                         cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
-                                     }
-                                     else if (business.hoursItem && !business.isOpenNow)
-                                     {
-                                         cell.secondaryOpenCloseLabel.text = @"Closed Now";
-                                         cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-                                     }
+                                     UIImage *image = [UIImage imageWithData:imageData];
+                                     business.bizThumbNail = image;
+                                     cell.thumbNailView.image = image;
                                  }
                                  else
                                  {
-                                     if (business.isOpenNow)
+                                     business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                                 }
+                                 
+                                 if (business.photos.count > 0)
+                                 {
+                                     NSMutableArray *photosArray = [NSMutableArray array];
+                                     for (NSString *photoStr in business.photos)
                                      {
-                                         cell.openCloseLabel.text = @"Open Now";
-                                         cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                                         NSURL *url = [NSURL URLWithString:photoStr];
+                                         NSData *imageData = [NSData dataWithContentsOfURL:url];
+                                         
+                                         UIImage *image = [UIImage imageWithData:imageData];
+                                         
+                                         if (imageData)
+                                         {
+                                             [photosArray addObject:image];
+                                         }
                                      }
-                                     else if (business.hoursItem && !business.isOpenNow)
+                                     
+                                     business.photos = photosArray;
+                                     
+                                     [weakSelf.cachedBiz addObject:business];
+                                     
+                                     YLPBusiness *match = [[weakSelf.originalDetailsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
+                                     
+                                     if (match)
                                      {
-                                         cell.openCloseLabel.text = @"Closed Now";
-                                         cell.openCloseLabel.textColor = [UIColor redColor];
+                                         NSInteger index = [weakSelf.originalDetailsArray indexOfObject:match];
+                                         
+                                         if (index)
+                                         {
+                                             [weakSelf.originalDetailsArray replaceObjectAtIndex:index withObject:business];
+                                         }
                                      }
                                  }
-//
-                                  [weakSelf.cachedBiz addObject:business];
-//                                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//                                     // Your Background work
-//                                     NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
-//                                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//                                         // Update your UI
-//                                         if (cell.tag == indexPath.row)
-//                                         {
-//                                             if (imageData)
-//                                             {
-//                                                 UIImage *image = [UIImage imageWithData:imageData];
-//                                                 business.bizThumbNail = image;
-//                                                 cell.thumbNailView.image = image;
-//                                             }
-//                                             else
-//                                             {
-//                                                 business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
-//                                             }
-//                                             
-//                                             if (business.photos.count > 0)
-//                                             {
-//                                                 NSMutableArray *photosArray = [NSMutableArray array];
-//                                                 for (NSString *photoStr in business.photos)
-//                                                 {
-                                 
-//                                                     NSURL *url = [NSURL URLWithString:photoStr];
-//                                                     NSData *imageData = [NSData dataWithContentsOfURL:url];
-//                                                     UIImage *image = [UIImage imageWithData:imageData];
-//                                                     if (imageData)
-//                                                     {
-//                                                         [photosArray addObject:image];
-//                                                     }
-//                                                 }
-//                                                 
-//                                                 business.photos = photosArray;
-//                                             }
-//                                             
-//                                             [weakSelf.cachedBiz addObject:business];
-//                                             
-//                                         }
-//                                     });
-//                                 });
                              }
-                         }
-                         
-                     });
-                 }];
-//            }];
-            
-//            [weakSelf.queue addOperation:weakSelf.block];
+                             
+                             dispatch_async(dispatch_get_main_queue(), ^(void){
+                                 // Update your UI
+                                 if (cell.tag == indexPath.row)
+                                 {
+                                     if (!weakSelf.isLargePhone)
+                                     {
+                                         if (business.isOpenNow)
+                                         {
+                                             cell.secondaryOpenCloseLabel.text = @"Open Now";
+                                             cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+                                         }
+                                         else if (business.hoursItem && !business.isOpenNow)
+                                         {
+                                             cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                                             cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                                         }
+                                     }
+                                     else
+                                     {
+                                         if (business.isOpenNow)
+                                         {
+                                             cell.openCloseLabel.text = @"Open Now";
+                                             cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                                         }
+                                         else if (business.hoursItem && !business.isOpenNow)
+                                         {
+                                             cell.openCloseLabel.text = @"Closed Now";
+                                             cell.openCloseLabel.textColor = [UIColor redColor];
+                                         }
+                                     }
+                                 }
+                             });
+                         });
+                     }
+                 }
+             }];
         }
     }
     
     cell.business = biz;
-
+    
     return cell;
 }
 
