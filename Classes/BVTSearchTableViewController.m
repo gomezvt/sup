@@ -300,14 +300,17 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 #pragma mark - TableView Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{    
-    self.hud = [BVTHUDView hudWithView:self.navigationController.view];
-    self.hud.delegate = self;
+{
     self.didCancelRequest = NO;
     self.didSelectBiz = YES;
-    self.tableView.userInteractionEnabled = NO;
-    self.tabBarController.tabBar.userInteractionEnabled = NO;
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.hud = [BVTHUDView hudWithView:self.navigationController.view];
+        self.hud.delegate = self;
+        self.tableView.userInteractionEnabled = NO;
+        self.tabBarController.tabBar.userInteractionEnabled = NO;
+    });
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     YLPBusiness *selectedBusiness = [self.recentSearches objectAtIndex:indexPath.row];
@@ -337,6 +340,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                                    else
                                                    {
                                                        // *** Get review user photos in advance if they exist, to display from Presentation VC
+                                                       dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+
                                                        NSMutableArray *userPhotos = [NSMutableArray array];
                                                        for (YLPReview *review in reviews.reviews)
                                                        {
@@ -360,6 +365,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                                            
                                                            [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:cachedBiz];
                                                        }
+                                                       });
                                                    }
                                                    
                                                });
@@ -386,6 +392,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  }
                  else
                  {
+                     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+
                      // *** Get business photos in advance if they exist, to display from Presentation VC
                      if (business.photos.count > 0)
                      {
@@ -404,7 +412,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                          
                          business.photos = photosArray;
                      }
-                     
+                     });
                      [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
                                                         completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                             dispatch_async(dispatch_get_main_queue(), ^{
@@ -425,6 +433,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                                                 else
                                                                 {
                                                                     // *** Get review user photos in advance if they exist, to display from Presentation VC
+                                                                    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+
                                                                     NSMutableArray *userPhotos = [NSMutableArray array];
                                                                     for (YLPReview *review in reviews.reviews)
                                                                     {
@@ -442,12 +452,17 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                                                     business.reviews = reviews.reviews;
                                                                     business.userPhotosArray = userPhotos;
                                                                     
-                                                                    if (!weakSelf.didCancelRequest)
-                                                                    {
-                                                                        [weakSelf _hideHUD];
+                                                                    });
+                                                                    
+                                                                    dispatch_async(dispatch_get_main_queue(), ^{
                                                                         
-                                                                        [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
-                                                                    }
+                                                                        if (!weakSelf.didCancelRequest)
+                                                                        {
+                                                                            [weakSelf _hideHUD];
+                                                                            
+                                                                            [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                                        }
+                                                                    });
                                                                 }
                                                                 
                                                             });
