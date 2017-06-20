@@ -300,7 +300,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     }
     else
     {
-        reviewsTitle = [NSString stringWithFormat: @"Reviews (%lu)", (unsigned long)self.selectedBusiness.reviews.count];
+        reviewsTitle = [NSString stringWithFormat: @"Reviews (%lu)", (unsigned long)self.selectedBusiness.reviewCount];
     }
     
     if (indexPath.row == 0)

@@ -56,8 +56,6 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"Cell"];
     
     CGRect mainScreen = [[UIScreen mainScreen] bounds];
-    NSLog(@"HEIGHT %f. WIDTH %f", mainScreen.size.height, mainScreen.size.width);
-    
     if (mainScreen.size.width > 375.f)
     {
         self.isLargePhone = YES;

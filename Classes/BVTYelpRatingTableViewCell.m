@@ -24,7 +24,7 @@
 {
     _selectedBusiness = selectedBusiness;
     
-    self.reviewsCountLabel.text = [NSString stringWithFormat:@"Based on (%ld) reviews", self.selectedBusiness.reviewCount];
+    self.reviewsCountLabel.text = [NSString stringWithFormat:@"Based on (%ld) reviews", (unsigned long)self.selectedBusiness.reviewCount];
     
     self.yelpPriceLabel.text = self.selectedBusiness.price;
     

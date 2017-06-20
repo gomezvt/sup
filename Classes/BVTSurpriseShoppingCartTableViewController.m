@@ -225,8 +225,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
         
 
         NSArray *allValues = [self.catDict allValues];
-        BOOL containsValues = [[allValues filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"@count > 0"]] lastObject];
-        if (!containsValues)
+        if (![[allValues filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"@count > 0"]] lastObject])
         {
             [self presentMessage];
         }
@@ -260,9 +259,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
     [layer setBorderWidth:1.0];
     
     NSArray *allValues = [self.catDict allValues];
-    BOOL containsValues = [[allValues filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"@count > 0"]] lastObject];
-    
-    if (containsValues)
+    if ([[allValues filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"@count > 0"]] lastObject])
     {
         [button setEnabled:YES];
         [button.layer setBorderColor:[[BVTStyles iconGreen] CGColor]];

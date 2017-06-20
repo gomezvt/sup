@@ -37,16 +37,26 @@
         CGRect mainScreen = [[UIScreen mainScreen] bounds];
         if (mainScreen.size.width > 375.f)
         {
+            // iPhone Plus 6 + 7
             self.images = @[@"Tutorial_Explore_6_7_Plus.png", @"Tutorial_Search_6_7_Plus.png", @"Tutorial_Surprise_6_7_Plus.png"];
         }
         else if (mainScreen.size.width == 375.f)
         {
+            // iPhone 6 + 7
             self.images = @[@"Tutorial_Explore_6_7", @"Tutorial_Search_6_7.png", @"Tutorial_Surprise_6_7.png"];
         }
         else if (mainScreen.size.width == 320.f)
         {
-            // iPhone 4S, iPhone 5, iPhone 5S, iPhone SE
-            self.images = @[@"Tutorial_Explore_Small.png", @"Tutorial_Search_Small.png", @"Tutorial_Surprise_Small.png"];
+            if (mainScreen.size.height == 480.f)
+            {
+                // iPhone 4S
+                self.images = @[@"Tutorial_Explore_4S.png", @"Tutorial_Search_4S.png", @"Tutorial_Surprise_4S.png"];
+            }
+            else
+            {
+                // iPhone 5, iPhone 5S, iPhone SE
+                self.images = @[@"Tutorial_Explore_Small.png", @"Tutorial_Search_Small.png", @"Tutorial_Surprise_Small.png"];
+            }
         }
         
         // Create page view controller
@@ -58,7 +68,7 @@
         [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         
         // Change the size of page view controller
-        self.pageViewController.view.frame = CGRectMake(0, -60.f, self.view.frame.size.width, self.view.frame.size.height + 30.f);
+        self.pageViewController.view.frame = CGRectMake(0, -50.f, self.view.frame.size.width, self.view.frame.size.height + 30.f);
         
         [self addChildViewController:_pageViewController];
         [self.view addSubview:_pageViewController.view];

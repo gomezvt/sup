@@ -51,7 +51,6 @@
 		64AC0DEB1EE3A6070061733A /* BVTDisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AC0DE91EE3A5BD0061733A /* BVTDisclaimerViewController.m */; };
 		64AED0AE1EDA6EDC004627D9 /* BVTSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AED0AD1EDA6EDC004627D9 /* BVTSearchTableViewController.m */; };
 		64B990CE1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B990CD1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.m */; };
-		64B990CF1E99D5190002EE4E /* BVTSurpriseRecommendationsTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 64B990CC1E99D45C0002EE4E /* BVTSurpriseRecommendationsTableViewController.h */; };
 		64C6DD221EE0F6C300C8132F /* BVTAboutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C6DD201EE0F6C300C8132F /* BVTAboutTableViewCell.xib */; };
 		64C743E91EF4CA92001CA4EB /* BVTCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C743E81EF4CA92001CA4EB /* BVTCache.m */; };
 		64C88B4E1E5545CF00ECA06B /* BVTPresentationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C88B4D1E5545CF00ECA06B /* BVTPresentationTableViewController.m */; };
@@ -550,7 +549,6 @@
 				6441121C1E2D345600C3ED18 /* BVTPageContentViewController.m in Sources */,
 				64AED0AE1EDA6EDC004627D9 /* BVTSearchTableViewController.m in Sources */,
 				644112111E2D345600C3ED18 /* BVTHeaderTitleView.m in Sources */,
-				64B990CF1E99D5190002EE4E /* BVTSurpriseRecommendationsTableViewController.h in Sources */,
 				644112181E2D345600C3ED18 /* BVTYelpPhoneTableViewCell.m in Sources */,
 				644112131E2D345600C3ED18 /* BVTStyles.m in Sources */,
 				644112101E2D345600C3ED18 /* BVTExploreViewController.m in Sources */,
