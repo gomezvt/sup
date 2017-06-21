@@ -638,8 +638,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                  {
                      if (business)
                      {
-                         business.didGetDetails = YES;
-                         
                          dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
                              // Your Background work
                              if (cell.tag == indexPath.row)
@@ -677,7 +675,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                      
                                      [weakSelf.displayArray addObject:business];
                                      [weakSelf.cachedDetails setObject:weakSelf.displayArray forKey:weakSelf.subCategoryTitle];
-                                     
+                                     business.didGetDetails = YES;
+
                                      YLPBusiness *match = [[weakSelf.originalFilteredResults filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
                                      
                                      if (match)

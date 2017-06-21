@@ -584,8 +584,6 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  {
                      if (business)
                      {
-                         business.didGetDetails = YES;
-                         
                          dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
                              // Your Background work
                              if (cell.tag == indexPath.row)
@@ -622,7 +620,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                      business.photos = photosArray;
                                      
                                      [weakSelf.cachedBiz addObject:business];
-                                     
+                                     business.didGetDetails = YES;
+
                                      YLPBusiness *match = [[weakSelf.originalDetailsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
                                      
                                      if (match)
