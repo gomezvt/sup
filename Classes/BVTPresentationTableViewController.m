@@ -95,7 +95,7 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
         reviewsCell.reviewLabel.text = review.excerpt;
         reviewsCell.nameLabel.text = review.user.name;
         
-        UIImage *image = [UIImage imageNamed:@"user"];
+        UIImage *image = [UIImage imageNamed:@"placeholder"];
         for (NSDictionary *dict in self.business.userPhotosArray)
         {
             NSString *key = [[dict allKeys] lastObject];
