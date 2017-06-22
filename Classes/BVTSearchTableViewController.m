@@ -274,6 +274,8 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  weakSelf.originalDetailsArray = weakSelf.recentSearches;
                  
                  [weakSelf.tableView reloadData];
+                 
+                 [self sortArrayWithPredicates];
              }
          });
      }];
@@ -515,7 +517,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     });
 
     
-    YLPBusiness *biz = [self.recentSearches objectAtIndex:indexPath.row];
+    __block YLPBusiness *biz = [self.recentSearches objectAtIndex:indexPath.row];
     YLPBusiness *cachedBiz = [[self.cachedBiz filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", biz.identifier]] lastObject];
     
     if (cachedBiz)
@@ -584,6 +586,39 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  {
                      if (business)
                      {
+                         dispatch_async(dispatch_get_main_queue(), ^(void){
+                             // Update your UI
+                             if (cell.tag == indexPath.row)
+                             {
+                                 if (!weakSelf.isLargePhone)
+                                 {
+                                     if (business.isOpenNow)
+                                     {
+                                         cell.secondaryOpenCloseLabel.text = @"Open Now";
+                                         cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
+                                     }
+                                     else if (business.hoursItem && !business.isOpenNow)
+                                     {
+                                         cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                                         cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                                     }
+                                 }
+                                 else
+                                 {
+                                     if (business.isOpenNow)
+                                     {
+                                         cell.openCloseLabel.text = @"Open Now";
+                                         cell.openCloseLabel.textColor = [BVTStyles iconGreen];
+                                     }
+                                     else if (business.hoursItem && !business.isOpenNow)
+                                     {
+                                         cell.openCloseLabel.text = @"Closed Now";
+                                         cell.openCloseLabel.textColor = [UIColor redColor];
+                                     }
+                                 }
+                             }
+                         });
+                         
                          dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
                              // Your Background work
                              if (cell.tag == indexPath.row)
@@ -619,55 +654,19 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                      
                                      business.photos = photosArray;
                                      
-                                     [weakSelf.cachedBiz addObject:business];
                                      business.didGetDetails = YES;
-
+                                     [weakSelf.cachedBiz addObject:business];
+                                     biz = business;
+                                     
                                      YLPBusiness *match = [[weakSelf.originalDetailsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
                                      
                                      if (match)
                                      {
                                          NSInteger index = [weakSelf.originalDetailsArray indexOfObject:match];
-                                         
-                                         if (index)
-                                         {
-                                             [weakSelf.originalDetailsArray replaceObjectAtIndex:index withObject:business];
-                                         }
+                                         [weakSelf.originalDetailsArray replaceObjectAtIndex:index withObject:business];
                                      }
                                  }
                              }
-                             
-                             dispatch_async(dispatch_get_main_queue(), ^(void){
-                                 // Update your UI
-                                 if (cell.tag == indexPath.row)
-                                 {
-                                     if (!weakSelf.isLargePhone)
-                                     {
-                                         if (business.isOpenNow)
-                                         {
-                                             cell.secondaryOpenCloseLabel.text = @"Open Now";
-                                             cell.secondaryOpenCloseLabel.textColor = [BVTStyles iconGreen];
-                                         }
-                                         else if (business.hoursItem && !business.isOpenNow)
-                                         {
-                                             cell.secondaryOpenCloseLabel.text = @"Closed Now";
-                                             cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-                                         }
-                                     }
-                                     else
-                                     {
-                                         if (business.isOpenNow)
-                                         {
-                                             cell.openCloseLabel.text = @"Open Now";
-                                             cell.openCloseLabel.textColor = [BVTStyles iconGreen];
-                                         }
-                                         else if (business.hoursItem && !business.isOpenNow)
-                                         {
-                                             cell.openCloseLabel.text = @"Closed Now";
-                                             cell.openCloseLabel.textColor = [UIColor redColor];
-                                         }
-                                     }
-                                 }
-                             });
                          });
                      }
                  }
