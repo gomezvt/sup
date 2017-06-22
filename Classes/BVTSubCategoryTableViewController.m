@@ -272,9 +272,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     self.displayArray = [[NSMutableArray alloc] init];
     
-    CGRect mainScreen = [[UIScreen mainScreen] bounds];
-    NSLog(@"HEIGHT %f. WIDTH %f", mainScreen.size.height, mainScreen.size.width);
-    
+    CGRect mainScreen = [[UIScreen mainScreen] bounds];    
     if (mainScreen.size.width > 375.f)
     {
         self.isLargePhone = YES;

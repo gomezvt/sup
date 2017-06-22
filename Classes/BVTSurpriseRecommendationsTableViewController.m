@@ -98,8 +98,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     [super viewDidLoad];
     
     CGRect mainScreen = [[UIScreen mainScreen] bounds];
-    NSLog(@"HEIGHT %f. WIDTH %f", mainScreen.size.height, mainScreen.size.width);
-    
     if (mainScreen.size.width > 375.f)
     {
         self.isLargePhone = YES;
