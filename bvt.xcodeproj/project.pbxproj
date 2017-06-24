@@ -650,7 +650,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7 x86_64 armvs7";
 			};
 			name = Debug;
 		};
@@ -695,7 +695,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7 x86_64 armvs7";
 			};
 			name = Release;
 		};
@@ -718,7 +718,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "x86_64 arm64 armv7 armvs7 armv6";
+				VALID_ARCHS = "arm64 armv7 x86_64 armvs7";
 			};
 			name = Debug;
 		};
@@ -739,7 +739,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gms.bvt;
 				PRODUCT_NAME = Burlingtonian;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "x86_64 arm64 armv7 armvs7 armv6";
+				VALID_ARCHS = "arm64 armv7 x86_64 armvs7";
 			};
 			name = Release;
 		};
