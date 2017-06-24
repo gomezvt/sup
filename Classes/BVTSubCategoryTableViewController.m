@@ -380,7 +380,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                    {
                                                        [weakSelf _hideHUD];
                                                        
-                                                       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                                                       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
                                                        
                                                        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                                                        [alertController addAction:ok];
@@ -437,7 +437,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                  {
                      [weakSelf _hideHUD];
                      
-                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
                      
                      UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                      [alertController addAction:ok];
@@ -477,7 +477,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                                 {
                                                                     [weakSelf _hideHUD];
                                                                     
-                                                                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                                                                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
                                                                     
                                                                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                                                                     [alertController addAction:ok];
@@ -624,7 +624,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                      
                      [weakSelf _hideHUD];
                      
-                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
                      
                      UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                      [alertController addAction:ok];

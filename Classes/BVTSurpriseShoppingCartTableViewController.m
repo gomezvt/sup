@@ -139,7 +139,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
                      NSString *string = error.userInfo[@"NSLocalizedDescription"];
                      if ([string isEqualToString:@"The Internet connection appears to be offline."])
                      {
-                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
                          
                          UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                          [alertController addAction:ok];
