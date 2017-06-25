@@ -192,22 +192,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/BVTCategoryTableViewController.m"
-            timestampString = "519502320.666397"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -228,7 +212,7 @@
                   moduleName = "Burlingtonian"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSurpriseRecommendationsTableViewController.m"
-                  timestampString = "519863219.997378"
+                  timestampString = "520029841.377938"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "187"
@@ -243,7 +227,7 @@
                   moduleName = "Burlingtonian"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSurpriseRecommendationsTableViewController.m"
-                  timestampString = "519863219.99901"
+                  timestampString = "520029841.379469"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "187"

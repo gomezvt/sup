@@ -222,7 +222,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="Ybj-na-bak">
-                                        <rect key="frame" x="8" y="11" width="398" height="24"/>
+                                        <rect key="frame" x="8" y="10" width="398" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -402,7 +402,7 @@
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoc-y8-kQY">
-                                        <rect key="frame" x="251" y="8" width="155" height="30"/>
+                                        <rect key="frame" x="251" y="7" width="155" height="30"/>
                                         <state key="normal" title="   Review and Submit   ">
                                             <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -423,7 +423,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="H3e-qi-TnC">
-                                        <rect key="frame" x="8" y="11" width="398" height="24"/>
+                                        <rect key="frame" x="8" y="10" width="398" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -497,7 +497,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Sub Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="y5o-ml-wR1">
-                                        <rect key="frame" x="8" y="11" width="398" height="24"/>
+                                        <rect key="frame" x="8" y="10" width="398" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -515,7 +515,7 @@
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anx-P9-EDI">
-                                        <rect key="frame" x="251" y="8" width="155" height="30"/>
+                                        <rect key="frame" x="251" y="7" width="155" height="30"/>
                                         <state key="normal" title="   Review and Submit   ">
                                             <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -745,7 +745,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy and Terms of Use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="2dm-wM-fF1">
-                                        <rect key="frame" x="8" y="11" width="398" height="24"/>
+                                        <rect key="frame" x="8" y="10" width="398" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -759,12 +759,22 @@
                                     <constraint firstAttribute="height" constant="44" id="frB-3o-zgh"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMs-Tb-IdK">
+                                <rect key="frame" x="20" y="124" width="374" height="487"/>
+                                <mutableString key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge unless you voluntarily decide to purchase an advertisement free version of Burlingtonian on the App Store.  Burlingtonian is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that the views, content, and opinions expressed in Burlingtonian are not endorsed by its developer; this content is either representative or property of Yelp, since Burlingtonian is powered by Yelp.  Lastly, please note that the "bvt" icon and "Burlingtonian" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Burlingtonian prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Burlingtonian will remain functional with the exception of its display of your distance from places of interest.  Lastly, Burlingtonian will never voluntarily share or sell your location information.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CHV-K9-LtT" firstAttribute="leading" secondItem="abD-Fl-ZzT" secondAttribute="leading" id="4Lr-Cr-lfo"/>
+                            <constraint firstItem="wMs-Tb-IdK" firstAttribute="trailing" secondItem="abD-Fl-ZzT" secondAttribute="trailingMargin" id="Vze-Z2-eOy"/>
                             <constraint firstItem="CHV-K9-LtT" firstAttribute="top" secondItem="Dig-2a-dBN" secondAttribute="bottom" id="a9a-cL-DSc"/>
+                            <constraint firstItem="wMs-Tb-IdK" firstAttribute="leading" secondItem="abD-Fl-ZzT" secondAttribute="leadingMargin" id="gMb-7R-hzi"/>
                             <constraint firstAttribute="trailing" secondItem="CHV-K9-LtT" secondAttribute="trailing" id="kNN-kQ-UUc"/>
+                            <constraint firstItem="wMs-Tb-IdK" firstAttribute="top" secondItem="CHV-K9-LtT" secondAttribute="bottom" constant="16" id="oek-2q-s04"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Burlingtonian" id="CxO-v9-Ikk">
@@ -778,7 +788,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdS-nJ-Qel" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1561" y="527"/>
+            <point key="canvasLocation" x="1560.8695652173915" y="526.63043478260875"/>
         </scene>
         <!--Presentation Table View Controller-->
         <scene sceneID="vdV-sT-dTA">
@@ -814,7 +824,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="HLp-lw-jU1">
-                                        <rect key="frame" x="56" y="11" width="302" height="24"/>
+                                        <rect key="frame" x="56" y="10" width="302" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -850,7 +860,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is my label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxG-So-kAz">
-                                <rect key="frame" x="8" y="358" width="398" height="21"/>
+                                <rect key="frame" x="8" y="358.33333333333331" width="398" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1059,7 +1069,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is my label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkY-eb-Swa">
-                                <rect key="frame" x="28" y="358" width="358" height="21"/>
+                                <rect key="frame" x="28" y="358.33333333333331" width="358" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
