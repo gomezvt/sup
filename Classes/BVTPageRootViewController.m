@@ -24,7 +24,9 @@
     BOOL tutorialIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"BVTTutorialComplete"];
     if (tutorialIsComplete)
     {
-        [self performSegueWithIdentifier:@"ShowTabBarController" sender:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSegueWithIdentifier:@"ShowTabBarController" sender:nil];
+        });
     }
     else
     {
