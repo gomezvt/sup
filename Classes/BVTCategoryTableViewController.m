@@ -143,7 +143,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     __weak typeof(self) weakSelf = self;
-    [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
+    [[AppDelegate yelp] searchWithLocation:@"Burlington, VT" term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
          dispatch_async(dispatch_get_main_queue(), ^{
              // code here

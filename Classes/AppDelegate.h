@@ -9,6 +9,8 @@
 @import UIKit;
 
 @class YLPClient;
+@class GADMobileAds;
+
 #import <CoreLocation/CoreLocation.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
@@ -16,6 +18,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) CLLocation *userLocation;
 
-+ (YLPClient *)sharedClient;
-
++ (YLPClient *)yelp;
++ (GADMobileAds *)google;
+    
 @end

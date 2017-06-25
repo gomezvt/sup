@@ -226,7 +226,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     });
 
     __weak typeof(self) weakSelf = self;
-    [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:searchBar.text limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
+    [[AppDelegate yelp] searchWithLocation:@"Burlington, VT" term:searchBar.text limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
          dispatch_async(dispatch_get_main_queue(), ^{
              // code here
@@ -320,7 +320,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 
     if (cachedBiz)
     {
-        [[AppDelegate sharedClient] reviewsForBusinessWithId:cachedBiz.identifier
+        [[AppDelegate yelp] reviewsForBusinessWithId:cachedBiz.identifier
                                            completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                dispatch_async(dispatch_get_main_queue(), ^{
                                                    NSString *string = error.userInfo[@"NSLocalizedDescription"];
@@ -376,7 +376,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     }
     else
     {
-        [[AppDelegate sharedClient] businessWithId:selectedBusiness.identifier completionHandler:^
+        [[AppDelegate yelp] businessWithId:selectedBusiness.identifier completionHandler:^
          (YLPBusiness *business, NSError *error) {
              dispatch_async(dispatch_get_main_queue(), ^{
                  NSString *string = error.userInfo[@"NSLocalizedDescription"];
@@ -416,7 +416,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                          business.photos = photosArray;
                      }
                      });
-                     [[AppDelegate sharedClient] reviewsForBusinessWithId:business.identifier
+                     [[AppDelegate yelp] reviewsForBusinessWithId:business.identifier
                                                         completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                             dispatch_async(dispatch_get_main_queue(), ^(void){
                                                                 NSString *string = error.userInfo[@"NSLocalizedDescription"];
@@ -560,7 +560,7 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
     {
         __weak typeof(self) weakSelf = self;
         
-            [[AppDelegate sharedClient] businessWithId:biz.identifier completionHandler:^
+            [[AppDelegate yelp] businessWithId:biz.identifier completionHandler:^
              (YLPBusiness *business, NSError *error) {
 
                  NSString *string = error.userInfo[@"NSLocalizedDescription"];

@@ -122,7 +122,7 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
             break;
         }
         
-        [[AppDelegate sharedClient] searchWithLocation:@"Burlington, VT" term:subCatTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
+        [[AppDelegate yelp] searchWithLocation:@"Burlington, VT" term:subCatTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
          (YLPSearch *searchResults, NSError *error){
              dispatch_async(dispatch_get_main_queue(), ^{
                  
