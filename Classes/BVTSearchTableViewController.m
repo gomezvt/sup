@@ -114,6 +114,20 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     [super viewDidLoad];
     
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ConfiguredSearchAdBanner"])
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ConfiguredSearchAdBanner"];
+        UIView *view = self.tabBarController.selectedViewController.view;
+        //        [view setFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 100)];
+        
+        UIView *adBannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 50.f, view.frame.size.width, 50.f)];
+        
+        [view addSubview:adBannerSpace];
+        adBannerSpace.backgroundColor = [UIColor redColor];
+        
+        //        [adBannerSpace setFrame:CGRectMake(0, view.frame.size.height, adBannerSpace.frame.size.width, 50.f)];
+    }
+    
 //    self.queue = [[NSOperationQueue alloc] init];
     self.cachedBiz = [[NSMutableArray alloc] init];
 //    self.block = [[NSBlockOperation alloc] init];

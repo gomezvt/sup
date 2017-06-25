@@ -63,6 +63,13 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     [super viewDidLoad];
     
+//    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ConfiguredCatBanner"])
+//    {
+//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ConfiguredCatBanner"];
+//        UIView *view = self.tabBarController.selectedViewController.view;
+//        [view setFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 100)];
+//    }
+    
     self.tableView.tableFooterView = [UIView new];
     
     categories = @[ ];

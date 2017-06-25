@@ -270,9 +270,16 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
+//    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ConfiguredSubCatBanner"])
+//    {
+//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ConfiguredSubCatBanner"];
+//        UIView *view = self.tabBarController.selectedViewController.view;
+//        [view setFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 100)];
+//    }
+    
     self.displayArray = [[NSMutableArray alloc] init];
     
-    CGRect mainScreen = [[UIScreen mainScreen] bounds];    
+    CGRect mainScreen = [[UIScreen mainScreen] bounds];
     if (mainScreen.size.width > 375.f)
     {
         self.isLargePhone = YES;
