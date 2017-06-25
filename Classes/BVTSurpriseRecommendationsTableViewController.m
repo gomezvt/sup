@@ -96,7 +96,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.f, 0);
+
     CGRect mainScreen = [[UIScreen mainScreen] bounds];
     if (mainScreen.size.width > 375.f)
     {

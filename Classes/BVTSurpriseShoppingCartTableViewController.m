@@ -292,7 +292,8 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.f, 0);
+
     self.tempArray = [[NSMutableArray alloc] init];
     self.tableView.tableFooterView = [UIView new];
 

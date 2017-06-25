@@ -399,7 +399,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmK-aK-23R">
-                                <rect key="frame" x="0.0" y="643" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="593" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoc-y8-kQY">
                                         <rect key="frame" x="251" y="7" width="155" height="30"/>
@@ -438,7 +438,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="alT-WY-K2j">
-                                <rect key="frame" x="0.0" y="108" width="414" height="535"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="485"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="wZC-dH-3b2">
@@ -464,7 +464,7 @@
                             <constraint firstAttribute="trailing" secondItem="u4y-De-upL" secondAttribute="trailing" id="ByT-2y-0uE"/>
                             <constraint firstAttribute="trailing" secondItem="wmK-aK-23R" secondAttribute="trailing" id="KPV-7B-3on"/>
                             <constraint firstItem="u4y-De-upL" firstAttribute="top" secondItem="bFc-Zj-CVx" secondAttribute="bottom" id="bfl-tR-xpx"/>
-                            <constraint firstItem="m7d-vj-rHm" firstAttribute="top" secondItem="wmK-aK-23R" secondAttribute="bottom" id="eNH-go-0jA"/>
+                            <constraint firstItem="m7d-vj-rHm" firstAttribute="top" secondItem="wmK-aK-23R" secondAttribute="bottom" constant="50" id="eNH-go-0jA"/>
                             <constraint firstAttribute="trailing" secondItem="alT-WY-K2j" secondAttribute="trailing" id="eu9-ZM-itx"/>
                             <constraint firstItem="u4y-De-upL" firstAttribute="leading" secondItem="8GK-r7-bsZ" secondAttribute="leading" id="fVA-gk-vNm"/>
                             <constraint firstItem="wmK-aK-23R" firstAttribute="top" secondItem="alT-WY-K2j" secondAttribute="bottom" id="j93-PC-B5o"/>
@@ -512,7 +512,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uM-Gm-hdk">
-                                <rect key="frame" x="0.0" y="643" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="593" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anx-P9-EDI">
                                         <rect key="frame" x="251" y="7" width="155" height="30"/>
@@ -532,7 +532,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bub-K2-b1V">
-                                <rect key="frame" x="0.0" y="108" width="414" height="535"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="485"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="4UX-3F-ZQk">
@@ -552,7 +552,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="l5c-N4-Nfh" firstAttribute="top" secondItem="1uM-Gm-hdk" secondAttribute="bottom" id="8WB-rt-pSk"/>
+                            <constraint firstItem="l5c-N4-Nfh" firstAttribute="top" secondItem="1uM-Gm-hdk" secondAttribute="bottom" constant="50" id="8WB-rt-pSk"/>
                             <constraint firstItem="bub-K2-b1V" firstAttribute="leading" secondItem="tqQ-6L-hIl" secondAttribute="leading" id="DTa-Xk-eNa"/>
                             <constraint firstAttribute="trailing" secondItem="bub-K2-b1V" secondAttribute="trailing" id="Edh-TI-aia"/>
                             <constraint firstItem="1uM-Gm-hdk" firstAttribute="leading" secondItem="tqQ-6L-hIl" secondAttribute="leading" id="JCU-bm-DBI"/>
@@ -613,7 +613,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scJ-6i-ccx">
-                                <rect key="frame" x="0.0" y="643" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="593" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDr-6T-qaW">
                                         <rect key="frame" x="8" y="7" width="81" height="30"/>
@@ -633,7 +633,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-3J-PRy">
-                                <rect key="frame" x="224" y="650" width="182" height="30"/>
+                                <rect key="frame" x="224" y="600" width="182" height="30"/>
                                 <state key="normal" title="   Submit and Randomize   ">
                                     <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -642,7 +642,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2FZ-Ix-VMn">
-                                <rect key="frame" x="0.0" y="108" width="414" height="535"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="485"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="MY2-N0-lDg">
@@ -662,7 +662,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ubo-Rt-vau" firstAttribute="top" secondItem="scJ-6i-ccx" secondAttribute="bottom" id="1pr-HR-Wu0"/>
+                            <constraint firstItem="ubo-Rt-vau" firstAttribute="top" secondItem="scJ-6i-ccx" secondAttribute="bottom" constant="50" id="1pr-HR-Wu0"/>
                             <constraint firstItem="scJ-6i-ccx" firstAttribute="top" secondItem="2FZ-Ix-VMn" secondAttribute="bottom" id="31c-Po-557"/>
                             <constraint firstItem="OgY-xN-8lW" firstAttribute="top" secondItem="FrZ-Tb-73E" secondAttribute="bottom" id="5rx-nD-nko"/>
                             <constraint firstAttribute="trailing" secondItem="2FZ-Ix-VMn" secondAttribute="trailing" id="BnL-iX-JN7"/>
@@ -761,7 +761,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMs-Tb-IdK">
                                 <rect key="frame" x="20" y="124" width="374" height="507.33333333333337"/>
-                                <mutableString key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge unless you voluntarily decide to purchase an advertisement free version of Burlingtonian on the App Store.  Burlingtonian is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that the views, content, and opinions expressed in Burlingtonian are not endorsed by its developer; this content is either representative or property of Yelp, since Burlingtonian is powered by Yelp.  Lastly, please note that the "bvt" icon and "Burlingtonian" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important to us.  Burlingtonian prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Burlingtonian will remain functional with the exception of its display of your distance from places of interest.  Lastly, Burlingtonian will never voluntarily share or sell your location information.</mutableString>
+                                <string key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge unless you voluntarily decide to purchase an advertisement free version of Burlingtonian on the App Store.  Burlingtonian is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that the views, content, and opinions expressed in Burlingtonian are not endorsed by its developer; this content is either representative or property of Yelp, since Burlingtonian is powered by Yelp.  Lastly, please note that the "bvt" icon and "Burlingtonian" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important to us.  Burlingtonian prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Burlingtonian will remain functional with the exception of its display of your distance from places of interest.  Lastly, Burlingtonian will never voluntarily share or sell your location information.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1235,7 +1235,7 @@
         <image name="tutorial_icon_6_7_plus" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="itC-Zp-WcB"/>
         <segue reference="7ud-uz-d7s"/>
+        <segue reference="itC-Zp-WcB"/>
     </inferredMetricsTieBreakers>
 </document>

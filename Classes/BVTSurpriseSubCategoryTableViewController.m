@@ -122,7 +122,8 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
 - (void)viewDidLoad
 {
-    
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.f, 0);
+
     self.tableView.tableFooterView = [UIView new];
 
     CALayer * layer = [self.goButton layer];

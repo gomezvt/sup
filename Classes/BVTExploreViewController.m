@@ -51,20 +51,12 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+        
+    UIView *view = self.tabBarController.selectedViewController.view;
+    UIView *adBannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 51.f, view.frame.size.width, 51.f)];
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ConfiguredExploreAdBanner"])
-    {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ConfiguredExploreAdBanner"];
-        UIView *view = self.tabBarController.selectedViewController.view;
-//        [view setFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 100)];
-        
-        UIView *adBannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 50.f, view.frame.size.width, 50.f)];
-        
-        [view addSubview:adBannerSpace];
-        adBannerSpace.backgroundColor = [UIColor redColor];
-
-//        [adBannerSpace setFrame:CGRectMake(0, view.frame.size.height, adBannerSpace.frame.size.width, 50.f)];
-    }
+    [view addSubview:adBannerSpace];
+    adBannerSpace.backgroundColor = [UIColor redColor];
     
     UINib *cellNib = [UINib nibWithNibName:kCollectionViewCellNib bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"Cell"];
@@ -74,19 +66,19 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     {
         self.isLargePhone = YES;
         
-        [self.collectionView setContentInset:UIEdgeInsetsMake(50.f,10.f,50.f,10.f)];
+        [self.collectionView setContentInset:UIEdgeInsetsMake(20,10,60,10)];
     }
     else if (mainScreen.size.width == 375.f)
     {
         self.isLargePhone = NO;
         
-        [self.collectionView setContentInset:UIEdgeInsetsMake(50.f, 5.f, 50.f, 5.f)];
+        [self.collectionView setContentInset:UIEdgeInsetsMake(30.f, 5.f, 50.f, 5.f)];
     }
     else
     {
         self.isLargePhone = NO;
         
-        [self.collectionView setContentInset:UIEdgeInsetsZero];
+        [self.collectionView setContentInset:UIEdgeInsetsMake(0.f, 0.f, 50.f, 0.f)];
     }
 }
 

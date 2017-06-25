@@ -38,19 +38,13 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
 {
     [super viewDidLoad];
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ConfiguredAboutAdBanner"])
-    {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ConfiguredAboutAdBanner"];
-        UIView *view = self.tabBarController.selectedViewController.view;
-        //        [view setFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 100)];
-        
-        UIView *adBannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 50.f, view.frame.size.width, 50.f)];
-        
-        [view addSubview:adBannerSpace];
-        adBannerSpace.backgroundColor = [UIColor redColor];
-        
-        //        [adBannerSpace setFrame:CGRectMake(0, view.frame.size.height, adBannerSpace.frame.size.width, 50.f)];
-    }
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.f, 0);
+    
+    UIView *view = self.tabBarController.selectedViewController.view;
+    UIView *adBannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 51.f, view.frame.size.width, 51.f)];
+    
+    [view addSubview:adBannerSpace];
+    adBannerSpace.backgroundColor = [UIColor redColor];
     
     UINib *aboutCellNib = [UINib nibWithNibName:kAboutTableViewNib bundle:nil];
     [self.tableView registerNib:aboutCellNib forCellReuseIdentifier:@"AboutCell"];
