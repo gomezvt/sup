@@ -1,12 +1,15 @@
 PODS:
+  - Google-Mobile-Ads-SDK (7.21.0)
   - YelpAPI (2.0.0)
 
 DEPENDENCIES:
+  - Google-Mobile-Ads-SDK
   - YelpAPI
 
 SPEC CHECKSUMS:
+  Google-Mobile-Ads-SDK: 4a6f1b43c8cc0e1e95a3b59d9f52a01671c6f9f3
   YelpAPI: a0475cf4a7b6f9fe81f1bb7b8a8492770f21e3c7
 
-PODFILE CHECKSUM: 57ad1a6bdc327b1b2a00c96886aa4d304a2c6173
+PODFILE CHECKSUM: fcbec298d1c47d9ca83a60e92a3ec13c0ec1b8e6
 
 COCOAPODS: 1.2.0.beta.3

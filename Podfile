@@ -7,4 +7,6 @@ target 'bvt' do
 
   # Pods for bvt
 pod 'YelpAPI'
+pod 'Google-Mobile-Ads-SDK'
+
 end
