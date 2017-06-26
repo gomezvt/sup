@@ -65,9 +65,21 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     [self.bannerView setFrame:CGRectMake(0, 0, bannerSpace.frame.size.width, self.bannerView.frame.size.height)];
     
-    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+
+//    
+    self.bannerView.adUnitID = @"ca-app-pub-8236497982755596/2923452267";
     self.bannerView.rootViewController = self;
-    [self.bannerView loadRequest:[GADRequest request]];
+    
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made. GADBannerView automatically returns test ads when running on a
+    // simulator.
+    request.testDevices = @[
+                            @"f326bc67f2ff8eac23975b6ea4c3111d"  // Eric's iPod Touch
+                            ];
+    
+    [self.bannerView loadRequest:request];
+//    [self.bannerView loadRequest:[GADRequest request]];
     
     UINib *cellNib = [UINib nibWithNibName:kCollectionViewCellNib bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"Cell"];
