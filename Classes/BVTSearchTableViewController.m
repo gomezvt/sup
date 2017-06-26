@@ -25,6 +25,7 @@
 #import "BVTThumbNailTableViewCell.h"
 #import "YLPClient+Business.h"
 #import "BVTDetailTableViewController.h"
+@import GoogleMobileAds;
 
 //#import "BVTHeaderTitleView.h"
 //#import "BVTStyles.h"
@@ -69,6 +70,8 @@
 @property (nonatomic, strong) NSMutableArray *cachedBiz;
 //@property (nonatomic, strong) NSOperationQueue *queue;
 //@property (nonatomic, strong) NSBlockOperation *block;
+@property (nonatomic, strong) GADBannerView *bannerView;
+
 @end
 
 static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
@@ -114,13 +117,22 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
 {
     [super viewDidLoad];
     
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.f, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 60.f, 0);
     
     UIView *view = self.tabBarController.selectedViewController.view;
-    UIView *adBannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 51.f, view.frame.size.width, 51.f)];
+    UIView *bannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 61.f, view.frame.size.width, 61.f)];
+    bannerSpace.backgroundColor = [UIColor whiteColor];
+    [view addSubview:bannerSpace];
     
-    [view addSubview:adBannerSpace];
-    adBannerSpace.backgroundColor = [UIColor redColor];
+    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner];
+    
+    [bannerSpace addSubview:self.bannerView];
+    
+    [self.bannerView setFrame:CGRectMake(0, 0, bannerSpace.frame.size.width, self.bannerView.frame.size.height)];
+    
+    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+    self.bannerView.rootViewController = self;
+    [self.bannerView loadRequest:[GADRequest request]];
     
     self.cachedBiz = [[NSMutableArray alloc] init];
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;

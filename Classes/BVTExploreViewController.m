@@ -13,12 +13,14 @@
 #import "BVTHeaderTitleView.h"
 #import "BVTStyles.h"
 
+@import GoogleMobileAds;
 
 
 @interface BVTExploreViewController () <BVTCategoryTableViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) BOOL isLargePhone;
+@property (nonatomic, strong) GADBannerView *bannerView;
 
 @end
 
@@ -53,10 +55,19 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     [super viewDidLoad];
         
     UIView *view = self.tabBarController.selectedViewController.view;
-    UIView *adBannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 51.f, view.frame.size.width, 51.f)];
+    UIView *bannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 61.f, view.frame.size.width, 61.f)];
+    bannerSpace.backgroundColor = [UIColor whiteColor];
+    [view addSubview:bannerSpace];
     
-    [view addSubview:adBannerSpace];
-    adBannerSpace.backgroundColor = [UIColor redColor];
+    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner];
+    
+    [bannerSpace addSubview:self.bannerView];
+    
+    [self.bannerView setFrame:CGRectMake(0, 0, bannerSpace.frame.size.width, self.bannerView.frame.size.height)];
+    
+    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+    self.bannerView.rootViewController = self;
+    [self.bannerView loadRequest:[GADRequest request]];
     
     UINib *cellNib = [UINib nibWithNibName:kCollectionViewCellNib bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"Cell"];

@@ -23,7 +23,7 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     CGRect mainScreen = [[UIScreen mainScreen] bounds];
-    CGFloat tabBarVertical = mainScreen.size.height - 100.f;
+    CGFloat tabBarVertical = mainScreen.size.height - 110.f;
     
     [self.tabBar setFrame:CGRectMake(0, tabBarVertical, self.tabBar.frame.size.width, self.tabBar.frame.size.height)];
 
