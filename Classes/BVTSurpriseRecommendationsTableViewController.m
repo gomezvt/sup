@@ -35,7 +35,6 @@
 @property (nonatomic) BOOL isLargePhone;
 @property (nonatomic) BOOL didSelectBiz;
 @property (nonatomic, strong) GADBannerView *bannerView;
-@property (nonatomic) BOOL didGetDetails;
 
 @end
 
