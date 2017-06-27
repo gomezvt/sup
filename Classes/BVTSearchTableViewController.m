@@ -282,7 +282,19 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                  NSArray *sortedArray = [searchResults.businesses sortedArrayUsingDescriptors: @[descriptor]];
                  
                  weakSelf.recentSearches = [sortedArray mutableCopy];
+                 
                  weakSelf.originalDetailsArray = weakSelf.recentSearches;
+
+                 NSArray *copy = [weakSelf.originalDetailsArray copy];
+                 for (YLPBusiness *biz in copy)
+                 {
+                     YLPBusiness *cachedItem = [[weakSelf.cachedBiz filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", biz.identifier]] lastObject];
+                     if (cachedItem)
+                     {
+                         NSInteger index = [weakSelf.originalDetailsArray indexOfObject:biz];
+                         [weakSelf.originalDetailsArray replaceObjectAtIndex:index withObject:cachedItem];
+                     }
+                 }
                  
                  [weakSelf.tableView reloadData];
                  
