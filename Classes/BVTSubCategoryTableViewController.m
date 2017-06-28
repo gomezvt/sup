@@ -384,7 +384,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     YLPBusiness *selectedBusiness = [self.filteredResults objectAtIndex:indexPath.row];
-    YLPBusiness *cachedBiz = [[self.displayArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", selectedBusiness.identifier]] lastObject];
+    
+    NSArray *cachedBizArray = [self.cachedDetails valueForKey:self.subCategoryTitle];
+    YLPBusiness *cachedBiz = [[cachedBizArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", selectedBusiness.identifier]] lastObject];
     __weak typeof(self) weakSelf = self;
     
     if (cachedBiz)
