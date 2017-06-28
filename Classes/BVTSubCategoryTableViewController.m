@@ -636,6 +636,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         [[AppDelegate yelp] businessWithId:biz.identifier completionHandler:^
          (YLPBusiness *business, NSError *error) {
              NSString *string = error.userInfo[@"NSLocalizedDescription"];
+             if ([biz.identifier isEqualToString:business.identifier])
+             {
+                 business.miles = biz.miles;
+             }
              
              if ([string isEqualToString:@"The Internet connection appears to be offline."])
              {
