@@ -156,8 +156,18 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
         BVTYelpPhotoTableViewCell *photoCell = (BVTYelpPhotoTableViewCell *)cell;
         photoCell.tag = indexPath.row;
 
-        UIImage *image = [self.business.photos objectAtIndex:indexPath.row];
-        photoCell.photoView.image = image;
+        id shouldBeAnImage = [self.business.photos objectAtIndex:indexPath.row];
+        
+        UIImage *image;
+        if ([shouldBeAnImage isKindOfClass:[NSString class]])
+        {
+            image = [UIImage imageNamed:@"placeholder_large"];
+        }
+        else if ([shouldBeAnImage isKindOfClass:[UIImage class]])
+        {
+            image = shouldBeAnImage;
+        }
+        photoCell.photoView.image = image; // issue here as image can be a string
     }
  
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
