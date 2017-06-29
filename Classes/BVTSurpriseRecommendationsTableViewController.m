@@ -483,20 +483,32 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          // *** Get business photos in advance if they exist, to display from Presentation VC
                          if (business.photos.count > 0)
                          {
-                             NSMutableArray *photosArray = [NSMutableArray array];
-                             for (NSString *photoStr in business.photos)
+                             if ([[business.photos firstObject] isKindOfClass:[NSString class]])
                              {
-                                 NSURL *url = [NSURL URLWithString:photoStr];
-                                 NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                 UIImage *image = [UIImage imageWithData:imageData];
-                                 
-                                 if (imageData)
+                                 NSMutableArray *photosArray = [NSMutableArray array];
+                                 for (NSString *photoStr in business.photos)
                                  {
-                                     [photosArray addObject:image];
+                                     NSURL *url = [NSURL URLWithString:photoStr];
+                                     NSData *imageData = [NSData dataWithContentsOfURL:url];
+                                     UIImage *image = [UIImage imageWithData:imageData];
+                                     
+                                     if (imageData)
+                                     {
+                                         [photosArray addObject:image];
+                                     }
                                  }
+                                 
+                                 business.photos = photosArray;
+                                 
+                                 dispatch_async(dispatch_get_main_queue(), ^(void){
+                                     if ([[business.photos lastObject] isKindOfClass:[UIImage class]])
+                                     {
+                                         [[NSNotificationCenter defaultCenter]
+                                          postNotificationName:@"receivedBizPhotos"
+                                          object:self];
+                                     }
+                                 });
                              }
-                             
-                             business.photos = photosArray;
                          }
                      });
                      [[AppDelegate yelp] reviewsForBusinessWithId:business.identifier
@@ -537,7 +549,12 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                                         }
                                                                         business.reviews = reviews.reviews;
                                                                         business.userPhotosArray = userPhotos;
-                                                                        
+                                                                        if ([[business.userPhotosArray lastObject] isKindOfClass:[UIImage class]])
+                                                                        {
+                                                                            [[NSNotificationCenter defaultCenter]
+                                                                             postNotificationName:@"receivedBizReviews"
+                                                                             object:self];
+                                                                        }
                                                                     });
                                                                     
                                                                     dispatch_async(dispatch_get_main_queue(), ^(void){

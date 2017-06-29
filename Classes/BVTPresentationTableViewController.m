@@ -13,7 +13,10 @@
 #import "YLPReview.h"
 #import "BVTStyles.h"
 #import "YLPUser.h"
+
 @interface BVTPresentationTableViewController ()
+
+@property (nonatomic, strong) UIImageView *imgView;
 
 @end
 
@@ -24,9 +27,31 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
 
 @implementation BVTPresentationTableViewController
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)receivedData
+{
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedData)
+                                                 name:@"receivedBizPhotos"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedData)
+                                                 name:@"receivedBizReviews"
+                                               object:nil];
+    
+    self.popoverPresentationController.sourceRect = CGRectMake(0.f,0.f,160.f,300.f);
     
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -36,10 +61,27 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
     
     UINib *yelpReviewsCellNib = [UINib nibWithNibName:kReviewsNib bundle:nil];
     [self.tableView registerNib:yelpReviewsCellNib forCellReuseIdentifier:kReviewsCellID];
+    
+    self.tableView.tableFooterView = [UIView new];
 }
 
--(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
+    if ([self.title containsString:@"Reviews"])
+    {
+        self.imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder_review_large"]];
+        [self.tableView addSubview:self.imgView];
+        
+        self.imgView.center = self.view.center;
+    }
+}
+
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.imgView removeFromSuperview];
+    
     self.preferredContentSize = CGSizeMake(320, self.tableView.contentSize.height);
 }
 
@@ -161,7 +203,7 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
         UIImage *image;
         if ([shouldBeAnImage isKindOfClass:[NSString class]])
         {
-            image = [UIImage imageNamed:@"placeholder_large"];
+            image = [UIImage imageNamed:@"placeholder_photo_large"];
         }
         else if ([shouldBeAnImage isKindOfClass:[UIImage class]])
         {

@@ -491,6 +491,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         ([button.titleLabel.text containsString:@"Photos"] && self.selectedBusiness.photos.count > 0))
     {
         BVTPresentationTableViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"PresTVC"];
+
         controller.business = self.selectedBusiness;
         controller.title = button.titleLabel.text;
         
@@ -498,9 +499,8 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         controller.popoverPresentationController.delegate = self;
         controller.modalPresentationStyle = UIModalPresentationPopover;
         controller.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
-        //        controller.preferredContentSize = CGSizeMake(320, self.tableView.contentSize.height);
         controller.popoverPresentationController.sourceView = button;
-        controller.popoverPresentationController.sourceRect = CGRectMake(0.f,0.f,160.f,300.f);
+        controller.popoverPresentationController.sourceRect = CGRectMake(0, 0, 320, 250);
         controller.presentationController.delegate = self;
         
         [self presentViewController:controller animated:YES completion:nil];
