@@ -385,8 +385,21 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     YLPBusiness *selectedBusiness = [self.filteredResults objectAtIndex:indexPath.row];
     
-    NSArray *cachedBizArray = [self.cachedDetails valueForKey:self.subCategoryTitle];
-    YLPBusiness *cachedBiz = [[cachedBizArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", selectedBusiness.identifier]] lastObject];
+    YLPBusiness *cachedBiz;
+    id cachedBizArray = [self.cachedDetails valueForKey:self.subCategoryTitle];
+    if ([cachedBizArray isKindOfClass:[YLPBusiness class]])
+    {
+        YLPBusiness *potential = (YLPBusiness *)cachedBizArray;
+        if ([potential.identifier isEqualToString:selectedBusiness.identifier])
+        {
+            cachedBiz = potential;
+        }
+    }
+    else
+    {
+        cachedBiz = [[cachedBizArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", selectedBusiness.identifier]] lastObject];
+    }
+    
     __weak typeof(self) weakSelf = self;
     
     if (cachedBiz)
@@ -612,8 +625,20 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     __block YLPBusiness *biz = [self.filteredResults objectAtIndex:indexPath.row];
     
-    NSArray *cachedBizArray = [self.cachedDetails valueForKey:self.subCategoryTitle];
-    YLPBusiness *cachedBiz = [[cachedBizArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", biz.identifier]] lastObject];
+    YLPBusiness *cachedBiz;
+    id cachedBizArray = [self.cachedDetails valueForKey:self.subCategoryTitle];
+    if ([cachedBizArray isKindOfClass:[YLPBusiness class]])
+    {
+        YLPBusiness *potential = (YLPBusiness *)cachedBizArray;
+        if ([potential.identifier isEqualToString:biz.identifier])
+        {
+            cachedBiz = potential;
+        }
+    }
+    else
+    {
+       cachedBiz = [[cachedBizArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", biz.identifier]] lastObject];
+    }
     
     if (cachedBiz && cachedBiz.didGetDetails)
     {
@@ -725,15 +750,15 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                          business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
                                      }
                                      
-                                     business.didGetDetails = YES;
-                                     [weakSelf.displayArray addObject:business];
-                                     [weakSelf.cachedDetails setObject:weakSelf.displayArray forKey:weakSelf.subCategoryTitle];
-                                     biz = business;
-                                     
                                      YLPBusiness *match = [[weakSelf.originalFilteredResults filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
                                      
                                      if (match)
                                      {
+                                         business.didGetDetails = YES;
+                                         [weakSelf.displayArray addObject:business];
+                                         [weakSelf.cachedDetails setObject:weakSelf.displayArray forKey:weakSelf.subCategoryTitle];
+                                         biz = business;
+                                         
                                          NSInteger index = [weakSelf.originalFilteredResults indexOfObject:match];
                                          [weakSelf.originalFilteredResults replaceObjectAtIndex:index withObject:business];
                                      }

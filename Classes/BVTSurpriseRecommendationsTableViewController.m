@@ -31,7 +31,6 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *backChevron;
 @property (nonatomic, strong) BVTHUDView *hud;
 @property (nonatomic) BOOL didCancelRequest;
-@property (nonatomic, strong) NSMutableDictionary *orderedDict;
 @property (nonatomic) BOOL isLargePhone;
 @property (nonatomic) BOOL didSelectBiz;
 @property (nonatomic, strong) GADBannerView *bannerView;
@@ -60,8 +59,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-
-    self.orderedDict = [NSMutableDictionary dictionary];
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     BVTHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
