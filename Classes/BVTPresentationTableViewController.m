@@ -35,6 +35,8 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
 - (void)receivedData
 {
     [self.tableView reloadData];
+    
+    self.preferredContentSize = CGSizeMake(320, self.tableView.contentSize.height);
 }
 
 - (void)viewDidLoad
@@ -73,6 +75,8 @@ static NSString *const kReviewsCellID = @"BVTReviewsPhotoCellIdentifier";
     {
         self.imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder_review_large"]];
         [self.tableView addSubview:self.imgView];
+        
+        self.preferredContentSize = CGSizeMake(320, 266);
         
         self.imgView.center = self.view.center;
     }

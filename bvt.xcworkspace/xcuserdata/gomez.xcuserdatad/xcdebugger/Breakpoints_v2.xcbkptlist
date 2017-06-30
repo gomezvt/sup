@@ -196,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/BVTPresentationTableViewController.m"
-            timestampString = "520473482.547433"
+            timestampString = "520557192.270413"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "@implementation BVTPresentationTableViewController"
             landmarkType = "3">
          </BreakpointContent>

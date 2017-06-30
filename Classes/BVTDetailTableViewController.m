@@ -500,7 +500,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         controller.modalPresentationStyle = UIModalPresentationPopover;
         controller.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
         controller.popoverPresentationController.sourceView = button;
-        controller.popoverPresentationController.sourceRect = CGRectMake(0, 0, 320, 250);
+//        controller.popoverPresentationController.sourceRect = CGRectMake(0, 0, 320, 266);
         controller.presentationController.delegate = self;
         
         [self presentViewController:controller animated:YES completion:nil];
