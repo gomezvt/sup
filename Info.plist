@@ -21,7 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This will let you sort places of interest based on your location.</string>
+	<string>This will let you sort places of interest based on your location.  If you decline, you may toggle this option later, in &quot;Settings&quot; &gt; &quot;Privacy&quot; &gt; &quot;Location Services&quot; &gt; &quot;Burlingtonian.&quot;</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
