@@ -383,6 +383,11 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                                        }
                                                        cachedBiz.reviews = reviews.reviews;
                                                        cachedBiz.userPhotosArray = userPhotos;
+                                                           dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                           [[NSNotificationCenter defaultCenter]
+                                                            postNotificationName:@"receivedBizReviews"
+                                                            object:self];
+                                                           });
                                                        });
                                                        
                                                        dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -489,14 +494,15 @@ static NSString *const kTableViewSectionHeaderView = @"BVTTableViewSectionHeader
                                                                             }
                                                                             [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];                                                                }
                                                                     }
-                                                                    business.reviews = reviews.reviews;
-                                                                    business.userPhotosArray = userPhotos;
-                                                                        if ([[business.userPhotosArray lastObject] isKindOfClass:[UIImage class]])
-                                                                        {
+                                                                        business.reviews = reviews.reviews;
+                                                                        business.userPhotosArray = userPhotos;
+                                                                        [weakSelf.cachedBiz addObject:business];
+                                                                        dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                            
                                                                             [[NSNotificationCenter defaultCenter]
                                                                              postNotificationName:@"receivedBizReviews"
                                                                              object:self];
-                                                                        }
+                                                                        });
                                                                     });
                                                                     
                                                                     dispatch_async(dispatch_get_main_queue(), ^(void){
