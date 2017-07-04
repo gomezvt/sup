@@ -308,12 +308,12 @@
                   moduleName = "Burlingtonian"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSubCategoryTableViewController.m"
-                  timestampString = "520878884.217596"
+                  timestampString = "520880373.09332"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "376"
                   endingLineNumber = "376"
-                  offsetFromSymbolStart = "135">
+                  offsetFromSymbolStart = "176">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -323,12 +323,12 @@
                   moduleName = "Burlingtonian"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSubCategoryTableViewController.m"
-                  timestampString = "520878884.219616"
+                  timestampString = "520880373.09487"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "376"
                   endingLineNumber = "376"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -372,12 +372,12 @@
                   moduleName = "Burlingtonian"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSubCategoryTableViewController.m"
-                  timestampString = "520878884.224245"
+                  timestampString = "520880373.099582"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "617"
                   endingLineNumber = "617"
-                  offsetFromSymbolStart = "238">
+                  offsetFromSymbolStart = "244">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -387,12 +387,12 @@
                   moduleName = "Burlingtonian"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/bvt/Classes/BVTSubCategoryTableViewController.m"
-                  timestampString = "520878884.226062"
+                  timestampString = "520880373.101078"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "617"
                   endingLineNumber = "617"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
