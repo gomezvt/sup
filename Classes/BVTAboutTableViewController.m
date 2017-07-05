@@ -67,21 +67,6 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
     self.tableView.tableFooterView = [UIView new];
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    
-//    UILabel *myLabel = [[UILabel alloc] init];
-//    myLabel.frame = CGRectMake(0, 0, self.tableView.frame.size.height, 20.f);
-//    myLabel.backgroundColor = [UIColor redColor];
-//    myLabel.textColor = [UIColor darkGrayColor];
-//    myLabel.font = [UIFont systemFontOfSize:20.f weight:2.f];
-//    myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-//    
-//    UIView *headerView = [[UIView alloc] init];
-//    [headerView addSubview:myLabel];
-//    
-//    return headerView;
-//}
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSString *title;
@@ -110,7 +95,7 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
     
     if (section == 0)
     {
-        rows = 4;
+        rows = 5;
     }
     else
     {
@@ -120,18 +105,25 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
     return rows;
 }
 
-
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 0 && indexPath.row == 1)
+    if (indexPath.section == 0)
     {
-        [self performSegueWithIdentifier:@"ShowDisclaimer" sender:nil];
+        if (indexPath.row == 1)
+        {
+            [self performSegueWithIdentifier:@"ShowDisclaimer" sender:nil];
+        }
+        else if (indexPath.row == 2)
+        {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/burlingtonian-live-like-a-local-in-vt-ad-free/id1252833369?mt=8&ign-mpt=uo%3D4"]  options:@{} completionHandler:^(BOOL success) {
+                
+                NSLog(@"");
+            }];
+        }
     }
-    else if (indexPath.section == 1)
+    else
     {
         if (indexPath.row == 1)
         {
@@ -166,7 +158,7 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
     
     if (indexPath.section == 0)
     {
-        if (indexPath.row == 3)
+        if (indexPath.row == 4)
         {
             identifier = @"AboutCell";
         }
@@ -191,6 +183,11 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
             cell.textLabel.text = @"Privacy and Terms of Use";
         }
         else if (indexPath.row == 2)
+        {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.textLabel.text = @"Buy Burlingtonian Ad-Free!";
+        }
+        else if (indexPath.row == 3)
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = @"Version 2.0.1";
