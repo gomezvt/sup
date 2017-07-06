@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-//#import <CoreLocation/CoreLocation.h>
-
-//@class CLLocationManager;
-
 @class YLPSearch;
 
 @protocol BVTSubCategoryTableViewControllerDelegate <NSObject>

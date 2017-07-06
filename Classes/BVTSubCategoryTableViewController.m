@@ -22,11 +22,9 @@
 #import "BVTStyles.h"
 #import "YLPReview.h"
 #import "YLPUser.h"
-@import GoogleMobileAds;
 
 @interface BVTSubCategoryTableViewController ()
 <BVTHUDViewDelegate>
-
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -48,7 +46,6 @@
 @property (nonatomic, strong) NSMutableArray *originalFilteredResults;
 @property (nonatomic) BOOL isLargePhone;
 @property (nonatomic) BOOL didSelectBiz;
-@property (nonatomic, strong) GADBannerView *bannerView;
 
 @end
 
@@ -91,88 +88,88 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 - (void)sortArrayWithPredicates
 {
- 
-        NSPredicate *pricePredicate;
-        
-        NSMutableArray *arrayPred = [NSMutableArray array];
-        if (!self.priceKeyValue)
-        {
-            self.priceKeyValue = @"Any $";
-        }
-        
-        if ([self.priceKeyValue isEqualToString:@"Any $"])
-        {
-            pricePredicate = [NSPredicate predicateWithFormat:@"price = %@ OR price = %@ OR price = %@ OR price = %@ OR price = %@", nil, @"$", @"$$", @"$$$", @"$$$$"];
-        }
-        else
-        {
-            pricePredicate = [NSPredicate predicateWithFormat:@"price = %@", self.priceKeyValue];
-        }
-        
-        [arrayPred addObject:pricePredicate];
-        
-        NSPredicate *distancePredicate;
-        AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        if (appDel.userLocation)
-        {
-            self.distanceButton.hidden = NO;
-            if (self.milesKeyValue == 0)
-            {
-                distancePredicate = [NSPredicate predicateWithFormat:@"miles >= 0"];
-            }
-            else
-            {
-                distancePredicate = [NSPredicate predicateWithFormat:@"miles <= %g", self.milesKeyValue];
-            }
-            
-            [arrayPred addObject:distancePredicate];
-        }
-        else
-        {
-            self.distanceButton.hidden = YES;
-        }
-        
-        NSPredicate *openClosePredicate;
-
-        if (!self.openCloseKeyValue)
-        {
-            self.openCloseKeyValue = @"Open/Closed";
-        }
-        
-        if ([self.openCloseKeyValue isEqualToString:@"Open"])
-        {
-            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)];
-        }
-        else if ([self.openCloseKeyValue isEqualToString:@"Closed"])
-        {
-            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ && hoursItem != %@", @(NO), nil];
-        }
-        else if ([self.openCloseKeyValue isEqualToString:@"Open/Closed"])
-        {
-            openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ OR isOpenNow = %@", @(NO), @(YES)];
-        }
-        
-        if (openClosePredicate)
-        {
-            [arrayPred addObject:openClosePredicate];
-        }
     
-        NSPredicate *comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:arrayPred];
-        self.filteredResults  = [[self.originalFilteredResults filteredArrayUsingPredicate:comboPredicate] mutableCopy];
-        
-        if (self.filteredResults.count == 0)
+    NSPredicate *pricePredicate;
+    
+    NSMutableArray *arrayPred = [NSMutableArray array];
+    if (!self.priceKeyValue)
+    {
+        self.priceKeyValue = @"Any $";
+    }
+    
+    if ([self.priceKeyValue isEqualToString:@"Any $"])
+    {
+        pricePredicate = [NSPredicate predicateWithFormat:@"price = %@ OR price = %@ OR price = %@ OR price = %@ OR price = %@", nil, @"$", @"$$", @"$$$", @"$$$$"];
+    }
+    else
+    {
+        pricePredicate = [NSPredicate predicateWithFormat:@"price = %@", self.priceKeyValue];
+    }
+    
+    [arrayPred addObject:pricePredicate];
+    
+    NSPredicate *distancePredicate;
+    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (appDel.userLocation)
+    {
+        self.distanceButton.hidden = NO;
+        if (self.milesKeyValue == 0)
         {
-            self.titleLabel.text = [NSString stringWithFormat:@"%@ (0)", self.subCategoryTitle];
-            self.label.text = @"No sorted results found.";
+            distancePredicate = [NSPredicate predicateWithFormat:@"miles >= 0"];
         }
         else
         {
-            self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.filteredResults.count];
-            self.label.text = @"";
+            distancePredicate = [NSPredicate predicateWithFormat:@"miles <= %g", self.milesKeyValue];
         }
         
-        
-        [self.tableView reloadData];
+        [arrayPred addObject:distancePredicate];
+    }
+    else
+    {
+        self.distanceButton.hidden = YES;
+    }
+    
+    NSPredicate *openClosePredicate;
+    
+    if (!self.openCloseKeyValue)
+    {
+        self.openCloseKeyValue = @"Open/Closed";
+    }
+    
+    if ([self.openCloseKeyValue isEqualToString:@"Open"])
+    {
+        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@", @(YES)];
+    }
+    else if ([self.openCloseKeyValue isEqualToString:@"Closed"])
+    {
+        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ && hoursItem != %@", @(NO), nil];
+    }
+    else if ([self.openCloseKeyValue isEqualToString:@"Open/Closed"])
+    {
+        openClosePredicate = [NSPredicate predicateWithFormat:@"isOpenNow = %@ OR isOpenNow = %@", @(NO), @(YES)];
+    }
+    
+    if (openClosePredicate)
+    {
+        [arrayPred addObject:openClosePredicate];
+    }
+    
+    NSPredicate *comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:arrayPred];
+    self.filteredResults  = [[self.originalFilteredResults filteredArrayUsingPredicate:comboPredicate] mutableCopy];
+    
+    if (self.filteredResults.count == 0)
+    {
+        self.titleLabel.text = [NSString stringWithFormat:@"%@ (0)", self.subCategoryTitle];
+        self.label.text = @"No sorted results found.";
+    }
+    else
+    {
+        self.titleLabel.text = [NSString stringWithFormat:@"%@ (%lu)", self.subCategoryTitle, (unsigned long)self.filteredResults.count];
+        self.label.text = @"";
+    }
+    
+    
+    [self.tableView reloadData];
     
 }
 
@@ -272,22 +269,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
-    UIView *view = self.tabBarController.selectedViewController.view;
-    UIView *bannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 61.f, view.frame.size.width, 61.f)];
-    bannerSpace.backgroundColor = [UIColor whiteColor];
-    [view addSubview:bannerSpace];
-    
-    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner];
-    
-    [bannerSpace addSubview:self.bannerView];
-    
-    [self.bannerView setFrame:CGRectMake(0, 0, bannerSpace.frame.size.width, self.bannerView.frame.size.height)];
-    
-    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
-    self.bannerView.rootViewController = self;
-    [self.bannerView loadRequest:[GADRequest request]];
-    
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 60.f, 0);
     
     self.displayArray = [[NSMutableArray alloc] init];
     

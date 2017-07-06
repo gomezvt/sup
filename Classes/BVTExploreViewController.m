@@ -12,15 +12,12 @@
 #import "BVTExploreCollectionViewCell.h"
 #import "BVTHeaderTitleView.h"
 #import "BVTStyles.h"
-
-@import GoogleMobileAds;
-
+#import "AppDelegate.h"
 
 @interface BVTExploreViewController () <BVTCategoryTableViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) BOOL isLargePhone;
-@property (nonatomic, strong) GADBannerView *bannerView;
 
 @end
 
@@ -53,33 +50,6 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
-    UIView *view = self.tabBarController.selectedViewController.view;
-    UIView *bannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 61.f, view.frame.size.width, 61.f)];
-    bannerSpace.backgroundColor = [UIColor whiteColor];
-    [view addSubview:bannerSpace];
-    
-    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner];
-    
-    [bannerSpace addSubview:self.bannerView];
-    
-    [self.bannerView setFrame:CGRectMake(0, 0, bannerSpace.frame.size.width, self.bannerView.frame.size.height)];
-    
-
-//    
-//    self.bannerView.adUnitID = @"ca-app-pub-8236497982755596/2923452267";
-    self.bannerView.rootViewController = self;
-    
-    GADRequest *request = [GADRequest request];
-    // Requests test ads on devices you specify. Your test device ID is printed to the console when
-    // an ad request is made. GADBannerView automatically returns test ads when running on a
-    // simulator.
-    request.testDevices = @[
-                            @"f326bc67f2ff8eac23975b6ea4c3111d"  // Eric's iPod Touch
-                            ];
-    
-    [self.bannerView loadRequest:request];
-//    [self.bannerView loadRequest:[GADRequest request]];
     
     UINib *cellNib = [UINib nibWithNibName:kCollectionViewCellNib bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"Cell"];
@@ -89,19 +59,19 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     {
         self.isLargePhone = YES;
         
-        [self.collectionView setContentInset:UIEdgeInsetsMake(20,10,60,10)];
+        [self.collectionView setContentInset:UIEdgeInsetsMake(20.f,10.f,0.f,10.f)];
     }
     else if (mainScreen.size.width == 375.f)
     {
         self.isLargePhone = NO;
         
-        [self.collectionView setContentInset:UIEdgeInsetsMake(30.f, 5.f, 50.f, 5.f)];
+        [self.collectionView setContentInset:UIEdgeInsetsMake(30.f, 5.f, 0.f, 5.f)];
     }
     else
     {
         self.isLargePhone = NO;
         
-        [self.collectionView setContentInset:UIEdgeInsetsMake(0.f, 0.f, 50.f, 0.f)];
+        [self.collectionView setContentInset:UIEdgeInsetsMake(0.f, 0.f, 0.f, 0.f)];
     }
 }
 

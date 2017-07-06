@@ -11,13 +11,10 @@
 #import "BVTAboutTableViewCell.h"
 #import "BVTStyles.h"
 #import <MessageUI/MessageUI.h>
-@import GoogleMobileAds;
 
 @interface BVTAboutTableViewController () <UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) BVTHeaderTitleView *headerTitleView;
-@property (nonatomic, strong) GADBannerView *bannerView;
-
 
 @end
 
@@ -39,24 +36,7 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 60.f, 0);
-    
-    UIView *view = self.tabBarController.selectedViewController.view;
-    UIView *bannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 61.f, view.frame.size.width, 61.f)];
-    bannerSpace.backgroundColor = [UIColor whiteColor];
-    [view addSubview:bannerSpace];
-    
-    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner];
-    
-    [bannerSpace addSubview:self.bannerView];
-    
-    [self.bannerView setFrame:CGRectMake(0, 0, bannerSpace.frame.size.width, self.bannerView.frame.size.height)];
-    
-    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
-    self.bannerView.rootViewController = self;
-    [self.bannerView loadRequest:[GADRequest request]];
-    
+        
     UINib *aboutCellNib = [UINib nibWithNibName:kAboutTableViewNib bundle:nil];
     [self.tableView registerNib:aboutCellNib forCellReuseIdentifier:@"AboutCell"];
     

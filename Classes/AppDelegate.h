@@ -10,6 +10,7 @@
 
 @class YLPClient;
 @class GADMobileAds;
+@class GADBannerView;
 
 #import <CoreLocation/CoreLocation.h>
 
@@ -17,6 +18,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) CLLocation *userLocation;
+@property (nonatomic, strong) GADBannerView *bannerView;
 
 + (YLPClient *)yelp;
 + (GADMobileAds *)google;

@@ -19,10 +19,8 @@
 #import "YLPLocation.h"
 #import "YLPClient+Search.h"
 #import "BVTHUDView.h"
-//#import "BVTTableViewSectionHeaderView.h"
 #import "YLPLocation.h"
 #import "YLPCoordinate.h"
-@import GoogleMobileAds;
 
 @interface BVTSurpriseShoppingCartTableViewController ()
 <BVTHUDViewDelegate, BVTSurpriseRecommendationsTableViewControllerDelegate>
@@ -30,7 +28,6 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
 @property (nonatomic, weak) IBOutlet UIButton *clearButton;
-@property (nonatomic, strong) GADBannerView *bannerView;
 
 @property (nonatomic) BOOL didCancelRequest;
 @property (nonatomic, strong) BVTHUDView *hud;
@@ -295,21 +292,6 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
 {
     [super viewDidLoad];
     
-    UIView *view = self.tabBarController.selectedViewController.view;
-    UIView *bannerSpace = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 61.f, view.frame.size.width, 61.f)];
-    bannerSpace.backgroundColor = [UIColor whiteColor];
-    [view addSubview:bannerSpace];
-    
-    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner];
-    
-    [bannerSpace addSubview:self.bannerView];
-    
-    [self.bannerView setFrame:CGRectMake(0, 0, bannerSpace.frame.size.width, self.bannerView.frame.size.height)];
-    
-    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
-    self.bannerView.rootViewController = self;
-    [self.bannerView loadRequest:[GADRequest request]];
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 60.f, 0);
 
     self.tempArray = [[NSMutableArray alloc] init];
     self.tableView.tableFooterView = [UIView new];
