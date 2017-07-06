@@ -21,8 +21,9 @@
 
 @implementation BVTTabBarViewController
 
-- (void)adViewDidReceiveAd:(GADBannerView *)adView
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView
 {
+    self.bannerView = bannerView;
     [self.adView addSubview:self.bannerView];
     [self.bannerView setFrame:CGRectMake(0, 0, self.adView.frame.size.width, 60.f)];
     self.adViewHeightConstraint.constant = 60.f;
@@ -37,10 +38,10 @@
     self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner];
     self.bannerView.rootViewController = self;
     self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/6300978111";
-    self.bannerView.delegate = self;
 
     [self.bannerView loadRequest:[GADRequest request]];
-    
+    self.bannerView.delegate = self;
+
     // Do any additional setup after loading the view.
 }
 
