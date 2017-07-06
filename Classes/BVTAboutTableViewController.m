@@ -79,7 +79,7 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
     }
     else
     {
-        rows = 3;
+        rows = 2;
     }
     
     return rows;
@@ -105,14 +105,14 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
     }
     else
     {
+//        if (indexPath.row == 1)
+//        {
+//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/burlingtonian-live-like-a-local-in-vermont/id581817418?mt=8"]  options:@{} completionHandler:^(BOOL success) {
+//                
+//                NSLog(@"");
+//            }];
+//        }
         if (indexPath.row == 1)
-        {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/burlingtonian-live-like-a-local-in-vermont/id581817418?mt=8"]  options:@{} completionHandler:^(BOOL success) {
-                
-                NSLog(@"");
-            }];
-        }
-        else if (indexPath.row == 2)
         {
             MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
             mail.mailComposeDelegate = self;
@@ -182,17 +182,17 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
         if (indexPath.row == 0)
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"Your input is very important and can help make Burlingtonian better. Please take a moment to leave your feedback.";
+            cell.textLabel.text = @"Your input is very important and can help make Burlingtonian better. Please take a moment to leave your feedback by writing a review on the App Store, or by emailing Greg below.";
         }
-        else if (indexPath.row == 1)
-        {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.textLabel.text = @"Write a review or rate us on the App Store";
-        }
+//        else if (indexPath.row == 1)
+//        {
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//            cell.textLabel.text = @"Write a review or rate us on the App Store";
+//        }
         else
         {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.textLabel.text = @"Send an email to Greg";
+            cell.textLabel.text = @"Send an email";
         }
     }
     
