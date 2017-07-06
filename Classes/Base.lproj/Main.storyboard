@@ -117,9 +117,19 @@
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOu-Bu-axG">
                                 <rect key="frame" x="0.0" y="676" width="414" height="60"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading ad space..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRU-qb-HQW">
+                                        <rect key="frame" x="140.66666666666663" y="21.666666666666629" width="133.33333333333337" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.52932554480000005" green="0.67264115810000003" blue="0.57792097330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="HRU-qb-HQW" firstAttribute="centerX" secondItem="zOu-Bu-axG" secondAttribute="centerX" id="EcQ-Dl-vVN"/>
                                     <constraint firstAttribute="height" constant="60" id="TcK-0E-Tts"/>
+                                    <constraint firstItem="HRU-qb-HQW" firstAttribute="centerY" secondItem="zOu-Bu-axG" secondAttribute="centerY" id="uDO-jc-KCW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -136,6 +146,7 @@
                     </view>
                     <connections>
                         <outlet property="adView" destination="zOu-Bu-axG" id="hZ4-q4-q4L"/>
+                        <outlet property="adViewHeightConstraint" destination="TcK-0E-Tts" id="WiL-xZ-Ljk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pp5-T3-K4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -935,7 +946,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is my label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxG-So-kAz">
-                                <rect key="frame" x="8" y="328" width="398" height="21"/>
+                                <rect key="frame" x="8" y="328" width="398" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1144,7 +1155,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is my label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkY-eb-Swa">
-                                <rect key="frame" x="28" y="328" width="358" height="21"/>
+                                <rect key="frame" x="28" y="328" width="358" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
