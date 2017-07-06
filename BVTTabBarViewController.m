@@ -24,9 +24,14 @@
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView
 {
     self.bannerView = bannerView;
+
+    self.bannerView.alpha = 0;
     [self.adView addSubview:self.bannerView];
     [self.bannerView setFrame:CGRectMake(0, 0, self.adView.frame.size.width, 60.f)];
     self.adViewHeightConstraint.constant = 60.f;
+    [UIView animateWithDuration:1.0 animations:^{
+        self.bannerView.alpha = 1;
+    }];
 }
 
 - (void)viewDidLoad
@@ -37,7 +42,8 @@
     
     self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner];
     self.bannerView.rootViewController = self;
-    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/6300978111"; //ca-app-pub-8236497982755596/2923452267 real
+    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/6300978111";
+    //ca-app-pub-8236497982755596/2923452267 real
 
     [self.bannerView loadRequest:[GADRequest request]];
     self.bannerView.delegate = self;
