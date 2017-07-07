@@ -13,6 +13,8 @@
 
 @interface BVTPageRootViewController ()
 
+@property (nonatomic, weak) IBOutlet UIView *gotItBar;
+
 @end
 
 @implementation BVTPageRootViewController
@@ -24,6 +26,8 @@
     BOOL tutorialIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"BVTTutorialComplete"];
     if (tutorialIsComplete)
     {
+        self.gotItBar.hidden = YES;
+
         dispatch_async(dispatch_get_main_queue(), ^{
             [self performSegueWithIdentifier:@"ShowTabBarController" sender:nil];
         });
