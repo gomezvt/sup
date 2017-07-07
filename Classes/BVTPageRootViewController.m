@@ -14,6 +14,7 @@
 @interface BVTPageRootViewController ()
 
 @property (nonatomic, weak) IBOutlet UIView *gotItBar;
+@property (nonatomic, weak) IBOutlet UIImageView *icon;
 
 @end
 
@@ -27,6 +28,7 @@
     if (tutorialIsComplete)
     {
         self.gotItBar.hidden = YES;
+        self.icon.hidden = YES;
 
         dispatch_async(dispatch_get_main_queue(), ^{
             [self performSegueWithIdentifier:@"ShowTabBarController" sender:nil];

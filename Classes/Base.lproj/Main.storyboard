@@ -90,6 +90,7 @@
                     </view>
                     <connections>
                         <outlet property="gotItBar" destination="tMy-AY-DqC" id="sgl-1X-PMz"/>
+                        <outlet property="icon" destination="XuW-Yq-Oh3" id="uaa-SY-0li"/>
                         <outlet property="start" destination="mZs-Ai-JNh" id="ZIe-Xv-WTe"/>
                         <segue destination="JGB-Wv-YaA" kind="show" identifier="ShowTabBarController" id="AvO-Ss-TYQ"/>
                     </connections>
