@@ -23,13 +23,21 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="KZB-q4-u7O">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2017 Greg Gomez" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWN-fv-6mT">
+                                <rect key="frame" x="122.5" y="642" width="132" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="OWN-fv-6mT" secondAttribute="bottom" constant="8" id="4oZ-cV-IdS"/>
                             <constraint firstItem="KZB-q4-u7O" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="c1X-tY-bXf"/>
                             <constraint firstItem="KZB-q4-u7O" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="dtr-7W-epo"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="KZB-q4-u7O" secondAttribute="bottom" id="hDi-Y0-qds"/>
+                            <constraint firstAttribute="bottom" secondItem="KZB-q4-u7O" secondAttribute="bottom" id="fjV-Dl-NaH"/>
                             <constraint firstAttribute="trailing" secondItem="KZB-q4-u7O" secondAttribute="trailing" id="oDc-6k-8g5"/>
+                            <constraint firstItem="OWN-fv-6mT" firstAttribute="centerX" secondItem="KZB-q4-u7O" secondAttribute="centerX" id="yyK-D0-H15"/>
                         </constraints>
                     </view>
                 </viewController>
