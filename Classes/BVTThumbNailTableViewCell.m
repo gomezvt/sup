@@ -43,15 +43,24 @@
     }
     else
     {
-        self.milesLabel.hidden = NO;
-        CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:business.location.coordinate.latitude longitude:business.location.coordinate.longitude];
-        CLLocationDistance meters = [appDel.userLocation distanceFromLocation:bizLocation];
-        
-        double miles = meters / 1609.34;
-        business.miles = miles;
-        
-        NSString *milesStr = [NSString stringWithFormat:@"%.2f mi.", self.business.miles];
-        self.milesLabel.text = milesStr;
+        if (business.location.coordinate.latitude && business.location.coordinate.longitude)
+        {
+            self.milesLabel.hidden = NO;
+
+            CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:business.location.coordinate.latitude longitude:business.location.coordinate.longitude];
+            
+            CLLocationDistance meters = [appDel.userLocation distanceFromLocation:bizLocation];
+            double miles = meters / 1609.34;
+            business.miles = miles;
+            
+            NSString *milesStr = [NSString stringWithFormat:@"%.2f mi.", self.business.miles];
+            self.milesLabel.text = milesStr;
+        }
+        else
+        {
+            // Don't display miles label if we don't have latitude and longitude to work with
+            self.milesLabel.text = @"";
+        }
     }
 
 

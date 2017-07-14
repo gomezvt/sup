@@ -334,13 +334,6 @@ static NSString *const kHeaderTitleViewNib = @"BVTHeaderTitleView";
             {
                 if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", category]] lastObject])
                 {
-                    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    
-                    CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:biz.location.coordinate.latitude longitude:biz.location.coordinate.longitude];
-                    CLLocationDistance meters = [appDel.userLocation distanceFromLocation:bizLocation];
-                    
-                    double miles = meters / 1609.34;
-                    biz.miles = miles;
                     if (![self.tempArray containsObject:[NSString stringWithFormat:@"%@%@", biz.identifier, category]])
                     {
                         [self.resultsArray addObject:[NSDictionary dictionaryWithObject:biz forKey:category]];
