@@ -79,7 +79,7 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
     }
     else
     {
-        rows = 2;
+        rows = 3;
     }
     
     return rows;
@@ -105,14 +105,14 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
     }
     else
     {
-//        if (indexPath.row == 1)
-//        {
-//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/burlingtonian-live-like-a-local-in-vermont/id581817418?mt=8"]  options:@{} completionHandler:^(BOOL success) {
-//                
-//                NSLog(@"");
-//            }];
-//        }
         if (indexPath.row == 1)
+        {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/burlingtonian-live-like-a-local-in-vermont/id581817418?mt=8"]  options:@{} completionHandler:^(BOOL success) {
+                
+                NSLog(@"");
+            }];
+        }
+        else if (indexPath.row == 2)
         {
             MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
             mail.mailComposeDelegate = self;
@@ -170,7 +170,7 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
         else if (indexPath.row == 3)
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"Version 2.0.1";
+            cell.textLabel.text = @"Version 2.0.2";
         }
         else
         {
@@ -182,13 +182,13 @@ static NSString *const kAboutTableViewNib = @"BVTAboutTableViewCell";
         if (indexPath.row == 0)
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"Your input is very important and can help make Burlingtonian better. Please take a moment to leave your feedback by writing a review on the App Store, or by emailing Greg below.";
+            cell.textLabel.text = @"Your input is very important and can help make Burlingtonian better. Please take a moment to leave your feedback.";
         }
-//        else if (indexPath.row == 1)
-//        {
-//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//            cell.textLabel.text = @"Write a review or rate us on the App Store";
-//        }
+        else if (indexPath.row == 1)
+        {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.textLabel.text = @"Write a review or rate us on the App Store";
+        }
         else
         {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
