@@ -39,14 +39,12 @@
     AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (!appDel.userLocation)
     {
-        self.milesLabel.hidden = YES;
+        self.milesLabel.text = @"";
     }
     else
     {
         if (business.location.coordinate.latitude && business.location.coordinate.longitude)
         {
-            self.milesLabel.hidden = NO;
-
             CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:business.location.coordinate.latitude longitude:business.location.coordinate.longitude];
             
             CLLocationDistance meters = [appDel.userLocation distanceFromLocation:bizLocation];

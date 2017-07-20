@@ -184,6 +184,11 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         indexPaths -= 1;
     }
     
+    if (!self.selectedBusiness.location.coordinate.latitude && !self.selectedBusiness.location.coordinate.longitude)
+    {
+        indexPaths -= 1;
+    }
+    
     return indexPaths;
 }
 
@@ -216,13 +221,24 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         {
             identifier = kYelpAddressCellIdentifier;
         }
-        else if (indexPath.row == 5)
+        
+        if (self.selectedBusiness.location.coordinate)
         {
-            identifier = kYelpMapCellIdentifier;
+            if (indexPath.row == 5)
+            {
+                identifier = kYelpMapCellIdentifier;
+            }
+            else if (indexPath.row == 6 || indexPath.row == 7)
+            {
+                identifier = kSplitCellIdentifier;
+            }
         }
-        else if (indexPath.row == 6 || indexPath.row == 7)
+        else
         {
-            identifier = kSplitCellIdentifier;
+            if (indexPath.row == 5 || indexPath.row == 6)
+            {
+                identifier = kSplitCellIdentifier;
+            }
         }
     }
     else if (!phone && hoursArray.count == 0)
@@ -231,13 +247,24 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         {
             identifier = kYelpAddressCellIdentifier;
         }
-        else if (indexPath.row == 3)
+        
+        if (self.selectedBusiness.location.coordinate)
         {
-            identifier = kYelpMapCellIdentifier;
+            if (indexPath.row == 3)
+            {
+                identifier = kYelpMapCellIdentifier;
+            }
+            else if (indexPath.row == 4 || indexPath.row == 5)
+            {
+                identifier = kSplitCellIdentifier;
+            }
         }
-        else if (indexPath.row == 4 || indexPath.row == 5)
+        else
         {
-            identifier = kSplitCellIdentifier;
+            if (indexPath.row == 3 || indexPath.row == 4)
+            {
+                identifier = kSplitCellIdentifier;
+            }
         }
     }
     else if (!phone && hoursArray.count > 0)
@@ -250,14 +277,26 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         {
             identifier = kYelpAddressCellIdentifier;
         }
-        else if (indexPath.row == 4)
+        
+        if (self.selectedBusiness.location.coordinate)
         {
-            identifier = kYelpMapCellIdentifier;
+            if (indexPath.row == 4)
+            {
+                identifier = kYelpMapCellIdentifier;
+            }
+            else if (indexPath.row == 5 || indexPath.row == 6)
+            {
+                identifier = kSplitCellIdentifier;
+            }
         }
-        else if (indexPath.row == 5 || indexPath.row == 6)
+        else
         {
-            identifier = kSplitCellIdentifier;
+            if (indexPath.row == 4 || indexPath.row == 5)
+            {
+                identifier = kSplitCellIdentifier;
+            }
         }
+        
     }
     else if (phone && hoursArray.count == 0)
     {
@@ -269,13 +308,24 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         {
             identifier = kYelpAddressCellIdentifier;
         }
-        else if (indexPath.row == 4)
+        
+        if (self.selectedBusiness.location.coordinate)
         {
-            identifier = kYelpMapCellIdentifier;
+            if (indexPath.row == 4)
+            {
+                identifier = kYelpMapCellIdentifier;
+            }
+            else if (indexPath.row == 5 || indexPath.row == 6)
+            {
+                identifier = kSplitCellIdentifier;
+            }
         }
-        else if (indexPath.row == 5 || indexPath.row == 6)
+        else
         {
-            identifier = kSplitCellIdentifier;
+            if (indexPath.row == 4 || indexPath.row == 5)
+            {
+                identifier = kSplitCellIdentifier;
+            }
         }
     }
     
@@ -330,25 +380,49 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             BVTYelpAddressTableViewCell *addressCell = (BVTYelpAddressTableViewCell *)cell;
             addressCell.selectedBusiness = self.selectedBusiness;
         }
-        else if (indexPath.row == 5)
+        
+        if (self.selectedBusiness.location.coordinate.latitude && self.selectedBusiness.location.coordinate.longitude)
         {
-            BVTYelpMapTableViewCell *mapCell = (BVTYelpMapTableViewCell *)cell;
-            mapCell.selectedBusiness = self.selectedBusiness;
+            if (indexPath.row == 5)
+            {
+                BVTYelpMapTableViewCell *mapCell = (BVTYelpMapTableViewCell *)cell;
+                mapCell.selectedBusiness = self.selectedBusiness;
+            }
+            else if (indexPath.row == 6 || indexPath.row == 7)
+            {
+                BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+                splitCell.selectedBusiness = self.selectedBusiness;
+                if (indexPath.row == 6)
+                {
+                    [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
+                }
+                else
+                {
+                    [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
+                }
+            }
+
         }
-        else if (indexPath.row == 6 || indexPath.row == 7)
+        else
         {
-            BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
-            splitCell.selectedBusiness = self.selectedBusiness;
-            if (indexPath.row == 6)
+            if (indexPath.row == 5 || indexPath.row == 6)
             {
-                [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
+                BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+                splitCell.selectedBusiness = self.selectedBusiness;
+                if (indexPath.row == 5)
+                {
+                    [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
+                }
+                else
+                {
+                    [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
+                }
             }
-            else
-            {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
-            }
+            
         }
     }
     else if (!phone && hoursArray.count == 0)
@@ -358,27 +432,48 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             BVTYelpAddressTableViewCell *addressCell = (BVTYelpAddressTableViewCell *)cell;
             addressCell.selectedBusiness = self.selectedBusiness;
         }
-        else if (indexPath.row == 3)
-        {
-            BVTYelpMapTableViewCell *mapCell = (BVTYelpMapTableViewCell *)cell;
-            mapCell.selectedBusiness = self.selectedBusiness;
-        }
-        else if (indexPath.row == 4 || indexPath.row == 5)
-        {
-            BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
-            splitCell.selectedBusiness = self.selectedBusiness;
-            if (indexPath.row == 4)
-            {
-                [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
-            }
-            else
-            {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
-            }
-        }
         
+        if (self.selectedBusiness.location.coordinate.latitude && self.selectedBusiness.location.coordinate.longitude)
+        {
+            if (indexPath.row == 3)
+            {
+                BVTYelpMapTableViewCell *mapCell = (BVTYelpMapTableViewCell *)cell;
+                mapCell.selectedBusiness = self.selectedBusiness;
+            }
+            else if (indexPath.row == 4 || indexPath.row == 5)
+            {
+                BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+                splitCell.selectedBusiness = self.selectedBusiness;
+                if (indexPath.row == 4)
+                {
+                    [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
+                }
+                else
+                {
+                    [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
+                }
+            }
+        }
+        else
+        {
+            if (indexPath.row == 3 || indexPath.row == 4)
+            {
+                BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+                splitCell.selectedBusiness = self.selectedBusiness;
+                if (indexPath.row == 3)
+                {
+                    [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
+                }
+                else
+                {
+                    [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
+                }
+            }
+        }
     }
     else if (!phone && hoursArray.count > 0)
     {
@@ -392,27 +487,48 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             BVTYelpAddressTableViewCell *addressCell = (BVTYelpAddressTableViewCell *)cell;
             addressCell.selectedBusiness = self.selectedBusiness;
         }
-        else if (indexPath.row == 4)
-        {
-            BVTYelpMapTableViewCell *mapCell = (BVTYelpMapTableViewCell *)cell;
-            mapCell.selectedBusiness = self.selectedBusiness;
-        }
-        else if (indexPath.row == 5 || indexPath.row == 6)
-        {
-            BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
-            splitCell.selectedBusiness = self.selectedBusiness;
-            if (indexPath.row == 5)
-            {
-                [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
-            }
-            else
-            {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
-            }
-        }
         
+        if (self.selectedBusiness.location.coordinate.latitude && self.selectedBusiness.location.coordinate.longitude)
+        {
+            if (indexPath.row == 4)
+            {
+                BVTYelpMapTableViewCell *mapCell = (BVTYelpMapTableViewCell *)cell;
+                mapCell.selectedBusiness = self.selectedBusiness;
+            }
+            else if (indexPath.row == 5 || indexPath.row == 6)
+            {
+                BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+                splitCell.selectedBusiness = self.selectedBusiness;
+                if (indexPath.row == 5)
+                {
+                    [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
+                }
+                else
+                {
+                    [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
+                }
+            }
+        }
+        else
+        {
+            if (indexPath.row == 4 || indexPath.row == 5)
+            {
+                BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+                splitCell.selectedBusiness = self.selectedBusiness;
+                if (indexPath.row == 4)
+                {
+                    [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
+                }
+                else
+                {
+                    [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
+                }
+            }
+        }
     }
     else if (phone && hoursArray.count == 0)
     {
@@ -426,24 +542,46 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
             BVTYelpAddressTableViewCell *addressCell = (BVTYelpAddressTableViewCell *)cell;
             addressCell.selectedBusiness = self.selectedBusiness;
         }
-        else if (indexPath.row == 4)
+        
+        if (self.selectedBusiness.location.coordinate.latitude && self.selectedBusiness.location.coordinate.longitude)
         {
-            BVTYelpMapTableViewCell *mapCell = (BVTYelpMapTableViewCell *)cell;
-            mapCell.selectedBusiness = self.selectedBusiness;
-        }
-        else if (indexPath.row == 5 || indexPath.row == 6)
-        {
-            BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
-            splitCell.selectedBusiness = self.selectedBusiness;
-            if (indexPath.row == 5)
+            if (indexPath.row == 4)
             {
-                [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
+                BVTYelpMapTableViewCell *mapCell = (BVTYelpMapTableViewCell *)cell;
+                mapCell.selectedBusiness = self.selectedBusiness;
             }
-            else
+            else if (indexPath.row == 5 || indexPath.row == 6)
             {
-                [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
-                [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
+                BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+                splitCell.selectedBusiness = self.selectedBusiness;
+                if (indexPath.row == 5)
+                {
+                    [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
+                }
+                else
+                {
+                    [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
+                }
+            }
+        }
+        else
+        {
+            if (indexPath.row == 4 || indexPath.row == 5)
+            {
+                BVTSplitTableViewCell *splitCell = (BVTSplitTableViewCell *)cell;
+                splitCell.selectedBusiness = self.selectedBusiness;
+                if (indexPath.row == 4)
+                {
+                    [splitCell.leftButton setTitle:photosTitle forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:reviewsTitle forState:UIControlStateNormal];
+                }
+                else
+                {
+                    [splitCell.leftButton setTitle:@"Map" forState:UIControlStateNormal];
+                    [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
+                }
             }
         }
     }
