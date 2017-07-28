@@ -168,7 +168,7 @@
 		64E905EC1E49704000331C3F /* BVTYelpHoursTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTYelpHoursTableViewCell.m; path = Classes/BVTYelpHoursTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		64E905ED1E49704000331C3F /* BVTYelpHoursTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpHoursTableViewCell.xib; path = Classes/BVTYelpHoursTableViewCell.xib; sourceTree = "<group>"; };
 		64E905F21E4970BC00331C3F /* BVTYelpCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BVTYelpCategoryTableViewCell.xib; path = Classes/BVTYelpCategoryTableViewCell.xib; sourceTree = "<group>"; };
-		64F41D5F1E2C497F0053EBE2 /* SUP?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SUP?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64F41D5F1E2C497F0053EBE2 /* Burlingtonian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Burlingtonian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		812CD2D8F0E4D852D7328DA4 /* Pods-bvt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.debug.xcconfig"; sourceTree = "<group>"; };
 		A13E28BFC52912BF5475C256 /* Pods-bvt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.release.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -350,7 +350,7 @@
 		64F41D601E2C497F0053EBE2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				64F41D5F1E2C497F0053EBE2 /* SUP?.app */,
+				64F41D5F1E2C497F0053EBE2 /* Burlingtonian.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -433,7 +433,7 @@
 			);
 			name = sup;
 			productName = bvt;
-			productReference = 64F41D5F1E2C497F0053EBE2 /* SUP?.app */;
+			productReference = 64F41D5F1E2C497F0053EBE2 /* Burlingtonian.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -719,13 +719,8 @@
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-<<<<<<< Updated upstream
 				PRODUCT_BUNDLE_IDENTIFIER = com.webeffx.theburlingtonian;
 				PRODUCT_NAME = Burlingtonian;
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = gms.d;
-				PRODUCT_NAME = "SUP?";
->>>>>>> Stashed changes
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -747,13 +742,8 @@
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-<<<<<<< Updated upstream
 				PRODUCT_BUNDLE_IDENTIFIER = com.webeffx.theburlingtonian;
 				PRODUCT_NAME = Burlingtonian;
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = gms.d;
-				PRODUCT_NAME = "SUP?";
->>>>>>> Stashed changes
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 x86_64 armvs7";
 			};
