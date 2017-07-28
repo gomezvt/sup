@@ -415,9 +415,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		64F41D5E1E2C497F0053EBE2 /* bvt */ = {
+		64F41D5E1E2C497F0053EBE2 /* sup */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 64F41D791E2C497F0053EBE2 /* Build configuration list for PBXNativeTarget "bvt" */;
+			buildConfigurationList = 64F41D791E2C497F0053EBE2 /* Build configuration list for PBXNativeTarget "sup" */;
 			buildPhases = (
 				4271AA253243E143826615D8 /* [CP] Check Pods Manifest.lock */,
 				64F41D5B1E2C497F0053EBE2 /* Sources */,
@@ -431,7 +431,7 @@
 			);
 			dependencies = (
 			);
-			name = bvt;
+			name = sup;
 			productName = bvt;
 			productReference = 64F41D5F1E2C497F0053EBE2 /* Burlingtonian.app */;
 			productType = "com.apple.product-type.application";
@@ -452,7 +452,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 64F41D5A1E2C497F0053EBE2 /* Build configuration list for PBXProject "bvt" */;
+			buildConfigurationList = 64F41D5A1E2C497F0053EBE2 /* Build configuration list for PBXProject "sup" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -465,7 +465,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				64F41D5E1E2C497F0053EBE2 /* bvt */,
+				64F41D5E1E2C497F0053EBE2 /* sup */,
 			);
 		};
 /* End PBXProject section */
@@ -752,7 +752,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		64F41D5A1E2C497F0053EBE2 /* Build configuration list for PBXProject "bvt" */ = {
+		64F41D5A1E2C497F0053EBE2 /* Build configuration list for PBXProject "sup" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64F41D771E2C497F0053EBE2 /* Debug */,
@@ -761,7 +761,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64F41D791E2C497F0053EBE2 /* Build configuration list for PBXNativeTarget "bvt" */ = {
+		64F41D791E2C497F0053EBE2 /* Build configuration list for PBXNativeTarget "sup" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64F41D7A1E2C497F0053EBE2 /* Debug */,
