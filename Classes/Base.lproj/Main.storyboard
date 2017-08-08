@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wjE-zW-AhW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wjE-zW-AhW">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +12,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="BVTTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" customClass="BVTTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="SUPTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" customClass="SUPTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -42,7 +42,7 @@
         <!--Root View Controller-->
         <scene sceneID="Zfl-L9-yCF">
             <objects>
-                <viewController title="Root View Controller" id="wjE-zW-AhW" customClass="BVTPageRootViewController" sceneMemberID="viewController">
+                <viewController title="Root View Controller" id="wjE-zW-AhW" customClass="SUPPageRootViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yd0-Y7-pow"/>
                         <viewControllerLayoutGuide type="bottom" id="oWp-dM-boV"/>
@@ -102,7 +102,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="ZGM-yA-7G0">
             <objects>
-                <viewController id="JGB-Wv-YaA" customClass="BVTTabBarViewController" sceneMemberID="viewController">
+                <viewController id="JGB-Wv-YaA" customClass="SUPTabBarViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9k1-F3-6Zq"/>
                         <viewControllerLayoutGuide type="bottom" id="OWz-hQ-9i7"/>
@@ -121,7 +121,7 @@
                                 <rect key="frame" x="0.0" y="676" width="414" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading advertisement..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRU-qb-HQW">
-                                        <rect key="frame" x="122.66666666666669" y="21.666666666666629" width="169.66666666666663" height="18"/>
+                                        <rect key="frame" x="122.66666666666669" y="21.666666666666629" width="170" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -158,7 +158,7 @@
         <!--Page Content View Controller-->
         <scene sceneID="wX0-ps-Brz">
             <objects>
-                <viewController storyboardIdentifier="PageContentViewController" title="Page Content View Controller" id="If7-aq-Nls" customClass="BVTPageContentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageContentViewController" title="Page Content View Controller" id="If7-aq-Nls" customClass="SUPPageContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QIy-WZ-ZgE"/>
                         <viewControllerLayoutGuide type="bottom" id="d92-MH-Pbr"/>
@@ -207,7 +207,7 @@
         <!--Burlingtonian-->
         <scene sceneID="Vu4-MZ-ht8">
             <objects>
-                <viewController storyboardIdentifier="BVTExploreViewController" id="XQZ-uB-ePI" customClass="BVTExploreViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SUPExploreViewController" id="XQZ-uB-ePI" customClass="SUPExploreViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tUE-MQ-9Jm"/>
                         <viewControllerLayoutGuide type="bottom" id="f4s-nV-xyo"/>
@@ -267,7 +267,7 @@
         <!--Burlingtonian-->
         <scene sceneID="Kyz-Hy-ijJ">
             <objects>
-                <viewController id="YHp-ZS-BPP" customClass="BVTCategoryTableViewController" sceneMemberID="viewController">
+                <viewController id="YHp-ZS-BPP" customClass="SUPCategoryTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yv3-Ff-EkL"/>
                         <viewControllerLayoutGuide type="bottom" id="kcM-E2-Up9"/>
@@ -302,7 +302,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wlY-sR-KOH" id="Vow-YO-FME">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -346,7 +346,7 @@
         <!--Burlingtonian-->
         <scene sceneID="pAY-1M-M1K">
             <objects>
-                <viewController id="YcC-JR-9wn" customClass="BVTDetailTableViewController" sceneMemberID="viewController">
+                <viewController id="YcC-JR-9wn" customClass="SUPDetailTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YTh-Ng-ivW"/>
                         <viewControllerLayoutGuide type="bottom" id="Ls7-IL-97c"/>
@@ -447,7 +447,7 @@
         <!--Burlingtonian-->
         <scene sceneID="f3u-B1-k2u">
             <objects>
-                <viewController id="CcW-yj-hls" customClass="BVTSurpriseCategoryTableViewController" sceneMemberID="viewController">
+                <viewController id="CcW-yj-hls" customClass="SUPSurpriseCategoryTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bFc-Zj-CVx"/>
                         <viewControllerLayoutGuide type="bottom" id="m7d-vj-rHm"/>
@@ -542,7 +542,7 @@
         <!--Burlingtonian-->
         <scene sceneID="x8r-6n-wkn">
             <objects>
-                <viewController id="drD-Ic-Hni" customClass="BVTSurpriseSubCategoryTableViewController" sceneMemberID="viewController">
+                <viewController id="drD-Ic-Hni" customClass="SUPSurpriseSubCategoryTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C5B-vQ-Skg"/>
                         <viewControllerLayoutGuide type="bottom" id="l5c-N4-Nfh"/>
@@ -597,7 +597,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4UX-3F-ZQk" id="5tv-W7-cNm">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -643,7 +643,7 @@
         <!--Burlingtonian-->
         <scene sceneID="9HH-QN-d49">
             <objects>
-                <viewController id="Lks-cD-BTu" customClass="BVTSurpriseShoppingCartTableViewController" sceneMemberID="viewController">
+                <viewController id="Lks-cD-BTu" customClass="SUPSurpriseShoppingCartTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FrZ-Tb-73E"/>
                         <viewControllerLayoutGuide type="bottom" id="ubo-Rt-vau"/>
@@ -757,7 +757,7 @@
         <!--Burlingtonian-->
         <scene sceneID="Bfu-4q-3xs">
             <objects>
-                <tableViewController storyboardIdentifier="test" id="Ltk-uh-3zO" customClass="BVTAboutTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="test" id="Ltk-uh-3zO" customClass="SUPAboutTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="z0b-rK-jvk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="676"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -790,7 +790,7 @@
         <!--Burlingtonian-->
         <scene sceneID="XqU-vz-WG5">
             <objects>
-                <viewController id="C8i-nC-YuE" customClass="BVTDisclaimerViewController" sceneMemberID="viewController">
+                <viewController id="C8i-nC-YuE" customClass="SUPDisclaimerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dig-2a-dBN"/>
                         <viewControllerLayoutGuide type="bottom" id="MI0-Hc-dHR"/>
@@ -830,7 +830,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYE-dK-eRD">
                                                     <rect key="frame" x="8" y="8" width="398" height="28"/>
-                                                    <string key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge unless you voluntarily decide to purchase an advertisement free version of Burlingtonian on the App Store.  Burlingtonian is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in Burlingtonian are not endorsed by its developer; this is either representative or property of Yelp or Google, since Burlingtonian is powered by Yelp and AdMob by Google for the purpose of advertising.  Lastly, please note that the "bvt" icon and "Burlingtonian" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important to us.  Burlingtonian prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Burlingtonian will remain functional with the exception of its display of your distance from places of interest.  AdMob by Google may utilize your location for the purpose of ad targeting, however, please note that Burlingtonian will never voluntarily share or sell your location information.</string>
+                                                    <mutableString key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge unless you voluntarily decide to purchase an advertisement free version of Burlingtonian on the App Store.  Burlingtonian is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in Burlingtonian are not endorsed by its developer; this is either representative or property of Yelp or Google, since Burlingtonian is powered by Yelp and AdMob by Google for the purpose of advertising.  Lastly, please note that the "SUP?" icon and "SUP? NYC" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important to us.  Burlingtonian prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Burlingtonian will remain functional with the exception of its display of your distance from places of interest.  AdMob by Google may utilize your location for the purpose of ad targeting, however, please note that Burlingtonian will never voluntarily share or sell your location information.</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -881,7 +881,7 @@
         <!--Presentation Table View Controller-->
         <scene sceneID="vdV-sT-dTA">
             <objects>
-                <tableViewController storyboardIdentifier="PresTVC" id="iz5-sE-gac" customClass="BVTPresentationTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PresTVC" id="iz5-sE-gac" customClass="SUPPresentationTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UoI-t9-tM3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -899,7 +899,7 @@
         <!--Burlingtonian-->
         <scene sceneID="A4F-SH-zzx">
             <objects>
-                <viewController storyboardIdentifier="SubCat" id="xXJ-IN-eoB" customClass="BVTSubCategoryTableViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SubCat" id="xXJ-IN-eoB" customClass="SUPSubCategoryTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="egq-p2-mRD"/>
                         <viewControllerLayoutGuide type="bottom" id="Afb-KY-yVv"/>
@@ -1052,7 +1052,7 @@
         <!--Burlingtonian-->
         <scene sceneID="M9O-GS-UVr">
             <objects>
-                <viewController id="Hmd-41-ruR" customClass="BVTSurpriseRecommendationsTableViewController" sceneMemberID="viewController">
+                <viewController id="Hmd-41-ruR" customClass="SUPSurpriseRecommendationsTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tZl-Or-PPU"/>
                         <viewControllerLayoutGuide type="bottom" id="60e-LD-jiH"/>
@@ -1147,7 +1147,7 @@
         <!--Burlingtonian-->
         <scene sceneID="mqW-ad-eY8">
             <objects>
-                <viewController id="Wyn-Bg-4kX" customClass="BVTSearchTableViewController" sceneMemberID="viewController">
+                <viewController id="Wyn-Bg-4kX" customClass="SUPSearchTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VPZ-CA-G8D"/>
                         <viewControllerLayoutGuide type="bottom" id="BOg-I9-R0G"/>
@@ -1177,7 +1177,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cnf-Ll-fY8" id="Do0-Tc-kcX">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1323,7 +1323,7 @@
         <image name="tutorial_icon_6_7_plus" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="itC-Zp-WcB"/>
         <segue reference="lMI-Vd-YSr"/>
-        <segue reference="y5n-5S-q2S"/>
     </inferredMetricsTieBreakers>
 </document>

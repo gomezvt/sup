@@ -1,0 +1,776 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		642362121E5FCD4900073B68 /* SUPSurpriseSubCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642362111E5FCD4900073B68 /* SUPSurpriseSubCategoryTableViewController.m */; };
+		642362181E5FDA8400073B68 /* SUPSurpriseShoppingCartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642362171E5FDA8400073B68 /* SUPSurpriseShoppingCartTableViewController.m */; };
+		643B4DAF1E2CB2C300951303 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 643B4DAD1E2CB2C300951303 /* main.m */; };
+		643B4DC31E2CB2F100951303 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 643B4DB91E2CB2F100951303 /* AppDelegate.m */; };
+		644111E71E2D33E000C3ED18 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644111E61E2D33E000C3ED18 /* MapKit.framework */; };
+		6441120C1E2D345600C3ED18 /* SUPAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111E91E2D345600C3ED18 /* SUPAboutTableViewController.m */; };
+		6441120D1E2D345600C3ED18 /* SUPCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111EB1E2D345600C3ED18 /* SUPCategoryTableViewController.m */; };
+		6441120E1E2D345600C3ED18 /* SUPDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111ED1E2D345600C3ED18 /* SUPDetailTableViewController.m */; };
+		6441120F1E2D345600C3ED18 /* SUPExploreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111EF1E2D345600C3ED18 /* SUPExploreCollectionViewCell.m */; };
+		644112101E2D345600C3ED18 /* SUPExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111F11E2D345600C3ED18 /* SUPExploreViewController.m */; };
+		644112111E2D345600C3ED18 /* SUPHeaderTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111F31E2D345600C3ED18 /* SUPHeaderTitleView.m */; };
+		644112121E2D345600C3ED18 /* SUPSplitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111F51E2D345600C3ED18 /* SUPSplitTableViewCell.m */; };
+		644112131E2D345600C3ED18 /* SUPStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111F71E2D345600C3ED18 /* SUPStyles.m */; };
+		644112141E2D345600C3ED18 /* SUPSubCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111F91E2D345600C3ED18 /* SUPSubCategoryTableViewController.m */; };
+		644112151E2D345600C3ED18 /* SUPSurpriseCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111FB1E2D345600C3ED18 /* SUPSurpriseCategoryTableViewController.m */; };
+		644112161E2D345600C3ED18 /* SUPThumbNailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111FD1E2D345600C3ED18 /* SUPThumbNailTableViewCell.m */; };
+		644112171E2D345600C3ED18 /* SUPYelpAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644111FF1E2D345600C3ED18 /* SUPYelpAddressTableViewCell.m */; };
+		644112181E2D345600C3ED18 /* SUPYelpPhoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112011E2D345600C3ED18 /* SUPYelpPhoneTableViewCell.m */; };
+		644112191E2D345600C3ED18 /* SUPYelpMapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112031E2D345600C3ED18 /* SUPYelpMapTableViewCell.m */; };
+		6441121B1E2D345600C3ED18 /* SUPYelpRatingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112071E2D345600C3ED18 /* SUPYelpRatingTableViewCell.m */; };
+		6441121C1E2D345600C3ED18 /* SUPPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644112091E2D345600C3ED18 /* SUPPageContentViewController.m */; };
+		6441121D1E2D345600C3ED18 /* SUPPageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6441120B1E2D345600C3ED18 /* SUPPageRootViewController.m */; };
+		647314A61EB5A23A009C0EA5 /* SUPYelpReviewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647314A51EB5A23A009C0EA5 /* SUPYelpReviewsTableViewCell.xib */; };
+		6473625A1EB2F34700C3DA25 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 647362591EB2F34700C3DA25 /* CoreLocation.framework */; };
+		647E58C41F0DC01800625352 /* SUPTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647E58C31F0DC01800625352 /* SUPTabBarViewController.m */; };
+		648166B01E5657B400071628 /* SUPYelpReviewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 648166AE1E5657B400071628 /* SUPYelpReviewsTableViewCell.m */; };
+		64908A7C1E494E6100BC6884 /* SUPYelpCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64908A7A1E494E6100BC6884 /* SUPYelpCategoryTableViewCell.m */; };
+		64934CA51E306AC500386B5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64934CA41E306AC500386B5B /* Assets.xcassets */; };
+		64934CAA1E306AD900386B5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64934CA61E306AD900386B5B /* LaunchScreen.storyboard */; };
+		64934CAB1E306AD900386B5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64934CA81E306AD900386B5B /* Main.storyboard */; };
+		64934CB21E306B7000386B5B /* SUPExploreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CB11E306B7000386B5B /* SUPExploreCollectionViewCell.xib */; };
+		64934CB81E306BA100386B5B /* SUPSplitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CB71E306BA100386B5B /* SUPSplitTableViewCell.xib */; };
+		64934CBA1E306BA800386B5B /* SUPThumbNailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CB91E306BA800386B5B /* SUPThumbNailTableViewCell.xib */; };
+		64934CBC1E306BB500386B5B /* SUPYelpAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CBB1E306BB500386B5B /* SUPYelpAddressTableViewCell.xib */; };
+		64934CBE1E306BC700386B5B /* SUPYelpPhoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CBD1E306BC700386B5B /* SUPYelpPhoneTableViewCell.xib */; };
+		64934CC01E306BCE00386B5B /* SUPYelpMapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CBF1E306BCE00386B5B /* SUPYelpMapTableViewCell.xib */; };
+		64934CC21E306BD300386B5B /* SUPYelpRatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CC11E306BD300386B5B /* SUPYelpRatingTableViewCell.xib */; };
+		64934CC41E306C1E00386B5B /* SUPHeaderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64934CC31E306C1E00386B5B /* SUPHeaderTitleView.xib */; };
+		649B84581EE0F92E00C3D6CD /* SUPAboutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 649B84571EE0F92E00C3D6CD /* SUPAboutTableViewCell.m */; };
+		64A3386C1EA6F48E0061CA83 /* SUPTableViewSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A3386B1EA6F48E0061CA83 /* SUPTableViewSectionHeaderView.m */; };
+		64A338711EA7067F0061CA83 /* SUPHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A338701EA7067F0061CA83 /* SUPHUDView.m */; };
+		64A481081EC94E6800A80600 /* SUPTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A481071EC94E6800A80600 /* SUPTabBarController.m */; };
+		64AC0DEB1EE3A6070061733A /* SUPDisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AC0DE91EE3A5BD0061733A /* SUPDisclaimerViewController.m */; };
+		64AED0AE1EDA6EDC004627D9 /* SUPSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AED0AD1EDA6EDC004627D9 /* SUPSearchTableViewController.m */; };
+		64B990CE1E99D45C0002EE4E /* SUPSurpriseRecommendationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B990CD1E99D45C0002EE4E /* SUPSurpriseRecommendationsTableViewController.m */; };
+		64C6DD221EE0F6C300C8132F /* SUPAboutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C6DD201EE0F6C300C8132F /* SUPAboutTableViewCell.xib */; };
+		64C743E91EF4CA92001CA4EB /* SUPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C743E81EF4CA92001CA4EB /* SUPCache.m */; };
+		64C88B4E1E5545CF00ECA06B /* SUPPresentationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C88B4D1E5545CF00ECA06B /* SUPPresentationTableViewController.m */; };
+		64C88B5B1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C88B5A1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib */; };
+		64C88B5E1E55499800ECA06B /* SUPYelpPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C88B5D1E55499800ECA06B /* SUPYelpPhotoTableViewCell.m */; };
+		64E905EE1E49704000331C3F /* SUPYelpHoursTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E905EC1E49704000331C3F /* SUPYelpHoursTableViewCell.m */; };
+		64E905EF1E49704000331C3F /* SUPYelpHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E905ED1E49704000331C3F /* SUPYelpHoursTableViewCell.xib */; };
+		64E905F31E4970BC00331C3F /* SUPYelpCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E905F21E4970BC00331C3F /* SUPYelpCategoryTableViewCell.xib */; };
+		CF386C2C86B09043D41680B2 /* libPods-bvt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590D4A53A998579B76DD8514 /* libPods-bvt.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		640178FE1E2C4B9B00BBA8D2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		590D4A53A998579B76DD8514 /* libPods-bvt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bvt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		640178FF1E2C4BAF00BBA8D2 /* libYelpAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libYelpAPI.a; path = "../../Library/Developer/Xcode/DerivedData/bvt-hjftkdqploieouekjahtdglmzgkr/Build/Products/Debug-iphonesimulator/YelpAPI/libYelpAPI.a"; sourceTree = "<group>"; };
+		640179011E2C4BB900BBA8D2 /* YelpAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YelpAPI.framework; path = System/Library/Frameworks/YelpAPI.framework; sourceTree = SDKROOT; };
+		642362101E5FCD4900073B68 /* SUPSurpriseSubCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPSurpriseSubCategoryTableViewController.h; path = Classes/SUPSurpriseSubCategoryTableViewController.h; sourceTree = SOURCE_ROOT; };
+		642362111E5FCD4900073B68 /* SUPSurpriseSubCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPSurpriseSubCategoryTableViewController.m; path = Classes/SUPSurpriseSubCategoryTableViewController.m; sourceTree = SOURCE_ROOT; };
+		642362161E5FDA8400073B68 /* SUPSurpriseShoppingCartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPSurpriseShoppingCartTableViewController.h; path = Classes/SUPSurpriseShoppingCartTableViewController.h; sourceTree = SOURCE_ROOT; };
+		642362171E5FDA8400073B68 /* SUPSurpriseShoppingCartTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPSurpriseShoppingCartTableViewController.m; path = Classes/SUPSurpriseShoppingCartTableViewController.m; sourceTree = SOURCE_ROOT; };
+		643B4DAC1E2CB2C300951303 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		643B4DAD1E2CB2C300951303 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
+		643B4DB81E2CB2F100951303 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		643B4DB91E2CB2F100951303 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		644111E61E2D33E000C3ED18 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		644111E81E2D345600C3ED18 /* SUPAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPAboutTableViewController.h; path = Classes/SUPAboutTableViewController.h; sourceTree = SOURCE_ROOT; };
+		644111E91E2D345600C3ED18 /* SUPAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPAboutTableViewController.m; path = Classes/SUPAboutTableViewController.m; sourceTree = SOURCE_ROOT; };
+		644111EA1E2D345600C3ED18 /* SUPCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPCategoryTableViewController.h; path = Classes/SUPCategoryTableViewController.h; sourceTree = SOURCE_ROOT; };
+		644111EB1E2D345600C3ED18 /* SUPCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPCategoryTableViewController.m; path = Classes/SUPCategoryTableViewController.m; sourceTree = SOURCE_ROOT; };
+		644111EC1E2D345600C3ED18 /* SUPDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPDetailTableViewController.h; path = Classes/SUPDetailTableViewController.h; sourceTree = SOURCE_ROOT; };
+		644111ED1E2D345600C3ED18 /* SUPDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPDetailTableViewController.m; path = Classes/SUPDetailTableViewController.m; sourceTree = SOURCE_ROOT; };
+		644111EE1E2D345600C3ED18 /* SUPExploreCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPExploreCollectionViewCell.h; path = Classes/SUPExploreCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		644111EF1E2D345600C3ED18 /* SUPExploreCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPExploreCollectionViewCell.m; path = Classes/SUPExploreCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		644111F01E2D345600C3ED18 /* SUPExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPExploreViewController.h; path = Classes/SUPExploreViewController.h; sourceTree = SOURCE_ROOT; };
+		644111F11E2D345600C3ED18 /* SUPExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPExploreViewController.m; path = Classes/SUPExploreViewController.m; sourceTree = SOURCE_ROOT; };
+		644111F21E2D345600C3ED18 /* SUPHeaderTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPHeaderTitleView.h; path = Classes/SUPHeaderTitleView.h; sourceTree = SOURCE_ROOT; };
+		644111F31E2D345600C3ED18 /* SUPHeaderTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPHeaderTitleView.m; path = Classes/SUPHeaderTitleView.m; sourceTree = SOURCE_ROOT; };
+		644111F41E2D345600C3ED18 /* SUPSplitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPSplitTableViewCell.h; path = Classes/SUPSplitTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		644111F51E2D345600C3ED18 /* SUPSplitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPSplitTableViewCell.m; path = Classes/SUPSplitTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		644111F61E2D345600C3ED18 /* SUPStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPStyles.h; path = Classes/SUPStyles.h; sourceTree = SOURCE_ROOT; };
+		644111F71E2D345600C3ED18 /* SUPStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPStyles.m; path = Classes/SUPStyles.m; sourceTree = SOURCE_ROOT; };
+		644111F81E2D345600C3ED18 /* SUPSubCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPSubCategoryTableViewController.h; path = Classes/SUPSubCategoryTableViewController.h; sourceTree = SOURCE_ROOT; };
+		644111F91E2D345600C3ED18 /* SUPSubCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPSubCategoryTableViewController.m; path = Classes/SUPSubCategoryTableViewController.m; sourceTree = SOURCE_ROOT; };
+		644111FA1E2D345600C3ED18 /* SUPSurpriseCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPSurpriseCategoryTableViewController.h; path = Classes/SUPSurpriseCategoryTableViewController.h; sourceTree = SOURCE_ROOT; };
+		644111FB1E2D345600C3ED18 /* SUPSurpriseCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPSurpriseCategoryTableViewController.m; path = Classes/SUPSurpriseCategoryTableViewController.m; sourceTree = SOURCE_ROOT; };
+		644111FD1E2D345600C3ED18 /* SUPThumbNailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPThumbNailTableViewCell.m; path = Classes/SUPThumbNailTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		644111FE1E2D345600C3ED18 /* SUPYelpAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPYelpAddressTableViewCell.h; path = Classes/SUPYelpAddressTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		644111FF1E2D345600C3ED18 /* SUPYelpAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPYelpAddressTableViewCell.m; path = Classes/SUPYelpAddressTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		644112001E2D345600C3ED18 /* SUPYelpPhoneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPYelpPhoneTableViewCell.h; path = Classes/SUPYelpPhoneTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		644112011E2D345600C3ED18 /* SUPYelpPhoneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPYelpPhoneTableViewCell.m; path = Classes/SUPYelpPhoneTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		644112021E2D345600C3ED18 /* SUPYelpMapTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPYelpMapTableViewCell.h; path = Classes/SUPYelpMapTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		644112031E2D345600C3ED18 /* SUPYelpMapTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPYelpMapTableViewCell.m; path = Classes/SUPYelpMapTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		644112061E2D345600C3ED18 /* SUPYelpRatingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPYelpRatingTableViewCell.h; path = Classes/SUPYelpRatingTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		644112071E2D345600C3ED18 /* SUPYelpRatingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPYelpRatingTableViewCell.m; path = Classes/SUPYelpRatingTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		644112081E2D345600C3ED18 /* SUPPageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPPageContentViewController.h; path = Classes/SUPPageContentViewController.h; sourceTree = SOURCE_ROOT; };
+		644112091E2D345600C3ED18 /* SUPPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPPageContentViewController.m; path = Classes/SUPPageContentViewController.m; sourceTree = SOURCE_ROOT; };
+		6441120A1E2D345600C3ED18 /* SUPPageRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPPageRootViewController.h; path = Classes/SUPPageRootViewController.h; sourceTree = SOURCE_ROOT; };
+		6441120B1E2D345600C3ED18 /* SUPPageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPPageRootViewController.m; path = Classes/SUPPageRootViewController.m; sourceTree = SOURCE_ROOT; };
+		647314A51EB5A23A009C0EA5 /* SUPYelpReviewsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpReviewsTableViewCell.xib; path = Classes/SUPYelpReviewsTableViewCell.xib; sourceTree = "<group>"; };
+		647362591EB2F34700C3DA25 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		647E58C21F0DC01800625352 /* SUPTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUPTabBarViewController.h; sourceTree = SOURCE_ROOT; };
+		647E58C31F0DC01800625352 /* SUPTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUPTabBarViewController.m; sourceTree = SOURCE_ROOT; };
+		648166AD1E5657B400071628 /* SUPYelpReviewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPYelpReviewsTableViewCell.h; path = Classes/SUPYelpReviewsTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		648166AE1E5657B400071628 /* SUPYelpReviewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPYelpReviewsTableViewCell.m; path = Classes/SUPYelpReviewsTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		64908A731E494E2E00BC6884 /* SUPThumbNailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SUPThumbNailTableViewCell.h; path = Classes/SUPThumbNailTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		64908A791E494E6100BC6884 /* SUPYelpCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPYelpCategoryTableViewCell.h; path = Classes/SUPYelpCategoryTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		64908A7A1E494E6100BC6884 /* SUPYelpCategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPYelpCategoryTableViewCell.m; path = Classes/SUPYelpCategoryTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		64934CA41E306AC500386B5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Classes/Assets.xcassets; sourceTree = "<group>"; };
+		64934CA71E306AD900386B5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Classes/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		64934CA91E306AD900386B5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Classes/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		64934CB11E306B7000386B5B /* SUPExploreCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPExploreCollectionViewCell.xib; path = Classes/SUPExploreCollectionViewCell.xib; sourceTree = "<group>"; };
+		64934CB71E306BA100386B5B /* SUPSplitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPSplitTableViewCell.xib; path = Classes/SUPSplitTableViewCell.xib; sourceTree = "<group>"; };
+		64934CB91E306BA800386B5B /* SUPThumbNailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPThumbNailTableViewCell.xib; path = Classes/SUPThumbNailTableViewCell.xib; sourceTree = "<group>"; };
+		64934CBB1E306BB500386B5B /* SUPYelpAddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpAddressTableViewCell.xib; path = Classes/SUPYelpAddressTableViewCell.xib; sourceTree = "<group>"; };
+		64934CBD1E306BC700386B5B /* SUPYelpPhoneTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpPhoneTableViewCell.xib; path = Classes/SUPYelpPhoneTableViewCell.xib; sourceTree = "<group>"; };
+		64934CBF1E306BCE00386B5B /* SUPYelpMapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpMapTableViewCell.xib; path = Classes/SUPYelpMapTableViewCell.xib; sourceTree = "<group>"; };
+		64934CC11E306BD300386B5B /* SUPYelpRatingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpRatingTableViewCell.xib; path = Classes/SUPYelpRatingTableViewCell.xib; sourceTree = "<group>"; };
+		64934CC31E306C1E00386B5B /* SUPHeaderTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SUPHeaderTitleView.xib; path = Classes/SUPHeaderTitleView.xib; sourceTree = "<group>"; };
+		649B84571EE0F92E00C3D6CD /* SUPAboutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPAboutTableViewCell.m; path = Classes/SUPAboutTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		64A3386A1EA6F48E0061CA83 /* SUPTableViewSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPTableViewSectionHeaderView.h; path = Classes/SUPTableViewSectionHeaderView.h; sourceTree = SOURCE_ROOT; };
+		64A3386B1EA6F48E0061CA83 /* SUPTableViewSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPTableViewSectionHeaderView.m; path = Classes/SUPTableViewSectionHeaderView.m; sourceTree = SOURCE_ROOT; };
+		64A3386F1EA7067F0061CA83 /* SUPHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPHUDView.h; path = Classes/SUPHUDView.h; sourceTree = SOURCE_ROOT; };
+		64A338701EA7067F0061CA83 /* SUPHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPHUDView.m; path = Classes/SUPHUDView.m; sourceTree = SOURCE_ROOT; };
+		64A481061EC94E6800A80600 /* SUPTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPTabBarController.h; path = Classes/SUPTabBarController.h; sourceTree = SOURCE_ROOT; };
+		64A481071EC94E6800A80600 /* SUPTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPTabBarController.m; path = Classes/SUPTabBarController.m; sourceTree = SOURCE_ROOT; };
+		64AC0DE81EE3A5BD0061733A /* SUPDisclaimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPDisclaimerViewController.h; path = Classes/SUPDisclaimerViewController.h; sourceTree = SOURCE_ROOT; };
+		64AC0DE91EE3A5BD0061733A /* SUPDisclaimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPDisclaimerViewController.m; path = Classes/SUPDisclaimerViewController.m; sourceTree = SOURCE_ROOT; };
+		64AED0AC1EDA6EDC004627D9 /* SUPSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPSearchTableViewController.h; path = Classes/SUPSearchTableViewController.h; sourceTree = SOURCE_ROOT; };
+		64AED0AD1EDA6EDC004627D9 /* SUPSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPSearchTableViewController.m; path = Classes/SUPSearchTableViewController.m; sourceTree = SOURCE_ROOT; };
+		64B990CC1E99D45C0002EE4E /* SUPSurpriseRecommendationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPSurpriseRecommendationsTableViewController.h; path = Classes/SUPSurpriseRecommendationsTableViewController.h; sourceTree = SOURCE_ROOT; };
+		64B990CD1E99D45C0002EE4E /* SUPSurpriseRecommendationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPSurpriseRecommendationsTableViewController.m; path = Classes/SUPSurpriseRecommendationsTableViewController.m; sourceTree = SOURCE_ROOT; };
+		64C6DD1E1EE0F6C300C8132F /* SUPAboutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPAboutTableViewCell.h; path = Classes/SUPAboutTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		64C6DD201EE0F6C300C8132F /* SUPAboutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPAboutTableViewCell.xib; path = Classes/SUPAboutTableViewCell.xib; sourceTree = "<group>"; };
+		64C743E71EF4CA92001CA4EB /* SUPCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPCache.h; path = Classes/SUPCache.h; sourceTree = SOURCE_ROOT; };
+		64C743E81EF4CA92001CA4EB /* SUPCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPCache.m; path = Classes/SUPCache.m; sourceTree = SOURCE_ROOT; };
+		64C88B4C1E5545CF00ECA06B /* SUPPresentationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPPresentationTableViewController.h; path = Classes/SUPPresentationTableViewController.h; sourceTree = SOURCE_ROOT; };
+		64C88B4D1E5545CF00ECA06B /* SUPPresentationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPPresentationTableViewController.m; path = Classes/SUPPresentationTableViewController.m; sourceTree = SOURCE_ROOT; };
+		64C88B5A1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpPhotoTableViewCell.xib; path = Classes/SUPYelpPhotoTableViewCell.xib; sourceTree = "<group>"; };
+		64C88B5C1E55499800ECA06B /* SUPYelpPhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPYelpPhotoTableViewCell.h; path = Classes/SUPYelpPhotoTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		64C88B5D1E55499800ECA06B /* SUPYelpPhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPYelpPhotoTableViewCell.m; path = Classes/SUPYelpPhotoTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		64E905EB1E49704000331C3F /* SUPYelpHoursTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPYelpHoursTableViewCell.h; path = Classes/SUPYelpHoursTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		64E905EC1E49704000331C3F /* SUPYelpHoursTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPYelpHoursTableViewCell.m; path = Classes/SUPYelpHoursTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		64E905ED1E49704000331C3F /* SUPYelpHoursTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpHoursTableViewCell.xib; path = Classes/SUPYelpHoursTableViewCell.xib; sourceTree = "<group>"; };
+		64E905F21E4970BC00331C3F /* SUPYelpCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpCategoryTableViewCell.xib; path = Classes/SUPYelpCategoryTableViewCell.xib; sourceTree = "<group>"; };
+		64F41D5F1E2C497F0053EBE2 /* Burlingtonian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Burlingtonian.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		812CD2D8F0E4D852D7328DA4 /* Pods-bvt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.debug.xcconfig"; sourceTree = "<group>"; };
+		A13E28BFC52912BF5475C256 /* Pods-bvt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.release.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		64F41D5C1E2C497F0053EBE2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6473625A1EB2F34700C3DA25 /* CoreLocation.framework in Frameworks */,
+				644111E71E2D33E000C3ED18 /* MapKit.framework in Frameworks */,
+				CF386C2C86B09043D41680B2 /* libPods-bvt.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64934CB01E306B5D00386B5B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				64934CA41E306AC500386B5B /* Assets.xcassets */,
+				64934CA81E306AD900386B5B /* Main.storyboard */,
+				64934CA61E306AD900386B5B /* LaunchScreen.storyboard */,
+				64934CC31E306C1E00386B5B /* SUPHeaderTitleView.xib */,
+				64C6DD201EE0F6C300C8132F /* SUPAboutTableViewCell.xib */,
+				64E905F21E4970BC00331C3F /* SUPYelpCategoryTableViewCell.xib */,
+				64E905ED1E49704000331C3F /* SUPYelpHoursTableViewCell.xib */,
+				647314A51EB5A23A009C0EA5 /* SUPYelpReviewsTableViewCell.xib */,
+				64934CB11E306B7000386B5B /* SUPExploreCollectionViewCell.xib */,
+				64934CB71E306BA100386B5B /* SUPSplitTableViewCell.xib */,
+				64934CB91E306BA800386B5B /* SUPThumbNailTableViewCell.xib */,
+				64934CBB1E306BB500386B5B /* SUPYelpAddressTableViewCell.xib */,
+				64934CBD1E306BC700386B5B /* SUPYelpPhoneTableViewCell.xib */,
+				64934CBF1E306BCE00386B5B /* SUPYelpMapTableViewCell.xib */,
+				64934CC11E306BD300386B5B /* SUPYelpRatingTableViewCell.xib */,
+				64C88B5A1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		64B3E4711EB453ED0088B9AF /* Cell Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Cell Classes";
+			sourceTree = "<group>";
+		};
+		64B4468D1E3049B700327C26 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				644111E81E2D345600C3ED18 /* SUPAboutTableViewController.h */,
+				644111E91E2D345600C3ED18 /* SUPAboutTableViewController.m */,
+				64C6DD1E1EE0F6C300C8132F /* SUPAboutTableViewCell.h */,
+				649B84571EE0F92E00C3D6CD /* SUPAboutTableViewCell.m */,
+				64AC0DE81EE3A5BD0061733A /* SUPDisclaimerViewController.h */,
+				64AC0DE91EE3A5BD0061733A /* SUPDisclaimerViewController.m */,
+			);
+			name = About;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		64B4468E1E3049BD00327C26 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				64B446951E304C2E00327C26 /* Cell Classes */,
+				64B446971E304C8400327C26 /* Controller Classes */,
+			);
+			name = Explore;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		64B4468F1E3049C500327C26 /* Surprise */ = {
+			isa = PBXGroup;
+			children = (
+				64B3E4711EB453ED0088B9AF /* Cell Classes */,
+				644111FA1E2D345600C3ED18 /* SUPSurpriseCategoryTableViewController.h */,
+				644111FB1E2D345600C3ED18 /* SUPSurpriseCategoryTableViewController.m */,
+				642362101E5FCD4900073B68 /* SUPSurpriseSubCategoryTableViewController.h */,
+				642362111E5FCD4900073B68 /* SUPSurpriseSubCategoryTableViewController.m */,
+				642362161E5FDA8400073B68 /* SUPSurpriseShoppingCartTableViewController.h */,
+				642362171E5FDA8400073B68 /* SUPSurpriseShoppingCartTableViewController.m */,
+				64B990CC1E99D45C0002EE4E /* SUPSurpriseRecommendationsTableViewController.h */,
+				64B990CD1E99D45C0002EE4E /* SUPSurpriseRecommendationsTableViewController.m */,
+			);
+			name = Surprise;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		64B446951E304C2E00327C26 /* Cell Classes */ = {
+			isa = PBXGroup;
+			children = (
+				64908A731E494E2E00BC6884 /* SUPThumbNailTableViewCell.h */,
+				644111FD1E2D345600C3ED18 /* SUPThumbNailTableViewCell.m */,
+				64E905EB1E49704000331C3F /* SUPYelpHoursTableViewCell.h */,
+				64E905EC1E49704000331C3F /* SUPYelpHoursTableViewCell.m */,
+				64908A791E494E6100BC6884 /* SUPYelpCategoryTableViewCell.h */,
+				64908A7A1E494E6100BC6884 /* SUPYelpCategoryTableViewCell.m */,
+				644111FE1E2D345600C3ED18 /* SUPYelpAddressTableViewCell.h */,
+				644111FF1E2D345600C3ED18 /* SUPYelpAddressTableViewCell.m */,
+				644112001E2D345600C3ED18 /* SUPYelpPhoneTableViewCell.h */,
+				644112011E2D345600C3ED18 /* SUPYelpPhoneTableViewCell.m */,
+				644112021E2D345600C3ED18 /* SUPYelpMapTableViewCell.h */,
+				644112031E2D345600C3ED18 /* SUPYelpMapTableViewCell.m */,
+				644112061E2D345600C3ED18 /* SUPYelpRatingTableViewCell.h */,
+				644112071E2D345600C3ED18 /* SUPYelpRatingTableViewCell.m */,
+				644111F41E2D345600C3ED18 /* SUPSplitTableViewCell.h */,
+				644111F51E2D345600C3ED18 /* SUPSplitTableViewCell.m */,
+				644111EE1E2D345600C3ED18 /* SUPExploreCollectionViewCell.h */,
+				644111EF1E2D345600C3ED18 /* SUPExploreCollectionViewCell.m */,
+				64C88B5C1E55499800ECA06B /* SUPYelpPhotoTableViewCell.h */,
+				64C88B5D1E55499800ECA06B /* SUPYelpPhotoTableViewCell.m */,
+				648166AD1E5657B400071628 /* SUPYelpReviewsTableViewCell.h */,
+				648166AE1E5657B400071628 /* SUPYelpReviewsTableViewCell.m */,
+			);
+			name = "Cell Classes";
+			sourceTree = "<group>";
+		};
+		64B446971E304C8400327C26 /* Controller Classes */ = {
+			isa = PBXGroup;
+			children = (
+				64AED0AC1EDA6EDC004627D9 /* SUPSearchTableViewController.h */,
+				64AED0AD1EDA6EDC004627D9 /* SUPSearchTableViewController.m */,
+				644111F01E2D345600C3ED18 /* SUPExploreViewController.h */,
+				644111F11E2D345600C3ED18 /* SUPExploreViewController.m */,
+				644111EA1E2D345600C3ED18 /* SUPCategoryTableViewController.h */,
+				644111EB1E2D345600C3ED18 /* SUPCategoryTableViewController.m */,
+				644111F81E2D345600C3ED18 /* SUPSubCategoryTableViewController.h */,
+				644111F91E2D345600C3ED18 /* SUPSubCategoryTableViewController.m */,
+				644111EC1E2D345600C3ED18 /* SUPDetailTableViewController.h */,
+				644111ED1E2D345600C3ED18 /* SUPDetailTableViewController.m */,
+			);
+			name = "Controller Classes";
+			sourceTree = "<group>";
+		};
+		64B446981E304CB200327C26 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				644111F21E2D345600C3ED18 /* SUPHeaderTitleView.h */,
+				644111F31E2D345600C3ED18 /* SUPHeaderTitleView.m */,
+				64A3386A1EA6F48E0061CA83 /* SUPTableViewSectionHeaderView.h */,
+				64A3386B1EA6F48E0061CA83 /* SUPTableViewSectionHeaderView.m */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
+		64C88B4B1E55418E00ECA06B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				644111F61E2D345600C3ED18 /* SUPStyles.h */,
+				644111F71E2D345600C3ED18 /* SUPStyles.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		64CF50E91E2D4E39004856DB /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				644112081E2D345600C3ED18 /* SUPPageContentViewController.h */,
+				644112091E2D345600C3ED18 /* SUPPageContentViewController.m */,
+				6441120A1E2D345600C3ED18 /* SUPPageRootViewController.h */,
+				6441120B1E2D345600C3ED18 /* SUPPageRootViewController.m */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
+		64F41D561E2C497F0053EBE2 = {
+			isa = PBXGroup;
+			children = (
+				64F41D611E2C497F0053EBE2 /* Classes */,
+				64934CB01E306B5D00386B5B /* Resources */,
+				81DC3A0A017F6247E73F74F1 /* Frameworks */,
+				64F41D621E2C497F0053EBE2 /* Supporting Files */,
+				64F41D601E2C497F0053EBE2 /* Products */,
+				D78ABA542C27A54E9B11D3A9 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		64F41D601E2C497F0053EBE2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64F41D5F1E2C497F0053EBE2 /* Burlingtonian.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		64F41D611E2C497F0053EBE2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				64C743E71EF4CA92001CA4EB /* SUPCache.h */,
+				64C743E81EF4CA92001CA4EB /* SUPCache.m */,
+				64C88B4C1E5545CF00ECA06B /* SUPPresentationTableViewController.h */,
+				64C88B4D1E5545CF00ECA06B /* SUPPresentationTableViewController.m */,
+				647E58C21F0DC01800625352 /* SUPTabBarViewController.h */,
+				647E58C31F0DC01800625352 /* SUPTabBarViewController.m */,
+				64A481061EC94E6800A80600 /* SUPTabBarController.h */,
+				64A481071EC94E6800A80600 /* SUPTabBarController.m */,
+				64A3386F1EA7067F0061CA83 /* SUPHUDView.h */,
+				64A338701EA7067F0061CA83 /* SUPHUDView.m */,
+				64C88B4B1E55418E00ECA06B /* Categories */,
+				64CF50E91E2D4E39004856DB /* Tutorial */,
+				64B446981E304CB200327C26 /* Header */,
+				64B4468E1E3049BD00327C26 /* Explore */,
+				64B4468D1E3049B700327C26 /* About */,
+				64B4468F1E3049C500327C26 /* Surprise */,
+			);
+			name = Classes;
+			path = bvt;
+			sourceTree = "<group>";
+		};
+		64F41D621E2C497F0053EBE2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				643B4DAC1E2CB2C300951303 /* Info.plist */,
+				643B4DAD1E2CB2C300951303 /* main.m */,
+				643B4DB81E2CB2F100951303 /* AppDelegate.h */,
+				643B4DB91E2CB2F100951303 /* AppDelegate.m */,
+			);
+			name = "Supporting Files";
+			path = bvt;
+			sourceTree = "<group>";
+		};
+		81DC3A0A017F6247E73F74F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				647362591EB2F34700C3DA25 /* CoreLocation.framework */,
+				644111E61E2D33E000C3ED18 /* MapKit.framework */,
+				640179011E2C4BB900BBA8D2 /* YelpAPI.framework */,
+				640178FF1E2C4BAF00BBA8D2 /* libYelpAPI.a */,
+				590D4A53A998579B76DD8514 /* libPods-bvt.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D78ABA542C27A54E9B11D3A9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				812CD2D8F0E4D852D7328DA4 /* Pods-bvt.debug.xcconfig */,
+				A13E28BFC52912BF5475C256 /* Pods-bvt.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		64F41D5E1E2C497F0053EBE2 /* sup */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64F41D791E2C497F0053EBE2 /* Build configuration list for PBXNativeTarget "sup" */;
+			buildPhases = (
+				4271AA253243E143826615D8 /* [CP] Check Pods Manifest.lock */,
+				64F41D5B1E2C497F0053EBE2 /* Sources */,
+				64F41D5C1E2C497F0053EBE2 /* Frameworks */,
+				64F41D5D1E2C497F0053EBE2 /* Resources */,
+				11E936364EB0E267D2462762 /* [CP] Embed Pods Frameworks */,
+				EB32BFEBA4D806AA7EE9815D /* [CP] Copy Pods Resources */,
+				640178FE1E2C4B9B00BBA8D2 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = sup;
+			productName = bvt;
+			productReference = 64F41D5F1E2C497F0053EBE2 /* Burlingtonian.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64F41D571E2C497F0053EBE2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = gms;
+				TargetAttributes = {
+					64F41D5E1E2C497F0053EBE2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 58K3LSSQL5;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 64F41D5A1E2C497F0053EBE2 /* Build configuration list for PBXProject "sup" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 64F41D561E2C497F0053EBE2;
+			productRefGroup = 64F41D601E2C497F0053EBE2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				64F41D5E1E2C497F0053EBE2 /* sup */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		64F41D5D1E2C497F0053EBE2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64934CAA1E306AD900386B5B /* LaunchScreen.storyboard in Resources */,
+				64E905EF1E49704000331C3F /* SUPYelpHoursTableViewCell.xib in Resources */,
+				64934CAB1E306AD900386B5B /* Main.storyboard in Resources */,
+				64934CA51E306AC500386B5B /* Assets.xcassets in Resources */,
+				64C6DD221EE0F6C300C8132F /* SUPAboutTableViewCell.xib in Resources */,
+				64934CC41E306C1E00386B5B /* SUPHeaderTitleView.xib in Resources */,
+				64C88B5B1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib in Resources */,
+				64934CBA1E306BA800386B5B /* SUPThumbNailTableViewCell.xib in Resources */,
+				64934CB81E306BA100386B5B /* SUPSplitTableViewCell.xib in Resources */,
+				64934CC21E306BD300386B5B /* SUPYelpRatingTableViewCell.xib in Resources */,
+				64934CBE1E306BC700386B5B /* SUPYelpPhoneTableViewCell.xib in Resources */,
+				64934CC01E306BCE00386B5B /* SUPYelpMapTableViewCell.xib in Resources */,
+				64E905F31E4970BC00331C3F /* SUPYelpCategoryTableViewCell.xib in Resources */,
+				64934CBC1E306BB500386B5B /* SUPYelpAddressTableViewCell.xib in Resources */,
+				647314A61EB5A23A009C0EA5 /* SUPYelpReviewsTableViewCell.xib in Resources */,
+				64934CB21E306B7000386B5B /* SUPExploreCollectionViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		11E936364EB0E267D2462762 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bvt/Pods-bvt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4271AA253243E143826615D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EB32BFEBA4D806AA7EE9815D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bvt/Pods-bvt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		64F41D5B1E2C497F0053EBE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64AC0DEB1EE3A6070061733A /* SUPDisclaimerViewController.m in Sources */,
+				6441120D1E2D345600C3ED18 /* SUPCategoryTableViewController.m in Sources */,
+				6441121C1E2D345600C3ED18 /* SUPPageContentViewController.m in Sources */,
+				64AED0AE1EDA6EDC004627D9 /* SUPSearchTableViewController.m in Sources */,
+				644112111E2D345600C3ED18 /* SUPHeaderTitleView.m in Sources */,
+				644112181E2D345600C3ED18 /* SUPYelpPhoneTableViewCell.m in Sources */,
+				647E58C41F0DC01800625352 /* SUPTabBarViewController.m in Sources */,
+				644112131E2D345600C3ED18 /* SUPStyles.m in Sources */,
+				644112101E2D345600C3ED18 /* SUPExploreViewController.m in Sources */,
+				642362181E5FDA8400073B68 /* SUPSurpriseShoppingCartTableViewController.m in Sources */,
+				6441120E1E2D345600C3ED18 /* SUPDetailTableViewController.m in Sources */,
+				644112161E2D345600C3ED18 /* SUPThumbNailTableViewCell.m in Sources */,
+				643B4DC31E2CB2F100951303 /* AppDelegate.m in Sources */,
+				649B84581EE0F92E00C3D6CD /* SUPAboutTableViewCell.m in Sources */,
+				64C743E91EF4CA92001CA4EB /* SUPCache.m in Sources */,
+				644112171E2D345600C3ED18 /* SUPYelpAddressTableViewCell.m in Sources */,
+				64A3386C1EA6F48E0061CA83 /* SUPTableViewSectionHeaderView.m in Sources */,
+				644112141E2D345600C3ED18 /* SUPSubCategoryTableViewController.m in Sources */,
+				642362121E5FCD4900073B68 /* SUPSurpriseSubCategoryTableViewController.m in Sources */,
+				64E905EE1E49704000331C3F /* SUPYelpHoursTableViewCell.m in Sources */,
+				64A338711EA7067F0061CA83 /* SUPHUDView.m in Sources */,
+				6441120F1E2D345600C3ED18 /* SUPExploreCollectionViewCell.m in Sources */,
+				644112191E2D345600C3ED18 /* SUPYelpMapTableViewCell.m in Sources */,
+				648166B01E5657B400071628 /* SUPYelpReviewsTableViewCell.m in Sources */,
+				6441121D1E2D345600C3ED18 /* SUPPageRootViewController.m in Sources */,
+				64B990CE1E99D45C0002EE4E /* SUPSurpriseRecommendationsTableViewController.m in Sources */,
+				6441120C1E2D345600C3ED18 /* SUPAboutTableViewController.m in Sources */,
+				64C88B4E1E5545CF00ECA06B /* SUPPresentationTableViewController.m in Sources */,
+				64A481081EC94E6800A80600 /* SUPTabBarController.m in Sources */,
+				643B4DAF1E2CB2C300951303 /* main.m in Sources */,
+				64908A7C1E494E6100BC6884 /* SUPYelpCategoryTableViewCell.m in Sources */,
+				644112151E2D345600C3ED18 /* SUPSurpriseCategoryTableViewController.m in Sources */,
+				644112121E2D345600C3ED18 /* SUPSplitTableViewCell.m in Sources */,
+				64C88B5E1E55499800ECA06B /* SUPYelpPhotoTableViewCell.m in Sources */,
+				6441121B1E2D345600C3ED18 /* SUPYelpRatingTableViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		64934CA61E306AD900386B5B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64934CA71E306AD900386B5B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		64934CA81E306AD900386B5B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64934CA91E306AD900386B5B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		64F41D771E2C497F0053EBE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_ON_DEMAND_RESOURCES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 x86_64 armvs7";
+			};
+			name = Debug;
+		};
+		64F41D781E2C497F0053EBE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Greg Gomez (95DS5BGM86)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_ON_DEMAND_RESOURCES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 x86_64 armvs7";
+			};
+			name = Release;
+		};
+		64F41D7A1E2C497F0053EBE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 812CD2D8F0E4D852D7328DA4 /* Pods-bvt.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 58K3LSSQL5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = gms.d;
+				PRODUCT_NAME = Burlingtonian;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm64 armv7 x86_64 armvs7";
+			};
+			name = Debug;
+		};
+		64F41D7B1E2C497F0053EBE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A13E28BFC52912BF5475C256 /* Pods-bvt.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 58K3LSSQL5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = gms.d;
+				PRODUCT_NAME = Burlingtonian;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm64 armv7 x86_64 armvs7";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64F41D5A1E2C497F0053EBE2 /* Build configuration list for PBXProject "sup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64F41D771E2C497F0053EBE2 /* Debug */,
+				64F41D781E2C497F0053EBE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64F41D791E2C497F0053EBE2 /* Build configuration list for PBXNativeTarget "sup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64F41D7A1E2C497F0053EBE2 /* Debug */,
+				64F41D7B1E2C497F0053EBE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 64F41D571E2C497F0053EBE2 /* Project object */;
+}
