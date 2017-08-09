@@ -1,6 +1,6 @@
 //
 //  SUPAboutTableViewController.m
-//  burlingtonian
+//  SUP? NYC
 //
 //  Created by Greg on 12/20/16.
 //  Copyright © 2016 gomez. All rights reserved.
@@ -30,7 +30,7 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     self.navigationItem.titleView = self.headerTitleView;
-    self.navigationController.navigationBar.barTintColor = [SUPStyles iconGreen];
+    self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
 }
 
 - (void)viewDidLoad
@@ -52,7 +52,7 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
     NSString *title;
     if (section == 0)
     {
-        title = @"About Burlingtonian";
+        title = @"About SUP? NYC";
     }
     else
     {
@@ -75,11 +75,11 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
     
     if (section == 0)
     {
-        rows = 5;
+        rows = 4;
     }
     else
     {
-        rows = 3;
+        rows = 1;
     }
     
     return rows;
@@ -94,33 +94,6 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
         if (indexPath.row == 1)
         {
             [self performSegueWithIdentifier:@"ShowDisclaimer" sender:nil];
-        }
-        else if (indexPath.row == 2)
-        {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/burlingtonian-live-like-a-local-in-vt-ad-free/id1252833369?mt=8&ign-mpt=uo%3D4"]  options:@{} completionHandler:^(BOOL success) {
-                
-                NSLog(@"");
-            }];
-        }
-    }
-    else
-    {
-        if (indexPath.row == 1)
-        {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/burlingtonian-live-like-a-local-in-vermont/id581817418?mt=8"]  options:@{} completionHandler:^(BOOL success) {
-                
-                NSLog(@"");
-            }];
-        }
-        else if (indexPath.row == 2)
-        {
-            MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
-            mail.mailComposeDelegate = self;
-            [mail setSubject:@"Burlingtonian Feedback"];
-            [mail setMessageBody:@"" isHTML:NO];
-            [mail setToRecipients:@[@"greg@theburlingtonian.com"]];
-            
-            [self presentViewController:mail animated:YES completion:nil];
         }
     }
 }
@@ -138,7 +111,7 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
     
     if (indexPath.section == 0)
     {
-        if (indexPath.row == 4)
+        if (indexPath.row == 3)
         {
             identifier = @"AboutCell";
         }
@@ -155,7 +128,7 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
         if (indexPath.row == 0)
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"Burlingtonian was created by Greg, a native Vermonter, to serve as a homegrown hub for tourism and travel information for people in and around the Burlington, VT area.";
+            cell.textLabel.text = @"SUP? NYC was created by Greg, a native Vermonter and NYC food enthusiast, to serve as a quick reference for restaurants, shops, and attractions in and around the NYC area.";
         }
         else if (indexPath.row == 1)
         {
@@ -163,11 +136,6 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
             cell.textLabel.text = @"Privacy and Terms of Use";
         }
         else if (indexPath.row == 2)
-        {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.textLabel.text = @"Buy Burlingtonian Ad-Free!";
-        }
-        else if (indexPath.row == 3)
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = @"Version 1.0.0";
@@ -182,17 +150,7 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
         if (indexPath.row == 0)
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"Your input is very important and can help make Burlingtonian better. Please take a moment to leave your feedback.";
-        }
-        else if (indexPath.row == 1)
-        {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.textLabel.text = @"Write a review or rate us on the App Store!";
-        }
-        else
-        {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.textLabel.text = @"Send Greg an email";
+            cell.textLabel.text = @"Your input is very important and can help make SUP? NYC better. Please take a moment to leave your feedback on the App Store.";
         }
     }
     

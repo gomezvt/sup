@@ -1,6 +1,6 @@
 //
 //  SUPStyles.m
-//  burlingtonian
+//  SUP? NYC
 //
 //  Created by Greg on 12/30/16.
 //  Copyright © 2016 gomez. All rights reserved.
@@ -39,7 +39,7 @@ NSString *const star_five_mini          = @"star_five_mini.png";
 
 + (UIColor *)tabBarTint
 {
-    return [UIColor colorWithRed:0.f/255 green:145.f/255 blue:0.f/255 alpha:1.f];
+    return [UIColor colorWithRed:110.f/255 green:150.f/255 blue:220.f/255 alpha:1.f];
 }
 
 + (UIColor *)lightGray
@@ -47,9 +47,9 @@ NSString *const star_five_mini          = @"star_five_mini.png";
     return [UIColor colorWithRed:153.f/255 green:153.f/255 blue:153.f/255 alpha:1.f];
 }
 
-+ (UIColor *)iconGreen
++ (UIColor *)iconBlue
 {
-    return [UIColor colorWithRed:75.f/255 green:125.f/255 blue:90.f/255 alpha:1.f];
+    return [UIColor colorWithRed:13.f/255 green:56.f/255 blue:112.f/255 alpha:1.f];
 }
 
 + (UIColor *)buttonBorder

@@ -45,7 +45,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     SUPHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
-    self.navigationController.navigationBar.barTintColor = [SUPStyles iconGreen];
+    self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
 }
 
 - (void)prepareForPopoverPresentation:(UIPopoverPresentationController *)popoverPresentationController;
@@ -75,7 +75,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     [self.goButton setEnabled:[self evaluateButtonState]];
     if (self.goButton.enabled)
     {
-        [self.goButton.layer setBorderColor:[[SUPStyles iconGreen] CGColor]];
+        [self.goButton.layer setBorderColor:[[SUPStyles iconBlue] CGColor]];
     }
     else
     {
@@ -130,7 +130,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     [layer setMasksToBounds:YES];
     [layer setCornerRadius:10.0];
     [layer setBorderWidth:1.0];
-    [layer setBorderColor:[[SUPStyles iconGreen] CGColor]];
+    [layer setBorderColor:[[SUPStyles iconBlue] CGColor]];
     
     [super viewDidLoad];
     
@@ -218,7 +218,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     [self.goButton setEnabled:[self evaluateButtonState]];
     if (self.goButton.enabled)
     {
-        [self.goButton.layer setBorderColor:[[SUPStyles iconGreen] CGColor]];
+        [self.goButton.layer setBorderColor:[[SUPStyles iconBlue] CGColor]];
     }
     else
     {

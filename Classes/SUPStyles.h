@@ -1,6 +1,6 @@
 //
 //  SUPStyles.h
-//  burlingtonian
+//  SUP? NYC
 //
 //  Created by Greg on 12/30/16.
 //  Copyright © 2016 gomez. All rights reserved.
@@ -60,7 +60,7 @@ extern NSString *const star_five;
 + (UIColor *)buttonBackGround;
 + (UIColor *)buttonBorder;
 + (UIColor *)lightGray;
-+ (UIColor *)iconGreen;
++ (UIColor *)iconBlue;
 + (UIColor *)tabBarTint;
 + (UIColor *)placeHolderGreen;
 

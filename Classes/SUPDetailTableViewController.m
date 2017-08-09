@@ -1,6 +1,6 @@
 //
 //  SUPDetailTableViewController.m
-//  burlingtonian
+//  SUP? NYC
 //
 //  Created by Greg on 12/20/16.
 //  Copyright © 2016 gomez. All rights reserved.
@@ -64,7 +64,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     SUPHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
-    self.navigationController.navigationBar.barTintColor = [SUPStyles iconGreen];
+    self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     
 }
 

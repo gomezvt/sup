@@ -62,7 +62,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.52932554480000005" green="0.67264115810000003" blue="0.57792097330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.52932554480000005" green="0.67264115810000003" blue="0.79826388888888888" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="XuW-Yq-Oh3" secondAttribute="bottom" constant="8" id="3Jp-Hp-SOL"/>
                                     <constraint firstAttribute="height" constant="60" id="JmM-RE-V6w"/>
@@ -121,13 +121,13 @@
                                 <rect key="frame" x="0.0" y="676" width="414" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading advertisement..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRU-qb-HQW">
-                                        <rect key="frame" x="122.66666666666669" y="21.666666666666629" width="170" height="18"/>
+                                        <rect key="frame" x="122" y="21" width="170" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.52932554480000005" green="0.67264115810000003" blue="0.57792097330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="HRU-qb-HQW" firstAttribute="centerX" secondItem="zOu-Bu-axG" secondAttribute="centerX" id="EcQ-Dl-vVN"/>
                                     <constraint firstAttribute="height" constant="60" id="TcK-0E-Tts"/>
@@ -204,7 +204,7 @@
             </objects>
             <point key="canvasLocation" x="39" y="-312"/>
         </scene>
-        <!--Burlingtonian-->
+        <!--SUP? NYC-->
         <scene sceneID="Vu4-MZ-ht8">
             <objects>
                 <viewController storyboardIdentifier="SUPExploreViewController" id="XQZ-uB-ePI" customClass="SUPExploreViewController" sceneMemberID="viewController">
@@ -254,7 +254,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" image="compass" id="Ih3-eu-4JK"/>
-                    <navigationItem key="navigationItem" title="Burlingtonian" id="RCZ-KR-qnl"/>
+                    <navigationItem key="navigationItem" title="SUP? NYC" id="RCZ-KR-qnl"/>
                     <connections>
                         <outlet property="collectionView" destination="77w-9n-NFD" id="yee-4T-oeF"/>
                         <segue destination="YHp-ZS-BPP" kind="show" identifier="ShowCategory" id="ofq-6B-lcT"/>
@@ -264,7 +264,7 @@
             </objects>
             <point key="canvasLocation" x="713.04347826086962" y="-312.22826086956525"/>
         </scene>
-        <!--Burlingtonian-->
+        <!--SUP? NYC-->
         <scene sceneID="Kyz-Hy-ijJ">
             <objects>
                 <viewController id="YHp-ZS-BPP" customClass="SUPCategoryTableViewController" sceneMemberID="viewController">
@@ -286,7 +286,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Ybj-na-bak" firstAttribute="centerY" secondItem="iho-ZQ-14d" secondAttribute="centerY" id="1C0-PD-j1A"/>
                                     <constraint firstAttribute="height" constant="30" id="Lnc-Dn-YAc"/>
@@ -302,7 +302,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wlY-sR-KOH" id="Vow-YO-FME">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -324,7 +324,7 @@
                             <constraint firstItem="iho-ZQ-14d" firstAttribute="leading" secondItem="Pyh-fs-CoN" secondAttribute="leading" id="uBm-d6-dem"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Burlingtonian" id="BVD-Vj-j3a">
+                    <navigationItem key="navigationItem" title="SUP? NYC" id="BVD-Vj-j3a">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="0s3-3l-ATZ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -343,7 +343,7 @@
             </objects>
             <point key="canvasLocation" x="1396" y="-312"/>
         </scene>
-        <!--Burlingtonian-->
+        <!--SUP? NYC-->
         <scene sceneID="pAY-1M-M1K">
             <objects>
                 <viewController id="YcC-JR-9wn" customClass="SUPDetailTableViewController" sceneMemberID="viewController">
@@ -365,7 +365,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="bOf-ne-afx" firstAttribute="leading" secondItem="yDE-mZ-Ywi" secondAttribute="leading" constant="8" id="043-0n-lxP"/>
                                     <constraint firstAttribute="trailing" secondItem="bOf-ne-afx" secondAttribute="trailing" constant="8" id="D8V-xb-Kuu"/>
@@ -393,11 +393,11 @@
                             <constraint firstAttribute="trailing" secondItem="ePQ-RT-2C1" secondAttribute="trailing" id="mFg-e7-fEQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Burlingtonian" id="6Ev-et-1hj">
-                        <barButtonItem key="leftBarButtonItem" image="back_chevron" id="xtu-Fw-XHD">
+                    <navigationItem key="navigationItem" title="SUP? NYC" id="Rm4-1R-mXC">
+                        <barButtonItem key="leftBarButtonItem" image="back_chevron" id="e0N-pK-KFh">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="didTapBack:" destination="YcC-JR-9wn" id="Nca-xW-dNn"/>
+                                <action selector="didTapBack:" destination="YcC-JR-9wn" id="k9m-CV-nDm"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -444,7 +444,7 @@
             </objects>
             <point key="canvasLocation" x="39" y="1364"/>
         </scene>
-        <!--Burlingtonian-->
+        <!--SUP? NYC-->
         <scene sceneID="f3u-B1-k2u">
             <objects>
                 <viewController id="CcW-yj-hls" customClass="SUPSurpriseCategoryTableViewController" sceneMemberID="viewController">
@@ -462,7 +462,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoc-y8-kQY">
                                         <rect key="frame" x="350" y="7" width="56" height="30"/>
                                         <state key="normal" title="   Next   ">
-                                            <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="didTapButton:" destination="drD-Ic-Hni" eventType="touchUpInside" id="2M4-Z7-BpA"/>
@@ -470,7 +470,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="gTm-m7-0yy"/>
                                     <constraint firstItem="zoc-y8-kQY" firstAttribute="centerY" secondItem="wmK-aK-23R" secondAttribute="centerY" id="lgT-M4-eyd"/>
@@ -487,7 +487,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="H3e-qi-TnC" secondAttribute="trailing" constant="8" id="EpJ-TB-X8n"/>
                                     <constraint firstItem="H3e-qi-TnC" firstAttribute="centerY" secondItem="u4y-De-upL" secondAttribute="centerY" id="HZB-vC-HUt"/>
@@ -529,7 +529,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Surprise Me" image="surprise" id="ubz-5l-16j"/>
-                    <navigationItem key="navigationItem" title="Burlingtonian" id="kMy-tZ-wru"/>
+                    <navigationItem key="navigationItem" title="SUP? NYC" id="kMy-tZ-wru"/>
                     <connections>
                         <outlet property="goButton" destination="zoc-y8-kQY" id="qAj-Wm-IOU"/>
                         <segue destination="drD-Ic-Hni" kind="show" identifier="ShowCategory" id="5rf-N7-gkv"/>
@@ -539,7 +539,7 @@
             </objects>
             <point key="canvasLocation" x="769.56521739130437" y="1390.7608695652175"/>
         </scene>
-        <!--Burlingtonian-->
+        <!--SUP? NYC-->
         <scene sceneID="x8r-6n-wkn">
             <objects>
                 <viewController id="drD-Ic-Hni" customClass="SUPSurpriseSubCategoryTableViewController" sceneMemberID="viewController">
@@ -561,7 +561,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="y5o-ml-wR1" firstAttribute="centerY" secondItem="y3Z-n5-IdH" secondAttribute="centerY" id="TsK-5S-rvi"/>
                                     <constraint firstItem="y5o-ml-wR1" firstAttribute="leading" secondItem="y3Z-n5-IdH" secondAttribute="leading" constant="8" id="gbC-dR-8fA"/>
@@ -575,14 +575,14 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anx-P9-EDI">
                                         <rect key="frame" x="350" y="7" width="56" height="30"/>
                                         <state key="normal" title="   Next   ">
-                                            <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="didTapButton:" destination="drD-Ic-Hni" eventType="touchUpInside" id="j2Y-h4-6hP"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="anx-P9-EDI" secondAttribute="trailing" constant="8" id="8H3-7b-8MA"/>
                                     <constraint firstItem="anx-P9-EDI" firstAttribute="centerY" secondItem="1uM-Gm-hdk" secondAttribute="centerY" id="Zai-ni-dho"/>
@@ -597,7 +597,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4UX-3F-ZQk" id="5tv-W7-cNm">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -622,7 +622,7 @@
                             <constraint firstItem="1uM-Gm-hdk" firstAttribute="top" secondItem="bub-K2-b1V" secondAttribute="bottom" id="fD1-RY-Dmo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Burlingtonian" id="VAs-CB-sqz">
+                    <navigationItem key="navigationItem" title="SUP? NYC" id="VAs-CB-sqz">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="NcH-4Z-rEb">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -640,7 +640,7 @@
             </objects>
             <point key="canvasLocation" x="1489.8550724637682" y="1400.5434782608697"/>
         </scene>
-        <!--Burlingtonian-->
+        <!--SUP? NYC-->
         <scene sceneID="9HH-QN-d49">
             <objects>
                 <viewController id="Lks-cD-BTu" customClass="SUPSurpriseShoppingCartTableViewController" sceneMemberID="viewController">
@@ -662,7 +662,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Ub5-hg-iNv" firstAttribute="centerY" secondItem="OgY-xN-8lW" secondAttribute="centerY" id="1ta-ao-Tc5"/>
                                     <constraint firstItem="Ub5-hg-iNv" firstAttribute="leading" secondItem="OgY-xN-8lW" secondAttribute="leading" constant="8" id="BEX-z1-7Nk"/>
@@ -676,14 +676,14 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDr-6T-qaW">
                                         <rect key="frame" x="8" y="7" width="81" height="30"/>
                                         <state key="normal" title="   Clear All   ">
-                                            <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="didTapClearAllButton:" destination="Lks-cD-BTu" eventType="touchUpInside" id="DrA-Qh-5Lw"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="VDr-6T-qaW" firstAttribute="leading" secondItem="scJ-6i-ccx" secondAttribute="leading" constant="8" id="AIk-6K-JaX"/>
                                     <constraint firstAttribute="height" constant="44" id="jpL-jo-d0k"/>
@@ -693,7 +693,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-3J-PRy">
                                 <rect key="frame" x="224" y="590" width="182" height="30"/>
                                 <state key="normal" title="   Submit and Randomize   ">
-                                    <color key="titleColor" red="0.29411764705882354" green="0.48627450980392156" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didTapSubmit:" destination="Lks-cD-BTu" eventType="touchUpInside" id="kwn-S8-E3C"/>
@@ -734,7 +734,7 @@
                             <constraint firstItem="scJ-6i-ccx" firstAttribute="leading" secondItem="4YH-VZ-krk" secondAttribute="leading" id="yK9-Ff-g0q"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Burlingtonian" id="c1Z-4m-lQC">
+                    <navigationItem key="navigationItem" title="SUP? NYC" id="c1Z-4m-lQC">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="poj-7e-AcF">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -754,7 +754,7 @@
             </objects>
             <point key="canvasLocation" x="2271.0144927536235" y="1363.858695652174"/>
         </scene>
-        <!--Burlingtonian-->
+        <!--SUP? NYC-->
         <scene sceneID="Bfu-4q-3xs">
             <objects>
                 <tableViewController storyboardIdentifier="test" id="Ltk-uh-3zO" customClass="SUPAboutTableViewController" sceneMemberID="viewController">
@@ -778,7 +778,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="About" image="about" id="TCD-nD-dqv"/>
-                    <navigationItem key="navigationItem" title="Burlingtonian" id="Wxk-3K-b5Z"/>
+                    <navigationItem key="navigationItem" title="SUP? NYC" id="Wxk-3K-b5Z"/>
                     <connections>
                         <segue destination="C8i-nC-YuE" kind="show" identifier="ShowDisclaimer" id="Qap-WS-gGM"/>
                     </connections>
@@ -787,7 +787,7 @@
             </objects>
             <point key="canvasLocation" x="770" y="527"/>
         </scene>
-        <!--Burlingtonian-->
+        <!--SUP? NYC-->
         <scene sceneID="XqU-vz-WG5">
             <objects>
                 <viewController id="C8i-nC-YuE" customClass="SUPDisclaimerViewController" sceneMemberID="viewController">
@@ -809,7 +809,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="2dm-wM-fF1" firstAttribute="leading" secondItem="CHV-K9-LtT" secondAttribute="leading" constant="8" id="7yS-Bc-mkz"/>
                                     <constraint firstItem="2dm-wM-fF1" firstAttribute="centerY" secondItem="CHV-K9-LtT" secondAttribute="centerY" id="TFW-PT-4fj"/>
@@ -829,8 +829,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYE-dK-eRD">
-                                                    <rect key="frame" x="8" y="8" width="398" height="28"/>
-                                                    <mutableString key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge unless you voluntarily decide to purchase an advertisement free version of Burlingtonian on the App Store.  Burlingtonian is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in Burlingtonian are not endorsed by its developer; this is either representative or property of Yelp or Google, since Burlingtonian is powered by Yelp and AdMob by Google for the purpose of advertising.  Lastly, please note that the "SUP?" icon and "SUP? NYC" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important to us.  Burlingtonian prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Burlingtonian will remain functional with the exception of its display of your distance from places of interest.  AdMob by Google may utilize your location for the purpose of ad targeting, however, please note that Burlingtonian will never voluntarily share or sell your location information.</mutableString>
+                                                    <rect key="frame" x="8" y="8" width="398" height="27"/>
+                                                    <mutableString key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge.  SUP? NYC is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in SUP? NYC are not endorsed by its developer; this is either representative or property of Yelp or Google, since SUP? NYC is powered by Yelp and AdMob by Google for the purpose of advertising.  Lastly, please note that the "SUP?" icon and "SUP? NYC" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important to us.  SUP? NYC prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, SUP? NYC will remain functional with the exception of its display of your distance from places of interest.  AdMob by Google may utilize your location for the purpose of ad targeting, however, please note that SUP? NYC will never voluntarily share or sell your location information.</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -862,7 +862,7 @@
                             <constraint firstItem="BXB-Cr-yCF" firstAttribute="leading" secondItem="abD-Fl-ZzT" secondAttribute="leading" id="lxy-Yf-0Jo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Burlingtonian" id="CxO-v9-Ikk">
+                    <navigationItem key="navigationItem" title="SUP? NYC" id="CxO-v9-Ikk">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="1xe-l6-TZF">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -896,7 +896,7 @@
             </objects>
             <point key="canvasLocation" x="-1400" y="-462"/>
         </scene>
-        <!--Burlingtonian-->
+        <!--SUP? NYC-->
         <scene sceneID="A4F-SH-zzx">
             <objects>
                 <viewController storyboardIdentifier="SubCat" id="xXJ-IN-eoB" customClass="SUPSubCategoryTableViewController" sceneMemberID="viewController">
@@ -929,7 +929,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="HLp-lw-jU1" firstAttribute="leading" secondItem="tvr-cm-0ag" secondAttribute="leading" constant="56" id="GXe-Xk-lr4"/>
                                     <constraint firstItem="HLp-lw-jU1" firstAttribute="centerY" secondItem="tvr-cm-0ag" secondAttribute="centerY" id="OK9-vM-veK"/>
@@ -948,7 +948,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is my label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxG-So-kAz">
-                                <rect key="frame" x="8" y="328" width="398" height="20.333333333333314"/>
+                                <rect key="frame" x="8" y="328" width="398" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -965,7 +965,7 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
                                                 <state key="normal" title="Any $">
-                                                    <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="didTapPriceButton:" destination="xXJ-IN-eoB" eventType="touchUpInside" id="Qov-hk-ayg"/>
@@ -977,7 +977,7 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
                                                 <state key="normal" title="Any Miles">
-                                                    <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="didTapDistanceButton:" destination="xXJ-IN-eoB" eventType="touchUpInside" id="kMh-uv-hec"/>
@@ -989,7 +989,7 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
                                                 <state key="normal" title="Open/Closed">
-                                                    <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="didTapOpenButton:" destination="xXJ-IN-eoB" eventType="touchUpInside" id="wXm-Dg-Mnf"/>
@@ -998,7 +998,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="2zm-Sb-EUh" secondAttribute="bottom" id="By3-Mo-QVP"/>
                                     <constraint firstAttribute="trailing" secondItem="2zm-Sb-EUh" secondAttribute="trailing" constant="8" id="G6t-6q-fAr"/>
@@ -1018,23 +1018,23 @@
                             <constraint firstItem="54q-YM-6ux" firstAttribute="leading" secondItem="GnM-8v-hkl" secondAttribute="leading" id="KZw-cd-JV0"/>
                             <constraint firstItem="54q-YM-6ux" firstAttribute="top" secondItem="tvr-cm-0ag" secondAttribute="bottom" constant="2" id="RYX-kp-key"/>
                             <constraint firstAttribute="trailing" secondItem="54q-YM-6ux" secondAttribute="trailing" id="UlY-Gq-BBR"/>
+                            <constraint firstItem="tvr-cm-0ag" firstAttribute="top" secondItem="egq-p2-mRD" secondAttribute="bottom" id="XZb-oD-s10"/>
                             <constraint firstItem="qIq-Io-IuE" firstAttribute="top" secondItem="54q-YM-6ux" secondAttribute="bottom" id="ZeU-Mu-SUN"/>
                             <constraint firstAttribute="trailing" secondItem="tvr-cm-0ag" secondAttribute="trailing" id="ckI-ho-rwO"/>
                             <constraint firstItem="qIq-Io-IuE" firstAttribute="leading" secondItem="GnM-8v-hkl" secondAttribute="leading" id="gGA-cN-4Q0"/>
                             <constraint firstItem="tvr-cm-0ag" firstAttribute="leading" secondItem="GnM-8v-hkl" secondAttribute="leading" id="oSo-Of-KXT"/>
-                            <constraint firstItem="tvr-cm-0ag" firstAttribute="top" secondItem="egq-p2-mRD" secondAttribute="bottom" id="q6f-Zb-3hb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Burlingtonian" id="sZr-hq-PGZ">
-                        <barButtonItem key="leftBarButtonItem" image="back_chevron" id="7mA-wp-KOg">
+                    <navigationItem key="navigationItem" title="SUP? NYC" id="geC-Ib-8mm">
+                        <barButtonItem key="leftBarButtonItem" image="back_chevron" id="V1i-B3-laX">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="didTapBack:" destination="xXJ-IN-eoB" id="XEW-NC-xML"/>
+                                <action selector="didTapBack:" destination="xXJ-IN-eoB" id="ZBR-Bn-v3j"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backChevron" destination="7mA-wp-KOg" id="CZM-rM-RxS"/>
+                        <outlet property="backChevron" destination="V1i-B3-laX" id="uCa-Yy-Oj1"/>
                         <outlet property="distanceButton" destination="qJ0-4z-GUL" id="DdM-CK-Rsg"/>
                         <outlet property="label" destination="vxG-So-kAz" id="eWc-zM-A7G"/>
                         <outlet property="openNowButton" destination="Kkf-4g-pxu" id="tQc-LD-OQ0"/>
@@ -1049,7 +1049,7 @@
             </objects>
             <point key="canvasLocation" x="2127.536231884058" y="-312.22826086956525"/>
         </scene>
-        <!--Burlingtonian-->
+        <!--SUP? NYC-->
         <scene sceneID="M9O-GS-UVr">
             <objects>
                 <viewController id="Hmd-41-ruR" customClass="SUPSurpriseRecommendationsTableViewController" sceneMemberID="viewController">
@@ -1071,7 +1071,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3gM-wP-NM8"/>
                                     <constraint firstItem="YHP-ho-Gin" firstAttribute="centerY" secondItem="g3D-MI-P0t" secondAttribute="centerY" id="8ns-zN-qUi"/>
@@ -1109,7 +1109,7 @@
                             <constraint firstItem="g3D-MI-P0t" firstAttribute="leading" secondItem="UIW-lG-Fxy" secondAttribute="leading" id="d6I-TT-Ckn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Burlingtonian" id="MyT-RQ-JR1">
+                    <navigationItem key="navigationItem" title="SUP? NYC" id="MyT-RQ-JR1">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="ggj-3y-bly">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -1144,7 +1144,7 @@
             </objects>
             <point key="canvasLocation" x="-1422" y="1669"/>
         </scene>
-        <!--Burlingtonian-->
+        <!--SUP? NYC-->
         <scene sceneID="mqW-ad-eY8">
             <objects>
                 <viewController id="Wyn-Bg-4kX" customClass="SUPSearchTableViewController" sceneMemberID="viewController">
@@ -1157,7 +1157,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is my label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkY-eb-Swa">
-                                <rect key="frame" x="28" y="328" width="358" height="20.333333333333314"/>
+                                <rect key="frame" x="28" y="328" width="358" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1177,7 +1177,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cnf-Ll-fY8" id="Do0-Tc-kcX">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1208,7 +1208,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10241788321167883" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="5UD-00-Zfl" firstAttribute="centerY" secondItem="n9f-vE-vtZ" secondAttribute="centerY" id="CQF-nY-OPv"/>
                                     <constraint firstItem="0Vt-CT-kKz" firstAttribute="centerY" secondItem="n9f-vE-vtZ" secondAttribute="centerY" id="FIg-xG-myP"/>
@@ -1230,7 +1230,7 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
                                                 <state key="normal" title="Any $">
-                                                    <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="didTapPriceButton:" destination="Wyn-Bg-4kX" eventType="touchUpInside" id="GPB-WU-7vy"/>
@@ -1242,7 +1242,7 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
                                                 <state key="normal" title="Any Miles">
-                                                    <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="didTapDistanceButton:" destination="Wyn-Bg-4kX" eventType="touchUpInside" id="jGU-6v-wT3"/>
@@ -1254,16 +1254,17 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
                                                 <state key="normal" title="Open/Closed">
-                                                    <color key="titleColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="didTapOpenButton:" destination="Wyn-Bg-4kX" eventType="touchUpInside" id="weU-lW-wIL"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.95294117647058818" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764709999999" green="0.48627450979999998" blue="0.34901960780000002" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="adC-Ag-LwA" firstAttribute="leading" secondItem="cL2-3b-KwX" secondAttribute="leading" constant="8" id="0Jz-2w-7Lb"/>
                                     <constraint firstAttribute="trailing" secondItem="adC-Ag-LwA" secondAttribute="trailing" constant="8" id="3YK-1T-MsB"/>
@@ -1294,7 +1295,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="FhL-b5-BDk"/>
-                    <navigationItem key="navigationItem" title="Burlingtonian" id="UDj-Ez-VZf"/>
+                    <navigationItem key="navigationItem" title="SUP? NYC" id="UDj-Ez-VZf"/>
                     <connections>
                         <outlet property="distanceButton" destination="ctQ-8W-p8f" id="6xm-51-VIj"/>
                         <outlet property="label" destination="DkY-eb-Swa" id="z7D-hC-TBJ"/>
@@ -1323,7 +1324,7 @@
         <image name="tutorial_icon_6_7_plus" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="itC-Zp-WcB"/>
-        <segue reference="lMI-Vd-YSr"/>
+        <segue reference="y5n-5S-q2S"/>
+        <segue reference="7ud-uz-d7s"/>
     </inferredMetricsTieBreakers>
 </document>

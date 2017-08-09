@@ -1,6 +1,6 @@
 //
 //  SUPCategoryTableViewController.m
-//  burlingtonian
+//  SUP? NYC
 //
 //  Created by Greg on 12/20/16.
 //  Copyright © 2016 gomez. All rights reserved.
@@ -49,7 +49,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     SUPHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
-    self.navigationController.navigationBar.barTintColor = [SUPStyles iconGreen];
+    self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     
 }
 
@@ -138,7 +138,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     __weak typeof(self) weakSelf = self;
-    [[AppDelegate yelp] searchWithLocation:@"Burlington, VT" term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
+    [[AppDelegate yelp] searchWithLocation:@"New York, NY" term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
          dispatch_async(dispatch_get_main_queue(), ^{
              // code here

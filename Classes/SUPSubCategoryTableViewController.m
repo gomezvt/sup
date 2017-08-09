@@ -1,6 +1,6 @@
 //
 //  SUPDetailTableViewController.m
-//  burlingtonian
+//  SUP? NYC
 //
 //  Created by Greg on 12/20/16.
 //  Copyright © 2016 gomez. All rights reserved.
@@ -262,7 +262,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     SUPHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
-    self.navigationController.navigationBar.barTintColor = [SUPStyles iconGreen];
+    self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
 }
 
 - (void)viewDidLoad
@@ -319,19 +319,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     [layer setMasksToBounds:YES];
     [layer setCornerRadius:10.0];
     [layer setBorderWidth:1.0];
-    [layer setBorderColor:[[SUPStyles iconGreen] CGColor]];
+    [layer setBorderColor:[[SUPStyles iconBlue] CGColor]];
     
     CALayer * layer2 = [self.distanceButton layer];
     [layer2 setMasksToBounds:YES];
     [layer2 setCornerRadius:10.0];
     [layer2 setBorderWidth:1.0];
-    [layer2 setBorderColor:[[SUPStyles iconGreen] CGColor]];
+    [layer2 setBorderColor:[[SUPStyles iconBlue] CGColor]];
     
     CALayer * layer3 = [self.openNowButton layer];
     [layer3 setMasksToBounds:YES];
     [layer3 setCornerRadius:10.0];
     [layer3 setBorderWidth:1.0];
-    [layer3 setBorderColor:[[SUPStyles iconGreen] CGColor]];
+    [layer3 setBorderColor:[[SUPStyles iconBlue] CGColor]];
 }
 
 - (void)didTapHUDCancelButton
@@ -636,7 +636,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                     if (cachedBiz.isOpenNow)
                     {
                         cell.secondaryOpenCloseLabel.text = @"Open Now";
-                        cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconGreen];
+                        cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
                     }
                     else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
                     {
@@ -649,7 +649,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                     if (cachedBiz.isOpenNow)
                     {
                         cell.openCloseLabel.text = @"Open Now";
-                        cell.openCloseLabel.textColor = [SUPStyles iconGreen];
+                        cell.openCloseLabel.textColor = [SUPStyles iconBlue];
                     }
                     else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
                     {
@@ -680,7 +680,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          if (business.isOpenNow)
                          {
                              cell.secondaryOpenCloseLabel.text = @"Open Now";
-                             cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconGreen];
+                             cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
                          }
                          else if (business.hoursItem && !business.isOpenNow)
                          {
@@ -693,7 +693,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          if (business.isOpenNow)
                          {
                              cell.openCloseLabel.text = @"Open Now";
-                             cell.openCloseLabel.textColor = [SUPStyles iconGreen];
+                             cell.openCloseLabel.textColor = [SUPStyles iconBlue];
                          }
                          else if (business.hoursItem && !business.isOpenNow)
                          {

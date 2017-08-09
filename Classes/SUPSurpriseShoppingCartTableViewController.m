@@ -121,7 +121,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
             break;
         }
         
-        [[AppDelegate yelp] searchWithLocation:@"Burlington, VT" term:subCatTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
+        [[AppDelegate yelp] searchWithLocation:@"New York, NY" term:subCatTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
          (YLPSearch *searchResults, NSError *error){
              dispatch_async(dispatch_get_main_queue(), ^{
                  
@@ -132,8 +132,8 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
                      [weakSelf.goButton setEnabled:YES];
                      [weakSelf.clearButton setEnabled:YES];
                      
-                     weakSelf.goButton.layer.borderColor = [[SUPStyles iconGreen] CGColor];
-                     weakSelf.clearButton.layer.borderColor = [[SUPStyles iconGreen] CGColor];
+                     weakSelf.goButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
+                     weakSelf.clearButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
                      
                      NSString *string = error.userInfo[@"NSLocalizedDescription"];
                      if ([string isEqualToString:@"The Internet connection appears to be offline."])
@@ -244,7 +244,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     SUPHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
-    self.navigationController.navigationBar.barTintColor = [SUPStyles iconGreen];
+    self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     
 //    UINib *headerView = [UINib nibWithNibName:kTableViewSectionHeaderView bundle:nil];
 //    [self.tableView registerNib:headerView forHeaderFooterViewReuseIdentifier:kTableViewSectionHeaderView];
@@ -261,7 +261,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     if ([[allValues filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"@count > 0"]] lastObject])
     {
         [button setEnabled:YES];
-        [button.layer setBorderColor:[[SUPStyles iconGreen] CGColor]];
+        [button.layer setBorderColor:[[SUPStyles iconBlue] CGColor]];
     }
     else
     {
@@ -354,8 +354,8 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
                     [self.goButton setEnabled:YES];
                     [self.clearButton setEnabled:YES];
                     
-                    self.goButton.layer.borderColor = [[SUPStyles iconGreen] CGColor];
-                    self.clearButton.layer.borderColor = [[SUPStyles iconGreen] CGColor];
+                    self.goButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
+                    self.clearButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
                     
                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No results were found for the selected category(s)" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
                     

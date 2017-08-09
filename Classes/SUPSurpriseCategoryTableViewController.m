@@ -1,6 +1,6 @@
 //
 //  SUPSurpriseTableViewController.m
-//  burlingtonian
+//  SUP? NYC
 //
 //  Created by Greg on 12/20/16.
 //  Copyright © 2016 gomez. All rights reserved.
@@ -41,7 +41,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     self.navigationItem.titleView = self.headerTitleView;
-    self.navigationController.navigationBar.barTintColor = [SUPStyles iconGreen];
+    self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
 }
 
 - (void)didTapBackWithCategories:(NSMutableDictionary *)categories
@@ -73,7 +73,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     [self.goButton setEnabled:[self evaluateButtonState]];
     if (self.goButton.enabled)
     {
-        [self.goButton.layer setBorderColor:[[SUPStyles iconGreen] CGColor]];
+        [self.goButton.layer setBorderColor:[[SUPStyles iconBlue] CGColor]];
     }
     else
     {

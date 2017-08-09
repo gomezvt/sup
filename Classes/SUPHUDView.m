@@ -18,7 +18,7 @@
 
 + (instancetype)hudWithView:(UIView *)view
 {
-    UIColor *green = [SUPStyles iconGreen];
+    UIColor *green = [SUPStyles iconBlue];
     
     SUPHUDView *hud = [[self alloc] initWithFrame:CGRectMake(0.f, 0.f, 110.f, 175.f)];
     [view addSubview:hud];

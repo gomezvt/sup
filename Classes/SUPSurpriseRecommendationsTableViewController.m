@@ -62,7 +62,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     SUPHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = headerTitleView;
-    self.navigationController.navigationBar.barTintColor = [SUPStyles iconGreen];
+    self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -192,7 +192,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                         if (cachedBiz.isOpenNow)
                         {
                             cell.secondaryOpenCloseLabel.text = @"Open Now";
-                            cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconGreen];
+                            cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
                         }
                         else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
                         {
@@ -205,7 +205,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                         if (cachedBiz.isOpenNow)
                         {
                             cell.openCloseLabel.text = @"Open Now";
-                            cell.openCloseLabel.textColor = [SUPStyles iconGreen];
+                            cell.openCloseLabel.textColor = [SUPStyles iconBlue];
                         }
                         else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
                         {
@@ -235,7 +235,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                              if (business.isOpenNow)
                              {
                                  cell.secondaryOpenCloseLabel.text = @"Open Now";
-                                 cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconGreen];
+                                 cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
                              }
                              else if (business.hoursItem && !business.isOpenNow)
                              {
@@ -248,7 +248,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                              if (business.isOpenNow)
                              {
                                  cell.openCloseLabel.text = @"Open Now";
-                                 cell.openCloseLabel.textColor = [SUPStyles iconGreen];
+                                 cell.openCloseLabel.textColor = [SUPStyles iconBlue];
                              }
                              else if (business.hoursItem && !business.isOpenNow)
                              {

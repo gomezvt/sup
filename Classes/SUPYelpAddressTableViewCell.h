@@ -1,6 +1,6 @@
 //
 //  SUPYelpAddressTableViewCell.h
-//  burlingtonian
+//  SUP? NYC
 //
 //  Created by Greg on 12/30/16.
 //  Copyright © 2016 gomez. All rights reserved.
