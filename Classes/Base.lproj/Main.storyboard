@@ -119,19 +119,9 @@
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOu-Bu-axG">
                                 <rect key="frame" x="0.0" y="676" width="414" height="60"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading advertisement..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRU-qb-HQW">
-                                        <rect key="frame" x="122" y="21" width="170" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" red="0.52941176470588236" green="0.67450980392156867" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="HRU-qb-HQW" firstAttribute="centerX" secondItem="zOu-Bu-axG" secondAttribute="centerX" id="EcQ-Dl-vVN"/>
                                     <constraint firstAttribute="height" constant="60" id="TcK-0E-Tts"/>
-                                    <constraint firstItem="HRU-qb-HQW" firstAttribute="centerY" secondItem="zOu-Bu-axG" secondAttribute="centerY" id="uDO-jc-KCW"/>
                                 </constraints>
                             </view>
                         </subviews>
