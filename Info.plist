@@ -19,11 +19,11 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This will let you sort places of interest based on your location.  If you decline, you may toggle this option later, in your iPhone&apos;s &quot;Settings&quot; &gt; &quot;Privacy&quot; &gt; &quot;Location Services&quot; &gt; &quot;SUP? NYC.&quot;</string>
+	<string>This will let you sort places of interest based on your location.  If you decline, you may toggle this option later, in your iPhone's "Settings" &gt; "Privacy" &gt; "Location Services" &gt; "SUP? NYC."</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
