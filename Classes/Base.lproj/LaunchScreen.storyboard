@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,24 +17,41 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="KZB-q4-u7O">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2017 Greg Gomez" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWN-fv-6mT">
-                                <rect key="frame" x="121.5" y="642" width="132" height="17"/>
+                                <rect key="frame" x="141" y="711" width="132" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch image" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-Wj-pCM">
+                                <rect key="frame" x="117" y="278" width="180" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="5ku-V3-mvo"/>
+                                    <constraint firstAttribute="width" constant="180" id="oxy-Yg-7mS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sg-Av-5yA">
+                                <rect key="frame" x="170" y="474" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="OWN-fv-6mT" secondAttribute="bottom" constant="8" id="4oZ-cV-IdS"/>
+                            <constraint firstItem="UbO-Wj-pCM" firstAttribute="centerY" secondItem="KZB-q4-u7O" secondAttribute="centerY" id="8ep-st-kjh"/>
+                            <constraint firstItem="UbO-Wj-pCM" firstAttribute="centerX" secondItem="KZB-q4-u7O" secondAttribute="centerX" id="9gy-sr-Um1"/>
+                            <constraint firstItem="9Sg-Av-5yA" firstAttribute="centerX" secondItem="KZB-q4-u7O" secondAttribute="centerX" id="Fgv-2W-WXm"/>
                             <constraint firstItem="KZB-q4-u7O" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="c1X-tY-bXf"/>
                             <constraint firstItem="KZB-q4-u7O" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="dtr-7W-epo"/>
+                            <constraint firstItem="9Sg-Av-5yA" firstAttribute="top" secondItem="UbO-Wj-pCM" secondAttribute="bottom" constant="16" id="ekv-Xf-Cbd"/>
                             <constraint firstAttribute="bottom" secondItem="KZB-q4-u7O" secondAttribute="bottom" id="fjV-Dl-NaH"/>
                             <constraint firstAttribute="trailing" secondItem="KZB-q4-u7O" secondAttribute="trailing" id="oDc-6k-8g5"/>
                             <constraint firstItem="OWN-fv-6mT" firstAttribute="centerX" secondItem="KZB-q4-u7O" secondAttribute="centerX" id="yyK-D0-H15"/>
@@ -48,5 +65,6 @@
     </scenes>
     <resources>
         <image name="launch" width="1242" height="2208"/>
+        <image name="launch image" width="180" height="180"/>
     </resources>
 </document>
