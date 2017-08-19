@@ -42,7 +42,7 @@
     
     self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner];
     self.bannerView.rootViewController = self;
-//    self.bannerView.adUnitID = @"ca-app-pub-8236497982755596/2363755102";
+    self.bannerView.adUnitID = @"ca-app-pub-8236497982755596/2363755102";
     [self.bannerView loadRequest:[GADRequest request]];
     self.bannerView.delegate = self;
 
