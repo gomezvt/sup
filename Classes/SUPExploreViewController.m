@@ -55,24 +55,36 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"Cell"];
     
     CGRect mainScreen = [[UIScreen mainScreen] bounds];
-    if (mainScreen.size.width > 375.f)
+    if ((self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
+         self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) && mainScreen.size.width == 1024.f)
     {
         self.isLargePhone = YES;
-        
-        [self.collectionView setContentInset:UIEdgeInsetsMake(20.f,10.f,0.f,10.f)];
-    }
-    else if (mainScreen.size.width == 375.f)
-    {
-        self.isLargePhone = NO;
-        
-        [self.collectionView setContentInset:UIEdgeInsetsMake(30.f, 5.f, 0.f, 5.f)];
+
+        [self.collectionView setContentInset:UIEdgeInsetsMake(120.f,10.f,0.f,10.f)];
     }
     else
     {
-        self.isLargePhone = NO;
-        
-        [self.collectionView setContentInset:UIEdgeInsetsMake(0.f, 0.f, 0.f, 0.f)];
+        if (mainScreen.size.width > 375.f)
+        {
+            self.isLargePhone = YES;
+            
+            [self.collectionView setContentInset:UIEdgeInsetsMake(20.f,10.f,0.f,10.f)];
+        }
+        else if (mainScreen.size.width == 375.f)
+        {
+            self.isLargePhone = NO;
+            
+            [self.collectionView setContentInset:UIEdgeInsetsMake(30.f, 5.f, 0.f, 5.f)];
+        }
+        else
+        {
+            self.isLargePhone = NO;
+            
+            [self.collectionView setContentInset:UIEdgeInsetsMake(0.f, 0.f, 0.f, 0.f)];
+        }
     }
+    
+
 }
 
 #pragma mark - CollectionView Delegate
@@ -87,17 +99,51 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     return kSUPCategories.count;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section;
 {
-    CGSize size;
-    if (self.isLargePhone)
+    CGFloat spacing;
+    CGRect mainScreen = [[UIScreen mainScreen] bounds];
+    if ((self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
+         self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) && mainScreen.size.width == 1024.f)
     {
-        size = CGSizeMake(100, 150);
+        spacing = 100.f;
     }
     else
     {
-        size = CGSizeMake(80, 120);
+        spacing = 20.f;
     }
+    
+    return spacing;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize size;
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
+        self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular)
+    {
+        CGRect mainScreen = [[UIScreen mainScreen] bounds];
+        if (mainScreen.size.width == 1024.f)
+        {
+            return CGSizeMake(200.f, 150.f);
+        }
+        else
+        {
+            return CGSizeMake(150.f, 150.f);
+        }
+    }
+    else
+    {
+        if (self.isLargePhone)
+        {
+            size = CGSizeMake(100, 150);
+        }
+        else
+        {
+            size = CGSizeMake(80, 120);
+        }
+    }
+
     return size;
 }
 
