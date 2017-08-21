@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "search_640x960.png",
       "scale" : "1x"
     },
     {
