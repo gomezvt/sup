@@ -35,7 +35,7 @@
 @property (nonatomic, strong) NSMutableArray *subCategories;
 @property (nonatomic, strong) NSMutableArray *resultsArray;
 @property (nonatomic, strong) NSMutableArray *tempArray;
-//@property (nonatomic, strong) SUPTableViewSectionHeaderView *headerView;
+@property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 
 @end
 
@@ -241,9 +241,9 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     [super awakeFromNib];
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
-    SUPHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    headerTitleView.titleViewLabelConstraint.constant = -20.f;
-    self.navigationItem.titleView = headerTitleView;
+    self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    self.headerTitleView.titleViewLabelConstraint.constant = -20.f;
+    self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     
 //    UINib *headerView = [UINib nibWithNibName:kTableViewSectionHeaderView bundle:nil];
@@ -292,7 +292,11 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 {
     [super viewDidLoad];
     
-
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
+        self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular)
+    {
+        self.headerTitleView.titleViewLabelConstraint.constant = 0.f;
+    }
     self.tempArray = [[NSMutableArray alloc] init];
     self.tableView.tableFooterView = [UIView new];
 

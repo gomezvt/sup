@@ -46,6 +46,7 @@
 @property (nonatomic, strong) NSMutableArray *originalFilteredResults;
 @property (nonatomic) BOOL isLargePhone;
 @property (nonatomic) BOOL didSelectBiz;
+@property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 
 @end
 
@@ -259,9 +260,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
-    SUPHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    headerTitleView.titleViewLabelConstraint.constant = -20.f;
-    self.navigationItem.titleView = headerTitleView;
+    self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    self.headerTitleView.titleViewLabelConstraint.constant = -20.f;
+    self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
 }
 
@@ -269,6 +270,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
+        self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular)
+    {
+        self.headerTitleView.titleViewLabelConstraint.constant = 0.f;
+    }
     
     self.displayArray = [[NSMutableArray alloc] init];
     

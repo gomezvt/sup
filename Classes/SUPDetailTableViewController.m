@@ -31,6 +31,7 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 
 @end
 
@@ -61,9 +62,9 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     [super awakeFromNib];
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
-    SUPHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    headerTitleView.titleViewLabelConstraint.constant = -20.f;
-    self.navigationItem.titleView = headerTitleView;
+    self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    self.headerTitleView.titleViewLabelConstraint.constant = -20.f;
+    self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     
 }
@@ -71,6 +72,12 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
+        self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular)
+    {
+        self.headerTitleView.titleViewLabelConstraint.constant = 0.f;
+    }
     
     self.tableView.tableFooterView = [UIView new];
     

@@ -21,6 +21,7 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
 @property (nonatomic, strong) NSMutableArray *mut;
+@property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 
 @end
 
@@ -42,9 +43,9 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     [super awakeFromNib];
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
-    SUPHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    headerTitleView.titleViewLabelConstraint.constant = -20.f;
-    self.navigationItem.titleView = headerTitleView;
+    self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    self.headerTitleView.titleViewLabelConstraint.constant = -20.f;
+    self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
 }
 
@@ -123,7 +124,11 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
 - (void)viewDidLoad
 {
-
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
+        self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular)
+    {
+        self.headerTitleView.titleViewLabelConstraint.constant = 0.f;
+    }
     self.tableView.tableFooterView = [UIView new];
 
     CALayer * layer = [self.goButton layer];
