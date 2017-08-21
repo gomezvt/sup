@@ -83,7 +83,9 @@
                         <constraints>
                             <constraint firstItem="oWp-dM-boV" firstAttribute="top" secondItem="mZs-Ai-JNh" secondAttribute="bottom" constant="8" id="67X-jJ-Cax"/>
                             <constraint firstAttribute="trailing" secondItem="tMy-AY-DqC" secondAttribute="trailing" id="Ho3-d3-Dwb"/>
-                            <constraint firstItem="oWp-dM-boV" firstAttribute="top" secondItem="tMy-AY-DqC" secondAttribute="bottom" id="plR-ee-r2e"/>
+                            <constraint firstItem="oWp-dM-boV" firstAttribute="top" secondItem="tMy-AY-DqC" secondAttribute="bottom" id="plR-ee-r2e">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="mZs-Ai-JNh" firstAttribute="centerX" secondItem="tMy-AY-DqC" secondAttribute="centerX" id="rJm-fc-Gru"/>
                             <constraint firstItem="tMy-AY-DqC" firstAttribute="leading" secondItem="94z-Ge-ZvT" secondAttribute="leading" id="yqi-zs-Yat"/>
                         </constraints>
@@ -831,7 +833,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYE-dK-eRD">
-                                                    <rect key="frame" x="8" y="8" width="398" height="27"/>
+                                                    <rect key="frame" x="8" y="8" width="808" height="27"/>
                                                     <string key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge.  SUP? NYC is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in SUP? NYC are not endorsed by its developer; this is either representative or property of Yelp or Google, since SUP? NYC is powered by Yelp and AdMob by Google for the purpose of advertising.  Lastly, please note that the "SUP? NYC" icon and "SUP? NYC" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important to us.  SUP? NYC prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, SUP? NYC will remain functional with the exception of its display of your distance from places of interest.  AdMob by Google may utilize your location for the purpose of ad targeting, however, please note that SUP? NYC will never voluntarily share or sell your location information.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

@@ -41,29 +41,45 @@
         self.images = @[@"page1.png", @"page2.png", @"page3.png"];
         
         CGRect mainScreen = [[UIScreen mainScreen] bounds];
-        if (mainScreen.size.width > 375.f)
+        if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
+             self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular)
         {
-            // iPhone Plus 6 + 7
-            self.images = @[@"Tutorial_Explore_6_7_Plus.png", @"Tutorial_Search_6_7_Plus.png", @"Tutorial_Surprise_6_7_Plus.png"];
-        }
-        else if (mainScreen.size.width == 375.f)
-        {
-            // iPhone 6 + 7
-            self.images = @[@"Tutorial_Explore_6_7", @"Tutorial_Search_6_7.png", @"Tutorial_Surprise_6_7.png"];
-        }
-        else if (mainScreen.size.width == 320.f)
-        {
-            if (mainScreen.size.height == 480.f)
+            if (mainScreen.size.width == 1024.f)
             {
-                // iPhone 4S
-                self.images = @[@"Tutorial_Explore_4S.png", @"Tutorial_Search_4S.png", @"Tutorial_Surprise_4S.png"];
+                self.images = @[@"Tutorial_iPad_12.9_explore.png", @"Tutorial_iPad_12.9_search.png", @"Tutorial_iPad_12.9_surprise.png"];
             }
             else
             {
-                // iPhone 5, iPhone 5S, iPhone SE
-                self.images = @[@"Tutorial_Explore_Small.png", @"Tutorial_Search_Small.png", @"Tutorial_Surprise_Small.png"];
+                self.images = @[@"Tutorial_iPad_9.7_explore.png", @"Tutorial_iPad_9.7_search.png", @"Tutorial_iPad_9.7_surprise.png"];
             }
         }
+        else
+        {
+            if (mainScreen.size.width > 375.f)
+            {
+                // iPhone Plus 6 + 7
+                self.images = @[@"Tutorial_Explore_6_7_Plus.png", @"Tutorial_Search_6_7_Plus.png", @"Tutorial_Surprise_6_7_Plus.png"];
+            }
+            else if (mainScreen.size.width == 375.f)
+            {
+                // iPhone 6 + 7
+                self.images = @[@"Tutorial_Explore_6_7", @"Tutorial_Search_6_7.png", @"Tutorial_Surprise_6_7.png"];
+            }
+            else if (mainScreen.size.width == 320.f)
+            {
+                if (mainScreen.size.height == 480.f)
+                {
+                    // iPhone 4S
+                    self.images = @[@"Tutorial_Explore_4S.png", @"Tutorial_Search_4S.png", @"Tutorial_Surprise_4S.png"];
+                }
+                else
+                {
+                    // iPhone 5, iPhone 5S, iPhone SE
+                    self.images = @[@"Tutorial_Explore_Small.png", @"Tutorial_Search_Small.png", @"Tutorial_Surprise_Small.png"];
+                }
+            }
+        }
+
         
         // Create page view controller
         self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
