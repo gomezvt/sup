@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "64F41D5E1E2C497F0053EBE2"
-               BuildableName = "SUP NYC?.app"
+               BuildableName = "Sup? City.app"
                BlueprintName = "sup"
                ReferencedContainer = "container:sup.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64F41D5E1E2C497F0053EBE2"
-            BuildableName = "SUP NYC?.app"
+            BuildableName = "Sup? City.app"
             BlueprintName = "sup"
             ReferencedContainer = "container:sup.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64F41D5E1E2C497F0053EBE2"
-            BuildableName = "SUP NYC?.app"
+            BuildableName = "Sup? City.app"
             BlueprintName = "sup"
             ReferencedContainer = "container:sup.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64F41D5E1E2C497F0053EBE2"
-            BuildableName = "SUP NYC?.app"
+            BuildableName = "Sup? City.app"
             BlueprintName = "sup"
             ReferencedContainer = "container:sup.xcodeproj">
          </BuildableReference>
