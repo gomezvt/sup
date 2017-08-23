@@ -11,5 +11,6 @@
 @interface SUPHeaderTitleView : UIView
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *titleViewLabelConstraint;
+@property (nonatomic, copy) IBOutlet UILabel *cityNameLabel;
 
 @end

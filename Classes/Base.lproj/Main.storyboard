@@ -127,7 +127,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.84553152322769165" green="0.89360594749450684" blue="0.93529492616653442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.87433449074074077" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="UDp-2K-fah" firstAttribute="top" secondItem="t1P-hW-rIu" secondAttribute="top" id="6iU-vH-tu8">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
@@ -258,7 +258,11 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" image="compass" id="Ih3-eu-4JK"/>
-                    <navigationItem key="navigationItem" title="Sup? City" id="RCZ-KR-qnl"/>
+                    <navigationItem key="navigationItem" title="Sup? City" id="RCZ-KR-qnl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5l7-rw-fPk">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="77w-9n-NFD" id="yee-4T-oeF"/>
                         <segue destination="YHp-ZS-BPP" kind="show" identifier="ShowCategory" id="ofq-6B-lcT"/>
@@ -335,6 +339,9 @@
                                 <action selector="didTapBack:" destination="YHp-ZS-BPP" id="YhO-Mg-CX1"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6gS-9h-DhQ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backChevron" destination="0s3-3l-ATZ" id="mTu-XI-Rmq"/>
@@ -403,6 +410,9 @@
                             <connections>
                                 <action selector="didTapBack:" destination="YcC-JR-9wn" id="k9m-CV-nDm"/>
                             </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TBg-sU-VHt">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -533,7 +543,11 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Surprise Me" image="surprise" id="ubz-5l-16j"/>
-                    <navigationItem key="navigationItem" title="Sup? City" id="kMy-tZ-wru"/>
+                    <navigationItem key="navigationItem" title="Sup? City" id="kMy-tZ-wru">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="IEq-gN-Nmo">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="goButton" destination="zoc-y8-kQY" id="qAj-Wm-IOU"/>
                         <segue destination="drD-Ic-Hni" kind="show" identifier="ShowCategory" id="5rf-N7-gkv"/>
@@ -632,6 +646,9 @@
                             <connections>
                                 <action selector="didTapBack:" destination="drD-Ic-Hni" id="FFH-dg-lbw"/>
                             </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tXw-PD-kXO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -745,6 +762,9 @@
                                 <action selector="didTapBack:" destination="Lks-cD-BTu" id="x1j-3T-bbQ"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pp6-nC-quh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backChevron" destination="poj-7e-AcF" id="Rgj-fC-IbB"/>
@@ -834,7 +854,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYE-dK-eRD">
                                                     <rect key="frame" x="8" y="8" width="808" height="27"/>
-                                                    <mutableString key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge.  Sup? City is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in Sup? City are not endorsed by its developer; this is either representative or property of Yelp or Google, since Sup? City is powered by Yelp and AdMob by Google for the purpose of advertising.  Lastly, please note that the "Sup? City" icon and "Sup? City" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important to us.  Sup? City prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Sup? City will remain functional with the exception of its display of your distance from places of interest.  AdMob by Google may utilize your location for the purpose of ad targeting, however, please note that Sup? City will never voluntarily share or sell your location information.</mutableString>
+                                                    <string key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge.  Sup? City is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in Sup? City are not endorsed by its developer; this is either representative or property of Yelp or Google, since Sup? City is powered by Yelp and AdMob by Google for the purpose of advertising.  Lastly, please note that the "Sup? City" icon and "Sup? City" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important to us.  Sup? City prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Sup? City will remain functional with the exception of its display of your distance from places of interest.  AdMob by Google may utilize your location for the purpose of ad targeting, however, please note that Sup? City will never voluntarily share or sell your location information.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1036,6 +1056,9 @@
                                 <action selector="didTapBack:" destination="xXJ-IN-eoB" id="ZBR-Bn-v3j"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kTS-eb-mDV">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backChevron" destination="V1i-B3-laX" id="uCa-Yy-Oj1"/>
@@ -1119,6 +1142,9 @@
                             <connections>
                                 <action selector="didTapBack:" destination="Hmd-41-ruR" id="M0K-Pf-tqv"/>
                             </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="okV-DS-V8F">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1299,7 +1325,11 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="FhL-b5-BDk"/>
-                    <navigationItem key="navigationItem" title="Sup? City" id="UDj-Ez-VZf"/>
+                    <navigationItem key="navigationItem" title="Sup? City" id="UDj-Ez-VZf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="olp-3v-qTx">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="distanceButton" destination="ctQ-8W-p8f" id="6xm-51-VIj"/>
                         <outlet property="label" destination="DkY-eb-Swa" id="z7D-hC-TBJ"/>

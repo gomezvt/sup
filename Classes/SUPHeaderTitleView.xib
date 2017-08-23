@@ -14,22 +14,34 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sup? City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soO-JA-jKL">
-                    <rect key="frame" x="128" y="6.5" width="119" height="32"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFH-io-mPh">
+                    <rect key="frame" x="99" y="6.5" width="177.5" height="31.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sup? City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soO-JA-jKL">
+                            <rect key="frame" x="0.0" y="0.0" width="119" height="31.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":  Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6q-Cg-fg9">
+                            <rect key="frame" x="119" y="0.0" width="58.5" height="31.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="soO-JA-jKL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="nrg-he-DJ1"/>
-                <constraint firstItem="soO-JA-jKL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qb7-E7-oSo"/>
+                <constraint firstItem="ZFH-io-mPh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cqN-bo-i2k"/>
+                <constraint firstItem="ZFH-io-mPh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ghI-Mo-RFA"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="titleViewLabelConstraint" destination="qb7-E7-oSo" id="oKf-Xi-Th9"/>
+                <outlet property="cityNameLabel" destination="r6q-Cg-fg9" id="Ry9-Fc-BoL"/>
+                <outlet property="titleViewLabelConstraint" destination="cqN-bo-i2k" id="08v-17-nYo"/>
             </connections>
             <point key="canvasLocation" x="-500" y="-239"/>
         </view>
