@@ -208,7 +208,7 @@
             </objects>
             <point key="canvasLocation" x="39" y="-312"/>
         </scene>
-        <!--SUP? NYC-->
+        <!--Sup? City-->
         <scene sceneID="Vu4-MZ-ht8">
             <objects>
                 <viewController storyboardIdentifier="SUPExploreViewController" id="XQZ-uB-ePI" customClass="SUPExploreViewController" sceneMemberID="viewController">
@@ -258,7 +258,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" image="compass" id="Ih3-eu-4JK"/>
-                    <navigationItem key="navigationItem" title="SUP? NYC" id="RCZ-KR-qnl"/>
+                    <navigationItem key="navigationItem" title="Sup? City" id="RCZ-KR-qnl"/>
                     <connections>
                         <outlet property="collectionView" destination="77w-9n-NFD" id="yee-4T-oeF"/>
                         <segue destination="YHp-ZS-BPP" kind="show" identifier="ShowCategory" id="ofq-6B-lcT"/>
@@ -268,7 +268,7 @@
             </objects>
             <point key="canvasLocation" x="713.04347826086962" y="-312.22826086956525"/>
         </scene>
-        <!--SUP? NYC-->
+        <!--Sup? City-->
         <scene sceneID="Kyz-Hy-ijJ">
             <objects>
                 <viewController id="YHp-ZS-BPP" customClass="SUPCategoryTableViewController" sceneMemberID="viewController">
@@ -328,7 +328,7 @@
                             <constraint firstItem="iho-ZQ-14d" firstAttribute="leading" secondItem="Pyh-fs-CoN" secondAttribute="leading" id="uBm-d6-dem"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SUP? NYC" id="BVD-Vj-j3a">
+                    <navigationItem key="navigationItem" title="Sup? City" id="BVD-Vj-j3a">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="0s3-3l-ATZ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -347,7 +347,7 @@
             </objects>
             <point key="canvasLocation" x="1396" y="-312"/>
         </scene>
-        <!--SUP? NYC-->
+        <!--Sup? City-->
         <scene sceneID="pAY-1M-M1K">
             <objects>
                 <viewController id="YcC-JR-9wn" customClass="SUPDetailTableViewController" sceneMemberID="viewController">
@@ -397,7 +397,7 @@
                             <constraint firstAttribute="trailing" secondItem="ePQ-RT-2C1" secondAttribute="trailing" id="mFg-e7-fEQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SUP? NYC" id="Rm4-1R-mXC">
+                    <navigationItem key="navigationItem" title="Sup? City" id="Rm4-1R-mXC">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="e0N-pK-KFh">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -448,7 +448,7 @@
             </objects>
             <point key="canvasLocation" x="39" y="1364"/>
         </scene>
-        <!--SUP? NYC-->
+        <!--Sup? City-->
         <scene sceneID="f3u-B1-k2u">
             <objects>
                 <viewController id="CcW-yj-hls" customClass="SUPSurpriseCategoryTableViewController" sceneMemberID="viewController">
@@ -533,7 +533,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Surprise Me" image="surprise" id="ubz-5l-16j"/>
-                    <navigationItem key="navigationItem" title="SUP? NYC" id="kMy-tZ-wru"/>
+                    <navigationItem key="navigationItem" title="Sup? City" id="kMy-tZ-wru"/>
                     <connections>
                         <outlet property="goButton" destination="zoc-y8-kQY" id="qAj-Wm-IOU"/>
                         <segue destination="drD-Ic-Hni" kind="show" identifier="ShowCategory" id="5rf-N7-gkv"/>
@@ -543,7 +543,7 @@
             </objects>
             <point key="canvasLocation" x="769.56521739130437" y="1390.7608695652175"/>
         </scene>
-        <!--SUP? NYC-->
+        <!--Sup? City-->
         <scene sceneID="x8r-6n-wkn">
             <objects>
                 <viewController id="drD-Ic-Hni" customClass="SUPSurpriseSubCategoryTableViewController" sceneMemberID="viewController">
@@ -626,7 +626,7 @@
                             <constraint firstItem="1uM-Gm-hdk" firstAttribute="top" secondItem="bub-K2-b1V" secondAttribute="bottom" id="fD1-RY-Dmo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SUP? NYC" id="VAs-CB-sqz">
+                    <navigationItem key="navigationItem" title="Sup? City" id="VAs-CB-sqz">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="NcH-4Z-rEb">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -644,7 +644,7 @@
             </objects>
             <point key="canvasLocation" x="1489.8550724637682" y="1400.5434782608697"/>
         </scene>
-        <!--SUP? NYC-->
+        <!--Sup? City-->
         <scene sceneID="9HH-QN-d49">
             <objects>
                 <viewController id="Lks-cD-BTu" customClass="SUPSurpriseShoppingCartTableViewController" sceneMemberID="viewController">
@@ -738,7 +738,7 @@
                             <constraint firstItem="scJ-6i-ccx" firstAttribute="leading" secondItem="4YH-VZ-krk" secondAttribute="leading" id="yK9-Ff-g0q"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SUP? NYC" id="c1Z-4m-lQC">
+                    <navigationItem key="navigationItem" title="Sup? City" id="c1Z-4m-lQC">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="poj-7e-AcF">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -758,7 +758,7 @@
             </objects>
             <point key="canvasLocation" x="2271.0144927536235" y="1363.858695652174"/>
         </scene>
-        <!--SUP? NYC-->
+        <!--Sup? City-->
         <scene sceneID="Bfu-4q-3xs">
             <objects>
                 <tableViewController storyboardIdentifier="test" id="Ltk-uh-3zO" customClass="SUPAboutTableViewController" sceneMemberID="viewController">
@@ -782,7 +782,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="About" image="about" id="TCD-nD-dqv"/>
-                    <navigationItem key="navigationItem" title="SUP? NYC" id="Wxk-3K-b5Z"/>
+                    <navigationItem key="navigationItem" title="Sup? City" id="Wxk-3K-b5Z"/>
                     <connections>
                         <segue destination="C8i-nC-YuE" kind="show" identifier="ShowDisclaimer" id="Qap-WS-gGM"/>
                     </connections>
@@ -791,7 +791,7 @@
             </objects>
             <point key="canvasLocation" x="770" y="527"/>
         </scene>
-        <!--SUP? NYC-->
+        <!--Sup? City-->
         <scene sceneID="XqU-vz-WG5">
             <objects>
                 <viewController id="C8i-nC-YuE" customClass="SUPDisclaimerViewController" sceneMemberID="viewController">
@@ -834,7 +834,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYE-dK-eRD">
                                                     <rect key="frame" x="8" y="8" width="808" height="27"/>
-                                                    <string key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge.  SUP? NYC is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in SUP? NYC are not endorsed by its developer; this is either representative or property of Yelp or Google, since SUP? NYC is powered by Yelp and AdMob by Google for the purpose of advertising.  Lastly, please note that the "SUP? NYC" icon and "SUP? NYC" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important to us.  SUP? NYC prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, SUP? NYC will remain functional with the exception of its display of your distance from places of interest.  AdMob by Google may utilize your location for the purpose of ad targeting, however, please note that SUP? NYC will never voluntarily share or sell your location information.</string>
+                                                    <mutableString key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge.  Sup? City is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in Sup? City are not endorsed by its developer; this is either representative or property of Yelp or Google, since Sup? City is powered by Yelp and AdMob by Google for the purpose of advertising.  Lastly, please note that the "Sup? City" icon and "Sup? City" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important to us.  Sup? City prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Sup? City will remain functional with the exception of its display of your distance from places of interest.  AdMob by Google may utilize your location for the purpose of ad targeting, however, please note that Sup? City will never voluntarily share or sell your location information.</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -866,7 +866,7 @@
                             <constraint firstItem="BXB-Cr-yCF" firstAttribute="leading" secondItem="abD-Fl-ZzT" secondAttribute="leading" id="lxy-Yf-0Jo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SUP? NYC" id="CxO-v9-Ikk">
+                    <navigationItem key="navigationItem" title="Sup? City" id="CxO-v9-Ikk">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="1xe-l6-TZF">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -900,7 +900,7 @@
             </objects>
             <point key="canvasLocation" x="-1400" y="-462"/>
         </scene>
-        <!--SUP? NYC-->
+        <!--Sup? City-->
         <scene sceneID="A4F-SH-zzx">
             <objects>
                 <viewController storyboardIdentifier="SubCat" id="xXJ-IN-eoB" customClass="SUPSubCategoryTableViewController" sceneMemberID="viewController">
@@ -1029,7 +1029,7 @@
                             <constraint firstItem="tvr-cm-0ag" firstAttribute="leading" secondItem="GnM-8v-hkl" secondAttribute="leading" id="oSo-Of-KXT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SUP? NYC" id="geC-Ib-8mm">
+                    <navigationItem key="navigationItem" title="Sup? City" id="geC-Ib-8mm">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="V1i-B3-laX">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -1053,7 +1053,7 @@
             </objects>
             <point key="canvasLocation" x="2127.536231884058" y="-312.22826086956525"/>
         </scene>
-        <!--SUP? NYC-->
+        <!--Sup? City-->
         <scene sceneID="M9O-GS-UVr">
             <objects>
                 <viewController id="Hmd-41-ruR" customClass="SUPSurpriseRecommendationsTableViewController" sceneMemberID="viewController">
@@ -1113,7 +1113,7 @@
                             <constraint firstItem="g3D-MI-P0t" firstAttribute="leading" secondItem="UIW-lG-Fxy" secondAttribute="leading" id="d6I-TT-Ckn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SUP? NYC" id="MyT-RQ-JR1">
+                    <navigationItem key="navigationItem" title="Sup? City" id="MyT-RQ-JR1">
                         <barButtonItem key="leftBarButtonItem" image="back_chevron" id="ggj-3y-bly">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -1148,7 +1148,7 @@
             </objects>
             <point key="canvasLocation" x="-1422" y="1669"/>
         </scene>
-        <!--SUP? NYC-->
+        <!--Sup? City-->
         <scene sceneID="mqW-ad-eY8">
             <objects>
                 <viewController id="Wyn-Bg-4kX" customClass="SUPSearchTableViewController" sceneMemberID="viewController">
@@ -1299,7 +1299,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="FhL-b5-BDk"/>
-                    <navigationItem key="navigationItem" title="SUP? NYC" id="UDj-Ez-VZf"/>
+                    <navigationItem key="navigationItem" title="Sup? City" id="UDj-Ez-VZf"/>
                     <connections>
                         <outlet property="distanceButton" destination="ctQ-8W-p8f" id="6xm-51-VIj"/>
                         <outlet property="label" destination="DkY-eb-Swa" id="z7D-hC-TBJ"/>
@@ -1328,7 +1328,7 @@
         <image name="tutorial_icon_6_7_plus" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y5n-5S-q2S"/>
-        <segue reference="7ud-uz-d7s"/>
+        <segue reference="6FD-Q3-pb4"/>
+        <segue reference="itC-Zp-WcB"/>
     </inferredMetricsTieBreakers>
 </document>

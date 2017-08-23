@@ -1,6 +1,6 @@
 //
 //  SUPAboutTableViewController.m
-//  SUP? NYC
+//  Sup? City
 //
 //  Created by Greg on 12/20/16.
 //  Copyright © 2016 gomez. All rights reserved.
@@ -52,7 +52,7 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
     NSString *title;
     if (section == 0)
     {
-        title = @"About SUP? NYC";
+        title = @"About Sup? City";
     }
     else
     {
@@ -128,7 +128,7 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
         if (indexPath.row == 0)
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"SUP? NYC was created by Greg, a native Vermonter and NYC food enthusiast, to serve as a quick reference for restaurants, shops, and attractions in and around the NYC area.";
+            cell.textLabel.text = @"Sup? City was created by Greg, a native Vermonter, to serve as a quick reference for restaurants, shops, and attractions in places and cities near you.";
         }
         else if (indexPath.row == 1)
         {
@@ -150,7 +150,7 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
         if (indexPath.row == 0)
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"Your input is very important and can help make SUP? NYC better. Please take a moment to leave your feedback on the App Store.";
+            cell.textLabel.text = @"Your input is very important and can help make Sup? City better. Please take a moment to leave your feedback on the App Store.";
         }
     }
     

@@ -24,7 +24,7 @@
 
 - (IBAction)didTapFBButton:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.facebook.com/SUP-NYC-iPhone-App-130089694188147/"]  options:@{} completionHandler:^(BOOL success) {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.facebook.com/Sup-City-iPhone-App-266223057202827/"]  options:@{} completionHandler:^(BOOL success) {
         NSLog(@"");
     }];
 }
