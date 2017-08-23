@@ -261,6 +261,9 @@
                     <navigationItem key="navigationItem" title="Sup? City" id="RCZ-KR-qnl">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5l7-rw-fPk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="didTapPlusButton:" destination="XQZ-uB-ePI" id="Zjr-u8-HuI"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

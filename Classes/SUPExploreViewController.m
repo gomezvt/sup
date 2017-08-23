@@ -18,7 +18,7 @@
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) BOOL isLargePhone;
-
+@property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 @end
 
 static NSArray *businessesToDisplay;
@@ -36,14 +36,19 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 #pragma mark - View Life Cycle
 
+- (IBAction)didTapPlusButton:(id)sender
+{
+    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
-    SUPHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    headerTitleView.titleViewLabelConstraint.constant = 20.f;
-    self.navigationItem.titleView = headerTitleView;
+    self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    self.headerTitleView.titleViewLabelConstraint.constant = 20.f;
+    self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
 }
 
