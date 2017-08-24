@@ -220,7 +220,6 @@
 		64B4468D1E3049B700327C26 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				644111E81E2D345600C3ED18 /* SUPAboutTableViewController.h */,
 				644111E91E2D345600C3ED18 /* SUPAboutTableViewController.m */,
 				64C6DD1E1EE0F6C300C8132F /* SUPAboutTableViewCell.h */,
 				649B84571EE0F92E00C3D6CD /* SUPAboutTableViewCell.m */,
@@ -365,6 +364,7 @@
 				647E58C21F0DC01800625352 /* SUPTabBarViewController.h */,
 				647E58C31F0DC01800625352 /* SUPTabBarViewController.m */,
 				64A481061EC94E6800A80600 /* SUPTabBarController.h */,
+				644111E81E2D345600C3ED18 /* SUPAboutTableViewController.h */,
 				64A481071EC94E6800A80600 /* SUPTabBarController.m */,
 				64A3386F1EA7067F0061CA83 /* SUPHUDView.h */,
 				64A338701EA7067F0061CA83 /* SUPHUDView.m */,

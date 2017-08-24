@@ -19,6 +19,7 @@
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) BOOL isLargePhone;
 @property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
+@property (nonatomic, strong) UITextField *alertTextField;
 @end
 
 static NSArray *businessesToDisplay;
@@ -38,7 +39,27 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 - (IBAction)didTapPlusButton:(id)sender
 {
-    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
+//    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        self.alertTextField = textField;
+    }];
+    
+    
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", self.alertTextField.text];
+        kCity = [self.headerTitleView.cityNameLabel.text substringFromIndex:2];
+//        [[NSNotificationCenter defaultCenter]
+//         postNotificationName:@"placechanged"
+//         object:str];
+    }];
+    [alertController addAction:confirmAction];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)awakeFromNib
@@ -50,11 +71,53 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     self.headerTitleView.titleViewLabelConstraint.constant = 20.f;
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(gotCity:)
+                                                 name: @"gotCity"
+                                               object: nil];
+}
+
+
+
+- (void)gotCity:(NSNotification *)notification
+{
+    NSString *city = notification.object;
+    if ([city isEqualToString:@"failed"])
+    {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            self.alertTextField = textField;
+        }];
+        
+        
+        
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", self.alertTextField.text];
+            kCity = [self.headerTitleView.cityNameLabel.text substringFromIndex:2];
+            //        [[NSNotificationCenter defaultCenter]
+            //         postNotificationName:@"placechanged"
+            //         object:str];
+        }];
+        [alertController addAction:confirmAction];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+
+    }
+    else
+    {
+        kCity = city;
+        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", city];
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+
     
     UINib *cellNib = [UINib nibWithNibName:kCollectionViewCellNib bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"Cell"];

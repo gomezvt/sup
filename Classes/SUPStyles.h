@@ -32,6 +32,7 @@
 #define kToursFestivals @[ @"Boat Tours", @"Bus Tours", @"Festivals", @"Historical Tours", @"Hot Air Balloons", @"Wine Tours" ]
 
 #define kTravel @[ @"Airports", @"Airport Shuttles", @"Car Rental", @"Limos", @"Motorcycle Rental", @"Public Transportation", @"RV Rental", @"Taxis", @"Town Car Service", @"Trains", @"Train Stations", @"Vacation Rentals", @"Vacation Rental Agents", @"Visitor Centers" ]
+extern NSString *kCity;
 
 extern NSString *const star_zero_mini;
 extern NSString *const star_one_mini;

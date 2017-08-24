@@ -16,6 +16,7 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
+@property (nonatomic, copy) NSString *city;
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) CLLocation *userLocation;
 @property (nonatomic, strong) GADBannerView *bannerView;

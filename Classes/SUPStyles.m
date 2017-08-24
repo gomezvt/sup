@@ -7,6 +7,7 @@
 //
 
 #import "SUPStyles.h"
+NSString *kCity = nil;
 
 NSString *const star_zero       = @"star_zero.png";
 NSString *const star_one        = @"star_one.png";

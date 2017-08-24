@@ -144,7 +144,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     __weak typeof(self) weakSelf = self;
-    [[AppDelegate yelp] searchWithLocation:@"New York, NY" term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
+    [[AppDelegate yelp] searchWithLocation:kCity term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
          dispatch_async(dispatch_get_main_queue(), ^{
              // code here
