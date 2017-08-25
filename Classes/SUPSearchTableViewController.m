@@ -49,7 +49,7 @@
 @property (nonatomic) BOOL isLargePhone;
 @property (nonatomic) BOOL didSelectBiz;
 @property (nonatomic, strong) NSMutableArray *cachedBiz;
-
+@property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 @end
 
 static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
@@ -66,9 +66,9 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     [super awakeFromNib];
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
-    SUPHeaderTitleView *headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    headerTitleView.titleViewLabelConstraint.constant = 0.f;
-    self.navigationItem.titleView = headerTitleView;
+    self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    self.headerTitleView.titleViewLabelConstraint.constant = 0.f;
+    self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     
 }
@@ -89,6 +89,16 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     searchBar.showsCancelButton = NO;
     searchBar.text = @"";
     [searchBar resignFirstResponder];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (kCity)
+    {
+        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
+    }
 }
 
 - (void)viewDidLoad
@@ -200,7 +210,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     });
 
     __weak typeof(self) weakSelf = self;
-    [[AppDelegate yelp] searchWithLocation:@"New York, NY" term:searchBar.text limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
+    [[AppDelegate yelp] searchWithLocation:kCity term:searchBar.text limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
          dispatch_async(dispatch_get_main_queue(), ^{
              // code here

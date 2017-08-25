@@ -252,6 +252,16 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 #pragma mark - View Life Cycle
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (kCity)
+    {
+        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
+    }
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -261,7 +271,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    self.headerTitleView.titleViewLabelConstraint.constant = 0.f;
+    self.headerTitleView.titleViewLabelConstraint.constant = -20.f;
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
 }

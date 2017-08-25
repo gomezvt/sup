@@ -121,7 +121,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
             break;
         }
         
-        [[AppDelegate yelp] searchWithLocation:@"New York, NY" term:subCatTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
+        [[AppDelegate yelp] searchWithLocation:kCity term:subCatTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
          (YLPSearch *searchResults, NSError *error){
              dispatch_async(dispatch_get_main_queue(), ^{
                  
@@ -318,6 +318,11 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (kCity)
+    {
+        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
+    }
     
     [self.tempArray removeAllObjects];
     

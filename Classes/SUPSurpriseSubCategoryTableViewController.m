@@ -63,6 +63,11 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 {
     [super viewWillAppear:animated];
     
+    if (kCity)
+    {
+        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
+    }
+    
     NSArray *previousValues = [self.catDict objectForKey:self.categoryTitle];
     if (previousValues.count > 0)
     {

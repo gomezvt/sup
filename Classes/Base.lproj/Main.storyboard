@@ -259,7 +259,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" image="compass" id="Ih3-eu-4JK"/>
                     <navigationItem key="navigationItem" title="Sup? City" id="RCZ-KR-qnl">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5l7-rw-fPk">
+                        <barButtonItem key="rightBarButtonItem" image="location_pin" id="5l7-rw-fPk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="didTapPlusButton:" destination="XQZ-uB-ePI" id="Zjr-u8-HuI"/>
@@ -342,9 +342,6 @@
                                 <action selector="didTapBack:" destination="YHp-ZS-BPP" id="YhO-Mg-CX1"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6gS-9h-DhQ">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backChevron" destination="0s3-3l-ATZ" id="mTu-XI-Rmq"/>
@@ -413,9 +410,6 @@
                             <connections>
                                 <action selector="didTapBack:" destination="YcC-JR-9wn" id="k9m-CV-nDm"/>
                             </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TBg-sU-VHt">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -546,11 +540,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Surprise Me" image="surprise" id="ubz-5l-16j"/>
-                    <navigationItem key="navigationItem" title="Sup? City" id="kMy-tZ-wru">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="IEq-gN-Nmo">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Sup? City" id="kMy-tZ-wru"/>
                     <connections>
                         <outlet property="goButton" destination="zoc-y8-kQY" id="qAj-Wm-IOU"/>
                         <segue destination="drD-Ic-Hni" kind="show" identifier="ShowCategory" id="5rf-N7-gkv"/>
@@ -649,9 +639,6 @@
                             <connections>
                                 <action selector="didTapBack:" destination="drD-Ic-Hni" id="FFH-dg-lbw"/>
                             </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tXw-PD-kXO">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -764,9 +751,6 @@
                             <connections>
                                 <action selector="didTapBack:" destination="Lks-cD-BTu" id="x1j-3T-bbQ"/>
                             </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pp6-nC-quh">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1059,9 +1043,6 @@
                                 <action selector="didTapBack:" destination="xXJ-IN-eoB" id="ZBR-Bn-v3j"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kTS-eb-mDV">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backChevron" destination="V1i-B3-laX" id="uCa-Yy-Oj1"/>
@@ -1145,9 +1126,6 @@
                             <connections>
                                 <action selector="didTapBack:" destination="Hmd-41-ruR" id="M0K-Pf-tqv"/>
                             </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="okV-DS-V8F">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1328,11 +1306,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="FhL-b5-BDk"/>
-                    <navigationItem key="navigationItem" title="Sup? City" id="UDj-Ez-VZf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="olp-3v-qTx">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Sup? City" id="UDj-Ez-VZf"/>
                     <connections>
                         <outlet property="distanceButton" destination="ctQ-8W-p8f" id="6xm-51-VIj"/>
                         <outlet property="label" destination="DkY-eb-Swa" id="z7D-hC-TBJ"/>
@@ -1356,6 +1330,7 @@
         <image name="about" width="30" height="30"/>
         <image name="back_chevron" width="15" height="15"/>
         <image name="compass" width="30" height="30"/>
+        <image name="location_pin" width="25" height="25"/>
         <image name="starsort1" width="40" height="30"/>
         <image name="surprise" width="30" height="30"/>
         <image name="tutorial_icon_6_7_plus" width="60" height="60"/>

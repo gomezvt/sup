@@ -70,6 +70,11 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 {
     [super viewWillAppear:animated];
     
+    if (kCity)
+    {
+        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
+    }
+    
     [self.goButton setEnabled:[self evaluateButtonState]];
     if (self.goButton.enabled)
     {

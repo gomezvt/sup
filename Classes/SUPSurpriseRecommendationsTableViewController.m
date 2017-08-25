@@ -90,6 +90,16 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (kCity)
+    {
+        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
+    }
+}
+
 
 - (void)viewDidLoad
 {
