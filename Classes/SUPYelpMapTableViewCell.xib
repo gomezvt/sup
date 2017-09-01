@@ -21,8 +21,9 @@
                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3vS-Tw-KiN">
                         <rect key="frame" x="16" y="16" width="288" height="104.5"/>
                         <constraints>
-                            <constraint firstAttribute="height" priority="750" constant="120" id="6kK-Nd-uuc"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="104.5" id="els-dQ-WkE"/>
+                            <constraint firstAttribute="height" priority="750" constant="120" id="6kK-Nd-uuc">
+                                <variation key="heightClass=regular-widthClass=regular" constant="250"/>
+                            </constraint>
                         </constraints>
                     </mapView>
                 </subviews>
