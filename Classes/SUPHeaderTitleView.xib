@@ -36,7 +36,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ZFH-io-mPh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cqN-bo-i2k"/>
-                <constraint firstItem="r6q-Cg-fg9" firstAttribute="width" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.7" id="gbc-FV-aIq"/>
+                <constraint firstItem="r6q-Cg-fg9" firstAttribute="width" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.6" id="gbc-FV-aIq"/>
                 <constraint firstItem="ZFH-io-mPh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ghI-Mo-RFA"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
