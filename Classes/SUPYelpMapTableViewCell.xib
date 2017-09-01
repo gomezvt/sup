@@ -22,6 +22,7 @@
                         <rect key="frame" x="16" y="16" width="288" height="104.5"/>
                         <constraints>
                             <constraint firstAttribute="height" priority="750" constant="120" id="6kK-Nd-uuc"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="104.5" id="els-dQ-WkE"/>
                         </constraints>
                     </mapView>
                 </subviews>

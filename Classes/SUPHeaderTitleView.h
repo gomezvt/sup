@@ -12,5 +12,6 @@
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *titleViewLabelConstraint;
 @property (nonatomic, weak) IBOutlet UILabel *cityNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *supLabel;
 
 @end

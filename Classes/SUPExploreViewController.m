@@ -41,7 +41,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
 //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City Name" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
     }];
@@ -89,7 +89,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         if (!appDel.city)
         {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City Name" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
             [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
                 self.alertTextField = textField;
             }];
@@ -129,11 +129,38 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     if (kCity)
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
     }
+    CGRect mainScreen = [[UIScreen mainScreen] bounds];
+    if ((self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
+         self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) && mainScreen.size.width == 1024.f)
+    {
+        [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:24]];
+        [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+    }
+    else
+    {
+        if (mainScreen.size.width > 375.f)
+        {
+            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:24]];
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+        }
+        else if (mainScreen.size.width == 375.f)
+        {
+            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:21]];
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:21]];
+        }
+        else
+        {
+            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:18]];
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:18]];
+            
+        }
+    }
+    
+
 }
 
 - (void)viewDidLoad
@@ -151,7 +178,6 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
          self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) && mainScreen.size.width == 1024.f)
     {
         self.isLargePhone = YES;
-
         [self.collectionView setContentInset:UIEdgeInsetsMake(120.f,10.f,0.f,10.f)];
     }
     else
@@ -159,19 +185,16 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         if (mainScreen.size.width > 375.f)
         {
             self.isLargePhone = YES;
-            
             [self.collectionView setContentInset:UIEdgeInsetsMake(20.f,10.f,0.f,10.f)];
         }
         else if (mainScreen.size.width == 375.f)
         {
             self.isLargePhone = NO;
-            
             [self.collectionView setContentInset:UIEdgeInsetsMake(30.f, 5.f, 0.f, 5.f)];
         }
         else
         {
             self.isLargePhone = NO;
-            
             [self.collectionView setContentInset:UIEdgeInsetsMake(0.f, 0.f, 0.f, 0.f)];
         }
     }

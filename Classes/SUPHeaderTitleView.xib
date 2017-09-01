@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,16 +16,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFH-io-mPh">
-                    <rect key="frame" x="126" y="6.5" width="123.5" height="31.5"/>
+                    <rect key="frame" x="139" y="10.5" width="97" height="24"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sup? City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soO-JA-jKL">
-                            <rect key="frame" x="0.0" y="0.0" width="119" height="31.5"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Sup? City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soO-JA-jKL">
+                            <rect key="frame" x="0.0" y="0.0" width="92.5" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6q-Cg-fg9">
-                            <rect key="frame" x="119" y="0.0" width="4.5" height="31.5"/>
+                            <rect key="frame" x="92.5" y="0.0" width="4.5" height="24"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -35,12 +36,14 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ZFH-io-mPh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cqN-bo-i2k"/>
+                <constraint firstItem="r6q-Cg-fg9" firstAttribute="width" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.7" id="gbc-FV-aIq"/>
                 <constraint firstItem="ZFH-io-mPh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ghI-Mo-RFA"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="cityNameLabel" destination="r6q-Cg-fg9" id="Ry9-Fc-BoL"/>
+                <outlet property="supLabel" destination="soO-JA-jKL" id="6Cb-GI-7vA"/>
                 <outlet property="titleViewLabelConstraint" destination="cqN-bo-i2k" id="08v-17-nYo"/>
             </connections>
             <point key="canvasLocation" x="-500" y="-239"/>

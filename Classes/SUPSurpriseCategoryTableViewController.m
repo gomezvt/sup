@@ -18,6 +18,7 @@
 @property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
+@property (nonatomic, strong) UITextField *alertTextField;
 
 @end
 
@@ -40,6 +41,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    self.headerTitleView.titleViewLabelConstraint.constant = 20.f;
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
 }
@@ -66,6 +68,32 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     [self.goButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
 }
 
+- (IBAction)didTapPlusButton:(id)sender
+{
+    //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        self.alertTextField = textField;
+    }];
+    
+    
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *city = self.alertTextField.text;
+        if (city.length > 0)
+        {
+            kCity = city;
+            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [self.alertTextField.text capitalizedString]];
+        }
+    }];
+    [alertController addAction:confirmAction];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -74,6 +102,35 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
     }
+    
+    CGRect mainScreen = [[UIScreen mainScreen] bounds];
+    if ((self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
+         self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) && mainScreen.size.width == 1024.f)
+    {
+        [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:24]];
+        [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+    }
+    else
+    {
+        if (mainScreen.size.width > 375.f)
+        {
+            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:24]];
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+        }
+        else if (mainScreen.size.width == 375.f)
+        {
+            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:21]];
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:21]];
+        }
+        else
+        {
+            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:18]];
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:18]];
+            
+        }
+    }
+    
+
     
     [self.goButton setEnabled:[self evaluateButtonState]];
     if (self.goButton.enabled)

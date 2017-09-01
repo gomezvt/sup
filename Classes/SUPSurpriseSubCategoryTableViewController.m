@@ -68,6 +68,35 @@ static NSString *const kCheckMarkGraphic = @"green_check";
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
     }
     
+    CGRect mainScreen = [[UIScreen mainScreen] bounds];
+    if ((self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
+         self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) && mainScreen.size.width == 1024.f)
+    {
+        [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:24]];
+        [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+    }
+    else
+    {
+        if (mainScreen.size.width > 375.f)
+        {
+            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:24]];
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+        }
+        else if (mainScreen.size.width == 375.f)
+        {
+            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:21]];
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:21]];
+        }
+        else
+        {
+            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:18]];
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:18]];
+            
+        }
+    }
+    
+
+    
     NSArray *previousValues = [self.catDict objectForKey:self.categoryTitle];
     if (previousValues.count > 0)
     {

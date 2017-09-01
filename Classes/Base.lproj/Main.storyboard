@@ -259,10 +259,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" image="compass" id="Ih3-eu-4JK"/>
                     <navigationItem key="navigationItem" title="Sup? City" id="RCZ-KR-qnl">
-                        <barButtonItem key="rightBarButtonItem" image="location_pin" id="5l7-rw-fPk">
+                        <barButtonItem key="rightBarButtonItem" image="location_pin" id="cvP-nR-cjA">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="didTapPlusButton:" destination="XQZ-uB-ePI" id="Zjr-u8-HuI"/>
+                                <action selector="didTapPlusButton:" destination="XQZ-uB-ePI" id="4hk-Iu-EvS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -540,7 +540,14 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Surprise Me" image="surprise" id="ubz-5l-16j"/>
-                    <navigationItem key="navigationItem" title="Sup? City" id="kMy-tZ-wru"/>
+                    <navigationItem key="navigationItem" title="Sup? City" id="kMy-tZ-wru">
+                        <barButtonItem key="rightBarButtonItem" image="location_pin" id="bIN-9J-O0J">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="didTapPlusButton:" destination="CcW-yj-hls" id="rjE-OC-bck"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="goButton" destination="zoc-y8-kQY" id="qAj-Wm-IOU"/>
                         <segue destination="drD-Ic-Hni" kind="show" identifier="ShowCategory" id="5rf-N7-gkv"/>
@@ -1306,7 +1313,14 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="FhL-b5-BDk"/>
-                    <navigationItem key="navigationItem" title="Sup? City" id="UDj-Ez-VZf"/>
+                    <navigationItem key="navigationItem" title="Sup? City" id="UDj-Ez-VZf">
+                        <barButtonItem key="rightBarButtonItem" image="location_pin" id="ssU-dK-Ooo">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="didTapPlusButton:" destination="Wyn-Bg-4kX" id="xrD-lq-va5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="distanceButton" destination="ctQ-8W-p8f" id="6xm-51-VIj"/>
                         <outlet property="label" destination="DkY-eb-Swa" id="z7D-hC-TBJ"/>
@@ -1337,6 +1351,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6FD-Q3-pb4"/>
-        <segue reference="itC-Zp-WcB"/>
+        <segue reference="y5n-5S-q2S"/>
     </inferredMetricsTieBreakers>
 </document>
