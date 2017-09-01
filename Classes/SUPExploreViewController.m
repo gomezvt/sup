@@ -85,6 +85,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place to Get Started" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        
         self.alertTextField = textField;
         self.alertTextField.placeholder = @"Enter city, state, or zip code...";
     }];
@@ -143,6 +144,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     if (kCity)
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
+    }
+    else
+    {
+        [self newCityEntry];
     }
     CGRect mainScreen = [[UIScreen mainScreen] bounds];
     if ((self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
