@@ -22,6 +22,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
 @property (nonatomic, strong) NSMutableArray *mut;
 @property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
+@property (nonatomic, strong) UITextField *alertTextField;
 
 @end
 
@@ -32,6 +33,34 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 static NSString *const kCheckMarkGraphic = @"green_check";
 
 @implementation SUPSurpriseSubCategoryTableViewController
+
+- (IBAction)didTapPlusButton:(id)sender
+{
+    //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        self.alertTextField = textField;
+        self.alertTextField.placeholder = @"Enter city, state, or zip code...";
+        
+    }];
+    
+    
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *city = self.alertTextField.text;
+        if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
+        {
+            kCity = city;
+            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [self.alertTextField.text capitalizedString]];
+        }
+    }];
+    [alertController addAction:confirmAction];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 - (void)didRemoveObjectsFromArray:(NSArray *)array
 {

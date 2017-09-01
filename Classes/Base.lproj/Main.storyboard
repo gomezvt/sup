@@ -342,6 +342,12 @@
                                 <action selector="didTapBack:" destination="YHp-ZS-BPP" id="YhO-Mg-CX1"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="location_pin" id="aTP-wV-c0I">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="didTapPlusButton:" destination="YHp-ZS-BPP" id="H00-YR-9kD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backChevron" destination="0s3-3l-ATZ" id="mTu-XI-Rmq"/>
@@ -647,6 +653,12 @@
                                 <action selector="didTapBack:" destination="drD-Ic-Hni" id="FFH-dg-lbw"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="location_pin" id="b44-3W-wra">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="didTapPlusButton:" destination="drD-Ic-Hni" id="6zZ-nf-FcR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="goButton" destination="anx-P9-EDI" id="4no-4S-86Y"/>
@@ -757,6 +769,12 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="didTapBack:" destination="Lks-cD-BTu" id="x1j-3T-bbQ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="location_pin" id="6tz-7O-OV0">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="didTapPlusButton:" destination="Lks-cD-BTu" id="Qcb-aB-QpW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1344,13 +1362,13 @@
         <image name="about" width="30" height="30"/>
         <image name="back_chevron" width="15" height="15"/>
         <image name="compass" width="30" height="30"/>
-        <image name="location_pin" width="25" height="25"/>
+        <image name="location_pin" width="20" height="20"/>
         <image name="starsort1" width="40" height="30"/>
         <image name="surprise" width="30" height="30"/>
         <image name="tutorial_icon_6_7_plus" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="itC-Zp-WcB"/>
         <segue reference="6FD-Q3-pb4"/>
-        <segue reference="y5n-5S-q2S"/>
     </inferredMetricsTieBreakers>
 </document>

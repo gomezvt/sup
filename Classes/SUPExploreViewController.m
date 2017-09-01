@@ -41,9 +41,11 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
 //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
+        self.alertTextField.placeholder = @"Enter city, state, or zip code...";
+
     }];
     
     
@@ -79,39 +81,48 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
                                                object: nil];
 }
 
-
+- (void)newCityEntry
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place to Get Started" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        self.alertTextField = textField;
+        self.alertTextField.placeholder = @"Enter city, state, or zip code...";
+    }];
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *city = self.alertTextField.text;
+        if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
+        {
+            kCity = city;
+            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [self.alertTextField.text capitalizedString]];
+        }
+    }];
+    [alertController addAction:confirmAction];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 - (void)gotCity:(NSNotification *)notification
 {
     id obj = notification.object;
+    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDel.city = nil;
     if ([obj isKindOfClass:[NSError class]])
     {
-        AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         if (!appDel.city)
         {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-            [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-                self.alertTextField = textField;
-            }];
-            
-            UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                NSString *city = self.alertTextField.text;
-                if (city.length > 0)
-                {
-                    kCity = city;
-                    self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [self.alertTextField.text capitalizedString]];
-                }
-            }];
-            [alertController addAction:confirmAction];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            }];
-            [alertController addAction:cancelAction];
-            [self presentViewController:alertController animated:YES completion:nil];
+            [self newCityEntry];
         }
         else
         {
             
         }
+    }
+    else if (!appDel.city)
+    {
+        [self newCityEntry];
     }
     else
     {

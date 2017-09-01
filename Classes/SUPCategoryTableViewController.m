@@ -29,6 +29,7 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *backChevron;
 @property (nonatomic) BOOL didCancelRequest;
 @property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
+@property (nonatomic, strong) UITextField *alertTextField;
 
 @end
 
@@ -166,109 +167,167 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     [self.hud removeFromSuperview];
 }
 
+- (IBAction)didTapPlusButton:(id)sender
+{
+    //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        self.alertTextField = textField;
+        self.alertTextField.placeholder = @"Enter city, state, or zip code...";
+        
+    }];
+    
+    
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *city = self.alertTextField.text;
+        if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
+        {
+            kCity = city;
+            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [self.alertTextField.text capitalizedString]];
+        }
+    }];
+    [alertController addAction:confirmAction];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 #pragma mark - TableView Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    self.hud = [SUPHUDView hudWithView:self.navigationController.view];
-    self.hud.delegate = self;
-    self.didCancelRequest = NO;
-    
-    self.tableView.userInteractionEnabled = NO;
-    self.tabBarController.tabBar.userInteractionEnabled = NO;
 
-    self.backChevron.enabled = NO;
-    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSString *selectionTitle = cell.textLabel.text;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    __weak typeof(self) weakSelf = self;
-    [[AppDelegate yelp] searchWithLocation:kCity term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
-     (YLPSearch *searchResults, NSError *error){
-         dispatch_async(dispatch_get_main_queue(), ^{
-             // code here
-             NSString *string = error.userInfo[@"NSLocalizedDescription"];
-             
-             if ([string isEqualToString:@"The Internet connection appears to be offline."])
-             {
-                 [weakSelf _hideHUD];
+    if (kCity)
+    {
+        self.hud = [SUPHUDView hudWithView:self.navigationController.view];
+        self.hud.delegate = self;
+        self.didCancelRequest = NO;
+        
+        self.tableView.userInteractionEnabled = NO;
+        self.tabBarController.tabBar.userInteractionEnabled = NO;
+        
+        self.backChevron.enabled = NO;
+        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        NSString *selectionTitle = cell.textLabel.text;
+        
+        __weak typeof(self) weakSelf = self;
+        [[AppDelegate yelp] searchWithLocation:kCity term:selectionTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
+         (YLPSearch *searchResults, NSError *error){
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 // code here
+                 NSString *string = error.userInfo[@"NSLocalizedDescription"];
                  
-                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
-                 
-                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                 [alertController addAction:ok];
-                 
-                 [weakSelf presentViewController:alertController animated:YES completion:nil];
-                 
-             }
-             else if (searchResults.businesses.count == 0)
-             {
-                 [weakSelf _hideHUD];
-                 
-                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
-                 
-                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                 [alertController addAction:ok];
-                 
-                 [weakSelf presentViewController:alertController animated:YES completion:nil];
-                 
-             }
-             else if (searchResults.businesses.count > 0)
-             {
-                 NSMutableArray *filteredArray = [NSMutableArray array];
-                 for (YLPBusiness *biz in searchResults.businesses)
-                 {
-                     if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", selectionTitle]] lastObject] && biz.closed == NO)
-                     {
-                         if (filteredArray.count > 0)
-                         {
-                             if (![filteredArray containsObject:biz])
-                             {
-                                 [filteredArray addObject:biz];
-                             }
-                         }
-                         else
-                         {
-                             [filteredArray addObject:biz];
-
-                         }
-                     }
-                 }
-                 
-                 if (filteredArray.count > 0)
-                 {
-                     NSArray *descriptor = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-                     NSArray *sortedArray = [filteredArray sortedArrayUsingDescriptors:descriptor];
-                    
-                     SUPSubCategoryTableViewController *subCat = [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"SubCat"];
-                     subCat.subCategoryTitle = selectionTitle;
-                     subCat.filteredResults = sortedArray;
-                     subCat.cachedDetails = weakSelf.cachedDetails;
-                     subCat.delegate = weakSelf;
-                     
-                     if (!weakSelf.didCancelRequest)
-                     {
-                         [weakSelf _hideHUD];
-
-                         [weakSelf.navigationController pushViewController:subCat animated:YES];
-                     }
-                 }
-                 else
+                 if ([string isEqualToString:@"The Internet connection appears to be offline."])
                  {
                      [weakSelf _hideHUD];
                      
-                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No results match the selected category" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
                      
                      UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                      [alertController addAction:ok];
                      
                      [weakSelf presentViewController:alertController animated:YES completion:nil];
+                     
                  }
-             }
-         });
-     }];
+                 else if (searchResults.businesses.count == 0)
+                 {
+                     [weakSelf _hideHUD];
+                     
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
+                     
+                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                     [alertController addAction:ok];
+                     
+                     [weakSelf presentViewController:alertController animated:YES completion:nil];
+                     
+                 }
+                 else if (searchResults.businesses.count > 0)
+                 {
+                     NSMutableArray *filteredArray = [NSMutableArray array];
+                     for (YLPBusiness *biz in searchResults.businesses)
+                     {
+                         if ([[biz.categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", selectionTitle]] lastObject] && biz.closed == NO)
+                         {
+                             if (filteredArray.count > 0)
+                             {
+                                 if (![filteredArray containsObject:biz])
+                                 {
+                                     [filteredArray addObject:biz];
+                                 }
+                             }
+                             else
+                             {
+                                 [filteredArray addObject:biz];
+                                 
+                             }
+                         }
+                     }
+                     
+                     if (filteredArray.count > 0)
+                     {
+                         NSArray *descriptor = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+                         NSArray *sortedArray = [filteredArray sortedArrayUsingDescriptors:descriptor];
+                         
+                         SUPSubCategoryTableViewController *subCat = [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"SubCat"];
+                         subCat.subCategoryTitle = selectionTitle;
+                         subCat.filteredResults = sortedArray;
+                         subCat.cachedDetails = weakSelf.cachedDetails;
+                         subCat.delegate = weakSelf;
+                         
+                         if (!weakSelf.didCancelRequest)
+                         {
+                             [weakSelf _hideHUD];
+                             
+                             [weakSelf.navigationController pushViewController:subCat animated:YES];
+                         }
+                     }
+                     else
+                     {
+                         [weakSelf _hideHUD];
+                         
+                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No results match the selected category" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
+                         
+                         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                         [alertController addAction:ok];
+                         
+                         [weakSelf presentViewController:alertController animated:YES completion:nil];
+                     }
+                 }
+             });
+         }];
+    }
+    else
+    {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place" message:@"Enter a place to search against, and make your selection again." preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            self.alertTextField = textField;
+            self.alertTextField.placeholder = @"Enter city, state, or zip code...";
+            
+        }];
+        
+        
+        
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSString *city = self.alertTextField.text;
+            if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
+            {
+                kCity = city;
+                self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [self.alertTextField.text capitalizedString]];
+            }
+        }];
+        [alertController addAction:confirmAction];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 - (void)_hideHUD

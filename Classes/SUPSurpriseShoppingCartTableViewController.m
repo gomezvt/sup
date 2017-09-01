@@ -28,6 +28,7 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
 @property (nonatomic, weak) IBOutlet UIButton *clearButton;
+@property (nonatomic, strong) UITextField *alertTextField;
 
 @property (nonatomic) BOOL didCancelRequest;
 @property (nonatomic, strong) SUPHUDView *hud;
@@ -87,69 +88,98 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 
 - (IBAction)didTapSubmit:(id)sender
 {
-    [self.resultsArray removeAllObjects];
-    
-    i = 0;
-    NSArray *array = [self.catDict allValues];
-    self.hud = [SUPHUDView hudWithView:self.navigationController.view];
-    self.hud.delegate = self;
-    self.didCancelRequest = NO;
-    [self.goButton setEnabled:NO];
-    [self.clearButton setEnabled:NO];
-    
-    self.goButton.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    self.clearButton.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    
-    NSMutableArray *categoryArray = [NSMutableArray array];
-    for (NSArray *subCat in array)
+    if (kCity)
     {
-        [categoryArray addObjectsFromArray:subCat];
-    }
-    
-    self.tableView.userInteractionEnabled = NO;
-    self.tabBarController.tabBar.userInteractionEnabled = NO;
-
-    self.backChevron.enabled = NO;
-    
-    __weak typeof(self) weakSelf = self;
-
-    __block BOOL didError = NO;
-    for (NSString *subCatTitle in categoryArray)
-    {
-        if (didError)
+        [self.resultsArray removeAllObjects];
+        
+        i = 0;
+        NSArray *array = [self.catDict allValues];
+        self.hud = [SUPHUDView hudWithView:self.navigationController.view];
+        self.hud.delegate = self;
+        self.didCancelRequest = NO;
+        [self.goButton setEnabled:NO];
+        [self.clearButton setEnabled:NO];
+        
+        self.goButton.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+        self.clearButton.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+        
+        NSMutableArray *categoryArray = [NSMutableArray array];
+        for (NSArray *subCat in array)
         {
-            break;
+            [categoryArray addObjectsFromArray:subCat];
         }
         
-        [[AppDelegate yelp] searchWithLocation:kCity term:subCatTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
-         (YLPSearch *searchResults, NSError *error){
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 
-                 if (error)
-                 {
-                     [weakSelf _hideHUD];
-
-                     [weakSelf.goButton setEnabled:YES];
-                     [weakSelf.clearButton setEnabled:YES];
+        self.tableView.userInteractionEnabled = NO;
+        self.tabBarController.tabBar.userInteractionEnabled = NO;
+        
+        self.backChevron.enabled = NO;
+        
+        __weak typeof(self) weakSelf = self;
+        
+        __block BOOL didError = NO;
+        for (NSString *subCatTitle in categoryArray)
+        {
+            if (didError)
+            {
+                break;
+            }
+            
+            [[AppDelegate yelp] searchWithLocation:kCity term:subCatTitle limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
+             (YLPSearch *searchResults, NSError *error){
+                 dispatch_async(dispatch_get_main_queue(), ^{
                      
-                     weakSelf.goButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
-                     weakSelf.clearButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
-                     
-                     NSString *string = error.userInfo[@"NSLocalizedDescription"];
-                     if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                     if (error)
                      {
-                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
+                         [weakSelf _hideHUD];
                          
-                         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                         [alertController addAction:ok];
+                         [weakSelf.goButton setEnabled:YES];
+                         [weakSelf.clearButton setEnabled:YES];
                          
-                         [weakSelf presentViewController:alertController animated:YES completion:nil];
+                         weakSelf.goButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
+                         weakSelf.clearButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
+                         
+                         NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                         if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                         {
+                             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
+                             
+                             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                             [alertController addAction:ok];
+                             
+                             [weakSelf presentViewController:alertController animated:YES completion:nil];
+                         }
+                         
                      }
-
-                 }
-             });
-         }];
+                 });
+             }];
+        }
     }
+    else
+    {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place" message:@"Enter a place to search against, and submit your categorie(s) again." preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            self.alertTextField = textField;
+            self.alertTextField.placeholder = @"Enter city, state, or zip code...";
+            
+        }];
+        
+        
+        
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSString *city = self.alertTextField.text;
+            if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
+            {
+                kCity = city;
+                self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [self.alertTextField.text capitalizedString]];
+            }
+        }];
+        [alertController addAction:confirmAction];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
 }
 
 
@@ -314,6 +344,35 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     [self.clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     
 }
+
+- (IBAction)didTapPlusButton:(id)sender
+{
+    //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        self.alertTextField = textField;
+        self.alertTextField.placeholder = @"Enter city, state, or zip code...";
+        
+    }];
+    
+    
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *city = self.alertTextField.text;
+        if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
+        {
+            kCity = city;
+            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [self.alertTextField.text capitalizedString]];
+        }
+    }];
+    [alertController addAction:confirmAction];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
