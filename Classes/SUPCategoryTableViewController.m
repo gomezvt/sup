@@ -171,10 +171,9 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
-        self.alertTextField.placeholder = @"Enter city, state, or zip code...";
         
     }];
     
@@ -305,10 +304,9 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     }
     else
     {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place" message:@"Enter a place to search against, and make your selection again." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No City or State Entered" message:@"Please enter a city, state, or zip code to search and try again." preferredStyle:UIAlertControllerStyleAlert];
         [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
             self.alertTextField = textField;
-            self.alertTextField.placeholder = @"Enter city, state, or zip code...";
             
         }];
         

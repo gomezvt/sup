@@ -41,10 +41,9 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
 //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
-        self.alertTextField.placeholder = @"Enter city, state, or zip code...";
 
     }];
     
@@ -83,11 +82,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 - (void)newCityEntry
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place to Get Started" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Welcome to Sup? City" message:@"Enter a city, state, or zip code to get started." preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         
         self.alertTextField = textField;
-        self.alertTextField.placeholder = @"Enter city, state, or zip code...";
     }];
     
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -145,10 +143,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
     }
-    else
-    {
-        [self newCityEntry];
-    }
+
     CGRect mainScreen = [[UIScreen mainScreen] bounds];
     if ((self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
          self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) && mainScreen.size.width == 1024.f)
@@ -183,7 +178,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     [super viewDidLoad];
 
-
+    [self newCityEntry];
 
     
     UINib *cellNib = [UINib nibWithNibName:kCollectionViewCellNib bundle:nil];

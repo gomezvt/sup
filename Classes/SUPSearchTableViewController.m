@@ -67,10 +67,9 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
 {
     //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter a Place" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
-        self.alertTextField.placeholder = @"Enter city, state, or zip code...";
     }];
     
     
@@ -292,7 +291,14 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                  
                  [weakSelf.recentSearches removeAllObjects];
                  [weakSelf.tableView reloadData];
-                 weakSelf.label.text = @"No search results found.";
+                 if (!kCity)
+                 {
+                     weakSelf.label.text = @"No search results found.\n\nTap the location pin icon in the top right corner to enter a city, state, or zip code and try your search again.";
+                 }
+                 else
+                 {
+                     weakSelf.label.text = @"No search results found.";
+                 }
                  weakSelf.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (0)"];
                  
              }
