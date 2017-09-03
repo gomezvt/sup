@@ -110,26 +110,29 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 - (void)gotCity:(NSNotification *)notification
 {
     id obj = notification.object;
-    if ([obj isKindOfClass:[NSError class]])
-    {
-        AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        if (!appDel.city)
-        {
-            [self newCityEntry];
-        }
-        else
-        {
-            NSError *error = obj;
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"%@", error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            }];
-            [alertController addAction:confirmAction];
-            [self presentViewController:alertController animated:YES completion:nil];
-        }
+//    if ([obj isKindOfClass:[NSError class]])
+//    {
+//        AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//        if (!appDel.city)
+//        {
+//            [self newCityEntry];
+//        }
+//        else
+//        {
+//            NSError *error = obj;
+//            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"%@", error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            }];
+//            [alertController addAction:confirmAction];
+//            [self presentViewController:alertController animated:YES completion:nil];
+//        }
         
-    }
-    else
+//    }
+//    else
+//    {
+    
+    if (![obj isKindOfClass:[NSError class]])
     {
         kCity = obj;
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [obj capitalizedString]];
@@ -139,17 +142,6 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (!appDel.userLocation)
-    {
-        [self newCityEntry];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -188,6 +180,25 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     }
     
 
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+        BOOL didWelcome = [[NSUserDefaults standardUserDefaults] boolForKey:@"SUPDidWelcome"];
+    if (!didWelcome)
+    {
+        [self newCityEntry];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"SUPDidWelcome"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        if (kCity)
+        {
+            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
+        }
+    }
 }
 
 - (void)viewDidLoad
