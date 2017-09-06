@@ -61,7 +61,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    self.headerTitleView.titleViewLabelConstraint.constant = -20.f;
+
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
 }
@@ -96,49 +96,43 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     if (kCity)
     {
-        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
+        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
     }
     
     CGRect mainScreen = [[UIScreen mainScreen] bounds];
-    if ((self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
-         self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) && mainScreen.size.width == 1024.f)
+    if (mainScreen.size.width == 1024.f)
     {
-        [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:24]];
+        [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+    }
+    else if (mainScreen.size.width < 1024.f && mainScreen.size.width > 414.f)
+    {
         [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
     }
     else
     {
+        self.headerTitleView.leadingEdgeConstraint.constant = -40.f;
+
         if (mainScreen.size.width > 375.f)
         {
-            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:24]];
             [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
         }
         else if (mainScreen.size.width == 375.f)
         {
-            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:21]];
             [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:21]];
         }
         else
         {
-            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:18]];
             [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:18]];
-            
         }
     }
-    
-
 }
+
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
-        self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular)
-    {
-        self.headerTitleView.titleViewLabelConstraint.constant = 0.f;
-    }
     CGRect mainScreen = [[UIScreen mainScreen] bounds];
     if (mainScreen.size.width > 375.f)
     {

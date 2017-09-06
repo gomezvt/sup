@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,36 +14,24 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFH-io-mPh">
-                    <rect key="frame" x="139" y="10.5" width="97" height="24"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Sup? City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soO-JA-jKL">
-                            <rect key="frame" x="0.0" y="0.0" width="92.5" height="24"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6q-Cg-fg9">
-                            <rect key="frame" x="92.5" y="0.0" width="4.5" height="24"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sup? City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="x0C-Hq-eVs">
+                    <rect key="frame" x="0.0" y="12" width="375" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ZFH-io-mPh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cqN-bo-i2k"/>
-                <constraint firstItem="r6q-Cg-fg9" firstAttribute="width" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.6" id="gbc-FV-aIq"/>
-                <constraint firstItem="ZFH-io-mPh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ghI-Mo-RFA"/>
+                <constraint firstAttribute="trailing" secondItem="x0C-Hq-eVs" secondAttribute="trailing" id="2m9-Ed-BJb"/>
+                <constraint firstItem="x0C-Hq-eVs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hPD-9a-hnc"/>
+                <constraint firstItem="x0C-Hq-eVs" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hjQ-SW-5cI"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="cityNameLabel" destination="r6q-Cg-fg9" id="Ry9-Fc-BoL"/>
-                <outlet property="supLabel" destination="soO-JA-jKL" id="6Cb-GI-7vA"/>
-                <outlet property="titleViewLabelConstraint" destination="cqN-bo-i2k" id="08v-17-nYo"/>
+                <outlet property="cityNameLabel" destination="x0C-Hq-eVs" id="Ci4-Mr-In7"/>
+                <outlet property="leadingEdgeConstraint" destination="hPD-9a-hnc" id="IqR-40-Aw6"/>
             </connections>
             <point key="canvasLocation" x="-500" y="-239"/>
         </view>

@@ -39,12 +39,12 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 - (IBAction)didTapPlusButton:(id)sender
 {
-//    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
+    //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
-
+        
     }];
     
     
@@ -54,7 +54,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         if (city.length > 0)
         {
             kCity = city;
-            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [self.alertTextField.text capitalizedString]];
+            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
         }
     }];
     [alertController addAction:confirmAction];
@@ -70,7 +70,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    self.headerTitleView.titleViewLabelConstraint.constant = 20.f;
+    self.headerTitleView.leadingEdgeConstraint.constant = 40.f;
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     
@@ -82,60 +82,61 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 - (void)newCityEntry
 {
-    if (!kCity)
-    {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Welcome to Sup? City" message:@"Enter a city, state, or zip code to get started." preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-            
-            self.alertTextField = textField;
-        }];
-        
-        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSString *city = self.alertTextField.text;
-            if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
-            {
-                kCity = city;
-                self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [self.alertTextField.text capitalizedString]];
-            }
-        }];
-        [alertController addAction:confirmAction];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        }];
-        [alertController addAction:cancelAction];
-        [self presentViewController:alertController animated:YES completion:nil];
-
-    }
+    //    if (!kCity)
+    //    {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Welcome to Sup? City" message:@"Helpful tip: tap the location pin in the top right corner to change your search location by city, state, or zip code at any time."
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    //        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+    //
+    //            self.alertTextField = textField;
+    //        }];
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //            NSString *city = self.alertTextField.text;
+        //            if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
+        //            {
+        //                kCity = city;
+        //                self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
+        //            }
+    }];
+    [alertController addAction:confirmAction];
+    //        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    //        }];
+    //        [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    //    }
 }
 
 - (void)gotCity:(NSNotification *)notification
 {
     id obj = notification.object;
-//    if ([obj isKindOfClass:[NSError class]])
-//    {
-//        AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//        if (!appDel.city)
-//        {
-//            [self newCityEntry];
-//        }
-//        else
-//        {
-//            NSError *error = obj;
-//            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"%@", error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-//            
-//            UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            }];
-//            [alertController addAction:confirmAction];
-//            [self presentViewController:alertController animated:YES completion:nil];
-//        }
-        
-//    }
-//    else
-//    {
+    //    if ([obj isKindOfClass:[NSError class]])
+    //    {
+    //        AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //        if (!appDel.city)
+    //        {
+    //            [self newCityEntry];
+    //        }
+    //        else
+    //        {
+    //            NSError *error = obj;
+    //            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"%@", error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+    //
+    //            UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    //            }];
+    //            [alertController addAction:confirmAction];
+    //            [self presentViewController:alertController animated:YES completion:nil];
+    //        }
+    
+    //    }
+    //    else
+    //    {
     
     if (![obj isKindOfClass:[NSError class]])
     {
         kCity = obj;
-        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [obj capitalizedString]];
+        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [obj capitalizedString]];
     }
 }
 
@@ -147,46 +148,43 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     if (kCity)
     {
-        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
+        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
     }
-
+    
     CGRect mainScreen = [[UIScreen mainScreen] bounds];
-    if ((self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
-         self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) && mainScreen.size.width == 1024.f)
+    if (mainScreen.size.width == 1024.f)
     {
-        [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:24]];
+        [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+    }
+    else if (mainScreen.size.width < 1024.f && mainScreen.size.width > 414.f)
+    {
         [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
     }
     else
     {
         if (mainScreen.size.width > 375.f)
         {
-            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:24]];
             [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
         }
         else if (mainScreen.size.width == 375.f)
         {
-            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:21]];
             [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:21]];
         }
         else
         {
-            [self.headerTitleView.supLabel setFont:[UIFont boldSystemFontOfSize:18]];
             [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:18]];
-            
         }
     }
-    
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-        BOOL didWelcome = [[NSUserDefaults standardUserDefaults] boolForKey:@"SUPDidWelcome"];
+    BOOL didWelcome = [[NSUserDefaults standardUserDefaults] boolForKey:@"SUPDidWelcome"];
     if (!didWelcome)
     {
         [self newCityEntry];
@@ -194,10 +192,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"SUPDidWelcome"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        if (kCity)
-        {
-            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@":  %@", [kCity capitalizedString]];
-        }
+//        if (kCity)
+//        {
+//            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
+//        }
     }
 }
 
@@ -234,7 +232,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         }
     }
     
-
+    
 }
 
 #pragma mark - CollectionView Delegate
@@ -293,7 +291,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
             size = CGSizeMake(80, 120);
         }
     }
-
+    
     return size;
 }
 
@@ -303,7 +301,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     cell.titleLabel.text = [kSUPCategories objectAtIndex:indexPath.row];
     
-
+    
     if (self.isLargePhone)
     {
         cell.imageWidth.constant = 84.f;
@@ -319,10 +317,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         {
             cell.menuItemView.image = [UIImage imageNamed:@"iCoffee"];
         }
-//        else if (indexPath.row == 2)
-//        {
-//            cell.menuItemView.image = [UIImage imageNamed:@"iMusic"];
-//        }
+        //        else if (indexPath.row == 2)
+        //        {
+        //            cell.menuItemView.image = [UIImage imageNamed:@"iMusic"];
+        //        }
         else if (indexPath.row == 2)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"iHotels"];
@@ -367,10 +365,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         {
             cell.menuItemView.image = [UIImage imageNamed:@"isCoffee"];
         }
-//        else if (indexPath.row == 2)
-//        {
-//            cell.menuItemView.image = [UIImage imageNamed:@"isMusic"];
-//        }
+        //        else if (indexPath.row == 2)
+        //        {
+        //            cell.menuItemView.image = [UIImage imageNamed:@"isMusic"];
+        //        }
         else if (indexPath.row == 2)
         {
             cell.menuItemView.image = [UIImage imageNamed:@"isHotels"];
@@ -400,7 +398,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
             cell.menuItemView.image = [UIImage imageNamed:@"isTravel"];
         }
     }
-
+    
     
     
     return cell;

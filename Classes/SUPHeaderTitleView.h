@@ -10,8 +10,6 @@
 
 @interface SUPHeaderTitleView : UIView
 
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *titleViewLabelConstraint;
 @property (nonatomic, weak) IBOutlet UILabel *cityNameLabel;
-@property (nonatomic, weak) IBOutlet UILabel *supLabel;
-
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *leadingEdgeConstraint;
 @end
