@@ -41,6 +41,11 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
+        if (kCity)
+        {
+            self.alertTextField.text = kCity;
+            self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        }
         
     }];
     
