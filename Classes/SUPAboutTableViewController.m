@@ -29,8 +29,40 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    self.headerTitleView.leadingEdgeConstraint.constant = -4.f;
+
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    CGRect mainScreen = [[UIScreen mainScreen] bounds];
+    if (mainScreen.size.width == 1024.f)
+    {
+        [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+    }
+    else if (mainScreen.size.width < 1024.f && mainScreen.size.width > 414.f)
+    {
+        [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+    }
+    else
+    {
+        if (mainScreen.size.width > 375.f)
+        {
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+        }
+        else if (mainScreen.size.width == 375.f)
+        {
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:21]];
+        }
+        else
+        {
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:18]];
+        }
+    }
 }
 
 - (void)viewDidLoad

@@ -110,7 +110,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     }
     else
     {
-        self.headerTitleView.leadingEdgeConstraint.constant = -40.f;
+        self.headerTitleView.leadingEdgeConstraint.constant = -15.f;
 
         if (mainScreen.size.width > 375.f)
         {

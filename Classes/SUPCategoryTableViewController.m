@@ -222,11 +222,11 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
                      [weakSelf presentViewController:alertController animated:YES completion:nil];
                      
                  }
-                 else if (searchResults.businesses.count == 0)
+                 else if (searchResults.businesses.count == 0 || searchResults == nil)
                  {
                      [weakSelf _hideHUD];
                      
-                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Try selecting another category, or modify your search location" preferredStyle:UIAlertControllerStyleAlert];
                      
                      UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                      [alertController addAction:ok];

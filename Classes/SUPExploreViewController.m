@@ -84,7 +84,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     //    if (!kCity)
     //    {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Welcome to Sup? City" message:@"Helpful tip: tap the location pin in the top right corner to change your search location by city, state, or zip code at any time."
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Welcome to Sup? City!" message:@"Helpful Tips:\n\n1) Tap the location pin in the top right corner to change your search location by city, state, or zip code at any time.\n\n2) Use the 'Surprise Me' feature to search your location with multiple categories at once for up to three randomized results per category.\n\nEnjoy!"
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     //        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
     //

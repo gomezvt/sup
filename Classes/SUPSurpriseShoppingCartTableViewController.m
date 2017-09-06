@@ -148,6 +148,15 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
                              
                              [weakSelf presentViewController:alertController animated:YES completion:nil];
                          }
+                         else if (searchResults.businesses.count == 0 || searchResults == nil)
+                         {
+                             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Try selecting another category, or modify your search location" preferredStyle:UIAlertControllerStyleAlert];
+                             
+                             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                             [alertController addAction:ok];
+                             
+                             [weakSelf presentViewController:alertController animated:YES completion:nil];
+                         }
                          
                      }
                  });
