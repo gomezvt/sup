@@ -39,10 +39,14 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     CGRect mainScreen = [[UIScreen mainScreen] bounds];
     if (mainScreen.size.width == 1024.f)
     {
+        self.headerTitleView.leadingEdgeConstraint.constant = 0.f;
+
         [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
     }
     else if (mainScreen.size.width < 1024.f && mainScreen.size.width > 414.f)
     {
+        self.headerTitleView.leadingEdgeConstraint.constant = 0.f;
+
         [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
     }
     else
