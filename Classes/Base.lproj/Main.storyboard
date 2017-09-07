@@ -54,7 +54,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMy-AY-DqC">
                                 <rect key="frame" x="0.0" y="1306" width="1024" height="60"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial_icon_6_7_plus" translatesAutoresizingMaskIntoConstraints="NO" id="XuW-Yq-Oh3">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thumbnail Image" translatesAutoresizingMaskIntoConstraints="NO" id="XuW-Yq-Oh3">
                                         <rect key="frame" x="8" y="12" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Lz1-fD-hmi"/>
@@ -1359,13 +1359,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Thumbnail Image" width="60" height="60"/>
         <image name="about" width="30" height="30"/>
         <image name="back_chevron" width="15" height="15"/>
         <image name="compass" width="30" height="30"/>
         <image name="location_pin" width="20" height="20"/>
         <image name="starsort1" width="40" height="30"/>
         <image name="surprise" width="30" height="30"/>
-        <image name="tutorial_icon_6_7_plus" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="itC-Zp-WcB"/>
