@@ -352,7 +352,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
         self.alertTextField = textField;
         if (kCity)
         {
-            self.alertTextField.text = kCity;
+            self.alertTextField.placeholder = kCity;
             self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         }
         

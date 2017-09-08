@@ -25,7 +25,8 @@
 #import "SUPThumbNailTableViewCell.h"
 #import "YLPClient+Business.h"
 #import "SUPDetailTableViewController.h"
-
+#import "YLPLocation.h"
+#import "YLPCoordinate.h"
 @interface SUPSearchTableViewController ()
 <SUPHUDViewDelegate>
 
@@ -72,7 +73,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
         self.alertTextField = textField;
         if (kCity)
         {
-            self.alertTextField.text = kCity;
+            self.alertTextField.placeholder = kCity;
             self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         }
     }];
@@ -81,7 +82,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSString *city = self.alertTextField.text;
-        if (city.length > 0)
+        if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
         {
             kCity = city;
             self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
@@ -332,6 +333,8 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                          [weakSelf.originalDetailsArray replaceObjectAtIndex:index withObject:cachedItem];
                      }
                  }
+                 
+
                  
                  [weakSelf.tableView reloadData];
                  
@@ -650,10 +653,10 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                  dispatch_async(dispatch_get_main_queue(), ^(void){
                      if (cell.tag == indexPath.row)
                      {
-                         if ([biz.identifier isEqualToString:business.identifier])
-                         {
-                             business.miles = biz.miles;
-                         }
+//                         if ([biz.identifier isEqualToString:business.identifier])
+//                         {
+//                             business.miles = biz.miles;
+//                         }
                          
                          if (!weakSelf.isLargePhone)
                          {
@@ -865,6 +868,18 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     if (openClosePredicate)
     {
         [arrayPred addObject:openClosePredicate];
+    }
+    
+    for (YLPBusiness *biz in self.originalDetailsArray)
+    {
+        if (biz.location.coordinate.latitude && biz.location.coordinate.longitude)
+        {
+            CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:biz.location.coordinate.latitude longitude:biz.location.coordinate.longitude];
+            
+            CLLocationDistance meters = [appDel.userLocation distanceFromLocation:bizLocation];
+            double miles = meters / 1609.34;
+            biz.miles = miles;
+        }
     }
     
     NSPredicate *comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:arrayPred];

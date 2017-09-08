@@ -160,7 +160,7 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
         if (indexPath.row == 0)
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"Sup? City was created by Greg, a native Vermonter, to serve as a quick reference for restaurants, shops, and attractions in places and cities near you.";
+            cell.textLabel.text = @"Sup? City was created by Greg, a native Vermonter, to serve as a quick reference for restaurants, shops, and attractions in places and cities near you, or places you may be curious about or planning to visit.";
         }
         else if (indexPath.row == 1)
         {

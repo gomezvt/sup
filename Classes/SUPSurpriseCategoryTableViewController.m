@@ -78,7 +78,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
         self.alertTextField = textField;
         if (kCity)
         {
-            self.alertTextField.text = kCity;
+            self.alertTextField.placeholder = kCity;
             self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         }
     }];
@@ -87,7 +87,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSString *city = self.alertTextField.text;
-        if (city.length > 0)
+        if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
         {
             kCity = city;
             self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];

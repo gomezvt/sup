@@ -22,7 +22,8 @@
 #import "SUPStyles.h"
 #import "YLPReview.h"
 #import "YLPUser.h"
-
+#import "YLPLocation.h"
+#import "YLPCoordinate.h"
 @interface SUPSubCategoryTableViewController ()
 <SUPHUDViewDelegate>
 
@@ -153,6 +154,18 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     if (openClosePredicate)
     {
         [arrayPred addObject:openClosePredicate];
+    }
+    
+    for (YLPBusiness *biz in self.originalFilteredResults)
+    {
+        if (biz.location.coordinate.latitude && biz.location.coordinate.longitude)
+        {
+            CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:biz.location.coordinate.latitude longitude:biz.location.coordinate.longitude];
+            
+            CLLocationDistance meters = [appDel.userLocation distanceFromLocation:bizLocation];
+            double miles = meters / 1609.34;
+            biz.miles = miles;
+        }
     }
     
     NSPredicate *comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:arrayPred];
@@ -707,10 +720,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
              dispatch_async(dispatch_get_main_queue(), ^{
                  if (cell.tag == indexPath.row)
                  {
-                     if ([biz.identifier isEqualToString:business.identifier])
-                     {
-                         business.miles = biz.miles;
-                     }
+//                     if ([biz.identifier isEqualToString:business.identifier])
+//                     {
+//                         business.miles = biz.miles;
+//                     }
                      
                      if (!weakSelf.isLargePhone)
                      {

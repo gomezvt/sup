@@ -43,7 +43,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
         self.alertTextField = textField;
         if (kCity)
         {
-            self.alertTextField.text = kCity;
+            self.alertTextField.placeholder = kCity;
             self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         }
         

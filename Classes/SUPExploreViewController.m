@@ -46,7 +46,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         self.alertTextField = textField;
         if (kCity)
         {
-            self.alertTextField.text = kCity;
+            self.alertTextField.placeholder = kCity;
             self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         }
     }];
@@ -55,7 +55,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSString *city = self.alertTextField.text;
-        if (city.length > 0)
+        if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
         {
             kCity = city;
             self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
@@ -88,7 +88,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     //    if (!kCity)
     //    {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Welcome to Sup? City!" message:@"Helpful Tips:\n\n1) Tap the location pin in the top right corner to change your search location by city, state, or zip code at any time.\n\n2) Use the 'Surprise Me' feature to search your location with multiple categories at once for up to three randomized results per category.\n\nEnjoy!"
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Welcome to Sup? City!" message:@"Helpful Tips:\n\n1) Tap the location pin in the top right corner to change your search location by city, state, or zip code at any time.\n\n2) Can't decide where to eat, or what to do? Use the 'Surprise Me' feature to add multiple categories to search your location with. Submit your categories to get up to three random search results per category for some fun.\n\n3) Enjoy!"
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     //        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
     //
