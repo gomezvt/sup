@@ -52,6 +52,7 @@
 @property (nonatomic, strong) NSMutableArray *cachedBiz;
 @property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 @property (nonatomic, strong) UITextField *alertTextField;
+@property (nonatomic, strong) NSString *moneySymbol;
 
 @end
 
@@ -268,10 +269,13 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
         [searchBar resignFirstResponder];
         searchBar.showsCancelButton = NO;
     });
+    
+
 
     __weak typeof(self) weakSelf = self;
     [[AppDelegate yelp] searchWithLocation:kCity term:searchBar.text limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
+
          dispatch_async(dispatch_get_main_queue(), ^{
              // code here
              NSString *string = error.userInfo[@"NSLocalizedDescription"];
@@ -309,6 +313,9 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
              {
                  [weakSelf _hideHUD];
                  
+                 
+
+                 
                  weakSelf.label.text = @"";
                  weakSelf.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (%lu)", (unsigned long)searchResults.businesses.count];
                  
@@ -334,11 +341,46 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                      }
                  }
                  
+                 CLGeocoder *geocoder = [CLGeocoder new];
+                 [geocoder geocodeAddressString:kCity completionHandler:^(NSArray *placemarks, NSError *error) {
+                     if (error) {
+                         NSLog(@"Error: %@", [error localizedDescription]);
+                         return; // Bail!
+                     }
+                     
+                     
+                     if ([placemarks count] > 0) {
+                         
+                         //                         [weakSelf.tableView reloadData];
+                         
+                         CLPlacemark *placemark = [placemarks lastObject]; // firstObject is iOS7 only.
+                         NSString *countryCode = placemark.ISOcountryCode;
+                         
+                         NSDictionary *components = [NSDictionary dictionaryWithObject:countryCode forKey:NSLocaleCountryCode];
+                         NSString *localeIdent = [NSLocale localeIdentifierFromComponents:components];
+                         NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:localeIdent];
+                         NSString *symbol = locale.currencySymbol;
+                         if (symbol.length > 1)
+                         {
+                             self.moneySymbol = [symbol substringFromIndex:[symbol length] - 1];
+                         }
+                         else
+                         {
+                             self.moneySymbol = symbol;
+                         }
+                         self.priceButton.titleLabel.text = [NSString stringWithFormat:@"Any %@", self.moneySymbol];
+                         NSLog(@"Location is: %@", placemark.location);
+                         [self.tableView reloadData];
+
+                     }
+                 }];
+                 
+
+
+//                 [self sortArrayWithPredicates];
 
                  
-                 [weakSelf.tableView reloadData];
-                 
-                 [self sortArrayWithPredicates];
+
              }
          });
      }];
@@ -774,30 +816,30 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
 
 - (IBAction)didTapPriceButton:(id)sender
 {
-    if ([self.priceButton.titleLabel.text isEqualToString:@"Any $"])
+    if ([self.priceButton.titleLabel.text isEqualToString:[NSString stringWithFormat:@"Any %@", self.moneySymbol]])
     {
-        self.priceKeyValue = @"$";
-        [self.priceButton setTitle:@"$" forState:UIControlStateNormal];
+        self.priceKeyValue = [NSString stringWithFormat:@"%@", self.moneySymbol];
+        [self.priceButton setTitle:[NSString stringWithFormat:@"%@", self.moneySymbol] forState:UIControlStateNormal];
     }
-    else if ([self.priceButton.titleLabel.text isEqualToString:@"$"])
+    else if ([self.priceButton.titleLabel.text isEqualToString:[NSString stringWithFormat:@"%@", self.moneySymbol]])
     {
-        self.priceKeyValue = @"$$";
-        [self.priceButton setTitle:@"$$" forState:UIControlStateNormal];
+        self.priceKeyValue = [NSString stringWithFormat:@"%@%@", self.moneySymbol,self.moneySymbol];
+        [self.priceButton setTitle:[NSString stringWithFormat:@"%@%@", self.moneySymbol,self.moneySymbol] forState:UIControlStateNormal];
     }
-    else if ([self.priceButton.titleLabel.text isEqualToString:@"$$"])
+    else if ([self.priceButton.titleLabel.text isEqualToString:[NSString stringWithFormat:@"%@%@", self.moneySymbol,self.moneySymbol]])
     {
-        self.priceKeyValue = @"$$$";
-        [self.priceButton setTitle:@"$$$" forState:UIControlStateNormal];
+        self.priceKeyValue = [NSString stringWithFormat:@"%@%@%@", self.moneySymbol,self.moneySymbol,self.moneySymbol];
+        [self.priceButton setTitle:[NSString stringWithFormat:@"%@%@%@", self.moneySymbol,self.moneySymbol,self.moneySymbol] forState:UIControlStateNormal];
     }
-    else if ([self.priceButton.titleLabel.text isEqualToString:@"$$$"])
+    else if ([self.priceButton.titleLabel.text isEqualToString:[NSString stringWithFormat:@"%@%@%@", self.moneySymbol,self.moneySymbol,self.moneySymbol]])
     {
-        self.priceKeyValue = @"$$$$";
-        [self.priceButton setTitle:@"$$$$" forState:UIControlStateNormal];
+        self.priceKeyValue = [NSString stringWithFormat:@"%@%@%@%@", self.moneySymbol,self.moneySymbol,self.moneySymbol,self.moneySymbol];
+        [self.priceButton setTitle:[NSString stringWithFormat:@"%@%@%@%@", self.moneySymbol,self.moneySymbol,self.moneySymbol,self.moneySymbol] forState:UIControlStateNormal];
     }
-    else if ([self.priceButton.titleLabel.text isEqualToString:@"$$$$"])
+    else if ([self.priceButton.titleLabel.text isEqualToString:[NSString stringWithFormat:@"%@%@%@%@", self.moneySymbol,self.moneySymbol,self.moneySymbol,self.moneySymbol]])
     {
-        self.priceKeyValue = @"Any $";
-        [self.priceButton setTitle:@"Any $" forState:UIControlStateNormal];
+        self.priceKeyValue = [NSString stringWithFormat:@"Any %@", self.moneySymbol];
+        [self.priceButton setTitle:[NSString stringWithFormat:@"Any %@", self.moneySymbol] forState:UIControlStateNormal];
     }
     
     [self sortArrayWithPredicates];
@@ -806,16 +848,17 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
 - (void)sortArrayWithPredicates
 {
     NSPredicate *pricePredicate;
+
     
     NSMutableArray *arrayPred = [NSMutableArray array];
     if (!self.priceKeyValue)
     {
-        self.priceKeyValue = @"Any $";
+        self.priceKeyValue = [NSString stringWithFormat:@"Any %@", self.moneySymbol];
     }
     
-    if ([self.priceKeyValue isEqualToString:@"Any $"])
+    if ([self.priceKeyValue isEqualToString:[NSString stringWithFormat:@"Any %@", self.moneySymbol]])
     {
-        pricePredicate = [NSPredicate predicateWithFormat:@"price = %@ OR price = %@ OR price = %@ OR price = %@ OR price = %@", nil, @"$", @"$$", @"$$$", @"$$$$"];
+        pricePredicate = [NSPredicate predicateWithFormat:@"price = %@ OR price = %@ OR price = %@ OR price = %@ OR price = %@", nil, [NSString stringWithFormat:@"%@", self.moneySymbol], [NSString stringWithFormat:@"%@%@", self.moneySymbol, self.moneySymbol], [NSString stringWithFormat:@"%@%@%@", self.moneySymbol, self.moneySymbol, self.moneySymbol], [NSString stringWithFormat:@"%@%@%@%@", self.moneySymbol, self.moneySymbol, self.moneySymbol, self.moneySymbol]];
     }
     else
     {
