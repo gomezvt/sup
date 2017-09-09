@@ -43,15 +43,7 @@ static NSString *const kReviewsCellID = @"SUPReviewsPhotoCellIdentifier";
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receivedData)
-                                                 name:@"receivedBizPhotos"
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receivedData)
-                                                 name:@"receivedBizReviews"
-                                               object:nil];
+
     
     self.popoverPresentationController.sourceRect = CGRectMake(0.f,0.f,160.f,300.f);
     
