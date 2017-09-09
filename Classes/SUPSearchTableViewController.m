@@ -866,7 +866,11 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
         self.priceKeyValue = [NSString stringWithFormat:@"Any %@", self.moneySymbol];
     }
     
-    if ([self.priceKeyValue isEqualToString:[NSString stringWithFormat:@"Any %@", self.moneySymbol]])
+    if ([self.priceKeyValue isEqualToString:[NSString stringWithFormat:@"Any ¥"]])
+    {
+        pricePredicate = [NSPredicate predicateWithFormat:@"price = %@ OR price MATCHES[c] %@ OR price MATCHES[c] %@ OR price MATCHES[c] %@ OR price MATCHES[c] %@", nil, self.moneySymbol, [NSString stringWithFormat:@"%@%@", self.moneySymbol, self.moneySymbol], [NSString stringWithFormat:@"%@%@%@", self.moneySymbol, self.moneySymbol, self.moneySymbol], [NSString stringWithFormat:@"%@%@%@%@", self.moneySymbol, self.moneySymbol, self.moneySymbol, self.moneySymbol]];
+    }
+    else if ([self.priceKeyValue isEqualToString:[NSString stringWithFormat:@"Any %@", self.moneySymbol]])
     {
         pricePredicate = [NSPredicate predicateWithFormat:@"price = %@ OR price = %@ OR price = %@ OR price = %@ OR price = %@", nil, [NSString stringWithFormat:@"%@", self.moneySymbol], [NSString stringWithFormat:@"%@%@", self.moneySymbol, self.moneySymbol], [NSString stringWithFormat:@"%@%@%@", self.moneySymbol, self.moneySymbol, self.moneySymbol], [NSString stringWithFormat:@"%@%@%@%@", self.moneySymbol, self.moneySymbol, self.moneySymbol, self.moneySymbol]];
     }
