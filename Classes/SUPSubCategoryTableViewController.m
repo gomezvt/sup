@@ -107,7 +107,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     }
     else
     {
-        pricePredicate = [NSPredicate predicateWithFormat:@"price = %@", self.priceKeyValue];
+        if ([self.priceKeyValue containsString:@"¥"])
+        {
+            pricePredicate = [NSPredicate predicateWithFormat:@"price MATCHES[c] %@", self.priceKeyValue];
+        }
+        else
+        {
+            pricePredicate = [NSPredicate predicateWithFormat:@"price = %@", self.priceKeyValue];
+        }
     }
     
     [arrayPred addObject:pricePredicate];
@@ -160,6 +167,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     for (YLPBusiness *biz in self.originalFilteredResults)
     {
+//        NSString *price = biz.price;
+//        NSString *newPrice = [price stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+//        
+//        biz.price = newPrice;
         if (biz.location.coordinate.latitude && biz.location.coordinate.longitude)
         {
             CLLocation *bizLocation = [[CLLocation alloc] initWithLatitude:biz.location.coordinate.latitude longitude:biz.location.coordinate.longitude];
@@ -281,7 +292,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         if ([placemarks count] > 0) {
             CLPlacemark *placemark = [placemarks lastObject]; // firstObject is iOS7 only.
             NSString *countryCode = placemark.ISOcountryCode;
-            
             NSDictionary *components = [NSDictionary dictionaryWithObject:countryCode forKey:NSLocaleCountryCode];
             NSString *localeIdent = [NSLocale localeIdentifierFromComponents:components];
             NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:localeIdent];
@@ -294,11 +304,12 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
             {
                 self.moneySymbol = symbol;
             }
-            self.priceButton.titleLabel.text = [NSString stringWithFormat:@"Any %@", self.moneySymbol];
+            [self.priceButton setTitle:[NSString stringWithFormat:@"Any %@", self.moneySymbol] forState:UIControlStateNormal];
             NSLog(@"Location is: %@", placemark.location);
             
         }
     }];
+
     
     if (kCity)
     {

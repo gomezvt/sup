@@ -350,10 +350,10 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
+        self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         if (kCity)
         {
-            self.alertTextField.placeholder = kCity;
-            self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            self.alertTextField.placeholder = [kCity capitalizedString];
         }
         
     }];

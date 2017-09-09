@@ -71,11 +71,12 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+
         self.alertTextField = textField;
+        self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         if (kCity)
         {
-            self.alertTextField.placeholder = kCity;
-            self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            self.alertTextField.placeholder = [kCity capitalizedString];
         }
     }];
     
@@ -130,6 +131,8 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+
     
     if (kCity)
     {
@@ -368,7 +371,8 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                          {
                              self.moneySymbol = symbol;
                          }
-                         self.priceButton.titleLabel.text = [NSString stringWithFormat:@"Any %@", self.moneySymbol];
+                         [self.priceButton setTitle:[NSString stringWithFormat:@"Any %@", self.moneySymbol] forState:UIControlStateNormal];
+        
                          NSLog(@"Location is: %@", placemark.location);
                          [self.tableView reloadData];
 
@@ -862,7 +866,14 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     }
     else
     {
-        pricePredicate = [NSPredicate predicateWithFormat:@"price = %@", self.priceKeyValue];
+        if ([self.priceKeyValue containsString:@"¥"])
+        {
+            pricePredicate = [NSPredicate predicateWithFormat:@"price MATCHES[c] %@", self.priceKeyValue];
+        }
+        else
+        {
+            pricePredicate = [NSPredicate predicateWithFormat:@"price = %@", self.priceKeyValue];
+        }
     }
     
     [arrayPred addObject:pricePredicate];
