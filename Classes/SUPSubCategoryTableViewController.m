@@ -282,33 +282,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewWillAppear:animated];
     
-    CLGeocoder *geocoder = [CLGeocoder new];
-    [geocoder geocodeAddressString:kCity completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@", [error localizedDescription]);
-            return; // Bail!
-        }
-        
-        if ([placemarks count] > 0) {
-            CLPlacemark *placemark = [placemarks lastObject]; // firstObject is iOS7 only.
-            NSString *countryCode = placemark.ISOcountryCode;
-            NSDictionary *components = [NSDictionary dictionaryWithObject:countryCode forKey:NSLocaleCountryCode];
-            NSString *localeIdent = [NSLocale localeIdentifierFromComponents:components];
-            NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:localeIdent];
-            NSString *symbol = locale.currencySymbol;
-            if (symbol.length > 1)
-            {
-                self.moneySymbol = [symbol substringFromIndex:[symbol length] - 1];
-            }
-            else
-            {
-                self.moneySymbol = symbol;
-            }
-            [self.priceButton setTitle:[NSString stringWithFormat:@"Any %@", self.moneySymbol] forState:UIControlStateNormal];
-            NSLog(@"Location is: %@", placemark.location);
-            
-        }
-    }];
+    
 
     
     if (kCity)
@@ -363,6 +337,33 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     [super viewDidLoad];
     
 
+    CLGeocoder *geocoder = [CLGeocoder new];
+    [geocoder geocodeAddressString:kCity completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", [error localizedDescription]);
+            return; // Bail!
+        }
+        
+        if ([placemarks count] > 0) {
+            CLPlacemark *placemark = [placemarks lastObject]; // firstObject is iOS7 only.
+            NSString *countryCode = placemark.ISOcountryCode;
+            NSDictionary *components = [NSDictionary dictionaryWithObject:countryCode forKey:NSLocaleCountryCode];
+            NSString *localeIdent = [NSLocale localeIdentifierFromComponents:components];
+            NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:localeIdent];
+            NSString *symbol = locale.currencySymbol;
+            if (symbol.length > 1)
+            {
+                self.moneySymbol = [symbol substringFromIndex:[symbol length] - 1];
+            }
+            else
+            {
+                self.moneySymbol = symbol;
+            }
+            [self.priceButton setTitle:[NSString stringWithFormat:@"Any %@", self.moneySymbol] forState:UIControlStateNormal];
+            NSLog(@"Location is: %@", placemark.location);
+            
+        }
+    }];
     
     self.displayArray = [[NSMutableArray alloc] init];
     
