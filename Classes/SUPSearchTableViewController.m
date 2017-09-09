@@ -371,6 +371,12 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                          {
                              self.moneySymbol = symbol;
                          }
+                         
+                         if ([symbol isEqualToString:@"TRY"])
+                         {
+                             self.moneySymbol = @"₺";
+                         }
+                         
                          [self.priceButton setTitle:[NSString stringWithFormat:@"Any %@", self.moneySymbol] forState:UIControlStateNormal];
         
                          NSLog(@"Location is: %@", placemark.location);
