@@ -106,9 +106,31 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.tableView reloadData];
+}
+
+- (void)receivedData
+{
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedData)
+                                                 name:@"receivedBizPhotos"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedData)
+                                                 name:@"receivedBizReviews"
+                                               object:nil];
 
     self.tableView.tableFooterView = [UIView new];
     
@@ -383,13 +405,13 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     NSArray *hoursArray = self.selectedBusiness.businessHours;
     NSString *photosTitle = [NSString stringWithFormat: @"Photos (%lu)", (unsigned long)self.selectedBusiness.photos.count];
     NSString *reviewsTitle;
-    if (self.selectedBusiness.reviewCount > 3)
+    if (self.selectedBusiness.reviews.count >= 3)
     {
         reviewsTitle = @"Reviews (3)";
     }
     else
     {
-        reviewsTitle = [NSString stringWithFormat: @"Reviews (%lu)", (unsigned long)self.selectedBusiness.reviewCount];
+        reviewsTitle = [NSString stringWithFormat: @"Reviews (%lu)", (unsigned long)self.selectedBusiness.reviews.count];
     }
     
     if (indexPath.row == 0)
@@ -645,7 +667,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 {
     UIButton *button = sender;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    if (([button.titleLabel.text containsString:@"Reviews"] && self.selectedBusiness.reviewCount > 0) ||
+    if (([button.titleLabel.text containsString:@"Reviews"] && self.selectedBusiness.reviews.count > 0) ||
         ([button.titleLabel.text containsString:@"Photos"] && self.selectedBusiness.photos.count > 0))
     {
         SUPPresentationTableViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"PresTVC"];
