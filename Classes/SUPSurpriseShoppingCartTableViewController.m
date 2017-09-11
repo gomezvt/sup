@@ -219,8 +219,10 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 
 - (void)presentMessage
 {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 30.f)];
-    label.text = @"Add one or more categories to submit.";
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 80.f)];
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.numberOfLines = 0.f;
+    label.text = @"Tap the 'back' button in the top left\ncorner to add one or more \ncategories to submit.";
     [super.view addSubview:label];
     label.center = self.tableView.center;
     self.tableView.separatorColor = [UIColor clearColor];
