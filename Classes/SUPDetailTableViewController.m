@@ -78,7 +78,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     else
     {
         self.headerTitleView.leadingEdgeConstraint.constant = -15.f;
-
+        
         if (mainScreen.size.width > 375.f)
         {
             [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
@@ -100,7 +100,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-
+    
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     
@@ -131,7 +131,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
                                              selector:@selector(receivedData)
                                                  name:@"receivedBizReviews"
                                                object:nil];
-
+    
     self.tableView.tableFooterView = [UIView new];
     
     self.titleLabel.text = self.selectedBusiness.name;
@@ -191,11 +191,11 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     }
     else
     {
-                mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@", self.selectedBusiness.name];
+        mapsQueryString =  [NSString stringWithFormat:@"http://maps.apple.com/?q=%@", self.selectedBusiness.name];
     }
     
     NSString *filteredString;
-
+    
     if ([mapsQueryString containsString:@" "])
     {
         filteredString = [mapsQueryString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
@@ -404,15 +404,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     NSString *phone = self.selectedBusiness.phone;
     NSArray *hoursArray = self.selectedBusiness.businessHours;
     NSString *photosTitle = [NSString stringWithFormat: @"Photos (%lu)", (unsigned long)self.selectedBusiness.photos.count];
-    NSString *reviewsTitle;
-    if (self.selectedBusiness.reviews.count >= 3)
-    {
-        reviewsTitle = @"Reviews (3)";
-    }
-    else
-    {
-        reviewsTitle = [NSString stringWithFormat: @"Reviews (%lu)", (unsigned long)self.selectedBusiness.reviews.count];
-    }
+    NSString *reviewsTitle =  [NSString stringWithFormat: @"Reviews (%lu)", (unsigned long)self.selectedBusiness.reviews.count];
     
     if (indexPath.row == 0)
     {
@@ -465,7 +457,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
                     [splitCell.rightButton setTitle:@"Yelp Profile" forState:UIControlStateNormal];
                 }
             }
-
+            
         }
         else
         {
@@ -671,7 +663,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         ([button.titleLabel.text containsString:@"Photos"] && self.selectedBusiness.photos.count > 0))
     {
         SUPPresentationTableViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"PresTVC"];
-
+        
         controller.business = self.selectedBusiness;
         controller.title = button.titleLabel.text;
         
@@ -680,7 +672,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         controller.modalPresentationStyle = UIModalPresentationPopover;
         controller.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
         controller.popoverPresentationController.sourceView = button;
-//        controller.popoverPresentationController.sourceRect = CGRectMake(0, 0, 320, 266);
+        //        controller.popoverPresentationController.sourceRect = CGRectMake(0, 0, 320, 266);
         controller.presentationController.delegate = self;
         
         [self presentViewController:controller animated:YES completion:nil];

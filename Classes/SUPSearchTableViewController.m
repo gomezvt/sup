@@ -71,7 +71,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-
+        
         self.alertTextField = textField;
         self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         if (kCity)
@@ -104,7 +104,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     self.headerTitleView.leadingEdgeConstraint.constant = 40.f;
-
+    
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     
@@ -132,7 +132,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
 {
     [super viewWillAppear:animated];
     
-
+    
     
     if (kCity)
     {
@@ -182,7 +182,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     {
         self.isLargePhone = NO;
     }
-
+    
     AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (!appDel.userLocation)
     {
@@ -210,7 +210,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     [layer3 setCornerRadius:10.0];
     [layer3 setBorderWidth:1.0];
     [layer3 setBorderColor:[[SUPStyles iconBlue] CGColor]];
-
+    
     
     self.starButton.hidden = YES;
     self.sortView.hidden = YES;
@@ -227,7 +227,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     {
         self.label.text = @"Go ahead, search away...";
     }
- 
+    
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.tableFooterView = [UIView new];
@@ -236,7 +236,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
 - (void)didTapHUDCancelButton
 {
     self.didCancelRequest = YES;
-
+    
     dispatch_async(dispatch_get_main_queue(), ^(void){
         self.searchBar.userInteractionEnabled = YES;
         self.tableView.userInteractionEnabled = YES;
@@ -264,21 +264,21 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     self.hud.delegate = self;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-
-    self.tableView.userInteractionEnabled = NO;
-    self.tabBarController.tabBar.userInteractionEnabled = NO;
-    self.searchBar.userInteractionEnabled = NO;
+        
+        self.tableView.userInteractionEnabled = NO;
+        self.tabBarController.tabBar.userInteractionEnabled = NO;
+        self.searchBar.userInteractionEnabled = NO;
         
         [searchBar resignFirstResponder];
         searchBar.showsCancelButton = NO;
     });
     
-
-
+    
+    
     __weak typeof(self) weakSelf = self;
     [[AppDelegate yelp] searchWithLocation:kCity term:searchBar.text limit:50 offset:0 sort:YLPSortTypeDistance completionHandler:^
      (YLPSearch *searchResults, NSError *error){
-
+         
          dispatch_async(dispatch_get_main_queue(), ^{
              // code here
              NSString *string = error.userInfo[@"NSLocalizedDescription"];
@@ -317,7 +317,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                  [weakSelf _hideHUD];
                  
                  
-
+                 
                  
                  weakSelf.label.text = @"";
                  weakSelf.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (%lu)", (unsigned long)searchResults.businesses.count];
@@ -332,7 +332,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                  weakSelf.recentSearches = [sortedArray mutableCopy];
                  
                  weakSelf.originalDetailsArray = weakSelf.recentSearches;
-
+                 
                  NSArray *copy = [weakSelf.originalDetailsArray copy];
                  for (YLPBusiness *biz in copy)
                  {
@@ -378,19 +378,19 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                          }
                          
                          [self.priceButton setTitle:[NSString stringWithFormat:@"Any %@", self.moneySymbol] forState:UIControlStateNormal];
-        
+                         
                          NSLog(@"Location is: %@", placemark.location);
                          [self.tableView reloadData];
-
+                         
                      }
                  }];
                  
-
-
-//                 [self sortArrayWithPredicates];
-
                  
-
+                 
+                 //                 [self sortArrayWithPredicates];
+                 
+                 
+                 
              }
          });
      }];
@@ -428,73 +428,69 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
         self.tableView.userInteractionEnabled = NO;
         self.tabBarController.tabBar.userInteractionEnabled = NO;
     });
-
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     YLPBusiness *selectedBusiness = [self.recentSearches objectAtIndex:indexPath.row];
     YLPBusiness *cachedBiz = [[self.cachedBiz filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", selectedBusiness.identifier]] lastObject];
     __weak typeof(self) weakSelf = self;
-
+    
     if (cachedBiz)
     {
         [[AppDelegate yelp] reviewsForBusinessWithId:cachedBiz.identifier
-                                           completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
-                                               dispatch_async(dispatch_get_main_queue(), ^{
-                                                   NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                                   completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
+                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                           NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                                           
+                                           if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                                           {
+                                               [weakSelf _hideHUD];
+                                               
+                                               UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
+                                               
+                                               UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                               [alertController addAction:ok];
+                                               
+                                               [weakSelf presentViewController:alertController animated:YES completion:nil];
+                                               
+                                           }
+                                           else
+                                           {
+                                               // *** Get review user photos in advance if they exist, to display from Presentation VC
+                                               dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
                                                    
-                                                   if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                                                   NSMutableArray *userPhotos = [NSMutableArray array];
+                                                   for (YLPReview *review in reviews.reviews)
                                                    {
-                                                       [weakSelf _hideHUD];
-                                                       
-                                                       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
-                                                       
-                                                       UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                                                       [alertController addAction:ok];
-                                                       
-                                                       [weakSelf presentViewController:alertController animated:YES completion:nil];
-                                                       
-                                                   }
-                                                   else
-                                                   {
-                                                       // *** Get review user photos in advance if they exist, to display from Presentation VC
-                                                       dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-
-                                                       NSMutableArray *userPhotos = [NSMutableArray array];
-                                                       for (YLPReview *review in reviews.reviews)
+                                                       YLPUser *user = review.user;
+                                                       if (user.imageURL)
                                                        {
-                                                           YLPUser *user = review.user;
-                                                           if (user.imageURL)
+                                                           NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
+                                                           UIImage *image = [UIImage imageNamed:@"placeholder"];
+                                                           if (imageData)
                                                            {
-                                                               NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
-                                                               UIImage *image = [UIImage imageNamed:@"placeholder"];
-                                                               if (imageData)
-                                                               {
-                                                                   image = [UIImage imageWithData:imageData];
-                                                               }
-                                                               [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];                                                                }
-                                                       }
-                                                       cachedBiz.reviews = reviews.reviews;
-                                                       cachedBiz.userPhotosArray = userPhotos;
-                                                           dispatch_async(dispatch_get_main_queue(), ^(void){
-                                                           [[NSNotificationCenter defaultCenter]
-                                                            postNotificationName:@"receivedBizReviews"
-                                                            object:self];
-                                                           });
-                                                       });
+                                                               image = [UIImage imageWithData:imageData];
+                                                           }
+                                                           [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];                                                                }
+                                                   }
+                                                   cachedBiz.reviews = reviews.reviews;
+                                                   cachedBiz.userPhotosArray = userPhotos;
+                                                   dispatch_async(dispatch_get_main_queue(), ^(void){
                                                        
-                                                       dispatch_async(dispatch_get_main_queue(), ^(void){
-
                                                        if (!weakSelf.didCancelRequest)
                                                        {
                                                            [weakSelf _hideHUD];
                                                            
                                                            [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:cachedBiz];
                                                        }
-                                                       });
-                                                   }
-                                                   
+                                                   });
                                                });
-                                           }];
+                                               
+                                               
+                                           }
+                                           
+                                       });
+                                   }];
     }
     else
     {
@@ -518,60 +514,30 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                  else
                  {
                      dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-
-                     // *** Get business photos in advance if they exist, to display from Presentation VC
-                     if (business.photos.count > 0)
-                     {
-                         if ([[business.photos firstObject] isKindOfClass:[NSString class]])
-                         {
-                             NSMutableArray *photosArray = [NSMutableArray array];
-                             for (NSString *photoStr in business.photos)
-                             {
-                                 NSURL *url = [NSURL URLWithString:photoStr];
-                                 NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                 UIImage *image = [UIImage imageWithData:imageData];
-                                 
-                                 if (imageData)
-                                 {
-                                     [photosArray addObject:image];
-                                 }
-                             }
-                             
-                             business.photos = photosArray;
-                             
-                             dispatch_async(dispatch_get_main_queue(), ^(void){
-                                 if ([[business.photos lastObject] isKindOfClass:[UIImage class]])
-                                 {
-                                     [[NSNotificationCenter defaultCenter]
-                                      postNotificationName:@"receivedBizPhotos"
-                                      object:self];
-                                 }
-                             });
-                         }
-                         }
-                     });
-                     [[AppDelegate yelp] reviewsForBusinessWithId:business.identifier
-                                                        completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
-                                                            dispatch_async(dispatch_get_main_queue(), ^(void){
-                                                                NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                         
+                         
+                         [[AppDelegate yelp] reviewsForBusinessWithId:business.identifier
+                                                    completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
+                                                        dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                            NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                                                            
+                                                            if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                                                            {
+                                                                [weakSelf _hideHUD];
                                                                 
-                                                                if ([string isEqualToString:@"The Internet connection appears to be offline."])
-                                                                {
-                                                                    [weakSelf _hideHUD];
+                                                                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
+                                                                
+                                                                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                                                [alertController addAction:ok];
+                                                                
+                                                                [weakSelf presentViewController:alertController animated:YES completion:nil];
+                                                                
+                                                            }
+                                                            else
+                                                            {
+                                                                // *** Get review user photos in advance if they exist, to display from Presentation VC
+                                                                dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
                                                                     
-                                                                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
-                                                                    
-                                                                    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                                                                    [alertController addAction:ok];
-                                                                    
-                                                                    [weakSelf presentViewController:alertController animated:YES completion:nil];
-                                                                    
-                                                                }
-                                                                else
-                                                                {
-                                                                    // *** Get review user photos in advance if they exist, to display from Presentation VC
-                                                                    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-
                                                                     NSMutableArray *userPhotos = [NSMutableArray array];
                                                                     for (YLPReview *review in reviews.reviews)
                                                                     {
@@ -586,30 +552,64 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                                                                             }
                                                                             [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];                                                                }
                                                                     }
-                                                                        business.reviews = reviews.reviews;
-                                                                        business.userPhotosArray = userPhotos;
-                                                                        [weakSelf.cachedBiz addObject:business];
-                                                                        dispatch_async(dispatch_get_main_queue(), ^(void){
-                                                                            
-                                                                            [[NSNotificationCenter defaultCenter]
-                                                                             postNotificationName:@"receivedBizReviews"
-                                                                             object:self];
-                                                                        });
-                                                                    });
-                                                                    
+                                                                    business.reviews = reviews.reviews;
+                                                                    business.userPhotosArray = userPhotos;
+                                                                    [weakSelf.cachedBiz addObject:business];
                                                                     dispatch_async(dispatch_get_main_queue(), ^(void){
                                                                         
-                                                                        if (!weakSelf.didCancelRequest)
+                                                                        // *** Get business photos in advance if they exist, to display from Presentation VC
+                                                                        if (business.photos.count > 0)
                                                                         {
-                                                                            [weakSelf _hideHUD];
-                                                                            
-                                                                            [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                                            if ([[business.photos firstObject] isKindOfClass:[NSString class]])
+                                                                            {
+                                                                                NSMutableArray *photosArray = [NSMutableArray array];
+                                                                                for (NSString *photoStr in business.photos)
+                                                                                {
+                                                                                    NSURL *url = [NSURL URLWithString:photoStr];
+                                                                                    NSData *imageData = [NSData dataWithContentsOfURL:url];
+                                                                                    UIImage *image = [UIImage imageWithData:imageData];
+                                                                                    
+                                                                                    if (imageData)
+                                                                                    {
+                                                                                        [photosArray addObject:image];
+                                                                                    }
+                                                                                }
+                                                                                
+                                                                                business.photos = photosArray;
+                                                                                
+                                                                                if ([[business.photos lastObject] isKindOfClass:[UIImage class]])
+                                                                                {
+                                                                                    [[NSNotificationCenter defaultCenter]
+                                                                                     postNotificationName:@"receivedBizPhotos"
+                                                                                     object:self];
+                                                                                }
+                                                                                
+                                                                                if (!weakSelf.didCancelRequest)
+                                                                                {
+                                                                                    [weakSelf _hideHUD];
+                                                                                    
+                                                                                    [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                                                }
+                                                                                
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (!weakSelf.didCancelRequest)
+                                                                            {
+                                                                                [weakSelf _hideHUD];
+                                                                                
+                                                                                [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                                            }
                                                                         }
                                                                     });
-                                                                }
+                                                                });
                                                                 
-                                                            });
-                                                        }];
+                                                            }
+                                                            
+                                                        });
+                                                    }];
+                     });
                  }
                  
              });
@@ -648,12 +648,12 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     dispatch_async(dispatch_get_main_queue(), ^(void){
         if (cell.tag == indexPath.row)
         {
-        cell.openCloseLabel.text = @"";
-        cell.secondaryOpenCloseLabel.text = @"";
-        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+            cell.openCloseLabel.text = @"";
+            cell.secondaryOpenCloseLabel.text = @"";
+            cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
         }
     });
-
+    
     
     __block YLPBusiness *biz = [self.recentSearches objectAtIndex:indexPath.row];
     YLPBusiness *cachedBiz = [[self.cachedBiz filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", biz.identifier]] lastObject];
@@ -700,122 +700,122 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     {
         __weak typeof(self) weakSelf = self;
         
-            [[AppDelegate yelp] businessWithId:biz.identifier completionHandler:^
-             (YLPBusiness *business, NSError *error) {
-                 dispatch_async(dispatch_get_main_queue(), ^(void){
-                     if (cell.tag == indexPath.row)
+        [[AppDelegate yelp] businessWithId:biz.identifier completionHandler:^
+         (YLPBusiness *business, NSError *error) {
+             dispatch_async(dispatch_get_main_queue(), ^(void){
+                 if (cell.tag == indexPath.row)
+                 {
+                     //                         if ([biz.identifier isEqualToString:business.identifier])
+                     //                         {
+                     //                             business.miles = biz.miles;
+                     //                         }
+                     
+                     if (!weakSelf.isLargePhone)
                      {
-//                         if ([biz.identifier isEqualToString:business.identifier])
-//                         {
-//                             business.miles = biz.miles;
-//                         }
-                         
-                         if (!weakSelf.isLargePhone)
+                         if (business.isOpenNow)
                          {
-                             if (business.isOpenNow)
-                             {
-                                 cell.secondaryOpenCloseLabel.text = @"Open Now";
-                                 cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
-                             }
-                             else if (business.hoursItem && !business.isOpenNow)
-                             {
-                                 cell.secondaryOpenCloseLabel.text = @"Closed Now";
-                                 cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-                             }
+                             cell.secondaryOpenCloseLabel.text = @"Open Now";
+                             cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
                          }
-                         else
+                         else if (business.hoursItem && !business.isOpenNow)
                          {
-                             if (business.isOpenNow)
-                             {
-                                 cell.openCloseLabel.text = @"Open Now";
-                                 cell.openCloseLabel.textColor = [SUPStyles iconBlue];
-                             }
-                             else if (business.hoursItem && !business.isOpenNow)
-                             {
-                                 cell.openCloseLabel.text = @"Closed Now";
-                                 cell.openCloseLabel.textColor = [UIColor redColor];
-                             }
+                             cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                             cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
                          }
                      }
-                 });
-
-                 NSString *string = error.userInfo[@"NSLocalizedDescription"];
-                 if ([string isEqualToString:@"The Internet connection appears to be offline."])
-                 {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         
-                         [weakSelf _hideHUD];
-                         
-                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
-                         
-                         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                         [alertController addAction:ok];
-                         
-                         [weakSelf presentViewController:alertController animated:YES completion:nil];
-                     });
-                 }
-                 else
-                 {
-                     if (business)
+                     else
                      {
-                         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                             // Your Background work
-                             if (cell.tag == indexPath.row)
+                         if (business.isOpenNow)
+                         {
+                             cell.openCloseLabel.text = @"Open Now";
+                             cell.openCloseLabel.textColor = [SUPStyles iconBlue];
+                         }
+                         else if (business.hoursItem && !business.isOpenNow)
+                         {
+                             cell.openCloseLabel.text = @"Closed Now";
+                             cell.openCloseLabel.textColor = [UIColor redColor];
+                         }
+                     }
+                 }
+             });
+             
+             NSString *string = error.userInfo[@"NSLocalizedDescription"];
+             if ([string isEqualToString:@"The Internet connection appears to be offline."])
+             {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     
+                     [weakSelf _hideHUD];
+                     
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
+                     
+                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                     [alertController addAction:ok];
+                     
+                     [weakSelf presentViewController:alertController animated:YES completion:nil];
+                 });
+             }
+             else
+             {
+                 if (business)
+                 {
+                     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                         // Your Background work
+                         if (cell.tag == indexPath.row)
+                         {
+                             if (business.photos.count > 0)
                              {
-                                 if (business.photos.count > 0)
+                                 NSMutableArray *photosArray = [NSMutableArray array];
+                                 for (NSString *photoStr in business.photos)
                                  {
-                                     NSMutableArray *photosArray = [NSMutableArray array];
-                                     for (NSString *photoStr in business.photos)
-                                     {
-                                         NSURL *url = [NSURL URLWithString:photoStr];
-                                         
-                                         NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                         
-                                         UIImage *image = [UIImage imageWithData:imageData];
-                                         
-                                         if (imageData)
-                                         {
-                                             [photosArray addObject:image];
-                                         }
-                                     }
+                                     NSURL *url = [NSURL URLWithString:photoStr];
                                      
-                                     business.photos = photosArray;
+                                     NSData *imageData = [NSData dataWithContentsOfURL:url];
+                                     
+                                     UIImage *image = [UIImage imageWithData:imageData];
+                                     
+                                     if (imageData)
+                                     {
+                                         [photosArray addObject:image];
+                                     }
                                  }
                                  
-                                 NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
-                                 dispatch_async(dispatch_get_main_queue(), ^(void){
-                                     // Update your UI
-                                     if (cell.tag == indexPath.row)
-                                     {
-                                         if (imageData)
-                                         {
-                                             UIImage *image = [UIImage imageWithData:imageData];
-                                             business.bizThumbNail = image;
-                                             cell.thumbNailView.image = image;
-                                         }
-                                         else
-                                         {
-                                             business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
-                                         }
-                                         
-                                         business.didGetDetails = YES;
-                                         [weakSelf.cachedBiz addObject:business];
-                                         biz = business;
-                                         
-                                         YLPBusiness *match = [[weakSelf.originalDetailsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
-                                         
-                                         if (match)
-                                         {
-                                             NSInteger index = [weakSelf.originalDetailsArray indexOfObject:match];
-                                             [weakSelf.originalDetailsArray replaceObjectAtIndex:index withObject:business];
-                                         }
-                                     }
-                                 });
+                                 business.photos = photosArray;
                              }
-                         });
-                     }
+                             
+                             NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
+                             dispatch_async(dispatch_get_main_queue(), ^(void){
+                                 // Update your UI
+                                 if (cell.tag == indexPath.row)
+                                 {
+                                     if (imageData)
+                                     {
+                                         UIImage *image = [UIImage imageWithData:imageData];
+                                         business.bizThumbNail = image;
+                                         cell.thumbNailView.image = image;
+                                     }
+                                     else
+                                     {
+                                         business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                                     }
+                                     
+                                     business.didGetDetails = YES;
+                                     [weakSelf.cachedBiz addObject:business];
+                                     biz = business;
+                                     
+                                     YLPBusiness *match = [[weakSelf.originalDetailsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
+                                     
+                                     if (match)
+                                     {
+                                         NSInteger index = [weakSelf.originalDetailsArray indexOfObject:match];
+                                         [weakSelf.originalDetailsArray replaceObjectAtIndex:index withObject:business];
+                                     }
+                                 }
+                             });
+                         }
+                     });
                  }
-             }];
+             }
+         }];
     }
     
     
@@ -858,7 +858,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
 - (void)sortArrayWithPredicates
 {
     NSPredicate *pricePredicate;
-
+    
     
     NSMutableArray *arrayPred = [NSMutableArray array];
     if (!self.priceKeyValue)
@@ -947,18 +947,18 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     }
     
     NSPredicate *comboPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:arrayPred];
-        self.recentSearches  = [[self.originalDetailsArray filteredArrayUsingPredicate:comboPredicate] mutableCopy];
-
-        if (self.recentSearches.count == 0)
-        {
-            self.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (0)"];
-            self.label.text = @"No sorted results found.";
-        }
-        else
-        {
-            self.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (%lu)", (unsigned long)self.recentSearches.count];
-            self.label.text = @"";
-        }
+    self.recentSearches  = [[self.originalDetailsArray filteredArrayUsingPredicate:comboPredicate] mutableCopy];
+    
+    if (self.recentSearches.count == 0)
+    {
+        self.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (0)"];
+        self.label.text = @"No sorted results found.";
+    }
+    else
+    {
+        self.titleLabel.text = [NSString stringWithFormat:@"Recent Search Results (%lu)", (unsigned long)self.recentSearches.count];
+        self.label.text = @"";
+    }
     
     
     [self.tableView reloadData];
