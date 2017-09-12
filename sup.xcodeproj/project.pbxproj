@@ -168,7 +168,7 @@
 		64E905EC1E49704000331C3F /* SUPYelpHoursTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPYelpHoursTableViewCell.m; path = Classes/SUPYelpHoursTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		64E905ED1E49704000331C3F /* SUPYelpHoursTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpHoursTableViewCell.xib; path = Classes/SUPYelpHoursTableViewCell.xib; sourceTree = "<group>"; };
 		64E905F21E4970BC00331C3F /* SUPYelpCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpCategoryTableViewCell.xib; path = Classes/SUPYelpCategoryTableViewCell.xib; sourceTree = "<group>"; };
-		64F41D5F1E2C497F0053EBE2 /* Sup? City.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sup? City.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64F41D5F1E2C497F0053EBE2 /* Sup City.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sup City.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		812CD2D8F0E4D852D7328DA4 /* Pods-bvt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.debug.xcconfig"; sourceTree = "<group>"; };
 		A13E28BFC52912BF5475C256 /* Pods-bvt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bvt.release.xcconfig"; path = "Pods/Target Support Files/Pods-bvt/Pods-bvt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -349,7 +349,7 @@
 		64F41D601E2C497F0053EBE2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				64F41D5F1E2C497F0053EBE2 /* Sup? City.app */,
+				64F41D5F1E2C497F0053EBE2 /* Sup City.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -433,7 +433,7 @@
 			);
 			name = sup;
 			productName = bvt;
-			productReference = 64F41D5F1E2C497F0053EBE2 /* Sup? City.app */;
+			productReference = 64F41D5F1E2C497F0053EBE2 /* Sup City.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -721,7 +721,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = gms.d;
-				PRODUCT_NAME = "Sup? City";
+				PRODUCT_NAME = "Sup City";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -745,7 +745,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = gms.d;
-				PRODUCT_NAME = "Sup? City";
+				PRODUCT_NAME = "Sup City";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
