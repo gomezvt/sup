@@ -11,13 +11,11 @@
 #import "SUPAboutTableViewCell.h"
 #import "SUPStyles.h"
 #import <MessageUI/MessageUI.h>
-//#import "SUP-Swift.h"
 
 
 @interface SUPAboutTableViewController () <UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
-//@property (nonatomic, strong) NSArray *products;
 
 @end
 
@@ -124,7 +122,7 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
     
     if (section == 0)
     {
-        rows = 5;
+        rows = 4;
     }
     else
     {
@@ -143,23 +141,6 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
         if (indexPath.row == 1)
         {
             [self performSegueWithIdentifier:@"ShowDisclaimer" sender:nil];
-        }
-        else if (indexPath.row == 2)
-        {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Confirm Purchase" message:@"Tap 'OK' to donate $0.99 to help make Sup? City better, and never see an advertisement again." preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-                
-            }];
-            
-            [alertController addAction:ok];
-            
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            }];
-            [alertController addAction:cancelAction];
-            
-            [self presentViewController:alertController animated:YES completion:nil];
         }
     }
     else
@@ -186,7 +167,7 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
     
     if (indexPath.section == 0)
     {
-        if (indexPath.row == 4)
+        if (indexPath.row == 3)
         {
             identifier = @"AboutCell";
         }
@@ -211,22 +192,6 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
             cell.textLabel.text = @"Privacy and Terms of Use";
         }
         else if (indexPath.row == 2)
-        {
-//            ProductCell *prodCell = (ProductCell *)cell;
-//
-//            prodCell.buyButtonHandler = ^(SKProduct * _Nonnull product) {
-//                
-//               
-//                
-////                SUPProducts.store.buyProduct(product);
-//            };
-            //            cell.buyButtonHandler = { product in
-//                SUPProducts.store.buyProduct(product)
-            
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.textLabel.text = @"Donate $0.99 to go Ad-Free!";
-        }
-        else if (indexPath.row == 3)
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = @"Version 1.0.1";
