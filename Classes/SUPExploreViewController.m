@@ -41,7 +41,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Change Your Search Location" message:@"Enter city, state, or zip code." preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
         self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -74,7 +74,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    self.headerTitleView.leadingEdgeConstraint.constant = 40.f;
+//    self.headerTitleView.leadingEdgeConstraint.constant = 0.f;
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     
@@ -84,59 +84,21 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
                                                object: nil];
 }
 
-- (void)newCityEntry
-{
-    //    if (!kCity)
-    //    {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Welcome to Sup? City!" message:@"Helpful Tips:\n\n1) Tap the location pin in the top right corner to change your search location by city, state, or zip code at any time.\n\n2) Can't decide where to eat, or what to do? Use the 'Surprise Me' feature to add multiple categories to search your location with. Submit your categories to get up to three random search results per category for some fun.\n\n3) Enjoy!"
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-    //        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-    //
-    //            self.alertTextField = textField;
-    //        }];
-    
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //            NSString *city = self.alertTextField.text;
-        //            if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
-        //            {
-        //                kCity = city;
-        //                self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
-        //            }
-    }];
-    [alertController addAction:confirmAction];
-    //        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-    //        }];
-    //        [alertController addAction:cancelAction];
-    [self presentViewController:alertController animated:YES completion:nil];
-    
-    //    }
-}
+//- (void)newCityEntry
+//{
+//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Welcome to Sup? City!" message:@"\nTap the location pin in the top right corner to change your search location at any time.\n\nCan't decide where to go or what to eat? Use the 'Surprise' feature to search your location with multiple categories and get random search results for some fun.\n\nEnjoy!"
+//                                                                      preferredStyle:UIAlertControllerStyleAlert];
+//
+//    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//    }];
+//    [alertController addAction:confirmAction];
+//
+//    [self presentViewController:alertController animated:YES completion:nil];
+//}
 
 - (void)gotCity:(NSNotification *)notification
 {
     id obj = notification.object;
-    //    if ([obj isKindOfClass:[NSError class]])
-    //    {
-    //        AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //        if (!appDel.city)
-    //        {
-    //            [self newCityEntry];
-    //        }
-    //        else
-    //        {
-    //            NSError *error = obj;
-    //            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"%@", error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-    //
-    //            UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    //            }];
-    //            [alertController addAction:confirmAction];
-    //            [self presentViewController:alertController animated:YES completion:nil];
-    //        }
-    
-    //    }
-    //    else
-    //    {
-    
     if (![obj isKindOfClass:[NSError class]])
     {
         kCity = obj;
@@ -191,7 +153,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     BOOL didWelcome = [[NSUserDefaults standardUserDefaults] boolForKey:@"SUPDidWelcome"];
     if (!didWelcome)
     {
-        [self newCityEntry];
+//        [self newCityEntry];
         
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"SUPDidWelcome"];
         [[NSUserDefaults standardUserDefaults] synchronize];

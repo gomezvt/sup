@@ -20,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526860610.433247"
+            timestampString = "541480569.575799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "986"
@@ -52,7 +52,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526860610.433247"
+            timestampString = "541480569.5759619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "749"
@@ -68,7 +68,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526860610.433247"
+            timestampString = "541480569.576038"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "739"
@@ -84,7 +84,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526682926.875698"
+            timestampString = "541480569.576099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "422"
@@ -100,7 +100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526612449.026866"
+            timestampString = "541480569.576165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "204"
@@ -116,7 +116,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSubCategoryTableViewController.m"
-            timestampString = "526529800.219975"
+            timestampString = "541480569.576236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -132,7 +132,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526612449.026866"
+            timestampString = "541480569.576315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "279"
@@ -148,7 +148,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526612449.026866"
+            timestampString = "541480569.5763789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "282"
@@ -196,7 +196,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526612449.026866"
+            timestampString = "541480569.576422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "319"
@@ -212,7 +212,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526860610.433247"
+            timestampString = "541480569.576462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "957"
@@ -228,7 +228,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526860610.433247"
+            timestampString = "541480569.5765001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "868"
@@ -244,7 +244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526612449.026866"
+            timestampString = "541480569.576539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -260,7 +260,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526612449.026866"
+            timestampString = "541480569.5765769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -276,7 +276,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSubCategoryTableViewController.m"
-            timestampString = "526684641.160657"
+            timestampString = "541480569.576616"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "177"
@@ -288,15 +288,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/AppDelegate.m"
-            timestampString = "527479912.204584"
+            timestampString = "541480569.576664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "7">
          </BreakpointContent>
@@ -307,28 +307,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/SUPExploreViewController.m"
-            timestampString = "526609917.620631"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-gotCity:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Classes/AppDelegate.m"
-            timestampString = "526610071.218265"
+            timestampString = "541480569.576705"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "7">
          </BreakpointContent>
@@ -340,7 +324,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSubCategoryTableViewController.m"
-            timestampString = "526684641.160657"
+            timestampString = "541480569.5767421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "287"
@@ -356,11 +340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSubCategoryTableViewController.m"
-            timestampString = "526684641.160657"
+            timestampString = "541480569.576785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -372,11 +356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSubCategoryTableViewController.m"
-            timestampString = "526684641.160657"
+            timestampString = "541480569.576827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -404,11 +388,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSubCategoryTableViewController.m"
-            timestampString = "526788539.069354"
+            timestampString = "541480569.576907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "553"
-            endingLineNumber = "553"
+            startingLineNumber = "554"
+            endingLineNumber = "554"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -420,11 +404,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSubCategoryTableViewController.m"
-            timestampString = "526687523.155518"
+            timestampString = "541480569.576952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "494"
-            endingLineNumber = "494"
+            startingLineNumber = "495"
+            endingLineNumber = "495"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -436,11 +420,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSubCategoryTableViewController.m"
-            timestampString = "526687533.330722"
+            timestampString = "541480569.576995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "530"
-            endingLineNumber = "530"
+            startingLineNumber = "531"
+            endingLineNumber = "531"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -484,12 +468,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPDetailTableViewController.m"
-            timestampString = "526860514.200182"
+            timestampString = "541480569.577076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-viewDidAppear:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -500,12 +484,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPDetailTableViewController.m"
-            timestampString = "526860514.200182"
+            timestampString = "541480569.577121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "651"
-            endingLineNumber = "651"
-            landmarkName = "-popoverWithoutBarButton:"
+            startingLineNumber = "652"
+            endingLineNumber = "652"
+            landmarkName = "-adaptivePresentationStyleForPresentationController:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -516,11 +500,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSubCategoryTableViewController.m"
-            timestampString = "526772911.20211"
+            timestampString = "541480569.577162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "491"
-            endingLineNumber = "491"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -532,11 +516,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSubCategoryTableViewController.m"
-            timestampString = "526786723.434865"
+            timestampString = "541480569.5772049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "475"
-            endingLineNumber = "475"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -564,7 +548,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526860610.433247"
+            timestampString = "541480569.577268"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "594"
@@ -580,7 +564,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526860610.433247"
+            timestampString = "541480569.577311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "606"
@@ -596,42 +580,42 @@
                   moduleName = "Sup City"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/sup/Classes/SUPSearchTableViewController.m"
-                  timestampString = "527479774.739042"
+                  timestampString = "541473278.9187239"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "606"
                   endingLineNumber = "606"
-                  offsetFromSymbolStart = "1416">
+                  offsetFromSymbolStart = "1576">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.422"
+                  symbolName = "__copy_helper_block_.424"
                   moduleName = "Sup City"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/sup/Classes/SUPSearchTableViewController.m"
-                  timestampString = "527479774.740425"
+                  timestampString = "541473278.9209189"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "606"
                   endingLineNumber = "606"
-                  offsetFromSymbolStart = "188">
+                  offsetFromSymbolStart = "181">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.423"
+                  symbolName = "__destroy_helper_block_.425"
                   moduleName = "Sup City"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/sup/Classes/SUPSearchTableViewController.m"
-                  timestampString = "527479774.741797"
+                  timestampString = "541473278.9230289"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "606"
                   endingLineNumber = "606"
-                  offsetFromSymbolStart = "100">
+                  offsetFromSymbolStart = "95">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -643,11 +627,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSubCategoryTableViewController.m"
-            timestampString = "526860610.433247"
+            timestampString = "541480569.577351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "658"
-            endingLineNumber = "658"
+            startingLineNumber = "659"
+            endingLineNumber = "659"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
             <Locations>
@@ -659,12 +643,12 @@
                   moduleName = "Sup City"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/sup/Classes/SUPSubCategoryTableViewController.m"
-                  timestampString = "527479774.746318"
+                  timestampString = "541473278.931756"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "659"
-                  endingLineNumber = "659"
-                  offsetFromSymbolStart = "1708">
+                  startingLineNumber = "660"
+                  endingLineNumber = "660"
+                  offsetFromSymbolStart = "1797">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -674,12 +658,12 @@
                   moduleName = "Sup City"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/sup/Classes/SUPSubCategoryTableViewController.m"
-                  timestampString = "527479774.748436"
+                  timestampString = "541473278.934063"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "659"
-                  endingLineNumber = "659"
-                  offsetFromSymbolStart = "148">
+                  startingLineNumber = "660"
+                  endingLineNumber = "660"
+                  offsetFromSymbolStart = "142">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -689,12 +673,12 @@
                   moduleName = "Sup City"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/sup/Classes/SUPSubCategoryTableViewController.m"
-                  timestampString = "527479774.749967"
+                  timestampString = "541473278.936396"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "659"
-                  endingLineNumber = "659"
-                  offsetFromSymbolStart = "80">
+                  startingLineNumber = "660"
+                  endingLineNumber = "660"
+                  offsetFromSymbolStart = "75">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -706,11 +690,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSubCategoryTableViewController.m"
-            timestampString = "526860610.433247"
+            timestampString = "541480569.5773931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "646"
-            endingLineNumber = "646"
+            startingLineNumber = "647"
+            endingLineNumber = "647"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -722,7 +706,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSurpriseRecommendationsTableViewController.m"
-            timestampString = "526860610.433247"
+            timestampString = "541480569.577437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "590"
@@ -738,12 +722,12 @@
                   moduleName = "Sup City"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/sup/Classes/SUPSurpriseRecommendationsTableViewController.m"
-                  timestampString = "527479774.757169"
+                  timestampString = "541473278.948207"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "593"
                   endingLineNumber = "593"
-                  offsetFromSymbolStart = "1708">
+                  offsetFromSymbolStart = "1797">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -753,12 +737,12 @@
                   moduleName = "Sup City"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/sup/Classes/SUPSurpriseRecommendationsTableViewController.m"
-                  timestampString = "527479774.758557"
+                  timestampString = "541473278.9505481"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "593"
                   endingLineNumber = "593"
-                  offsetFromSymbolStart = "148">
+                  offsetFromSymbolStart = "142">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -768,12 +752,12 @@
                   moduleName = "Sup City"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gomez/Developer/sup/Classes/SUPSurpriseRecommendationsTableViewController.m"
-                  timestampString = "527479774.759916"
+                  timestampString = "541473278.953123"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "593"
                   endingLineNumber = "593"
-                  offsetFromSymbolStart = "80">
+                  offsetFromSymbolStart = "75">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -785,7 +769,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSurpriseRecommendationsTableViewController.m"
-            timestampString = "526860610.433247"
+            timestampString = "541480569.577474"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "580"
@@ -801,12 +785,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPSearchTableViewController.m"
-            timestampString = "526863702.667208"
+            timestampString = "541480569.577509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "366"
             endingLineNumber = "366"
             landmarkName = "-searchBarSearchButtonClicked:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/SUPDetailTableViewController.m"
+            timestampString = "541480569.577547"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "-awakeFromNib"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/SUPSubCategoryTableViewController.m"
+            timestampString = "541480569.5775861"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "-awakeFromNib"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

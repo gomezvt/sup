@@ -19,7 +19,7 @@
 
 //#define kMusic @[ @"Music Venues" ]
 
-#define kHotelsHostelsBB @[ @"Bed & Breakfast",  @"Guest Houses", @"Hostels", @"Hotels", @"Rest Stops" ]
+#define kHotelsHostelsBB @[ @"Bed & Breakfast", @"Guest Houses", @"Hostels", @"Hotels" ]
 
 #define kEntertainmentRecreation @[ @"Amusement Parks", @"ATV Rentals/Tours", @"Basketball Courts", @"Beaches", @"Bike Rentals", @"Boating", @"Bowling", @"Campgrounds", @"Cinema", @"Climbing", @"Country Clubs", @"Cultural Center", @"Cycling Classes", @"Dance Studios", @"Disc Golf", @"Fishing", @"Golf", @"Gun/Rifle Ranges", @"Gyms", @"Gymnastics", @"Hiking", @"Horseback Riding", @"Hot Air Balloons", @"Kids Activities", @"Lakes", @"Martial Arts", @"Mini Golf", @"Paddleboarding", @"Parks", @"Race Tracks", @"Rafting/Kayaking", @"Recreation Centers", @"Rock Climbing", @"Sailing", @"Ski Resorts", @"Skating Rinks", @"Skydiving", @"Sledding", @"Stadiums & Arenas", @"Surfing", @"Swimming Pools", @"Tennis", @"Wineries", @"Yoga", @"Ziplining", @"Zoos"]
 

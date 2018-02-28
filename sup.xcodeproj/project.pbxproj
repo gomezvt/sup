@@ -53,7 +53,6 @@
 		64AED0AE1EDA6EDC004627D9 /* SUPSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AED0AD1EDA6EDC004627D9 /* SUPSearchTableViewController.m */; };
 		64B990CE1E99D45C0002EE4E /* SUPSurpriseRecommendationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B990CD1E99D45C0002EE4E /* SUPSurpriseRecommendationsTableViewController.m */; };
 		64C6DD221EE0F6C300C8132F /* SUPAboutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C6DD201EE0F6C300C8132F /* SUPAboutTableViewCell.xib */; };
-		64C743E91EF4CA92001CA4EB /* SUPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C743E81EF4CA92001CA4EB /* SUPCache.m */; };
 		64C88B4E1E5545CF00ECA06B /* SUPPresentationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C88B4D1E5545CF00ECA06B /* SUPPresentationTableViewController.m */; };
 		64C88B5B1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C88B5A1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib */; };
 		64C88B5E1E55499800ECA06B /* SUPYelpPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C88B5D1E55499800ECA06B /* SUPYelpPhotoTableViewCell.m */; };
@@ -157,8 +156,6 @@
 		64B990CD1E99D45C0002EE4E /* SUPSurpriseRecommendationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPSurpriseRecommendationsTableViewController.m; path = Classes/SUPSurpriseRecommendationsTableViewController.m; sourceTree = SOURCE_ROOT; };
 		64C6DD1E1EE0F6C300C8132F /* SUPAboutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPAboutTableViewCell.h; path = Classes/SUPAboutTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		64C6DD201EE0F6C300C8132F /* SUPAboutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPAboutTableViewCell.xib; path = Classes/SUPAboutTableViewCell.xib; sourceTree = "<group>"; };
-		64C743E71EF4CA92001CA4EB /* SUPCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPCache.h; path = Classes/SUPCache.h; sourceTree = SOURCE_ROOT; };
-		64C743E81EF4CA92001CA4EB /* SUPCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPCache.m; path = Classes/SUPCache.m; sourceTree = SOURCE_ROOT; };
 		64C88B4C1E5545CF00ECA06B /* SUPPresentationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPPresentationTableViewController.h; path = Classes/SUPPresentationTableViewController.h; sourceTree = SOURCE_ROOT; };
 		64C88B4D1E5545CF00ECA06B /* SUPPresentationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPPresentationTableViewController.m; path = Classes/SUPPresentationTableViewController.m; sourceTree = SOURCE_ROOT; };
 		64C88B5A1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpPhotoTableViewCell.xib; path = Classes/SUPYelpPhotoTableViewCell.xib; sourceTree = "<group>"; };
@@ -357,8 +354,6 @@
 		64F41D611E2C497F0053EBE2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				64C743E71EF4CA92001CA4EB /* SUPCache.h */,
-				64C743E81EF4CA92001CA4EB /* SUPCache.m */,
 				64C88B4C1E5545CF00ECA06B /* SUPPresentationTableViewController.h */,
 				64C88B4D1E5545CF00ECA06B /* SUPPresentationTableViewController.m */,
 				647E58C21F0DC01800625352 /* SUPTabBarViewController.h */,
@@ -375,9 +370,8 @@
 				64B4468D1E3049B700327C26 /* About */,
 				64B4468F1E3049C500327C26 /* Surprise */,
 			);
-			name = Classes;
-			path = bvt;
-			sourceTree = "<group>";
+			path = Classes;
+			sourceTree = SOURCE_ROOT;
 		};
 		64F41D621E2C497F0053EBE2 /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -388,8 +382,7 @@
 				643B4DB91E2CB2F100951303 /* AppDelegate.m */,
 			);
 			name = "Supporting Files";
-			path = bvt;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		81DC3A0A017F6247E73F74F1 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -563,7 +556,6 @@
 				644112161E2D345600C3ED18 /* SUPThumbNailTableViewCell.m in Sources */,
 				643B4DC31E2CB2F100951303 /* AppDelegate.m in Sources */,
 				649B84581EE0F92E00C3D6CD /* SUPAboutTableViewCell.m in Sources */,
-				64C743E91EF4CA92001CA4EB /* SUPCache.m in Sources */,
 				644112171E2D345600C3ED18 /* SUPYelpAddressTableViewCell.m in Sources */,
 				64A3386C1EA6F48E0061CA83 /* SUPTableViewSectionHeaderView.m in Sources */,
 				644112141E2D345600C3ED18 /* SUPSubCategoryTableViewController.m in Sources */,

@@ -100,7 +100,8 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
-    
+//    self.headerTitleView.leadingEdgeConstraint.constant = 0.f;
+
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     

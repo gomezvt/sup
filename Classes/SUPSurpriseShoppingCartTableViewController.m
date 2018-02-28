@@ -37,6 +37,9 @@
 @property (nonatomic, strong) NSMutableArray *resultsArray;
 @property (nonatomic, strong) NSMutableArray *tempArray;
 @property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *gotItHeightConstraint;
+@property (nonatomic, weak) IBOutlet UIView *gotItView;
+@property (nonatomic, weak) IBOutlet UIButton *gotItButton;
 
 @end
 
@@ -45,6 +48,16 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 //static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeaderView";
 
 @implementation SUPSurpriseShoppingCartTableViewController
+
+- (IBAction)didTapGotItButton:(id)sender
+{
+    [UIView animateWithDuration:0.5f animations:^{
+        self.gotItHeightConstraint.constant = 0.f;
+        [self.gotItButton removeFromSuperview];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GotTip"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
+}
 
 - (void)didTapBackWithDetails:(NSMutableArray *)details
 {
@@ -222,7 +235,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 80.f)];
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.numberOfLines = 0.f;
-    label.text = @"Tap the 'back' button in the top left\ncorner to add one or more \ncategories to submit.";
+    label.text = @"Tap the 'back' button in the top left\ncorner to add one or more \ncategories to search with.";
     [super.view addSubview:label];
     label.center = self.tableView.center;
     self.tableView.separatorColor = [UIColor clearColor];
@@ -347,8 +360,6 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 
 - (IBAction)didTapPlusButton:(id)sender
 {
-    //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
-    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
@@ -381,7 +392,12 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    BOOL didGetIt = [[NSUserDefaults standardUserDefaults] boolForKey:@"GotTip"];
+    if (didGetIt)
+    {
+        self.gotItHeightConstraint.constant = 0.f;
+        [self.gotItButton removeFromSuperview];
+    }
     if (kCity)
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];

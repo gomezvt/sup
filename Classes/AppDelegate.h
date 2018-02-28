@@ -9,8 +9,8 @@
 @import UIKit;
 
 @class YLPClient;
-@class GADMobileAds;
-@class GADBannerView;
+//@class GADMobileAds;
+//@class GADBannerView;
 
 #import <CoreLocation/CoreLocation.h>
 
@@ -19,9 +19,9 @@
 @property (nonatomic, copy) NSString *city;
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) CLLocation *userLocation;
-@property (nonatomic, strong) GADBannerView *bannerView;
+//@property (nonatomic, strong) GADBannerView *bannerView;
 
 + (YLPClient *)yelp;
-+ (GADMobileAds *)google;
-    
+//+ (GADMobileAds *)google;
+
 @end

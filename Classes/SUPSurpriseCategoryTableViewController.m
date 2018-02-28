@@ -19,6 +19,9 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *goButton;
 @property (nonatomic, strong) UITextField *alertTextField;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *gotItHeightConstraint;
+@property (nonatomic, weak) IBOutlet UIView *gotItView;
+@property (nonatomic, weak) IBOutlet UIButton *gotItButton;
 
 @end
 
@@ -56,6 +59,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 {
     [super viewDidLoad];
     
+
     
     self.tableView.tableFooterView = [UIView new];
     
@@ -67,13 +71,24 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.goButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+
+}
+
+- (IBAction)didTapGotItButton:(id)sender
+{
+    [UIView animateWithDuration:0.5f animations:^{
+        self.gotItHeightConstraint.constant = 0.f;
+        [self.gotItButton removeFromSuperview];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GotTip"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
 }
 
 - (IBAction)didTapPlusButton:(id)sender
 {
     //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Change Your Search Location" message:@"Enter city, state, or zip code" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
         self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -103,7 +118,12 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    BOOL didGetIt = [[NSUserDefaults standardUserDefaults] boolForKey:@"GotTip"];
+    if (didGetIt)
+    {
+        self.gotItHeightConstraint.constant = 0.f;
+        [self.gotItButton removeFromSuperview];
+    }
     if (kCity)
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];

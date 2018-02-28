@@ -69,7 +69,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
 {
     //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Change Your Search Location" message:@"Enter city, state, or zip code." preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         
         self.alertTextField = textField;

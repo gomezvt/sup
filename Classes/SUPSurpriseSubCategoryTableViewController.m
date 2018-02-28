@@ -7,12 +7,12 @@
 //
 
 #import "SUPSurpriseSubCategoryTableViewController.h"
-
 #import "SUPSurpriseShoppingCartTableViewController.h"
 #import "SUPHeaderTitleView.h"
 #import "SUPStyles.h"
 #import "SUPPresentationTableViewController.h"
-@import GoogleMobileAds;
+
+//@import GoogleMobileAds;
 
 @interface SUPSurpriseSubCategoryTableViewController ()
     <SUPSurpriseShoppingCartTableViewControllerDelegate,
@@ -23,6 +23,9 @@
 @property (nonatomic, strong) NSMutableArray *mut;
 @property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 @property (nonatomic, strong) UITextField *alertTextField;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *gotItHeightConstraint;
+@property (nonatomic, weak) IBOutlet UIView *gotItView;
+@property (nonatomic, weak) IBOutlet UIButton *gotItButton;
 
 @end
 
@@ -34,11 +37,21 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
 @implementation SUPSurpriseSubCategoryTableViewController
 
+- (IBAction)didTapGotItButton:(id)sender
+{
+    [UIView animateWithDuration:0.5f animations:^{
+        self.gotItHeightConstraint.constant = 0.f;
+        [self.gotItButton removeFromSuperview];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GotTip"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
+}
+
 - (IBAction)didTapPlusButton:(id)sender
 {
     //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Change Your Search Location" message:@"Enter city, state, or zip code." preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
         self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -95,7 +108,12 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    BOOL didGetIt = [[NSUserDefaults standardUserDefaults] boolForKey:@"GotTip"];
+    if (didGetIt)
+    {
+        self.gotItHeightConstraint.constant = 0.f;
+        [self.gotItButton removeFromSuperview];
+    }
     if (kCity)
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
@@ -190,6 +208,9 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+
+
     self.tableView.tableFooterView = [UIView new];
 
     CALayer * layer = [self.goButton layer];
@@ -198,7 +219,6 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     [layer setBorderWidth:1.0];
     [layer setBorderColor:[[SUPStyles iconBlue] CGColor]];
     
-    [super viewDidLoad];
     
     if (!self.mut)
     {
