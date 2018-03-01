@@ -56,8 +56,8 @@
 		64C88B4E1E5545CF00ECA06B /* SUPPresentationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C88B4D1E5545CF00ECA06B /* SUPPresentationTableViewController.m */; };
 		64C88B5B1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C88B5A1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib */; };
 		64C88B5E1E55499800ECA06B /* SUPYelpPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C88B5D1E55499800ECA06B /* SUPYelpPhotoTableViewCell.m */; };
-		64E4DD2820478350004FC7BD /* SUPFavoritesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E4DD2720478350004FC7BD /* SUPFavoritesCell.xib */; };
-		64E4DD2B2047866B004FC7BD /* SUPFavoritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E4DD2A2047866B004FC7BD /* SUPFavoritesCell.m */; };
+		64E4DD2820478350004FC7BD /* SUPFavoritesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E4DD2720478350004FC7BD /* SUPFavoritesTableViewCell.xib */; };
+		64E4DD2B2047866B004FC7BD /* SUPFavoritesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E4DD2A2047866B004FC7BD /* SUPFavoritesTableViewCell.m */; };
 		64E905EE1E49704000331C3F /* SUPYelpHoursTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E905EC1E49704000331C3F /* SUPYelpHoursTableViewCell.m */; };
 		64E905EF1E49704000331C3F /* SUPYelpHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E905ED1E49704000331C3F /* SUPYelpHoursTableViewCell.xib */; };
 		64E905F31E4970BC00331C3F /* SUPYelpCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E905F21E4970BC00331C3F /* SUPYelpCategoryTableViewCell.xib */; };
@@ -163,9 +163,9 @@
 		64C88B5A1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpPhotoTableViewCell.xib; path = Classes/SUPYelpPhotoTableViewCell.xib; sourceTree = "<group>"; };
 		64C88B5C1E55499800ECA06B /* SUPYelpPhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPYelpPhotoTableViewCell.h; path = Classes/SUPYelpPhotoTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		64C88B5D1E55499800ECA06B /* SUPYelpPhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPYelpPhotoTableViewCell.m; path = Classes/SUPYelpPhotoTableViewCell.m; sourceTree = SOURCE_ROOT; };
-		64E4DD2720478350004FC7BD /* SUPFavoritesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SUPFavoritesCell.xib; sourceTree = "<group>"; };
-		64E4DD292047866B004FC7BD /* SUPFavoritesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUPFavoritesCell.h; sourceTree = "<group>"; };
-		64E4DD2A2047866B004FC7BD /* SUPFavoritesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUPFavoritesCell.m; sourceTree = "<group>"; };
+		64E4DD2720478350004FC7BD /* SUPFavoritesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SUPFavoritesTableViewCell.xib; sourceTree = "<group>"; };
+		64E4DD292047866B004FC7BD /* SUPFavoritesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUPFavoritesTableViewCell.h; sourceTree = "<group>"; };
+		64E4DD2A2047866B004FC7BD /* SUPFavoritesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUPFavoritesTableViewCell.m; sourceTree = "<group>"; };
 		64E905EB1E49704000331C3F /* SUPYelpHoursTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPYelpHoursTableViewCell.h; path = Classes/SUPYelpHoursTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		64E905EC1E49704000331C3F /* SUPYelpHoursTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPYelpHoursTableViewCell.m; path = Classes/SUPYelpHoursTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		64E905ED1E49704000331C3F /* SUPYelpHoursTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SUPYelpHoursTableViewCell.xib; path = Classes/SUPYelpHoursTableViewCell.xib; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 				64934CBF1E306BCE00386B5B /* SUPYelpMapTableViewCell.xib */,
 				64934CC11E306BD300386B5B /* SUPYelpRatingTableViewCell.xib */,
 				64C88B5A1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib */,
-				64E4DD2720478350004FC7BD /* SUPFavoritesCell.xib */,
+				64E4DD2720478350004FC7BD /* SUPFavoritesTableViewCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -285,8 +285,8 @@
 				64C88B5D1E55499800ECA06B /* SUPYelpPhotoTableViewCell.m */,
 				648166AD1E5657B400071628 /* SUPYelpReviewsTableViewCell.h */,
 				648166AE1E5657B400071628 /* SUPYelpReviewsTableViewCell.m */,
-				64E4DD292047866B004FC7BD /* SUPFavoritesCell.h */,
-				64E4DD2A2047866B004FC7BD /* SUPFavoritesCell.m */,
+				64E4DD292047866B004FC7BD /* SUPFavoritesTableViewCell.h */,
+				64E4DD2A2047866B004FC7BD /* SUPFavoritesTableViewCell.m */,
 			);
 			name = "Cell Classes";
 			sourceTree = "<group>";
@@ -484,7 +484,7 @@
 				64934CC41E306C1E00386B5B /* SUPHeaderTitleView.xib in Resources */,
 				64C88B5B1E55498100ECA06B /* SUPYelpPhotoTableViewCell.xib in Resources */,
 				64934CBA1E306BA800386B5B /* SUPThumbNailTableViewCell.xib in Resources */,
-				64E4DD2820478350004FC7BD /* SUPFavoritesCell.xib in Resources */,
+				64E4DD2820478350004FC7BD /* SUPFavoritesTableViewCell.xib in Resources */,
 				64934CB81E306BA100386B5B /* SUPSplitTableViewCell.xib in Resources */,
 				64934CC21E306BD300386B5B /* SUPYelpRatingTableViewCell.xib in Resources */,
 				64934CBE1E306BC700386B5B /* SUPYelpPhoneTableViewCell.xib in Resources */,
@@ -563,7 +563,7 @@
 				642362181E5FDA8400073B68 /* SUPSurpriseShoppingCartTableViewController.m in Sources */,
 				6441120E1E2D345600C3ED18 /* SUPDetailTableViewController.m in Sources */,
 				644112161E2D345600C3ED18 /* SUPThumbNailTableViewCell.m in Sources */,
-				64E4DD2B2047866B004FC7BD /* SUPFavoritesCell.m in Sources */,
+				64E4DD2B2047866B004FC7BD /* SUPFavoritesTableViewCell.m in Sources */,
 				643B4DC31E2CB2F100951303 /* AppDelegate.m in Sources */,
 				649B84581EE0F92E00C3D6CD /* SUPAboutTableViewCell.m in Sources */,
 				644112171E2D345600C3ED18 /* SUPYelpAddressTableViewCell.m in Sources */,

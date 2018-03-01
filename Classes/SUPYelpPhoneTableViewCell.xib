@@ -35,8 +35,9 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="2Rl-JM-IDO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ECp-2q-bJB"/>
                     <constraint firstAttribute="trailingMargin" secondItem="7Cn-nk-8c0" secondAttribute="trailing" constant="8" id="MXp-0y-H6K"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="2Rl-JM-IDO" secondAttribute="bottom" constant="2" id="UUa-yX-75A"/>
+                    <constraint firstItem="2Rl-JM-IDO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="X9x-5r-XBm"/>
                     <constraint firstItem="7Cn-nk-8c0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pLL-pv-Iu8"/>
                     <constraint firstItem="2Rl-JM-IDO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="tzJ-c9-qK1"/>
                 </constraints>

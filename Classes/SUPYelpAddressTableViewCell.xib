@@ -35,10 +35,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="LvJ-YI-MMx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="B02-7q-nK5"/>
-                    <constraint firstItem="LvJ-YI-MMx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UW5-E5-TMn"/>
                     <constraint firstItem="leQ-gh-0Lw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cS1-2z-j2M"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="LvJ-YI-MMx" secondAttribute="bottom" constant="2" id="geR-Pj-H8t"/>
                     <constraint firstItem="leQ-gh-0Lw" firstAttribute="leading" secondItem="LvJ-YI-MMx" secondAttribute="trailing" constant="8" id="kGU-zG-f89"/>
                     <constraint firstAttribute="trailingMargin" secondItem="leQ-gh-0Lw" secondAttribute="trailing" constant="8" id="swB-eU-RTU"/>
+                    <constraint firstItem="LvJ-YI-MMx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="yop-dK-6Ju"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
