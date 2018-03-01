@@ -21,6 +21,7 @@
 #import "SUPHUDView.h"
 #import "YLPLocation.h"
 #import "YLPCoordinate.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SUPSurpriseShoppingCartTableViewController ()
 <SUPHUDViewDelegate, SUPSurpriseRecommendationsTableViewControllerDelegate>
@@ -54,7 +55,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     [UIView animateWithDuration:0.5f animations:^{
         self.gotItHeightConstraint.constant = 0.f;
         [self.gotItButton removeFromSuperview];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GotTip"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"SurpriseTip3"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }];
 }
@@ -235,7 +236,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 80.f)];
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.numberOfLines = 0.f;
-    label.text = @"Tap the 'back' button in the top left\ncorner to add one or more \ncategories to search with.";
+    label.text = @"Tap the 'back' button in the top left\ncorner to add one or more \nsubcategories to search with.";
     [super.view addSubview:label];
     label.center = self.tableView.center;
     self.tableView.separatorColor = [UIColor clearColor];
@@ -340,8 +341,11 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 {
     [super viewDidLoad];
 
+    self.gotItButton.layer.borderWidth = 1.f;
+    self.gotItButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.tempArray = [[NSMutableArray alloc] init];
     self.tableView.tableFooterView = [UIView new];
+    self.gotItButton.layer.cornerRadius = 10.f;
 
     self.tableView.sectionHeaderHeight = 44.f;
     
@@ -392,7 +396,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    BOOL didGetIt = [[NSUserDefaults standardUserDefaults] boolForKey:@"GotTip"];
+    BOOL didGetIt = [[NSUserDefaults standardUserDefaults] boolForKey:@"SurpriseTip3"];
     if (didGetIt)
     {
         self.gotItHeightConstraint.constant = 0.f;

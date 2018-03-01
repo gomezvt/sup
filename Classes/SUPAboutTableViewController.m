@@ -194,7 +194,7 @@ static NSString *const kAboutTableViewNib = @"SUPAboutTableViewCell";
         else if (indexPath.row == 2)
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"Version 1.0.1";
+            cell.textLabel.text = @"Version 1.0.2";
         }
         else
         {

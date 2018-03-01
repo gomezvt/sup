@@ -249,7 +249,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="77w-9n-NFD">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="o0F-72-wrb">
                                     <size key="itemSize" width="100" height="120"/>
@@ -272,16 +272,53 @@
                                     <outlet property="delegate" destination="XQZ-uB-ePI" id="qbG-aE-Vbx"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RGZ-iU-SDi">
+                                <rect key="frame" x="0.0" y="567" width="414" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTz-Iv-Tgt">
+                                        <rect key="frame" x="8" y="0.0" width="326" height="120"/>
+                                        <string key="text">Welcome to Sup? City!
+
+TIP: tap the location pin at the top to change your search location at any time. You can find places with either the "Explore", "Search", or "Surprise Me" features below. Enjoy!</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fb-jF-A9v">
+                                        <rect key="frame" x="338" y="44.666666666666629" width="68" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="68" id="Zr4-nE-fFJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="   Got it!   ">
+                                            <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapGotItButton:" destination="XQZ-uB-ePI" eventType="touchUpInside" id="fU4-hI-ICt"/>
+                                            <action selector="didTapGotItButton:" destination="CcW-yj-hls" eventType="touchUpInside" id="wuP-Sk-NVb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="dTz-Iv-Tgt" firstAttribute="top" secondItem="RGZ-iU-SDi" secondAttribute="top" id="0Ym-Mc-6D5"/>
+                                    <constraint firstItem="5Fb-jF-A9v" firstAttribute="centerY" secondItem="RGZ-iU-SDi" secondAttribute="centerY" id="SOX-Pm-p23"/>
+                                    <constraint firstItem="5Fb-jF-A9v" firstAttribute="leading" secondItem="dTz-Iv-Tgt" secondAttribute="trailing" constant="4" id="U7V-qC-exa"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Fb-jF-A9v" secondAttribute="trailing" constant="8" id="ZBk-Bu-u3z"/>
+                                    <constraint firstAttribute="bottom" secondItem="dTz-Iv-Tgt" secondAttribute="bottom" id="erh-46-lMz"/>
+                                    <constraint firstAttribute="height" constant="120" id="hlU-ub-Q8g"/>
+                                    <constraint firstItem="dTz-Iv-Tgt" firstAttribute="leading" secondItem="RGZ-iU-SDi" secondAttribute="leading" constant="8" id="oPS-hu-iIs"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="77w-9n-NFD" firstAttribute="leading" secondItem="FdU-Q6-3QL" secondAttribute="leading" id="6bT-Hr-oeV"/>
-                            <constraint firstItem="77w-9n-NFD" firstAttribute="top" secondItem="tUE-MQ-9Jm" secondAttribute="bottom" id="7XA-cX-exi">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-64"/>
-                            </constraint>
-                            <constraint firstItem="f4s-nV-xyo" firstAttribute="top" secondItem="77w-9n-NFD" secondAttribute="bottom" id="yLM-lb-tdW">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-49"/>
-                            </constraint>
+                            <constraint firstItem="RGZ-iU-SDi" firstAttribute="leading" secondItem="FdU-Q6-3QL" secondAttribute="leading" id="9M6-Ub-a5e"/>
+                            <constraint firstAttribute="trailing" secondItem="RGZ-iU-SDi" secondAttribute="trailing" id="DuP-lY-0us"/>
+                            <constraint firstItem="RGZ-iU-SDi" firstAttribute="top" secondItem="77w-9n-NFD" secondAttribute="bottom" id="ZGA-sh-smW"/>
+                            <constraint firstItem="77w-9n-NFD" firstAttribute="top" secondItem="tUE-MQ-9Jm" secondAttribute="bottom" id="h1N-0g-Tww"/>
+                            <constraint firstItem="f4s-nV-xyo" firstAttribute="top" secondItem="RGZ-iU-SDi" secondAttribute="bottom" id="oqc-3c-bZW"/>
                             <constraint firstAttribute="trailing" secondItem="77w-9n-NFD" secondAttribute="trailing" id="zHH-Fo-ewN"/>
                         </constraints>
                     </view>
@@ -296,6 +333,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="77w-9n-NFD" id="yee-4T-oeF"/>
+                        <outlet property="gotItButton" destination="5Fb-jF-A9v" id="teI-oV-NH1"/>
+                        <outlet property="gotItHeightConstraint" destination="hlU-ub-Q8g" id="9HG-Dy-b1J"/>
+                        <outlet property="gotItView" destination="RGZ-iU-SDi" id="bqN-eE-zqd"/>
                         <segue destination="YHp-ZS-BPP" kind="show" identifier="ShowCategory" id="ofq-6B-lcT"/>
                     </connections>
                 </viewController>
@@ -539,7 +579,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="alT-WY-K2j">
-                                <rect key="frame" x="0.0" y="94" width="414" height="449"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="469"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="wZC-dH-3b2">
@@ -557,17 +597,16 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPE-by-bss">
-                                <rect key="frame" x="0.0" y="543" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="563" width="414" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OP-n0-rvF">
-                                        <rect key="frame" x="8" y="0.0" width="330" height="100"/>
-                                        <string key="text">TIP: after selecting a category to search with, you can tap the "back" button to add more categories.  When you're done, tap "Surprise Me!" to let Sup? City recommend places for you.</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIP: use this &quot;Surprise Me&quot; feature to pick categories you're interested in, and Sup? City will recommend places for you." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OP-n0-rvF">
+                                        <rect key="frame" x="8" y="0.0" width="326" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WV3-fz-NmL">
-                                        <rect key="frame" x="338" y="34.666666666666629" width="68" height="30"/>
+                                        <rect key="frame" x="338" y="25" width="68" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="68" id="IcX-l8-IsH"/>
                                         </constraints>
@@ -585,8 +624,8 @@
                                     <constraint firstItem="2OP-n0-rvF" firstAttribute="leading" secondItem="fPE-by-bss" secondAttribute="leading" constant="8" id="6iY-e7-cpV"/>
                                     <constraint firstAttribute="bottom" secondItem="2OP-n0-rvF" secondAttribute="bottom" id="EwW-vz-pYn"/>
                                     <constraint firstAttribute="trailing" secondItem="WV3-fz-NmL" secondAttribute="trailing" constant="8" id="SCV-vK-rW1"/>
-                                    <constraint firstItem="WV3-fz-NmL" firstAttribute="leading" secondItem="2OP-n0-rvF" secondAttribute="trailing" id="fyx-OO-8SA"/>
-                                    <constraint firstAttribute="height" constant="100" id="w8q-XR-uFo"/>
+                                    <constraint firstItem="WV3-fz-NmL" firstAttribute="leading" secondItem="2OP-n0-rvF" secondAttribute="trailing" constant="4" id="fyx-OO-8SA"/>
+                                    <constraint firstAttribute="height" constant="80" id="w8q-XR-uFo"/>
                                     <constraint firstItem="WV3-fz-NmL" firstAttribute="centerY" secondItem="fPE-by-bss" secondAttribute="centerY" id="wNt-Qs-akC"/>
                                     <constraint firstItem="2OP-n0-rvF" firstAttribute="top" secondItem="fPE-by-bss" secondAttribute="top" id="zfK-iv-QNR"/>
                                 </constraints>
@@ -697,39 +736,40 @@
                                     <outlet property="delegate" destination="drD-Ic-Hni" id="0EN-2F-Mof"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45Z-bF-7NA">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ksd-87-BdB">
                                 <rect key="frame" x="0.0" y="543" width="414" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ua8-5G-HQ7">
-                                        <rect key="frame" x="8" y="0.0" width="330" height="100"/>
-                                        <string key="text">TIP: after selecting a category to search with, you can tap the "back" button to add more categories.  When you're done, tap "Surprise Me!" to let Sup? City recommend places for you.</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTc-jt-zu8">
+                                        <rect key="frame" x="8" y="0.0" width="326" height="100"/>
+                                        <string key="text">TIP: on this screen, you can check and uncheck subcategories you're interested in.  You can also tap the "back" button to add other categories. Tap "Next" to see everything you've selected.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1T-Lp-eSk">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRy-e7-Vku">
                                         <rect key="frame" x="338" y="34.666666666666629" width="68" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="68" id="e65-Cp-a91"/>
+                                            <constraint firstAttribute="width" constant="68" id="EFt-YF-Uw7"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="   Got it!   ">
                                             <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="didTapGotItButton:" destination="drD-Ic-Hni" eventType="touchUpInside" id="amt-bG-2s7"/>
+                                            <action selector="didTapGotItButton:" destination="drD-Ic-Hni" eventType="touchUpInside" id="InL-c6-qNh"/>
+                                            <action selector="didTapGotItButton:" destination="CcW-yj-hls" eventType="touchUpInside" id="wZV-vd-B2F"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.052858135219999998" green="0.21997345639999999" blue="0.44053583559999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="ua8-5G-HQ7" firstAttribute="leading" secondItem="45Z-bF-7NA" secondAttribute="leading" constant="8" id="Mez-g6-Sil"/>
-                                    <constraint firstAttribute="bottom" secondItem="ua8-5G-HQ7" secondAttribute="bottom" id="gTa-Uq-wQd"/>
-                                    <constraint firstItem="i1T-Lp-eSk" firstAttribute="centerY" secondItem="45Z-bF-7NA" secondAttribute="centerY" id="h1u-kq-ZEH"/>
-                                    <constraint firstAttribute="trailing" secondItem="i1T-Lp-eSk" secondAttribute="trailing" constant="8" id="nmT-rK-BeJ"/>
-                                    <constraint firstItem="i1T-Lp-eSk" firstAttribute="leading" secondItem="ua8-5G-HQ7" secondAttribute="trailing" id="ozC-Dd-WMM"/>
-                                    <constraint firstAttribute="height" constant="100" id="qyT-hD-DSe"/>
-                                    <constraint firstItem="ua8-5G-HQ7" firstAttribute="top" secondItem="45Z-bF-7NA" secondAttribute="top" id="yeC-Ze-bIJ"/>
+                                    <constraint firstAttribute="height" constant="100" id="Edn-lB-EG0"/>
+                                    <constraint firstAttribute="bottom" secondItem="hTc-jt-zu8" secondAttribute="bottom" id="GtL-Ci-Ned"/>
+                                    <constraint firstItem="IRy-e7-Vku" firstAttribute="leading" secondItem="hTc-jt-zu8" secondAttribute="trailing" constant="4" id="JJN-zr-bEk"/>
+                                    <constraint firstItem="hTc-jt-zu8" firstAttribute="leading" secondItem="Ksd-87-BdB" secondAttribute="leading" constant="8" id="ZNp-3y-9W6"/>
+                                    <constraint firstItem="IRy-e7-Vku" firstAttribute="centerY" secondItem="Ksd-87-BdB" secondAttribute="centerY" id="aZC-jP-1mc"/>
+                                    <constraint firstItem="hTc-jt-zu8" firstAttribute="top" secondItem="Ksd-87-BdB" secondAttribute="top" id="jEE-Lr-sE5"/>
+                                    <constraint firstAttribute="trailing" secondItem="IRy-e7-Vku" secondAttribute="trailing" constant="8" id="yw8-5k-yzU"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -738,16 +778,16 @@
                             <constraint firstItem="l5c-N4-Nfh" firstAttribute="top" secondItem="1uM-Gm-hdk" secondAttribute="bottom" id="8WB-rt-pSk"/>
                             <constraint firstItem="bub-K2-b1V" firstAttribute="leading" secondItem="tqQ-6L-hIl" secondAttribute="leading" id="DTa-Xk-eNa"/>
                             <constraint firstAttribute="trailing" secondItem="bub-K2-b1V" secondAttribute="trailing" id="Edh-TI-aia"/>
-                            <constraint firstItem="45Z-bF-7NA" firstAttribute="leading" secondItem="tqQ-6L-hIl" secondAttribute="leading" id="JBF-tk-wST"/>
                             <constraint firstItem="1uM-Gm-hdk" firstAttribute="leading" secondItem="tqQ-6L-hIl" secondAttribute="leading" id="JCU-bm-DBI"/>
                             <constraint firstAttribute="trailing" secondItem="y3Z-n5-IdH" secondAttribute="trailing" id="MFl-IQ-zSG"/>
                             <constraint firstAttribute="trailing" secondItem="1uM-Gm-hdk" secondAttribute="trailing" id="QzL-ig-9Js"/>
                             <constraint firstItem="y3Z-n5-IdH" firstAttribute="top" secondItem="C5B-vQ-Skg" secondAttribute="bottom" id="TeG-do-HkS"/>
                             <constraint firstItem="y3Z-n5-IdH" firstAttribute="leading" secondItem="tqQ-6L-hIl" secondAttribute="leading" id="W6w-Cg-yhW"/>
-                            <constraint firstAttribute="trailing" secondItem="45Z-bF-7NA" secondAttribute="trailing" id="YEn-TZ-dzP"/>
                             <constraint firstItem="bub-K2-b1V" firstAttribute="top" secondItem="y3Z-n5-IdH" secondAttribute="bottom" id="ZGk-DC-vXB"/>
-                            <constraint firstItem="1uM-Gm-hdk" firstAttribute="top" secondItem="45Z-bF-7NA" secondAttribute="bottom" id="ZHJ-WM-JO6"/>
-                            <constraint firstItem="45Z-bF-7NA" firstAttribute="top" secondItem="bub-K2-b1V" secondAttribute="bottom" id="gMP-uG-Mb5"/>
+                            <constraint firstItem="Ksd-87-BdB" firstAttribute="top" secondItem="bub-K2-b1V" secondAttribute="bottom" id="bcR-wv-Kcg"/>
+                            <constraint firstItem="1uM-Gm-hdk" firstAttribute="top" secondItem="Ksd-87-BdB" secondAttribute="bottom" id="hfZ-Qw-e8C"/>
+                            <constraint firstAttribute="trailing" secondItem="Ksd-87-BdB" secondAttribute="trailing" id="xyQ-Bm-guC"/>
+                            <constraint firstItem="Ksd-87-BdB" firstAttribute="leading" secondItem="tqQ-6L-hIl" secondAttribute="leading" id="zJE-Vd-yce"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sup? City" id="VAs-CB-sqz">
@@ -766,8 +806,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="goButton" destination="anx-P9-EDI" id="4no-4S-86Y"/>
-                        <outlet property="gotItButton" destination="i1T-Lp-eSk" id="CKm-B4-0S6"/>
-                        <outlet property="gotItHeightConstraint" destination="qyT-hD-DSe" id="SRl-0g-UKX"/>
+                        <outlet property="gotItButton" destination="IRy-e7-Vku" id="BW2-dx-597"/>
+                        <outlet property="gotItHeightConstraint" destination="Edn-lB-EG0" id="4vM-fe-7E7"/>
                         <outlet property="tableView" destination="bub-K2-b1V" id="Nla-AH-pAt"/>
                         <segue destination="Lks-cD-BTu" kind="show" identifier="ShowShoppingCart" id="itC-Zp-WcB"/>
                     </connections>
@@ -857,8 +897,8 @@
                                 <rect key="frame" x="0.0" y="543" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLP-f8-M5N">
-                                        <rect key="frame" x="8" y="0.0" width="330" height="100"/>
-                                        <string key="text">TIP: after selecting a category to search with, you can tap the "back" button to add more categories.  When you're done, tap "Surprise Me!" to let Sup? City recommend places for you.</string>
+                                        <rect key="frame" x="8" y="0.0" width="326" height="100"/>
+                                        <string key="text">TIP: here, you can delete subcategories you've added by swiping on them. You can also go back to add more. When you're ready, tap "Surprise Me!" to see your results.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -884,7 +924,7 @@
                                     <constraint firstAttribute="trailing" secondItem="s6a-VK-NNP" secondAttribute="trailing" constant="8" id="gZg-Ur-Vfv"/>
                                     <constraint firstItem="RLP-f8-M5N" firstAttribute="leading" secondItem="oM0-X8-jSK" secondAttribute="leading" constant="8" id="jhi-5f-Kzd"/>
                                     <constraint firstAttribute="height" constant="100" id="oGY-b2-4Hx"/>
-                                    <constraint firstItem="s6a-VK-NNP" firstAttribute="leading" secondItem="RLP-f8-M5N" secondAttribute="trailing" id="v7h-9A-pu4"/>
+                                    <constraint firstItem="s6a-VK-NNP" firstAttribute="leading" secondItem="RLP-f8-M5N" secondAttribute="trailing" constant="4" id="v7h-9A-pu4"/>
                                     <constraint firstItem="s6a-VK-NNP" firstAttribute="centerY" secondItem="oM0-X8-jSK" secondAttribute="centerY" id="yF4-p3-2iC"/>
                                 </constraints>
                             </view>
@@ -1011,8 +1051,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYE-dK-eRD">
-                                                    <rect key="frame" x="15" y="11" width="538" height="22"/>
-                                                    <string key="text">1.   TERMS OF USE.  You are entitled to use this software "as is," free of charge.  Sup? City is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in Sup? City are not endorsed by its developer; this is either representative or property of Yelp or Google, since Sup? City is powered by Yelp and AdMob by Google for the purpose of advertising.  Lastly, please note that the "Sup? City" icon and "Sup? City" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important to us.  Sup? City prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Sup? City will remain functional with the exception of its display of your distance from places of interest.  AdMob by Google may utilize your location for the purpose of ad targeting, however, please note that Sup? City will never voluntarily share or sell your location information.</string>
+                                                    <rect key="frame" x="15" y="11" width="384" height="22"/>
+                                                    <mutableString key="text">1.   TERMS OF USE.  You are entitled to use this software "as is."  Sup? City is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in Sup? City are not endorsed by its developer; this is either representative or property of Yelp, since Sup? City is powered by Yelp.  Lastly, please note that the "Sup? City" icon and "Sup? City" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important.  Sup? City prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Sup? City will remain functional with the exception of its display of your distance from places of interest.  Lastly, note that Sup? City will never voluntarily share or sell your location information.</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>

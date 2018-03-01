@@ -13,6 +13,7 @@
 #import "SUPHeaderTitleView.h"
 #import "SUPStyles.h"
 #import "AppDelegate.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SUPExploreViewController () <SUPCategoryTableViewControllerDelegate>
 
@@ -20,6 +21,10 @@
 @property (nonatomic) BOOL isLargePhone;
 @property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 @property (nonatomic, strong) UITextField *alertTextField;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *gotItHeightConstraint;
+@property (nonatomic, weak) IBOutlet UIView *gotItView;
+@property (nonatomic, weak) IBOutlet UIButton *gotItButton;
+
 @end
 
 static NSArray *businessesToDisplay;
@@ -29,6 +34,16 @@ static NSString *const kShowCategorySegue = @"ShowCategory";
 static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 @implementation SUPExploreViewController
+
+- (IBAction)didTapGotItButton:(id)sender
+{
+    [UIView animateWithDuration:0.5f animations:^{
+        self.gotItHeightConstraint.constant = 0.f;
+        [self.gotItButton removeFromSuperview];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"WelcomeTip"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
+}
 
 - (void)didTapBackWithDetails:(NSMutableDictionary *)details
 {
@@ -115,6 +130,13 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     [super viewWillAppear:animated];
     
+    BOOL didGetIt = [[NSUserDefaults standardUserDefaults] boolForKey:@"WelcomeTip"];
+    if (didGetIt)
+    {
+        self.gotItHeightConstraint.constant = 0.f;
+        [self.gotItButton removeFromSuperview];
+    }
+    
     if (kCity)
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
@@ -168,6 +190,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.gotItButton.layer.borderWidth = 1.f;
+    self.gotItButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.gotItButton.layer.cornerRadius = 10.f;
     
     UINib *cellNib = [UINib nibWithNibName:kCollectionViewCellNib bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"Cell"];

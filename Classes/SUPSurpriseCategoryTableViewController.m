@@ -11,6 +11,7 @@
 #import "SUPSurpriseSubCategoryTableViewController.h"
 #import "SUPSurpriseShoppingCartTableViewController.h"
 #import "SUPStyles.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SUPSurpriseCategoryTableViewController ()
 <SUPSurpriseSubCategoryTableViewControllerDelegate>
@@ -59,8 +60,10 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 {
     [super viewDidLoad];
     
+    self.gotItButton.layer.borderWidth = 1.f;
+    self.gotItButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.gotItButton.layer.cornerRadius = 10.f;
 
-    
     self.tableView.tableFooterView = [UIView new];
     
     CALayer * layer = [self.goButton layer];
@@ -79,7 +82,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     [UIView animateWithDuration:0.5f animations:^{
         self.gotItHeightConstraint.constant = 0.f;
         [self.gotItButton removeFromSuperview];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GotTip"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"SurpriseTip1"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }];
 }
@@ -118,7 +121,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    BOOL didGetIt = [[NSUserDefaults standardUserDefaults] boolForKey:@"GotTip"];
+    BOOL didGetIt = [[NSUserDefaults standardUserDefaults] boolForKey:@"SurpriseTip1"];
     if (didGetIt)
     {
         self.gotItHeightConstraint.constant = 0.f;

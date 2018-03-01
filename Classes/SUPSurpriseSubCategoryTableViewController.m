@@ -11,6 +11,7 @@
 #import "SUPHeaderTitleView.h"
 #import "SUPStyles.h"
 #import "SUPPresentationTableViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 //@import GoogleMobileAds;
 
@@ -42,7 +43,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     [UIView animateWithDuration:0.5f animations:^{
         self.gotItHeightConstraint.constant = 0.f;
         [self.gotItButton removeFromSuperview];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GotTip"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"SurpriseTip2"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }];
 }
@@ -108,7 +109,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    BOOL didGetIt = [[NSUserDefaults standardUserDefaults] boolForKey:@"GotTip"];
+    BOOL didGetIt = [[NSUserDefaults standardUserDefaults] boolForKey:@"SurpriseTip2"];
     if (didGetIt)
     {
         self.gotItHeightConstraint.constant = 0.f;
@@ -210,8 +211,10 @@ static NSString *const kCheckMarkGraphic = @"green_check";
 {
     [super viewDidLoad];
 
-
+    self.gotItButton.layer.borderWidth = 1.f;
+    self.gotItButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.tableView.tableFooterView = [UIView new];
+    self.gotItButton.layer.cornerRadius = 10.f;
 
     CALayer * layer = [self.goButton layer];
     [layer setMasksToBounds:YES];
