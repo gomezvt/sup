@@ -16,6 +16,53 @@
 
 @implementation YLPBusiness
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        self.closed = [aDecoder decodeBoolForKey:@"closed"];
+        self.hoursItem = [aDecoder decodeObjectForKey:@"hoursItem"];
+        self.imageURL = [aDecoder decodeObjectForKey:@"imageURL"];
+        self.URL = [aDecoder decodeObjectForKey:@"URL"];
+        self.didGetDetails = [aDecoder decodeBoolForKey:@"didGetDetails"];
+        self.rating = [aDecoder decodeDoubleForKey:@"rating"];
+        self.reviewCount = [aDecoder decodeIntegerForKey:@"reviewCount"];
+        self.name = [aDecoder decodeObjectForKey:@"name"];
+        self.phone = [aDecoder decodeObjectForKey:@"phone"];
+        self.identifier = [aDecoder decodeObjectForKey:@"identifier"];
+        self.bizThumbNail = [aDecoder decodeObjectForKey:@"bizThumbNail"];
+        self.price = [aDecoder decodeObjectForKey:@"price"];
+        self.categories = [aDecoder decodeObjectForKey:@"categories"];
+        self.location = [aDecoder decodeObjectForKey:@"location"];
+        self.businessHours = [aDecoder decodeObjectForKey:@"businessHours"];
+        self.isOpenNow = [aDecoder decodeBoolForKey:@"isOpenNow"];
+        self.miles = [aDecoder decodeDoubleForKey:@"miles"];
+        self.reviews = [aDecoder decodeObjectForKey:@"reviews"];
+        self.photos = [aDecoder decodeObjectForKey:@"photos"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeBool:_closed forKey:@"closed"];
+    [aCoder encodeObject:_hoursItem forKey:@"hoursItem"];
+    [aCoder encodeObject:_imageURL forKey:@"imageURL"];
+    [aCoder encodeObject:_URL forKey:@"URL"];
+    [aCoder encodeBool:_didGetDetails forKey:@"didGetDetails"];
+    [aCoder encodeDouble:_rating forKey:@"rating"];
+    [aCoder encodeInteger:_reviewCount forKey:@"reviewCount"];
+    [aCoder encodeObject:_name forKey:@"name"];
+    [aCoder encodeObject:_phone forKey:@"phone"];
+    [aCoder encodeObject:_identifier forKey:@"identifier"];
+    [aCoder encodeObject:_bizThumbNail forKey:@"bizThumbNail"];
+    [aCoder encodeObject:_price forKey:@"price"];
+    [aCoder encodeObject:_categories forKey:@"categories"];
+    [aCoder encodeObject:_location forKey:@"location"];
+    [aCoder encodeObject:_businessHours forKey:@"businessHours"];
+    [aCoder encodeBool:_isOpenNow forKey:@"isOpenNow"];
+    [aCoder encodeDouble:_miles forKey:@"miles"];
+    [aCoder encodeObject:_reviews forKey:@"reviews"];
+    [aCoder encodeObject:_photos forKey:@"photos"];
+}
+
 - (instancetype)initWithDictionary:(NSDictionary *)businessDict {
     if (self = [super init]) {
         

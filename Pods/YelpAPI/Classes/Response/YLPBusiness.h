@@ -15,21 +15,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YLPBusiness : NSObject
 
-@property (nonatomic, getter=isClosed, readonly) BOOL closed;
+@property (nonatomic, getter=isClosed) BOOL closed;
 @property (nonatomic, strong) id hoursItem;
-@property (nonatomic, readonly, nullable, copy) NSURL *imageURL;
-@property (nonatomic, readonly, copy) NSURL *URL;
+@property (nonatomic, nullable, copy) NSURL *imageURL;
+@property (nonatomic, copy) NSURL *URL;
 @property (nonatomic) BOOL didGetDetails;
-@property (nonatomic, readonly) double rating;
-@property (nonatomic, readonly) NSUInteger reviewCount;
+@property (nonatomic) double rating;
+@property (nonatomic) NSUInteger reviewCount;
 
-@property (nonatomic, readonly, copy) NSString *name;
-@property (nonatomic, readonly, nullable, copy) NSString *phone;
-@property (nonatomic, readonly, copy) NSString *identifier;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, nullable, copy) NSString *phone;
+@property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, strong) UIImage *bizThumbNail;
-@property (nonatomic, readonly, copy) NSString *price;
-@property (nonatomic, readonly, copy) NSArray<YLPCategory *> *categories;
-@property (nonatomic, readonly) YLPLocation *location;
+@property (nonatomic, copy) NSString *price;
+@property (nonatomic, copy) NSArray<YLPCategory *> *categories;
+@property (nonatomic) YLPLocation *location;
 
 @property (nonatomic, strong) NSArray *businessHours;
 @property (nonatomic) BOOL isOpenNow;

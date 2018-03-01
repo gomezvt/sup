@@ -273,36 +273,28 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 
 - (IBAction)setFavoritesSwitchState:(id)sender
 {
-//    UISwitch *sw = sender;
-//    NSMutableArray *faves = [[NSUserDefaults standardUserDefaults] objectForKey:@"faves"];
-//    if (sw.isOn)
-//    {
-//        if (faves.count > 0)
-//        {
-//            [faves addObject:self.selectedBusiness];
-//        }
-//        else
-//        {
-//            faves = [NSMutableArray array];
-//            [faves addObject:self.selectedBusiness];
-//        }
-//        NSData * data     = [NSKeyedArchiver archivedDataWithRootObject:faves];
-//
-//        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"faves"];
-//        [[NSUserDefaults standardUserDefaults] synchronize];
-//    }
-//    else
-//    {
-//        NSData * data    = [NSData dataFromBase64String:string];
-//
-//        NSMutableArray *faves = [NSKeyedUnarchiver unarchiveObjectWithData:data]
-//        if (faves.count > 0)
-//        {
-//            [faves removeObject:self.selectedBusiness];
-//        }
-//    }
+    UISwitch *sw = sender;
+    NSData *unarchived = [[NSUserDefaults standardUserDefaults] objectForKey:@"faves"];
+    NSMutableArray *faves = [NSKeyedUnarchiver unarchiveObjectWithData:unarchived];
+    if (!faves)
+    {
+        faves = [NSMutableArray array];
+    }
+    
+    if (sw.isOn)
+    {
+        [faves addObject:self.selectedBusiness];
+    }
+    else
+    {
+        YLPBusiness *lastAdded = [[faves filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", self.selectedBusiness.identifier]] lastObject];
+        [faves removeObject:lastAdded];
+    }
+    
+    NSData *archived = [NSKeyedArchiver archivedDataWithRootObject:faves];
+    [[NSUserDefaults standardUserDefaults] setObject:archived forKey:@"faves"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
 
 - (NSString *)identifierForIndexPath:(NSIndexPath *)indexPath
 {
@@ -469,7 +461,13 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     if (indexPath.section == 0)
     {
         SUPFavoritesTableViewCell *favoritesCell = (SUPFavoritesTableViewCell *)cell;
-        
+        NSData *unarchived = [[NSUserDefaults standardUserDefaults] objectForKey:@"faves"];
+        NSMutableArray *faves = [NSKeyedUnarchiver unarchiveObjectWithData:unarchived];
+        YLPBusiness *existingFavorite = [[faves filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", self.selectedBusiness.identifier]] lastObject];
+        if (existingFavorite)
+        {
+            [favoritesCell.swch setOn:YES];
+        }
     }
     else if (indexPath.section == 1)
     {
