@@ -12,6 +12,27 @@
 
 @implementation YLPLocation
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        self.city = [aDecoder decodeObjectForKey:@"city"];
+        self.stateCode = [aDecoder decodeObjectForKey:@"stateCode"];
+        self.postalCode = [aDecoder decodeObjectForKey:@"postalCode"];
+        self.countryCode = [aDecoder decodeObjectForKey:@"countryCode"];
+        self.address = [aDecoder decodeObjectForKey:@"address"];
+        self.coordinate = [aDecoder decodeObjectForKey:@"coordinate"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_city forKey:@"city"];
+    [aCoder encodeObject:_stateCode forKey:@"stateCode"];
+    [aCoder encodeObject:_postalCode forKey:@"postalCode"];
+    [aCoder encodeObject:_countryCode forKey:@"countryCode"];
+    [aCoder encodeObject:_address forKey:@"address"];
+    [aCoder encodeObject:_coordinate forKey:@"coordinate"];
+}
+
 - (instancetype)initWithDictionary:(NSDictionary *)location coordinate:(YLPCoordinate *)coordinate {
     if (self = [super init]) {
         _city = location[@"city"];

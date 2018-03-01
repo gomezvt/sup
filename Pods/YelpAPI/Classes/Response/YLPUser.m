@@ -11,6 +11,19 @@
 
 @implementation YLPUser
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        self.name = [aDecoder decodeObjectForKey:@"name"];
+        self.imageURL = [aDecoder decodeObjectForKey:@"imageURL"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_name forKey:@"name"];
+    [aCoder encodeObject:_imageURL forKey:@"imageURL"];
+}
+
 - (instancetype)initWithDictionary:(NSDictionary *)userDict {
     if (self = [super init]) {
         _name = userDict[@"name"];
