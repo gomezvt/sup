@@ -276,7 +276,7 @@
                                 <rect key="frame" x="0.0" y="567" width="414" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTz-Iv-Tgt">
-                                        <rect key="frame" x="8" y="0.0" width="326" height="120"/>
+                                        <rect key="frame" x="8" y="0.0" width="322" height="120"/>
                                         <string key="text">Welcome to Sup? City!
 
 TIP: tap the location pin at the top to change your search location at any time. You can find places with either the "Explore", "Search", or "Surprise Me" features below. Enjoy!</string>
@@ -303,7 +303,7 @@ TIP: tap the location pin at the top to change your search location at any time.
                                 <constraints>
                                     <constraint firstItem="dTz-Iv-Tgt" firstAttribute="top" secondItem="RGZ-iU-SDi" secondAttribute="top" id="0Ym-Mc-6D5"/>
                                     <constraint firstItem="5Fb-jF-A9v" firstAttribute="centerY" secondItem="RGZ-iU-SDi" secondAttribute="centerY" id="SOX-Pm-p23"/>
-                                    <constraint firstItem="5Fb-jF-A9v" firstAttribute="leading" secondItem="dTz-Iv-Tgt" secondAttribute="trailing" constant="4" id="U7V-qC-exa"/>
+                                    <constraint firstItem="5Fb-jF-A9v" firstAttribute="leading" secondItem="dTz-Iv-Tgt" secondAttribute="trailing" constant="8" id="U7V-qC-exa"/>
                                     <constraint firstAttribute="trailing" secondItem="5Fb-jF-A9v" secondAttribute="trailing" constant="8" id="ZBk-Bu-u3z"/>
                                     <constraint firstAttribute="bottom" secondItem="dTz-Iv-Tgt" secondAttribute="bottom" id="erh-46-lMz"/>
                                     <constraint firstAttribute="height" constant="120" id="hlU-ub-Q8g"/>
@@ -600,7 +600,7 @@ TIP: tap the location pin at the top to change your search location at any time.
                                 <rect key="frame" x="0.0" y="563" width="414" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIP: use this &quot;Surprise Me&quot; feature to pick categories you're interested in, and Sup? City will recommend places for you." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OP-n0-rvF">
-                                        <rect key="frame" x="8" y="0.0" width="326" height="80"/>
+                                        <rect key="frame" x="8" y="0.0" width="322" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -624,7 +624,7 @@ TIP: tap the location pin at the top to change your search location at any time.
                                     <constraint firstItem="2OP-n0-rvF" firstAttribute="leading" secondItem="fPE-by-bss" secondAttribute="leading" constant="8" id="6iY-e7-cpV"/>
                                     <constraint firstAttribute="bottom" secondItem="2OP-n0-rvF" secondAttribute="bottom" id="EwW-vz-pYn"/>
                                     <constraint firstAttribute="trailing" secondItem="WV3-fz-NmL" secondAttribute="trailing" constant="8" id="SCV-vK-rW1"/>
-                                    <constraint firstItem="WV3-fz-NmL" firstAttribute="leading" secondItem="2OP-n0-rvF" secondAttribute="trailing" constant="4" id="fyx-OO-8SA"/>
+                                    <constraint firstItem="WV3-fz-NmL" firstAttribute="leading" secondItem="2OP-n0-rvF" secondAttribute="trailing" constant="8" id="fyx-OO-8SA"/>
                                     <constraint firstAttribute="height" constant="80" id="w8q-XR-uFo"/>
                                     <constraint firstItem="WV3-fz-NmL" firstAttribute="centerY" secondItem="fPE-by-bss" secondAttribute="centerY" id="wNt-Qs-akC"/>
                                     <constraint firstItem="2OP-n0-rvF" firstAttribute="top" secondItem="fPE-by-bss" secondAttribute="top" id="zfK-iv-QNR"/>
@@ -740,7 +740,7 @@ TIP: tap the location pin at the top to change your search location at any time.
                                 <rect key="frame" x="0.0" y="543" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTc-jt-zu8">
-                                        <rect key="frame" x="8" y="0.0" width="326" height="100"/>
+                                        <rect key="frame" x="8" y="0.0" width="322" height="100"/>
                                         <string key="text">TIP: on this screen, you can check and uncheck subcategories you're interested in.  You can also tap the "back" button to add other categories. Tap "Next" to see everything you've selected.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -765,7 +765,7 @@ TIP: tap the location pin at the top to change your search location at any time.
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Edn-lB-EG0"/>
                                     <constraint firstAttribute="bottom" secondItem="hTc-jt-zu8" secondAttribute="bottom" id="GtL-Ci-Ned"/>
-                                    <constraint firstItem="IRy-e7-Vku" firstAttribute="leading" secondItem="hTc-jt-zu8" secondAttribute="trailing" constant="4" id="JJN-zr-bEk"/>
+                                    <constraint firstItem="IRy-e7-Vku" firstAttribute="leading" secondItem="hTc-jt-zu8" secondAttribute="trailing" constant="8" id="JJN-zr-bEk"/>
                                     <constraint firstItem="hTc-jt-zu8" firstAttribute="leading" secondItem="Ksd-87-BdB" secondAttribute="leading" constant="8" id="ZNp-3y-9W6"/>
                                     <constraint firstItem="IRy-e7-Vku" firstAttribute="centerY" secondItem="Ksd-87-BdB" secondAttribute="centerY" id="aZC-jP-1mc"/>
                                     <constraint firstItem="hTc-jt-zu8" firstAttribute="top" secondItem="Ksd-87-BdB" secondAttribute="top" id="jEE-Lr-sE5"/>
@@ -897,7 +897,7 @@ TIP: tap the location pin at the top to change your search location at any time.
                                 <rect key="frame" x="0.0" y="543" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLP-f8-M5N">
-                                        <rect key="frame" x="8" y="0.0" width="326" height="100"/>
+                                        <rect key="frame" x="8" y="0.0" width="322" height="100"/>
                                         <string key="text">TIP: here, you can delete subcategories you've added by swiping on them. You can also go back to add more. When you're ready, tap "Surprise Me!" to see your results.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -924,7 +924,7 @@ TIP: tap the location pin at the top to change your search location at any time.
                                     <constraint firstAttribute="trailing" secondItem="s6a-VK-NNP" secondAttribute="trailing" constant="8" id="gZg-Ur-Vfv"/>
                                     <constraint firstItem="RLP-f8-M5N" firstAttribute="leading" secondItem="oM0-X8-jSK" secondAttribute="leading" constant="8" id="jhi-5f-Kzd"/>
                                     <constraint firstAttribute="height" constant="100" id="oGY-b2-4Hx"/>
-                                    <constraint firstItem="s6a-VK-NNP" firstAttribute="leading" secondItem="RLP-f8-M5N" secondAttribute="trailing" constant="4" id="v7h-9A-pu4"/>
+                                    <constraint firstItem="s6a-VK-NNP" firstAttribute="leading" secondItem="RLP-f8-M5N" secondAttribute="trailing" constant="8" id="v7h-9A-pu4"/>
                                     <constraint firstItem="s6a-VK-NNP" firstAttribute="centerY" secondItem="oM0-X8-jSK" secondAttribute="centerY" id="yF4-p3-2iC"/>
                                 </constraints>
                             </view>
@@ -1052,7 +1052,7 @@ TIP: tap the location pin at the top to change your search location at any time.
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYE-dK-eRD">
                                                     <rect key="frame" x="15" y="11" width="384" height="22"/>
-                                                    <mutableString key="text">1.   TERMS OF USE.  You are entitled to use this software "as is."  Sup? City is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in Sup? City are not endorsed by its developer; this is either representative or property of Yelp, since Sup? City is powered by Yelp.  Lastly, please note that the "Sup? City" icon and "Sup? City" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important.  Sup? City prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Sup? City will remain functional with the exception of its display of your distance from places of interest.  Lastly, note that Sup? City will never voluntarily share or sell your location information.</mutableString>
+                                                    <string key="text">1.   TERMS OF USE.  You are entitled to use this software "as is."  Sup? City is not responsible for data charges incurred by your mobile carrier as a result of your use of this app.  Please note that views, content, or opinions expressed in Sup? City are not endorsed by its developer; this is either representative or property of Yelp, since Sup? City is powered by Yelp.  Lastly, please note that the "Sup? City" icon and "Sup? City" iOS app name is copyright of its developer, Greg Gomez, 2017.  2.   YOUR PRIVACY.  Your information is very important.  Sup? City prompts for your location in order to convey your distance from places of interest.  Your consent to share your location is optional.  Should you decide not to share your location, Sup? City will remain functional with the exception of its display of your distance from places of interest.  Lastly, note that Sup? City will never voluntarily share or sell your location information.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1553,7 +1553,7 @@ TIP: tap the location pin at the top to change your search location at any time.
         <image name="surprise" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y5n-5S-q2S"/>
+        <segue reference="itC-Zp-WcB"/>
         <segue reference="lMI-Vd-YSr"/>
     </inferredMetricsTieBreakers>
 </document>
