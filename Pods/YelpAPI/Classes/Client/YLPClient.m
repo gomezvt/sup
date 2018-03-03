@@ -142,16 +142,10 @@ NSString *const kYLPErrorDomain = @"com.yelp.YelpAPI.ErrorDomain";
 + (void)authorizeWithAppId:(NSString *)appId
                     secret:(NSString *)secret
          completionHandler:(void (^)(YLPClient *client, NSError *error))completionHandler {
-    NSURLRequest *request = [self authRequestWithAppId:appId secret:secret];
-    [self queryWithRequest:request completionHandler:^(NSDictionary *jsonResponse, NSError *error) {
-        if (error) {
-            completionHandler(nil, error);
-        } else {
-            NSString *accessToken = jsonResponse[@"access_token"];
-            YLPClient *client = [[YLPClient alloc] initWithAccessToken:accessToken];
-            completionHandler(client, nil);
-        }
-    }];
+    NSString *accessToken = @"oN_pE1NBI7E5umFqaT4RJGmKVmIvk-v2qlnwMgb55GWc62w2MuI8h07LY1szB_iWwHXXK1n6vtESjCXRcv0T9dCUKX_8SWjhrHSE7NbUB2awtix6_gFEPJgu0ANxWHYx";
+
+    YLPClient *client = [[YLPClient alloc] initWithAccessToken:accessToken];
+                completionHandler(client, nil);
 }
 
 @end
