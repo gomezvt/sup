@@ -42,6 +42,160 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 @implementation SUPFavoritesTableViewController
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kShowDetailSegue])
+    {
+        // Get destination view
+        SUPDetailTableViewController *vc = [segue destinationViewController];
+        vc.selectedBusiness = sender;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    self.didCancelRequest = NO;
+    self.didSelectBiz = YES;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.backChevron.enabled = NO;
+        self.hud = [SUPHUDView hudWithView:self.navigationController.view];
+        self.hud.delegate = self;
+        self.tableView.userInteractionEnabled = NO;
+        self.tabBarController.tabBar.userInteractionEnabled = NO;
+    });
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    YLPBusiness *selectedBusiness = [self.faves objectAtIndex:indexPath.row];
+    __weak typeof(self) weakSelf = self;
+    
+    [[AppDelegate yelp] businessWithId:selectedBusiness.identifier completionHandler:^
+     (YLPBusiness *business, NSError *error) {
+         dispatch_async(dispatch_get_main_queue(), ^{
+             NSString *string = error.userInfo[@"NSLocalizedDescription"];
+             
+             if ([string isEqualToString:@"The Internet connection appears to be offline."])
+             {
+                 [weakSelf _hideHud];
+                 
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
+                 
+                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                 [alertController addAction:ok];
+                 
+                 [weakSelf presentViewController:alertController animated:YES completion:nil];
+                 
+             }
+             else
+             {
+                 dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                     [[AppDelegate yelp] reviewsForBusinessWithId:business.identifier
+                                                completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
+                                                    dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                        NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                                                        
+                                                        if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                                                        {
+                                                            [weakSelf _hideHud];
+                                                            
+                                                            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
+                                                            
+                                                            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                                            [alertController addAction:ok];
+                                                            
+                                                            [weakSelf presentViewController:alertController animated:YES completion:nil];
+                                                            
+                                                        }
+                                                        else
+                                                        {
+                                                            // *** Get review user photos in advance if they exist, to display from Presentation VC
+                                                            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                                                
+                                                                NSMutableArray *userPhotos = [NSMutableArray array];
+                                                                for (YLPReview *review in reviews.reviews)
+                                                                {
+                                                                    YLPUser *user = review.user;
+                                                                    if (user.imageURL)
+                                                                    {
+                                                                        NSData *imageData = [NSData dataWithContentsOfURL:user.imageURL];
+                                                                        UIImage *image = [UIImage imageNamed:@"placeholder"];
+                                                                        if (imageData)
+                                                                        {
+                                                                            image = [UIImage imageWithData:imageData];
+                                                                        }
+                                                                        [userPhotos addObject:[NSDictionary dictionaryWithObject:image forKey:user.imageURL]];                                                                }
+                                                                }
+                                                                business.reviews = reviews.reviews;
+                                                                business.userPhotosArray = userPhotos;
+                                                                dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                    // *** Get business photos in advance if they exist, to display from Presentation VC
+                                                                    if (business.photos.count > 0)
+                                                                    {
+                                                                        if ([[business.photos firstObject] isKindOfClass:[NSString class]])
+                                                                        {
+                                                                            NSMutableArray *photosArray = [NSMutableArray array];
+                                                                            for (NSString *photoStr in business.photos)
+                                                                            {
+                                                                                NSURL *url = [NSURL URLWithString:photoStr];
+                                                                                NSData *imageData = [NSData dataWithContentsOfURL:url];
+                                                                                UIImage *image = [UIImage imageWithData:imageData];
+                                                                                
+                                                                                if (imageData)
+                                                                                {
+                                                                                    [photosArray addObject:image];
+                                                                                }
+                                                                            }
+                                                                            
+                                                                            business.photos = photosArray;
+                                                                            
+                                                                            if ([[business.photos lastObject] isKindOfClass:[UIImage class]])
+                                                                            {
+                                                                                [[NSNotificationCenter defaultCenter]
+                                                                                 postNotificationName:@"receivedBizPhotos"
+                                                                                 object:self];
+                                                                            }
+                                                                            
+                                                                            if (!weakSelf.didCancelRequest)
+                                                                            {
+                                                                                [weakSelf _hideHud];
+                                                                                
+                                                                                [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                                            }
+                                                                            
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        
+                                                                        
+                                                                        if (!weakSelf.didCancelRequest)
+                                                                        {
+                                                                            [weakSelf _hideHud];
+                                                                            
+                                                                            [weakSelf performSegueWithIdentifier:kShowDetailSegue sender:business];
+                                                                        }
+                                                                    }
+                                                                    
+                                                                });
+                                                            });
+                                                            
+                                                            
+                                                        }
+                                                        
+                                                    });
+                                                }];
+                     
+                     
+                 });
+                 
+             }
+             
+         });
+         
+     }];
+}
+
 - (void)didTapHUDCancelButton
 {
     self.didCancelRequest = YES;
@@ -54,16 +208,20 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     });
 }
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
+    self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    
+    self.navigationItem.titleView = self.headerTitleView;
+    self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSData *unarchived = [[NSUserDefaults standardUserDefaults] objectForKey:@"faves"];
-    self.faves = [NSKeyedUnarchiver unarchiveObjectWithData:unarchived];
-    if (!self.faves)
-    {
-        self.faves = [[NSMutableArray alloc] init];
-    }
     
     self.tableView.sectionHeaderHeight = 44.f;
     
@@ -74,6 +232,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSData *unarchived = [[NSUserDefaults standardUserDefaults] objectForKey:@"faves"];
+    self.faves = [NSKeyedUnarchiver unarchiveObjectWithData:unarchived];
+    if (!self.faves)
+    {
+        self.faves = [[NSMutableArray alloc] init];
+    }
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -82,12 +253,12 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     return self.faves.count;
 }
 
@@ -108,7 +279,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     if (self.faves.count > 0)
     {
         __block YLPBusiness *biz = [self.faves objectAtIndex:indexPath.row];
-
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.numberOfLines = 0;
         

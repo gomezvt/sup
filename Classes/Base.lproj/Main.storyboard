@@ -221,6 +221,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="7el-gd-ebm"/>
+                    <connections>
+                        <segue destination="YcC-JR-9wn" kind="show" identifier="ShowDetail" id="ff5-yl-GP7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqR-Yt-De8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1544,6 +1547,6 @@ TIP: tap the location pin at the top to change your search location at any time.
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="itC-Zp-WcB"/>
-        <segue reference="lMI-Vd-YSr"/>
+        <segue reference="ff5-yl-GP7"/>
     </inferredMetricsTieBreakers>
 </document>
