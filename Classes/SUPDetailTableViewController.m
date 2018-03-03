@@ -31,7 +31,7 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
+//@property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 
 @end
 

@@ -63,7 +63,6 @@
 		64E905EE1E49704000331C3F /* SUPYelpHoursTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E905EC1E49704000331C3F /* SUPYelpHoursTableViewCell.m */; };
 		64E905EF1E49704000331C3F /* SUPYelpHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E905ED1E49704000331C3F /* SUPYelpHoursTableViewCell.xib */; };
 		64E905F31E4970BC00331C3F /* SUPYelpCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E905F21E4970BC00331C3F /* SUPYelpCategoryTableViewCell.xib */; };
-		CF386C2C86B09043D41680B2 /* libPods-bvt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590D4A53A998579B76DD8514 /* libPods-bvt.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -189,7 +188,6 @@
 			files = (
 				6473625A1EB2F34700C3DA25 /* CoreLocation.framework in Frameworks */,
 				644111E71E2D33E000C3ED18 /* MapKit.framework in Frameworks */,
-				CF386C2C86B09043D41680B2 /* libPods-bvt.a in Frameworks */,
 				131E48FAF616660F61A39304 /* libPods-Sup.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -690,7 +688,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 x86_64 armvs7";
+				VALID_ARCHS = "x86_64 armv7 arm64";
 			};
 			name = Debug;
 		};
@@ -738,10 +736,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "arm64 armv7 x86_64 armvs7";
+				VALID_ARCHS = "x86_64 armv7 arm64";
 			};
 			name = Release;
 		};
@@ -759,13 +758,13 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = gms.d;
 				PRODUCT_NAME = "Sup City";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
+				VALID_ARCHS = "x86_64 armv7 arm64";
 			};
 			name = Debug;
 		};
@@ -783,11 +782,11 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = gms.d;
 				PRODUCT_NAME = "Sup City";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
+				VALID_ARCHS = "x86_64 armv7 arm64";
 			};
 			name = Release;
 		};
