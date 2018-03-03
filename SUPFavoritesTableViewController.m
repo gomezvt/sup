@@ -50,7 +50,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         self.backChevron.enabled = YES;
         self.tableView.userInteractionEnabled = YES;
         self.tabBarController.tabBar.userInteractionEnabled = YES;
-        
         [self.hud removeFromSuperview];
     });
 }
@@ -65,6 +64,14 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     {
         self.faves = [[NSMutableArray alloc] init];
     }
+    
+    self.tableView.sectionHeaderHeight = 44.f;
+    
+    UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:@"Cell"];
+    
+    self.tableView.estimatedRowHeight = 44.f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)didReceiveMemoryWarning {

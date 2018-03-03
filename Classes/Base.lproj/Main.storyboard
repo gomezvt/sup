@@ -207,24 +207,14 @@
             </objects>
             <point key="canvasLocation" x="-51" y="-1145"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Favorites Table View Controller-->
         <scene sceneID="BkK-Ar-JVe">
             <objects>
-                <tableViewController id="VLr-tm-yY6" sceneMemberID="viewController">
+                <tableViewController id="VLr-tm-yY6" customClass="SUPFavoritesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="udc-y3-pN8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ytX-Aj-luD">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ytX-Aj-luD" id="u7a-Nl-3jv">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="VLr-tm-yY6" id="mcB-qi-e4l"/>
                             <outlet property="delegate" destination="VLr-tm-yY6" id="ChX-ee-SsJ"/>
