@@ -227,7 +227,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
+    if (indexPath.section == 1)
     {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         if ([cell isKindOfClass:[SUPYelpAddressTableViewCell class]])
