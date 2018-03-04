@@ -219,6 +219,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjy-DV-hRK">
+                                <rect key="frame" x="28" y="357" width="358" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5U6-El-KQx">
                                 <rect key="frame" x="0.0" y="94" width="414" height="593"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -249,7 +255,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Dmc-fp-nTA" firstAttribute="top" secondItem="pam-5z-VKu" secondAttribute="bottom" id="Eis-J5-PtE"/>
+                            <constraint firstItem="Vjy-DV-hRK" firstAttribute="centerY" secondItem="cdl-4G-R5A" secondAttribute="centerY" id="Odr-Cg-E1h"/>
                             <constraint firstItem="Dmc-fp-nTA" firstAttribute="leading" secondItem="cdl-4G-R5A" secondAttribute="leading" id="PGH-Z7-xB2"/>
+                            <constraint firstItem="Vjy-DV-hRK" firstAttribute="leading" secondItem="cdl-4G-R5A" secondAttribute="leadingMargin" constant="8" id="Tzg-qs-bWc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vjy-DV-hRK" secondAttribute="trailing" constant="8" id="by2-gV-RbO"/>
                             <constraint firstAttribute="trailing" secondItem="5U6-El-KQx" secondAttribute="trailing" id="hpr-ub-44e"/>
                             <constraint firstAttribute="trailing" secondItem="Dmc-fp-nTA" secondAttribute="trailing" id="hxe-F5-erE"/>
                             <constraint firstItem="5U6-El-KQx" firstAttribute="leading" secondItem="cdl-4G-R5A" secondAttribute="leading" id="jtS-2n-nHv"/>
@@ -259,6 +268,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sup? City" id="KpE-O8-1sd"/>
                     <connections>
+                        <outlet property="faveslabel" destination="Vjy-DV-hRK" id="kpn-zY-G2r"/>
                         <outlet property="tableView" destination="5U6-El-KQx" id="RS4-Ta-WQL"/>
                         <outlet property="titleLabel" destination="neK-he-hyc" id="bUP-T3-HmU"/>
                         <segue destination="YcC-JR-9wn" kind="show" identifier="ShowDetail" id="t9Z-Tm-Gor"/>

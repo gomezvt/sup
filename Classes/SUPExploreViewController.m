@@ -103,18 +103,6 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
                                                object: nil];
 }
 
-//- (void)newCityEntry
-//{
-//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Welcome to Sup? City!" message:@"\nTap the location pin in the top right corner to change your search location at any time.\n\nCan't decide where to go or what to eat? Use the 'Surprise' feature to search your location with multiple categories and get random search results for some fun.\n\nEnjoy!"
-//                                                                      preferredStyle:UIAlertControllerStyleAlert];
-//
-//    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//    }];
-//    [alertController addAction:confirmAction];
-//
-//    [self presentViewController:alertController animated:YES completion:nil];
-//}
-
 - (void)gotCity:(NSNotification *)notification
 {
     id obj = notification.object;

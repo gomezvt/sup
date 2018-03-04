@@ -34,7 +34,7 @@
 @property (nonatomic) BOOL didSelectBiz;
 @property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 @property (nonatomic, strong) NSMutableArray *faves;
-@property (nonatomic, strong) UILabel *faveslabel;
+@property (nonatomic, weak) IBOutlet UILabel *faveslabel;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 
 @end
@@ -45,6 +45,25 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 
 @implementation SUPFavoritesTableViewController
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.faves.count == 0)
+    {
+        self.faveslabel.lineBreakMode = NSLineBreakByWordWrapping;
+        self.faveslabel.numberOfLines = 0.f;
+        self.faveslabel.center = super.view.center;
+        self.tableView.separatorColor = [UIColor clearColor];
+        self.faveslabel.textAlignment = NSTextAlignmentCenter;
+        self.faveslabel.textColor = [UIColor lightGrayColor];
+        self.faveslabel.text = @"You have no favorites added here. To add a place, tap one to navigate to its details screen and then toggle the 'Add to my Favorites' switch.";
+        [self.view bringSubviewToFront:self.faveslabel];
+    }
+    else
+    {
+        self.faveslabel.text = @"";
+    }
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:kShowDetailSegue])
@@ -284,26 +303,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     [self.tableView reloadData];
     
-    if (self.faves.count == 0)
-    {
-        if (!self.faveslabel)
-        {
-            self.faveslabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 100.f)];
-            self.faveslabel.lineBreakMode = NSLineBreakByWordWrapping;
-            self.faveslabel.numberOfLines = 0.f;
-            [super.view addSubview:self.faveslabel];
-            CGPoint point = CGPointMake(self.tableView.center.x, self.tableView.center.y - 55.f);
-            self.faveslabel.center = point;
-            self.tableView.separatorColor = [UIColor clearColor];
-            self.faveslabel.textAlignment = NSTextAlignmentCenter;
-            self.faveslabel.textColor = [UIColor lightGrayColor];
-        }
-        self.faveslabel.text = @"You have no favorites added here.\nTo add a place to your favorites,\nnavigate to the place details screen and\n toggle the 'Add to my Favorites' switch.";
-    }
-    else
-    {
-        self.faveslabel.text = @"";
-    }
+
 }
 
 - (void)didReceiveMemoryWarning {

@@ -238,12 +238,12 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 
 - (void)presentMessage
 {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 80.f)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width - 16.f, 80.f)];
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.numberOfLines = 0.f;
-    label.text = @"Tap the 'back' button in the top left\ncorner to add one or more \nsubcategories to search with.";
+    label.text = @"Tap the 'back' button to add one or more subcategories to search with.";
     [super.view addSubview:label];
-    label.center = self.tableView.center;
+    label.center = super.view.center;
     self.tableView.separatorColor = [UIColor clearColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor lightGrayColor];
