@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SUPHeaderTitleView.h"
 @class YLPBusiness;
 
 @interface SUPDetailTableViewController : UIViewController
 
 @property (nonatomic, strong) YLPBusiness *selectedBusiness;
+@property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
+@property (nonatomic) BOOL isViewingFavorites;
 
 @end

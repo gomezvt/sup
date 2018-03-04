@@ -74,7 +74,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
         
         self.alertTextField = textField;
         self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        if (kCity)
+        if (kCity && ![kCity isEqualToString:@"(null), (null)"])
         {
             self.alertTextField.placeholder = [kCity capitalizedString];
         }
@@ -87,7 +87,9 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
         if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
         {
             kCity = city;
+            if (kCity && ![kCity isEqualToString:@"(null), (null)"]){
             self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
+            }
         }
     }];
     [alertController addAction:confirmAction];
@@ -104,7 +106,8 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     self.headerTitleView.leadingEdgeConstraint.constant = 40.f;
-    
+    self.headerTitleView.cityNameLabel.text = @"Sup? City";
+
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     
@@ -134,7 +137,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     
     
     
-    if (kCity)
+    if (kCity && ![kCity isEqualToString:@"(null), (null)"])
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
     }
@@ -305,7 +308,8 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                  {
                      weakSelf.label.text = @"No search results found.\n\nTap the location pin icon in the top right corner to enter a city, state, or zip code and try your search again.";
                  }
-                 else
+                 else if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+
                  {
                      weakSelf.label.text = @"No search results found.";
                  }

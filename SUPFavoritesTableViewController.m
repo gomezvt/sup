@@ -26,6 +26,7 @@
 @interface SUPFavoritesTableViewController ()
 <SUPHUDViewDelegate>
 
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *backChevron;
 @property (nonatomic, strong) SUPHUDView *hud;
 @property (nonatomic) BOOL didCancelRequest;
@@ -33,6 +34,8 @@
 @property (nonatomic) BOOL didSelectBiz;
 @property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 @property (nonatomic, strong) NSMutableArray *faves;
+@property (nonatomic, strong) UILabel *faveslabel;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -48,6 +51,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     {
         // Get destination view
         SUPDetailTableViewController *vc = [segue destinationViewController];
+        vc.isViewingFavorites = YES;
         vc.selectedBusiness = sender;
     }
 }
@@ -230,11 +234,46 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    self.tableView.tableFooterView = [UIView new];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
+    self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
+    self.headerTitleView.cityNameLabel.text = @"Sup? City";
+    self.navigationItem.titleView = self.headerTitleView;
+    self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
+    
+    CGRect mainScreen = [[UIScreen mainScreen] bounds];
+    if (mainScreen.size.width == 1024.f)
+    {
+        [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+    }
+    else if (mainScreen.size.width < 1024.f && mainScreen.size.width > 414.f)
+    {
+        [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+    }
+    else
+    {
+        self.headerTitleView.leadingEdgeConstraint.constant = -15.f;
+        
+        if (mainScreen.size.width > 375.f)
+        {
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:24]];
+        }
+        else if (mainScreen.size.width == 375.f)
+        {
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:21]];
+        }
+        else
+        {
+            [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:18]];
+        }
+    }
     
     NSData *unarchived = [[NSUserDefaults standardUserDefaults] objectForKey:@"faves"];
     self.faves = [NSKeyedUnarchiver unarchiveObjectWithData:unarchived];
@@ -242,7 +281,29 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     {
         self.faves = [[NSMutableArray alloc] init];
     }
+    
     [self.tableView reloadData];
+    
+    if (self.faves.count == 0)
+    {
+        if (!self.faveslabel)
+        {
+            self.faveslabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 100.f)];
+            self.faveslabel.lineBreakMode = NSLineBreakByWordWrapping;
+            self.faveslabel.numberOfLines = 0.f;
+            [super.view addSubview:self.faveslabel];
+            CGPoint point = CGPointMake(self.tableView.center.x, self.tableView.center.y - 55.f);
+            self.faveslabel.center = point;
+            self.tableView.separatorColor = [UIColor clearColor];
+            self.faveslabel.textAlignment = NSTextAlignmentCenter;
+            self.faveslabel.textColor = [UIColor lightGrayColor];
+        }
+        self.faveslabel.text = @"You have no favorites added here.\nTo add a place to your favorites,\nnavigate to the place details screen and\n toggle the 'Add to my Favorites' switch.";
+    }
+    else
+    {
+        self.faveslabel.text = @"";
+    }
 }
 
 - (void)didReceiveMemoryWarning {

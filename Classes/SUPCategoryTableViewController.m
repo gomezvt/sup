@@ -50,6 +50,8 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
 //    self.headerTitleView.leadingEdgeConstraint.constant = 0.f;
     self.navigationItem.titleView = self.headerTitleView;
+    self.headerTitleView.cityNameLabel.text = @"Sup? City";
+
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     
 }
@@ -58,7 +60,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     [super viewWillAppear:animated];
     
-    if (kCity)
+    if (kCity && ![kCity isEqualToString:@"(null), (null)"])
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
     }
@@ -163,7 +165,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
         self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        if (kCity)
+        if (kCity && ![kCity isEqualToString:@"(null), (null)"])
         {
             self.alertTextField.placeholder = [kCity capitalizedString];
         }
@@ -176,7 +178,11 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
         {
             kCity = city;
-            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
+            if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+            {
+                            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
+            }
+
         }
     }];
     [alertController addAction:confirmAction];
@@ -194,7 +200,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (kCity)
+    if (kCity && ![kCity isEqualToString:@"(null), (null)"])
     {
         self.hud = [SUPHUDView hudWithView:self.navigationController.view];
         self.hud.delegate = self;
@@ -309,7 +315,11 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
             if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
             {
                 kCity = city;
-                self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
+                if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+                {
+                                    self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
+                }
+
             }
         }];
         [alertController addAction:confirmAction];

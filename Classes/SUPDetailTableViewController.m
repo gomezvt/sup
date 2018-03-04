@@ -31,7 +31,6 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) SUPHeaderTitleView *headerTitleView;
 
 @end
 
@@ -57,13 +56,23 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 
 @implementation SUPDetailTableViewController
 
+
 #pragma mark - View Life Cycle
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    if (kCity)
+
+    
+    
+    
+    if (self.isViewingFavorites)
+    {
+                self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City"];
+    }
+    else if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
     }
@@ -99,7 +108,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
+    self.isViewingFavorites = NO;
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
 //    self.headerTitleView.leadingEdgeConstraint.constant = 0.f;
@@ -467,6 +476,10 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         if (existingFavorite)
         {
             [favoritesCell.swch setOn:YES];
+        }
+        else
+        {
+            [favoritesCell.swch setOn:NO];
         }
     }
     else if (indexPath.section == 1)

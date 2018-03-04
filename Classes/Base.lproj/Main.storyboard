@@ -200,34 +200,73 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="VLr-tm-yY6" kind="relationship" relationship="rootViewController" id="530-yA-pFr"/>
+                        <segue destination="M3f-pX-37Q" kind="relationship" relationship="rootViewController" id="HgC-xM-rZN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uut-wd-kDh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-51" y="-1145"/>
         </scene>
-        <!--Favorites Table View Controller-->
-        <scene sceneID="BkK-Ar-JVe">
+        <!--Sup? City-->
+        <scene sceneID="BNB-3h-JWb">
             <objects>
-                <tableViewController id="VLr-tm-yY6" customClass="SUPFavoritesTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="udc-y3-pN8">
+                <viewController id="M3f-pX-37Q" customClass="SUPFavoritesTableViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pam-5z-VKu"/>
+                        <viewControllerLayoutGuide type="bottom" id="off-Rg-OEg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cdl-4G-R5A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5U6-El-KQx">
+                                <rect key="frame" x="0.0" y="94" width="414" height="593"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="M3f-pX-37Q" id="nSN-fL-0GG"/>
+                                    <outlet property="delegate" destination="M3f-pX-37Q" id="7L4-HO-Cft"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dmc-fp-nTA">
+                                <rect key="frame" x="0.0" y="64" width="414" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="neK-he-hyc">
+                                        <rect key="frame" x="8" y="3" width="398" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.52941176469999995" green="0.67450980390000004" blue="0.80000000000000004" alpha="0.25" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3io-Hd-O9S"/>
+                                    <constraint firstAttribute="trailing" secondItem="neK-he-hyc" secondAttribute="trailing" constant="8" id="5zq-yS-rbD"/>
+                                    <constraint firstItem="neK-he-hyc" firstAttribute="centerY" secondItem="Dmc-fp-nTA" secondAttribute="centerY" id="hRv-29-1R0"/>
+                                    <constraint firstItem="neK-he-hyc" firstAttribute="leading" secondItem="Dmc-fp-nTA" secondAttribute="leading" constant="8" id="ox0-LM-NDk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <connections>
-                            <outlet property="dataSource" destination="VLr-tm-yY6" id="mcB-qi-e4l"/>
-                            <outlet property="delegate" destination="VLr-tm-yY6" id="ChX-ee-SsJ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="7el-gd-ebm"/>
+                        <constraints>
+                            <constraint firstItem="Dmc-fp-nTA" firstAttribute="top" secondItem="pam-5z-VKu" secondAttribute="bottom" id="Eis-J5-PtE"/>
+                            <constraint firstItem="Dmc-fp-nTA" firstAttribute="leading" secondItem="cdl-4G-R5A" secondAttribute="leading" id="PGH-Z7-xB2"/>
+                            <constraint firstAttribute="trailing" secondItem="5U6-El-KQx" secondAttribute="trailing" id="hpr-ub-44e"/>
+                            <constraint firstAttribute="trailing" secondItem="Dmc-fp-nTA" secondAttribute="trailing" id="hxe-F5-erE"/>
+                            <constraint firstItem="5U6-El-KQx" firstAttribute="leading" secondItem="cdl-4G-R5A" secondAttribute="leading" id="jtS-2n-nHv"/>
+                            <constraint firstItem="off-Rg-OEg" firstAttribute="top" secondItem="5U6-El-KQx" secondAttribute="bottom" id="kOE-hQ-OQ4"/>
+                            <constraint firstItem="5U6-El-KQx" firstAttribute="top" secondItem="Dmc-fp-nTA" secondAttribute="bottom" id="wei-QQ-bcW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sup? City" id="KpE-O8-1sd"/>
                     <connections>
-                        <segue destination="YcC-JR-9wn" kind="show" identifier="ShowDetail" id="ff5-yl-GP7"/>
+                        <outlet property="tableView" destination="5U6-El-KQx" id="RS4-Ta-WQL"/>
+                        <outlet property="titleLabel" destination="neK-he-hyc" id="bUP-T3-HmU"/>
+                        <segue destination="YcC-JR-9wn" kind="show" identifier="ShowDetail" id="t9Z-Tm-Gor"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AqR-Yt-De8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QhY-F4-vMM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="-1141"/>
+            <point key="canvasLocation" x="802.89855072463774" y="-1133.1521739130435"/>
         </scene>
         <!--Sup? City-->
         <scene sceneID="Vu4-MZ-ht8">
@@ -1547,6 +1586,6 @@ TIP: tap the location pin at the top to change your search location at any time.
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="itC-Zp-WcB"/>
-        <segue reference="ff5-yl-GP7"/>
+        <segue reference="t9Z-Tm-Gor"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SUPFavoritesTableViewController : UITableViewController
+@interface SUPFavoritesTableViewController : UIViewController
 
 @end

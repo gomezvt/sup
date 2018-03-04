@@ -46,6 +46,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     self.headerTitleView.leadingEdgeConstraint.constant = 40.f;
+    self.headerTitleView.cityNameLabel.text = @"Sup? City";
 
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
@@ -95,7 +96,7 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
         self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        if (kCity)
+        if (kCity && ![kCity isEqualToString:@"(null), (null)"])
         {
             self.alertTextField.placeholder = [kCity capitalizedString];
         }
@@ -108,7 +109,11 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
         if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
         {
             kCity = city;
-            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
+            if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+            {
+                            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
+            }
+
         }
     }];
     [alertController addAction:confirmAction];
@@ -127,7 +132,8 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
         self.gotItHeightConstraint.constant = 0.f;
         [self.gotItButton removeFromSuperview];
     }
-    if (kCity)
+    if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
     }
