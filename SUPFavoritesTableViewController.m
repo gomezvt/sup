@@ -56,7 +56,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         self.tableView.separatorColor = [UIColor clearColor];
         self.faveslabel.textAlignment = NSTextAlignmentCenter;
         self.faveslabel.textColor = [UIColor lightGrayColor];
-        self.faveslabel.text = @"You have no favorites added here. To add a place, tap one to navigate to its details screen and then toggle the 'Add to my Favorites' switch.";
+        self.faveslabel.text = @"You have no favorites to display. To add a place, tap one to navigate to its details screen and then toggle the 'Add to my Favorites' switch.";
         [self.view bringSubviewToFront:self.faveslabel];
     }
     else

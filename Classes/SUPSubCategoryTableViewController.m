@@ -608,7 +608,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                                     }
                                                                     business.reviews = reviews.reviews;
                                                                     business.userPhotosArray = userPhotos;
-                                                                    [weakSelf.cachedDetails setObject:business forKey:weakSelf.subCategoryTitle];
+                                                                    if (business)
+                                                                    {
+                                                                        [weakSelf.cachedDetails setObject:business forKey:weakSelf.subCategoryTitle];
+                                                                    }
                                                                     dispatch_async(dispatch_get_main_queue(), ^(void){
                                                                         // *** Get business photos in advance if they exist, to display from Presentation VC
                                                                         if (business.photos.count > 0)
@@ -876,7 +879,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                      {
                                          business.didGetDetails = YES;
                                          [weakSelf.displayArray addObject:business];
-                                         [weakSelf.cachedDetails setObject:weakSelf.displayArray forKey:weakSelf.subCategoryTitle];
+                                         if (weakSelf.displayArray)
+                                         {
+                                             [weakSelf.cachedDetails setObject:weakSelf.displayArray forKey:weakSelf.subCategoryTitle];
+                                         }
                                          biz = business;
                                          
                                          NSInteger index = [weakSelf.originalFilteredResults indexOfObject:match];
