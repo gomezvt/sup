@@ -13,7 +13,6 @@
 		14925FF200B27E0C209F547875C3C83A /* YLPSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BADF96316518B15EEBE89D90329C8A4 /* YLPSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		25081ACA816EE4A7EEB3D3B7DD600D59 /* YLPReview.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA7AE562F7F6159875C1E8E03D2069E /* YLPReview.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DC8AB3E345D5A5EA4D9DA314956675C /* YLPClient+PhoneSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5418B2A6BEF576176840510BAC92E8D9 /* YLPClient+PhoneSearch.m */; };
-		41C41675111548467637428AF445AF3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		425C4471807938EB6198AD3F8A6F368A /* YLPClient+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 554C692B774FBAE7191EFEDD6B3D3364 /* YLPClient+Search.m */; };
 		4A73B32A71D3A81D07F26D4B542D844D /* YLPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = CE5664780FC8B39F8B4BEA2CD1F30334 /* YLPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C50EA3E24CC68779DD9A35A525F9B06 /* YelpAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = CABD6FB76A54F33EFACB666101044AC3 /* YelpAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,7 +29,6 @@
 		86B87CA6A20AD079E4C9CB2DCD7B224A /* YLPLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B03339382D974B69A6793A6A3E0B35D /* YLPLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AB9FE8A3DFD0872BB5D2B9B1B59994A /* YLPResponsePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = E18AE0ECC791950FCAF20F7EC5FFBE4E /* YLPResponsePrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		8C2BB3CBE31F49F346F3349EA495D4B6 /* YLPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B509B2AF09974F8DD13CFF4387E6279 /* YLPClient.m */; };
-		9F682D551D8A7CCFEB973CA74F703F8F /* Pods-bvt-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0E2BC4E7DB08001BB178998ED98713 /* Pods-bvt-dummy.m */; };
 		A1E0341B0C456D93E0E328CDFAE94F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		A28AEB5B052B9B87D5D60F3CD270122E /* YLPReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACA7716DF00FE786E09B1C14AEB4C /* YLPReview.m */; };
 		A938EFF012B3FD5058A0D3B31154D9AC /* YLPClientPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EAFBEF26F44D801F4523BCF0CDD66BD /* YLPClientPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -46,16 +44,6 @@
 		F21A731803677854E37D614FDC17E7B7 /* YLPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 86075395B56ECEDA33E3AD968E60D3DF /* YLPUser.m */; };
 		FF2747E54BC8C062BA00D05F971D6C50 /* YLPSortType.h in Headers */ = {isa = PBXBuildFile; fileRef = 209E7EF286A4DAE27110D3505E859648 /* YLPSortType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A5AE88A6FD3F09DE76B59F56A9DDD4D8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 68BC8AE1BD399B3AB8A050BB19446859;
-			remoteInfo = YelpAPI;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		07B512A874AE2363CF910D45BAB0CE47 /* YLPBusiness.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPBusiness.m; path = Classes/Response/YLPBusiness.m; sourceTree = "<group>"; };
@@ -94,7 +82,6 @@
 		A012F575347D479E233E5B0704798CAF /* YLPClient+Reviews.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "YLPClient+Reviews.h"; path = "Classes/Client/YLPClient+Reviews.h"; sourceTree = "<group>"; };
 		A7253F7D78E57B9BD6FA7E2DDBAB6A11 /* YLPClient+Business.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "YLPClient+Business.h"; path = "Classes/Client/YLPClient+Business.h"; sourceTree = "<group>"; };
 		B753A2F9A76F5ACBB29316500A060BDE /* YLPClient+Search.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "YLPClient+Search.h"; path = "Classes/Client/YLPClient+Search.h"; sourceTree = "<group>"; };
-		BA5DB321EC9FEAE39902245E9F66C847 /* libPods-bvt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bvt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE2C4440DA29A3001769593E9D67891 /* YelpAPI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YelpAPI-dummy.m"; sourceTree = "<group>"; };
 		CABD6FB76A54F33EFACB666101044AC3 /* YelpAPI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YelpAPI.h; path = Classes/YelpAPI.h; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -110,14 +97,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		591D31998E33FF0C2F4E65B070E5D381 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				41C41675111548467637428AF445AF3B /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D08A4227B43D59C850C452A2BA844FE7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -197,7 +176,6 @@
 		5B714B2AAAC0935E2EADED40FDC7A11F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA5DB321EC9FEAE39902245E9F66C847 /* libPods-bvt.a */,
 				827FA97B969055D504A325F5BDF41116 /* libYelpAPI.a */,
 			);
 			name = Products;
@@ -315,23 +293,6 @@
 			productReference = 827FA97B969055D504A325F5BDF41116 /* libYelpAPI.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		E55D355FB72C89696437B4BF75419ED2 /* Pods-bvt */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7F25D342E11F74D6C807B20D71BEE88A /* Build configuration list for PBXNativeTarget "Pods-bvt" */;
-			buildPhases = (
-				4C1A7F14D5B6DDFFE3C74B948022A5BA /* Sources */,
-				591D31998E33FF0C2F4E65B070E5D381 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1FDC8EACF7B486789D218A8BD8854972 /* PBXTargetDependency */,
-			);
-			name = "Pods-bvt";
-			productName = "Pods-bvt";
-			productReference = BA5DB321EC9FEAE39902245E9F66C847 /* libPods-bvt.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -353,21 +314,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E55D355FB72C89696437B4BF75419ED2 /* Pods-bvt */,
 				68BC8AE1BD399B3AB8A050BB19446859 /* YelpAPI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4C1A7F14D5B6DDFFE3C74B948022A5BA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F682D551D8A7CCFEB973CA74F703F8F /* Pods-bvt-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EE07423877582E4A11FAB02292149DF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,20 +345,12 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		1FDC8EACF7B486789D218A8BD8854972 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = YelpAPI;
-			target = 68BC8AE1BD399B3AB8A050BB19446859 /* YelpAPI */;
-			targetProxy = A5AE88A6FD3F09DE76B59F56A9DDD4D8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
 		4588FAAF840AC03AAC0C6DEC0084E730 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED4725BC683467F8F638F7A1C090F36C /* YelpAPI.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -424,6 +368,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 x86_64 armv7s";
 			};
 			name = Release;
 		};
@@ -474,58 +419,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		A3AEE8E7D9A26F7112B552087614F0C2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 609E5B2D614F684D826E78E3B316E3A2 /* Pods-bvt.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		AB7EBB6A8A112D05399FF27EC33CBBDF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DC7794DDEDFC9B37E96F8E51AF33752 /* Pods-bvt.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "x86_64 armv7s armv7";
 			};
 			name = Debug;
 		};
@@ -574,8 +473,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "x86_64 armv7s armv7";
 			};
 			name = Release;
 		};
@@ -583,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED4725BC683467F8F638F7A1C090F36C /* YelpAPI.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -600,6 +502,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 x86_64 armv7s";
 			};
 			name = Debug;
 		};
@@ -611,15 +514,6 @@
 			buildConfigurations = (
 				59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */,
 				B7324857C38B065FEB1EEE3105C2367A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7F25D342E11F74D6C807B20D71BEE88A /* Build configuration list for PBXNativeTarget "Pods-bvt" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AB7EBB6A8A112D05399FF27EC33CBBDF /* Debug */,
-				A3AEE8E7D9A26F7112B552087614F0C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
