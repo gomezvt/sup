@@ -227,6 +227,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewDidLoad];
     
+    self.tableView.tableFooterView = [UIView new];
     self.tableView.sectionHeaderHeight = 44.f;
     
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
@@ -235,7 +236,6 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    self.tableView.tableFooterView = [UIView new];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -286,10 +286,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     
     if (self.faves.count == 0)
     {
+        self.tableView.tableFooterView = [UIView new];
+
         self.faveslabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.faveslabel.numberOfLines = 0.f;
         self.faveslabel.center = super.view.center;
-        self.tableView.separatorColor = [UIColor clearColor];
         self.faveslabel.textAlignment = NSTextAlignmentCenter;
         self.faveslabel.textColor = [UIColor lightGrayColor];
         self.faveslabel.text = @"You have no favorites to display. To add a place, tap one to navigate to its details screen and then toggle the 'Add to my Favorites' switch.";
