@@ -68,7 +68,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SUPFavoritesTableViewController.m"
-            timestampString = "541901988.299783"
+            timestampString = "541903352.349604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -100,7 +100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPExploreViewController.m"
-            timestampString = "541901651.0863481"
+            timestampString = "541903352.349731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
@@ -116,28 +116,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SUPExploreViewController.m"
-            timestampString = "541901651.0866899"
+            timestampString = "541903352.3501641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
             endingLineNumber = "138"
             landmarkName = "-viewWillAppear:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/SUPExploreViewController.m"
-            timestampString = "541901651.0869091"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-gotCity:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
