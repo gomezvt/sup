@@ -186,7 +186,8 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+
     self.gotItButton.layer.borderWidth = 1.f;
     self.gotItButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.gotItButton.layer.cornerRadius = 10.f;
@@ -216,7 +217,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         else
         {
             self.isLargePhone = NO;
-            [self.collectionView setContentInset:UIEdgeInsetsMake(-60.f, 0.f, -60.f, 0.f)];
+            [self.collectionView setContentInset:UIEdgeInsetsMake(0.f, 0.f,0.f, 0.f)];
         }
     }
 }

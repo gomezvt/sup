@@ -226,16 +226,20 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+
     self.tableView.tableFooterView = [UIView new];
-    self.tableView.sectionHeaderHeight = 44.f;
     
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"Cell"];
-    
+    self.tableView.sectionHeaderHeight = 0.f;
     self.tableView.estimatedRowHeight = 44.f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+    if (!self.faves)
+    {
+        self.faves = [[NSMutableArray alloc] init];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -275,18 +279,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         }
     }
     
+
     NSData *unarchived = [[NSUserDefaults standardUserDefaults] objectForKey:@"faves"];
     self.faves = [NSKeyedUnarchiver unarchiveObjectWithData:unarchived];
-    if (!self.faves)
-    {
-        self.faves = [[NSMutableArray alloc] init];
-    }
-    
-    [self.tableView reloadData];
-    
     if (self.faves.count == 0)
     {
-        self.tableView.tableFooterView = [UIView new];
 
         self.faveslabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.faveslabel.numberOfLines = 0.f;
@@ -300,6 +297,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     {
         self.faveslabel.text = @"";
     }
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
