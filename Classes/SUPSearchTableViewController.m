@@ -106,7 +106,6 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     self.headerTitleView.leadingEdgeConstraint.constant = 40.f;
-    self.headerTitleView.cityNameLabel.text = @"Sup? City";
 
     self.navigationItem.titleView = self.headerTitleView;
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];

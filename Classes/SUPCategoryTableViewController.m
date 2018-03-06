@@ -50,7 +50,6 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
 //    self.headerTitleView.leadingEdgeConstraint.constant = 0.f;
     self.navigationItem.titleView = self.headerTitleView;
-    self.headerTitleView.cityNameLabel.text = @"Sup? City";
 
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
     

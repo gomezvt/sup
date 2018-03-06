@@ -85,7 +85,7 @@
                     <constraint firstAttribute="trailing" secondItem="Xe9-Ng-8pK" secondAttribute="trailing" id="ykI-5u-LMU"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="-148" y="-536"/>
+            <point key="canvasLocation" x="-237" y="-553"/>
         </tableViewCell>
     </objects>
     <resources>

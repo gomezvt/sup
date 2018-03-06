@@ -301,8 +301,6 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
     self.navigationItem.titleView = self.headerTitleView;
-    self.headerTitleView.cityNameLabel.text = @"Sup? City";
-
     self.navigationController.navigationBar.barTintColor = [SUPStyles iconBlue];
 }
 
