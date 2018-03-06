@@ -94,7 +94,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 {
     [super viewWillAppear:animated];
     
-    if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+    if (kCity)
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
     }

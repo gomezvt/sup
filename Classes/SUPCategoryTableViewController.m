@@ -60,7 +60,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 {
     [super viewWillAppear:animated];
     
-    if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+    if (kCity)
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
     }
@@ -165,7 +165,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
         self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+        if (kCity)
         {
             self.alertTextField.placeholder = [kCity capitalizedString];
         }
@@ -178,7 +178,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
         if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
         {
             kCity = city;
-            if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+            if (kCity)
             {
                             self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
             }
@@ -200,7 +200,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+    if (kCity)
     {
         self.hud = [SUPHUDView hudWithView:self.navigationController.view];
         self.hud.delegate = self;
@@ -315,7 +315,7 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
             if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
             {
                 kCity = city;
-                if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+                if (kCity)
                 {
                                     self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
                 }

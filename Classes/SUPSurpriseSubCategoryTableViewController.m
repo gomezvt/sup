@@ -56,7 +56,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;
         self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+        if (kCity)
 
         {
             self.alertTextField.placeholder = [kCity capitalizedString];
@@ -71,7 +71,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
         if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
         {
             kCity = city;
-            if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+            if (kCity)
             {
                             self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
             }
@@ -121,7 +121,7 @@ static NSString *const kCheckMarkGraphic = @"green_check";
         self.gotItHeightConstraint.constant = 0.f;
         [self.gotItButton removeFromSuperview];
     }
-    if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+    if (kCity)
 
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];

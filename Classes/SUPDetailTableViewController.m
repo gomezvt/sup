@@ -71,7 +71,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
     {
                 self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City"];
     }
-    else if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+    else if (kCity)
 
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];

@@ -74,7 +74,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
         
         self.alertTextField = textField;
         self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+        if (kCity)
         {
             self.alertTextField.placeholder = [kCity capitalizedString];
         }
@@ -87,7 +87,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
         if (city.length > 0 && ![[city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
         {
             kCity = city;
-            if (kCity && ![kCity isEqualToString:@"(null), (null)"]){
+            if (kCity){
             self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
             }
         }
@@ -137,7 +137,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     
     
     
-    if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+    if (kCity)
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
     }
@@ -308,7 +308,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                  {
                      weakSelf.label.text = @"No search results found.\n\nTap the location pin icon in the top right corner to enter a city, state, or zip code and try your search again.";
                  }
-                 else if (kCity && ![kCity isEqualToString:@"(null), (null)"])
+                 else if (kCity)
 
                  {
                      weakSelf.label.text = @"No search results found.";
