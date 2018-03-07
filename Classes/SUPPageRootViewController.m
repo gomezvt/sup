@@ -24,6 +24,11 @@
 {
     [super viewDidLoad];
     
+    // Create page view controller
+    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
+    // Change the size of page view controller
+    self.pageViewController.view.frame = CGRectMake(0, -50.f, self.view.frame.size.width, self.view.frame.size.height + 25.f);
+    
     BOOL tutorialIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"SUPTutorialComplete"];
     if (tutorialIsComplete)
     {
@@ -37,8 +42,8 @@
     else
     {
         // Create the data model
-        self.pageTitles = @[@"1", @"2", @"3"];
-        self.images = @[@"page1.png", @"page2.png", @"page3.png"];
+        self.pageTitles = @[@"1", @"2", @"3", @"4"];
+//        self.images = @[@"page1.png", @"page2.png", @"page3.png", @"page4.png"];
         
         CGRect mainScreen = [[UIScreen mainScreen] bounds];
         if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular &&
@@ -46,11 +51,18 @@
         {
             if (mainScreen.size.width == 1024.f)
             {
-                self.images = @[@"Tutorial_iPad_12.9_explore.png", @"Tutorial_iPad_12.9_search.png", @"Tutorial_iPad_12.9_surprise.png"];
+                // iPad 12.9
+                self.images = @[@"iPad-12.9-Explore", @"iPad-12.9-Search", @"iPad-12.9-Surprise", @"iPad-12.9-Favorites"];
             }
-            else
+            else if (mainScreen.size.width == 834.f)
             {
-                self.images = @[@"Tutorial_iPad_9.7_explore.png", @"Tutorial_iPad_9.7_search.png", @"Tutorial_iPad_9.7_surprise.png"];
+                // iPad 10.5
+                self.images = @[@"iPad-10.5-Explore", @"iPad-10.5-Search", @"iPad-10.5-Surprise", @"iPad-10.5-Favorites"];
+            }
+            else if (mainScreen.size.width == 768.f)
+            {
+                // iPad 9.7
+                self.images = @[@"iPad-9.7-Explore", @"iPad-9.7-Search", @"iPad-9.7-Surprise", @"iPad-9.7-Favorites"];
             }
         }
         else
@@ -58,39 +70,37 @@
             if (mainScreen.size.width > 375.f)
             {
                 // iPhone Plus 6 + 7
-                self.images = @[@"Tutorial_Explore_6_7_Plus.png", @"Tutorial_Search_6_7_Plus.png", @"Tutorial_Surprise_6_7_Plus.png"];
+                self.images = @[@"iPhone-5.5-Explore", @"iPhone-5.5-Search", @"iPhone-5.5-Surprise", @"iPhone-5.5-Favorites"];
             }
             else if (mainScreen.size.width == 375.f)
             {
-                // iPhone 6 + 7
-                self.images = @[@"Tutorial_Explore_6_7", @"Tutorial_Search_6_7.png", @"Tutorial_Surprise_6_7.png"];
-            }
-            else if (mainScreen.size.width == 320.f)
-            {
-                if (mainScreen.size.height == 480.f)
+                if (mainScreen.size.height == 812.f)
                 {
-                    // iPhone 4S
-                    self.images = @[@"Tutorial_Explore_4S.png", @"Tutorial_Search_4S.png", @"Tutorial_Surprise_4S.png"];
+                    // iPhone X
+                    self.images = @[@"iPhone-5.8-Explore", @"iPhone-5.8-Search", @"iPhone-5.8-Surprise", @"iPhone-5.8-Favorites"];
+                    self.pageViewController.view.frame = CGRectMake(0, -80.f, self.view.frame.size.width, self.view.frame.size.height + 25.f);
+
                 }
                 else
                 {
-                    // iPhone 5, iPhone 5S, iPhone SE
-                    self.images = @[@"Tutorial_Explore_Small.png", @"Tutorial_Search_Small.png", @"Tutorial_Surprise_Small.png"];
+                    // iPhone 6 + 7
+                    self.images = @[@"iPhone-4.7-Explore", @"iPhone-4.7-Search", @"iPhone-4.7-Surprise", @"iPhone-4.7-Favorites"];
                 }
+            }
+            else if (mainScreen.size.width == 320.f)
+            {
+                // iPhone 5, iPhone 5S, iPhone SE
+                self.images = @[@"iPhone-4-Explore", @"iPhone-4-Search", @"iPhone-4-Surprise", @"iPhone-4-Favorites"];
             }
         }
 
         
-        // Create page view controller
-        self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
+        
         self.pageViewController.dataSource = self;
         
         SUPPageContentViewController *startingViewController = [self viewControllerAtIndex:0];
         NSArray *viewControllers = @[startingViewController];
         [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        
-        // Change the size of page view controller
-        self.pageViewController.view.frame = CGRectMake(0, -50.f, self.view.frame.size.width, self.view.frame.size.height + 25.f);
         
         [self addChildViewController:_pageViewController];
         [self.view addSubview:_pageViewController.view];
@@ -115,7 +125,6 @@
     // Create a new view controller and pass suitable data.
     SUPPageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
     pageContentViewController.imageFile = self.images[index];
-
     pageContentViewController.titleText = self.pageTitles[index];
     pageContentViewController.pageIndex = index;
     
