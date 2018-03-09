@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YLPCategory : NSObject
 
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *alias;
+@property (nonatomic, readonly, copy) NSString *name;
+@property (nonatomic, readonly, copy) NSString *alias;
 
 @end
 

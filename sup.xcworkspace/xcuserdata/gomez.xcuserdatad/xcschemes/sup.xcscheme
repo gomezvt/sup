@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "64F41D5E1E2C497F0053EBE2"
                BuildableName = "Sup City.app"
-               BlueprintName = "sup"
+               BlueprintName = "Sup"
                ReferencedContainer = "container:sup.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -35,7 +35,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64F41D5E1E2C497F0053EBE2"
             BuildableName = "Sup City.app"
-            BlueprintName = "sup"
+            BlueprintName = "Sup"
             ReferencedContainer = "container:sup.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -59,7 +59,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64F41D5E1E2C497F0053EBE2"
             BuildableName = "Sup City.app"
-            BlueprintName = "sup"
+            BlueprintName = "Sup"
             ReferencedContainer = "container:sup.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -82,7 +82,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64F41D5E1E2C497F0053EBE2"
             BuildableName = "Sup City.app"
-            BlueprintName = "sup"
+            BlueprintName = "Sup"
             ReferencedContainer = "container:sup.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

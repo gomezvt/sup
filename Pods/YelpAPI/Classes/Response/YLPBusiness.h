@@ -15,29 +15,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YLPBusiness : NSObject
 
-@property (nonatomic, getter=isClosed) BOOL closed;
-@property (nonatomic, strong) id hoursItem;
-@property (nonatomic, nullable, copy) NSURL *imageURL;
-@property (nonatomic, copy) NSURL *URL;
-@property (nonatomic) BOOL didGetDetails;
-@property (nonatomic) double rating;
-@property (nonatomic) NSUInteger reviewCount;
+@property (nonatomic, getter=isClosed, readonly) BOOL closed;
 
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, nullable, copy) NSString *phone;
-@property (nonatomic, copy) NSString *identifier;
-@property (nonatomic, strong) UIImage *bizThumbNail;
-@property (nonatomic, copy) NSString *price;
-@property (nonatomic, copy) NSArray<YLPCategory *> *categories;
-@property (nonatomic) YLPLocation *location;
+@property (nonatomic, readonly, nullable, copy) NSURL *imageURL;
+@property (nonatomic, readonly, copy) NSURL *URL;
 
-@property (nonatomic, strong) NSArray *businessHours;
-@property (nonatomic) BOOL isOpenNow;
-@property (nonatomic, strong) id open_now;
-@property (nonatomic) double miles;
-@property (nonatomic, strong) NSArray *reviews;
-@property (nonatomic, strong) NSArray *photos;
-@property (nonatomic, strong) NSArray *userPhotosArray;
+@property (nonatomic, readonly) double rating;
+@property (nonatomic, readonly) NSUInteger reviewCount;
+
+@property (nonatomic, readonly, copy) NSString *name;
+@property (nonatomic, readonly, nullable, copy) NSString *phone;
+@property (nonatomic, readonly, copy) NSString *identifier;
+
+@property (nonatomic, readonly, copy) NSArray<YLPCategory *> *categories;
+
+@property (nonatomic, readonly) YLPLocation *location;
 
 @end
 

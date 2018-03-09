@@ -12,23 +12,6 @@
 
 @implementation YLPReview
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super init]) {
-        self.excerpt = [aDecoder decodeObjectForKey:@"excerpt"];
-        self.timeCreated = [aDecoder decodeObjectForKey:@"timeCreated"];
-        self.rating = [aDecoder decodeDoubleForKey:@"rating"];
-        self.user = [aDecoder decodeObjectForKey:@"user"];
-    }
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:_excerpt forKey:@"excerpt"];
-    [aCoder encodeObject:_timeCreated forKey:@"timeCreated"];
-    [aCoder encodeDouble:_rating forKey:@"rating"];
-    [aCoder encodeObject:_user forKey:@"user"];
-}
-
 - (instancetype)initWithDictionary:(NSDictionary *)reviewDict {
     if (self = [super init]) {
         _rating = [reviewDict[@"rating"] doubleValue];

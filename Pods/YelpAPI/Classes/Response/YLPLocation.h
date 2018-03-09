@@ -14,13 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YLPLocation : NSObject
 
-@property (nonatomic, copy) NSString *city;
-@property (nonatomic, copy) NSString *stateCode;
-@property (nonatomic, copy) NSString *postalCode;
-@property (nonatomic, copy) NSString *countryCode;
+@property (nonatomic, readonly, copy) NSString *city;
+@property (nonatomic, readonly, copy) NSString *stateCode;
+@property (nonatomic, readonly, copy) NSString *postalCode;
+@property (nonatomic, readonly, copy) NSString *countryCode;
 
-@property (nonatomic, copy) NSArray<NSString *> *address;
-@property (nonatomic, nullable) YLPCoordinate *coordinate;
+@property (nonatomic, readonly, copy) NSArray<NSString *> *address;
+
+@property (nonatomic, readonly, nullable) YLPCoordinate *coordinate;
 
 @end
 
