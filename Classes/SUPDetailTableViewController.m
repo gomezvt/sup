@@ -63,7 +63,11 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 {
     [super viewWillAppear:animated];
     
-    if (kCity)
+    if (self.isViewingFavorites)
+    {
+        self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City"];
+    }
+    else if (kCity)
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
     }
@@ -100,6 +104,8 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 {
     [super awakeFromNib];
     
+    self.isViewingFavorites = NO;
+
     UINib *nibTitleView = [UINib nibWithNibName:kHeaderTitleViewNib bundle:nil];
     self.headerTitleView = [[nibTitleView instantiateWithOwner:self options:nil] objectAtIndex:0];
 //    self.headerTitleView.leadingEdgeConstraint.constant = 0.f;
@@ -218,7 +224,7 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
+    if (indexPath.section == 1)
     {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         if ([cell isKindOfClass:[SUPYelpAddressTableViewCell class]])
@@ -467,6 +473,10 @@ static NSString *const kSplitCellIdentifier = @"SplitCell";
         if (existingFavorite)
         {
             [favoritesCell.swch setOn:YES];
+        }
+        else
+        {
+            [favoritesCell.swch setOn:NO];
         }
     }
     else if (indexPath.section == 1)

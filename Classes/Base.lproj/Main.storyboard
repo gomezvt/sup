@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wjE-zW-AhW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JGB-Wv-YaA">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -41,68 +41,6 @@
             </objects>
             <point key="canvasLocation" x="-1400" y="909"/>
         </scene>
-        <!--Root View Controller-->
-        <scene sceneID="Zfl-L9-yCF">
-            <objects>
-                <viewController title="Root View Controller" id="wjE-zW-AhW" customClass="SUPPageRootViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Yd0-Y7-pow"/>
-                        <viewControllerLayoutGuide type="bottom" id="oWp-dM-boV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="94z-Ge-ZvT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMy-AY-DqC">
-                                <rect key="frame" x="0.0" y="676" width="414" height="60"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thumbnail Image" translatesAutoresizingMaskIntoConstraints="NO" id="XuW-Yq-Oh3">
-                                        <rect key="frame" x="8" y="12" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Lz1-fD-hmi"/>
-                                            <constraint firstAttribute="width" constant="40" id="o82-Wa-vP6"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.52932554480000005" green="0.67264115810000003" blue="0.79826388888888888" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="XuW-Yq-Oh3" secondAttribute="bottom" constant="8" id="3Jp-Hp-SOL"/>
-                                    <constraint firstAttribute="height" constant="60" id="JmM-RE-V6w"/>
-                                    <constraint firstItem="XuW-Yq-Oh3" firstAttribute="leading" secondItem="tMy-AY-DqC" secondAttribute="leading" constant="8" id="UwM-Yh-3ZS"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZs-Ai-JNh">
-                                <rect key="frame" x="150" y="698" width="115" height="30"/>
-                                <state key="normal" title="I got it, let me in!">
-                                    <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="startWalkthrough:" destination="wjE-zW-AhW" eventType="touchUpInside" id="S8g-yR-7od"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="oWp-dM-boV" firstAttribute="top" secondItem="mZs-Ai-JNh" secondAttribute="bottom" constant="8" id="67X-jJ-Cax"/>
-                            <constraint firstAttribute="trailing" secondItem="tMy-AY-DqC" secondAttribute="trailing" id="Ho3-d3-Dwb"/>
-                            <constraint firstItem="oWp-dM-boV" firstAttribute="top" secondItem="tMy-AY-DqC" secondAttribute="bottom" id="plR-ee-r2e">
-                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
-                            </constraint>
-                            <constraint firstItem="mZs-Ai-JNh" firstAttribute="centerX" secondItem="tMy-AY-DqC" secondAttribute="centerX" id="rJm-fc-Gru"/>
-                            <constraint firstItem="tMy-AY-DqC" firstAttribute="leading" secondItem="94z-Ge-ZvT" secondAttribute="leading" id="yqi-zs-Yat"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="gotItBar" destination="tMy-AY-DqC" id="sgl-1X-PMz"/>
-                        <outlet property="icon" destination="XuW-Yq-Oh3" id="uaa-SY-0li"/>
-                        <outlet property="start" destination="mZs-Ai-JNh" id="ZIe-Xv-WTe"/>
-                        <segue destination="JGB-Wv-YaA" kind="show" identifier="ShowTabBarController" id="AvO-Ss-TYQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5u-iD-Rii" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2172.463768115942" y="217.66304347826087"/>
-        </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="ZGM-yA-7G0">
             <objects>
@@ -142,38 +80,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pp5-T3-K4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1313" y="239"/>
-        </scene>
-        <!--Page Content View Controller-->
-        <scene sceneID="wX0-ps-Brz">
-            <objects>
-                <viewController storyboardIdentifier="PageContentViewController" title="Page Content View Controller" id="If7-aq-Nls" customClass="SUPPageContentViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QIy-WZ-ZgE"/>
-                        <viewControllerLayoutGuide type="bottom" id="d92-MH-Pbr"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="0OG-ai-usj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rLl-nr-Usq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="d92-MH-Pbr" firstAttribute="top" secondItem="rLl-nr-Usq" secondAttribute="bottom" id="OP4-WG-cNa"/>
-                            <constraint firstItem="rLl-nr-Usq" firstAttribute="leading" secondItem="0OG-ai-usj" secondAttribute="leading" id="TVe-7W-SMe"/>
-                            <constraint firstItem="rLl-nr-Usq" firstAttribute="top" secondItem="0OG-ai-usj" secondAttribute="top" id="WsJ-Gl-Fqx"/>
-                            <constraint firstAttribute="trailing" secondItem="rLl-nr-Usq" secondAttribute="trailing" id="z2h-Wi-W4t"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="imageView" destination="rLl-nr-Usq" id="dXe-N5-iEK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CLm-gM-KDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2172.463768115942" y="908.96739130434787"/>
         </scene>
         <!--Explore-->
         <scene sceneID="0bO-EL-LAf">
@@ -1586,7 +1492,6 @@ TIP: tap the location pin at the top to change your search location at any time.
         </scene>
     </scenes>
     <resources>
-        <image name="Thumbnail Image" width="60" height="60"/>
         <image name="about" width="30" height="30"/>
         <image name="back_chevron" width="15" height="15"/>
         <image name="compass" width="30" height="30"/>
