@@ -44,7 +44,7 @@
 
 @end
 
-static int i = 0;
+//static int i = 0;
 static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 //static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeaderView";
 
@@ -89,12 +89,12 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 
 - (void)didTapHUDCancelButton
 {
-    i = 0;
+//    i = 0;
     self.didCancelRequest = YES;
     self.backChevron.enabled = YES;
     self.tableView.userInteractionEnabled = YES;
     self.tabBarController.tabBar.userInteractionEnabled = YES;
-
+    
     [self evaluateButtonStateForButton:self.goButton];
     [self evaluateButtonStateForButton:self.clearButton];
     [self.hud removeFromSuperview];
@@ -103,11 +103,11 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 - (IBAction)didTapSubmit:(id)sender
 {
     if (kCity)
-
+    
     {
         [self.resultsArray removeAllObjects];
         
-        i = 0;
+//        i = 0;
         NSArray *array = [self.catDict allValues];
         self.hud = [SUPHUDView hudWithView:self.navigationController.view];
         self.hud.delegate = self;
@@ -163,7 +163,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
                              
                              [weakSelf presentViewController:alertController animated:YES completion:nil];
                          }
-                         else if (searchResults.businesses.count == 0 || searchResults == nil)
+                         else if (weakSelf.subCategories.count == 1 && (searchResults.businesses.count == 0 || searchResults == nil))
                          {
                              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Try selecting another category, or modify your search location" preferredStyle:UIAlertControllerStyleAlert];
                              
@@ -182,7 +182,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Search Location Entered" message:@"Please enter a city, state, or zip code to search and try again." preferredStyle:UIAlertControllerStyleAlert];
         [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-            self.alertTextField = textField;            
+            self.alertTextField = textField;
         }];
         
         
@@ -194,9 +194,9 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
                 kCity = city;
                 if (kCity)
                 {
-                                    self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
+                    self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
                 }
-
+                
             }
         }];
         [alertController addAction:confirmAction];
@@ -214,7 +214,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     self.backChevron.enabled = YES;
     self.tableView.userInteractionEnabled = YES;
     self.tabBarController.tabBar.userInteractionEnabled = YES;
-
+    
     [self.hud removeFromSuperview];
 }
 
@@ -252,19 +252,19 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-
+        
         NSArray *sort = [[[self.catDict allKeys] sortedArrayUsingDescriptors: @[descriptor]] mutableCopy];
         NSString *key = [sort objectAtIndex:indexPath.section];
         NSMutableArray *sortedArray2 = [[self.subCategories sortedArrayUsingDescriptors: @[descriptor]] mutableCopy];
-
+        
         NSString *category = [sortedArray2 objectAtIndex:indexPath.row];
-
+        
         [sortedArray2 removeObject:category];
         [self.subCategories removeObject:category];
         
         NSMutableArray *array = [[[self.catDict valueForKey:key] sortedArrayUsingDescriptors: @[descriptor]] mutableCopy];
         NSString *cat = [array objectAtIndex:indexPath.row];
-
+        
         [array removeObject:cat];
         
         
@@ -280,7 +280,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
         [self evaluateButtonStateForButton:self.goButton];
         [self evaluateButtonStateForButton:self.clearButton];
         
-
+        
         NSArray *allValues = [self.catDict allValues];
         if (![[allValues filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"@count > 0"]] lastObject])
         {
@@ -345,13 +345,13 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.gotItButton.layer.borderWidth = 1.f;
     self.gotItButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.tempArray = [[NSMutableArray alloc] init];
     self.tableView.tableFooterView = [UIView new];
     self.gotItButton.layer.cornerRadius = 10.f;
-
+    
     self.tableView.sectionHeaderHeight = 44.f;
     
     self.resultsArray = [NSMutableArray array];
@@ -374,7 +374,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
         self.alertTextField = textField;
         self.alertTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         if (kCity)
-
+        
         {
             self.alertTextField.placeholder = [kCity capitalizedString];
         }
@@ -390,9 +390,9 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
             kCity = city;
             if (kCity)
             {
-                            self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
+                self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [self.alertTextField.text capitalizedString]];
             }
-
+            
         }
     }];
     [alertController addAction:confirmAction];
@@ -413,7 +413,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
         [self.gotItButton removeFromSuperview];
     }
     if (kCity)
-
+    
     {
         self.headerTitleView.cityNameLabel.text = [NSString stringWithFormat:@"Sup? City:  %@", [kCity capitalizedString]];
     }
@@ -442,9 +442,9 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
             [self.headerTitleView.cityNameLabel setFont:[UIFont boldSystemFontOfSize:18]];
         }
     }
-
     
-
+    
+    
     
     [self.tempArray removeAllObjects];
     
@@ -456,7 +456,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 {
     if ([[notification name] isEqualToString:@"SUPReceivedBusinessesSearchNotification"])
     {
-        i++;
+//        i++;
         YLPSearch *searchObject = notification.object;
         
         for (NSString *category in self.subCategories)
@@ -475,143 +475,144 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
         }
         
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        if (i == self.subCategories.count)
+        //        if (i == self.subCategories.count)
+        //        {
+        if (self.resultsArray.count == 0)
         {
-            if (self.resultsArray.count == 0)
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // code here
+                [self _hideHUD];
+                [self.goButton setEnabled:YES];
+                [self.clearButton setEnabled:YES];
+                
+                self.goButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
+                self.clearButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
+                
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No results were found for the selected category(s)" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                [alertController addAction:ok];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+            });
+        }
+        else
+        {
+            for (NSString *category in self.subCategories)
             {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    // code here
-                    [self _hideHUD];
-                    [self.goButton setEnabled:YES];
-                    [self.clearButton setEnabled:YES];
-                    
-                    self.goButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
-                    self.clearButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
-                    
-                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No results were found for the selected category(s)" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                    [alertController addAction:ok];
-                    
-                    [self presentViewController:alertController animated:YES completion:nil];
-                });
+                NSArray *array = [self.resultsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] %K", category]];
+                
+                
+                
+                // TODO:figure out sorting here
+                [dict setObject:array forKey:category];
             }
-            else
+            
+            NSArray *allkeys = [dict allKeys];
+            if (allkeys.count > 0)
             {
-                for (NSString *category in self.subCategories)
+                NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+                NSArray *keys = [allkeys sortedArrayUsingDescriptors: @[descriptor]];
+                BOOL isLastKey = NO;
+                for (NSString *key in keys)
                 {
-                    NSArray *array = [self.resultsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] %K", category]];
+                    isLastKey = key == keys.lastObject;
                     
- 
+                    NSArray *values = [dict valueForKey:key];
                     
-                    // TODO:figure out sorting here
-                    [dict setObject:array forKey:category];
+                    if (values.count >= 3)
+                    {
+                        NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
+                        YLPBusiness *biz = [[values1 allValues] lastObject];
+                        
+                        NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
+                        YLPBusiness *biz2 = [[values2 allValues] lastObject];
+                        
+                        NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
+                        YLPBusiness *biz3 = [[values3 allValues] lastObject];
+                        
+                        if (values.count == 3 &&
+                            ([biz.identifier isEqualToString:biz2.identifier] && [biz.identifier isEqualToString:biz3.identifier] &&
+                             [biz2.identifier isEqualToString:biz.identifier] && [biz2.identifier isEqualToString:biz3.identifier] &&
+                             [biz3.identifier isEqualToString:biz.identifier] && [biz3.identifier isEqualToString:biz2.identifier]))
+                        {
+                            NSMutableArray *ar = [NSMutableArray array];
+                            [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
+                            [dict setValue:ar forKey:key];
+                        }
+                        else
+                        {
+                            while ([biz.identifier isEqualToString:biz2.identifier] || [biz.identifier isEqualToString:biz3.identifier] ||
+                                   [biz2.identifier isEqualToString:biz.identifier] || [biz2.identifier isEqualToString:biz3.identifier] ||
+                                   [biz3.identifier isEqualToString:biz.identifier] || [biz3.identifier isEqualToString:biz2.identifier])
+                            {
+                                NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
+                                biz = [[values1 allValues] lastObject];
+                                
+                                NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
+                                biz2 = [[values2 allValues] lastObject];
+                                
+                                NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
+                                biz3 = [[values3 allValues] lastObject];
+                            }
+                            
+                            NSArray *bizzes = @[ biz, biz2, biz3 ];
+                            
+                            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+                            NSArray *sortedArray2 = [bizzes sortedArrayUsingDescriptors: @[descriptor]];
+                            
+                            NSMutableArray *ar = [NSMutableArray array];
+                            for (YLPBusiness *biz in sortedArray2)
+                            {
+                                [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
+                            }
+                            
+                            [dict setValue:ar forKey:key];
+                        }
+                    }
+                    else if (values.count == 2)
+                    {
+                        NSDictionary *values1 = [values firstObject];
+                        YLPBusiness *biz = [[values1 allValues] firstObject];
+                        
+                        NSDictionary *values2 = [values lastObject];
+                        YLPBusiness *biz2 = [[values2 allValues] lastObject];
+                        
+                        if ([biz.identifier isEqualToString:biz2.identifier])
+                        {
+                            NSMutableArray *ar = [NSMutableArray array];
+                            [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
+                            [dict setValue:ar forKey:key];
+                        }
+                        else
+                        {
+                            NSArray *bizzes = @[ biz, biz2 ];
+                            
+                            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+                            NSArray *sortedArray2 = [bizzes sortedArrayUsingDescriptors: @[descriptor]];
+                            
+                            NSMutableArray *ar = [NSMutableArray array];
+                            for (YLPBusiness *biz in sortedArray2)
+                            {
+                                [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
+                            }
+                            
+                            [dict setValue:ar forKey:key];
+                        }
+                        
+                    }
                 }
                 
-                NSArray *allkeys = [dict allKeys];
-                if (allkeys.count > 0)
+                if (isLastKey && allkeys.count == self.subCategories.count)
                 {
-                    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-                    NSArray *keys = [allkeys sortedArrayUsingDescriptors: @[descriptor]];
-                    
-                    for (NSString *key in keys)
+                    if (!self.didCancelRequest)
                     {
-                        NSArray *values = [dict valueForKey:key];
-                        
-                        if (values.count >= 3)
-                        {
-                            NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
-                            YLPBusiness *biz = [[values1 allValues] lastObject];
+                        dispatch_async(dispatch_get_main_queue(), ^{
                             
-                            NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
-                            YLPBusiness *biz2 = [[values2 allValues] lastObject];
+                            [self _hideHUD];
                             
-                            NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
-                            YLPBusiness *biz3 = [[values3 allValues] lastObject];
-                            
-                            if (values.count == 3 &&
-                                ([biz.identifier isEqualToString:biz2.identifier] && [biz.identifier isEqualToString:biz3.identifier] &&
-                                [biz2.identifier isEqualToString:biz.identifier] && [biz2.identifier isEqualToString:biz3.identifier] &&
-                                [biz3.identifier isEqualToString:biz.identifier] && [biz3.identifier isEqualToString:biz2.identifier]))
-                            {
-                                NSMutableArray *ar = [NSMutableArray array];
-                                [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
-                                [dict setValue:ar forKey:key];                                
-                            }
-                            else
-                            {
-                                while ([biz.identifier isEqualToString:biz2.identifier] || [biz.identifier isEqualToString:biz3.identifier] ||
-                                       [biz2.identifier isEqualToString:biz.identifier] || [biz2.identifier isEqualToString:biz3.identifier] ||
-                                       [biz3.identifier isEqualToString:biz.identifier] || [biz3.identifier isEqualToString:biz2.identifier])
-                                {
-                                    NSDictionary *values1 = [values objectAtIndex:arc4random()%[values count]];
-                                    biz = [[values1 allValues] lastObject];
-                                    
-                                    NSDictionary *values2 = [values objectAtIndex:arc4random()%[values count]];
-                                    biz2 = [[values2 allValues] lastObject];
-                                    
-                                    NSDictionary *values3 = [values objectAtIndex:arc4random()%[values count]];
-                                    biz3 = [[values3 allValues] lastObject];
-                                }
-                                
-                                NSArray *bizzes = @[ biz, biz2, biz3 ];
-                                
-                                NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-                                NSArray *sortedArray2 = [bizzes sortedArrayUsingDescriptors: @[descriptor]];
-                                
-                                NSMutableArray *ar = [NSMutableArray array];
-                                for (YLPBusiness *biz in sortedArray2)
-                                {
-                                    [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
-                                }
-                                
-                                [dict setValue:ar forKey:key];
-                            }
-                        }
-                        else if (values.count == 2)
-                        {
-                            NSDictionary *values1 = [values firstObject];
-                            YLPBusiness *biz = [[values1 allValues] firstObject];
-                            
-                            NSDictionary *values2 = [values lastObject];
-                            YLPBusiness *biz2 = [[values2 allValues] lastObject];
-
-                            if ([biz.identifier isEqualToString:biz2.identifier])
-                            {
-                                NSMutableArray *ar = [NSMutableArray array];
-                                [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
-                                [dict setValue:ar forKey:key];
-                            }
-                            else
-                            {
-                                NSArray *bizzes = @[ biz, biz2 ];
-                                
-                                NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-                                NSArray *sortedArray2 = [bizzes sortedArrayUsingDescriptors: @[descriptor]];
-                                
-                                NSMutableArray *ar = [NSMutableArray array];
-                                for (YLPBusiness *biz in sortedArray2)
-                                {
-                                    [ar addObject:[NSDictionary dictionaryWithObject:biz forKey:key]];
-                                }
-                                
-                                [dict setValue:ar forKey:key];
-                            }
-
-                        }
-                        
-                        if (!self.didCancelRequest)
-                        {
-                            if (key == [allkeys lastObject])
-                            {
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    
-                                    [self _hideHUD];
-                                    
-                                    [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
-                                });
-                            }
-                        }
+                            [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
+                        });
                     }
                 }
             }
@@ -647,9 +648,9 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     NSMutableArray *values = [[[self.catDict valueForKey:key] sortedArrayUsingDescriptors: @[descriptor]] mutableCopy];
     
     
-//    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-//    NSMutableArray *sortedArray2 = [[self.subCategories sortedArrayUsingDescriptors: @[descriptor]] mutableCopy];
-
+    //    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    //    NSMutableArray *sortedArray2 = [[self.subCategories sortedArrayUsingDescriptors: @[descriptor]] mutableCopy];
+    
     
     
     

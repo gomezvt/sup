@@ -69,9 +69,9 @@
             completionHandler(nil, error);
         } else {
             YLPSearch *search = [[YLPSearch alloc] initWithDictionary:responseDict];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"SUPReceivedBusinessesSearchNotification" object:search];
             completionHandler(search, nil);
         }
-        
     }];
 }
 
