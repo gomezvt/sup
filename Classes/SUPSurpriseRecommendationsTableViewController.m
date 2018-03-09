@@ -317,7 +317,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                  {
                      if (business)
                      {
-                         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                         dispatch_async(dispatch_get_main_queue(), ^(void){
                              if (cell.tag == indexPath.row)
                              {
                                  // Your Background work
