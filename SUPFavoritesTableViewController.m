@@ -93,7 +93,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
              }
              else
              {
-                 dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                 dispatch_async(dispatch_get_main_queue(), ^(void){
                      [[AppDelegate yelp] reviewsForBusinessWithId:business.identifier
                                                 completionHandler:^(YLPBusinessReviews * _Nullable reviews, NSError * _Nullable error) {
                                                     dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -114,8 +114,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                         else
                                                         {
                                                             // *** Get review user photos in advance if they exist, to display from Presentation VC
-                                                            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                                                                
+                                                            dispatch_async(dispatch_get_main_queue(), ^(void){
+
                                                                 NSMutableArray *userPhotos = [NSMutableArray array];
                                                                 for (YLPReview *review in reviews.reviews)
                                                                 {
@@ -404,7 +404,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
              {
                  if (business)
                  {
-                     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                     dispatch_async(dispatch_get_main_queue(), ^(void){
                          if (cell.tag == indexPath.row)
                          {
                              // Your Background work

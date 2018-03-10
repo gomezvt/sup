@@ -33,12 +33,13 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="j9C-Pu-gqt" firstAttribute="top" secondItem="brq-CZ-qB7" secondAttribute="top" constant="6" id="AjR-fR-SZG"/>
                     <constraint firstAttribute="bottom" secondItem="j9C-Pu-gqt" secondAttribute="bottom" constant="6.5" id="ChP-ZY-4Gc"/>
                     <constraint firstAttribute="trailingMargin" secondItem="j9C-Pu-gqt" secondAttribute="trailing" constant="8" id="D0L-9K-wt6"/>
+                    <constraint firstItem="fQ3-u2-61n" firstAttribute="centerY" secondItem="j9C-Pu-gqt" secondAttribute="centerY" id="NtD-XU-NGT"/>
                     <constraint firstItem="j9C-Pu-gqt" firstAttribute="top" secondItem="brq-CZ-qB7" secondAttribute="top" constant="6" id="TVh-VB-peQ"/>
-                    <constraint firstItem="j9C-Pu-gqt" firstAttribute="centerY" secondItem="brq-CZ-qB7" secondAttribute="centerY" id="rnd-wt-IJP"/>
+                    <constraint firstAttribute="bottom" secondItem="j9C-Pu-gqt" secondAttribute="bottom" constant="6.5" id="i19-Rp-hjW"/>
                     <constraint firstItem="fQ3-u2-61n" firstAttribute="leading" secondItem="brq-CZ-qB7" secondAttribute="leadingMargin" constant="8" id="te5-z9-Fq6"/>
-                    <constraint firstItem="fQ3-u2-61n" firstAttribute="centerY" secondItem="j9C-Pu-gqt" secondAttribute="centerY" id="xRW-wL-Jzm"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
