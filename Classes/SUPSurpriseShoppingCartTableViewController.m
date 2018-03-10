@@ -107,7 +107,6 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     {
         [self.resultsArray removeAllObjects];
         
-        i = 0;
         NSArray *array = [self.catDict allValues];
         self.hud = [SUPHUDView hudWithView:self.navigationController.view];
         self.hud.delegate = self;
@@ -153,10 +152,25 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
                          weakSelf.goButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
                          weakSelf.clearButton.layer.borderColor = [[SUPStyles iconBlue] CGColor];
                          
-                         NSString *string = error.userInfo[@"NSLocalizedDescription"];
-                         if ([string isEqualToString:@"The Internet connection appears to be offline."])
-                         {
-                             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
+                         NSString *msg;
+                         NSDictionary *errorDict = error.userInfo[@"error"];
+                             if (error.userInfo[@"NSLocalizedDescription"])
+                             {
+                                  NSString *string = error.userInfo[@"NSLocalizedDescription"];
+                                 if ([string isEqualToString:@"The Internet connection appears to be offline."])
+                                 {
+                                     msg = error.userInfo[@"NSLocalizedDescription"];
+                                 }
+                             }
+                             else if (errorDict)
+                             {
+                                 NSString *str = errorDict[@"description"];
+                                 if ([str isEqualToString:@"You have exceeded the queries-per-second limit for this endpoint. Try reducing the rate at which you make queries."])
+                                 {
+                                     msg = @"You exceeded the queries-per-second limit for this search. Try removing some subcategories and search again, or try a bit later.";
+                                 }
+                             }
+                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops!" message:msg preferredStyle:UIAlertControllerStyleAlert];
                              
                              UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                              [alertController addAction:ok];
@@ -173,7 +187,6 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
                              [weakSelf presentViewController:alertController animated:YES completion:nil];
                          }
                          
-                     }
                  });
              }];
         }
@@ -407,6 +420,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    i = 0;
     BOOL didGetIt = [[NSUserDefaults standardUserDefaults] boolForKey:@"SurpriseTip3"];
     if (didGetIt)
     {
@@ -514,11 +528,9 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
                 {
                     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
                     NSArray *keys = [allkeys sortedArrayUsingDescriptors: @[descriptor]];
-                    BOOL isLastKey = NO;
+                    
                     for (NSString *key in keys)
                     {
-                        isLastKey = key == keys.lastObject;
-                        
                         NSArray *values = [dict valueForKey:key];
                         
                         if (values.count >= 3)
@@ -602,23 +614,32 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
                             }
                             
                         }
-                    }
-                    
-                    if (isLastKey && allkeys.count == self.subCategories.count)
-                    {
+                        
                         if (!self.didCancelRequest)
                         {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                
-                                [self _hideHUD];
-                                
-                                [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
-                            });
+                            if (key == [allkeys lastObject])
+                            {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    i=0;
+                                    [self _hideHUD];
+                                    
+                                    [self performSegueWithIdentifier:@"ShowRecommendations" sender:dict];
+                                });
+                            }
                         }
                     }
                 }
             }
         }
+//        else
+//        {
+//            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"zzzzzz" message:@"Please select another category" preferredStyle:UIAlertControllerStyleAlert];
+//
+//            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+//            [alertController addAction:ok];
+//
+//            [self presentViewController:alertController animated:YES completion:nil];
+//        }
     }
 }
 
