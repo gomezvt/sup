@@ -87,7 +87,6 @@
 		8700B22F08A1630881D36B7FEFC2E7C0 /* YLPClient+Reviews.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "YLPClient+Reviews.m"; path = "Classes/Client/YLPClient+Reviews.m"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9662E0EE7AF00D8A9C4B725020073EAA /* Pods-Sup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sup.release.xcconfig"; sourceTree = "<group>"; };
-		9A10797F010A977B7D173DDEAD8B26AA /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
 		9B312029F09EAFA5AD0555ACB291F809 /* YLPUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPUser.h; path = Classes/Response/YLPUser.h; sourceTree = "<group>"; };
 		9BADF96316518B15EEBE89D90329C8A4 /* YLPSearch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPSearch.h; path = Classes/Response/YLPSearch.h; sourceTree = "<group>"; };
 		A012F575347D479E233E5B0704798CAF /* YLPClient+Reviews.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "YLPClient+Reviews.h"; path = "Classes/Client/YLPClient+Reviews.h"; sourceTree = "<group>"; };
@@ -180,14 +179,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4EEC7A6E43C0DE2CCA0D1B1031CA2A13 /* Google-Mobile-Ads-SDK */ = {
-			isa = PBXGroup;
-			children = (
-				9FC7A29866BD5979F5AE2384F6BE61C3 /* Frameworks */,
-			);
-			path = "Google-Mobile-Ads-SDK";
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -222,18 +213,9 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		9FC7A29866BD5979F5AE2384F6BE61C3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9A10797F010A977B7D173DDEAD8B26AA /* GoogleMobileAds.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		A07C5C49BCC307449379A39BEDBE3AEF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4EEC7A6E43C0DE2CCA0D1B1031CA2A13 /* Google-Mobile-Ads-SDK */,
 				14BE30B0DC676D3DB5CC5B5B3883B0E7 /* YelpAPI */,
 			);
 			name = Pods;

@@ -7,6 +7,5 @@ target 'Sup' do
 
   # Pods for Sup
 pod 'YelpAPI'
-pod 'Google-Mobile-Ads-SDK'
 
 end
