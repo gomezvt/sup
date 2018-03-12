@@ -765,8 +765,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         
         [[AppDelegate yelp] businessWithId:biz.identifier completionHandler:^
          (YLPBusiness *business, NSError *error) {
-             
-             
+             dispatch_async(dispatch_get_main_queue(), ^{
              if (!weakSelf.isLargePhone)
              {
                  if (business.isOpenNow)
@@ -793,10 +792,11 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                      cell.openCloseLabel.textColor = [UIColor redColor];
                  }
              }
-             
+             });
              NSString *string = error.userInfo[@"NSLocalizedDescription"];
              if ([string isEqualToString:@"The Internet connection appears to be offline."])
              {
+                 dispatch_async(dispatch_get_main_queue(), ^{
                  [weakSelf _hideHUD];
                  
                  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
@@ -804,6 +804,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                  UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                  [alertController addAction:ok];
                  [weakSelf presentViewController:alertController animated:YES completion:nil];
+                 });
              }
              else
              {
@@ -835,7 +836,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                          {
                              UIImage *image = [UIImage imageWithData:imageData];
                              business.bizThumbNail = image;
+                             dispatch_async(dispatch_get_main_queue(), ^{
                              cell.thumbNailView.image = image;
+                             });
                          }
                          else
                          {

@@ -694,7 +694,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
         
         [[AppDelegate yelp] businessWithId:biz.identifier completionHandler:^
          (YLPBusiness *business, NSError *error) {
-
+             dispatch_async(dispatch_get_main_queue(), ^{
                  if (!weakSelf.isLargePhone)
                  {
                      if (business.isOpenNow)
@@ -721,10 +721,12 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                          cell.openCloseLabel.textColor = [UIColor redColor];
                      }
                  }
+             });
              
              NSString *string = error.userInfo[@"NSLocalizedDescription"];
              if ([string isEqualToString:@"The Internet connection appears to be offline."])
              {
+                 dispatch_async(dispatch_get_main_queue(), ^{
                  [weakSelf _hideHUD];
                  
                  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
@@ -733,6 +735,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                  [alertController addAction:ok];
                  
                  [weakSelf presentViewController:alertController animated:YES completion:nil];
+                 });
              }
              else
              {
@@ -762,9 +765,11 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                          // Update your UI
                              if (imageData)
                              {
+                                 dispatch_async(dispatch_get_main_queue(), ^{
                                  UIImage *image = [UIImage imageWithData:imageData];
                                  business.bizThumbNail = image;
                                  cell.thumbNailView.image = image;
+                                 });
                              }
                              else
                              {
