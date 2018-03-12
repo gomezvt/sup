@@ -647,13 +647,10 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SUPThumbNailTableViewCell *cell = (SUPThumbNailTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.tag = indexPath.row;
-    if (cell.tag == indexPath.row)
-    {
+
         cell.openCloseLabel.text = @"";
         cell.secondaryOpenCloseLabel.text = @"";
         cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
-    }
     
     __block YLPBusiness *biz = [self.recentSearches objectAtIndex:indexPath.row];
     YLPBusiness *cachedBiz = [[self.cachedBiz filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", biz.identifier]] lastObject];
@@ -661,9 +658,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     if (cachedBiz && cachedBiz.didGetDetails)
     {
         biz = cachedBiz;
-        
-        if (cell.tag == indexPath.row)
-        {
+
             cell.thumbNailView.image = cachedBiz.bizThumbNail;
             
             if (!self.isLargePhone)
@@ -692,7 +687,6 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                     cell.openCloseLabel.textColor = [UIColor redColor];
                 }
             }
-        }
     }
     else if (!self.didSelectBiz)
     {
@@ -700,8 +694,7 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
         
         [[AppDelegate yelp] businessWithId:biz.identifier completionHandler:^
          (YLPBusiness *business, NSError *error) {
-             if (cell.tag == indexPath.row)
-             {
+
                  if (!weakSelf.isLargePhone)
                  {
                      if (business.isOpenNow)
@@ -728,7 +721,6 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                          cell.openCloseLabel.textColor = [UIColor redColor];
                      }
                  }
-             }
              
              NSString *string = error.userInfo[@"NSLocalizedDescription"];
              if ([string isEqualToString:@"The Internet connection appears to be offline."])
@@ -746,8 +738,6 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
              {
                  if (business)
                  {
-                     if (cell.tag == indexPath.row)
-                     {
                          if (business.photos.count > 0)
                          {
                              NSMutableArray *photosArray = [NSMutableArray array];
@@ -770,8 +760,6 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                          
                          NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
                          // Update your UI
-                         if (cell.tag == indexPath.row)
-                         {
                              if (imageData)
                              {
                                  UIImage *image = [UIImage imageWithData:imageData];
@@ -794,8 +782,6 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                                  NSInteger index = [weakSelf.originalDetailsArray indexOfObject:match];
                                  [weakSelf.originalDetailsArray replaceObjectAtIndex:index withObject:business];
                              }
-                         }
-                     }
                  }
              }
          }];

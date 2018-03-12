@@ -703,14 +703,10 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SUPThumbNailTableViewCell *cell = (SUPThumbNailTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.tag = indexPath.row;
     
-    if (cell.tag == indexPath.row)
-    {
-        cell.openCloseLabel.text = @"";
-        cell.secondaryOpenCloseLabel.text = @"";
-        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
-    }
+    cell.openCloseLabel.text = @"";
+    cell.secondaryOpenCloseLabel.text = @"";
+    cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
     
     __block YLPBusiness *biz = [self.filteredResults objectAtIndex:indexPath.row];
     
@@ -733,35 +729,33 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
     {
         biz = cachedBiz;
         
-        if (cell.tag == indexPath.row)
+        
+        cell.thumbNailView.image = cachedBiz.bizThumbNail;
+        
+        if (!self.isLargePhone)
         {
-            cell.thumbNailView.image = cachedBiz.bizThumbNail;
-            
-            if (!self.isLargePhone)
+            if (cachedBiz.isOpenNow)
             {
-                if (cachedBiz.isOpenNow)
-                {
-                    cell.secondaryOpenCloseLabel.text = @"Open Now";
-                    cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
-                }
-                else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
-                {
-                    cell.secondaryOpenCloseLabel.text = @"Closed Now";
-                    cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-                }
+                cell.secondaryOpenCloseLabel.text = @"Open Now";
+                cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
             }
-            else
+            else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
             {
-                if (cachedBiz.isOpenNow)
-                {
-                    cell.openCloseLabel.text = @"Open Now";
-                    cell.openCloseLabel.textColor = [SUPStyles iconBlue];
-                }
-                else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
-                {
-                    cell.openCloseLabel.text = @"Closed Now";
-                    cell.openCloseLabel.textColor = [UIColor redColor];
-                }
+                cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+            }
+        }
+        else
+        {
+            if (cachedBiz.isOpenNow)
+            {
+                cell.openCloseLabel.text = @"Open Now";
+                cell.openCloseLabel.textColor = [SUPStyles iconBlue];
+            }
+            else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
+            {
+                cell.openCloseLabel.text = @"Closed Now";
+                cell.openCloseLabel.textColor = [UIColor redColor];
             }
         }
     }
@@ -772,33 +766,31 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         [[AppDelegate yelp] businessWithId:biz.identifier completionHandler:^
          (YLPBusiness *business, NSError *error) {
              
-             if (cell.tag == indexPath.row)
+             
+             if (!weakSelf.isLargePhone)
              {
-                 if (!weakSelf.isLargePhone)
+                 if (business.isOpenNow)
                  {
-                     if (business.isOpenNow)
-                     {
-                         cell.secondaryOpenCloseLabel.text = @"Open Now";
-                         cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
-                     }
-                     else if (business.hoursItem && !business.isOpenNow)
-                     {
-                         cell.secondaryOpenCloseLabel.text = @"Closed Now";
-                         cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-                     }
+                     cell.secondaryOpenCloseLabel.text = @"Open Now";
+                     cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
                  }
-                 else
+                 else if (business.hoursItem && !business.isOpenNow)
                  {
-                     if (business.isOpenNow)
-                     {
-                         cell.openCloseLabel.text = @"Open Now";
-                         cell.openCloseLabel.textColor = [SUPStyles iconBlue];
-                     }
-                     else if (business.hoursItem && !business.isOpenNow)
-                     {
-                         cell.openCloseLabel.text = @"Closed Now";
-                         cell.openCloseLabel.textColor = [UIColor redColor];
-                     }
+                     cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                     cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                 }
+             }
+             else
+             {
+                 if (business.isOpenNow)
+                 {
+                     cell.openCloseLabel.text = @"Open Now";
+                     cell.openCloseLabel.textColor = [SUPStyles iconBlue];
+                 }
+                 else if (business.hoursItem && !business.isOpenNow)
+                 {
+                     cell.openCloseLabel.text = @"Closed Now";
+                     cell.openCloseLabel.textColor = [UIColor redColor];
                  }
              }
              
@@ -817,60 +809,54 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
              {
                  if (business)
                  {
-                     if (cell.tag == indexPath.row)
+                     if (business.photos.count > 0)
                      {
-                         if (business.photos.count > 0)
+                         NSMutableArray *photosArray = [NSMutableArray array];
+                         for (NSString *photoStr in business.photos)
                          {
-                             NSMutableArray *photosArray = [NSMutableArray array];
-                             for (NSString *photoStr in business.photos)
-                             {
-                                 NSURL *url = [NSURL URLWithString:photoStr];
-                                 
-                                 NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                 
-                                 UIImage *image = [UIImage imageWithData:imageData];
-                                 
-                                 if (imageData)
-                                 {
-                                     [photosArray addObject:image];
-                                 }
-                             }
+                             NSURL *url = [NSURL URLWithString:photoStr];
                              
-                             business.photos = photosArray;
-                         }
-                         
-                         NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
-                         // Update your UI
-                         if (cell.tag == indexPath.row)
-                         {
+                             NSData *imageData = [NSData dataWithContentsOfURL:url];
+                             
+                             UIImage *image = [UIImage imageWithData:imageData];
+                             
                              if (imageData)
                              {
-                                 UIImage *image = [UIImage imageWithData:imageData];
-                                 business.bizThumbNail = image;
-                                 cell.thumbNailView.image = image;
-                             }
-                             else
-                             {
-                                 business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
-                             }
-                             
-                             YLPBusiness *match = [[weakSelf.originalFilteredResults filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
-                             
-                             if (match)
-                             {
-                                 business.didGetDetails = YES;
-                                 [weakSelf.displayArray addObject:business];
-                                 if (weakSelf.displayArray)
-                                 {
-                                     [weakSelf.cachedDetails setObject:weakSelf.displayArray forKey:weakSelf.subCategoryTitle];
-                                 }
-                                 biz = business;
-                                 
-                                 NSInteger index = [weakSelf.originalFilteredResults indexOfObject:match];
-                                 [weakSelf.originalFilteredResults replaceObjectAtIndex:index withObject:business];
+                                 [photosArray addObject:image];
                              }
                          }
+                         
+                         business.photos = photosArray;
                      }
+                     
+                     NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
+
+                         if (imageData)
+                         {
+                             UIImage *image = [UIImage imageWithData:imageData];
+                             business.bizThumbNail = image;
+                             cell.thumbNailView.image = image;
+                         }
+                         else
+                         {
+                             business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                         }
+                         
+                         YLPBusiness *match = [[weakSelf.originalFilteredResults filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", business.identifier]] lastObject];
+                         
+                         if (match)
+                         {
+                             business.didGetDetails = YES;
+                             [weakSelf.displayArray addObject:business];
+                             if (weakSelf.displayArray)
+                             {
+                                 [weakSelf.cachedDetails setObject:weakSelf.displayArray forKey:weakSelf.subCategoryTitle];
+                             }
+                             biz = business;
+                             
+                             NSInteger index = [weakSelf.originalFilteredResults indexOfObject:match];
+                             [weakSelf.originalFilteredResults replaceObjectAtIndex:index withObject:business];
+                         }
                  }
              }
          }];
