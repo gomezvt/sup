@@ -89,7 +89,10 @@ static NSString *const kShowShoppingCartSegue = @"ShowShoppingCart";
 - (IBAction)didTapPlusButton:(id)sender
 {
     //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
-    
+    if (self.tableView.userInteractionEnabled == NO)
+    {
+        return;
+    }
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Change Your Search Location" message:@"Enter city, state, or zip code" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;

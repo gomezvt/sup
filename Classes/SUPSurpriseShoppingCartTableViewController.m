@@ -389,6 +389,10 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 
 - (IBAction)didTapPlusButton:(id)sender
 {
+    if (self.tableView.userInteractionEnabled == NO)
+    {
+        return;
+    }
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter City, State, or Zip Code" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         self.alertTextField = textField;

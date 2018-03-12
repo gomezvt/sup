@@ -158,6 +158,10 @@ static NSString *const kShowSubCategorySegue = @"ShowSubCategory";
 
 - (IBAction)didTapPlusButton:(id)sender
 {
+    if (self.tableView.userInteractionEnabled == NO)
+    {
+        return;
+    }
     //    self.headerTitleView.cityNameLabel.text = @":  San Francisco";
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Change Your Search Location" message:@"Enter city, state, or zip code." preferredStyle:UIAlertControllerStyleAlert];
