@@ -115,7 +115,7 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                                         {
                                                             // *** Get review user photos in advance if they exist, to display from Presentation VC
                                                             dispatch_async(dispatch_get_main_queue(), ^(void){
-
+                                                                
                                                                 NSMutableArray *userPhotos = [NSMutableArray array];
                                                                 for (YLPReview *review in reviews.reviews)
                                                                 {
@@ -226,8 +226,19 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CGRect mainScreen = [[UIScreen mainScreen] bounds];
+    if (mainScreen.size.width > 375.f)
+    {
+        self.isLargePhone = YES;
+    }
+    else
+    {
+        self.isLargePhone = NO;
+    }
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
-
+    
     self.tableView.tableFooterView = [UIView new];
     
     UINib *cellNib = [UINib nibWithNibName:kThumbNailCell bundle:nil];
@@ -278,12 +289,12 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         }
     }
     
-
+    
     NSData *unarchived = [[NSUserDefaults standardUserDefaults] objectForKey:@"faves"];
     self.faves = [NSKeyedUnarchiver unarchiveObjectWithData:unarchived];
     if (self.faves.count == 0)
     {
-
+        
         self.faveslabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.faveslabel.numberOfLines = 0.f;
         self.faveslabel.center = super.view.center;
@@ -337,11 +348,9 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.numberOfLines = 0;
         
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            cell.openCloseLabel.text = @"";
-            cell.secondaryOpenCloseLabel.text = @"";
-            cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
-        });
+        cell.openCloseLabel.text = @"";
+        cell.secondaryOpenCloseLabel.text = @"";
+        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
         
         __weak typeof(self) weakSelf = self;
         
@@ -402,12 +411,12 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
              }
              else
              {
-                 if (business)
-                 {
-                     dispatch_async(dispatch_get_main_queue(), ^(void){
-                         if (cell.tag == indexPath.row)
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     if (cell.tag == indexPath.row)
+                     {
+                         if (business)
                          {
-                             // Your Background work
+                             
                              if (business.photos.count > 0)
                              {
                                  NSMutableArray *photosArray = [NSMutableArray array];
@@ -428,28 +437,23 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                              }
                              
                              NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
-                             dispatch_async(dispatch_get_main_queue(), ^(void){
-                                 // Update your UI
-                                 if (cell.tag == indexPath.row)
-                                 {
-                                     if (imageData)
-                                     {
-                                         UIImage *image = [UIImage imageWithData:imageData];
-                                         business.bizThumbNail = image;
-                                         cell.thumbNailView.image = image;
-                                     }
-                                     else
-                                     {
-                                         business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
-                                     }
-                                     business.didGetDetails = YES;
-                                     
-                                     biz = business;
-                                 }
-                             });
+                             
+                             if (imageData)
+                             {
+                                 UIImage *image = [UIImage imageWithData:imageData];
+                                 business.bizThumbNail = image;
+                                 cell.thumbNailView.image = image;
+                             }
+                             else
+                             {
+                                 business.bizThumbNail = [UIImage imageNamed:@"placeholder"];
+                             }
+                             business.didGetDetails = YES;
+                             
+                             biz = business;
                          }
-                     });
-                 }
+                     }
+                 });
              }
          }];
         

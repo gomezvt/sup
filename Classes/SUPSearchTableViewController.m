@@ -646,10 +646,10 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SUPThumbNailTableViewCell *cell = (SUPThumbNailTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-        cell.openCloseLabel.text = @"";
-        cell.secondaryOpenCloseLabel.text = @"";
-        cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
+    cell.tag = indexPath.row;
+    cell.openCloseLabel.text = @"";
+    cell.secondaryOpenCloseLabel.text = @"";
+    cell.thumbNailView.image = [UIImage imageNamed:@"placeholder"];
     
     __block YLPBusiness *biz = [self.recentSearches objectAtIndex:indexPath.row];
     YLPBusiness *cachedBiz = [[self.cachedBiz filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", biz.identifier]] lastObject];
@@ -657,35 +657,35 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
     if (cachedBiz && cachedBiz.didGetDetails)
     {
         biz = cachedBiz;
-
-            cell.thumbNailView.image = cachedBiz.bizThumbNail;
-            
-            if (!self.isLargePhone)
+        
+        cell.thumbNailView.image = cachedBiz.bizThumbNail;
+        
+        if (!self.isLargePhone)
+        {
+            if (cachedBiz.isOpenNow)
             {
-                if (cachedBiz.isOpenNow)
-                {
-                    cell.secondaryOpenCloseLabel.text = @"Open Now";
-                    cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
-                }
-                else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
-                {
-                    cell.secondaryOpenCloseLabel.text = @"Closed Now";
-                    cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-                }
+                cell.secondaryOpenCloseLabel.text = @"Open Now";
+                cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
             }
-            else
+            else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
             {
-                if (cachedBiz.isOpenNow)
-                {
-                    cell.openCloseLabel.text = @"Open Now";
-                    cell.openCloseLabel.textColor = [SUPStyles iconBlue];
-                }
-                else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
-                {
-                    cell.openCloseLabel.text = @"Closed Now";
-                    cell.openCloseLabel.textColor = [UIColor redColor];
-                }
+                cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
             }
+        }
+        else
+        {
+            if (cachedBiz.isOpenNow)
+            {
+                cell.openCloseLabel.text = @"Open Now";
+                cell.openCloseLabel.textColor = [SUPStyles iconBlue];
+            }
+            else if (cachedBiz.hoursItem && !cachedBiz.isOpenNow)
+            {
+                cell.openCloseLabel.text = @"Closed Now";
+                cell.openCloseLabel.textColor = [UIColor redColor];
+            }
+        }
     }
     else if (!self.didSelectBiz)
     {
@@ -694,30 +694,33 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
         [[AppDelegate yelp] businessWithId:biz.identifier completionHandler:^
          (YLPBusiness *business, NSError *error) {
              dispatch_async(dispatch_get_main_queue(), ^{
-                 if (!weakSelf.isLargePhone)
+                 if (cell.tag == indexPath.row)
                  {
-                     if (business.isOpenNow)
+                     if (!weakSelf.isLargePhone)
                      {
-                         cell.secondaryOpenCloseLabel.text = @"Open Now";
-                         cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
+                         if (business.isOpenNow)
+                         {
+                             cell.secondaryOpenCloseLabel.text = @"Open Now";
+                             cell.secondaryOpenCloseLabel.textColor = [SUPStyles iconBlue];
+                         }
+                         else if (business.hoursItem && !business.isOpenNow)
+                         {
+                             cell.secondaryOpenCloseLabel.text = @"Closed Now";
+                             cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
+                         }
                      }
-                     else if (business.hoursItem && !business.isOpenNow)
+                     else
                      {
-                         cell.secondaryOpenCloseLabel.text = @"Closed Now";
-                         cell.secondaryOpenCloseLabel.textColor = [UIColor redColor];
-                     }
-                 }
-                 else
-                 {
-                     if (business.isOpenNow)
-                     {
-                         cell.openCloseLabel.text = @"Open Now";
-                         cell.openCloseLabel.textColor = [SUPStyles iconBlue];
-                     }
-                     else if (business.hoursItem && !business.isOpenNow)
-                     {
-                         cell.openCloseLabel.text = @"Closed Now";
-                         cell.openCloseLabel.textColor = [UIColor redColor];
+                         if (business.isOpenNow)
+                         {
+                             cell.openCloseLabel.text = @"Open Now";
+                             cell.openCloseLabel.textColor = [SUPStyles iconBlue];
+                         }
+                         else if (business.hoursItem && !business.isOpenNow)
+                         {
+                             cell.openCloseLabel.text = @"Closed Now";
+                             cell.openCloseLabel.textColor = [UIColor redColor];
+                         }
                      }
                  }
              });
@@ -726,49 +729,50 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
              if ([string isEqualToString:@"The Internet connection appears to be offline."])
              {
                  dispatch_async(dispatch_get_main_queue(), ^{
-                 [weakSelf _hideHUD];
-                 
-                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
-                 
-                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                 [alertController addAction:ok];
-                 
-                 [weakSelf presentViewController:alertController animated:YES completion:nil];
+                     [weakSelf _hideHUD];
+                     
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Check your connection and try again" preferredStyle:UIAlertControllerStyleAlert];
+                     
+                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                     [alertController addAction:ok];
+                     
+                     [weakSelf presentViewController:alertController animated:YES completion:nil];
                  });
              }
              else
              {
-                 if (business)
-                 {
-                         if (business.photos.count > 0)
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     if (cell.tag == indexPath.row)
+                     {
+                         if (business)
                          {
-                             NSMutableArray *photosArray = [NSMutableArray array];
-                             for (NSString *photoStr in business.photos)
+                             if (business.photos.count > 0)
                              {
-                                 NSURL *url = [NSURL URLWithString:photoStr];
-                                 
-                                 NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                 
-                                 UIImage *image = [UIImage imageWithData:imageData];
-                                 
-                                 if (imageData)
+                                 NSMutableArray *photosArray = [NSMutableArray array];
+                                 for (NSString *photoStr in business.photos)
                                  {
-                                     [photosArray addObject:image];
+                                     NSURL *url = [NSURL URLWithString:photoStr];
+                                     
+                                     NSData *imageData = [NSData dataWithContentsOfURL:url];
+                                     
+                                     UIImage *image = [UIImage imageWithData:imageData];
+                                     
+                                     if (imageData)
+                                     {
+                                         [photosArray addObject:image];
+                                     }
                                  }
+                                 
+                                 business.photos = photosArray;
                              }
                              
-                             business.photos = photosArray;
-                         }
-                         
-                         NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
-                         // Update your UI
+                             NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
+                             // Update your UI
                              if (imageData)
                              {
-                                 dispatch_async(dispatch_get_main_queue(), ^{
                                  UIImage *image = [UIImage imageWithData:imageData];
                                  business.bizThumbNail = image;
                                  cell.thumbNailView.image = image;
-                                 });
                              }
                              else
                              {
@@ -786,7 +790,9 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                                  NSInteger index = [weakSelf.originalDetailsArray indexOfObject:match];
                                  [weakSelf.originalDetailsArray replaceObjectAtIndex:index withObject:business];
                              }
-                 }
+                         }
+                     }
+                 });
              }
          }];
     }
