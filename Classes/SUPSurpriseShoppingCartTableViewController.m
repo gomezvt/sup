@@ -90,6 +90,8 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 - (void)didTapHUDCancelButton
 {
     i = 0;
+    [self.tempArray removeAllObjects];
+    [self.resultsArray removeAllObjects];
     self.didCancelRequest = YES;
     self.backChevron.enabled = YES;
     self.tableView.userInteractionEnabled = YES;
@@ -105,8 +107,6 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     if (kCity)
     
     {
-        [self.resultsArray removeAllObjects];
-        
         NSArray *array = [self.catDict allValues];
         self.hud = [SUPHUDView hudWithView:self.navigationController.view];
         self.hud.delegate = self;
@@ -161,6 +161,13 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
                                  {
                                      msg = error.userInfo[@"NSLocalizedDescription"];
                                  }
+                                 
+                                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops!" message:msg preferredStyle:UIAlertControllerStyleAlert];
+                                 
+                                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                 [alertController addAction:ok];
+                                 
+                                 [weakSelf presentViewController:alertController animated:YES completion:nil];
                              }
                              else if (errorDict)
                              {
@@ -169,24 +176,23 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
                                  {
                                      msg = @"You exceeded the queries-per-second limit for this search. Try removing some subcategories and search again, or try a bit later.";
                                  }
+                                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops!" message:msg preferredStyle:UIAlertControllerStyleAlert];
+                                 
+                                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                 [alertController addAction:ok];
+                                 
+                                 [weakSelf presentViewController:alertController animated:YES completion:nil];
                              }
-                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops!" message:msg preferredStyle:UIAlertControllerStyleAlert];
-                             
-                             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                             [alertController addAction:ok];
-                             
-                             [weakSelf presentViewController:alertController animated:YES completion:nil];
-                         }
-                         else if (weakSelf.subCategories.count == 1 && (searchResults.businesses.count == 0 || searchResults == nil))
+                         else
                          {
-                             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No search results found" message:@"Try selecting another category, or modify your search location" preferredStyle:UIAlertControllerStyleAlert];
+                             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops!" message:@"We seem to have run into a problem. Please try your last action again or wait a bit." preferredStyle:UIAlertControllerStyleAlert];
                              
                              UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                              [alertController addAction:ok];
                              
                              [weakSelf presentViewController:alertController animated:YES completion:nil];
                          }
-                         
+                     }
                  });
              }];
         }
@@ -213,8 +219,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
             }
         }];
         [alertController addAction:confirmAction];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
         [alertController addAction:cancelAction];
         [self presentViewController:alertController animated:YES completion:nil];
     }
@@ -348,6 +353,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
     
     if ([self.delegate respondsToSelector:@selector(didTapBackWithDetails:)])
     {
+        i = 0;
         [self.delegate didTapBackWithDetails:self.cachedDetails];
     }
     [self.navigationController popViewControllerAnimated:YES];
@@ -410,8 +416,7 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
         }
     }];
     [alertController addAction:confirmAction];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
@@ -420,7 +425,10 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    i = 0;
+    
+    [self.tempArray removeAllObjects];
+    [self.resultsArray removeAllObjects];
+
     BOOL didGetIt = [[NSUserDefaults standardUserDefaults] boolForKey:@"SurpriseTip3"];
     if (didGetIt)
     {
@@ -471,8 +479,9 @@ static NSString *const kHeaderTitleViewNib = @"SUPHeaderTitleView";
 {
     if ([[notification name] isEqualToString:@"SUPReceivedBusinessesSearchNotification"])
     {
-        i++;
-        YLPSearch *searchObject = notification.object;
+            i++;
+
+            YLPSearch *searchObject = notification.object;
         
         for (NSString *category in self.subCategories)
         {
