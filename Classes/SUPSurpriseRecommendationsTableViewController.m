@@ -308,33 +308,32 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                  }
                  else
                  {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         if (cell.tag == indexPath.row)
+                     if (business)
+                     {
+                         // Your Background work
+                         if (business.photos.count > 0)
                          {
-                             if (business)
+                             NSMutableArray *photosArray = [NSMutableArray array];
+                             for (NSString *photoStr in business.photos)
                              {
-                                 // Your Background work
-                                 if (business.photos.count > 0)
+                                 NSURL *url = [NSURL URLWithString:photoStr];
+                                 
+                                 NSData *imageData = [NSData dataWithContentsOfURL:url];
+                                 UIImage *image = [UIImage imageWithData:imageData];
+                                 
+                                 if (imageData)
                                  {
-                                     NSMutableArray *photosArray = [NSMutableArray array];
-                                     for (NSString *photoStr in business.photos)
-                                     {
-                                         NSURL *url = [NSURL URLWithString:photoStr];
-                                         
-                                         NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                         UIImage *image = [UIImage imageWithData:imageData];
-                                         
-                                         if (imageData)
-                                         {
-                                             [photosArray addObject:image];
-                                         }
-                                     }
-                                     
-                                     business.photos = photosArray;
+                                     [photosArray addObject:image];
                                  }
-                                 
+                             }
+                             
+                             business.photos = photosArray;
+                         }
+                         
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             if (cell.tag == indexPath.row)
+                             {
                                  NSData *imageData = [NSData dataWithContentsOfURL:biz.imageURL];
-                                 
                                  if (imageData)
                                  {
                                      UIImage *image = [UIImage imageWithData:imageData];
@@ -350,8 +349,8 @@ static NSString *const kShowDetailSegue = @"ShowDetail";
                                  
                                  biz = business;
                              }
-                         }
-                     });
+                         });
+                     }
                  }
              }];
         }

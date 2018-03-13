@@ -745,33 +745,32 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
              }
              else
              {
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     if (cell.tag == indexPath.row)
+                 if (business)
+                 {
+                     if (business.photos.count > 0)
                      {
-                         if (business)
+                         NSMutableArray *photosArray = [NSMutableArray array];
+                         for (NSString *photoStr in business.photos)
                          {
-                             if (business.photos.count > 0)
-                             {
-                                 NSMutableArray *photosArray = [NSMutableArray array];
-                                 for (NSString *photoStr in business.photos)
-                                 {
-                                     NSURL *url = [NSURL URLWithString:photoStr];
-                                     
-                                     NSData *imageData = [NSData dataWithContentsOfURL:url];
-                                     
-                                     UIImage *image = [UIImage imageWithData:imageData];
-                                     
-                                     if (imageData)
-                                     {
-                                         [photosArray addObject:image];
-                                     }
-                                 }
-                                 
-                                 business.photos = photosArray;
-                             }
+                             NSURL *url = [NSURL URLWithString:photoStr];
                              
+                             NSData *imageData = [NSData dataWithContentsOfURL:url];
+                             
+                             UIImage *image = [UIImage imageWithData:imageData];
+                             
+                             if (imageData)
+                             {
+                                 [photosArray addObject:image];
+                             }
+                         }
+                         
+                         business.photos = photosArray;
+                     }
+                     
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         if (cell.tag == indexPath.row)
+                         {
                              NSData *imageData = [NSData dataWithContentsOfURL:business.imageURL];
-                             // Update your UI
                              if (imageData)
                              {
                                  UIImage *image = [UIImage imageWithData:imageData];
@@ -795,8 +794,8 @@ static NSString *const kTableViewSectionHeaderView = @"SUPTableViewSectionHeader
                                  [weakSelf.originalDetailsArray replaceObjectAtIndex:index withObject:business];
                              }
                          }
-                     }
-                 });
+                     });
+                 }
              }
          }];
     }
